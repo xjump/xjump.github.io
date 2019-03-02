@@ -1,0 +1,260 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>@xjump</title>
+
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
+      
+
+      
+          <script src="/slideout/1.0.1/slideout.min.js"></script>
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css">
+
+          <script defer src="/katex/0.10.1/katex.min.js" ></script>
+          <script defer src="/katex/0.10.1/contrib/mathtex-script-type.min.js" ></script>
+              
+          <script defer src="/katex/0.10.1/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+              
+          
+      
+
+      
+          <link rel="stylesheet" href="https:&#x2F;&#x2F;xjump.me&#x2F;site.css">
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css"  >
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">@xjump</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me">
+                            Home
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;categories">
+                            Categories
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                            Archive
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;rss.xml">
+                            RSS
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;about">
+                            About
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;xjump.me">@xjump</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https://xjump.me">
+                                    Home
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;categories">
+                                    Categories
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                    Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;rss.xml">
+                                    RSS
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;about">
+                                    About
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;mf-sample&#x2F;">Matrix Factorization Sample</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2013-11-15</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p>
+Albert Au Yeung写的Matrix&nbsp;Factorization 的例子。MF是推荐系统常规算法。</p>
+<p><a name="continue-reading"></a></p>
+<pre style="background-color:#2b303b;">
+<span style="color:#65737e;">#!/usr/bin/env python</span><span style="color:#65737e;">
+</span><span style="color:#65737e;"># -*- coding: utf-8 -*-</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">numpy  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">   </span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">matrix_factorisation</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">R</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">P</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">Q</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">K</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">steps</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">5000</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">alpha</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">0.0002</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">beta</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">0.02</span><span style="color:#c0c5ce;">):  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">Q = Q.T  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">step </span><span style="color:#b48ead;">in </span><span style="color:#bf616a;">xrange</span><span style="color:#c0c5ce;">(steps):  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">i </span><span style="color:#b48ead;">in </span><span style="color:#bf616a;">xrange</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">(R)):  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">j </span><span style="color:#b48ead;">in </span><span style="color:#bf616a;">xrange</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">(R[i])):  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">R[i][j] &gt; </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">:  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    </span><span style="color:#c0c5ce;">eij = R[i][j] - numpy.</span><span style="color:#bf616a;">dot</span><span style="color:#c0c5ce;">(P[i,:],Q[:,j])  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">k </span><span style="color:#b48ead;">in </span><span style="color:#bf616a;">xrange</span><span style="color:#c0c5ce;">(K):  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                        </span><span style="color:#c0c5ce;">P[i][k] = P[i][k] + alpha * (</span><span style="color:#d08770;">2 </span><span style="color:#c0c5ce;">* eij * Q[k][j] - beta * P[i][k])  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                        </span><span style="color:#c0c5ce;">Q[k][j] = Q[k][j] + alpha * (</span><span style="color:#d08770;">2 </span><span style="color:#c0c5ce;">* eij * P[i][k] - beta * Q[k][j])  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">eR = numpy.</span><span style="color:#bf616a;">dot</span><span style="color:#c0c5ce;">(P,Q)  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">e = </span><span style="color:#d08770;">0  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">i </span><span style="color:#b48ead;">in </span><span style="color:#bf616a;">xrange</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">(R)):  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">j </span><span style="color:#b48ead;">in </span><span style="color:#bf616a;">xrange</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">(R[i])):  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">R[i][j] &gt; </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">:  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    </span><span style="color:#c0c5ce;">e = e + </span><span style="color:#96b5b4;">pow</span><span style="color:#c0c5ce;">(R[i][j] - numpy.</span><span style="color:#bf616a;">dot</span><span style="color:#c0c5ce;">(P[i,:],Q[:,j]), </span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">)  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">k </span><span style="color:#b48ead;">in </span><span style="color:#bf616a;">xrange</span><span style="color:#c0c5ce;">(K):  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                        </span><span style="color:#c0c5ce;">e = e + (beta/</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">) * (</span><span style="color:#96b5b4;">pow</span><span style="color:#c0c5ce;">(P[i][k],</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">) + </span><span style="color:#96b5b4;">pow</span><span style="color:#c0c5ce;">(Q[k][j],</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">))  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">e &lt; </span><span style="color:#d08770;">0.001</span><span style="color:#c0c5ce;">:  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">break  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">return </span><span style="color:#c0c5ce;">P, Q.T </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">R = [  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">     </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">5</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">],  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">     </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">],  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">     </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">5</span><span style="color:#c0c5ce;">],  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">     </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">],  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">     </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">5</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">],  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">]  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">   </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">R = numpy.</span><span style="color:#bf616a;">array</span><span style="color:#c0c5ce;">(R)  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">   </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">N = </span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">(R)  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">M = </span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">(R[</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">])  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">K = </span><span style="color:#d08770;">2  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">   </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">P = numpy.random.</span><span style="color:#bf616a;">rand</span><span style="color:#c0c5ce;">(N,K)  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">Q = numpy.random.</span><span style="color:#bf616a;">rand</span><span style="color:#c0c5ce;">(M,K)  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">   </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">nP, nQ = </span><span style="color:#bf616a;">matrix_factorisation</span><span style="color:#c0c5ce;">(R, P, Q, K)  </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">nR = numpy.</span><span style="color:#bf616a;">dot</span><span style="color:#c0c5ce;">(nP, nQ.T)  </span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#96b5b4;">\t</span><span style="color:#a3be8c;">result of R is</span><span style="color:#c0c5ce;">&#39;</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">nR</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#96b5b4;">\t</span><span style="color:#a3be8c;">original R is</span><span style="color:#c0c5ce;">&#39;</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">R</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#96b5b4;">\t</span><span style="color:#a3be8c;">P is</span><span style="color:#c0c5ce;">&#39;</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">nP</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#96b5b4;">\t</span><span style="color:#a3be8c;">Q is</span><span style="color:#c0c5ce;">&#39;</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">nQ</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>Original Link:</p>
+<p><a href="http://www.quuxlabs.com/blog/2010/09/matrix-factorization-a-simple-tutorial-and-implementation-in-python/">http://www.quuxlabs.com/blog/2010/09/matrix-factorization-a-simple-tutorial-and-implementation-in-python/</a></p></p>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <!-- <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all&#x2F;">#all</a> -->
+                    
+                </div>
+            
+            
+                <div class="post-nav">
+                    
+                        <a class="previous" href="https:&#x2F;&#x2F;xjump.me&#x2F;openssl-engine&#x2F;">‹ 使用OpenSSL Engine访问PKCS#11及CryptoAPI</a>
+                    
+                    
+                        <a class="next" href="https:&#x2F;&#x2F;xjump.me&#x2F;pca-scipy-example&#x2F;">PCA used scipy svd ›</a>
+                    
+                    
+                    
+                </div>
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https:&#x2F;&#x2F;xjump.me&#x2F;even.js" ></script>
+      
+    </body>
+
+</html>

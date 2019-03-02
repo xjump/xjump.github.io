@@ -1,0 +1,313 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>@xjump</title>
+
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
+      
+
+      
+          <script src="/slideout/1.0.1/slideout.min.js"></script>
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css">
+
+          <script defer src="/katex/0.10.1/katex.min.js" ></script>
+          <script defer src="/katex/0.10.1/contrib/mathtex-script-type.min.js" ></script>
+              
+          <script defer src="/katex/0.10.1/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+              
+          
+      
+
+      
+          <link rel="stylesheet" href="https:&#x2F;&#x2F;xjump.me&#x2F;site.css">
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css"  >
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">@xjump</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me">
+                            Home
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;categories">
+                            Categories
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                            Archive
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;rss.xml">
+                            RSS
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;about">
+                            About
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;xjump.me">@xjump</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https://xjump.me">
+                                    Home
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;categories">
+                                    Categories
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                    Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;rss.xml">
+                                    RSS
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;about">
+                                    About
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;struts-s2-016-vul-checker&#x2F;">struts_s2-016_vul_checker</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2013-07-21</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p>
+最近的struts2漏洞检测脚本，现在各大网站应该已经修复。
+</p>
+<p><a name="continue-reading"></a></p>
+<pre style="background-color:#2b303b;">
+<span style="color:#65737e;">#!/usr/bin/env python</span><span style="color:#65737e;">
+</span><span style="color:#65737e;"># -*- coding=utf-8 -*-</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#65737e;">&#39;&#39;&#39;</span><span style="color:#65737e;">
+</span><span style="color:#65737e;">author: xjump.me#at#gmail.com</span><span style="color:#65737e;">
+</span><span style="color:#65737e;">file: struts_s2-016_vul_checker.py</span><span style="color:#65737e;">
+</span><span style="color:#65737e;">useage: </span><span style="color:#65737e;">
+</span><span style="color:#65737e;">    </span><span style="color:#65737e;">config the check_urls and </span><span style="color:#65737e;">
+</span><span style="color:#65737e;">    </span><span style="color:#65737e;">run `python struts_s2-016_vul_checker.py`</span><span style="color:#65737e;">
+</span><span style="color:#65737e;">ref:</span><span style="color:#65737e;">
+</span><span style="color:#65737e;">    </span><span style="color:#65737e;">http://struts.apache.org/release/2.3.x/docs/s2-016.html</span><span style="color:#65737e;">
+</span><span style="color:#65737e;">&#39;&#39;&#39;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">check_urls=[</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">http://localhost:8080/struts2-blank/example/HelloWorld.action</span><span style="color:#c0c5ce;">&#39;,</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">]</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">pycurl</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">sys</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">urlparse</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">headers = {</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">User-Agent</span><span style="color:#c0c5ce;">&#39; : &#39;</span><span style="color:#a3be8c;">Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)</span><span style="color:#c0c5ce;">&#39;,</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">Accept</span><span style="color:#c0c5ce;">&#39; : &#39;</span><span style="color:#a3be8c;">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><span style="color:#c0c5ce;">&#39;,</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">Accept-Language</span><span style="color:#c0c5ce;">&#39; : &#39;</span><span style="color:#a3be8c;">en-US,en;q=0.8</span><span style="color:#c0c5ce;">&#39;,</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">Accept-Charset</span><span style="color:#c0c5ce;">&#39; : &#39;</span><span style="color:#a3be8c;">utf-8;q=0.7,*;q=0.3</span><span style="color:#c0c5ce;">&#39;,</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">Connection</span><span style="color:#c0c5ce;">&#39; : &#39;</span><span style="color:#a3be8c;">keep-alive</span><span style="color:#c0c5ce;">&#39;,</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">payload_scan=</span><span style="color:#b48ead;">r</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">redirect:http://wooyun</span><span style="color:#d08770;">.</span><span style="color:#a3be8c;">org</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">line_sep</span><span style="color:#c0c5ce;">():</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">*</span><span style="color:#c0c5ce;">&quot; * </span><span style="color:#d08770;">79</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">Handler</span><span style="color:#eff1f5;">:</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">def </span><span style="color:#96b5b4;">__init__</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">):</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">.data = &#39;&#39;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">write_callback</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">buf</span><span style="color:#c0c5ce;">):</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">.data = </span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">.data + buf</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">get_data</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">):</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">return </span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">.data</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">debug_cb</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">debug_type</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">debug_msg</span><span style="color:#c0c5ce;">):</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">debug(</span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">): </span><span style="color:#d08770;">%s</span><span style="color:#c0c5ce;">&quot; % (debug_type, debug_msg)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">progress_cb</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">total</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">existing</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">upload_t</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">upload_d</span><span style="color:#c0c5ce;">):</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">pass</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">&#39;&#39;&#39;</span><span style="color:#65737e;">
+</span><span style="color:#65737e;">    </span><span style="color:#65737e;">try:</span><span style="color:#65737e;">
+</span><span style="color:#65737e;">        </span><span style="color:#65737e;">frac = float(existing)/float(total)</span><span style="color:#65737e;">
+</span><span style="color:#65737e;">    </span><span style="color:#65737e;">except:</span><span style="color:#65737e;">
+</span><span style="color:#65737e;">        </span><span style="color:#65737e;">frac = 0</span><span style="color:#65737e;">
+</span><span style="color:#65737e;">    </span><span style="color:#65737e;">sys.stdout.write(&quot;</span><span style="color:#96b5b4;">\r</span><span style="color:#65737e;">%s %3i%&quot; % (&quot;file&quot;, frac*100)  )</span><span style="color:#65737e;">
+</span><span style="color:#65737e;">    </span><span style="color:#65737e;">&#39;&#39;&#39;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">      </span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">do_scan</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">url</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">arg_timeout</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">1000</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">debug</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">):</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">h_body = </span><span style="color:#bf616a;">Handler</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">h_head = </span><span style="color:#bf616a;">Handler</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">c = pycurl.</span><span style="color:#bf616a;">Curl</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">attack_url = url + &quot;</span><span style="color:#a3be8c;">?</span><span style="color:#c0c5ce;">&quot; + payload_scan</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">t_url=urlparse.</span><span style="color:#bf616a;">urlparse</span><span style="color:#c0c5ce;">(url)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">strScheme=t_url.scheme</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">strHost = t_url.netloc</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">strURL1 = t_url.path</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">c.</span><span style="color:#bf616a;">setopt</span><span style="color:#c0c5ce;">(c.</span><span style="color:#bf616a;">URL</span><span style="color:#c0c5ce;">, attack_url)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">c.</span><span style="color:#bf616a;">setopt</span><span style="color:#c0c5ce;">(c.</span><span style="color:#bf616a;">HTTPHEADER</span><span style="color:#c0c5ce;">, [&quot;</span><span style="color:#a3be8c;">Host: </span><span style="color:#d08770;">%s</span><span style="color:#c0c5ce;">&quot; % strHost] + [i[</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">]+&quot;</span><span style="color:#a3be8c;">: </span><span style="color:#c0c5ce;">&quot;+i[</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">] </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">i </span><span style="color:#b48ead;">in </span><span style="color:#c0c5ce;">headers.</span><span style="color:#bf616a;">items</span><span style="color:#c0c5ce;">()])</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">c.</span><span style="color:#bf616a;">setopt</span><span style="color:#c0c5ce;">(c.</span><span style="color:#bf616a;">USERAGENT</span><span style="color:#c0c5ce;">, headers[&quot;</span><span style="color:#a3be8c;">User-Agent</span><span style="color:#c0c5ce;">&quot;])</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">c.</span><span style="color:#bf616a;">setopt</span><span style="color:#c0c5ce;">(c.</span><span style="color:#bf616a;">WRITEFUNCTION</span><span style="color:#c0c5ce;">, h_body.write_callback)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">c.</span><span style="color:#bf616a;">setopt</span><span style="color:#c0c5ce;">(c.</span><span style="color:#bf616a;">HEADERFUNCTION</span><span style="color:#c0c5ce;">, h_head.write_callback)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">debug:</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">c.</span><span style="color:#bf616a;">setopt</span><span style="color:#c0c5ce;">(c.</span><span style="color:#bf616a;">NOPROGRESS</span><span style="color:#c0c5ce;">, </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">c.</span><span style="color:#bf616a;">setopt</span><span style="color:#c0c5ce;">(c.</span><span style="color:#bf616a;">PROGRESSFUNCTION</span><span style="color:#c0c5ce;">, progress_cb)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">c.</span><span style="color:#bf616a;">setopt</span><span style="color:#c0c5ce;">(c.</span><span style="color:#bf616a;">DEBUGFUNCTION</span><span style="color:#c0c5ce;">, debug_cb)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">c.</span><span style="color:#bf616a;">setopt</span><span style="color:#c0c5ce;">(c.</span><span style="color:#bf616a;">VERBOSE</span><span style="color:#c0c5ce;">,debug)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">c.</span><span style="color:#bf616a;">setopt</span><span style="color:#c0c5ce;">(c.</span><span style="color:#bf616a;">HTTPGET</span><span style="color:#c0c5ce;">, </span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">c.</span><span style="color:#bf616a;">setopt</span><span style="color:#c0c5ce;">(c.</span><span style="color:#bf616a;">TIMEOUT</span><span style="color:#c0c5ce;">, arg_timeout)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">c.</span><span style="color:#bf616a;">setopt</span><span style="color:#c0c5ce;">(c.</span><span style="color:#bf616a;">HTTP_VERSION</span><span style="color:#c0c5ce;">, c.</span><span style="color:#bf616a;">CURL_HTTP_VERSION_1_1</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">try</span><span style="color:#c0c5ce;">:</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">c.</span><span style="color:#bf616a;">perform</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">except </span><span style="color:#c0c5ce;">Exception </span><span style="color:#b48ead;">as </span><span style="color:#c0c5ce;">e:</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#65737e;">#print e</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">return</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">c.</span><span style="color:#bf616a;">reset</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">c.</span><span style="color:#bf616a;">close</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">body = h_body.</span><span style="color:#bf616a;">get_data</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">head = h_head.</span><span style="color:#bf616a;">get_data</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">#print &quot;[*] GET %s, response header is&quot; % attack_url</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">#line_sep()</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">#print head</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">if r</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">Location: http://wooyun</span><span style="color:#d08770;">.</span><span style="color:#a3be8c;">org</span><span style="color:#c0c5ce;">&quot; in head:</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#96b5b4;">\n</span><span style="color:#a3be8c;">[+] Vul found for </span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;">.</span><span style="color:#96b5b4;">\n</span><span style="color:#c0c5ce;">&quot; % url</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">else</span><span style="color:#c0c5ce;">:</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">[-] </span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;"> is Secured.</span><span style="color:#c0c5ce;">&quot; % url</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">#line_sep()</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">#check</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">#print body</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">__name__==&quot;</span><span style="color:#a3be8c;">__main__</span><span style="color:#c0c5ce;">&quot;:</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">i </span><span style="color:#b48ead;">in </span><span style="color:#c0c5ce;">check_urls:</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">ret = </span><span style="color:#bf616a;">do_scan</span><span style="color:#c0c5ce;">(i, </span><span style="color:#bf616a;">debug</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+</span></pre>
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <!-- <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all&#x2F;">#all</a> -->
+                    
+                </div>
+            
+            
+                <div class="post-nav">
+                    
+                        <a class="previous" href="https:&#x2F;&#x2F;xjump.me&#x2F;get-top-activity&#x2F;">‹ 获取顶层Activity</a>
+                    
+                    
+                        <a class="next" href="https:&#x2F;&#x2F;xjump.me&#x2F;find-your-passion&#x2F;">Find Your Passion ›</a>
+                    
+                    
+                    
+                </div>
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https:&#x2F;&#x2F;xjump.me&#x2F;even.js" ></script>
+      
+    </body>
+
+</html>

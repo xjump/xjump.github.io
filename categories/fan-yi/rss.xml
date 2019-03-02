@@ -1,0 +1,44 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>@xjump</title>
+        <link>https://xjump.me</link>
+        <description>notes by xjump</description>
+        <generator>Zola</generator>
+        <language>en</language>
+        <atom:link href="https://xjump.me/categories/fan-yi/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Wed, 19 Sep 2012 00:00:00 +0000</lastBuildDate>
+        
+            <item>
+                <title>Lua 5.0的实现（中英文对照）</title>
+                <pubDate>Wed, 19 Sep 2012 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/lua-implementation/</link>
+                <guid>https://xjump.me/lua-implementation/</guid>
+                <description>&lt;p&gt;&lt;strong&gt;Author&lt;&#x2F;strong&gt;&lt;br&#x2F;&gt;
+Roberto Ierusalimschy (Department of Computer Science, PUC-Rio, Rio de Janeiro, Brazil roberto@inf.puc-rio.br)&lt;br&#x2F;&gt;
+Luiz Henrique de Figueiredo(IMPA-Instituto de Matematica Pura e Aplicada, Rio de Janeiro, Brazil lhf@impa.br)&lt;br&#x2F;&gt;
+Waldemar Celes(Department of Computer Science, PUC-Rio, Rio de Janeiro, Brazil celes@inf.puc-rio.br)&lt;br&#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;翻译： xjump.me#at#gmail.com, @xjump&lt;br&#x2F;&gt;
+原文： &lt;a href=&quot;http:&#x2F;&#x2F;www.lua.org&#x2F;doc&#x2F;jucs05.pdf&quot;&gt;http:&#x2F;&#x2F;www.lua.org&#x2F;doc&#x2F;jucs05.pdf&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Abstract &lt;&#x2F;strong&gt;
+We discuss the main novelties of the implementation of Lua 5.0: its register-based virtaul machine, the new algorithm for optimizing tables used as arrays, the implementation of closures, and the addition of coroutines.&lt;br&#x2F;&gt;
+&lt;strong&gt;Key Words &lt;&#x2F;strong&gt;
+compilers, virtual machines, hash tables, closures, coroutines&lt;br&#x2F;&gt;
+&lt;strong&gt;Category &lt;&#x2F;strong&gt;
+D.3.4, D.3.3, D.3.2, E.2&lt;br&#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;摘要 &lt;&#x2F;strong&gt;
+我们讨论了Lua 5.0实现上的主要优点：基于寄存器的虚拟机，tables用于数组时新的优化算法，闭包的实现，以及协程。&lt;br&#x2F;&gt;
+&lt;strong&gt;关键字 &lt;&#x2F;strong&gt;
+编译器，虚拟机，Hash表，闭包，协程&lt;br&#x2F;&gt;
+&lt;strong&gt;类别 &lt;&#x2F;strong&gt;
+D.3.4，D.3.3，D.3.2，E.2&lt;br&#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3&gt;
+1 Introduct&lt;br&#x2F;&gt;
+1 介绍  
+&lt;&#x2F;h3&gt;
+Lua was born in an academic laboratory as a tool for in-house software development but somehow was adopted by several industrial projects around the world and is now widely used in the game industry. [1]&lt;br&#x2F;&gt;
+Lua诞生于一个学术实验室，当时是作为一个内部软件开发工具的，但逐渐被移植到了全世界的各个行业的工程中，而且现在广泛的用于游戏行业。[1]&lt;br&#x2F;&gt;
+</description>
+            </item>
+        
+    </channel>
+</rss>

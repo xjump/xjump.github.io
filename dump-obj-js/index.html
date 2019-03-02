@@ -1,0 +1,216 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>@xjump</title>
+
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
+      
+
+      
+          <script src="/slideout/1.0.1/slideout.min.js"></script>
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css">
+
+          <script defer src="/katex/0.10.1/katex.min.js" ></script>
+          <script defer src="/katex/0.10.1/contrib/mathtex-script-type.min.js" ></script>
+              
+          <script defer src="/katex/0.10.1/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+              
+          
+      
+
+      
+          <link rel="stylesheet" href="https:&#x2F;&#x2F;xjump.me&#x2F;site.css">
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css"  >
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">@xjump</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me">
+                            Home
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;categories">
+                            Categories
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                            Archive
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;rss.xml">
+                            RSS
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;about">
+                            About
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;xjump.me">@xjump</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https://xjump.me">
+                                    Home
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;categories">
+                                    Categories
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                    Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;rss.xml">
+                                    RSS
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;about">
+                                    About
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;dump-obj-js&#x2F;">dump objects info from JavaScript</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2013-05-08</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p>
+Dump JavaScript object for PyV8 and NodeJS.</p>
+<p>POC</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#b48ead;">function </span><span style="color:#8fa1b3;">dump</span><span style="color:#c0c5ce;">(obj){</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">for</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">item </span><span style="color:#c0c5ce;">in </span><span style="color:#bf616a;">obj</span><span style="color:#c0c5ce;">){</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if</span><span style="color:#c0c5ce;">(typeof </span><span style="color:#bf616a;">item </span><span style="color:#c0c5ce;">=== &quot;</span><span style="color:#a3be8c;">Object</span><span style="color:#c0c5ce;">&quot;){</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">Print</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">Object&#39;s source is:</span><span style="color:#c0c5ce;">&quot; + </span><span style="color:#bf616a;">item</span><span style="color:#c0c5ce;">.</span><span style="color:#bf616a;">toSource</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">dump</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">item</span><span style="color:#c0c5ce;">);</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#b48ead;">else if</span><span style="color:#c0c5ce;">(typeof </span><span style="color:#bf616a;">obj</span><span style="color:#c0c5ce;">[</span><span style="color:#bf616a;">item</span><span style="color:#c0c5ce;">] ===&quot;</span><span style="color:#a3be8c;">Object</span><span style="color:#c0c5ce;">&quot;){</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">dump</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">obj</span><span style="color:#c0c5ce;">[</span><span style="color:#bf616a;">item</span><span style="color:#c0c5ce;">]);</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#b48ead;">else</span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">Print</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">item</span><span style="color:#c0c5ce;">.</span><span style="color:#bf616a;">toString</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span></pre><p><a name="continue-reading"></a></p>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <!-- <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all&#x2F;">#all</a> -->
+                    
+                </div>
+            
+            
+                <div class="post-nav">
+                    
+                        <a class="previous" href="https:&#x2F;&#x2F;xjump.me&#x2F;xor-crypto-algo-trap&#x2F;">‹ XORWithAdd加密算法设计问题</a>
+                    
+                    
+                        <a class="next" href="https:&#x2F;&#x2F;xjump.me&#x2F;userful-exploit-links&#x2F;">links of exploit ›</a>
+                    
+                    
+                    
+                </div>
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https:&#x2F;&#x2F;xjump.me&#x2F;even.js" ></script>
+      
+    </body>
+
+</html>

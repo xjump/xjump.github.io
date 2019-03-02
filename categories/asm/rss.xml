@@ -1,0 +1,33 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>@xjump</title>
+        <link>https://xjump.me</link>
+        <description>notes by xjump</description>
+        <generator>Zola</generator>
+        <language>en</language>
+        <atom:link href="https://xjump.me/categories/asm/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Sat, 08 Dec 2012 00:00:00 +0000</lastBuildDate>
+        
+            <item>
+                <title>VC++中反汇编0xCC,_RTC_CheckEsp与_RTC_CheckStackVars</title>
+                <pubDate>Sat, 08 Dec 2012 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/vc-pp-disasm-cc-rce-rcsv/</link>
+                <guid>https://xjump.me/vc-pp-disasm-cc-rce-rcsv/</guid>
+                <description>&lt;h3&gt;0xCC&lt;&#x2F;h3&gt;
+&lt;p&gt;在VC++编写的程序编程成Debug版，反汇编代码，函数入口处经常看到如下一段代码：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;span style=&quot;color:#8fa1b3;&quot;&gt;00EA14E0 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;55                       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;push        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ebp  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;00EA14E1 8B EC                    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;mov         &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ebp&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;esp&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;00EA14E3 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;81 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;EC C0 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;00 00 00        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;sub         &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;esp&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0C0h&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;00EA14E9 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;53                       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;push        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ebx  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;00EA14EA &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;56                       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;push        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;esi  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;00EA14EB &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;57                       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;push        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;edi  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;00EA14EC 8D BD &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;40 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;FF FF FF        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;lea         &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;edi&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;,[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ebp&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0C0h&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;]&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;00EA14F2 B9 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;30 00 00 00           &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;mov         &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ecx&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;30h&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;00EA14F7 B8 CC CC CC CC           &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;mov         &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;eax&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0CCCCCCCCh&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;00EA14FC F3 AB                    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;rep stos    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;dword ptr &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;es&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;edi&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;]&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;pre&gt;</description>
+            </item>
+        
+    </channel>
+</rss>

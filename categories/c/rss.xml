@@ -1,0 +1,211 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>@xjump</title>
+        <link>https://xjump.me</link>
+        <description>notes by xjump</description>
+        <generator>Zola</generator>
+        <language>en</language>
+        <atom:link href="https://xjump.me/categories/c/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Sat, 13 Oct 2018 00:00:00 +0000</lastBuildDate>
+        
+            <item>
+                <title>Android Dex动态加载、调用与安全</title>
+                <pubDate>Sat, 13 Oct 2018 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/android-dex-dynamic-load-call-and-security/</link>
+                <guid>https://xjump.me/android-dex-dynamic-load-call-and-security/</guid>
+                <description>&lt;p&gt;首先，动态加载与调用不是个新问题，方法也非常直接。关键就是使用DexClassLoader。&lt;&#x2F;p&gt;
+&lt;p&gt;这个方法有一个副作用，那就是&#x2F;proc&#x2F;self&#x2F;maps下会留下很多份dex加载记录，需要到jvm GC时才能释放，内存泄漏倒是没有，就是不太好看。&lt;&#x2F;p&gt;
+&lt;p&gt;对于入参不是String，返回结果不是String的情况，做个Ser&#x2F;De来搞定即可，接口的界面也能保持干净。&lt;&#x2F;p&gt;
+</description>
+            </item>
+        
+            <item>
+                <title>iOS framework结构</title>
+                <pubDate>Wed, 22 Oct 2014 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/ios-framework-destruct/</link>
+                <guid>https://xjump.me/ios-framework-destruct/</guid>
+                <description>&lt;p class=&quot;p4&quot;&gt;
+    &lt;span class=&quot;caption_number&quot; style=&quot;font-family: &#x27;Lucida Grande&#x27;, &#x27;Lucida Sans Unicode&#x27;, Helvetica, Arial, Verdana, sans-serif; font-size: 13px; font-weight: 700; color: rgb(0, 0, 0);&quot;&gt;Listing 1 (From dev doc of apple.com)&lt;&#x2F;span&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: &#x27;Lucida Grande&#x27;, &#x27;Lucida Sans Unicode&#x27;, Helvetica, Arial, Verdana, sans-serif; font-size: 13px;&quot;&gt;&amp;nbsp;&amp;nbsp;A simple framework bundle&lt;&#x2F;span&gt;&lt;&#x2F;p&gt;
+&lt;table style=&quot;width: 600px; border-collapse: collapse; border-style: solid; border-color: rgb(199, 207, 213); padding-bottom: 4px; color: rgb(0, 0, 0); font-family: &#x27;Lucida Grande&#x27;, &#x27;Lucida Sans Unicode&#x27;, Helvetica, Arial, Verdana, sans-serif; background-color: rgb(241, 245, 249);&quot;&gt;
+    &lt;tbody&gt;
+        &lt;tr style=&quot;border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);&quot;&gt;
+            &lt;td scope=&quot;row&quot; style=&quot;padding: 0.5em;&quot;&gt;
+                &lt;pre style=&quot;margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;&quot;&gt;
+MyFramework.framework&#x2F;&lt;&#x2F;pre&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+        &lt;tr style=&quot;border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);&quot;&gt;
+            &lt;td scope=&quot;row&quot; style=&quot;padding: 0.5em;&quot;&gt;
+                &lt;pre style=&quot;margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;&quot;&gt;
+    MyFramework  -&gt; Versions&#x2F;Current&#x2F;MyFramework&lt;&#x2F;pre&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+        &lt;tr style=&quot;border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);&quot;&gt;
+            &lt;td scope=&quot;row&quot; style=&quot;padding: 0.5em;&quot;&gt;
+                &lt;pre style=&quot;margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;&quot;&gt;
+    Resources    -&gt; Versions&#x2F;Current&#x2F;Resources&lt;&#x2F;pre&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+        &lt;tr style=&quot;border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);&quot;&gt;
+            &lt;td scope=&quot;row&quot; style=&quot;padding: 0.5em;&quot;&gt;
+                &lt;pre style=&quot;margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;&quot;&gt;
+    Versions&#x2F;&lt;&#x2F;pre&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+        &lt;tr style=&quot;border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);&quot;&gt;
+            &lt;td scope=&quot;row&quot; style=&quot;padding: 0.5em;&quot;&gt;
+                &lt;pre style=&quot;margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;&quot;&gt;
+        A&#x2F;&lt;&#x2F;pre&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+        &lt;tr style=&quot;border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);&quot;&gt;
+            &lt;td scope=&quot;row&quot; style=&quot;padding: 0.5em;&quot;&gt;
+                &lt;pre style=&quot;margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;&quot;&gt;
+            MyFramework&lt;&#x2F;pre&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+        &lt;tr style=&quot;border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);&quot;&gt;
+            &lt;td scope=&quot;row&quot; style=&quot;padding: 0.5em;&quot;&gt;
+                &lt;pre style=&quot;margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;&quot;&gt;
+            Resources&#x2F;&lt;&#x2F;pre&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+        &lt;tr style=&quot;border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);&quot;&gt;
+            &lt;td scope=&quot;row&quot; style=&quot;padding: 0.5em;&quot;&gt;
+                &lt;pre style=&quot;margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;&quot;&gt;
+                English.lproj&#x2F;&lt;&#x2F;pre&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+        &lt;tr style=&quot;border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);&quot;&gt;
+            &lt;td scope=&quot;row&quot; style=&quot;padding: 0.5em;&quot;&gt;
+                &lt;pre style=&quot;margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;&quot;&gt;
+                    InfoPlist.strings&lt;&#x2F;pre&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+        &lt;tr style=&quot;border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);&quot;&gt;
+            &lt;td scope=&quot;row&quot; style=&quot;padding: 0.5em;&quot;&gt;
+                &lt;pre style=&quot;margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;&quot;&gt;
+                Info.plist&lt;&#x2F;pre&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+        &lt;tr style=&quot;border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);&quot;&gt;
+            &lt;td scope=&quot;row&quot; style=&quot;padding: 0.5em;&quot;&gt;
+                &lt;pre style=&quot;margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;&quot;&gt;
+        Current  -&gt; A&lt;&#x2F;pre&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+    &lt;&#x2F;tbody&gt;
+&lt;&#x2F;table&gt;
+</description>
+            </item>
+        
+            <item>
+                <title>ObjC synchronize，GCD</title>
+                <pubDate>Fri, 10 Oct 2014 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/object-c-synchronize/</link>
+                <guid>https://xjump.me/object-c-synchronize/</guid>
+                <description>&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;span style=&quot;color:#c0c5ce;&quot;&gt;- (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;NSString &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;*)myString {&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;@synchronized&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;) {&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;[[myString &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;retain&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;] autorelease];&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;pre&gt;&lt;p&gt;
+    转换1：&lt;&#x2F;p&gt;
+</description>
+            </item>
+        
+            <item>
+                <title>ObjC &amp; Swift &amp; C++1x Singleton</title>
+                <pubDate>Wed, 10 Sep 2014 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/object-c-cpp1x-singleton/</link>
+                <guid>https://xjump.me/object-c-cpp1x-singleton/</guid>
+                <description>&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;TheSingleton.h&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;@interface &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;TheSingleton &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;NSObject&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;+(instancetype) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;sharedInstance&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;+(instancetype) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;alloc&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; __attribute__((&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;unavailable&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;alloc not available, call sharedInstance instead&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;))&lt;&#x2F;span&gt;&lt;span style=&quot;background-color:#bf616a;color:#2b303b;&quot;&gt;)&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;-(instancetype) init &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;__attribute__&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;((unavailable(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;init not available, call sharedInstance instead&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;)));&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;+(instancetype) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;new __attribute__&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;((unavailable(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;new not available, call sharedInstance instead&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;)));&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;-(instancetype) copy &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;__attribute__&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;((unavailable(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;copy not available, call sharedInstance instead&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;)));&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;@end&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;pre&gt;</description>
+            </item>
+        
+            <item>
+                <title>ATL中的正则表达式 CATLRegExp</title>
+                <pubDate>Sun, 09 Dec 2012 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/atl-regex/</link>
+                <guid>https://xjump.me/atl-regex/</guid>
+                <description>&lt;p&gt;ATL中，由于ATL Server的需要，需要对Client发送过来的地址、命令等复杂文字字段信息解码，而正则表达式是公认的最强大的文字解析工具，所以，ATL提供了一些用于正则表达式的库方便了我们的工作。&lt;&#x2F;p&gt;
+&lt;h3&gt;1、 CATLRegExp类&lt;&#x2F;h3&gt;
+&lt;p&gt;1, 声明：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;span style=&quot;color:#b48ead;&quot;&gt;template &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; CAtlRECharTraits&amp;gt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;CAtlRegExp&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;pre&gt;</description>
+            </item>
+        
+            <item>
+                <title>VC++中反汇编0xCC,_RTC_CheckEsp与_RTC_CheckStackVars</title>
+                <pubDate>Sat, 08 Dec 2012 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/vc-pp-disasm-cc-rce-rcsv/</link>
+                <guid>https://xjump.me/vc-pp-disasm-cc-rce-rcsv/</guid>
+                <description>&lt;h3&gt;0xCC&lt;&#x2F;h3&gt;
+&lt;p&gt;在VC++编写的程序编程成Debug版，反汇编代码，函数入口处经常看到如下一段代码：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;span style=&quot;color:#8fa1b3;&quot;&gt;00EA14E0 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;55                       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;push        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ebp  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;00EA14E1 8B EC                    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;mov         &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ebp&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;esp&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;00EA14E3 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;81 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;EC C0 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;00 00 00        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;sub         &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;esp&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0C0h&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;00EA14E9 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;53                       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;push        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ebx  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;00EA14EA &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;56                       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;push        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;esi  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;00EA14EB &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;57                       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;push        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;edi  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;00EA14EC 8D BD &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;40 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;FF FF FF        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;lea         &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;edi&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;,[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ebp&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0C0h&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;]&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;00EA14F2 B9 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;30 00 00 00           &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;mov         &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ecx&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;30h&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;00EA14F7 B8 CC CC CC CC           &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;mov         &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;eax&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0CCCCCCCCh&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;00EA14FC F3 AB                    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;rep stos    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;dword ptr &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;es&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;edi&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;]&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;pre&gt;</description>
+            </item>
+        
+            <item>
+                <title>AxOffice</title>
+                <pubDate>Sun, 13 Dec 2009 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/axoffice-activex-of-office-object/</link>
+                <guid>https://xjump.me/axoffice-activex-of-office-object/</guid>
+                <description>&lt;p&gt;
+    整理硬盘，发现以前的一个收藏代码，还做了一些bugfix，看了一下，没有大用处，但还有些价值。&lt;a href=&quot;http:&#x2F;&#x2F;www.ntko.com&#x2F;&quot;&gt;NTKO&lt;&#x2F;a&gt;、&lt;a href=&quot;http:&#x2F;&#x2F;www.dianju.com.cn&#x2F;&quot;&gt;点聚&lt;&#x2F;a&gt;等集成到OA系统的*Office组件大多使用该技术开发。&lt;&#x2F;p&gt;
+&lt;p&gt;
+    先介绍一下：AxOffice根据DsoFrame源代码修改，主要是将Microsoft的DocServerEmbed（如Word、PowerPoint、Excel、PDF、AutoCAD等有实现）技术用ActiveX做封装，进而实现在COM组件容器（如IE浏览器）中操纵文档。&lt;&#x2F;p&gt;
+&lt;p&gt;
+    AxOffice实现接口如下：&lt;&#x2F;p&gt;
+&lt;p&gt;
+    &lt;img alt=&quot;&quot; src=&quot;&#x2F;images&#x2F;COM-AxOffice.png&quot;&#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;
+    附上几张效果截图：&lt;&#x2F;p&gt;
+&lt;p&gt;
+    Word&lt;&#x2F;p&gt;
+&lt;p&gt;
+    &lt;img alt=&quot;&quot; src=&quot;&#x2F;images&#x2F;screenShot-2.png&quot;&#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;
+    &amp;nbsp;&lt;&#x2F;p&gt;
+&lt;p&gt;
+    Excel&lt;&#x2F;p&gt;
+&lt;p&gt;
+    &lt;img alt=&quot;&quot; src=&quot;&#x2F;images&#x2F;screenShot.png&quot;&#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;
+    &amp;nbsp;&lt;&#x2F;p&gt;
+&lt;p&gt;
+    ppt&lt;&#x2F;p&gt;
+&lt;p&gt;
+    &lt;img alt=&quot;&quot; src=&quot;&#x2F;images&#x2F;screenShot-3.png&quot;&#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;
+    &amp;nbsp;&lt;&#x2F;p&gt;
+&lt;p&gt;
+    &amp;nbsp;&lt;&#x2F;p&gt;</description>
+            </item>
+        
+    </channel>
+</rss>

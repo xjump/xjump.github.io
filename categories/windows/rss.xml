@@ -1,0 +1,113 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>@xjump</title>
+        <link>https://xjump.me</link>
+        <description>notes by xjump</description>
+        <generator>Zola</generator>
+        <language>en</language>
+        <atom:link href="https://xjump.me/categories/windows/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Wed, 19 Dec 2012 00:00:00 +0000</lastBuildDate>
+        
+            <item>
+                <title>Build cURL on windows</title>
+                <pubDate>Wed, 19 Dec 2012 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/build-curl-on-windows/</link>
+                <guid>https://xjump.me/build-curl-on-windows/</guid>
+                <description>&lt;p&gt;download &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;bagder&#x2F;curl&#x2F;archive&#x2F;curl-7_28_1.zip&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;bagder&#x2F;curl&#x2F;archive&#x2F;curl-7_28_1.zip&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;VC prompt:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;span style=&quot;color:#96b5b4;&quot;&gt;cd&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; curl-src&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;copy&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; include&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\c&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;url&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\c&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;urlbuild.h.dist include&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\c&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;url&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\c&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;urlbuild.h&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;copy&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; src&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\h&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;ugehelp.c.cvs src&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\h&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;ugehelp.c&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;cd&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; crul-src&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\w&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;inbuild&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;nmake -f&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; Makefile.vc mode=static USE_IDN=no&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;pre&gt;</description>
+            </item>
+        
+            <item>
+                <title>CVE-2012-5076</title>
+                <pubDate>Sat, 15 Dec 2012 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/cve-2012-5076/</link>
+                <guid>https://xjump.me/cve-2012-5076/</guid>
+                <description>&lt;p&gt;
+    &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rapid7&#x2F;metasploit-framework&#x2F;blob&#x2F;master&#x2F;modules&#x2F;exploits&#x2F;multi&#x2F;browser&#x2F;java_jre17_jaxws.rb&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;rapid7&#x2F;metasploit-framework&#x2F;blob&#x2F;master&#x2F;modules&#x2F;exploits&#x2F;multi&#x2F;browser&#x2F;java_jre17_jaxws.rb&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</description>
+            </item>
+        
+            <item>
+                <title>CHM反编译html脚本</title>
+                <pubDate>Mon, 10 Dec 2012 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/convert-chm-to-html/</link>
+                <guid>https://xjump.me/convert-chm-to-html/</guid>
+                <description>&lt;p&gt;借助windows自带命令行工具hh.exe。&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;span style=&quot;color:#bf616a;&quot;&gt;@echo&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; off&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;title&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; CHM电子书反编器BAT版&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;color&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; a&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;echo.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;set&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; &#x2F;p urlfile=请把要反编的CHM电子书拖进来(再按回车键)&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;：&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;copy &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;%&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;urlfile&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;% chmfile.chm &amp;gt; nul&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;hh -decompile&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\h&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;tml chmfile.chm&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;del&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; &#x2F;q chmfile.chm &amp;gt; nul &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;echo.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;echo&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; 反编文件成功。保存在.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\h&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;tml文件夹中，按任意键退出！&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; pause &amp;gt; nul&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;exit &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Original Link: &lt;a href=&quot;http:&#x2F;&#x2F;www.jb51.net&#x2F;softjc&#x2F;44629.html&quot;&gt;http:&#x2F;&#x2F;www.jb51.net&#x2F;softjc&#x2F;44629.html&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</description>
+            </item>
+        
+            <item>
+                <title>ATL中的正则表达式 CATLRegExp</title>
+                <pubDate>Sun, 09 Dec 2012 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/atl-regex/</link>
+                <guid>https://xjump.me/atl-regex/</guid>
+                <description>&lt;p&gt;ATL中，由于ATL Server的需要，需要对Client发送过来的地址、命令等复杂文字字段信息解码，而正则表达式是公认的最强大的文字解析工具，所以，ATL提供了一些用于正则表达式的库方便了我们的工作。&lt;&#x2F;p&gt;
+&lt;h3&gt;1、 CATLRegExp类&lt;&#x2F;h3&gt;
+&lt;p&gt;1, 声明：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;span style=&quot;color:#b48ead;&quot;&gt;template &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; CAtlRECharTraits&amp;gt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;CAtlRegExp&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;pre&gt;</description>
+            </item>
+        
+            <item>
+                <title>AxOffice</title>
+                <pubDate>Sun, 13 Dec 2009 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/axoffice-activex-of-office-object/</link>
+                <guid>https://xjump.me/axoffice-activex-of-office-object/</guid>
+                <description>&lt;p&gt;
+    整理硬盘，发现以前的一个收藏代码，还做了一些bugfix，看了一下，没有大用处，但还有些价值。&lt;a href=&quot;http:&#x2F;&#x2F;www.ntko.com&#x2F;&quot;&gt;NTKO&lt;&#x2F;a&gt;、&lt;a href=&quot;http:&#x2F;&#x2F;www.dianju.com.cn&#x2F;&quot;&gt;点聚&lt;&#x2F;a&gt;等集成到OA系统的*Office组件大多使用该技术开发。&lt;&#x2F;p&gt;
+&lt;p&gt;
+    先介绍一下：AxOffice根据DsoFrame源代码修改，主要是将Microsoft的DocServerEmbed（如Word、PowerPoint、Excel、PDF、AutoCAD等有实现）技术用ActiveX做封装，进而实现在COM组件容器（如IE浏览器）中操纵文档。&lt;&#x2F;p&gt;
+&lt;p&gt;
+    AxOffice实现接口如下：&lt;&#x2F;p&gt;
+&lt;p&gt;
+    &lt;img alt=&quot;&quot; src=&quot;&#x2F;images&#x2F;COM-AxOffice.png&quot;&#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;
+    附上几张效果截图：&lt;&#x2F;p&gt;
+&lt;p&gt;
+    Word&lt;&#x2F;p&gt;
+&lt;p&gt;
+    &lt;img alt=&quot;&quot; src=&quot;&#x2F;images&#x2F;screenShot-2.png&quot;&#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;
+    &amp;nbsp;&lt;&#x2F;p&gt;
+&lt;p&gt;
+    Excel&lt;&#x2F;p&gt;
+&lt;p&gt;
+    &lt;img alt=&quot;&quot; src=&quot;&#x2F;images&#x2F;screenShot.png&quot;&#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;
+    &amp;nbsp;&lt;&#x2F;p&gt;
+&lt;p&gt;
+    ppt&lt;&#x2F;p&gt;
+&lt;p&gt;
+    &lt;img alt=&quot;&quot; src=&quot;&#x2F;images&#x2F;screenShot-3.png&quot;&#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;
+    &amp;nbsp;&lt;&#x2F;p&gt;
+&lt;p&gt;
+    &amp;nbsp;&lt;&#x2F;p&gt;</description>
+            </item>
+        
+    </channel>
+</rss>

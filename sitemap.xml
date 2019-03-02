@@ -1,0 +1,645 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    
+        <url>
+            <loc>https://xjump.me/about/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/android-click-hijack/</loc>
+            
+                <lastmod>2013-01-09</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/android-dex-dynamic-load-call-and-security/</loc>
+            
+                <lastmod>2018-10-13</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/android-ioctl-hook/</loc>
+            
+                <lastmod>2013-01-08</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/android-jni/</loc>
+            
+                <lastmod>2014-04-05</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/android-security-base/</loc>
+            
+                <lastmod>2012-11-09</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/android-system-call-table-call-in-shellcode/</loc>
+            
+                <lastmod>2013-01-10</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/atl-regex/</loc>
+            
+                <lastmod>2012-12-09</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/axoffice-activex-of-office-object/</loc>
+            
+                <lastmod>2009-12-13</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/backtrace-nix-win/</loc>
+            
+                <lastmod>2013-02-23</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/bitcoin-ecc-algo/</loc>
+            
+                <lastmod>2013-12-19</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/bore/</loc>
+            
+                <lastmod>2014-09-30</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/build-curl-on-windows/</loc>
+            
+                <lastmod>2012-12-19</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/check-android-in-emulator/</loc>
+            
+                <lastmod>2013-01-09</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/convert-chm-to-html/</loc>
+            
+                <lastmod>2012-12-10</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/cve-2012-5076/</loc>
+            
+                <lastmod>2012-12-15</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/cve-2014-0038/</loc>
+            
+                <lastmod>2014-06-30</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/distance-compute-with-lat-long/</loc>
+            
+                <lastmod>2013-12-16</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/dump-obj-js/</loc>
+            
+                <lastmod>2013-05-08</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/find-your-passion/</loc>
+            
+                <lastmod>2013-07-30</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/get-phrack-magazine/</loc>
+            
+                <lastmod>2012-12-03</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/get-top-activity/</loc>
+            
+                <lastmod>2013-05-24</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/get-wifi-connection-info/</loc>
+            
+                <lastmod>2013-11-30</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/graphlab-links/</loc>
+            
+                <lastmod>2013-01-29</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/hbase-intro/</loc>
+            
+                <lastmod>2013-09-03</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/hbase-tech-intro/</loc>
+            
+                <lastmod>2013-09-10</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/ios-framework-destruct/</loc>
+            
+                <lastmod>2014-10-22</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/java-dyn-script/</loc>
+            
+                <lastmod>2018-10-07</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/java-dynamic-proxy-basic/</loc>
+            
+                <lastmod>2015-03-14</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/java-synchronize/</loc>
+            
+                <lastmod>2015-03-09</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/java11-update-notes/</loc>
+            
+                <lastmod>2018-10-06</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/js-sniffer/</loc>
+            
+                <lastmod>2013-12-10</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/jvm-attack/</loc>
+            
+                <lastmod>2014-10-30</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/kd-tree-knn/</loc>
+            
+                <lastmod>2013-10-14</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/knn-classify/</loc>
+            
+                <lastmod>2013-10-13</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/local-exploit-cve2010-3848-3850/</loc>
+            
+                <lastmod>2013-01-06</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/local-exploit-cve2012-0056/</loc>
+            
+                <lastmod>2013-01-06</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/lua-implementation/</loc>
+            
+                <lastmod>2012-09-19</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/m2crypto-gen-key-pair/</loc>
+            
+                <lastmod>2012-11-03</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/mahout-similarity/</loc>
+            
+                <lastmod>2013-12-17</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/mf-sample/</loc>
+            
+                <lastmod>2013-11-15</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/nfzm-1999/</loc>
+            
+                <lastmod>2013-01-01</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/ntp-dos-poc/</loc>
+            
+                <lastmod>2013-05-22</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/object-c-cpp1x-singleton/</loc>
+            
+                <lastmod>2014-09-10</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/object-c-synchronize/</loc>
+            
+                <lastmod>2014-10-10</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/openssl-engine/</loc>
+            
+                <lastmod>2013-10-16</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/pca-scipy-example/</loc>
+            
+                <lastmod>2013-11-16</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/python-qrcode-generate/</loc>
+            
+                <lastmod>2013-11-21</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/python-tricks/</loc>
+            
+                <lastmod>2012-12-21</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/pyv8-gen-javascript-ast/</loc>
+            
+                <lastmod>2013-03-29</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/reverse-tcp-shell/</loc>
+            
+                <lastmod>2013-01-07</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/rfc4226-hotp/</loc>
+            
+                <lastmod>2013-01-20</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/rsa-padding-pkcs1-5/</loc>
+            
+                <lastmod>2013-01-22</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/rsa-source/</loc>
+            
+                <lastmod>2013-01-23</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/rust-error-handling/</loc>
+            
+                <lastmod>2018-08-15</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/struts-s2-016-vul-checker/</loc>
+            
+                <lastmod>2013-07-21</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/symmetric-crypto-padding/</loc>
+            
+                <lastmod>2013-01-22</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/tao/</loc>
+            
+                <lastmod>2014-09-21</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/tcp-32764-backdoor/</loc>
+            
+                <lastmod>2013-01-07</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/userful-exploit-links/</loc>
+            
+                <lastmod>2013-05-19</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/vc-pp-disasm-cc-rce-rcsv/</loc>
+            
+                <lastmod>2012-12-08</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/vim-common-config/</loc>
+            
+                <lastmod>2012-12-27</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/xinjector/</loc>
+            
+                <lastmod>2013-01-12</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/xor-crypto-algo-trap/</loc>
+            
+                <lastmod>2013-04-06</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/xpki-arch-intro/</loc>
+            
+                <lastmod>2013-01-25</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/zookeeper-basic/</loc>
+            
+                <lastmod>2013-11-20</lastmod>
+            
+        </url>
+    
+    
+        <url>
+            <loc>https://xjump.me/</loc>
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/page/1/</loc>
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/page/10/</loc>
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/page/11/</loc>
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/page/12/</loc>
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/page/13/</loc>
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/page/2/</loc>
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/page/3/</loc>
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/page/4/</loc>
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/page/5/</loc>
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/page/6/</loc>
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/page/7/</loc>
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/page/8/</loc>
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/page/9/</loc>
+        </url>
+    
+        <url>
+            <loc>https://xjump.me/pages/</loc>
+        </url>
+    
+    
+        
+        <url>
+            <loc>https://xjump.me/tags/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/tags/all/</loc>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://xjump.me/categories/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/categories/android/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/categories/asm/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/categories/bian-cheng-yu-yan/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/categories/c/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/categories/fan-yi/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/categories/groovy/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/categories/hbase/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/categories/ios/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/categories/java-11/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/categories/java/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/categories/javascript/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/categories/jni/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/categories/lua/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/categories/machine-learning/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/categories/obj-c/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/categories/objc/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/categories/openssl/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/categories/os/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/categories/phrack/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/categories/project/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/categories/python/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/categories/rust/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/categories/security/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/categories/vim/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/categories/wen/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/categories/windows/</loc>
+        </url>
+        
+    
+</urlset>

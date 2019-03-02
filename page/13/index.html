@@ -1,0 +1,316 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>@xjump</title>
+
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
+      
+
+      
+          <script src="/slideout/1.0.1/slideout.min.js"></script>
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css">
+
+          <script defer src="/katex/0.10.1/katex.min.js" ></script>
+          <script defer src="/katex/0.10.1/contrib/mathtex-script-type.min.js" ></script>
+              
+          <script defer src="/katex/0.10.1/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+              
+          
+      
+
+      
+          <link rel="stylesheet" href="https:&#x2F;&#x2F;xjump.me&#x2F;site.css">
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css"  >
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">@xjump</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me">
+                            Home
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;categories">
+                            Categories
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                            Archive
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;rss.xml">
+                            RSS
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;about">
+                            About
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;xjump.me">@xjump</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https://xjump.me">
+                                    Home
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;categories">
+                                    Categories
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                    Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;rss.xml">
+                                    RSS
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;about">
+                                    About
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+                        <div class="posts">
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;get-phrack-magazine&#x2F;">Download Phrack magazine</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2012-12-03</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p>Phrack Current issue: <a href="http://phrack.org/archives/tgz/phrack68.tar.gz" title="Get current issue tar.gz">68</a><br/>
+Release date: 14/04/2012</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#65737e;">#!/usr/bin/env python</span><span style="color:#65737e;">
+</span><span style="color:#65737e;"># encoding: utf-8</span><span style="color:#65737e;">
+</span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">urllib</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">os</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#bf616a;">LATEST_ISSUER_NO </span><span style="color:#c0c5ce;">= </span><span style="color:#d08770;">68</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">pwd = os.</span><span style="color:#bf616a;">getcwd</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">i </span><span style="color:#b48ead;">in </span><span style="color:#96b5b4;">range</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">LATEST_ISSUER_NO</span><span style="color:#c0c5ce;">) :</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">filename = &quot;</span><span style="color:#a3be8c;">phrack</span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">.tar.gz</span><span style="color:#c0c5ce;">&quot; % (i+</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">, )</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">url = &quot;</span><span style="color:#a3be8c;">http://www.phrack.com/archives/tgz/</span><span style="color:#d08770;">%s</span><span style="color:#c0c5ce;">&quot; % (filename, )</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">path = os.path.</span><span style="color:#bf616a;">join</span><span style="color:#c0c5ce;">(pwd, filename)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">data = urllib.</span><span style="color:#bf616a;">urlopen</span><span style="color:#c0c5ce;">(url).</span><span style="color:#bf616a;">read</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">f = </span><span style="color:#bf616a;">file</span><span style="color:#c0c5ce;">(path, &quot;</span><span style="color:#a3be8c;">wb</span><span style="color:#c0c5ce;">&quot;)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">f.</span><span style="color:#bf616a;">write</span><span style="color:#c0c5ce;">(data)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">f.</span><span style="color:#bf616a;">close</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">file </span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;"> download complete!</span><span style="color:#c0c5ce;">&quot; % (filename, )</span><span style="color:#c0c5ce;">
+</span></pre>
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;get-phrack-magazine&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;android-security-base&#x2F;">Android 安全架构及权限控制机制剖析</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2012-11-09</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p>简介： Android 是业界流行的开源移动平台，受到广泛关注并为多个手机制造商作为手机的操作系统平台，因此，研究其安全架构及权限控制机制具有非常的重要性。本文从 Android 层次化安全架构入手，详细地介绍 Android 平台的安全架构及其权限控制机制，涵盖 Android 应用程序权限申请方法等，并从源代码实现层面来解析该机制。</p>
+<h3>Android 层次化安全架构</h3>
+<p>Android 作为一个移动设备的平台，其软件层次结构包括了一个操作系统（OS），中间件（MiddleWare）和应用程序（Application）。根据 Android 的软件框图，其软件层次结构自下而上分为以下几个层次：</p>
+
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;android-security-base&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;m2crypto-gen-key-pair&#x2F;">M2Crypto生成DSA及RSA密钥</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2012-11-03</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p>DSA：</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#65737e;">#!/usr/bin/env python</span><span style="color:#65737e;">
+</span><span style="color:#65737e;"># -*- coding=utf-8 -*-</span><span style="color:#65737e;">
+</span><span style="color:#65737e;">#author: xjump.me#at#gmail.com</span><span style="color:#65737e;">
+</span><span style="color:#65737e;">#file: gendsa.py</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">from </span><span style="color:#c0c5ce;">M2Crypto </span><span style="color:#b48ead;">import </span><span style="color:#bf616a;">DSA</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">BIO</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">dsa = DSA.</span><span style="color:#bf616a;">gen_params</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">1024</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">mem = BIO.</span><span style="color:#bf616a;">MemoryBuffer</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">dsa.</span><span style="color:#bf616a;">gen_key</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">dsa.</span><span style="color:#bf616a;">save_key_bio</span><span style="color:#c0c5ce;">(mem, </span><span style="color:#bf616a;">cipher</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">None</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">dsa.</span><span style="color:#bf616a;">save_pub_key_bio</span><span style="color:#c0c5ce;">(mem)</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">mem.</span><span style="color:#bf616a;">getvalue</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+</span></pre>
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;m2crypto-gen-key-pair&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;lua-implementation&#x2F;">Lua 5.0的实现（中英文对照）</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2012-09-19</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p><strong>Author</strong><br/>
+Roberto Ierusalimschy (Department of Computer Science, PUC-Rio, Rio de Janeiro, Brazil roberto@inf.puc-rio.br)<br/>
+Luiz Henrique de Figueiredo(IMPA-Instituto de Matematica Pura e Aplicada, Rio de Janeiro, Brazil lhf@impa.br)<br/>
+Waldemar Celes(Department of Computer Science, PUC-Rio, Rio de Janeiro, Brazil celes@inf.puc-rio.br)<br/></p>
+<p>翻译： xjump.me#at#gmail.com, @xjump<br/>
+原文： <a href="http://www.lua.org/doc/jucs05.pdf">http://www.lua.org/doc/jucs05.pdf</a></p>
+<p><strong>Abstract </strong>
+We discuss the main novelties of the implementation of Lua 5.0: its register-based virtaul machine, the new algorithm for optimizing tables used as arrays, the implementation of closures, and the addition of coroutines.<br/>
+<strong>Key Words </strong>
+compilers, virtual machines, hash tables, closures, coroutines<br/>
+<strong>Category </strong>
+D.3.4, D.3.3, D.3.2, E.2<br/></p>
+<p><strong>摘要 </strong>
+我们讨论了Lua 5.0实现上的主要优点：基于寄存器的虚拟机，tables用于数组时新的优化算法，闭包的实现，以及协程。<br/>
+<strong>关键字 </strong>
+编译器，虚拟机，Hash表，闭包，协程<br/>
+<strong>类别 </strong>
+D.3.4，D.3.3，D.3.2，E.2<br/></p>
+<h3>
+1 Introduct<br/>
+1 介绍  
+</h3>
+Lua was born in an academic laboratory as a tool for in-house software development but somehow was adopted by several industrial projects around the world and is now widely used in the game industry. [1]<br/>
+Lua诞生于一个学术实验室，当时是作为一个内部软件开发工具的，但逐渐被移植到了全世界的各个行业的工程中，而且现在广泛的用于游戏行业。[1]<br/>
+
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;lua-implementation&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;axoffice-activex-of-office-object&#x2F;">AxOffice</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2009-12-13</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;axoffice-activex-of-office-object&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                        </div>
+                        <nav class="pagination">
+                            
+                                <a class="previous" href="https:&#x2F;&#x2F;xjump.me&#x2F;page&#x2F;12&#x2F;">‹ Previous</a>
+                            
+                            
+                        </nav>
+                    
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https:&#x2F;&#x2F;xjump.me&#x2F;even.js" ></script>
+      
+    </body>
+
+</html>

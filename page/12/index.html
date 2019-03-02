@@ -1,0 +1,287 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>@xjump</title>
+
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
+      
+
+      
+          <script src="/slideout/1.0.1/slideout.min.js"></script>
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css">
+
+          <script defer src="/katex/0.10.1/katex.min.js" ></script>
+          <script defer src="/katex/0.10.1/contrib/mathtex-script-type.min.js" ></script>
+              
+          <script defer src="/katex/0.10.1/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+              
+          
+      
+
+      
+          <link rel="stylesheet" href="https:&#x2F;&#x2F;xjump.me&#x2F;site.css">
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css"  >
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">@xjump</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me">
+                            Home
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;categories">
+                            Categories
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                            Archive
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;rss.xml">
+                            RSS
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;about">
+                            About
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;xjump.me">@xjump</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https://xjump.me">
+                                    Home
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;categories">
+                                    Categories
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                    Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;rss.xml">
+                                    RSS
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;about">
+                                    About
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+                        <div class="posts">
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;build-curl-on-windows&#x2F;">Build cURL on windows</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2012-12-19</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p>download <a href="https://github.com/bagder/curl/archive/curl-7_28_1.zip">https://github.com/bagder/curl/archive/curl-7_28_1.zip</a></p>
+<p>VC prompt:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#96b5b4;">cd</span><span style="color:#c0c5ce;"> curl-src</span><span style="color:#c0c5ce;">
+</span><span style="color:#bf616a;">copy</span><span style="color:#c0c5ce;"> include</span><span style="color:#96b5b4;">\c</span><span style="color:#c0c5ce;">url</span><span style="color:#96b5b4;">\c</span><span style="color:#c0c5ce;">urlbuild.h.dist include</span><span style="color:#96b5b4;">\c</span><span style="color:#c0c5ce;">url</span><span style="color:#96b5b4;">\c</span><span style="color:#c0c5ce;">urlbuild.h</span><span style="color:#c0c5ce;">
+</span><span style="color:#bf616a;">copy</span><span style="color:#c0c5ce;"> src</span><span style="color:#96b5b4;">\h</span><span style="color:#c0c5ce;">ugehelp.c.cvs src</span><span style="color:#96b5b4;">\h</span><span style="color:#c0c5ce;">ugehelp.c</span><span style="color:#c0c5ce;">
+</span><span style="color:#96b5b4;">cd</span><span style="color:#c0c5ce;"> crul-src</span><span style="color:#96b5b4;">\w</span><span style="color:#c0c5ce;">inbuild</span><span style="color:#c0c5ce;">
+</span><span style="color:#bf616a;">nmake -f</span><span style="color:#c0c5ce;"> Makefile.vc mode=static USE_IDN=no</span><span style="color:#c0c5ce;">
+</span></pre>
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;build-curl-on-windows&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;cve-2012-5076&#x2F;">CVE-2012-5076</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2012-12-15</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p>
+    <a href="https://github.com/rapid7/metasploit-framework/blob/master/modules/exploits/multi/browser/java_jre17_jaxws.rb">https://github.com/rapid7/metasploit-framework/blob/master/modules/exploits/multi/browser/java_jre17_jaxws.rb</a></p>
+
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;cve-2012-5076&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;convert-chm-to-html&#x2F;">CHM反编译html脚本</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2012-12-10</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;convert-chm-to-html&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;atl-regex&#x2F;">ATL中的正则表达式 CATLRegExp</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2012-12-09</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p>ATL中，由于ATL Server的需要，需要对Client发送过来的地址、命令等复杂文字字段信息解码，而正则表达式是公认的最强大的文字解析工具，所以，ATL提供了一些用于正则表达式的库方便了我们的工作。</p>
+<h3>1、 CATLRegExp类</h3>
+<p>1, 声明：</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#b48ead;">template </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#b48ead;">class</span><span style="color:#c0c5ce;"> CAtlRECharTraits&gt;</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">CAtlRegExp</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+</span></pre>
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;atl-regex&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;vc-pp-disasm-cc-rce-rcsv&#x2F;">VC++中反汇编0xCC,_RTC_CheckEsp与_RTC_CheckStackVars</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2012-12-08</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <h3>0xCC</h3>
+<p>在VC++编写的程序编程成Debug版，反汇编代码，函数入口处经常看到如下一段代码：</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#8fa1b3;">00EA14E0 </span><span style="color:#d08770;">55                       </span><span style="color:#b48ead;">push        </span><span style="color:#bf616a;">ebp  </span><span style="color:#c0c5ce;">
+</span><span style="color:#8fa1b3;">00EA14E1 8B EC                    </span><span style="color:#b48ead;">mov         </span><span style="color:#bf616a;">ebp</span><span style="color:#c0c5ce;">,</span><span style="color:#bf616a;">esp</span><span style="color:#c0c5ce;">
+</span><span style="color:#8fa1b3;">00EA14E3 </span><span style="color:#d08770;">81 </span><span style="color:#8fa1b3;">EC C0 </span><span style="color:#d08770;">00 00 00        </span><span style="color:#b48ead;">sub         </span><span style="color:#bf616a;">esp</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">0C0h</span><span style="color:#c0c5ce;">
+</span><span style="color:#8fa1b3;">00EA14E9 </span><span style="color:#d08770;">53                       </span><span style="color:#b48ead;">push        </span><span style="color:#bf616a;">ebx  </span><span style="color:#c0c5ce;">
+</span><span style="color:#8fa1b3;">00EA14EA </span><span style="color:#d08770;">56                       </span><span style="color:#b48ead;">push        </span><span style="color:#bf616a;">esi  </span><span style="color:#c0c5ce;">
+</span><span style="color:#8fa1b3;">00EA14EB </span><span style="color:#d08770;">57                       </span><span style="color:#b48ead;">push        </span><span style="color:#bf616a;">edi  </span><span style="color:#c0c5ce;">
+</span><span style="color:#8fa1b3;">00EA14EC 8D BD </span><span style="color:#d08770;">40 </span><span style="color:#8fa1b3;">FF FF FF        </span><span style="color:#b48ead;">lea         </span><span style="color:#bf616a;">edi</span><span style="color:#c0c5ce;">,[</span><span style="color:#bf616a;">ebp</span><span style="color:#c0c5ce;">-</span><span style="color:#d08770;">0C0h</span><span style="color:#c0c5ce;">]</span><span style="color:#c0c5ce;">
+</span><span style="color:#8fa1b3;">00EA14F2 B9 </span><span style="color:#d08770;">30 00 00 00           </span><span style="color:#b48ead;">mov         </span><span style="color:#bf616a;">ecx</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">30h</span><span style="color:#c0c5ce;">
+</span><span style="color:#8fa1b3;">00EA14F7 B8 CC CC CC CC           </span><span style="color:#b48ead;">mov         </span><span style="color:#bf616a;">eax</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">0CCCCCCCCh</span><span style="color:#c0c5ce;">
+</span><span style="color:#8fa1b3;">00EA14FC F3 AB                    </span><span style="color:#b48ead;">rep stos    </span><span style="color:#96b5b4;">dword ptr </span><span style="color:#bf616a;">es</span><span style="color:#8fa1b3;">:</span><span style="color:#c0c5ce;">[</span><span style="color:#bf616a;">edi</span><span style="color:#c0c5ce;">]</span><span style="color:#c0c5ce;">
+</span></pre>
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;vc-pp-disasm-cc-rce-rcsv&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                        </div>
+                        <nav class="pagination">
+                            
+                                <a class="previous" href="https:&#x2F;&#x2F;xjump.me&#x2F;page&#x2F;11&#x2F;">‹ Previous</a>
+                            
+                            
+                                <a class="next" href="https:&#x2F;&#x2F;xjump.me&#x2F;page&#x2F;13&#x2F;">Next ›</a>
+                            
+                        </nav>
+                    
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https:&#x2F;&#x2F;xjump.me&#x2F;even.js" ></script>
+      
+    </body>
+
+</html>

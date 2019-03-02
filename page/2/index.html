@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>@xjump</title>
+
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
+      
+
+      
+          <script src="/slideout/1.0.1/slideout.min.js"></script>
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css">
+
+          <script defer src="/katex/0.10.1/katex.min.js" ></script>
+          <script defer src="/katex/0.10.1/contrib/mathtex-script-type.min.js" ></script>
+              
+          <script defer src="/katex/0.10.1/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+              
+          
+      
+
+      
+          <link rel="stylesheet" href="https:&#x2F;&#x2F;xjump.me&#x2F;site.css">
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css"  >
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">@xjump</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me">
+                            Home
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;categories">
+                            Categories
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                            Archive
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;rss.xml">
+                            RSS
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;about">
+                            About
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;xjump.me">@xjump</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https://xjump.me">
+                                    Home
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;categories">
+                                    Categories
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                    Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;rss.xml">
+                                    RSS
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;about">
+                                    About
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+                        <div class="posts">
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;java-synchronize&#x2F;">Java多线程与并发基础</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2015-03-09</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p>
+    <strong>1）Thread & ThreadPoolExecutor</strong></p>
+<p>
+    Thread例子如下：</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#b48ead;">for</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">int</span><span style="color:#c0c5ce;"> i=</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">; i&lt;</span><span style="color:#d08770;">100</span><span style="color:#c0c5ce;">; i++){</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#ebcb8b;">Thread</span><span style="color:#c0c5ce;"> t = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Thread</span><span style="color:#c0c5ce;">()</span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">        </span><span style="color:#eff1f5;">@</span><span style="color:#bf616a;">Override</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">        </span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">run</span><span style="color:#eff1f5;">() {</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">            </span><span style="color:#65737e;">//job details</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">        </span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">}</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">t.</span><span style="color:#bf616a;">start</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">try</span><span style="color:#c0c5ce;">{ </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">t.</span><span style="color:#bf616a;">join</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">catch</span><span style="color:#c0c5ce;">(</span><span style="color:#ebcb8b;">InterruptedException </span><span style="color:#bf616a;">ex</span><span style="color:#c0c5ce;">){</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">ex.</span><span style="color:#bf616a;">printStackTrace</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span></pre><p>
+    相应的，ThreadPoolExecutor例子如下：</p>
+
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;java-synchronize&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;jvm-attack&#x2F;">JVM App exploit</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2014-10-30</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p>
+    Bytecode level: for break in.</p>
+<p>
+    Model is attack a normal running Java process or a going to run Java applet. Maybe something like Inject.</p>
+<p>
+    1) escape sandbox (SecurityManager) from Applet, or from constraint, for example Load From Uncontrolled source with custom policy;</p>
+<p>
+    2) classLoader hijack;</p>
+
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;jvm-attack&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;ios-framework-destruct&#x2F;">iOS framework结构</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2014-10-22</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p class="p4">
+    <span class="caption_number" style="font-family: 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif; font-size: 13px; font-weight: 700; color: rgb(0, 0, 0);">Listing 1 (From dev doc of apple.com)</span><span style="color: rgb(0, 0, 0); font-family: 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif; font-size: 13px;">&nbsp;&nbsp;A simple framework bundle</span></p>
+<table style="width: 600px; border-collapse: collapse; border-style: solid; border-color: rgb(199, 207, 213); padding-bottom: 4px; color: rgb(0, 0, 0); font-family: 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif; background-color: rgb(241, 245, 249);">
+    <tbody>
+        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
+            <td scope="row" style="padding: 0.5em;">
+                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
+MyFramework.framework/</pre>
+            </td>
+        </tr>
+        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
+            <td scope="row" style="padding: 0.5em;">
+                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
+    MyFramework  -> Versions/Current/MyFramework</pre>
+            </td>
+        </tr>
+        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
+            <td scope="row" style="padding: 0.5em;">
+                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
+    Resources    -> Versions/Current/Resources</pre>
+            </td>
+        </tr>
+        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
+            <td scope="row" style="padding: 0.5em;">
+                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
+    Versions/</pre>
+            </td>
+        </tr>
+        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
+            <td scope="row" style="padding: 0.5em;">
+                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
+        A/</pre>
+            </td>
+        </tr>
+        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
+            <td scope="row" style="padding: 0.5em;">
+                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
+            MyFramework</pre>
+            </td>
+        </tr>
+        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
+            <td scope="row" style="padding: 0.5em;">
+                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
+            Resources/</pre>
+            </td>
+        </tr>
+        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
+            <td scope="row" style="padding: 0.5em;">
+                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
+                English.lproj/</pre>
+            </td>
+        </tr>
+        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
+            <td scope="row" style="padding: 0.5em;">
+                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
+                    InfoPlist.strings</pre>
+            </td>
+        </tr>
+        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
+            <td scope="row" style="padding: 0.5em;">
+                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
+                Info.plist</pre>
+            </td>
+        </tr>
+        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
+            <td scope="row" style="padding: 0.5em;">
+                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
+        Current  -> A</pre>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;ios-framework-destruct&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;object-c-synchronize&#x2F;">ObjC synchronize，GCD</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2014-10-10</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">- (</span><span style="color:#ebcb8b;">NSString </span><span style="color:#c0c5ce;">*)myString {</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">@synchronized</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">return </span><span style="color:#c0c5ce;">[[myString </span><span style="color:#8fa1b3;">retain</span><span style="color:#c0c5ce;">] autorelease];</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">  </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span></pre><p>
+    转换1：</p>
+
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;object-c-synchronize&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;bore&#x2F;">般若波罗蜜多心经</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2014-09-30</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p>注：简称《心经》，附（简单字面翻译）。</p>
+<blockquote>
+<p>观自在菩萨（般若智慧已经达到自在境界的菩萨）</p>
+</blockquote>
+<blockquote>
+<p>行深般若波罗蜜多时（当他修行般若智慧达到波罗蜜多觉悟境界的时候）</p>
+</blockquote>
+<blockquote>
+<p>照见五蕴皆空（洞见色、受、想、行、识五蕴乃是人类虚空的妄想）</p>
+</blockquote>
+
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;bore&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                        </div>
+                        <nav class="pagination">
+                            
+                                <a class="previous" href="https:&#x2F;&#x2F;xjump.me&#x2F;">‹ Previous</a>
+                            
+                            
+                                <a class="next" href="https:&#x2F;&#x2F;xjump.me&#x2F;page&#x2F;3&#x2F;">Next ›</a>
+                            
+                        </nav>
+                    
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https:&#x2F;&#x2F;xjump.me&#x2F;even.js" ></script>
+      
+    </body>
+
+</html>

@@ -1,0 +1,287 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>@xjump</title>
+
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
+      
+
+      
+          <script src="/slideout/1.0.1/slideout.min.js"></script>
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css">
+
+          <script defer src="/katex/0.10.1/katex.min.js" ></script>
+          <script defer src="/katex/0.10.1/contrib/mathtex-script-type.min.js" ></script>
+              
+          <script defer src="/katex/0.10.1/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+              
+          
+      
+
+      
+          <link rel="stylesheet" href="https:&#x2F;&#x2F;xjump.me&#x2F;site.css">
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css"  >
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">@xjump</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me">
+                            Home
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;categories">
+                            Categories
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                            Archive
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;rss.xml">
+                            RSS
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;about">
+                            About
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;xjump.me">@xjump</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https://xjump.me">
+                                    Home
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;categories">
+                                    Categories
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                    Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;rss.xml">
+                                    RSS
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;about">
+                                    About
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+                        <div class="posts">
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;pyv8-gen-javascript-ast&#x2F;">使用PyV8构建JavaScript抽象语法树（AST）</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2013-03-29</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <h3>简介</h3>
+<p>
+    本文介绍使用PyV8生成JavaScript的抽象语法树的实现过程，使用该语法树进行JavaScript代码优化、变形、压缩等将在后续进行介绍。</p>
+<p>
+    编译器（解释器）对语言的处理过程大致分为：词法分析-&gt;语法分析-&gt;中间代码生成-&gt;代码优化-&gt;生成可执行模块/字节码解释执行。</p>
+
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;pyv8-gen-javascript-ast&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;backtrace-nix-win&#x2F;">backtrace on *nix and Windows</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2013-02-23</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p>
+    最近读OceanBase的<a href="http://github.com/alibaba/oceanbase">源码</a>，摘录一段错误诊断比较有用的代码：</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#65737e;">//#define OCEAN_BTREE_CHECK</span><span style="color:#65737e;">
+</span><span style="color:#b48ead;">#ifdef</span><span style="color:#c0c5ce;"> OCEAN_BTREE_CHECK</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">#include </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#a3be8c;">execinfo.h</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">#define </span><span style="color:#8fa1b3;">OCEAN_BTREE_CHECK_FALSE</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">cond</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">format</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">args</span><span style="color:#c0c5ce;">...) </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">((cond)) \</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">{                                                                  \</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">char</span><span style="color:#c0c5ce;"> _buffer_stack_[</span><span style="color:#d08770;">256</span><span style="color:#c0c5ce;">];                                      \</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">{                                                              \</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">void </span><span style="color:#c0c5ce;">*array[</span><span style="color:#d08770;">10</span><span style="color:#c0c5ce;">];                                           \</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">int</span><span style="color:#c0c5ce;"> i, idx=</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">, n = </span><span style="color:#bf616a;">backtrace</span><span style="color:#c0c5ce;">(array, </span><span style="color:#d08770;">10</span><span style="color:#c0c5ce;">);                    \</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">          </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">(i = </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">; i &lt; n; i++) {                                    \</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            </span><span style="color:#c0c5ce;">idx += </span><span style="color:#96b5b4;">snprintf</span><span style="color:#c0c5ce;">(idx+_buffer_stack_, </span><span style="color:#d08770;">25</span><span style="color:#c0c5ce;">, &quot;</span><span style="color:#d08770;">%p</span><span style="color:#a3be8c;">,</span><span style="color:#c0c5ce;">&quot;, array[i]);  \</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">          </span><span style="color:#c0c5ce;">}                                                            \</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}                                                              \</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#bf616a;">TBSYS_LOG</span><span style="color:#c0c5ce;">(ERROR, &quot;</span><span style="color:#d08770;">%s</span><span style="color:#c0c5ce;">&quot; format, _buffer_stack_, ## args);        \</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">#define </span><span style="color:#8fa1b3;">OCEAN_BTREE_CHECK_TRUE</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">cond</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">format</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">args</span><span style="color:#c0c5ce;">...) \</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#bf616a;">OCEAN_BTREE_CHECK_FALSE</span><span style="color:#c0c5ce;">(!(cond), format, ## args)</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">#else</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">#define </span><span style="color:#8fa1b3;">OCEAN_BTREE_CHECK_TRUE</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">cond</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">format</span><span style="color:#c0c5ce;">, ...)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">#define </span><span style="color:#8fa1b3;">OCEAN_BTREE_CHECK_FALSE</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">cond</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">format</span><span style="color:#c0c5ce;">, ...)</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">#endif</span><span style="color:#c0c5ce;">
+</span></pre>
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;backtrace-nix-win&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;graphlab-links&#x2F;">GraphLab Links</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2013-01-29</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;graphlab-links&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;xpki-arch-intro&#x2F;">xPKI</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2013-01-25</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;xpki-arch-intro&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rsa-source&#x2F;">RSA算法数学理论、例子与模幂周期性攻击</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2013-01-23</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rsa-source&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                        </div>
+                        <nav class="pagination">
+                            
+                                <a class="previous" href="https:&#x2F;&#x2F;xjump.me&#x2F;page&#x2F;7&#x2F;">‹ Previous</a>
+                            
+                            
+                                <a class="next" href="https:&#x2F;&#x2F;xjump.me&#x2F;page&#x2F;9&#x2F;">Next ›</a>
+                            
+                        </nav>
+                    
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https:&#x2F;&#x2F;xjump.me&#x2F;even.js" ></script>
+      
+    </body>
+
+</html>

@@ -1,0 +1,312 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>@xjump</title>
+
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
+      
+
+      
+          <script src="/slideout/1.0.1/slideout.min.js"></script>
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css">
+
+          <script defer src="/katex/0.10.1/katex.min.js" ></script>
+          <script defer src="/katex/0.10.1/contrib/mathtex-script-type.min.js" ></script>
+              
+          <script defer src="/katex/0.10.1/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+              
+          
+      
+
+      
+          <link rel="stylesheet" href="https:&#x2F;&#x2F;xjump.me&#x2F;site.css">
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css"  >
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">@xjump</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me">
+                            Home
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;categories">
+                            Categories
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                            Archive
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;rss.xml">
+                            RSS
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;about">
+                            About
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;xjump.me">@xjump</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https://xjump.me">
+                                    Home
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;categories">
+                                    Categories
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                    Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;rss.xml">
+                                    RSS
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;about">
+                                    About
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;object-c-cpp1x-singleton&#x2F;">ObjC &amp; Swift &amp; C++1x Singleton</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2014-09-10</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <pre style="background-color:#2b303b;">
+<span style="color:#65737e;">//TheSingleton.h</span><span style="color:#65737e;">
+</span><span style="color:#b48ead;">@interface </span><span style="color:#c0c5ce;">TheSingleton </span><span style="color:#8fa1b3;">: </span><span style="color:#a3be8c;">NSObject</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">+(instancetype) </span><span style="color:#8fa1b3;">sharedInstance</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">+(instancetype) </span><span style="color:#8fa1b3;">alloc</span><span style="color:#c0c5ce;"> __attribute__((</span><span style="color:#bf616a;">unavailable</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">alloc not available, call sharedInstance instead</span><span style="color:#c0c5ce;">&quot;))</span><span style="background-color:#bf616a;color:#2b303b;">)</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">-(instancetype) init </span><span style="color:#b48ead;">__attribute__</span><span style="color:#c0c5ce;">((unavailable(&quot;</span><span style="color:#a3be8c;">init not available, call sharedInstance instead</span><span style="color:#c0c5ce;">&quot;)));</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">+(instancetype) </span><span style="color:#b48ead;">new __attribute__</span><span style="color:#c0c5ce;">((unavailable(&quot;</span><span style="color:#a3be8c;">new not available, call sharedInstance instead</span><span style="color:#c0c5ce;">&quot;)));</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">-(instancetype) copy </span><span style="color:#b48ead;">__attribute__</span><span style="color:#c0c5ce;">((unavailable(&quot;</span><span style="color:#a3be8c;">copy not available, call sharedInstance instead</span><span style="color:#c0c5ce;">&quot;)));</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">@end</span><span style="color:#c0c5ce;">
+</span></pre><p><a name="continue-reading"></a></p>
+<pre style="background-color:#2b303b;">
+<span style="color:#65737e;">//TheSingleton.m</span><span style="color:#65737e;">
+</span><span style="color:#b48ead;">@implementation </span><span style="color:#c0c5ce;">TheSingleton</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">+(instancetype) </span><span style="color:#8fa1b3;">sharedInstance </span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">static</span><span style="color:#c0c5ce;"> dispatch_once_t pred;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">static id </span><span style="color:#c0c5ce;">shared = </span><span style="color:#d08770;">nil</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#bf616a;">dispatch_once</span><span style="color:#c0c5ce;">(&amp;pred, ^{</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">shared = [[</span><span style="color:#bf616a;">super </span><span style="color:#8fa1b3;">alloc</span><span style="color:#c0c5ce;">] initUniqueInstance];</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">});</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">return</span><span style="color:#c0c5ce;"> shared;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">-(instancetype) </span><span style="color:#8fa1b3;">initUniqueInstance </span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">id </span><span style="color:#c0c5ce;">me = [</span><span style="color:#bf616a;">super </span><span style="color:#8fa1b3;">init</span><span style="color:#c0c5ce;">];</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">// other initialize here.</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">return</span><span style="color:#c0c5ce;"> me;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">@end</span><span style="color:#c0c5ce;">
+</span></pre><p>
+    ObjC版使用：</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">TheSingleton* instance = [TheSingleton </span><span style="color:#8fa1b3;">sharedInstance</span><span style="color:#c0c5ce;">];</span><span style="color:#c0c5ce;">
+</span></pre><p>
+    swift 版：</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">TheSingleton</span><span style="color:#c0c5ce;"> {</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">var</span><span style="color:#c0c5ce;"> sharedInstance : </span><span style="color:#ebcb8b;">TheSingleton</span><span style="color:#c0c5ce;"> {</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">struct </span><span style="color:#ebcb8b;">Static</span><span style="color:#c0c5ce;"> {</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">static var</span><span style="color:#c0c5ce;"> onceToken : dispatch_once_t = </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">static var</span><span style="color:#c0c5ce;"> instance : </span><span style="color:#ebcb8b;">TheSingleton</span><span style="color:#c0c5ce;">? = </span><span style="color:#d08770;">nil</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">dispatch_once(&amp;</span><span style="color:#ebcb8b;">Static</span><span style="color:#c0c5ce;">.onceToken) {</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            </span><span style="color:#ebcb8b;">Static</span><span style="color:#c0c5ce;">.instance = </span><span style="color:#ebcb8b;">TheSingleton</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">return </span><span style="color:#ebcb8b;">Static</span><span style="color:#c0c5ce;">.instance!</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span></pre><p>
+    或者：</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">TheSingleton</span><span style="color:#c0c5ce;"> {</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">var</span><span style="color:#c0c5ce;"> sharedInstance : </span><span style="color:#ebcb8b;">TheSingleton</span><span style="color:#c0c5ce;"> {</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">struct </span><span style="color:#ebcb8b;">Static</span><span style="color:#c0c5ce;"> {</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">static let</span><span style="color:#c0c5ce;"> instance : </span><span style="color:#ebcb8b;">TheSingleton</span><span style="color:#c0c5ce;"> = </span><span style="color:#ebcb8b;">TheSingleton</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">return </span><span style="color:#ebcb8b;">Static</span><span style="color:#c0c5ce;">.instance</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span></pre><p>
+    swift版使用：</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> instance = </span><span style="color:#ebcb8b;">TheSingleton</span><span style="color:#c0c5ce;">.sharedInstance</span><span style="color:#c0c5ce;">
+</span></pre><p>
+    &nbsp;</p>
+<p>
+    C++1x Singleton，下面的方法已经过时了，其实C++11有更简单的实现方式：</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#b48ead;">#ifndef</span><span style="color:#c0c5ce;"> SINGLETON_H</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">SINGLETON_H</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">#include </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#a3be8c;">mutex</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">#include </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#a3be8c;">functional</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">#include </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#a3be8c;">memory</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">#include </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#a3be8c;">utility</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">template</span><span style="color:#c0c5ce;">&lt;</span><span style="color:#b48ead;">class</span><span style="color:#c0c5ce;"> SingleClass&gt;</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">Singleton</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
+</span><span style="color:#b48ead;">public</span><span style="color:#eff1f5;">:</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">  </span><span style="color:#8fa1b3;">Singleton</span><span style="color:#eff1f5;">() </span><span style="color:#c0c5ce;">= </span><span style="color:#b48ead;">default</span><span style="color:#eff1f5;">;</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">  </span><span style="color:#b48ead;">virtual </span><span style="color:#8fa1b3;">~Singleton</span><span style="color:#eff1f5;">() </span><span style="color:#c0c5ce;">= </span><span style="color:#b48ead;">default</span><span style="color:#eff1f5;">;</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">  </span><span style="color:#8fa1b3;">Singleton</span><span style="color:#eff1f5;">(</span><span style="color:#b48ead;">const</span><span style="color:#eff1f5;"> Singleton</span><span style="color:#c0c5ce;">&amp;</span><span style="color:#eff1f5;">) </span><span style="color:#c0c5ce;">= </span><span style="color:#b48ead;">delete</span><span style="color:#eff1f5;">;</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">  </span><span style="color:#eff1f5;">Singleton</span><span style="color:#c0c5ce;">&amp; </span><span style="color:#8fa1b3;">operator=</span><span style="color:#eff1f5;">(</span><span style="color:#b48ead;">const</span><span style="color:#eff1f5;"> Singleton</span><span style="color:#c0c5ce;">&amp;</span><span style="color:#eff1f5;">) </span><span style="color:#c0c5ce;">= </span><span style="color:#b48ead;">delete</span><span style="color:#eff1f5;">;</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">  </span><span style="color:#b48ead;">template</span><span style="color:#eff1f5;">&lt;</span><span style="color:#b48ead;">typename</span><span style="color:#eff1f5;"> IMPL </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> SingleClass, </span><span style="color:#b48ead;">typename</span><span style="color:#c0c5ce;">...</span><span style="color:#eff1f5;"> Args&gt;</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">  </span><span style="color:#b48ead;">static</span><span style="color:#eff1f5;"> SingleClass</span><span style="color:#c0c5ce;">&amp; </span><span style="color:#8fa1b3;">instance</span><span style="color:#eff1f5;">(Args</span><span style="color:#c0c5ce;">&amp;&amp;... </span><span style="color:#bf616a;">args</span><span style="color:#eff1f5;">)</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">  </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">    </span><span style="color:#bf616a;">std::call_once</span><span style="color:#eff1f5;">(</span><span style="color:#bf616a;">get_once_flag</span><span style="color:#eff1f5;">(), [](Args </span><span style="color:#c0c5ce;">&amp;&amp; ...</span><span style="color:#eff1f5;"> arg) {</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">      </span><span style="color:#eff1f5;">_instance.</span><span style="color:#bf616a;">reset</span><span style="color:#eff1f5;">(</span><span style="color:#b48ead;">new </span><span style="color:#bf616a;">IMPL</span><span style="color:#eff1f5;">(std::</span><span style="color:#bf616a;">forward</span><span style="color:#eff1f5;">&lt;Args&gt;(arg)</span><span style="color:#c0c5ce;">...</span><span style="color:#eff1f5;">));</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">}, std::</span><span style="color:#bf616a;">forward</span><span style="color:#eff1f5;">&lt;Args&gt;(args)</span><span style="color:#c0c5ce;">...</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">return </span><span style="color:#c0c5ce;">*</span><span style="color:#eff1f5;">(_instance.</span><span style="color:#bf616a;">get</span><span style="color:#eff1f5;">());</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">  </span><span style="color:#eff1f5;">};</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">
+</span><span style="color:#b48ead;">private</span><span style="color:#eff1f5;">:</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">  </span><span style="color:#b48ead;">static</span><span style="color:#eff1f5;"> std::unique_ptr&lt;SingleClass&gt; _instance;</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">  </span><span style="color:#b48ead;">static</span><span style="color:#eff1f5;"> std::once_flag</span><span style="color:#c0c5ce;">&amp; </span><span style="color:#8fa1b3;">get_once_flag</span><span style="color:#eff1f5;">() {</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">static</span><span style="color:#eff1f5;"> std::once_flag once;</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">return</span><span style="color:#eff1f5;"> once;</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">  </span><span style="color:#eff1f5;">};</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">}</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">template</span><span style="color:#c0c5ce;">&lt;</span><span style="color:#b48ead;">class</span><span style="color:#c0c5ce;"> T&gt; std::unique_ptr&lt;T&gt; Singleton&lt;T&gt;::_instance = </span><span style="color:#d08770;">nullptr</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">#endif</span><span style="color:#c0c5ce;">
+</span></pre>
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <!-- <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all&#x2F;">#all</a> -->
+                    
+                </div>
+            
+            
+                <div class="post-nav">
+                    
+                        <a class="previous" href="https:&#x2F;&#x2F;xjump.me&#x2F;cve-2014-0038&#x2F;">‹ CVE-2014-0038</a>
+                    
+                    
+                        <a class="next" href="https:&#x2F;&#x2F;xjump.me&#x2F;tao&#x2F;">周易参同契 ›</a>
+                    
+                    
+                    
+                </div>
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https:&#x2F;&#x2F;xjump.me&#x2F;even.js" ></script>
+      
+    </body>
+
+</html>

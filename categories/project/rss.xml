@@ -1,0 +1,82 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>@xjump</title>
+        <link>https://xjump.me</link>
+        <description>notes by xjump</description>
+        <generator>Zola</generator>
+        <language>en</language>
+        <atom:link href="https://xjump.me/categories/project/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Fri, 25 Jan 2013 00:00:00 +0000</lastBuildDate>
+        
+            <item>
+                <title>xPKI</title>
+                <pubDate>Fri, 25 Jan 2013 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/xpki-arch-intro/</link>
+                <guid>https://xjump.me/xpki-arch-intro/</guid>
+                <description>&lt;p&gt;随着把PKI相关技术覆盖到越来越多的平台（Windows，Darwin，Android，iOS），并成功植入硬件。对PKI方面的研究可以告一段落了。下面的Demo是平时研究的总结，也算是对这一阶段该领域研究的总结，上3张图。&lt;&#x2F;p&gt;
+&lt;p&gt;第一张，服务端的两大模块：&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;serverl2.png&quot;&#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;第二张，客户端：&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;client.png&quot;&#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;第三张，xPKI_Server模块细节：&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;xPKI_Server.png&quot;&#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;蓝色是底层依赖，亮绿色是核心模块，红色是待实现，紫色是测试过的Demo。没实现的暂时也放一放了，对于实现大多数金融类认证(硬件Key、文件证书)，这些已经够了。&lt;&#x2F;p&gt;
+&lt;p&gt;为什么用CORBA，一来是语言太多，都要支持，还有各种扩容、容错等特性，CORBA最有机会；二来CORBA够复杂，好装X。&lt;&#x2F;p&gt;
+&lt;p&gt;Darwin，Android，iOS都是数字证书应用的非主流平台，技术实现不复杂，图就不画了。&lt;&#x2F;p&gt;
+</description>
+            </item>
+        
+            <item>
+                <title>xInjector</title>
+                <pubDate>Sat, 12 Jan 2013 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/xinjector/</link>
+                <guid>https://xjump.me/xinjector/</guid>
+                <description>&lt;p&gt;
+    最近开始深入学习Android安全，翻了很多Android源码，做过一些恶意软件分析，逐渐形成了xInjector这个研究工具，图中大部分模块已经打造完成。&lt;&#x2F;p&gt;
+&lt;p&gt;
+    &lt;img alt=&quot;&quot; src=&quot;&#x2F;images&#x2F;arch.png&quot;&#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;
+    目前Android病毒、木马已深入到jni&#x2F;c模块的对抗中，还有涉及到感染boot的恶意软件曝光，分析这些恶意软件也变得越来越困难。xInjector沿袭了Windows上该领域的相关研究思路，试图获取更多的信息来研究Android应用的行为。&lt;&#x2F;p&gt;
+&lt;p&gt;
+    关于Android内核rootkit的内容正在研究中，有价值的的内容也会集成到xInjector中。&lt;&#x2F;p&gt;</description>
+            </item>
+        
+            <item>
+                <title>AxOffice</title>
+                <pubDate>Sun, 13 Dec 2009 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/axoffice-activex-of-office-object/</link>
+                <guid>https://xjump.me/axoffice-activex-of-office-object/</guid>
+                <description>&lt;p&gt;
+    整理硬盘，发现以前的一个收藏代码，还做了一些bugfix，看了一下，没有大用处，但还有些价值。&lt;a href=&quot;http:&#x2F;&#x2F;www.ntko.com&#x2F;&quot;&gt;NTKO&lt;&#x2F;a&gt;、&lt;a href=&quot;http:&#x2F;&#x2F;www.dianju.com.cn&#x2F;&quot;&gt;点聚&lt;&#x2F;a&gt;等集成到OA系统的*Office组件大多使用该技术开发。&lt;&#x2F;p&gt;
+&lt;p&gt;
+    先介绍一下：AxOffice根据DsoFrame源代码修改，主要是将Microsoft的DocServerEmbed（如Word、PowerPoint、Excel、PDF、AutoCAD等有实现）技术用ActiveX做封装，进而实现在COM组件容器（如IE浏览器）中操纵文档。&lt;&#x2F;p&gt;
+&lt;p&gt;
+    AxOffice实现接口如下：&lt;&#x2F;p&gt;
+&lt;p&gt;
+    &lt;img alt=&quot;&quot; src=&quot;&#x2F;images&#x2F;COM-AxOffice.png&quot;&#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;
+    附上几张效果截图：&lt;&#x2F;p&gt;
+&lt;p&gt;
+    Word&lt;&#x2F;p&gt;
+&lt;p&gt;
+    &lt;img alt=&quot;&quot; src=&quot;&#x2F;images&#x2F;screenShot-2.png&quot;&#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;
+    &amp;nbsp;&lt;&#x2F;p&gt;
+&lt;p&gt;
+    Excel&lt;&#x2F;p&gt;
+&lt;p&gt;
+    &lt;img alt=&quot;&quot; src=&quot;&#x2F;images&#x2F;screenShot.png&quot;&#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;
+    &amp;nbsp;&lt;&#x2F;p&gt;
+&lt;p&gt;
+    ppt&lt;&#x2F;p&gt;
+&lt;p&gt;
+    &lt;img alt=&quot;&quot; src=&quot;&#x2F;images&#x2F;screenShot-3.png&quot;&#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;
+    &amp;nbsp;&lt;&#x2F;p&gt;
+&lt;p&gt;
+    &amp;nbsp;&lt;&#x2F;p&gt;</description>
+            </item>
+        
+    </channel>
+</rss>

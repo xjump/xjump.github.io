@@ -1,0 +1,244 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>@xjump</title>
+
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
+      
+
+      
+          <script src="/slideout/1.0.1/slideout.min.js"></script>
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css">
+
+          <script defer src="/katex/0.10.1/katex.min.js" ></script>
+          <script defer src="/katex/0.10.1/contrib/mathtex-script-type.min.js" ></script>
+              
+          <script defer src="/katex/0.10.1/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+              
+          
+      
+
+      
+          <link rel="stylesheet" href="https:&#x2F;&#x2F;xjump.me&#x2F;site.css">
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css"  >
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">@xjump</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me">
+                            Home
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;categories">
+                            Categories
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                            Archive
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;rss.xml">
+                            RSS
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;about">
+                            About
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;xjump.me">@xjump</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https://xjump.me">
+                                    Home
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;categories">
+                                    Categories
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                    Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;rss.xml">
+                                    RSS
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;about">
+                                    About
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;js-sniffer&#x2F;">javascript探测执行环境</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2013-12-10</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p>
+1、探测调用者：</p>
+<p><a name="continue-reading"></a></p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">&gt;&gt; </span><span style="color:#bf616a;">var </span><span style="color:#8fa1b3;">f</span><span style="color:#c0c5ce;">=</span><span style="color:#b48ead;">function</span><span style="color:#c0c5ce;">(b,c,d){</span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">x</span><span style="color:#c0c5ce;">=</span><span style="color:#bf616a;">b</span><span style="color:#c0c5ce;">+</span><span style="color:#bf616a;">c</span><span style="color:#c0c5ce;">+</span><span style="color:#bf616a;">d</span><span style="color:#c0c5ce;">;console.</span><span style="color:#96b5b4;">log</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">f</span><span style="color:#c0c5ce;">.caller);</span><span style="color:#b48ead;">return </span><span style="color:#bf616a;">x</span><span style="color:#c0c5ce;">;}</span><span style="color:#c0c5ce;">
+</span><span style="color:#d08770;">undefined</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">&gt;&gt; </span><span style="color:#bf616a;">f</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">function </span><span style="color:#c0c5ce;">(evalFunction, object, objectGroup, expression, </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">isEvalOnCallFrame, injectCommandLineAPI)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">// Only install command line api object </span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">// for the time of evaluation.</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">// Surround the expression in with statements</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">// to inject our command line API so that</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">// the window object properties still take</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">// more precedent than our API functions.</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">try </span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">injectCommandLineAPI </span><span style="color:#c0c5ce;">&amp;&amp; </span><span style="color:#bf616a;">inspectedWindow</span><span style="color:#c0c5ce;">.console) {</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">inspectedWindow</span><span style="color:#c0c5ce;">.console._commandLineAPI = </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                </span><span style="color:#c0c5ce;">new </span><span style="color:#bf616a;">CommandLineAPI</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">this</span><span style="color:#c0c5ce;">._commandLineAPIImpl, </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                    </span><span style="color:#bf616a;">isEvalOnCallFrame </span><span style="color:#c0c5ce;">? </span><span style="color:#bf616a;">object </span><span style="color:#c0c5ce;">: </span><span style="color:#d08770;">null</span><span style="color:#c0c5ce;">);</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">expression </span><span style="color:#c0c5ce;">= &quot;</span><span style="color:#a3be8c;">with ((window &amp;&amp; window.console &amp;&amp; </span><span style="color:#c0c5ce;">&quot; +</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                         </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">window.console._commandLineAPI) || {}) +</span><span style="background-color:#bf616a;color:#2b303b;">
+</span><span style="color:#c0c5ce;">                         </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">{</span><span style="color:#96b5b4;">\n</span><span style="color:#c0c5ce;">&quot; + </span><span style="color:#bf616a;">expression </span><span style="color:#c0c5ce;">+ &quot;</span><span style="color:#96b5b4;">\n</span><span style="color:#a3be8c;">}</span><span style="color:#c0c5ce;">&quot;;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">result </span><span style="color:#c0c5ce;">= </span><span style="color:#bf616a;">evalFunction</span><span style="color:#c0c5ce;">.</span><span style="color:#bf616a;">call</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">object</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">expression</span><span style="color:#c0c5ce;">);</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">objectGroup </span><span style="color:#c0c5ce;">=== &quot;</span><span style="color:#a3be8c;">console</span><span style="color:#c0c5ce;">&quot;)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">this</span><span style="color:#c0c5ce;">._lastResult = </span><span style="color:#bf616a;">result</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">return </span><span style="color:#bf616a;">result</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">} </span><span style="color:#b48ead;">finally </span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">injectCommandLineAPI </span><span style="color:#c0c5ce;">&amp;&amp; </span><span style="color:#bf616a;">inspectedWindow</span><span style="color:#c0c5ce;">.console)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            </span><span style="color:#c0c5ce;">delete </span><span style="color:#bf616a;">inspectedWindow</span><span style="color:#c0c5ce;">.console._commandLineAPI;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>２、探测自己：</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">&gt;&gt; </span><span style="color:#bf616a;">var </span><span style="color:#8fa1b3;">f</span><span style="color:#c0c5ce;">=</span><span style="color:#b48ead;">function</span><span style="color:#c0c5ce;">(b,c,d){ </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">x</span><span style="color:#c0c5ce;">=</span><span style="color:#bf616a;">b</span><span style="color:#c0c5ce;">+</span><span style="color:#bf616a;">c</span><span style="color:#c0c5ce;">+</span><span style="color:#bf616a;">d</span><span style="color:#c0c5ce;">;console.</span><span style="color:#96b5b4;">log</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">f</span><span style="color:#c0c5ce;">.arguments.callee);</span><span style="color:#b48ead;">return </span><span style="color:#bf616a;">x</span><span style="color:#c0c5ce;">; }</span><span style="color:#c0c5ce;">
+</span><span style="color:#d08770;">undefined</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">&gt;&gt; </span><span style="color:#bf616a;">f</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">function </span><span style="color:#c0c5ce;">(b,c,d){</span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">x</span><span style="color:#c0c5ce;">=</span><span style="color:#bf616a;">b</span><span style="color:#c0c5ce;">+</span><span style="color:#bf616a;">c</span><span style="color:#c0c5ce;">+</span><span style="color:#bf616a;">d</span><span style="color:#c0c5ce;">;console.</span><span style="color:#96b5b4;">log</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">f</span><span style="color:#c0c5ce;">.arguments.callee);</span><span style="color:#b48ead;">return </span><span style="color:#bf616a;">x</span><span style="color:#c0c5ce;">;}</span><span style="color:#c0c5ce;">
+</span><span style="color:#d08770;">6</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>js的这种动态获取执行环境的信息，可以用于多种安全用途，对caller的探测可以作为某种sniffer识别浏览器，对callee的探测则有着更广泛的用途，如用于js混淆/加壳。</p>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <!-- <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all&#x2F;">#all</a> -->
+                    
+                </div>
+            
+            
+                <div class="post-nav">
+                    
+                        <a class="previous" href="https:&#x2F;&#x2F;xjump.me&#x2F;get-wifi-connection-info&#x2F;">‹ iOS 4.1+获取网络连接信息</a>
+                    
+                    
+                        <a class="next" href="https:&#x2F;&#x2F;xjump.me&#x2F;distance-compute-with-lat-long&#x2F;">根据经纬度求球面距离 ›</a>
+                    
+                    
+                    
+                </div>
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https:&#x2F;&#x2F;xjump.me&#x2F;even.js" ></script>
+      
+    </body>
+
+</html>

@@ -1,0 +1,272 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>@xjump</title>
+
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
+      
+
+      
+          <script src="/slideout/1.0.1/slideout.min.js"></script>
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css">
+
+          <script defer src="/katex/0.10.1/katex.min.js" ></script>
+          <script defer src="/katex/0.10.1/contrib/mathtex-script-type.min.js" ></script>
+              
+          <script defer src="/katex/0.10.1/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+              
+          
+      
+
+      
+          <link rel="stylesheet" href="https:&#x2F;&#x2F;xjump.me&#x2F;site.css">
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css"  >
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">@xjump</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me">
+                            Home
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;categories">
+                            Categories
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                            Archive
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;rss.xml">
+                            RSS
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;about">
+                            About
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;xjump.me">@xjump</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https://xjump.me">
+                                    Home
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;categories">
+                                    Categories
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                    Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;rss.xml">
+                                    RSS
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;about">
+                                    About
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;java11-update-notes&#x2F;">Java 11升级</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2018-10-06</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p>Java 11已于2018-09-25发布，作为一个LTS版本，值得重点关注。但从Java 8升级上来还是会碰到不少问题。</p>
+<p>1、 project需要增加jaxb依赖，否则编译报错。</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">Caused by: java.lang.NoClassDefFoundError: javax/xml/bind/JAXBException</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>增加下面的依赖：</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">dependency</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">groupId</span><span style="color:#c0c5ce;">&gt;javax.xml.bind&lt;/</span><span style="color:#bf616a;">groupId</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">artifactId</span><span style="color:#c0c5ce;">&gt;jaxb-api&lt;/</span><span style="color:#bf616a;">artifactId</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">version</span><span style="color:#c0c5ce;">&gt;2.3.0&lt;/</span><span style="color:#bf616a;">version</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">&lt;/</span><span style="color:#bf616a;">dependency</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+</span></pre><p><a name="continue-reading"></a></p>
+<p>2、 某些GC废弃了，就不要用了。比如下面这个报错说明UseParNewGC这个新生代的GC就不支持了。</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#bf616a;">Java </span><span style="color:#8fa1b3;">HotSpot</span><span style="color:#c0c5ce;">(TM) </span><span style="color:#d08770;">64</span><span style="color:#c0c5ce;">-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version </span><span style="color:#d08770;">9</span><span style="color:#c0c5ce;">.</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;"> and will likely be removed in a future release.</span><span style="color:#c0c5ce;">
+</span><span style="color:#bf616a;">Unrecognized </span><span style="color:#c0c5ce;">VM option </span><span style="color:#a3be8c;">&#39;UseParNewGC&#39;</span><span style="color:#c0c5ce;">
+</span><span style="color:#bf616a;">Error</span><span style="color:#c0c5ce;">: Could not create the Java Virtual Machine.</span><span style="color:#c0c5ce;">
+</span><span style="color:#bf616a;">Error</span><span style="color:#c0c5ce;">: A fatal exception has occurred. Program will exit.</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>有哪些不支持，详细参考这里：<a href="http://openjdk.java.net/jeps/214">JEP-214</a></p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">Here is a detailed summary of the flags and flag combinations that will stop working:</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">DefNew + CMS       : -XX:-UseParNewGC -XX:+UseConcMarkSweepGC</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">ParNew + SerialOld : -XX:+UseParNewGC</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">ParNew + iCMS      : -Xincgc</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">ParNew + iCMS      : -XX:+CMSIncrementalMode -XX:+UseConcMarkSweepGC</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">DefNew + iCMS      : -XX:+CMSIncrementalMode -XX:+UseConcMarkSweepGC -XX:-UseParNewGC</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">CMS foreground     : -XX:+UseCMSCompactAtFullCollection</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">CMS foreground     : -XX:+CMSFullGCsBeforeCompaction</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">CMS foreground     : -XX:+UseCMSCollectionPassing</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>那么还有哪些可以用呢？当然是<a href="https://tech.meituan.com/g1.html"> G1</a> 了，还有处于Experimental的ZGC，性能超强。看数据：</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">128G heap (Lower is better)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">ZGC</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                </span><span style="color:#c0c5ce;">avg: 1.091ms (+/-0.215ms)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">95th percentile: 1.380ms</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">99th percentile: 1.512ms</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">  </span><span style="color:#c0c5ce;">99.9th percentile: 1.663ms</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;"> </span><span style="color:#c0c5ce;">99.99th percentile: 1.681ms</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                </span><span style="color:#c0c5ce;">max: 1.681ms</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">G1</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                </span><span style="color:#c0c5ce;">avg: 156.806ms (+/-71.126ms)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">95th percentile: 316.672ms</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">99th percentile: 428.095ms</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">  </span><span style="color:#c0c5ce;">99.9th percentile: 543.846ms</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;"> </span><span style="color:#c0c5ce;">99.99th percentile: 543.846ms</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                </span><span style="color:#c0c5ce;">max: 543.846ms</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>有关ZGC的介绍在<a href="http://openjdk.java.net/jeps/333">JEP-333</a><br />
+源码下载<a href="http://hg.openjdk.java.net/jdk/jdk11/branches">browser-&gt;zip</a><br />
+Linux快速试验<a href="https://wiki.openjdk.java.net/display/zgc/Main">Wiki</a></p>
+<p>3、 Android开发也需要注意，Gradle需要升级（4.7+），例如用4.10.2是可以的。</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">修改文件：$PROJECT\gradle\wrapper\gradle-wrapper.properties</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">distributionUrl=https\://services.gradle.org/distributions/gradle-4.10.2-all.zip</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>4、 Groovy动态脚本，有warning，换2.5.2/2.6.0-alpha-4/3.0.0-alpha-3都有。暂时忽略，等Groovy官网更新，或自己动手patch一下。</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">WARNING: An illegal reflective access operation has occurred</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">WARNING: Illegal reflective access by org.codehaus.groovy.vmplugin.v7.Java7$1 (file:/xxx/m2/repo/org/codehaus/groovy/groovy/3.0.0-alpha-3/groovy-3.0.0-alpha-3.jar) to constructor java.lang.invoke.MethodHandles$Lookup(java.lang.Class,int)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">WARNING: Please consider reporting this to the maintainers of org.codehaus.groovy.vmplugin.v7.Java7$1</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">WARNING: All illegal access operations will be denied in a future release</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>5、 javascript动态脚本，由于Nashorn脚本引擎不计划维护了，也有warning提示。在jdk11当前Release中还是可以使用的，ECMAScript的新规范不会支持了。</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">Warning: Nashorn engine is planned to be removed from a future JDK release</span><span style="color:#c0c5ce;">
+</span></pre>
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <!-- <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all&#x2F;">#all</a> -->
+                    
+                </div>
+            
+            
+                <div class="post-nav">
+                    
+                        <a class="previous" href="https:&#x2F;&#x2F;xjump.me&#x2F;rust-error-handling&#x2F;">‹ Rust错误处理（转）</a>
+                    
+                    
+                        <a class="next" href="https:&#x2F;&#x2F;xjump.me&#x2F;java-dyn-script&#x2F;">Java动态脚本 ›</a>
+                    
+                    
+                    
+                </div>
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https:&#x2F;&#x2F;xjump.me&#x2F;even.js" ></script>
+      
+    </body>
+
+</html>

@@ -1,0 +1,23 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>@xjump</title>
+        <link>https://xjump.me</link>
+        <description>notes by xjump</description>
+        <generator>Zola</generator>
+        <language>en</language>
+        <atom:link href="https://xjump.me/categories/jni/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Sat, 13 Oct 2018 00:00:00 +0000</lastBuildDate>
+        
+            <item>
+                <title>Android Dex动态加载、调用与安全</title>
+                <pubDate>Sat, 13 Oct 2018 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/android-dex-dynamic-load-call-and-security/</link>
+                <guid>https://xjump.me/android-dex-dynamic-load-call-and-security/</guid>
+                <description>&lt;p&gt;首先，动态加载与调用不是个新问题，方法也非常直接。关键就是使用DexClassLoader。&lt;&#x2F;p&gt;
+&lt;p&gt;这个方法有一个副作用，那就是&#x2F;proc&#x2F;self&#x2F;maps下会留下很多份dex加载记录，需要到jvm GC时才能释放，内存泄漏倒是没有，就是不太好看。&lt;&#x2F;p&gt;
+&lt;p&gt;对于入参不是String，返回结果不是String的情况，做个Ser&#x2F;De来搞定即可，接口的界面也能保持干净。&lt;&#x2F;p&gt;
+</description>
+            </item>
+        
+    </channel>
+</rss>

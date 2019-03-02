@@ -1,0 +1,92 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>@xjump</title>
+        <link>https://xjump.me</link>
+        <description>notes by xjump</description>
+        <generator>Zola</generator>
+        <language>en</language>
+        <atom:link href="https://xjump.me/categories/obj-c/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Wed, 22 Oct 2014 00:00:00 +0000</lastBuildDate>
+        
+            <item>
+                <title>iOS framework结构</title>
+                <pubDate>Wed, 22 Oct 2014 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/ios-framework-destruct/</link>
+                <guid>https://xjump.me/ios-framework-destruct/</guid>
+                <description>&lt;p class=&quot;p4&quot;&gt;
+    &lt;span class=&quot;caption_number&quot; style=&quot;font-family: &#x27;Lucida Grande&#x27;, &#x27;Lucida Sans Unicode&#x27;, Helvetica, Arial, Verdana, sans-serif; font-size: 13px; font-weight: 700; color: rgb(0, 0, 0);&quot;&gt;Listing 1 (From dev doc of apple.com)&lt;&#x2F;span&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: &#x27;Lucida Grande&#x27;, &#x27;Lucida Sans Unicode&#x27;, Helvetica, Arial, Verdana, sans-serif; font-size: 13px;&quot;&gt;&amp;nbsp;&amp;nbsp;A simple framework bundle&lt;&#x2F;span&gt;&lt;&#x2F;p&gt;
+&lt;table style=&quot;width: 600px; border-collapse: collapse; border-style: solid; border-color: rgb(199, 207, 213); padding-bottom: 4px; color: rgb(0, 0, 0); font-family: &#x27;Lucida Grande&#x27;, &#x27;Lucida Sans Unicode&#x27;, Helvetica, Arial, Verdana, sans-serif; background-color: rgb(241, 245, 249);&quot;&gt;
+    &lt;tbody&gt;
+        &lt;tr style=&quot;border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);&quot;&gt;
+            &lt;td scope=&quot;row&quot; style=&quot;padding: 0.5em;&quot;&gt;
+                &lt;pre style=&quot;margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;&quot;&gt;
+MyFramework.framework&#x2F;&lt;&#x2F;pre&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+        &lt;tr style=&quot;border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);&quot;&gt;
+            &lt;td scope=&quot;row&quot; style=&quot;padding: 0.5em;&quot;&gt;
+                &lt;pre style=&quot;margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;&quot;&gt;
+    MyFramework  -&gt; Versions&#x2F;Current&#x2F;MyFramework&lt;&#x2F;pre&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+        &lt;tr style=&quot;border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);&quot;&gt;
+            &lt;td scope=&quot;row&quot; style=&quot;padding: 0.5em;&quot;&gt;
+                &lt;pre style=&quot;margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;&quot;&gt;
+    Resources    -&gt; Versions&#x2F;Current&#x2F;Resources&lt;&#x2F;pre&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+        &lt;tr style=&quot;border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);&quot;&gt;
+            &lt;td scope=&quot;row&quot; style=&quot;padding: 0.5em;&quot;&gt;
+                &lt;pre style=&quot;margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;&quot;&gt;
+    Versions&#x2F;&lt;&#x2F;pre&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+        &lt;tr style=&quot;border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);&quot;&gt;
+            &lt;td scope=&quot;row&quot; style=&quot;padding: 0.5em;&quot;&gt;
+                &lt;pre style=&quot;margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;&quot;&gt;
+        A&#x2F;&lt;&#x2F;pre&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+        &lt;tr style=&quot;border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);&quot;&gt;
+            &lt;td scope=&quot;row&quot; style=&quot;padding: 0.5em;&quot;&gt;
+                &lt;pre style=&quot;margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;&quot;&gt;
+            MyFramework&lt;&#x2F;pre&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+        &lt;tr style=&quot;border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);&quot;&gt;
+            &lt;td scope=&quot;row&quot; style=&quot;padding: 0.5em;&quot;&gt;
+                &lt;pre style=&quot;margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;&quot;&gt;
+            Resources&#x2F;&lt;&#x2F;pre&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+        &lt;tr style=&quot;border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);&quot;&gt;
+            &lt;td scope=&quot;row&quot; style=&quot;padding: 0.5em;&quot;&gt;
+                &lt;pre style=&quot;margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;&quot;&gt;
+                English.lproj&#x2F;&lt;&#x2F;pre&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+        &lt;tr style=&quot;border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);&quot;&gt;
+            &lt;td scope=&quot;row&quot; style=&quot;padding: 0.5em;&quot;&gt;
+                &lt;pre style=&quot;margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;&quot;&gt;
+                    InfoPlist.strings&lt;&#x2F;pre&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+        &lt;tr style=&quot;border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);&quot;&gt;
+            &lt;td scope=&quot;row&quot; style=&quot;padding: 0.5em;&quot;&gt;
+                &lt;pre style=&quot;margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;&quot;&gt;
+                Info.plist&lt;&#x2F;pre&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+        &lt;tr style=&quot;border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);&quot;&gt;
+            &lt;td scope=&quot;row&quot; style=&quot;padding: 0.5em;&quot;&gt;
+                &lt;pre style=&quot;margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;&quot;&gt;
+        Current  -&gt; A&lt;&#x2F;pre&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+    &lt;&#x2F;tbody&gt;
+&lt;&#x2F;table&gt;
+</description>
+            </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,194 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>@xjump</title>
+        <link>https://xjump.me</link>
+        <description>notes by xjump</description>
+        <generator>Zola</generator>
+        <language>en</language>
+        <atom:link href="https://xjump.me/categories/java/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Sat, 13 Oct 2018 00:00:00 +0000</lastBuildDate>
+        
+            <item>
+                <title>Android Dex动态加载、调用与安全</title>
+                <pubDate>Sat, 13 Oct 2018 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/android-dex-dynamic-load-call-and-security/</link>
+                <guid>https://xjump.me/android-dex-dynamic-load-call-and-security/</guid>
+                <description>&lt;p&gt;首先，动态加载与调用不是个新问题，方法也非常直接。关键就是使用DexClassLoader。&lt;&#x2F;p&gt;
+&lt;p&gt;这个方法有一个副作用，那就是&#x2F;proc&#x2F;self&#x2F;maps下会留下很多份dex加载记录，需要到jvm GC时才能释放，内存泄漏倒是没有，就是不太好看。&lt;&#x2F;p&gt;
+&lt;p&gt;对于入参不是String，返回结果不是String的情况，做个Ser&#x2F;De来搞定即可，接口的界面也能保持干净。&lt;&#x2F;p&gt;
+</description>
+            </item>
+        
+            <item>
+                <title>Java动态脚本</title>
+                <pubDate>Sun, 07 Oct 2018 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/java-dyn-script/</link>
+                <guid>https://xjump.me/java-dyn-script/</guid>
+                <description>&lt;p&gt;动态脚本有诸多用途，对于不停机变更执行逻辑，实现部分开放式的业务动态性非常有帮助。不过好的设计需要考虑性能、边界、变更控制等问题，以达到“受控的动态”能力。&lt;&#x2F;p&gt;
+&lt;p&gt;JVM提供了不错的脚本接口，从&lt;a href=&quot;https:&#x2F;&#x2F;docs.oracle.com&#x2F;javase&#x2F;8&#x2F;docs&#x2F;technotes&#x2F;guides&#x2F;vm&#x2F;multiple-language-support.html&quot;&gt;invokedynamic&lt;&#x2F;a&gt;到&lt;a href=&quot;https:&#x2F;&#x2F;www.graalvm.org&#x2F;&quot;&gt;GraalVM&lt;&#x2F;a&gt;，多语言、动态语言、高性能是发展方向。&lt;&#x2F;p&gt;
+&lt;p&gt;Groovy作为可以和Java无缝交互的动态语言，利用了invokedynamic来实现核心功能，开发比较活跃，是动态化比较好的选择。下面介绍几种Groovy嵌入Java应用的方法。为达到class缓存、线程安全等目的，一些其他的方法不做介绍。&lt;&#x2F;p&gt;
+</description>
+            </item>
+        
+            <item>
+                <title>Java 11升级</title>
+                <pubDate>Sat, 06 Oct 2018 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/java11-update-notes/</link>
+                <guid>https://xjump.me/java11-update-notes/</guid>
+                <description>&lt;p&gt;Java 11已于2018-09-25发布，作为一个LTS版本，值得重点关注。但从Java 8升级上来还是会碰到不少问题。&lt;&#x2F;p&gt;
+&lt;p&gt;1、 project需要增加jaxb依赖，否则编译报错。&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;span style=&quot;color:#c0c5ce;&quot;&gt;Caused by: java.lang.NoClassDefFoundError: javax&#x2F;xml&#x2F;bind&#x2F;JAXBException&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;增加下面的依赖：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;dependency&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;groupId&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;gt;javax.xml.bind&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;groupId&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;artifactId&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;gt;jaxb-api&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;artifactId&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;version&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;gt;2.3.0&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;version&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;dependency&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;pre&gt;</description>
+            </item>
+        
+            <item>
+                <title>Java动态代理应用基础</title>
+                <pubDate>Sat, 14 Mar 2015 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/java-dynamic-proxy-basic/</link>
+                <guid>https://xjump.me/java-dynamic-proxy-basic/</guid>
+                <description>&lt;p&gt;
+    &lt;strong&gt;0、代理的本质&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;
+    如果把对象间方法的调用理解为client到server之间的通信，那么Proxy的本质是实现一个具有特定功能的中间人。在Java中存在多种方式实现对对象方法调用的代理。&lt;&#x2F;p&gt;
+&lt;p&gt;
+    有了中间人之后，就可以对调用进行hook，达到如下目的：&lt;&#x2F;p&gt;
+&lt;p&gt;
+    1）控制调用流程，如权限控制、隐藏、监控调用记录等；&lt;&#x2F;p&gt;
+&lt;p&gt;
+    2）篡改调用方提供的Request（即Input），如对分布式操作进行Map；&lt;&#x2F;p&gt;
+</description>
+            </item>
+        
+            <item>
+                <title>Java多线程与并发基础</title>
+                <pubDate>Mon, 09 Mar 2015 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/java-synchronize/</link>
+                <guid>https://xjump.me/java-synchronize/</guid>
+                <description>&lt;p&gt;
+    &lt;strong&gt;1）Thread &amp; ThreadPoolExecutor&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;
+    Thread例子如下：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;span style=&quot;color:#b48ead;&quot;&gt;for&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; i=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;; i&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;100&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;; i++){&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Thread&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; t = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Thread&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;()&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;@&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Override&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;run&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;() {&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;job details&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;t.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;start&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;();&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;try&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;{ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;t.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;join&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;();&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;catch&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;InterruptedException &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ex&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;){&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;ex.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;printStackTrace&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;();&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;pre&gt;&lt;p&gt;
+    相应的，ThreadPoolExecutor例子如下：&lt;&#x2F;p&gt;
+</description>
+            </item>
+        
+            <item>
+                <title>JVM App exploit</title>
+                <pubDate>Thu, 30 Oct 2014 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/jvm-attack/</link>
+                <guid>https://xjump.me/jvm-attack/</guid>
+                <description>&lt;p&gt;
+    Bytecode level: for break in.&lt;&#x2F;p&gt;
+&lt;p&gt;
+    Model is attack a normal running Java process or a going to run Java applet. Maybe something like Inject.&lt;&#x2F;p&gt;
+&lt;p&gt;
+    1) escape sandbox (SecurityManager) from Applet, or from constraint, for example Load From Uncontrolled source with custom policy;&lt;&#x2F;p&gt;
+&lt;p&gt;
+    2) classLoader hijack;&lt;&#x2F;p&gt;
+</description>
+            </item>
+        
+            <item>
+                <title>Zookeeper工作原理（转）</title>
+                <pubDate>Wed, 20 Nov 2013 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/zookeeper-basic/</link>
+                <guid>https://xjump.me/zookeeper-basic/</guid>
+                <description>&lt;p&gt;ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，它包含一个简单的原语集，分布式应用程序可以基于它实现同步服务，配置维护和命名服务等。Zookeeper是hadoop的一个子项目，其发展历程无需赘述。在分布式应用中，由于工程师不能很好地使用锁机制，以及基于消息的协调机制不适合在某些应用中使用，因此需要有一种可靠的、可扩展的、分布式的、可配置的协调机制来统一系统的状态。Zookeeper的目的就在于此。本文简单分析zookeeper的工作原理，对于如何使用zookeeper不是本文讨论的重点。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;1 Zookeeper的基本概念&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;1.1 角色&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Zookeeper中的角色主要有以下三类，如下表所示：&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img src=&quot;&#x2F;images&#x2F;zookeeper-roles.jpg&quot;&#x2F;&gt;&lt;&#x2F;center&gt;&lt;&#x2F;p&gt;
+</description>
+            </item>
+        
+            <item>
+                <title>HBase技术介绍（转）</title>
+                <pubDate>Tue, 10 Sep 2013 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/hbase-tech-intro/</link>
+                <guid>https://xjump.me/hbase-tech-intro/</guid>
+                <description>&lt;h3&gt;HBase简介&lt;&#x2F;h3&gt;
+&lt;p&gt;HBase, Hadoop Database，是一个高可靠性、高性能、面向列、可伸缩的分布式存储系统，利用HBase技术可在廉价PC Server上搭建起大规模结构化存储集群。&lt;&#x2F;p&gt;
+&lt;p&gt;HBase是Google Bigtable的开源实现，类似Google Bigtable利用GFS作为其文件存储系统，HBase利用Hadoop HDFS作为其文件存储系统；Google运行MapReduce来处理Bigtable中的海量数据，HBase同样利用Hadoop MapReduce来处理HBase中的海量数据；Google Bigtable利用 Chubby作为协同服务，HBase利用Zookeeper作为对应。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img src=&quot;&#x2F;images&#x2F;hbase-intro-ecosystem.png&quot;&#x2F;&gt;&lt;&#x2F;center&gt;&lt;&#x2F;p&gt;
+</description>
+            </item>
+        
+            <item>
+                <title>HBase介绍（转）</title>
+                <pubDate>Tue, 03 Sep 2013 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/hbase-intro/</link>
+                <guid>https://xjump.me/hbase-intro/</guid>
+                <description>&lt;h3&gt; 一、简介&lt;&#x2F;h3&gt;
+&lt;p&gt;history&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;started by chad walters and jim&lt;&#x2F;li&gt;
+&lt;li&gt;2006.11 G release paper on BigTable&lt;&#x2F;li&gt;
+&lt;li&gt;2007.2 inital HBase prototype created as Hadoop contrib&lt;&#x2F;li&gt;
+&lt;li&gt;2007.10 First useable Hbase&lt;&#x2F;li&gt;
+&lt;li&gt;2008.1 Hadoop become Apache top-level project and Hbase becomes subproject&lt;&#x2F;li&gt;
+&lt;li&gt;2008.10 Hbase 0.18,0.19 released&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;HBase是bigtable的开源山寨版本。是建立的hdfs之上，提供高可靠性、高性能、列存储、可伸缩、实时读写的数据库系统。&lt;&#x2F;p&gt;
+</description>
+            </item>
+        
+            <item>
+                <title>struts_s2-016_vul_checker</title>
+                <pubDate>Sun, 21 Jul 2013 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/struts-s2-016-vul-checker/</link>
+                <guid>https://xjump.me/struts-s2-016-vul-checker/</guid>
+                <description>&lt;p&gt;
+最近的struts2漏洞检测脚本，现在各大网站应该已经修复。
+&lt;&#x2F;p&gt;
+</description>
+            </item>
+        
+            <item>
+                <title>GraphLab Links</title>
+                <pubDate>Tue, 29 Jan 2013 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/graphlab-links/</link>
+                <guid>https://xjump.me/graphlab-links/</guid>
+                <description>&lt;p&gt;1、CMU的GraphLab项目：&lt;a href=&quot;http:&#x2F;&#x2F;www.select.cs.cmu.edu&#x2F;code&#x2F;graphlab&#x2F;index.html&quot;&gt;http:&#x2F;&#x2F;www.select.cs.cmu.edu&#x2F;code&#x2F;graphlab&#x2F;index.html&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;2、原理简介：&lt;a href=&quot;http:&#x2F;&#x2F;androidfuture.com&#x2F;blog&#x2F;?p=215&quot;&gt;http:&#x2F;&#x2F;androidfuture.com&#x2F;blog&#x2F;?p=215&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;3、Yucheng Low的三篇论文：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;http:&#x2F;&#x2F;www.xjump.me&#x2F;upload&#x2F;files&#x2F;vldb2012-low-gonzalez-kyrola-bickson-guestrin-hellerstein.pdf&quot;&gt;Distributed GraphLab: A Framework for Machine Learning and Data Mining in the Cloud&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;http:&#x2F;&#x2F;www.xjump.me&#x2F;upload&#x2F;files&#x2F;UAI2010_0171.pdf&quot;&gt;GraphLab: A New Framework For Parallel Machine Learning&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;http:&#x2F;&#x2F;www.xjump.me&#x2F;upload&#x2F;files&#x2F;CMU-ML-13-104.pdf&quot;&gt;GraphLab: A Distributed Abstraction for Large Scale Machine Learning&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;4、GraphLab的源码：&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;graphlab-code&#x2F;graphlab&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;graphlab-code&#x2F;graphlab&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;5、Python &amp;amp; Java Interface封装介绍：&lt;a href=&quot;http:&#x2F;&#x2F;select.cs.cmu.edu&#x2F;code&#x2F;graphlab&#x2F;java_jython.html&quot;&gt;http:&#x2F;&#x2F;select.cs.cmu.edu&#x2F;code&#x2F;graphlab&#x2F;java_jython.html&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;6、社区：&lt;a href=&quot;http:&#x2F;&#x2F;forum.graphlab.com&#x2F;&quot;&gt;http:&#x2F;&#x2F;forum.graphlab.com&#x2F;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;7、Start：&lt;a href=&quot;http:&#x2F;&#x2F;graphlab.org&#x2F;projects&#x2F;getting_started.html&quot;&gt;http:&#x2F;&#x2F;graphlab.org&#x2F;projects&#x2F;getting_started.html&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;8、papers from graphlab.org：&lt;a href=&quot;http:&#x2F;&#x2F;graphlab.org&#x2F;resources&#x2F;publications.html&quot;&gt;http:&#x2F;&#x2F;graphlab.org&#x2F;resources&#x2F;publications.html&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</description>
+            </item>
+        
+    </channel>
+</rss>

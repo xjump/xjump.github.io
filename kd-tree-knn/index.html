@@ -1,0 +1,238 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>@xjump</title>
+
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
+      
+
+      
+          <script src="/slideout/1.0.1/slideout.min.js"></script>
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css">
+
+          <script defer src="/katex/0.10.1/katex.min.js" ></script>
+          <script defer src="/katex/0.10.1/contrib/mathtex-script-type.min.js" ></script>
+              
+          <script defer src="/katex/0.10.1/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+              
+          
+      
+
+      
+          <link rel="stylesheet" href="https:&#x2F;&#x2F;xjump.me&#x2F;site.css">
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css"  >
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">@xjump</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me">
+                            Home
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;categories">
+                            Categories
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                            Archive
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;rss.xml">
+                            RSS
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;about">
+                            About
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;xjump.me">@xjump</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https://xjump.me">
+                                    Home
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;categories">
+                                    Categories
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                    Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;rss.xml">
+                                    RSS
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;about">
+                                    About
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;kd-tree-knn&#x2F;">kd_tree_kNN分类</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2013-10-14</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <pre style="background-color:#2b303b;">
+<span style="color:#65737e;">#!/usr/bin/env python</span><span style="color:#65737e;">
+</span><span style="color:#65737e;"># -*- coding: utf-8 -*-</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;"> </span><span style="color:#c0c5ce;">
+</span><span style="color:#65737e;">&#39;&#39;&#39;</span><span style="color:#65737e;">
+</span><span style="color:#65737e;">file: kd_tree_kNN.py</span><span style="color:#65737e;">
+</span><span style="color:#65737e;">author: xjump.me#at#gmail#dot#com</span><span style="color:#65737e;">
+</span><span style="color:#65737e;">
+</span><span style="color:#65737e;">REF:</span><span style="color:#65737e;">
+</span><span style="color:#65737e;">    </span><span style="color:#65737e;">http://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.KDTree.html</span><span style="color:#65737e;">
+</span><span style="color:#65737e;">&#39;&#39;&#39;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">numpy </span><span style="color:#b48ead;">as </span><span style="color:#c0c5ce;">np</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">operator</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">from </span><span style="color:#c0c5ce;">scipy.spatial </span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">cKDTree </span><span style="color:#b48ead;">as </span><span style="color:#c0c5ce;">KDTree</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">sys</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">sys.</span><span style="color:#bf616a;">setrecursionlimit</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">10000</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">__name__==&amp;quot;__main__&amp;quot;:</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">v0 = np.</span><span style="color:#bf616a;">array</span><span style="color:#c0c5ce;">([</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">5</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">6</span><span style="color:#c0c5ce;">])</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">train_data_set = np.</span><span style="color:#bf616a;">array</span><span style="color:#c0c5ce;">([</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">1.2</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">6</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">9</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">17</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">6</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">59</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">1.2</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">44</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">6</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">23</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">9</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">51</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">100</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">18</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">39</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">21</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">66</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">8</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">28</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">88</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">33</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">24</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">0.5</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">56</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">22</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">99</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">0.6</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">70</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">13</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">9</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">])</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">tree = </span><span style="color:#bf616a;">KDTree</span><span style="color:#c0c5ce;">(train_data_set)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">k </span><span style="color:#b48ead;">in </span><span style="color:#96b5b4;">range</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">10</span><span style="color:#c0c5ce;">):</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">k=</span><span style="color:#c0c5ce;">&#39;,k</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#65737e;">#test sample v0, return 3 nearest point, dimesion is k</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">tree.</span><span style="color:#bf616a;">query</span><span style="color:#c0c5ce;">(v0,</span><span style="color:#bf616a;">k</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#bf616a;">p</span><span style="color:#c0c5ce;">=k)</span><span style="color:#c0c5ce;">
+</span></pre><p><a name="continue-reading"></a></p>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <!-- <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all&#x2F;">#all</a> -->
+                    
+                </div>
+            
+            
+                <div class="post-nav">
+                    
+                        <a class="previous" href="https:&#x2F;&#x2F;xjump.me&#x2F;knn-classify&#x2F;">‹ kNN分类例子</a>
+                    
+                    
+                        <a class="next" href="https:&#x2F;&#x2F;xjump.me&#x2F;openssl-engine&#x2F;">使用OpenSSL Engine访问PKCS#11及CryptoAPI ›</a>
+                    
+                    
+                    
+                </div>
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https:&#x2F;&#x2F;xjump.me&#x2F;even.js" ></script>
+      
+    </body>
+
+</html>

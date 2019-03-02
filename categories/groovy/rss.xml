@@ -1,0 +1,23 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>@xjump</title>
+        <link>https://xjump.me</link>
+        <description>notes by xjump</description>
+        <generator>Zola</generator>
+        <language>en</language>
+        <atom:link href="https://xjump.me/categories/groovy/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Sun, 07 Oct 2018 00:00:00 +0000</lastBuildDate>
+        
+            <item>
+                <title>Java动态脚本</title>
+                <pubDate>Sun, 07 Oct 2018 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/java-dyn-script/</link>
+                <guid>https://xjump.me/java-dyn-script/</guid>
+                <description>&lt;p&gt;动态脚本有诸多用途，对于不停机变更执行逻辑，实现部分开放式的业务动态性非常有帮助。不过好的设计需要考虑性能、边界、变更控制等问题，以达到“受控的动态”能力。&lt;&#x2F;p&gt;
+&lt;p&gt;JVM提供了不错的脚本接口，从&lt;a href=&quot;https:&#x2F;&#x2F;docs.oracle.com&#x2F;javase&#x2F;8&#x2F;docs&#x2F;technotes&#x2F;guides&#x2F;vm&#x2F;multiple-language-support.html&quot;&gt;invokedynamic&lt;&#x2F;a&gt;到&lt;a href=&quot;https:&#x2F;&#x2F;www.graalvm.org&#x2F;&quot;&gt;GraalVM&lt;&#x2F;a&gt;，多语言、动态语言、高性能是发展方向。&lt;&#x2F;p&gt;
+&lt;p&gt;Groovy作为可以和Java无缝交互的动态语言，利用了invokedynamic来实现核心功能，开发比较活跃，是动态化比较好的选择。下面介绍几种Groovy嵌入Java应用的方法。为达到class缓存、线程安全等目的，一些其他的方法不做介绍。&lt;&#x2F;p&gt;
+</description>
+            </item>
+        
+    </channel>
+</rss>

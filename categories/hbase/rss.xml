@@ -1,0 +1,56 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>@xjump</title>
+        <link>https://xjump.me</link>
+        <description>notes by xjump</description>
+        <generator>Zola</generator>
+        <language>en</language>
+        <atom:link href="https://xjump.me/categories/hbase/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Wed, 20 Nov 2013 00:00:00 +0000</lastBuildDate>
+        
+            <item>
+                <title>Zookeeper工作原理（转）</title>
+                <pubDate>Wed, 20 Nov 2013 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/zookeeper-basic/</link>
+                <guid>https://xjump.me/zookeeper-basic/</guid>
+                <description>&lt;p&gt;ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，它包含一个简单的原语集，分布式应用程序可以基于它实现同步服务，配置维护和命名服务等。Zookeeper是hadoop的一个子项目，其发展历程无需赘述。在分布式应用中，由于工程师不能很好地使用锁机制，以及基于消息的协调机制不适合在某些应用中使用，因此需要有一种可靠的、可扩展的、分布式的、可配置的协调机制来统一系统的状态。Zookeeper的目的就在于此。本文简单分析zookeeper的工作原理，对于如何使用zookeeper不是本文讨论的重点。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;1 Zookeeper的基本概念&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;1.1 角色&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Zookeeper中的角色主要有以下三类，如下表所示：&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img src=&quot;&#x2F;images&#x2F;zookeeper-roles.jpg&quot;&#x2F;&gt;&lt;&#x2F;center&gt;&lt;&#x2F;p&gt;
+</description>
+            </item>
+        
+            <item>
+                <title>HBase技术介绍（转）</title>
+                <pubDate>Tue, 10 Sep 2013 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/hbase-tech-intro/</link>
+                <guid>https://xjump.me/hbase-tech-intro/</guid>
+                <description>&lt;h3&gt;HBase简介&lt;&#x2F;h3&gt;
+&lt;p&gt;HBase, Hadoop Database，是一个高可靠性、高性能、面向列、可伸缩的分布式存储系统，利用HBase技术可在廉价PC Server上搭建起大规模结构化存储集群。&lt;&#x2F;p&gt;
+&lt;p&gt;HBase是Google Bigtable的开源实现，类似Google Bigtable利用GFS作为其文件存储系统，HBase利用Hadoop HDFS作为其文件存储系统；Google运行MapReduce来处理Bigtable中的海量数据，HBase同样利用Hadoop MapReduce来处理HBase中的海量数据；Google Bigtable利用 Chubby作为协同服务，HBase利用Zookeeper作为对应。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img src=&quot;&#x2F;images&#x2F;hbase-intro-ecosystem.png&quot;&#x2F;&gt;&lt;&#x2F;center&gt;&lt;&#x2F;p&gt;
+</description>
+            </item>
+        
+            <item>
+                <title>HBase介绍（转）</title>
+                <pubDate>Tue, 03 Sep 2013 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/hbase-intro/</link>
+                <guid>https://xjump.me/hbase-intro/</guid>
+                <description>&lt;h3&gt; 一、简介&lt;&#x2F;h3&gt;
+&lt;p&gt;history&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;started by chad walters and jim&lt;&#x2F;li&gt;
+&lt;li&gt;2006.11 G release paper on BigTable&lt;&#x2F;li&gt;
+&lt;li&gt;2007.2 inital HBase prototype created as Hadoop contrib&lt;&#x2F;li&gt;
+&lt;li&gt;2007.10 First useable Hbase&lt;&#x2F;li&gt;
+&lt;li&gt;2008.1 Hadoop become Apache top-level project and Hbase becomes subproject&lt;&#x2F;li&gt;
+&lt;li&gt;2008.10 Hbase 0.18,0.19 released&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;HBase是bigtable的开源山寨版本。是建立的hdfs之上，提供高可靠性、高性能、列存储、可伸缩、实时读写的数据库系统。&lt;&#x2F;p&gt;
+</description>
+            </item>
+        
+    </channel>
+</rss>

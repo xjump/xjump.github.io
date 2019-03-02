@@ -1,0 +1,299 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>@xjump</title>
+
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
+      
+
+      
+          <script src="/slideout/1.0.1/slideout.min.js"></script>
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css">
+
+          <script defer src="/katex/0.10.1/katex.min.js" ></script>
+          <script defer src="/katex/0.10.1/contrib/mathtex-script-type.min.js" ></script>
+              
+          <script defer src="/katex/0.10.1/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+              
+          
+      
+
+      
+          <link rel="stylesheet" href="https:&#x2F;&#x2F;xjump.me&#x2F;site.css">
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css"  >
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">@xjump</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me">
+                            Home
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;categories">
+                            Categories
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                            Archive
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;rss.xml">
+                            RSS
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;about">
+                            About
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;xjump.me">@xjump</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https://xjump.me">
+                                    Home
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;categories">
+                                    Categories
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                    Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;rss.xml">
+                                    RSS
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;about">
+                                    About
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+                        <div class="posts">
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;android-dex-dynamic-load-call-and-security&#x2F;">Android Dex动态加载、调用与安全</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2018-10-13</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p>首先，动态加载与调用不是个新问题，方法也非常直接。关键就是使用DexClassLoader。</p>
+<p>这个方法有一个副作用，那就是/proc/self/maps下会留下很多份dex加载记录，需要到jvm GC时才能释放，内存泄漏倒是没有，就是不太好看。</p>
+<p>对于入参不是String，返回结果不是String的情况，做个Ser/De来搞定即可，接口的界面也能保持干净。</p>
+
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;android-dex-dynamic-load-call-and-security&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;java-dyn-script&#x2F;">Java动态脚本</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2018-10-07</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p>动态脚本有诸多用途，对于不停机变更执行逻辑，实现部分开放式的业务动态性非常有帮助。不过好的设计需要考虑性能、边界、变更控制等问题，以达到“受控的动态”能力。</p>
+<p>JVM提供了不错的脚本接口，从<a href="https://docs.oracle.com/javase/8/docs/technotes/guides/vm/multiple-language-support.html">invokedynamic</a>到<a href="https://www.graalvm.org/">GraalVM</a>，多语言、动态语言、高性能是发展方向。</p>
+<p>Groovy作为可以和Java无缝交互的动态语言，利用了invokedynamic来实现核心功能，开发比较活跃，是动态化比较好的选择。下面介绍几种Groovy嵌入Java应用的方法。为达到class缓存、线程安全等目的，一些其他的方法不做介绍。</p>
+
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;java-dyn-script&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;java11-update-notes&#x2F;">Java 11升级</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2018-10-06</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p>Java 11已于2018-09-25发布，作为一个LTS版本，值得重点关注。但从Java 8升级上来还是会碰到不少问题。</p>
+<p>1、 project需要增加jaxb依赖，否则编译报错。</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">Caused by: java.lang.NoClassDefFoundError: javax/xml/bind/JAXBException</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>增加下面的依赖：</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">dependency</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">groupId</span><span style="color:#c0c5ce;">&gt;javax.xml.bind&lt;/</span><span style="color:#bf616a;">groupId</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">artifactId</span><span style="color:#c0c5ce;">&gt;jaxb-api&lt;/</span><span style="color:#bf616a;">artifactId</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">version</span><span style="color:#c0c5ce;">&gt;2.3.0&lt;/</span><span style="color:#bf616a;">version</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">&lt;/</span><span style="color:#bf616a;">dependency</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+</span></pre>
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;java11-update-notes&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rust-error-handling&#x2F;">Rust错误处理（转）</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2018-08-15</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p><em>转自：https://zhuanlan.zhihu.com/p/25506762，修改排版等内容</em></p>
+<p>人孰无过，过而能改，善莫大焉。程序运行过程中总是会出现各种各样的问题，导致程序出现异常或错误，这些异常和错误本身不是 bug，但是如果不处理好的话就会成为 bug。不同编程语言提供了不同的机制来处理错误和异常，一般分为两大类：把错误当作值来处理；抛出异常。</p>
+<p>Rust 提供以下基础设施做错误处理：</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">Option, </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">Result,</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">unwrap, </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">expect,</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">combinators,</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">try! </span><span style="background-color:#bf616a;color:#2b303b;">macro</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">Error </span><span style="color:#b48ead;">trait</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">From </span><span style="color:#b48ead;">trait</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">Carrier </span><span style="color:#b48ead;">trait</span><span style="color:#c0c5ce;">/Try </span><span style="color:#b48ead;">trait</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>Rust 并没有提供基于 exception 的错误处理机制，虽然 panic! 宏在让进程挂掉时也抛出堆栈，同时也可以用 std::panic::catch_unwind 捕捉 panic，但是极其不推荐用来处理常规错误。</p>
+
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rust-error-handling&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;java-dynamic-proxy-basic&#x2F;">Java动态代理应用基础</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2015-03-14</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p>
+    <strong>0、代理的本质</strong></p>
+<p>
+    如果把对象间方法的调用理解为client到server之间的通信，那么Proxy的本质是实现一个具有特定功能的中间人。在Java中存在多种方式实现对对象方法调用的代理。</p>
+<p>
+    有了中间人之后，就可以对调用进行hook，达到如下目的：</p>
+<p>
+    1）控制调用流程，如权限控制、隐藏、监控调用记录等；</p>
+<p>
+    2）篡改调用方提供的Request（即Input），如对分布式操作进行Map；</p>
+
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;java-dynamic-proxy-basic&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                        </div>
+                        <nav class="pagination">
+                            
+                            
+                                <a class="next" href="https:&#x2F;&#x2F;xjump.me&#x2F;page&#x2F;2&#x2F;">Next ›</a>
+                            
+                        </nav>
+                    
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https:&#x2F;&#x2F;xjump.me&#x2F;even.js" ></script>
+      
+    </body>
+
+</html>

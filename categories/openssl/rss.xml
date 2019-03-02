@@ -1,0 +1,25 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>@xjump</title>
+        <link>https://xjump.me</link>
+        <description>notes by xjump</description>
+        <generator>Zola</generator>
+        <language>en</language>
+        <atom:link href="https://xjump.me/categories/openssl/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Wed, 16 Oct 2013 00:00:00 +0000</lastBuildDate>
+        
+            <item>
+                <title>使用OpenSSL Engine访问PKCS#11及CryptoAPI</title>
+                <pubDate>Wed, 16 Oct 2013 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/openssl-engine/</link>
+                <guid>https://xjump.me/openssl-engine/</guid>
+                <description>&lt;p&gt;
+近来做了一些PKI、数字证书方面的东西，对Windows下CryptoAPI和OpenSSL做了一些分析。下图是在一次分享中提到的OpenSSL架构：
+&lt;&#x2F;p&gt;
+&lt;p&gt;
+&lt;center&gt;&lt;img alt=&quot;&quot; src=&quot;&#x2F;images&#x2F;openssl_arch.png&quot; &#x2F;&gt;&lt;&#x2F;p&gt;&lt;&#x2F;center&gt;
+</description>
+            </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,243 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>@xjump</title>
+
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
+      
+
+      
+          <script src="/slideout/1.0.1/slideout.min.js"></script>
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css">
+
+          <script defer src="/katex/0.10.1/katex.min.js" ></script>
+          <script defer src="/katex/0.10.1/contrib/mathtex-script-type.min.js" ></script>
+              
+          <script defer src="/katex/0.10.1/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+              
+          
+      
+
+      
+          <link rel="stylesheet" href="https:&#x2F;&#x2F;xjump.me&#x2F;site.css">
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css"  >
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">@xjump</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me">
+                            Home
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;categories">
+                            Categories
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                            Archive
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;rss.xml">
+                            RSS
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;about">
+                            About
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;xjump.me">@xjump</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https://xjump.me">
+                                    Home
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;categories">
+                                    Categories
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                    Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;rss.xml">
+                                    RSS
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;about">
+                                    About
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;bitcoin-ecc-algo&#x2F;">why bitcoin use ecc-secp256k1 and ripemd160?</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2013-12-19</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p>
+测试代码如下：</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#65737e;">#!/usr/bin/env python</span><span style="color:#65737e;">
+</span><span style="color:#65737e;"># -*- coding: utf-8 -*-  </span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#65737e;">&#39;&#39;&#39;</span><span style="color:#65737e;">
+</span><span style="color:#65737e;">author: xjump.me#gmail.com</span><span style="color:#65737e;">
+</span><span style="color:#65737e;">reference: </span><span style="color:#65737e;">
+</span><span style="color:#65737e;">    </span><span style="color:#65737e;">http://bitcoin.org/bitcoin.pdf&amp;lrm;</span><span style="color:#65737e;">
+</span><span style="color:#65737e;">    </span><span style="color:#65737e;">http://www.heikkitoivonen.net/m2crypto/api</span><span style="color:#65737e;">
+</span><span style="color:#65737e;">    </span><span style="color:#65737e;">http://openssl.org</span><span style="color:#65737e;">
+</span><span style="color:#65737e;">&#39;&#39;&#39;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">from </span><span style="color:#c0c5ce;">M2Crypto </span><span style="color:#b48ead;">import </span><span style="color:#bf616a;">EC</span><span style="color:#c0c5ce;">,</span><span style="color:#bf616a;">EVP</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">base64 </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">ec_curve = </span><span style="color:#bf616a;">EC</span><span style="color:#c0c5ce;">.NID_secp256k1</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">priv_file = &#39;</span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;">-ecc-priv-key.pem</span><span style="color:#c0c5ce;">&#39; % (ec_curve)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">pub_file = &#39;</span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;">-ecc-pub-key.pem</span><span style="color:#c0c5ce;">&#39; % (ec_curve)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#65737e;">#generate the ECC keys</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">ec = EC.</span><span style="color:#bf616a;">gen_params</span><span style="color:#c0c5ce;">(ec_curve)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">ec.</span><span style="color:#bf616a;">gen_key</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">ec.</span><span style="color:#bf616a;">save_key</span><span style="color:#c0c5ce;">(priv_file, </span><span style="color:#d08770;">None </span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">ec.</span><span style="color:#bf616a;">save_pub_key</span><span style="color:#c0c5ce;">(pub_file)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#65737e;">#load the keys from files</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">ec2=EC.</span><span style="color:#bf616a;">load_key</span><span style="color:#c0c5ce;">(priv_file)</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">the result of check key is: </span><span style="color:#c0c5ce;">&quot;,ec2.</span><span style="color:#bf616a;">check_key</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">ec_pub = ec2.</span><span style="color:#bf616a;">pub</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+</span><span style="color:#65737e;">#print dir(ec2)</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">pub_der = ec_pub.</span><span style="color:#bf616a;">get_der</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">pub_pem = base64.</span><span style="color:#bf616a;">b64encode</span><span style="color:#c0c5ce;">(pub_der)</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">PEM public key is: </span><span style="color:#96b5b4;">\n</span><span style="color:#c0c5ce;">&#39;,pub_pem</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">md = EVP.</span><span style="color:#bf616a;">MessageDigest</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">ripemd160</span><span style="color:#c0c5ce;">&quot;)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">md.</span><span style="color:#bf616a;">update</span><span style="color:#c0c5ce;">(&#39;</span><span style="color:#a3be8c;">why bitcoin use ecc-secp256k1 and ripemd160?</span><span style="color:#c0c5ce;">&#39;)</span><span style="color:#c0c5ce;">
+</span><span style="color:#96b5b4;">hash </span><span style="color:#c0c5ce;">= md.</span><span style="color:#bf616a;">digest</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">r,s = ec2.</span><span style="color:#bf616a;">sign_dsa</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">hash</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">ecdsa signature is: r=</span><span style="color:#c0c5ce;">&quot;,base64.</span><span style="color:#bf616a;">b64encode</span><span style="color:#c0c5ce;">(r),&quot;</span><span style="color:#a3be8c;">,s=</span><span style="color:#c0c5ce;">&quot;,base64.</span><span style="color:#bf616a;">b64encode</span><span style="color:#c0c5ce;">(s)</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">ecdsa signature verify result is:</span><span style="color:#c0c5ce;">&quot;,ec2.</span><span style="color:#bf616a;">verify_dsa</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">hash</span><span style="color:#c0c5ce;">, r, s)</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">END</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#c0c5ce;">
+</span></pre>
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <!-- <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all&#x2F;">#all</a> -->
+                    
+                </div>
+            
+            
+                <div class="post-nav">
+                    
+                        <a class="previous" href="https:&#x2F;&#x2F;xjump.me&#x2F;mahout-similarity&#x2F;">‹ Mahout相似性度量（转）</a>
+                    
+                    
+                        <a class="next" href="https:&#x2F;&#x2F;xjump.me&#x2F;android-jni&#x2F;">Android &amp; JNI reference ›</a>
+                    
+                    
+                    
+                </div>
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https:&#x2F;&#x2F;xjump.me&#x2F;even.js" ></script>
+      
+    </body>
+
+</html>

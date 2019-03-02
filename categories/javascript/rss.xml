@@ -1,0 +1,70 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>@xjump</title>
+        <link>https://xjump.me</link>
+        <description>notes by xjump</description>
+        <generator>Zola</generator>
+        <language>en</language>
+        <atom:link href="https://xjump.me/categories/javascript/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Sun, 07 Oct 2018 00:00:00 +0000</lastBuildDate>
+        
+            <item>
+                <title>Java动态脚本</title>
+                <pubDate>Sun, 07 Oct 2018 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/java-dyn-script/</link>
+                <guid>https://xjump.me/java-dyn-script/</guid>
+                <description>&lt;p&gt;动态脚本有诸多用途，对于不停机变更执行逻辑，实现部分开放式的业务动态性非常有帮助。不过好的设计需要考虑性能、边界、变更控制等问题，以达到“受控的动态”能力。&lt;&#x2F;p&gt;
+&lt;p&gt;JVM提供了不错的脚本接口，从&lt;a href=&quot;https:&#x2F;&#x2F;docs.oracle.com&#x2F;javase&#x2F;8&#x2F;docs&#x2F;technotes&#x2F;guides&#x2F;vm&#x2F;multiple-language-support.html&quot;&gt;invokedynamic&lt;&#x2F;a&gt;到&lt;a href=&quot;https:&#x2F;&#x2F;www.graalvm.org&#x2F;&quot;&gt;GraalVM&lt;&#x2F;a&gt;，多语言、动态语言、高性能是发展方向。&lt;&#x2F;p&gt;
+&lt;p&gt;Groovy作为可以和Java无缝交互的动态语言，利用了invokedynamic来实现核心功能，开发比较活跃，是动态化比较好的选择。下面介绍几种Groovy嵌入Java应用的方法。为达到class缓存、线程安全等目的，一些其他的方法不做介绍。&lt;&#x2F;p&gt;
+</description>
+            </item>
+        
+            <item>
+                <title>javascript探测执行环境</title>
+                <pubDate>Tue, 10 Dec 2013 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/js-sniffer/</link>
+                <guid>https://xjump.me/js-sniffer/</guid>
+                <description>&lt;p&gt;
+1、探测调用者：&lt;&#x2F;p&gt;
+</description>
+            </item>
+        
+            <item>
+                <title>dump objects info from JavaScript</title>
+                <pubDate>Wed, 08 May 2013 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/dump-obj-js/</link>
+                <guid>https://xjump.me/dump-obj-js/</guid>
+                <description>&lt;p&gt;
+Dump JavaScript object for PyV8 and NodeJS.&lt;&#x2F;p&gt;
+&lt;p&gt;POC&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;span style=&quot;color:#b48ead;&quot;&gt;function &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;dump&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;(obj){&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;for&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;var &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;item &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;in &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;obj&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;){&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;(typeof &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;item &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;=== &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Object&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;){&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Print&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Object&amp;#39;s source is:&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot; + &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;item&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;toSource&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;());&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;dump&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;item&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;);&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;else if&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;(typeof &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;obj&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;item&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;] ===&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Object&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;){&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;dump&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;obj&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;item&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;]);&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;else&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Print&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;item&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;toString&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;());&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;pre&gt;</description>
+            </item>
+        
+            <item>
+                <title>使用PyV8构建JavaScript抽象语法树（AST）</title>
+                <pubDate>Fri, 29 Mar 2013 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/pyv8-gen-javascript-ast/</link>
+                <guid>https://xjump.me/pyv8-gen-javascript-ast/</guid>
+                <description>&lt;h3&gt;简介&lt;&#x2F;h3&gt;
+&lt;p&gt;
+    本文介绍使用PyV8生成JavaScript的抽象语法树的实现过程，使用该语法树进行JavaScript代码优化、变形、压缩等将在后续进行介绍。&lt;&#x2F;p&gt;
+&lt;p&gt;
+    编译器（解释器）对语言的处理过程大致分为：词法分析-&amp;gt;语法分析-&amp;gt;中间代码生成-&amp;gt;代码优化-&amp;gt;生成可执行模块&#x2F;字节码解释执行。&lt;&#x2F;p&gt;
+</description>
+            </item>
+        
+    </channel>
+</rss>
