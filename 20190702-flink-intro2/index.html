@@ -140,29 +140,29 @@
             <ul>
                 
                 <li>
-                    <a href="https://xjump.me/20190701-flink-intro/#1-flinkyu-da-shu-ju-ji-suan" class="toc-link">1 Flink与大数据计算</a>
+                    <a href="https://xjump.me/20190702-flink-intro2/#1-hui-gu" class="toc-link">1 回顾</a>
                     
                 </li>
                 
                 <li>
-                    <a href="https://xjump.me/20190701-flink-intro/#2-dan-ji-ji-suan-ying-yong" class="toc-link">2 单机计算应用</a>
+                    <a href="https://xjump.me/20190702-flink-intro2/#2-timede-wan-bei-xing" class="toc-link">2 Time的完备性</a>
                     
                     <ul>
                         
                         <li>
-                            <a href="https://xjump.me/20190701-flink-intro/#2-1-xia-zai-bing-qi-dong-flink" class="toc-link">2.1 下载并启动Flink</a>
+                            <a href="https://xjump.me/20190702-flink-intro2/#2-1-xia-zai-bing-qi-dong-flink" class="toc-link">2.1 下载并启动flink</a>
                         </li>
                         
                         <li>
-                            <a href="https://xjump.me/20190701-flink-intro/#2-2-bian-xie-jian-dan-de-ji-suan-ying-yong" class="toc-link">2.2 编写简单的计算应用</a>
+                            <a href="https://xjump.me/20190702-flink-intro2/#2-2-bian-xie-jian-dan-de-ji-suan-ying-yong" class="toc-link">2.2 编写简单的计算应用</a>
                         </li>
                         
                         <li>
-                            <a href="https://xjump.me/20190701-flink-intro/#2-3-ce-shi-diao-shi-ji-suan-ying-yong" class="toc-link">2.3 测试&amp;调试计算应用</a>
+                            <a href="https://xjump.me/20190702-flink-intro2/#2-3-ce-shi-diao-shi-ji-suan-ying-yong" class="toc-link">2.3 测试&amp;调试计算应用</a>
                         </li>
                         
                         <li>
-                            <a href="https://xjump.me/20190701-flink-intro/#2-4-bian-xie-shi-yong-de-ji-suan-ying-yong" class="toc-link">2.4 编写实用的计算应用</a>
+                            <a href="https://xjump.me/20190702-flink-intro2/#2-4-bian-xie-shi-yong-de-ji-suan-ying-yong" class="toc-link">2.4 编写实用的计算应用</a>
                         </li>
                         
                     </ul>
@@ -170,20 +170,20 @@
                 </li>
                 
                 <li>
-                    <a href="https://xjump.me/20190701-flink-intro/#3-wen-ti-ji-xia-yi-bu" class="toc-link">3 问题及下一步</a>
+                    <a href="https://xjump.me/20190702-flink-intro2/#3-wen-ti-ji-xia-yi-bu" class="toc-link">3 问题及下一步</a>
                     
                     <ul>
                         
                         <li>
-                            <a href="https://xjump.me/20190701-flink-intro/#3-1-scalayu-flinkde-ban-ben-chong-tu-wen-ti" class="toc-link">3.1 scala与Flink的版本冲突问题</a>
+                            <a href="https://xjump.me/20190702-flink-intro2/#3-1-scalayu-flinkde-ban-ben-chong-tu-wen-ti" class="toc-link">3.1 scala与flink的版本冲突问题</a>
                         </li>
                         
                         <li>
-                            <a href="https://xjump.me/20190701-flink-intro/#3-2-flinkhe-xin-gai-nian-jie-shao" class="toc-link">3.2 Flink核心概念介绍</a>
+                            <a href="https://xjump.me/20190702-flink-intro2/#3-2-flinkhe-xin-gai-nian-jie-shao" class="toc-link">3.2 flink核心概念介绍</a>
                         </li>
                         
                         <li>
-                            <a href="https://xjump.me/20190701-flink-intro/#3-3-dan-ji-mo-shi-xia-ce-shi-wen-ti" class="toc-link">3.3 单机模式下测试问题</a>
+                            <a href="https://xjump.me/20190702-flink-intro2/#3-3-dan-ji-mo-shi-xia-ce-shi-wen-ti" class="toc-link">3.3 单机模式下测试问题</a>
                         </li>
                         
                     </ul>
@@ -200,27 +200,28 @@
     
     <header class="post__header">
         <h1 class="post__title">
-            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20190701-flink-intro&#x2F;">Flink应用(1)</a>
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20190702-flink-intro2&#x2F;">flink应用(2)</a>
         </h1>
         <div class="post__meta">
-            <span class="post__time">2019-07-01</span>
+            <span class="post__time">2019-07-02</span>
             
         </div>
     </header>
 
     <div class="post-content">
-      <h2 id="1-flinkyu-da-shu-ju-ji-suan">1 Flink与大数据计算</h2>
-<p>Flink以Stream模型为基础对数据计算进行建模，为批和流的处理实现了统一。并在低延迟、稳定性、编程接口友好等方面具有较大的优势，是大数据实时计算的利器。从下图（摘自官方）可以看出，Flink将来自各个数据源（Source）的数据进行计算，让后将结果交给各个下游数据宿（Sink）进行后续消费。同时，对于Source和Sink也可以是Flink计算应用，进行更复杂的级联，构建更丰富的数据处理模式。</p>
-<p><center>
-<img alt="Flink" src="/images/flink/flink-home-graphic.png" style="width: 800px; height: 263px;" />
-</center></p>
+      <h2 id="1-hui-gu">1 回顾</h2>
+<p>上一篇文章对fink简单应用做了介绍，本文继续介绍flink的核心概念。回顾上一篇，flink的两个核心概念Time和Window是对<code>流</code>最深刻的描述。先来回顾一下：</p>
+<blockquote>
+<p>Time为数据打上一个维度标签，使得数据集合转化为<code>流</code>。Window利用Time对<code>流</code>进行进一步抽象，按照一定的区间组合来处理<code>流</code>这种数据，从中发现特征，寻找商业价值。</p>
+</blockquote>
+<p>Time是<code>流</code>的关键维度，无Time不成<code>流</code>。Time是Window的基础，因为Window是依据Time的值来进行划分（Global Window可以看作Time从0到无穷大）。剖析Window前，首先需要明确Time是否足够清晰。或者说上一篇文章介绍的EventTime、ProcessingTime、IngestTime是否足够完备？答案是否定的。那么Time还有哪些模糊地带，或者是还有哪些问题需要考虑？</p>
 <p><a name="continue-reading"></a></p>
-<p>Flink有较多的线上应用背书，其优化版本<a href=https://yq.aliyun.com/articles/326161>Blink</a>经历过阿里巴巴生产环境双11考验，实现了每秒4亿次计算、毫秒级延迟的目标。并且，随着Blink SQL逐步集成到开源Flink项目中，其通用性和易用性都具有较大的提升，相信越来越多的大数据计算会利用Flink来构建。</p>
-<p>下面先介绍一个简单的单机计算应用Demo。</p>
-<h2 id="2-dan-ji-ji-suan-ying-yong">2 单机计算应用</h2>
-<p>这部分将通过创建简单的计算应用到创建真实的PV、UV计算应用，来体验Flink。</p>
-<h3 id="2-1-xia-zai-bing-qi-dong-flink">2.1 下载并启动Flink</h3>
-<p>首先下载并启动Flink，这一步并非必须，只是为了更好的在单机进行集群模拟体验。</p>
+<p>首先无论是EventTime还是ProcessingTime或IngestTime，对最终的数据处理都存在不准确问题。</p>
+<h2 id="2-timede-wan-bei-xing">2 Time的完备性</h2>
+<p>先看EventTime。EventTime由事件的发生处产生，这通常和数据的采集点有关。数据采集最普遍的情况就是各种传感器，而通常他们的时间存在一定的偏差，并且，从采集节点到flink应用的计算节点之间，也存在传输延迟，导致Time可能与window间隔发生交错，进而导致计算错误。</p>
+<p>再看ProcessingTime。ProcessingTime对于计算任务的积压存在偏差，</p>
+<h3 id="2-1-xia-zai-bing-qi-dong-flink">2.1 下载并启动flink</h3>
+<p>首先下载并启动flink，这一步并非必须，只是为了更好的在单机进行集群模拟体验。</p>
 <pre style="background-color:#2b303b;">
 <span style="color:#bf616a;">wget</span><span style="color:#c0c5ce;"> http://mirror.bit.edu.cn/apache/flink/flink-1.8.1/flink-1.8.1-bin-scala_2.12.tgz</span><span style="color:#c0c5ce;">
 </span><span style="color:#bf616a;">tar</span><span style="color:#c0c5ce;"> zxf flink-1.8.1-bin-scala_2.12.tgz</span><span style="color:#c0c5ce;">
@@ -228,7 +229,7 @@
 </span><span style="color:#bf616a;">./start-cluster.sh</span><span style="color:#c0c5ce;">
 </span></pre>
 <p>Windows下比较简单，下载解压后通过<code>start-cluster.bat</code>进行启动。</p>
-<p>通过上述<code>start-cluster</code>启动脚本输出情况，判断是否启动正常，并访问<code>http://127.0.0.1:8081</code>查看Flink工作情况。</p>
+<p>通过上述<code>start-cluster</code>启动脚本输出情况，判断是否启动正常，并访问<code>http://127.0.0.1:8081</code>查看flink工作情况。</p>
 <h3 id="2-2-bian-xie-jian-dan-de-ji-suan-ying-yong">2.2 编写简单的计算应用</h3>
 <p>计算应用可以选择Java或Scala语言来编写。根据使用不同层面的API，可以选择低级别的functor和高级别的SQL来实现计算逻辑。</p>
 <p>下面通过Scala编写的简单PV、UV计算来进行说明。</p>
@@ -279,13 +280,13 @@
 </span><span style="color:#65737e;">#*nix</span><span style="color:#65737e;">
 </span><span style="color:#bf616a;">nc -lk</span><span style="color:#c0c5ce;"> 9999</span><span style="color:#c0c5ce;">
 </span></pre>
-<p>然后，启动Flink计算应用，也就是启动上述StreamingJob的main，可以在idea中直接运行main函数。</p>
+<p>然后，启动flink计算应用，也就是启动上述StreamingJob的main，可以在idea中直接运行main函数。</p>
 <p>注意顺序不要弄反了，否则可能导致StreamingJob启动失败。</p>
 <p>在nc命令窗口输入</p>
 <pre style="background-color:#2b303b;">
 <span style="color:#c0c5ce;">I like apple, you like orange.</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">go go go</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">Flink streaming job.</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">flink streaming job.</span><span style="color:#c0c5ce;">
 </span></pre>
 <p>然后在StreamingJob的控制台看到计算结果：</p>
 <pre style="background-color:#2b303b;">
@@ -297,22 +298,22 @@
 </span><span style="color:#c0c5ce;">8&gt; (go,3)</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">2&gt; (streaming,1)</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">12&gt; (job,1)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">10&gt; (Flink,1)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">10&gt; (flink,1)</span><span style="color:#c0c5ce;">
 </span></pre>
 <p>在idea中下断点，可以对StreamingJob进行调试。</p>
 <h3 id="2-4-bian-xie-shi-yong-de-ji-suan-ying-yong">2.4 编写实用的计算应用</h3>
 <p>现在，让我们来实现带滑动窗口的PV、UV计算应用。</p>
-<p>首先，需要对Flink中的几个核心的概念进行介绍。</p>
+<p>首先，需要对flink中的几个核心的概念进行介绍。</p>
 <h4 id="2-4-1-shi-jian">2.4.1 时间</h4>
-<p>实时计算的一个核心数据维度是时间。时间是<code>流</code>的固有属性，有了时间，数据才能真正被描述成流动的，基于<code>流</code>的计算，本质上是基于某个时间区间的数据处理，以提取该区间内数据的某种商业特征为目标。Flink中的时间分为3种类型：</p>
+<p>实时计算的一个核心数据维度是时间。时间是<code>流</code>的固有属性，有了时间，数据才能真正被描述成流动的，基于<code>流</code>的计算，本质上是基于某个时间区间的数据处理，以提取该区间内数据的某种商业特征为目标。flink中的时间分为3种类型：</p>
 <ul>
 <li>
 <p><code>Event Time</code>
-指的是时间发生的时间。对于Flink应用，EventTime将通过Event的生产者指定，如通过附加在Event数据中的一个字段来指定。由于这个时间是Event的生产者指定的，所以原则上是无法保证正确性的，Flink应用100%完全信任这个时间。通常在Flink应用中解析提取该字段后进行应用。</p>
+指的是时间发生的时间。对于flink应用，EventTime将通过Event的生产者指定，如通过附加在Event数据中的一个字段来指定。由于这个时间是Event的生产者指定的，所以原则上是无法保证正确性的，flink应用100%完全信任这个时间。通常在flink应用中解析提取该字段后进行应用。</p>
 </li>
 <li>
 <p><code>Processing Time</code>
-指的是执行计算的Flink节点进行某个operation时的时间，从该计算节点的系统时钟来获取。</p>
+指的是执行计算的flink节点进行某个operation时的时间，从该计算节点的系统时钟来获取。</p>
 </li>
 <li>
 <p><code>Ingest Time</code>
@@ -320,7 +321,7 @@
 </li>
 </ul>
 <h4 id="2-4-2-chuang-kou">2.4.2 窗口</h4>
-<p>窗口(Window)又可以理解为时间区间，Flink中的窗口有4种：</p>
+<p>窗口(Window)又可以理解为时间区间，flink中的窗口有4种：</p>
 <ul>
 <li><code>Tumbling Window</code>
 可以翻译为翻滚窗口。指的是按照一定的区间长度来切分时间，并且区间的起点、终点都是固定的。比如每天从00:00:00到23:59:59，或者每分钟，每小时等等。窗口对应的时间区间起点、终点是固定的，区间长度也是固定的。例如</li>
@@ -336,7 +337,7 @@
 <pre style="background-color:#2b303b;">
 <span style="color:#c0c5ce;">SlidingEventTimeWindows.of(Time.seconds(</span><span style="color:#d08770;">30</span><span style="color:#c0c5ce;">), Time.seconds(</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">))</span><span style="color:#c0c5ce;">
 </span></pre>
-<p>表示以EventTime为基准，30秒为滑动窗口长度，最小滑动单位为1秒来创建window。Flink可以指定的最小滑动单位的最小值是1毫秒。</p>
+<p>表示以EventTime为基准，30秒为滑动窗口长度，最小滑动单位为1秒来创建window。flink可以指定的最小滑动单位的最小值是1毫秒。</p>
 <ul>
 <li><code>Session Window</code>
 可以翻译为会话窗口。指的是按照相邻两个时间的时间间隔为窗口边界，但区间的起点、终点都是不固定的。比如最小间隔为10秒，那么相邻事件超过10秒的将归为不同的窗口。例如</li>
@@ -451,17 +452,17 @@
 <p>然后将jar文件提交通过web console提交，并启动任务。</p>
 <p>最后在nc窗口输入数据，观察stdout的输出结果。</p>
 <h2 id="3-wen-ti-ji-xia-yi-bu">3 问题及下一步</h2>
-<h3 id="3-1-scalayu-flinkde-ban-ben-chong-tu-wen-ti">3.1 scala与Flink的版本冲突问题</h3>
-<p>测试过程中发现scala 2.12.8与Flink 1.8.1-scala_2.12冲突，将StreamingJob切换到scala_2.12.7解决。</p>
+<h3 id="3-1-scalayu-flinkde-ban-ben-chong-tu-wen-ti">3.1 scala与flink的版本冲突问题</h3>
+<p>测试过程中发现scala 2.12.8与flink 1.8.1-scala_2.12冲突，将StreamingJob切换到scala_2.12.7解决。</p>
 <p>问题现象为StreamingJob启动报错</p>
 <pre style="background-color:#2b303b;">
 <span style="color:#c0c5ce;">java.lang.NoClassDefFoundError: scala/math/Ordering$$anon$9</span><span style="color:#c0c5ce;">
 </span></pre>
-<p>Flink项目bug参考：<a href=http://mail-archives.apache.org/mod_mbox/flink-issues/201905.mbox/%3cJIRA.13232397.1557388276000.223081.1557391740894@Atlassian.JIRA%3e>Flink-12461</a></p>
-<h3 id="3-2-flinkhe-xin-gai-nian-jie-shao">3.2 Flink核心概念介绍</h3>
-<p>本文介绍了Flink的两个核心概念：Time与Window，另外还有Trigger、Wartermark、Connector、checkpoint、savepoint等等一系列概念将在后续文章进行介绍。</p>
+<p>flink项目bug参考：<a href=http://mail-archives.apache.org/mod_mbox/flink-issues/201905.mbox/%3cJIRA.13232397.1557388276000.223081.1557391740894@Atlassian.JIRA%3e>FLINK-12461</a></p>
+<h3 id="3-2-flinkhe-xin-gai-nian-jie-shao">3.2 flink核心概念介绍</h3>
+<p>本文介绍了flink的两个核心概念：Time与Window，另外还有Trigger、WindowFunction、Wartermark、Connector、checkpoint、savepoint等等一系列概念将在后续文章进行介绍。</p>
 <h3 id="3-3-dan-ji-mo-shi-xia-ce-shi-wen-ti">3.3 单机模式下测试问题</h3>
-<p>Web Console提交的job无法删除（window平台存在问题，Mac、Linux无问题）</p>
+<p>Web Console提交的job无法删除（window平台，mac、linux无问题）</p>
 
     </div>
 
@@ -480,10 +481,8 @@
             
                 <div class="post-nav">
                     
-                        <a class="previous" href="https:&#x2F;&#x2F;xjump.me&#x2F;android-dex-dynamic-load-call-and-security&#x2F;">‹ Android Dex动态加载、调用与安全</a>
+                        <a class="previous" href="https:&#x2F;&#x2F;xjump.me&#x2F;20190701-flink-intro&#x2F;">‹ Flink应用(1)</a>
                     
-                    
-                        <a class="next" href="https:&#x2F;&#x2F;xjump.me&#x2F;20190702-flink-intro2&#x2F;">flink应用(2) ›</a>
                     
                     
                     

@@ -6,17 +6,31 @@
         <generator>Zola</generator>
         <language>en</language>
         <atom:link href="https://xjump.me/tags/all/rss.xml" rel="self" type="application/rss+xml"/>
-        <lastBuildDate>Mon, 01 Jul 2019 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 02 Jul 2019 00:00:00 +0000</lastBuildDate>
         
             <item>
-                <title>flink应用(1)</title>
+                <title>flink应用(2)</title>
+                <pubDate>Tue, 02 Jul 2019 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/20190702-flink-intro2/</link>
+                <guid>https://xjump.me/20190702-flink-intro2/</guid>
+                <description>&lt;h2 id=&quot;1-hui-gu&quot;&gt;1 回顾&lt;&#x2F;h2&gt;
+&lt;p&gt;上一篇文章对fink简单应用做了介绍，本文继续介绍flink的核心概念。回顾上一篇，flink的两个核心概念Time和Window是对&lt;code&gt;流&lt;&#x2F;code&gt;最深刻的描述。先来回顾一下：&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Time为数据打上一个维度标签，使得数据集合转化为&lt;code&gt;流&lt;&#x2F;code&gt;。Window利用Time对&lt;code&gt;流&lt;&#x2F;code&gt;进行进一步抽象，按照一定的区间组合来处理&lt;code&gt;流&lt;&#x2F;code&gt;这种数据，从中发现特征，寻找商业价值。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Time是&lt;code&gt;流&lt;&#x2F;code&gt;的关键维度，无Time不成&lt;code&gt;流&lt;&#x2F;code&gt;。Time是Window的基础，因为Window是依据Time的值来进行划分（Global Window可以看作Time从0到无穷大）。剖析Window前，首先需要明确Time是否足够清晰。或者说上一篇文章介绍的EventTime、ProcessingTime、IngestTime是否足够完备？答案是否定的。那么Time还有哪些模糊地带，或者是还有哪些问题需要考虑？&lt;&#x2F;p&gt;
+</description>
+            </item>
+        
+            <item>
+                <title>Flink应用(1)</title>
                 <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
                 <link>https://xjump.me/20190701-flink-intro/</link>
                 <guid>https://xjump.me/20190701-flink-intro/</guid>
-                <description>&lt;h2 id=&quot;1-flinkyu-da-shu-ju-ji-suan&quot;&gt;1 flink与大数据计算&lt;&#x2F;h2&gt;
-&lt;p&gt;flink以Stream模型为基础对数据计算进行建模，为批和流的处理实现了统一。并在低延迟、稳定性、编程接口友好等方面具有较大的优势，是大数据实时计算的利器。从下图（摘自官方）可以看出，flink将来自各个数据源（Source）的数据进行计算，让后将结果交给各个下游数据宿（Sink）进行后续消费。同时，对于Source和Sink也可以是flink计算应用，进行更复杂的级联，构建更丰富的数据处理模式。&lt;&#x2F;p&gt;
+                <description>&lt;h2 id=&quot;1-flinkyu-da-shu-ju-ji-suan&quot;&gt;1 Flink与大数据计算&lt;&#x2F;h2&gt;
+&lt;p&gt;Flink以Stream模型为基础对数据计算进行建模，为批和流的处理实现了统一。并在低延迟、稳定性、编程接口友好等方面具有较大的优势，是大数据实时计算的利器。从下图（摘自官方）可以看出，Flink将来自各个数据源（Source）的数据进行计算，让后将结果交给各个下游数据宿（Sink）进行后续消费。同时，对于Source和Sink也可以是Flink计算应用，进行更复杂的级联，构建更丰富的数据处理模式。&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;center&gt;
-&lt;img alt=&quot;flink&quot; src=&quot;&#x2F;images&#x2F;flink&#x2F;flink-home-graphic.png&quot; style=&quot;width: 800px; height: 263px;&quot; &#x2F;&gt;
+&lt;img alt=&quot;Flink&quot; src=&quot;&#x2F;images&#x2F;flink&#x2F;flink-home-graphic.png&quot; style=&quot;width: 800px; height: 263px;&quot; &#x2F;&gt;
 &lt;&#x2F;center&gt;&lt;&#x2F;p&gt;
 </description>
             </item>
