@@ -323,12 +323,12 @@
 <p>窗口(Window)又可以理解为时间区间，Flink中的窗口有4种：</p>
 <ul>
 <li><code>Tumbling Window</code>
-可以翻译为翻滚窗口。指的是按照一定的区间长度来切分时间，并且区间的起点、终点都是固定的。比如每天从00:00:00到23:59:59，或者每分钟，每小时等等。窗口对应的时间区间起点、终点是固定的，区间长度也是固定的。例如</li>
+可以翻译为滚动窗口。指的是按照一定的区间长度来切分时间，并且区间的起点、终点都是固定的。比如每天从00:00:00到23:59:59，或者每分钟，每小时等等。窗口对应的时间区间起点、终点是固定的，区间长度也是固定的。例如</li>
 </ul>
 <pre style="background-color:#2b303b;">
 <span style="color:#c0c5ce;">TumblingProcessingTimeWindows.of(Time.seconds(</span><span style="color:#d08770;">5</span><span style="color:#c0c5ce;">))</span><span style="color:#c0c5ce;">
 </span></pre>
-<p>表示以ProcessingTime为基准，每5秒一个翻滚窗口来创建window。</p>
+<p>表示以ProcessingTime为基准，每5秒一个滚动窗口来创建window。</p>
 <ul>
 <li><code>Sliding Window</code>
 可以翻译为滑动窗口。指的是按照一定的区间长度来切分时间，但区间的起点、终点都是在移动的。比如最后15分钟，最后一周，最后3小时等等。窗口对应的时间区间只有长度固定，而起点、终点都不固定。例如</li>
