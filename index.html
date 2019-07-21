@@ -137,6 +137,32 @@
                                     
     <header class="post__header">
         <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20190703-flink-app3&#x2F;">Flink应用(3)</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2019-07-03</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <h2 id="1-hui-gu">1 回顾</h2>
+<p>上一篇文章对Flink中的核心概念之Time和Window设计之因做了深入的探讨。先来回顾一下：</p>
+<blockquote>
+<p>EventTime是具有反演特性的现代流式计算建模的核心，在如何避免传输延时带来的错窗问题上，Flink使用watermark和Lateness机制进行处理，使得整个基础更加稳固。同时提供丰富的Window生成和计算机制，使得编写流式计算应用变得简单。</p>
+</blockquote>
+<p>成熟的计算系统还必须具备健壮性，才能承担起更重要的业务应用。Flink中的窗口计算大多需要依赖历史计算结果，这种计算称之为<code>有状态的</code>。在分布式系统中，状态是引起复杂性的根源之一。Flink如何保证<code>有状态的计算</code>足够健壮，将在本篇进行说明。</p>
+
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20190703-flink-app3&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
             <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20190702-flink-intro2&#x2F;">Flink应用(2)</a>
         </h1>
         <div class="post__meta">
@@ -227,38 +253,6 @@
                                     </div>
                                     <div class="read-more">
                                         <a href="https:&#x2F;&#x2F;xjump.me&#x2F;java-dyn-script&#x2F;">Read more...</a>
-                                    </div>
-                                </article>
-                            
-                                <article class="post">
-                                    
-    <header class="post__header">
-        <h1 class="post__title">
-            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;java11-update-notes&#x2F;">Java 11升级</a>
-        </h1>
-        <div class="post__meta">
-            <span class="post__time">2018-10-06</span>
-            
-        </div>
-    </header>
-
-                                    <div class="post__summary">
-                                        <p>Java 11已于2018-09-25发布，作为一个LTS版本，值得重点关注。但从Java 8升级上来还是会碰到不少问题。</p>
-<p>1、 project需要增加jaxb依赖，否则编译报错。</p>
-<pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">Caused by: java.lang.NoClassDefFoundError: javax/xml/bind/JAXBException</span><span style="color:#c0c5ce;">
-</span></pre>
-<p>增加下面的依赖：</p>
-<pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">dependency</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">groupId</span><span style="color:#c0c5ce;">&gt;javax.xml.bind&lt;/</span><span style="color:#bf616a;">groupId</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">artifactId</span><span style="color:#c0c5ce;">&gt;jaxb-api&lt;/</span><span style="color:#bf616a;">artifactId</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">version</span><span style="color:#c0c5ce;">&gt;2.3.0&lt;/</span><span style="color:#bf616a;">version</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">&lt;/</span><span style="color:#bf616a;">dependency</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
-</span></pre>
-                                    </div>
-                                    <div class="read-more">
-                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;java11-update-notes&#x2F;">Read more...</a>
                                     </div>
                                 </article>
                             

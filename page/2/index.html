@@ -137,6 +137,38 @@
                                     
     <header class="post__header">
         <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;java11-update-notes&#x2F;">Java 11升级</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2018-10-06</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p>Java 11已于2018-09-25发布，作为一个LTS版本，值得重点关注。但从Java 8升级上来还是会碰到不少问题。</p>
+<p>1、 project需要增加jaxb依赖，否则编译报错。</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">Caused by: java.lang.NoClassDefFoundError: javax/xml/bind/JAXBException</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>增加下面的依赖：</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">dependency</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">groupId</span><span style="color:#c0c5ce;">&gt;javax.xml.bind&lt;/</span><span style="color:#bf616a;">groupId</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">artifactId</span><span style="color:#c0c5ce;">&gt;jaxb-api&lt;/</span><span style="color:#bf616a;">artifactId</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">version</span><span style="color:#c0c5ce;">&gt;2.3.0&lt;/</span><span style="color:#bf616a;">version</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">&lt;/</span><span style="color:#bf616a;">dependency</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+</span></pre>
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;java11-update-notes&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
             <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rust-error-handling&#x2F;">Rust错误处理（转）</a>
         </h1>
         <div class="post__meta">
@@ -265,98 +297,6 @@
                                     </div>
                                     <div class="read-more">
                                         <a href="https:&#x2F;&#x2F;xjump.me&#x2F;jvm-attack&#x2F;">Read more...</a>
-                                    </div>
-                                </article>
-                            
-                                <article class="post">
-                                    
-    <header class="post__header">
-        <h1 class="post__title">
-            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;ios-framework-destruct&#x2F;">iOS framework结构</a>
-        </h1>
-        <div class="post__meta">
-            <span class="post__time">2014-10-22</span>
-            
-        </div>
-    </header>
-
-                                    <div class="post__summary">
-                                        <p class="p4">
-    <span class="caption_number" style="font-family: 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif; font-size: 13px; font-weight: 700; color: rgb(0, 0, 0);">Listing 1 (From dev doc of apple.com)</span><span style="color: rgb(0, 0, 0); font-family: 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif; font-size: 13px;">&nbsp;&nbsp;A simple framework bundle</span></p>
-<table style="width: 600px; border-collapse: collapse; border-style: solid; border-color: rgb(199, 207, 213); padding-bottom: 4px; color: rgb(0, 0, 0); font-family: 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif; background-color: rgb(241, 245, 249);">
-    <tbody>
-        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
-            <td scope="row" style="padding: 0.5em;">
-                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
-MyFramework.framework/</pre>
-            </td>
-        </tr>
-        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
-            <td scope="row" style="padding: 0.5em;">
-                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
-    MyFramework  -> Versions/Current/MyFramework</pre>
-            </td>
-        </tr>
-        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
-            <td scope="row" style="padding: 0.5em;">
-                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
-    Resources    -> Versions/Current/Resources</pre>
-            </td>
-        </tr>
-        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
-            <td scope="row" style="padding: 0.5em;">
-                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
-    Versions/</pre>
-            </td>
-        </tr>
-        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
-            <td scope="row" style="padding: 0.5em;">
-                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
-        A/</pre>
-            </td>
-        </tr>
-        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
-            <td scope="row" style="padding: 0.5em;">
-                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
-            MyFramework</pre>
-            </td>
-        </tr>
-        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
-            <td scope="row" style="padding: 0.5em;">
-                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
-            Resources/</pre>
-            </td>
-        </tr>
-        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
-            <td scope="row" style="padding: 0.5em;">
-                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
-                English.lproj/</pre>
-            </td>
-        </tr>
-        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
-            <td scope="row" style="padding: 0.5em;">
-                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
-                    InfoPlist.strings</pre>
-            </td>
-        </tr>
-        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
-            <td scope="row" style="padding: 0.5em;">
-                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
-                Info.plist</pre>
-            </td>
-        </tr>
-        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
-            <td scope="row" style="padding: 0.5em;">
-                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
-        Current  -> A</pre>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-                                    </div>
-                                    <div class="read-more">
-                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;ios-framework-destruct&#x2F;">Read more...</a>
                                     </div>
                                 </article>
                             

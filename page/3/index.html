@@ -137,6 +137,98 @@
                                     
     <header class="post__header">
         <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;ios-framework-destruct&#x2F;">iOS framework结构</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2014-10-22</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p class="p4">
+    <span class="caption_number" style="font-family: 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif; font-size: 13px; font-weight: 700; color: rgb(0, 0, 0);">Listing 1 (From dev doc of apple.com)</span><span style="color: rgb(0, 0, 0); font-family: 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif; font-size: 13px;">&nbsp;&nbsp;A simple framework bundle</span></p>
+<table style="width: 600px; border-collapse: collapse; border-style: solid; border-color: rgb(199, 207, 213); padding-bottom: 4px; color: rgb(0, 0, 0); font-family: 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif; background-color: rgb(241, 245, 249);">
+    <tbody>
+        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
+            <td scope="row" style="padding: 0.5em;">
+                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
+MyFramework.framework/</pre>
+            </td>
+        </tr>
+        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
+            <td scope="row" style="padding: 0.5em;">
+                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
+    MyFramework  -> Versions/Current/MyFramework</pre>
+            </td>
+        </tr>
+        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
+            <td scope="row" style="padding: 0.5em;">
+                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
+    Resources    -> Versions/Current/Resources</pre>
+            </td>
+        </tr>
+        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
+            <td scope="row" style="padding: 0.5em;">
+                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
+    Versions/</pre>
+            </td>
+        </tr>
+        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
+            <td scope="row" style="padding: 0.5em;">
+                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
+        A/</pre>
+            </td>
+        </tr>
+        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
+            <td scope="row" style="padding: 0.5em;">
+                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
+            MyFramework</pre>
+            </td>
+        </tr>
+        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
+            <td scope="row" style="padding: 0.5em;">
+                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
+            Resources/</pre>
+            </td>
+        </tr>
+        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
+            <td scope="row" style="padding: 0.5em;">
+                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
+                English.lproj/</pre>
+            </td>
+        </tr>
+        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
+            <td scope="row" style="padding: 0.5em;">
+                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
+                    InfoPlist.strings</pre>
+            </td>
+        </tr>
+        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
+            <td scope="row" style="padding: 0.5em;">
+                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
+                Info.plist</pre>
+            </td>
+        </tr>
+        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
+            <td scope="row" style="padding: 0.5em;">
+                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
+        Current  -> A</pre>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;ios-framework-destruct&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
             <a href="https:&#x2F;&#x2F;xjump.me&#x2F;object-c-synchronize&#x2F;">ObjC synchronize，GCD</a>
         </h1>
         <div class="post__meta">
@@ -255,26 +347,6 @@
                                     </div>
                                     <div class="read-more">
                                         <a href="https:&#x2F;&#x2F;xjump.me&#x2F;object-c-cpp1x-singleton&#x2F;">Read more...</a>
-                                    </div>
-                                </article>
-                            
-                                <article class="post">
-                                    
-    <header class="post__header">
-        <h1 class="post__title">
-            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;cve-2014-0038&#x2F;">CVE-2014-0038</a>
-        </h1>
-        <div class="post__meta">
-            <span class="post__time">2014-06-30</span>
-            
-        </div>
-    </header>
-
-                                    <div class="post__summary">
-                                        
-                                    </div>
-                                    <div class="read-more">
-                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;cve-2014-0038&#x2F;">Read more...</a>
                                     </div>
                                 </article>
                             

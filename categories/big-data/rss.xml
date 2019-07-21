@@ -6,7 +6,21 @@
         <generator>Zola</generator>
         <language>en</language>
         <atom:link href="https://xjump.me/categories/big-data/rss.xml" rel="self" type="application/rss+xml"/>
-        <lastBuildDate>Tue, 02 Jul 2019 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 03 Jul 2019 00:00:00 +0000</lastBuildDate>
+        
+            <item>
+                <title>Flink应用(3)</title>
+                <pubDate>Wed, 03 Jul 2019 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/20190703-flink-app3/</link>
+                <guid>https://xjump.me/20190703-flink-app3/</guid>
+                <description>&lt;h2 id=&quot;1-hui-gu&quot;&gt;1 回顾&lt;&#x2F;h2&gt;
+&lt;p&gt;上一篇文章对Flink中的核心概念之Time和Window设计之因做了深入的探讨。先来回顾一下：&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;EventTime是具有反演特性的现代流式计算建模的核心，在如何避免传输延时带来的错窗问题上，Flink使用watermark和Lateness机制进行处理，使得整个基础更加稳固。同时提供丰富的Window生成和计算机制，使得编写流式计算应用变得简单。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;成熟的计算系统还必须具备健壮性，才能承担起更重要的业务应用。Flink中的窗口计算大多需要依赖历史计算结果，这种计算称之为&lt;code&gt;有状态的&lt;&#x2F;code&gt;。在分布式系统中，状态是引起复杂性的根源之一。Flink如何保证&lt;code&gt;有状态的计算&lt;&#x2F;code&gt;足够健壮，将在本篇进行说明。&lt;&#x2F;p&gt;
+</description>
+            </item>
         
             <item>
                 <title>Flink应用(2)</title>
