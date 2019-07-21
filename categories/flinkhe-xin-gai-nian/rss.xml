@@ -9,12 +9,12 @@
         <lastBuildDate>Tue, 02 Jul 2019 00:00:00 +0000</lastBuildDate>
         
             <item>
-                <title>flink应用(2)</title>
+                <title>Flink应用(2)</title>
                 <pubDate>Tue, 02 Jul 2019 00:00:00 +0000</pubDate>
                 <link>https://xjump.me/20190702-flink-intro2/</link>
                 <guid>https://xjump.me/20190702-flink-intro2/</guid>
                 <description>&lt;h2 id=&quot;1-hui-gu&quot;&gt;1 回顾&lt;&#x2F;h2&gt;
-&lt;p&gt;上一篇文章对fink简单应用做了介绍，本文继续介绍flink的核心概念。回顾上一篇，flink的两个核心概念Time和Window是对&lt;code&gt;流&lt;&#x2F;code&gt;最深刻的描述。先来回顾一下：&lt;&#x2F;p&gt;
+&lt;p&gt;上一篇文章对Flink简单应用做了介绍，本文继续介绍Flink的核心概念。根据上一篇介绍，Flink的两个核心概念Time和Window是对&lt;code&gt;流&lt;&#x2F;code&gt;最深刻的描述。先来回顾一下：&lt;&#x2F;p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Time为数据打上一个维度标签，使得数据集合转化为&lt;code&gt;流&lt;&#x2F;code&gt;。Window利用Time对&lt;code&gt;流&lt;&#x2F;code&gt;进行进一步抽象，按照一定的区间组合来处理&lt;code&gt;流&lt;&#x2F;code&gt;这种数据，从中发现特征，寻找商业价值。&lt;&#x2F;p&gt;
 &lt;&#x2F;blockquote&gt;

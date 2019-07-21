@@ -1,0 +1,394 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>@xjump</title>
+
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
+      
+
+      
+          <script src="/slideout/1.0.1/slideout.min.js"></script>
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css">
+
+          <script defer src="/katex/0.10.1/katex.min.js" ></script>
+          <script defer src="/katex/0.10.1/contrib/mathtex-script-type.min.js" ></script>
+              
+          <script defer src="/katex/0.10.1/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+              
+          
+      
+
+      
+          <link rel="stylesheet" href="https:&#x2F;&#x2F;xjump.me&#x2F;site.css">
+          
+          <link rel="stylesheet" href="/katex/0.10.1/katex.min.css"  >
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">@xjump</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me">
+                            Home
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;categories">
+                            Categories
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                            Archive
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;rss.xml">
+                            RSS
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https://xjump.me&#x2F;about">
+                            About
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;xjump.me">@xjump</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https://xjump.me">
+                                    Home
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;categories">
+                                    Categories
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                    Archive
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;rss.xml">
+                                    RSS
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://xjump.me&#x2F;about">
+                                    About
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://xjump.me/20190702-flink-intro2/#1-hui-gu" class="toc-link">1 回顾</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://xjump.me/20190702-flink-intro2/#2-timede-jian-mo" class="toc-link">2 Time的建模</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://xjump.me/20190702-flink-intro2/#2-1-timede-wan-bei-xing" class="toc-link">2.1 Time的完备性</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://xjump.me/20190702-flink-intro2/#2-2-timede-fan-yan-xing" class="toc-link">2.2 Time的反演性</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://xjump.me/20190702-flink-intro2/#2-3-flinkdui-timede-jian-mo" class="toc-link">2.3 Flink对Time的建模</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://xjump.me/20190702-flink-intro2/#3-windowde-jian-mo" class="toc-link">3 Window的建模</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://xjump.me/20190702-flink-intro2/#3-1-hong-fa-qi-trigger" class="toc-link">3.1 触发器（Trigger）</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://xjump.me/20190702-flink-intro2/#3-2-chuang-kou-han-shu-windowfunction" class="toc-link">3.2 窗口函数（WindowFunction）</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://xjump.me/20190702-flink-intro2/#3-3-zhu-chu-qi-evictor" class="toc-link">3.3 逐出器（Evictor）</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://xjump.me/20190702-flink-intro2/#3-4-zai-kan-chi-dao-de-shi-jian" class="toc-link">3.4 再看迟到的事件</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://xjump.me/20190702-flink-intro2/#4-wo-men-zou-dao-liao-na-li" class="toc-link">4 我们走到了哪里</a>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20190702-flink-intro2&#x2F;">Flink应用(2)</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2019-07-02</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <h2 id="1-hui-gu">1 回顾</h2>
+<p>上一篇文章对Flink简单应用做了介绍，本文继续介绍Flink的核心概念。根据上一篇介绍，Flink的两个核心概念Time和Window是对<code>流</code>最深刻的描述。先来回顾一下：</p>
+<blockquote>
+<p>Time为数据打上一个维度标签，使得数据集合转化为<code>流</code>。Window利用Time对<code>流</code>进行进一步抽象，按照一定的区间组合来处理<code>流</code>这种数据，从中发现特征，寻找商业价值。</p>
+</blockquote>
+<p>Time是<code>流</code>的关键维度，无Time不成<code>流</code>。Time是Window的基础，因为Window是依据Time的值来进行划分（Global Window可以看作Time从0到无穷大）。剖析Window前，首先需要明确Time是否足够清晰。或者说上一篇文章介绍的EventTime、ProcessingTime、IngestTime是否足够完备？答案是否定的。那么Time还有哪些模糊地带，或者是还有哪些问题需要考虑？</p>
+<p><a name="continue-reading"></a></p>
+<p>首先无论是EventTime还是ProcessingTime或IngestTime，对最终的数据处理都存在不准确问题，下面详细分析Flink对Time的建模。</p>
+<h2 id="2-timede-jian-mo">2 Time的建模</h2>
+<h3 id="2-1-timede-wan-bei-xing">2.1 Time的完备性</h3>
+<p>先看EventTime。EventTime由事件的发生处产生，这通常和数据的采集、事件生成有关。数据采集最普遍的情况就是各种传感器，而通常他们的时间存在一定的偏差，并且，从采集节点到Flink应用的计算节点之间，也存在传输延迟，导致EventTime可能与window间隔发生交错，进而导致计算错误。</p>
+<p>再看ProcessingTime。ProcessingTime对于计算任务的积压存在偏差，在传输延迟也同样会导致不准确。</p>
+<p>而IngestTime也有类似的问题。</p>
+<p>从而不难得出结论，Time具有很好的目标，但现实使得EventTime、ProcessingTime和IngestTime都无法完美的解决计算的准确性问题，从而Time的这3种表达是不完备的。如果只依赖这3种Time来建模，那么Flink基于<code>流</code>的模型自然就是不正确的了。</p>
+<h3 id="2-2-timede-fan-yan-xing">2.2 Time的反演性</h3>
+<p>是否具有反演性划分是<code>流</code>计算模型的重要分水岭。一个具有反演性的计算模型，在任何时候都可以基于事件推演出最终状态，这在现代的数据计算系统中非常重要。</p>
+<p>例如，计算模型的修正、优化升级等等时常发生，这时就需要对过去事件数据进行重新推算。否则，计算系统的升级将不可进行或者只能接受升级前的错误计算结果。</p>
+<p>从Time的3种形式来看，具备反演性的就只有EventTime了，只要事件数据中的EventTime作为计算的时间基准，那么该计算模型就具有反演性，计算逻辑的进化自然就不是问题了。</p>
+<h3 id="2-3-flinkdui-timede-jian-mo">2.3 Flink对Time的建模</h3>
+<p>对于不需要反演性的系统，如接受历史数据不可重新计算、接受系统不可升级等可以采用ProcessingTime或IngestTime作为时间基准。而在需要反演性的系统中，只能选择EventTime作为基准，这时EventTime的不准确性将不可避免。</p>
+<p>EventTime的不准确性表现在两个方面。首先，事件的生成端的时钟错误；其次，事件的传输延迟导致窗口错过。其中第一个问题需要通过对时解决。而第二个问题更为严重一些，例如事件发生传输延迟，直到当前计算窗口结束后才到达，这些需要计算系统给予一定的设计来处理。</p>
+<p>下面分析Flink对窗口错过的应对方案。</p>
+<p>Flink在选择EventTime为时间基准的系统中，引入watermark来解决窗口错过问题。watermark定义如下：</p>
+<blockquote>
+<p>对于晚于watermark的事件，系统认为不会发生。</p>
+</blockquote>
+<p>不难看出，watermark是在计算模型中增加一个容忍时间偏移，事件中EventTime超过该偏移则不会纳入窗口计算。所以watermark是一个需要领域知识才能获取到的值。Flink通过指定或启发式生成的方式来指定。</p>
+<p>所以开放一个watermark给计算应用系统的设计者，是Flink给出的答案。</p>
+<p>解决了Time的问题，Window就更加清晰了。下面再重新看看Window。</p>
+<h2 id="3-windowde-jian-mo">3 Window的建模</h2>
+<p><code>TumblingWindow</code>, <code>SlidingWindow</code>, <code>SessionWindow</code>, <code>GlobalWindow</code>是Flink对<code>流</code>的Time模型稳固后，使用计算区间来对<code>流</code>进行进一步抽象，以便于不同计算目的的实现。</p>
+<p>除此之外，Flink还支持<code>countWindow</code>，这是一种基于计数的window，在满足计数值的时候重新开窗，而这个计数是和Time无关的，但这类开窗策略对于某些预警机制非常有用。</p>
+<p>所以，开窗条件是window的设计核心之一，上述几种窗口的介绍详见上一篇文章。</p>
+<p>另外，还有一个窗口计算时机的设计。这就是<code>触发器</code>。</p>
+<h3 id="3-1-hong-fa-qi-trigger">3.1 触发器（Trigger）</h3>
+<p>触发器控制生成结果的时机，它决定了何时将窗口内的计算结果进行输出。在使用EventTime作为时间基准时，默认将使用watermark作为触发条件。这时对窗口的计算结果是准确的。</p>
+<p>在Flink的设计中，还会提供触发器之前就输出近似计算结果的机制，这将由自定义触发器来实现。</p>
+<p>例如：</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">window</span><span style="color:#c0c5ce;">&gt;.trigger(ContinuousEventTimeTrigger.of(Time.seconds(1)))</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>将会在收到事件后1秒时计算近似结果。</p>
+<p>Flink有如下内建触发器。</p>
+<h4 id="3-1-1-eventtimetrigger">3.1.1 EventTimeTrigger</h4>
+<p>该触发器以EventTime为基准，由watermark机制触发。即watermark确定的时间到了就触发。</p>
+<h4 id="3-1-2-processingtimetrigger">3.1.2 ProcessingTimeTrigger</h4>
+<p>该触发器以ProcessingTime为基准，时间到了就触发。</p>
+<h4 id="3-1-3-counttrigger">3.1.3 CountTrigger</h4>
+<p>该触发器以当前窗口的元素个数为触发条件，超过指定的Count就触发。</p>
+<h4 id="3-1-4-purgingtrigger">3.1.4 PurgingTrigger</h4>
+<p>当前窗口被标记为清除时触发。</p>
+<p>除此之外，Flink还可以自定义触发器，这里暂不展开。</p>
+<h3 id="3-2-chuang-kou-han-shu-windowfunction">3.2 窗口函数（WindowFunction）</h3>
+<p>触发器决定了何时该对window内的数据进行计算。而窗口函数则定义了如何进行计算，Flink将窗口函数分为4种形式。</p>
+<h4 id="3-2-1-reducefunction">3.2.1 ReduceFunction</h4>
+<p>Reduce函数主要用于将当前窗口内的两个元素转化为一个元素。而转化的计算逻辑可以自己定义。如下所示。</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">window</span><span style="color:#c0c5ce;">&gt;.reduce { (</span><span style="color:#bf616a;">v1</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">v2</span><span style="color:#c0c5ce;">) </span><span style="color:#b48ead;">=&gt; </span><span style="color:#c0c5ce;">(a1, a2) }</span><span style="color:#c0c5ce;">
+</span></pre><h4 id="3-2-2-aggregatefunction">3.2.2 AggregateFunction</h4>
+<p>Aggregate函数是更通用的Reduce函数。将会实现更复杂的窗口计算逻辑。参考官方文档，代码如下所示。</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">AverageAggregate </span><span style="color:#b48ead;">extends </span><span style="color:#a3be8c;">AggregateFunction</span><span style="color:#c0c5ce;">[(</span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">Long</span><span style="color:#c0c5ce;">), (</span><span style="color:#b48ead;">Long</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">Long</span><span style="color:#c0c5ce;">), </span><span style="color:#b48ead;">Double</span><span style="color:#c0c5ce;">] </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">  </span><span style="color:#b48ead;">override def </span><span style="color:#8fa1b3;">createAccumulator</span><span style="color:#eff1f5;">() </span><span style="color:#c0c5ce;">= </span><span style="color:#eff1f5;">(</span><span style="color:#d08770;">0L</span><span style="color:#eff1f5;">, </span><span style="color:#d08770;">0L</span><span style="color:#eff1f5;">)</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">  </span><span style="color:#b48ead;">override def </span><span style="color:#8fa1b3;">add</span><span style="color:#eff1f5;">(</span><span style="color:#bf616a;">value</span><span style="color:#eff1f5;">: (</span><span style="color:#ebcb8b;">String</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">), </span><span style="color:#bf616a;">accumulator</span><span style="color:#eff1f5;">: (</span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">)) </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">(accumulator._1 + value._2, accumulator._2 + </span><span style="color:#d08770;">1L</span><span style="color:#eff1f5;">)</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">  </span><span style="color:#b48ead;">override def </span><span style="color:#8fa1b3;">getResult</span><span style="color:#eff1f5;">(</span><span style="color:#bf616a;">accumulator</span><span style="color:#eff1f5;">: (</span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">)) </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> accumulator._1 / accumulator._2</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">  </span><span style="color:#b48ead;">override def </span><span style="color:#8fa1b3;">merge</span><span style="color:#eff1f5;">(</span><span style="color:#bf616a;">a</span><span style="color:#eff1f5;">: (</span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">), </span><span style="color:#bf616a;">b</span><span style="color:#eff1f5;">: (</span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">)) </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">(a._1 + b._1, a._2 + b._2)</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">val </span><span style="color:#c0c5ce;">input: </span><span style="color:#ebcb8b;">DataStream</span><span style="color:#c0c5ce;">[(</span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">Long</span><span style="color:#c0c5ce;">)] = ...</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">input</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">.keyBy(&lt;</span><span style="color:#bf616a;">key</span><span style="color:#c0c5ce;"> selector&gt;)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">.window(&lt;</span><span style="color:#bf616a;">window</span><span style="color:#c0c5ce;"> assigner&gt;)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">.aggregate(new AverageAggregate)</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>AverageAggregate通过override几个函数来实现对Add/Merge/Result的计算，来最终实现求平均值。</p>
+<h4 id="3-2-3-foldfunction">3.2.3 FoldFunction</h4>
+<p>Fold函数是逐步将窗口中的元素转换成计算结果的处理函数。通过指定窗口的输入元素如何与输出类型的元素组合来完成。对于添加到窗口的每个元素和当前输出值，将逐步调用Fold函数。第一个元素与输出类型的预定义初始值组合。</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#b48ead;">val </span><span style="color:#c0c5ce;">input: </span><span style="color:#ebcb8b;">DataStream</span><span style="color:#c0c5ce;">[(</span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">Long</span><span style="color:#c0c5ce;">)] = ...</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">input</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">.keyBy(&lt;</span><span style="color:#bf616a;">key</span><span style="color:#c0c5ce;"> selector&gt;)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">.window(&lt;</span><span style="color:#bf616a;">window</span><span style="color:#c0c5ce;"> assigner&gt;)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">.fold(&quot;&quot;) { (</span><span style="color:#bf616a;">acc</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">v</span><span style="color:#c0c5ce;">) </span><span style="color:#b48ead;">=&gt;</span><span style="color:#c0c5ce;"> acc + v._2 }</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>该代码将fold初始值置为&quot;&quot;，然后每个窗口中的元素v将与上一次的累计结果acc进行<code>acc+v._2</code>操作合并到新的acc中。所以上述代码就是</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">result = &quot;&quot;</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">i </span><span style="color:#b48ead;">in </span><span style="color:#c0c5ce;">window:</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">result += i[</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">]</span><span style="color:#c0c5ce;">
+</span></pre><h4 id="3-2-4-processwindowfunction">3.2.4 ProcessWindowFunction</h4>
+<p>ProcessWindow是最通用的窗口处理函数。用法如下所示。</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#b48ead;">val </span><span style="color:#c0c5ce;">input: </span><span style="color:#ebcb8b;">DataStream</span><span style="color:#c0c5ce;">[(</span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">Long</span><span style="color:#c0c5ce;">)] = ...</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">input</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">  </span><span style="color:#c0c5ce;">.keyBy(</span><span style="color:#bf616a;">_</span><span style="color:#c0c5ce;">._1)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">  </span><span style="color:#c0c5ce;">.timeWindow(Time.minutes(</span><span style="color:#d08770;">5</span><span style="color:#c0c5ce;">))</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">  </span><span style="color:#c0c5ce;">.process(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">MyProcessWindowFunction</span><span style="color:#c0c5ce;">())</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">MyProcessWindowFunction </span><span style="color:#b48ead;">extends </span><span style="color:#a3be8c;">ProcessWindowFunction</span><span style="color:#c0c5ce;">[(</span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">Long</span><span style="color:#c0c5ce;">), </span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;">, </span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;">, </span><span style="color:#ebcb8b;">TimeWindow</span><span style="color:#c0c5ce;">] </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">  </span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">process</span><span style="color:#eff1f5;">(</span><span style="color:#bf616a;">key</span><span style="color:#eff1f5;">: </span><span style="color:#ebcb8b;">String</span><span style="color:#eff1f5;">, </span><span style="color:#bf616a;">context</span><span style="color:#eff1f5;">: </span><span style="color:#ebcb8b;">Context</span><span style="color:#eff1f5;">, </span><span style="color:#bf616a;">input</span><span style="color:#eff1f5;">: </span><span style="color:#ebcb8b;">Iterable</span><span style="color:#eff1f5;">[(</span><span style="color:#ebcb8b;">String</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">)], </span><span style="color:#bf616a;">out</span><span style="color:#eff1f5;">: </span><span style="color:#ebcb8b;">Collector</span><span style="color:#eff1f5;">[</span><span style="color:#ebcb8b;">String</span><span style="color:#eff1f5;">]): () </span><span style="color:#c0c5ce;">= </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">var </span><span style="color:#eff1f5;">count </span><span style="color:#c0c5ce;">= </span><span style="color:#d08770;">0L</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">for</span><span style="color:#eff1f5;"> (</span><span style="color:#bf616a;">in </span><span style="color:#c0c5ce;">&lt;-</span><span style="color:#eff1f5;"> input) {</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">      </span><span style="color:#eff1f5;">count </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> count + </span><span style="color:#d08770;">1</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">out.collect(</span><span style="color:#96b5b4;">s</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">Window ${</span><span style="color:#eff1f5;">context.window</span><span style="color:#a3be8c;">} count: </span><span style="color:#c0c5ce;">$</span><span style="color:#bf616a;">count</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">)</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">  </span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">}</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>通过在process中定义计算逻辑，来进行count运算。</p>
+<h3 id="3-3-zhu-chu-qi-evictor">3.3 逐出器（Evictor）</h3>
+<p>逐出器在触发器触发时开始工作，并且可以在窗口函数执行前或执行后进行操作。主要是对窗口内的元素进行移除操作（即逐出）。</p>
+<h3 id="3-4-zai-kan-chi-dao-de-shi-jian">3.4 再看迟到的事件</h3>
+<p>新版本的Flink中提供了Lateness来处理迟到的事件。在默认情况下Lateness值为0，即watermark之后的事件不会纳入窗口进行计算。但Lateness机制的存在可以使得迟到的元素得以处理。参考官方文档，有如下代码来获取迟到的事件。</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#b48ead;">val </span><span style="color:#c0c5ce;">lateOutputTag = OutputTag[</span><span style="color:#ebcb8b;">T</span><span style="color:#c0c5ce;">](&quot;</span><span style="color:#a3be8c;">late-data</span><span style="color:#c0c5ce;">&quot;)</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">val </span><span style="color:#c0c5ce;">input: </span><span style="color:#ebcb8b;">DataStream</span><span style="color:#c0c5ce;">[</span><span style="color:#ebcb8b;">T</span><span style="color:#c0c5ce;">] = ...</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">val </span><span style="color:#c0c5ce;">result = input</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">.keyBy(&lt;</span><span style="color:#bf616a;">key</span><span style="color:#c0c5ce;"> selector&gt;)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">.window(&lt;</span><span style="color:#bf616a;">window</span><span style="color:#c0c5ce;"> assigner&gt;)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">.allowedLateness(&lt;</span><span style="color:#bf616a;">time</span><span style="color:#c0c5ce;">&gt;)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">.sideOutputLateData(lateOutputTag)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">.&lt;</span><span style="color:#bf616a;">windowed</span><span style="color:#c0c5ce;"> transformation&gt;(&lt;</span><span style="color:#bf616a;">window</span><span style="color:#c0c5ce;"> function&gt;)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">val lateStream = result.getSideOutput(lateOutputTag)</span><span style="color:#c0c5ce;">
+</span></pre><h2 id="4-wo-men-zou-dao-liao-na-li">4 我们走到了哪里</h2>
+<p>Flink对<code>流</code>有着深刻的理解，并基于此构建了坚实的Time模型和灵活的Window模型。通过提供Window模型上的丰富计算机制，让<code>流</code>的计算变得简单而生动。</p>
+<p>本篇对Flink中Time和Window的机制进行了进一步的分析，而这些都是使用Flink进行复杂计算的基石。接下来将继续探讨Flink中的其他核心概念。</p>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <!-- <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all&#x2F;">#all</a> -->
+                    
+                </div>
+            
+            
+                <div class="post-nav">
+                    
+                        <a class="previous" href="https:&#x2F;&#x2F;xjump.me&#x2F;20190701-flink-intro&#x2F;">‹ Flink应用(1)</a>
+                    
+                    
+                    
+                    
+                </div>
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https:&#x2F;&#x2F;xjump.me&#x2F;even.js" ></script>
+      
+    </body>
+
+</html>

@@ -137,6 +137,28 @@
                                     
     <header class="post__header">
         <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;android-jni&#x2F;">Android &amp; JNI reference</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2014-04-05</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p>
+最主要的就是jni.h文件了。</p>
+
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;android-jni&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
             <a href="https:&#x2F;&#x2F;xjump.me&#x2F;bitcoin-ecc-algo&#x2F;">why bitcoin use ecc-secp256k1 and ripemd160?</a>
         </h1>
         <div class="post__meta">
@@ -216,48 +238,6 @@
                                     </div>
                                     <div class="read-more">
                                         <a href="https:&#x2F;&#x2F;xjump.me&#x2F;js-sniffer&#x2F;">Read more...</a>
-                                    </div>
-                                </article>
-                            
-                                <article class="post">
-                                    
-    <header class="post__header">
-        <h1 class="post__title">
-            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;get-wifi-connection-info&#x2F;">iOS 4.1+获取网络连接信息</a>
-        </h1>
-        <div class="post__meta">
-            <span class="post__time">2013-11-30</span>
-            
-        </div>
-    </header>
-
-                                    <div class="post__summary">
-                                        <p>
-iOS 4.1+获取当前连接的网络信息：
-</p>
-<pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">#import </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#a3be8c;">SystemConfiguration/CaptiveNetwork.h</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">- (</span><span style="color:#b48ead;">id</span><span style="color:#c0c5ce;">)fetchSSIDInfo</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#ebcb8b;">NSArray </span><span style="color:#c0c5ce;">*ifs = (</span><span style="color:#b48ead;">id</span><span style="color:#c0c5ce;">)</span><span style="color:#bf616a;">CNCopySupportedInterfaces</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#96b5b4;">NSLog</span><span style="color:#c0c5ce;">(@&quot;</span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;">: Supported interfaces: </span><span style="color:#d08770;">%@</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#d08770;">__func__</span><span style="color:#c0c5ce;">, ifs);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">id </span><span style="color:#c0c5ce;">info = </span><span style="color:#d08770;">nil</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">(</span><span style="color:#ebcb8b;">NSString </span><span style="color:#c0c5ce;">*ifnam in ifs) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">info = (</span><span style="color:#b48ead;">id</span><span style="color:#c0c5ce;">)</span><span style="color:#bf616a;">CNCopyCurrentNetworkInfo</span><span style="color:#c0c5ce;">((CFStringRef)ifnam);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#96b5b4;">NSLog</span><span style="color:#c0c5ce;">(@&quot;</span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;">: </span><span style="color:#d08770;">%@</span><span style="color:#a3be8c;"> =&gt; </span><span style="color:#d08770;">%@</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#d08770;">__func__</span><span style="color:#c0c5ce;">, ifnam, info);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(info &amp;&amp; [info </span><span style="color:#8fa1b3;">count</span><span style="color:#c0c5ce;">]) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">[info </span><span style="color:#8fa1b3;">release</span><span style="color:#c0c5ce;">];</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">[ifs </span><span style="color:#8fa1b3;">release</span><span style="color:#c0c5ce;">];</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">return </span><span style="color:#c0c5ce;">[info </span><span style="color:#8fa1b3;">autorelease</span><span style="color:#c0c5ce;">];</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span></pre>
-                                    </div>
-                                    <div class="read-more">
-                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;get-wifi-connection-info&#x2F;">Read more...</a>
                                     </div>
                                 </article>
                             
