@@ -542,16 +542,6 @@
     
         
         <url>
-            <loc>https://xjump.me/tags/</loc>
-        </url>
-        
-        <url>
-            <loc>https://xjump.me/tags/all/</loc>
-        </url>
-        
-    
-        
-        <url>
             <loc>https://xjump.me/categories/</loc>
         </url>
         
@@ -581,10 +571,6 @@
         
         <url>
             <loc>https://xjump.me/categories/flink/</loc>
-        </url>
-        
-        <url>
-            <loc>https://xjump.me/categories/flinkhe-xin-gai-nian/</loc>
         </url>
         
         <url>
@@ -677,6 +663,16 @@
         
         <url>
             <loc>https://xjump.me/categories/windows/</loc>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://xjump.me/tags/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/tags/all/</loc>
         </url>
         
     
