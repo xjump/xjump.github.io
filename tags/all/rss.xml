@@ -6,7 +6,51 @@
         <generator>Zola</generator>
         <language>en</language>
         <atom:link href="https://xjump.me/tags/all/rss.xml" rel="self" type="application/rss+xml"/>
-        <lastBuildDate>Wed, 03 Jul 2019 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 20 Jan 2020 00:00:00 +0000</lastBuildDate>
+        
+            <item>
+                <title>Proxy Tips</title>
+                <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/20200120-proxy/</link>
+                <guid>https://xjump.me/20200120-proxy/</guid>
+                <description>&lt;h2 id=&quot;1-git&quot;&gt;1 git&lt;&#x2F;h2&gt;
+&lt;p&gt;github的repo拖不下来可以参考:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;span style=&quot;color:#c0c5ce;&quot;&gt;[http]&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;proxy = &amp;quot;socks5:&#x2F;&#x2F;127.0.0.1:1081&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;sslVerify = false&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;postBuffer = 524288000&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;lowSpeedLimit = 0&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;lowSpeedTime = 999999&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;[https]&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;proxy = &amp;quot;socks5:&#x2F;&#x2F;127.0.0.1:1081&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;sslVerify = false&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;postBuffer = 524288000&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;lowSpeedLimit = 0&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;lowSpeedTime = 999999&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;[core]&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;symlinks = true&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;gitProxy = &amp;#39;socks5:&#x2F;&#x2F;127.0.0.1:1081&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;修改到~&#x2F;.gitconfig文件中作为全局配置。&lt;&#x2F;p&gt;
+</description>
+            </item>
+        
+            <item>
+                <title>Flink应用(4)</title>
+                <pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/20190704-flink-app4/</link>
+                <guid>https://xjump.me/20190704-flink-app4/</guid>
+                <description>&lt;h2 id=&quot;1-hui-gu&quot;&gt;1 回顾&lt;&#x2F;h2&gt;
+&lt;p&gt;上一篇文章对Flink如何保证一致性进行了说明，exactly-once一致性为Flink应用场景提供了正确性保证。先来回顾一下：&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ckpt是Flink实现exactly-once一致性保证的核心。同时ckpt对性能的影响也较小，这为低延迟、高可靠性应用提供了坚实的基础。基于ckpt机制的手动svpt机制，为计算系统的演进提供了灵活的实现方式。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Flink为计算一致性提供exactly-once保证，这是&lt;&#x2F;p&gt;
+</description>
+            </item>
         
             <item>
                 <title>Flink应用(3)</title>

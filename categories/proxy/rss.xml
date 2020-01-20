@@ -1,0 +1,42 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>@xjump</title>
+        <link>https://xjump.me</link>
+        <description>notes by xjump</description>
+        <generator>Zola</generator>
+        <language>en</language>
+        <atom:link href="https://xjump.me/categories/proxy/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Mon, 20 Jan 2020 00:00:00 +0000</lastBuildDate>
+        
+            <item>
+                <title>Proxy Tips</title>
+                <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/20200120-proxy/</link>
+                <guid>https://xjump.me/20200120-proxy/</guid>
+                <description>&lt;h2 id=&quot;1-git&quot;&gt;1 git&lt;&#x2F;h2&gt;
+&lt;p&gt;github的repo拖不下来可以参考:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;span style=&quot;color:#c0c5ce;&quot;&gt;[http]&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;proxy = &amp;quot;socks5:&#x2F;&#x2F;127.0.0.1:1081&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;sslVerify = false&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;postBuffer = 524288000&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;lowSpeedLimit = 0&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;lowSpeedTime = 999999&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;[https]&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;proxy = &amp;quot;socks5:&#x2F;&#x2F;127.0.0.1:1081&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;sslVerify = false&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;postBuffer = 524288000&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;lowSpeedLimit = 0&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;lowSpeedTime = 999999&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;[core]&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;symlinks = true&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;gitProxy = &amp;#39;socks5:&#x2F;&#x2F;127.0.0.1:1081&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;修改到~&#x2F;.gitconfig文件中作为全局配置。&lt;&#x2F;p&gt;
+</description>
+            </item>
+        
+    </channel>
+</rss>
