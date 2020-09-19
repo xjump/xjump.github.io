@@ -556,6 +556,16 @@
     
         
         <url>
+            <loc>https://xjump.me/tags/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/tags/all/</loc>
+        </url>
+        
+    
+        
+        <url>
             <loc>https://xjump.me/categories/</loc>
         </url>
         
@@ -681,16 +691,6 @@
         
         <url>
             <loc>https://xjump.me/categories/windows/</loc>
-        </url>
-        
-    
-        
-        <url>
-            <loc>https://xjump.me/tags/</loc>
-        </url>
-        
-        <url>
-            <loc>https://xjump.me/tags/all/</loc>
         </url>
         
     
