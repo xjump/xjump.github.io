@@ -179,32 +179,6 @@
                                     
     <header class="post__header">
         <h1 class="post__title">
-            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20190704-flink-app4&#x2F;">Flink应用(4)</a>
-        </h1>
-        <div class="post__meta">
-            <span class="post__time">2019-07-04</span>
-            
-        </div>
-    </header>
-
-                                    <div class="post__summary">
-                                        <h2 id="1-hui-gu">1 回顾</h2>
-<p>上一篇文章对Flink如何保证一致性进行了说明，exactly-once一致性为Flink应用场景提供了正确性保证。先来回顾一下：</p>
-<blockquote>
-<p>ckpt是Flink实现exactly-once一致性保证的核心。同时ckpt对性能的影响也较小，这为低延迟、高可靠性应用提供了坚实的基础。基于ckpt机制的手动svpt机制，为计算系统的演进提供了灵活的实现方式。</p>
-</blockquote>
-<p>Flink为计算一致性提供exactly-once保证，这是</p>
-
-                                    </div>
-                                    <div class="read-more">
-                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20190704-flink-app4&#x2F;">Read more...</a>
-                                    </div>
-                                </article>
-                            
-                                <article class="post">
-                                    
-    <header class="post__header">
-        <h1 class="post__title">
             <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20190703-flink-app3&#x2F;">Flink应用(3)</a>
         </h1>
         <div class="post__meta">
@@ -275,6 +249,29 @@
                                     </div>
                                     <div class="read-more">
                                         <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20190701-flink-intro&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;android-dex-dynamic-load-call-and-security&#x2F;">Android Dex动态加载、调用与安全</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2018-10-13</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p>首先，动态加载与调用不是个新问题，方法也非常直接。关键就是使用DexClassLoader。</p>
+<p>这个方法有一个副作用，那就是/proc/self/maps下会留下很多份dex加载记录，需要到jvm GC时才能释放，内存泄漏倒是没有，就是不太好看。</p>
+<p>对于入参不是String，返回结果不是String的情况，做个Ser/De来搞定即可，接口的界面也能保持干净。</p>
+
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;android-dex-dynamic-load-call-and-security&#x2F;">Read more...</a>
                                     </div>
                                 </article>
                             

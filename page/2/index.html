@@ -137,29 +137,6 @@
                                     
     <header class="post__header">
         <h1 class="post__title">
-            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;android-dex-dynamic-load-call-and-security&#x2F;">Android Dex动态加载、调用与安全</a>
-        </h1>
-        <div class="post__meta">
-            <span class="post__time">2018-10-13</span>
-            
-        </div>
-    </header>
-
-                                    <div class="post__summary">
-                                        <p>首先，动态加载与调用不是个新问题，方法也非常直接。关键就是使用DexClassLoader。</p>
-<p>这个方法有一个副作用，那就是/proc/self/maps下会留下很多份dex加载记录，需要到jvm GC时才能释放，内存泄漏倒是没有，就是不太好看。</p>
-<p>对于入参不是String，返回结果不是String的情况，做个Ser/De来搞定即可，接口的界面也能保持干净。</p>
-
-                                    </div>
-                                    <div class="read-more">
-                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;android-dex-dynamic-load-call-and-security&#x2F;">Read more...</a>
-                                    </div>
-                                </article>
-                            
-                                <article class="post">
-                                    
-    <header class="post__header">
-        <h1 class="post__title">
             <a href="https:&#x2F;&#x2F;xjump.me&#x2F;java-dyn-script&#x2F;">Java动态脚本</a>
         </h1>
         <div class="post__meta">
@@ -273,6 +250,48 @@
                                     </div>
                                     <div class="read-more">
                                         <a href="https:&#x2F;&#x2F;xjump.me&#x2F;java-dynamic-proxy-basic&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;java-synchronize&#x2F;">Java多线程与并发基础</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2015-03-09</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p>
+    <strong>1）Thread & ThreadPoolExecutor</strong></p>
+<p>
+    Thread例子如下：</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#b48ead;">for</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">int</span><span style="color:#c0c5ce;"> i=</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">; i&lt;</span><span style="color:#d08770;">100</span><span style="color:#c0c5ce;">; i++){</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#ebcb8b;">Thread</span><span style="color:#c0c5ce;"> t = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Thread</span><span style="color:#c0c5ce;">()</span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">        </span><span style="color:#eff1f5;">@</span><span style="color:#bf616a;">Override</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">        </span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">run</span><span style="color:#eff1f5;">() {</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">            </span><span style="color:#65737e;">//job details</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">        </span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">}</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">t.</span><span style="color:#bf616a;">start</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">try</span><span style="color:#c0c5ce;">{ </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">t.</span><span style="color:#bf616a;">join</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">catch</span><span style="color:#c0c5ce;">(</span><span style="color:#ebcb8b;">InterruptedException </span><span style="color:#bf616a;">ex</span><span style="color:#c0c5ce;">){</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">ex.</span><span style="color:#bf616a;">printStackTrace</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span></pre><p>
+    相应的，ThreadPoolExecutor例子如下：</p>
+
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;java-synchronize&#x2F;">Read more...</a>
                                     </div>
                                 </article>
                             

@@ -6,21 +6,7 @@
         <generator>Zola</generator>
         <language>en</language>
         <atom:link href="https://xjump.me/categories/flink/rss.xml" rel="self" type="application/rss+xml"/>
-        <lastBuildDate>Thu, 04 Jul 2019 00:00:00 +0000</lastBuildDate>
-        
-            <item>
-                <title>Flink应用(4)</title>
-                <pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
-                <link>https://xjump.me/20190704-flink-app4/</link>
-                <guid>https://xjump.me/20190704-flink-app4/</guid>
-                <description>&lt;h2 id=&quot;1-hui-gu&quot;&gt;1 回顾&lt;&#x2F;h2&gt;
-&lt;p&gt;上一篇文章对Flink如何保证一致性进行了说明，exactly-once一致性为Flink应用场景提供了正确性保证。先来回顾一下：&lt;&#x2F;p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;ckpt是Flink实现exactly-once一致性保证的核心。同时ckpt对性能的影响也较小，这为低延迟、高可靠性应用提供了坚实的基础。基于ckpt机制的手动svpt机制，为计算系统的演进提供了灵活的实现方式。&lt;&#x2F;p&gt;
-&lt;&#x2F;blockquote&gt;
-&lt;p&gt;Flink为计算一致性提供exactly-once保证，这是&lt;&#x2F;p&gt;
-</description>
-            </item>
+        <lastBuildDate>Wed, 03 Jul 2019 00:00:00 +0000</lastBuildDate>
         
             <item>
                 <title>Flink应用(3)</title>
