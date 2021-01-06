@@ -13,7 +13,7 @@
                 <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
                 <link>https://xjump.me/20210106-rust-parser-combinator-nom/</link>
                 <guid>https://xjump.me/20210106-rust-parser-combinator-nom/</guid>
-                <description>&lt;p&gt;This is manual from &lt;a href=&quot;https:&#x2F;&#x2F;docs.rs&#x2F;nom&#x2F;6.0.1&#x2F;nom&#x2F;&quot;&gt;nom docs.rs&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+                <description>&lt;p&gt;This is the manual of &lt;code&gt;nom&lt;&#x2F;code&gt; from &lt;a href=&quot;https:&#x2F;&#x2F;docs.rs&#x2F;nom&#x2F;6.0.1&#x2F;nom&#x2F;&quot;&gt;docs.rs&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;1-nom-eating-data-byte-by-byte&quot;&gt;1 nom, eating data byte by byte&lt;&#x2F;h1&gt;
 &lt;p&gt;nom is a parser combinator library with a focus on safe parsing,
 streaming patterns, and as much as possible zero copy.&lt;&#x2F;p&gt;
