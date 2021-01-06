@@ -39,8 +39,8 @@
             <item>
                 <title>Flink应用(1)</title>
                 <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
-                <link>https://xjump.me/20190701-flink-intro/</link>
-                <guid>https://xjump.me/20190701-flink-intro/</guid>
+                <link>https://xjump.me/20190701-flink-intro1/</link>
+                <guid>https://xjump.me/20190701-flink-intro1/</guid>
                 <description>&lt;h2 id=&quot;1-flinkyu-da-shu-ju-ji-suan&quot;&gt;1 Flink与大数据计算&lt;&#x2F;h2&gt;
 &lt;p&gt;Flink以Stream模型为基础对数据计算进行建模，为批和流的处理实现了统一。并在低延迟、稳定性、编程接口友好等方面具有较大的优势，是大数据实时计算的利器。从下图（摘自官方）可以看出，Flink将来自各个数据源（Source）的数据进行计算，让后将结果交给各个下游数据宿（Sink）进行后续消费。同时，对于Source和Sink也可以是Flink计算应用，进行更复杂的级联，构建更丰富的数据处理模式。&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;center&gt;
