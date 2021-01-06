@@ -137,6 +137,48 @@
                                     
     <header class="post__header">
         <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;java-synchronize&#x2F;">Java多线程与并发基础</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2015-03-09</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p>
+    <strong>1）Thread & ThreadPoolExecutor</strong></p>
+<p>
+    Thread例子如下：</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#b48ead;">for</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">int</span><span style="color:#c0c5ce;"> i=</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">; i&lt;</span><span style="color:#d08770;">100</span><span style="color:#c0c5ce;">; i++){</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#ebcb8b;">Thread</span><span style="color:#c0c5ce;"> t = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Thread</span><span style="color:#c0c5ce;">()</span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">        </span><span style="color:#eff1f5;">@</span><span style="color:#bf616a;">Override</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">        </span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">run</span><span style="color:#eff1f5;">() {</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">            </span><span style="color:#65737e;">//job details</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">        </span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">}</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">t.</span><span style="color:#bf616a;">start</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">try</span><span style="color:#c0c5ce;">{ </span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">t.</span><span style="color:#bf616a;">join</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">catch</span><span style="color:#c0c5ce;">(</span><span style="color:#ebcb8b;">InterruptedException </span><span style="color:#bf616a;">ex</span><span style="color:#c0c5ce;">){</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">ex.</span><span style="color:#bf616a;">printStackTrace</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span></pre><p>
+    相应的，ThreadPoolExecutor例子如下：</p>
+
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;java-synchronize&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
             <a href="https:&#x2F;&#x2F;xjump.me&#x2F;jvm-attack&#x2F;">JVM App exploit</a>
         </h1>
         <div class="post__meta">
@@ -308,41 +350,6 @@ MyFramework.framework/</pre>
                                     </div>
                                     <div class="read-more">
                                         <a href="https:&#x2F;&#x2F;xjump.me&#x2F;bore&#x2F;">Read more...</a>
-                                    </div>
-                                </article>
-                            
-                                <article class="post">
-                                    
-    <header class="post__header">
-        <h1 class="post__title">
-            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tao&#x2F;">周易参同契</a>
-        </h1>
-        <div class="post__meta">
-            <span class="post__time">2014-09-21</span>
-            
-        </div>
-    </header>
-
-                                    <div class="post__summary">
-                                        <p>注：章句之序、断句为后人添加，不为原著。</p>
-<h3 id="shang-pian">上篇</h3>
-<h4 id="di-yi-zhang-da-yi-zong-xu">第一章 大易总序</h4>
-<blockquote>
-<p>1、乾坤者，易之门户，众卦之父母，坎离匡郭，运毂正轴。牝牡四卦，以为橐籥。</p>
-</blockquote>
-<blockquote>
-<p>2、覆冒阴阳之道，犹工御者，准绳墨，执衔辔，正规矩，随轨辙，处中以制外，数在律历纪。</p>
-</blockquote>
-<blockquote>
-<p>3、月节有五六，经纬奉日使。兼并为六十，刚柔有表里。朔旦屯直事，至暮蒙当受。昼夜各一卦，用之依次序。既未至晦爽，终则复更始。</p>
-</blockquote>
-<blockquote>
-<p>4、日辰为期度，动静有早晚。春夏据内体，从子到辰巳。秋冬当外用，自午讫戌亥。</p>
-</blockquote>
-
-                                    </div>
-                                    <div class="read-more">
-                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tao&#x2F;">Read more...</a>
                                     </div>
                                 </article>
                             

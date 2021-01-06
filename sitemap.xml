@@ -29,6 +29,13 @@
         </url>
     
         <url>
+            <loc>https://xjump.me/20210106-rust-parser-combinator-nom/</loc>
+            
+                <lastmod>2021-01-06</lastmod>
+            
+        </url>
+    
+        <url>
             <loc>https://xjump.me/about/</loc>
             
         </url>
@@ -556,16 +563,6 @@
     
         
         <url>
-            <loc>https://xjump.me/tags/</loc>
-        </url>
-        
-        <url>
-            <loc>https://xjump.me/tags/all/</loc>
-        </url>
-        
-    
-        
-        <url>
             <loc>https://xjump.me/categories/</loc>
         </url>
         
@@ -650,6 +647,10 @@
         </url>
         
         <url>
+            <loc>https://xjump.me/categories/parser/</loc>
+        </url>
+        
+        <url>
             <loc>https://xjump.me/categories/phrack/</loc>
         </url>
         
@@ -691,6 +692,16 @@
         
         <url>
             <loc>https://xjump.me/categories/windows/</loc>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://xjump.me/tags/</loc>
+        </url>
+        
+        <url>
+            <loc>https://xjump.me/tags/all/</loc>
         </url>
         
     

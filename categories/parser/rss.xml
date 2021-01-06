@@ -5,7 +5,7 @@
         <description>notes by xjump</description>
         <generator>Zola</generator>
         <language>en</language>
-        <atom:link href="https://xjump.me/categories/rust/rss.xml" rel="self" type="application/rss+xml"/>
+        <atom:link href="https://xjump.me/categories/parser/rss.xml" rel="self" type="application/rss+xml"/>
         <lastBuildDate>Wed, 06 Jan 2021 00:00:00 +0000</lastBuildDate>
         
             <item>
@@ -65,29 +65,6 @@ streaming patterns, and as much as possible zero copy.&lt;&#x2F;p&gt;
 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;})));&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
 &lt;&#x2F;span&gt;&lt;&#x2F;pre&gt;</description>
-            </item>
-        
-            <item>
-                <title>Rust错误处理（转）</title>
-                <pubDate>Wed, 15 Aug 2018 00:00:00 +0000</pubDate>
-                <link>https://xjump.me/rust-error-handling/</link>
-                <guid>https://xjump.me/rust-error-handling/</guid>
-                <description>&lt;p&gt;&lt;em&gt;转自：https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;25506762，修改排版等内容&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
-&lt;p&gt;人孰无过，过而能改，善莫大焉。程序运行过程中总是会出现各种各样的问题，导致程序出现异常或错误，这些异常和错误本身不是 bug，但是如果不处理好的话就会成为 bug。不同编程语言提供了不同的机制来处理错误和异常，一般分为两大类：把错误当作值来处理；抛出异常。&lt;&#x2F;p&gt;
-&lt;p&gt;Rust 提供以下基础设施做错误处理：&lt;&#x2F;p&gt;
-&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
-&lt;span style=&quot;color:#c0c5ce;&quot;&gt;Option, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;Result,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;unwrap, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;expect,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;combinators,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;try! &lt;&#x2F;span&gt;&lt;span style=&quot;background-color:#bf616a;color:#2b303b;&quot;&gt;macro&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;Error &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;trait&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;From &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;trait&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;Carrier &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;trait&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&#x2F;Try &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;trait&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;
-&lt;&#x2F;span&gt;&lt;&#x2F;pre&gt;
-&lt;p&gt;Rust 并没有提供基于 exception 的错误处理机制，虽然 panic! 宏在让进程挂掉时也抛出堆栈，同时也可以用 std::panic::catch_unwind 捕捉 panic，但是极其不推荐用来处理常规错误。&lt;&#x2F;p&gt;
-</description>
             </item>
         
     </channel>

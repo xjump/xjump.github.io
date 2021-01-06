@@ -137,6 +137,77 @@
                                     
     <header class="post__header">
         <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20210106-rust-parser-combinator-nom&#x2F;">Rust parser combinator - nom</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2021-01-06</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p>This is manual from <a href="https://docs.rs/nom/6.0.1/nom/">nom docs.rs</a></p>
+<h1 id="1-nom-eating-data-byte-by-byte">1 nom, eating data byte by byte</h1>
+<p>nom is a parser combinator library with a focus on safe parsing,
+streaming patterns, and as much as possible zero copy.</p>
+<p>Example</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#b48ead;">extern crate</span><span style="color:#c0c5ce;"> nom;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">nom::{</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">IResult,</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">bytes::complete::{tag, take_while_m_n},</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">combinator::map_res,</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">sequence::tuple</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">};</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">#[</span><span style="color:#bf616a;">derive</span><span style="color:#c0c5ce;">(Debug,PartialEq)]</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">pub struct </span><span style="color:#c0c5ce;">Color {</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">red</span><span style="color:#c0c5ce;">:     </span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">green</span><span style="color:#c0c5ce;">:   </span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">blue</span><span style="color:#c0c5ce;">:    </span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">from_hex</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; Result&lt;</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">, std::num::ParseIntError&gt; {</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">::from_str_radix(input, </span><span style="color:#d08770;">16</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">is_hex_digit</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">c</span><span style="color:#c0c5ce;">: </span><span style="color:#b48ead;">char</span><span style="color:#c0c5ce;">) -&gt; </span><span style="color:#b48ead;">bool </span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">c.</span><span style="color:#96b5b4;">is_digit</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">16</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">hex_primary</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; IResult&lt;&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">&gt; {</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#96b5b4;">map_res</span><span style="color:#c0c5ce;">(</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#96b5b4;">take_while_m_n</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">, </span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">, is_hex_digit),</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">from_hex</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">)(input)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">hex_color</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; IResult&lt;&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, Color&gt; {</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">let </span><span style="color:#c0c5ce;">(input, _) = </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">#</span><span style="color:#c0c5ce;">&quot;)(input)?;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">let </span><span style="color:#c0c5ce;">(input, (red, green, blue)) = </span><span style="color:#96b5b4;">tuple</span><span style="color:#c0c5ce;">((hex_primary, hex_primary, hex_primary))(input)?;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">Ok((input, Color { red, green, blue }))</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">assert_eq!(</span><span style="color:#96b5b4;">hex_color</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">#2F14DF</span><span style="color:#c0c5ce;">&quot;), Ok((&quot;&quot;, Color {</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">red: </span><span style="color:#d08770;">47</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">green: </span><span style="color:#d08770;">20</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">blue: </span><span style="color:#d08770;">223</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">})));</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+</span></pre>
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20210106-rust-parser-combinator-nom&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
             <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20200120-proxy&#x2F;">Proxy Tips</a>
         </h1>
         <div class="post__meta">
@@ -249,29 +320,6 @@
                                     </div>
                                     <div class="read-more">
                                         <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20190701-flink-intro1&#x2F;">Read more...</a>
-                                    </div>
-                                </article>
-                            
-                                <article class="post">
-                                    
-    <header class="post__header">
-        <h1 class="post__title">
-            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;android-dex-dynamic-load-call-and-security&#x2F;">Android Dex动态加载、调用与安全</a>
-        </h1>
-        <div class="post__meta">
-            <span class="post__time">2018-10-13</span>
-            
-        </div>
-    </header>
-
-                                    <div class="post__summary">
-                                        <p>首先，动态加载与调用不是个新问题，方法也非常直接。关键就是使用DexClassLoader。</p>
-<p>这个方法有一个副作用，那就是/proc/self/maps下会留下很多份dex加载记录，需要到jvm GC时才能释放，内存泄漏倒是没有，就是不太好看。</p>
-<p>对于入参不是String，返回结果不是String的情况，做个Ser/De来搞定即可，接口的界面也能保持干净。</p>
-
-                                    </div>
-                                    <div class="read-more">
-                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;android-dex-dynamic-load-call-and-security&#x2F;">Read more...</a>
                                     </div>
                                 </article>
                             
