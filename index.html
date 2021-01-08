@@ -185,8 +185,7 @@ streaming patterns, and as much as possible zero copy.</p>
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">hex_color</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; IResult&lt;&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, Color&gt; {</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">let </span><span style="color:#c0c5ce;">(input, _) = </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">#</span><span style="color:#c0c5ce;">&quot;)(input)?;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">let </span><span style="color:#c0c5ce;">(input, (red, green, blue)) = </span><span style="color:#96b5b4;">tuple</span><span style="color:#c0c5ce;">((hex_primary, hex_primary, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">hex_primary))(input)?;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">let </span><span style="color:#c0c5ce;">(input, (red, green, blue)) = </span><span style="color:#96b5b4;">tuple</span><span style="color:#c0c5ce;">((hex_primary, hex_primary, hex_primary))(input)?;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">Ok((input, Color { red, green, blue }))</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
