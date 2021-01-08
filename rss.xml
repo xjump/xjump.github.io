@@ -6,7 +6,34 @@
         <generator>Zola</generator>
         <language>en</language>
         <atom:link href="https://xjump.me/rss.xml" rel="self" type="application/rss+xml"/>
-        <lastBuildDate>Wed, 06 Jan 2021 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 08 Jan 2021 00:00:00 +0000</lastBuildDate>
+        
+            <item>
+                <title>IO操作性能对照</title>
+                <pubDate>Fri, 08 Jan 2021 00:00:00 +0000</pubDate>
+                <link>https://xjump.me/20210108-io-latency-compared/</link>
+                <guid>https://xjump.me/20210108-io-latency-compared/</guid>
+                <description>&lt;h2 id=&quot;xi-tong-de-ge-chong-yan-shi&quot;&gt;系统的各种延时&lt;&#x2F;h2&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt; 事件 &lt;&#x2F;th&gt;&lt;th&gt; 延时 &lt;&#x2F;th&gt;&lt;th&gt; 相对时间比例 &lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;1个CPU周期                 &lt;&#x2F;td&gt;&lt;td&gt; 0.3ns     &lt;&#x2F;td&gt;&lt;td&gt; 1s &lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;L1缓存访问                 &lt;&#x2F;td&gt;&lt;td&gt; 0.9ns     &lt;&#x2F;td&gt;&lt;td&gt; 3s &lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;L2缓存访问                 &lt;&#x2F;td&gt;&lt;td&gt; 2.8ns     &lt;&#x2F;td&gt;&lt;td&gt; 9s &lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;L3缓存访问                 &lt;&#x2F;td&gt;&lt;td&gt; 12.9ns    &lt;&#x2F;td&gt;&lt;td&gt; 43s &lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;主存访问（从CPU访问DRAM）   &lt;&#x2F;td&gt;&lt;td&gt; 120ns     &lt;&#x2F;td&gt;&lt;td&gt; 6分 &lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;固态硬盘IO（闪存）          &lt;&#x2F;td&gt;&lt;td&gt; 50-150us  &lt;&#x2F;td&gt;&lt;td&gt; 2-6天 &lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;旋转磁盘IO                 &lt;&#x2F;td&gt;&lt;td&gt; 1-10ms    &lt;&#x2F;td&gt;&lt;td&gt; 1-12月 &lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;互联网：从旧金山到纽约       &lt;&#x2F;td&gt;&lt;td&gt; 40ms      &lt;&#x2F;td&gt;&lt;td&gt; 4年 &lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;互联网：从旧金山到英国       &lt;&#x2F;td&gt;&lt;td&gt; 81ms      &lt;&#x2F;td&gt;&lt;td&gt; 8年 &lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;互联网：从旧金山到澳大利亚   &lt;&#x2F;td&gt;&lt;td&gt; 183ms     &lt;&#x2F;td&gt;&lt;td&gt; 19年 &lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;TCP包重传                  &lt;&#x2F;td&gt;&lt;td&gt; 1-3s      &lt;&#x2F;td&gt;&lt;td&gt; 105-317年 &lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;OS虚拟化系统重启            &lt;&#x2F;td&gt;&lt;td&gt; 4s        &lt;&#x2F;td&gt;&lt;td&gt; 423年 &lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;SCSI命令超时                &lt;&#x2F;td&gt;&lt;td&gt; 30s       &lt;&#x2F;td&gt;&lt;td&gt; 3千年 &lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;硬件虚拟化系统重启           &lt;&#x2F;td&gt;&lt;td&gt; 40s       &lt;&#x2F;td&gt;&lt;td&gt; 4千年 &lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;物理系统重启                 &lt;&#x2F;td&gt;&lt;td&gt; 5分       &lt;&#x2F;td&gt;&lt;td&gt; 3万2千年 &lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;p&gt;--- 摘自《性能之巅》&lt;&#x2F;p&gt;
+</description>
+            </item>
         
             <item>
                 <title>Rust parser combinator - nom</title>

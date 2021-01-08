@@ -137,6 +137,45 @@
                                     
     <header class="post__header">
         <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20210108-io-latency-compared&#x2F;">IO操作性能对照</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2021-01-08</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <h2 id="xi-tong-de-ge-chong-yan-shi">系统的各种延时</h2>
+<table><thead><tr><th> 事件 </th><th> 延时 </th><th> 相对时间比例 </th></tr></thead><tbody>
+<tr><td>1个CPU周期                 </td><td> 0.3ns     </td><td> 1s </td></tr>
+<tr><td>L1缓存访问                 </td><td> 0.9ns     </td><td> 3s </td></tr>
+<tr><td>L2缓存访问                 </td><td> 2.8ns     </td><td> 9s </td></tr>
+<tr><td>L3缓存访问                 </td><td> 12.9ns    </td><td> 43s </td></tr>
+<tr><td>主存访问（从CPU访问DRAM）   </td><td> 120ns     </td><td> 6分 </td></tr>
+<tr><td>固态硬盘IO（闪存）          </td><td> 50-150us  </td><td> 2-6天 </td></tr>
+<tr><td>旋转磁盘IO                 </td><td> 1-10ms    </td><td> 1-12月 </td></tr>
+<tr><td>互联网：从旧金山到纽约       </td><td> 40ms      </td><td> 4年 </td></tr>
+<tr><td>互联网：从旧金山到英国       </td><td> 81ms      </td><td> 8年 </td></tr>
+<tr><td>互联网：从旧金山到澳大利亚   </td><td> 183ms     </td><td> 19年 </td></tr>
+<tr><td>TCP包重传                  </td><td> 1-3s      </td><td> 105-317年 </td></tr>
+<tr><td>OS虚拟化系统重启            </td><td> 4s        </td><td> 423年 </td></tr>
+<tr><td>SCSI命令超时                </td><td> 30s       </td><td> 3千年 </td></tr>
+<tr><td>硬件虚拟化系统重启           </td><td> 40s       </td><td> 4千年 </td></tr>
+<tr><td>物理系统重启                 </td><td> 5分       </td><td> 3万2千年 </td></tr>
+</tbody></table>
+<p>--- 摘自《性能之巅》</p>
+
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20210108-io-latency-compared&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
             <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20210106-rust-parser-combinator-nom&#x2F;">Rust parser combinator - nom</a>
         </h1>
         <div class="post__meta">
@@ -295,31 +334,6 @@ streaming patterns, and as much as possible zero copy.</p>
                                     </div>
                                     <div class="read-more">
                                         <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20190702-flink-intro2&#x2F;">Read more...</a>
-                                    </div>
-                                </article>
-                            
-                                <article class="post">
-                                    
-    <header class="post__header">
-        <h1 class="post__title">
-            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20190701-flink-intro1&#x2F;">Flink应用(1)</a>
-        </h1>
-        <div class="post__meta">
-            <span class="post__time">2019-07-01</span>
-            
-        </div>
-    </header>
-
-                                    <div class="post__summary">
-                                        <h2 id="1-flinkyu-da-shu-ju-ji-suan">1 Flink与大数据计算</h2>
-<p>Flink以Stream模型为基础对数据计算进行建模，为批和流的处理实现了统一。并在低延迟、稳定性、编程接口友好等方面具有较大的优势，是大数据实时计算的利器。从下图（摘自官方）可以看出，Flink将来自各个数据源（Source）的数据进行计算，让后将结果交给各个下游数据宿（Sink）进行后续消费。同时，对于Source和Sink也可以是Flink计算应用，进行更复杂的级联，构建更丰富的数据处理模式。</p>
-<p><center>
-<img alt="Flink" src="/images/flink/flink-home-graphic.png" style="width: 800px; height: 263px;" />
-</center></p>
-
-                                    </div>
-                                    <div class="read-more">
-                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20190701-flink-intro1&#x2F;">Read more...</a>
                                     </div>
                                 </article>
                             
