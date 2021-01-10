@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,8 +9,6 @@
 
       <title>@xjump</title>
 
-      
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
       
 
       
@@ -57,31 +53,31 @@
               <ul class="mobile-menu-list">
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me">
+                        <a href="https:&#x2F;&#x2F;xjump.me">
                             Home
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;categories">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                             Categories
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                             Archive
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;rss.xml">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                             RSS
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;about">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                             About
                         </a>
                     </li>
@@ -95,31 +91,31 @@
                     <ul>
                         
                             <li>
-                                <a href="https://xjump.me">
+                                <a href="https:&#x2F;&#x2F;xjump.me">
                                     Home
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;categories">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                                     Categories
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                                     Archive
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;rss.xml">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                                     RSS
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;about">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                                     About
                                 </a>
                             </li>
@@ -152,9 +148,9 @@
 <p>如果是私钥加密（forPrivateKey=true),密钥长度为1024位，那么输出 的密文块长度也是128字节，输入的明文块的长度为128-11，即输入的明文块最大是117字节，如果输入的明文块小于117字节，比如输入的明文块长度为64字节，那么对这个明文块进行补齐，在明文块前添加两个字节0x0001（代表私钥加密），然后在后面的52字节为字节0xff，在最后一字节，即52（117-64-1），从零开始，添加一个字节0x00，再在补齐的后面添加实际的明文块。</p>
 <p>下面是示意图：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">公钥加密：| 0x0002 | RRRRRRRR | 0x00 | DDDDDDDDDDDD；其中R至少8个字节，R表示随机字节</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">私钥加密：| 0x0001 | FFFFFFFF | 0x00 | DDDDDDDDDDDD；其中F至少8个字节，F表示字节值为0xFF</span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-txt" data-lang="txt"><span style="color:#c0c5ce;">公钥加密：| 0x0002 | RRRRRRRR | 0x00 | DDDDDDDDDDDD；其中R至少8个字节，R表示随机字节</span><span style="color:#c0c5ce;">
+私钥加密：| 0x0001 | FFFFFFFF | 0x00 | DDDDDDDDDDDD；其中F至少8个字节，F表示字节值为0xFF</span><span style="color:#c0c5ce;">
+</span></code></pre>
     </div>
 
     

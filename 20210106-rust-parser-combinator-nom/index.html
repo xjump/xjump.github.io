@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,8 +9,6 @@
 
       <title>@xjump</title>
 
-      
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
       
 
       
@@ -57,31 +53,31 @@
               <ul class="mobile-menu-list">
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me">
+                        <a href="https:&#x2F;&#x2F;xjump.me">
                             Home
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;categories">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                             Categories
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                             Archive
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;rss.xml">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                             RSS
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;about">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                             About
                         </a>
                     </li>
@@ -95,31 +91,31 @@
                     <ul>
                         
                             <li>
-                                <a href="https://xjump.me">
+                                <a href="https:&#x2F;&#x2F;xjump.me">
                                     Home
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;categories">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                                     Categories
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                                     Archive
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;rss.xml">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                                     RSS
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;about">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                                     About
                                 </a>
                             </li>
@@ -250,52 +246,52 @@
 streaming patterns, and as much as possible zero copy.</p>
 <p>Example</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">extern crate</span><span style="color:#c0c5ce;"> nom;</span><span style="color:#c0c5ce;">
+<code class="language-rust" data-lang="rust"><span style="color:#b48ead;">extern crate</span><span style="color:#c0c5ce;"> nom;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">nom::{</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">IResult,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">bytes::complete::{tag, take_while_m_n},</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">combinator::map_res,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">sequence::tuple</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">};</span><span style="color:#c0c5ce;">
+	IResult,</span><span style="color:#c0c5ce;">
+	bytes::complete::{tag, take_while_m_n},</span><span style="color:#c0c5ce;">
+	combinator::map_res,</span><span style="color:#c0c5ce;">
+	sequence::tuple</span><span style="color:#c0c5ce;">
+};</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">#[</span><span style="color:#bf616a;">derive</span><span style="color:#c0c5ce;">(Debug,PartialEq)]</span><span style="color:#c0c5ce;">
+#[</span><span style="color:#bf616a;">derive</span><span style="color:#c0c5ce;">(Debug,PartialEq)]</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">pub struct </span><span style="color:#c0c5ce;">Color {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">red</span><span style="color:#c0c5ce;">:     </span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">green</span><span style="color:#c0c5ce;">:   </span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">blue</span><span style="color:#c0c5ce;">:    </span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+	</span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">red</span><span style="color:#c0c5ce;">:     </span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
+	</span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">green</span><span style="color:#c0c5ce;">:   </span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
+	</span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">blue</span><span style="color:#c0c5ce;">:    </span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">from_hex</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; Result&lt;</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">, std::num::ParseIntError&gt; {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">::from_str_radix(input, </span><span style="color:#d08770;">16</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+	</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">::from_str_radix(input, </span><span style="color:#d08770;">16</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">is_hex_digit</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">c</span><span style="color:#c0c5ce;">: </span><span style="color:#b48ead;">char</span><span style="color:#c0c5ce;">) -&gt; </span><span style="color:#b48ead;">bool </span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">c.</span><span style="color:#96b5b4;">is_digit</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">16</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+	c.</span><span style="color:#96b5b4;">is_digit</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">16</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">hex_primary</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; IResult&lt;&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">&gt; {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#96b5b4;">map_res</span><span style="color:#c0c5ce;">(</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#96b5b4;">take_while_m_n</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">, </span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">, is_hex_digit),</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">from_hex</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">)(input)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+	</span><span style="color:#96b5b4;">map_res</span><span style="color:#c0c5ce;">(</span><span style="color:#c0c5ce;">
+		</span><span style="color:#96b5b4;">take_while_m_n</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">, </span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">, is_hex_digit),</span><span style="color:#c0c5ce;">
+		from_hex</span><span style="color:#c0c5ce;">
+	)(input)</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">hex_color</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; IResult&lt;&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, Color&gt; {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">let </span><span style="color:#c0c5ce;">(input, _) = </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">#</span><span style="color:#c0c5ce;">&quot;)(input)?;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">let </span><span style="color:#c0c5ce;">(input, (red, green, blue)) = </span><span style="color:#96b5b4;">tuple</span><span style="color:#c0c5ce;">((hex_primary, hex_primary, hex_primary))(input)?;</span><span style="color:#c0c5ce;">
+	</span><span style="color:#b48ead;">let </span><span style="color:#c0c5ce;">(input, _) = </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">#</span><span style="color:#c0c5ce;">&quot;)(input)?;</span><span style="color:#c0c5ce;">
+	</span><span style="color:#b48ead;">let </span><span style="color:#c0c5ce;">(input, (red, green, blue)) = </span><span style="color:#96b5b4;">tuple</span><span style="color:#c0c5ce;">((hex_primary, hex_primary, hex_primary))(input)?;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">Ok((input, Color { red, green, blue }))</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+	Ok((input, Color { red, green, blue }))</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">assert_eq!(</span><span style="color:#96b5b4;">hex_color</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">#2F14DF</span><span style="color:#c0c5ce;">&quot;), Ok((&quot;&quot;, Color {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">red: </span><span style="color:#d08770;">47</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">green: </span><span style="color:#d08770;">20</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">blue: </span><span style="color:#d08770;">223</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">})));</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span></pre><p><a name="continue-reading"></a></p>
+	assert_eq!(</span><span style="color:#96b5b4;">hex_color</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">#2F14DF</span><span style="color:#c0c5ce;">&quot;), Ok((&quot;&quot;, Color {</span><span style="color:#c0c5ce;">
+		red: </span><span style="color:#d08770;">47</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
+		green: </span><span style="color:#d08770;">20</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
+		blue: </span><span style="color:#d08770;">223</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
+	})));</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
+</span></code></pre><span id="continue-reading"></span>
 <p>The code is available on <a href="https://github.com/Geal/nom">Github</a></p>
 <p>There are a few <a href="https://github.com/Geal/nom/tree/master/doc">guides</a> with more details
 about <a href="https://github.com/Geal/nom/blob/master/doc/how_nom_macros_work.md">the design of nom macros</a>,
@@ -327,58 +323,58 @@ written with other parser approaches.</p>
 </ul>
 <p>Here is an example of one such parser, to recognize text between parentheses:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">nom::{</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">IResult,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">sequence::delimited,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">// see the &quot;streaming/complete&quot; paragraph lower for an explanation of these submodules</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">character::complete::char,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">bytes::complete::is_not</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">};</span><span style="color:#c0c5ce;">
+<code class="language-rust" data-lang="rust"><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">nom::{</span><span style="color:#c0c5ce;">
+	IResult,</span><span style="color:#c0c5ce;">
+	sequence::delimited,</span><span style="color:#c0c5ce;">
+	</span><span style="color:#65737e;">// see the &quot;streaming/complete&quot; paragraph lower for an explanation of these submodules</span><span style="color:#c0c5ce;">
+	character::complete::char,</span><span style="color:#c0c5ce;">
+	bytes::complete::is_not</span><span style="color:#c0c5ce;">
+};</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">parens</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; IResult&lt;&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">&gt; {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#96b5b4;">delimited</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">char</span><span style="color:#c0c5ce;">(&#39;</span><span style="color:#a3be8c;">(</span><span style="color:#c0c5ce;">&#39;), </span><span style="color:#96b5b4;">is_not</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">)</span><span style="color:#c0c5ce;">&quot;), </span><span style="color:#b48ead;">char</span><span style="color:#c0c5ce;">(&#39;</span><span style="color:#a3be8c;">)</span><span style="color:#c0c5ce;">&#39;))(input)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span></pre>
+	</span><span style="color:#96b5b4;">delimited</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">char</span><span style="color:#c0c5ce;">(&#39;</span><span style="color:#a3be8c;">(</span><span style="color:#c0c5ce;">&#39;), </span><span style="color:#96b5b4;">is_not</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">)</span><span style="color:#c0c5ce;">&quot;), </span><span style="color:#b48ead;">char</span><span style="color:#c0c5ce;">(&#39;</span><span style="color:#a3be8c;">)</span><span style="color:#c0c5ce;">&#39;))(input)</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>It defines a function named <code>parens</code> which will recognize a sequence of the
 character <code>(</code>, the longest byte array not containing <code>)</code>, then the character
 <code>)</code>, and will return the byte array in the middle.</p>
 <p>Here is another parser, written without using nom's combinators this time:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">#[</span><span style="color:#bf616a;">macro_use</span><span style="color:#c0c5ce;">]</span><span style="color:#c0c5ce;">
+<code class="language-rust" data-lang="rust"><span style="color:#c0c5ce;">#[</span><span style="color:#bf616a;">macro_use</span><span style="color:#c0c5ce;">]</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">extern crate</span><span style="color:#c0c5ce;"> nom;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">nom::{IResult, Err, Needed};</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">take4</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">i</span><span style="color:#c0c5ce;">: &amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">]) -&gt; IResult&lt;&amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">], &amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">]&gt;{</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if</span><span style="color:#c0c5ce;"> i.</span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">() &lt; </span><span style="color:#d08770;">4 </span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#c0c5ce;">Err(Err::Incomplete(Needed::new(</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">)))</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">} </span><span style="color:#b48ead;">else </span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#c0c5ce;">Ok((&amp;i[</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">..], &amp;i[</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">..</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">]))</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span></pre>
+	</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">take4</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">i</span><span style="color:#c0c5ce;">: &amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">]) -&gt; IResult&lt;&amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">], &amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">]&gt;{</span><span style="color:#c0c5ce;">
+		</span><span style="color:#b48ead;">if</span><span style="color:#c0c5ce;"> i.</span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">() &lt; </span><span style="color:#d08770;">4 </span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
+			Err(Err::Incomplete(Needed::new(</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">)))</span><span style="color:#c0c5ce;">
+		} </span><span style="color:#b48ead;">else </span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
+			Ok((&amp;i[</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">..], &amp;i[</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">..</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">]))</span><span style="color:#c0c5ce;">
+		}</span><span style="color:#c0c5ce;">
+	}</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>This function takes a byte array as input, and tries to consume 4 bytes.
 Writing all the parsers manually, like this, is dangerous, despite Rust's
 safety features. There are still a lot of mistakes one can make. That's why
 nom provides a list of function and macros to help in developing parsers.</p>
 <p>With functions, you would write it like this:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">nom::{IResult, bytes::streaming::take};</span><span style="color:#c0c5ce;">
+<code class="language-rust" data-lang="rust"><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">nom::{IResult, bytes::streaming::take};</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">take4</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; IResult&lt;&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">&gt; {</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">  </span><span style="color:#96b5b4;">take</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">4</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">)(input)</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span></pre>
+</span></code></pre>
 <p>With macros, you would write it like this:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">#[</span><span style="color:#bf616a;">macro_use</span><span style="color:#c0c5ce;">]</span><span style="color:#c0c5ce;">
+<code class="language-rust" data-lang="rust"><span style="color:#c0c5ce;">#[</span><span style="color:#bf616a;">macro_use</span><span style="color:#c0c5ce;">]</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">extern crate</span><span style="color:#c0c5ce;"> nom;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">named!(take4, take!(</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">));</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span></pre>
+	named!(take4, take!(</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">));</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>nom has used macros for combinators from versions 1 to 4, and from version
 5, it proposes new combinators as functions, but still allows the macros style
 (macros have been rewritten to use the functions under the hood).
@@ -387,24 +383,24 @@ rustc messages will be much easier to understand.</p>
 <p>A parser in nom is a function which, for an input type <code>I</code>, an output type <code>O</code>
 and an optional error type <code>E</code>, will have the following signature:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">parser</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: I) -&gt; IResult&lt;I, O, E&gt;;</span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-rust" data-lang="rust"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">parser</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: I) -&gt; IResult&lt;I, O, E&gt;;</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>Or like this, if you don't want to specify a custom error type (it will be <code>(I, ErrorKind)</code> by default):</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">parser</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: I) -&gt; IResult&lt;I, O&gt;;</span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-rust" data-lang="rust"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">parser</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: I) -&gt; IResult&lt;I, O&gt;;</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p><code>IResult</code> is an alias for the <code>Result</code> type:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">nom::{Needed, error::ErrorKind};</span><span style="color:#c0c5ce;">
+<code class="language-rust" data-lang="rust"><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">nom::{Needed, error::ErrorKind};</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">type </span><span style="color:#c0c5ce;">IResult&lt;I, O, E = (I,ErrorKind)&gt; = Result&lt;(I, O), Err&lt;E&gt;&gt;;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">enum </span><span style="color:#c0c5ce;">Err&lt;E&gt; {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">Incomplete(Needed),</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">Error(E),</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">Failure(E),</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span></pre>
+	Incomplete(Needed),</span><span style="color:#c0c5ce;">
+	Error(E),</span><span style="color:#c0c5ce;">
+	Failure(E),</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>It can have the following values:</p>
 <ul>
 <li>A correct result <code>Ok((I,O))</code> with the first element being the remaining of the input (not parsed yet), and the second the output value;</li>
@@ -423,64 +419,64 @@ a number of bytes or character as argument) or even other parsers (like
 the second one if all are successful).</p>
 <p>Here are some examples:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">nom::IResult;</span><span style="color:#c0c5ce;">
+<code class="language-rust" data-lang="rust"><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">nom::IResult;</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">nom::bytes::complete::{tag, take};</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">abcd_parser</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">i</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; IResult&lt;&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">&gt; {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;)(i) </span><span style="color:#65737e;">// will consume bytes if the input begins with &quot;abcd&quot;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+	</span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;)(i) </span><span style="color:#65737e;">// will consume bytes if the input begins with &quot;abcd&quot;</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">take_10</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">i</span><span style="color:#c0c5ce;">: &amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">]) -&gt; IResult&lt;&amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">], &amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">]&gt; {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#96b5b4;">take</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">10</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">)(i) </span><span style="color:#65737e;">// will consume and return 10 bytes of input</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span></pre><h1 id="4-combining-parsers">4 Combining parsers</h1>
+	</span><span style="color:#96b5b4;">take</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">10</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">)(i) </span><span style="color:#65737e;">// will consume and return 10 bytes of input</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
+</span></code></pre><h1 id="4-combining-parsers">4 Combining parsers</h1>
 <p>There are higher level patterns, like the <strong><code>alt</code></strong> combinator, which
 provides a choice between multiple parsers. If one branch fails, it tries
 the next, and returns the result of the first parser that succeeds:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">nom::IResult;</span><span style="color:#c0c5ce;">
+<code class="language-rust" data-lang="rust"><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">nom::IResult;</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">nom::branch::alt;</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">nom::bytes::complete::tag;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> alt_tags = </span><span style="color:#96b5b4;">alt</span><span style="color:#c0c5ce;">((</span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;), </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">efgh</span><span style="color:#c0c5ce;">&quot;)));</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">assert_eq!(</span><span style="color:#96b5b4;">alt_tags</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abcdxxx</span><span style="color:#c0c5ce;">&quot;[..]), Ok((&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">xxx</span><span style="color:#c0c5ce;">&quot;[..], &amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;[..])));</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">assert_eq!(</span><span style="color:#96b5b4;">alt_tags</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">efghxxx</span><span style="color:#c0c5ce;">&quot;[..]), Ok((&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">xxx</span><span style="color:#c0c5ce;">&quot;[..], &amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">efgh</span><span style="color:#c0c5ce;">&quot;[..])));</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">assert_eq!(</span><span style="color:#96b5b4;">alt_tags</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">ijklxxx</span><span style="color:#c0c5ce;">&quot;[..]), Err(nom::Err::Error((&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">ijklxxx</span><span style="color:#c0c5ce;">&quot;[..], nom::error::ErrorKind::Tag))));</span><span style="color:#c0c5ce;">
-</span></pre>
+assert_eq!(</span><span style="color:#96b5b4;">alt_tags</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abcdxxx</span><span style="color:#c0c5ce;">&quot;[..]), Ok((&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">xxx</span><span style="color:#c0c5ce;">&quot;[..], &amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;[..])));</span><span style="color:#c0c5ce;">
+assert_eq!(</span><span style="color:#96b5b4;">alt_tags</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">efghxxx</span><span style="color:#c0c5ce;">&quot;[..]), Ok((&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">xxx</span><span style="color:#c0c5ce;">&quot;[..], &amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">efgh</span><span style="color:#c0c5ce;">&quot;[..])));</span><span style="color:#c0c5ce;">
+assert_eq!(</span><span style="color:#96b5b4;">alt_tags</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">ijklxxx</span><span style="color:#c0c5ce;">&quot;[..]), Err(nom::Err::Error((&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">ijklxxx</span><span style="color:#c0c5ce;">&quot;[..], nom::error::ErrorKind::Tag))));</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>The <strong><code>opt</code></strong> combinator makes a parser optional. If the child parser returns
 an error, <strong><code>opt</code></strong> will still succeed and return None:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">nom::{IResult, combinator::opt, bytes::complete::tag};</span><span style="color:#c0c5ce;">
+<code class="language-rust" data-lang="rust"><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">nom::{IResult, combinator::opt, bytes::complete::tag};</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">abcd_opt</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">i</span><span style="color:#c0c5ce;">: &amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">]) -&gt; IResult&lt;&amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">], Option&lt;&amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">]&gt;&gt; {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#96b5b4;">opt</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;))(i)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+	</span><span style="color:#96b5b4;">opt</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;))(i)</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">assert_eq!(</span><span style="color:#96b5b4;">abcd_opt</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abcdxxx</span><span style="color:#c0c5ce;">&quot;[..]), Ok((&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">xxx</span><span style="color:#c0c5ce;">&quot;[..], Some(&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;[..]))));</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">assert_eq!(</span><span style="color:#96b5b4;">abcd_opt</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">efghxxx</span><span style="color:#c0c5ce;">&quot;[..]), Ok((&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">efghxxx</span><span style="color:#c0c5ce;">&quot;[..], None)));</span><span style="color:#c0c5ce;">
-</span></pre>
+assert_eq!(</span><span style="color:#96b5b4;">abcd_opt</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abcdxxx</span><span style="color:#c0c5ce;">&quot;[..]), Ok((&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">xxx</span><span style="color:#c0c5ce;">&quot;[..], Some(&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;[..]))));</span><span style="color:#c0c5ce;">
+assert_eq!(</span><span style="color:#96b5b4;">abcd_opt</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">efghxxx</span><span style="color:#c0c5ce;">&quot;[..]), Ok((&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">efghxxx</span><span style="color:#c0c5ce;">&quot;[..], None)));</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p><strong><code>many0</code></strong> applies a parser 0 or more times, and returns a vector of the aggregated results:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">#[</span><span style="color:#bf616a;">macro_use</span><span style="color:#c0c5ce;">] </span><span style="color:#b48ead;">extern crate</span><span style="color:#c0c5ce;"> nom;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">#[</span><span style="color:#bf616a;">cfg</span><span style="color:#c0c5ce;">(feature = &quot;</span><span style="color:#a3be8c;">alloc</span><span style="color:#c0c5ce;">&quot;)]</span><span style="color:#c0c5ce;">
+<code class="language-rust" data-lang="rust"><span style="color:#c0c5ce;">#[</span><span style="color:#bf616a;">macro_use</span><span style="color:#c0c5ce;">] </span><span style="color:#b48ead;">extern crate</span><span style="color:#c0c5ce;"> nom;</span><span style="color:#c0c5ce;">
+#[</span><span style="color:#bf616a;">cfg</span><span style="color:#c0c5ce;">(feature = &quot;</span><span style="color:#a3be8c;">alloc</span><span style="color:#c0c5ce;">&quot;)]</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">nom::{IResult, multi::many0, bytes::complete::tag};</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">std::str;</span><span style="color:#c0c5ce;">
+  </span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">nom::{IResult, multi::many0, bytes::complete::tag};</span><span style="color:#c0c5ce;">
+  </span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">std::str;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">multi</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">i</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; IResult&lt;&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, Vec&lt;&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">&gt;&gt; {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#96b5b4;">many0</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;))(i)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+  </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">multi</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">i</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; IResult&lt;&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, Vec&lt;&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">&gt;&gt; {</span><span style="color:#c0c5ce;">
+    </span><span style="color:#96b5b4;">many0</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;))(i)</span><span style="color:#c0c5ce;">
+  }</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> a = &quot;</span><span style="color:#a3be8c;">abcdef</span><span style="color:#c0c5ce;">&quot;;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> b = &quot;</span><span style="color:#a3be8c;">abcdabcdef</span><span style="color:#c0c5ce;">&quot;;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> c = &quot;</span><span style="color:#a3be8c;">azerty</span><span style="color:#c0c5ce;">&quot;;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#c0c5ce;">assert_eq!(</span><span style="color:#96b5b4;">multi</span><span style="color:#c0c5ce;">(a), Ok((&quot;</span><span style="color:#a3be8c;">ef</span><span style="color:#c0c5ce;">&quot;,     vec![&quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;])));</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#c0c5ce;">assert_eq!(</span><span style="color:#96b5b4;">multi</span><span style="color:#c0c5ce;">(b), Ok((&quot;</span><span style="color:#a3be8c;">ef</span><span style="color:#c0c5ce;">&quot;,     vec![&quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;])));</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#c0c5ce;">assert_eq!(</span><span style="color:#96b5b4;">multi</span><span style="color:#c0c5ce;">(c), Ok((&quot;</span><span style="color:#a3be8c;">azerty</span><span style="color:#c0c5ce;">&quot;, Vec::new())));</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+  </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> a = &quot;</span><span style="color:#a3be8c;">abcdef</span><span style="color:#c0c5ce;">&quot;;</span><span style="color:#c0c5ce;">
+  </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> b = &quot;</span><span style="color:#a3be8c;">abcdabcdef</span><span style="color:#c0c5ce;">&quot;;</span><span style="color:#c0c5ce;">
+  </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> c = &quot;</span><span style="color:#a3be8c;">azerty</span><span style="color:#c0c5ce;">&quot;;</span><span style="color:#c0c5ce;">
+  assert_eq!(</span><span style="color:#96b5b4;">multi</span><span style="color:#c0c5ce;">(a), Ok((&quot;</span><span style="color:#a3be8c;">ef</span><span style="color:#c0c5ce;">&quot;,     vec![&quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;])));</span><span style="color:#c0c5ce;">
+  assert_eq!(</span><span style="color:#96b5b4;">multi</span><span style="color:#c0c5ce;">(b), Ok((&quot;</span><span style="color:#a3be8c;">ef</span><span style="color:#c0c5ce;">&quot;,     vec![&quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;])));</span><span style="color:#c0c5ce;">
+  assert_eq!(</span><span style="color:#96b5b4;">multi</span><span style="color:#c0c5ce;">(c), Ok((&quot;</span><span style="color:#a3be8c;">azerty</span><span style="color:#c0c5ce;">&quot;, Vec::new())));</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">[</span><span style="color:#96b5b4;">cfg</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">not</span><span style="color:#c0c5ce;">(feature = &quot;</span><span style="color:#a3be8c;">alloc</span><span style="color:#c0c5ce;">&quot;))]</span><span style="color:#c0c5ce;">
+[</span><span style="color:#96b5b4;">cfg</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">not</span><span style="color:#c0c5ce;">(feature = &quot;</span><span style="color:#a3be8c;">alloc</span><span style="color:#c0c5ce;">&quot;))]</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {}</span><span style="color:#c0c5ce;">
-</span></pre>
+</span></code></pre>
 <p>Here are some basic combining macros available:</p>
 <ul>
 <li><strong><code>opt</code></strong>: Will make the parser optional (if it returns the <code>O</code> type, the new parser returns <code>Option&lt;O&gt;</code>)</li>
@@ -491,57 +487,57 @@ an error, <strong><code>opt</code></strong> will still succeed and return None:<
 used to apply a series of parsers then assemble their results.</p>
 <p>Example with <code>tuple</code>:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">#[</span><span style="color:#bf616a;">macro_use</span><span style="color:#c0c5ce;">] </span><span style="color:#b48ead;">extern crate</span><span style="color:#c0c5ce;"> nom;</span><span style="color:#c0c5ce;">
+<code class="language-rust" data-lang="rust"><span style="color:#c0c5ce;">#[</span><span style="color:#bf616a;">macro_use</span><span style="color:#c0c5ce;">] </span><span style="color:#b48ead;">extern crate</span><span style="color:#c0c5ce;"> nom;</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">nom::{error::ErrorKind, Needed,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#c0c5ce;">number::streaming::be_u16,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#c0c5ce;">bytes::streaming::{tag, take},</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#c0c5ce;">sequence::tuple};</span><span style="color:#c0c5ce;">
+  </span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">nom::{error::ErrorKind, Needed,</span><span style="color:#c0c5ce;">
+  number::streaming::be_u16,</span><span style="color:#c0c5ce;">
+  bytes::streaming::{tag, take},</span><span style="color:#c0c5ce;">
+  sequence::tuple};</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> tpl = </span><span style="color:#96b5b4;">tuple</span><span style="color:#c0c5ce;">((be_u16, </span><span style="color:#96b5b4;">take</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">3</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">), </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">fg</span><span style="color:#c0c5ce;">&quot;)));</span><span style="color:#c0c5ce;">
+  </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> tpl = </span><span style="color:#96b5b4;">tuple</span><span style="color:#c0c5ce;">((be_u16, </span><span style="color:#96b5b4;">take</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">3</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">), </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">fg</span><span style="color:#c0c5ce;">&quot;)));</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#c0c5ce;">assert_eq!(</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">   </span><span style="color:#96b5b4;">tpl</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abcdefgh</span><span style="color:#c0c5ce;">&quot;[..]),</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">   </span><span style="color:#c0c5ce;">Ok((</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">     </span><span style="color:#c0c5ce;">&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">h</span><span style="color:#c0c5ce;">&quot;[..],</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">     </span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">0x6162</span><span style="color:#b48ead;">u16</span><span style="color:#c0c5ce;">, &amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">cde</span><span style="color:#c0c5ce;">&quot;[..], &amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">fg</span><span style="color:#c0c5ce;">&quot;[..])</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">   </span><span style="color:#c0c5ce;">))</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#c0c5ce;">);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#c0c5ce;">assert_eq!(</span><span style="color:#96b5b4;">tpl</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abcde</span><span style="color:#c0c5ce;">&quot;[..]), Err(nom::Err::Incomplete(Needed::new(</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">))));</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> input = &amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abcdejk</span><span style="color:#c0c5ce;">&quot;[..];</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#c0c5ce;">assert_eq!(</span><span style="color:#96b5b4;">tpl</span><span style="color:#c0c5ce;">(input), Err(nom::Err::Error((&amp;input[</span><span style="color:#d08770;">5</span><span style="color:#c0c5ce;">..], ErrorKind::Tag))));</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span></pre>
+  assert_eq!(</span><span style="color:#c0c5ce;">
+   </span><span style="color:#96b5b4;">tpl</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abcdefgh</span><span style="color:#c0c5ce;">&quot;[..]),</span><span style="color:#c0c5ce;">
+   Ok((</span><span style="color:#c0c5ce;">
+     &amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">h</span><span style="color:#c0c5ce;">&quot;[..],</span><span style="color:#c0c5ce;">
+     (</span><span style="color:#d08770;">0x6162</span><span style="color:#b48ead;">u16</span><span style="color:#c0c5ce;">, &amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">cde</span><span style="color:#c0c5ce;">&quot;[..], &amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">fg</span><span style="color:#c0c5ce;">&quot;[..])</span><span style="color:#c0c5ce;">
+   ))</span><span style="color:#c0c5ce;">
+  );</span><span style="color:#c0c5ce;">
+  assert_eq!(</span><span style="color:#96b5b4;">tpl</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abcde</span><span style="color:#c0c5ce;">&quot;[..]), Err(nom::Err::Incomplete(Needed::new(</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">))));</span><span style="color:#c0c5ce;">
+  </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> input = &amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abcdejk</span><span style="color:#c0c5ce;">&quot;[..];</span><span style="color:#c0c5ce;">
+  assert_eq!(</span><span style="color:#96b5b4;">tpl</span><span style="color:#c0c5ce;">(input), Err(nom::Err::Error((&amp;input[</span><span style="color:#d08770;">5</span><span style="color:#c0c5ce;">..], ErrorKind::Tag))));</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>But you can also use a sequence of combinators written in imperative style,
 thanks to the <code>?</code> operator:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">#[</span><span style="color:#bf616a;">macro_use</span><span style="color:#c0c5ce;">] </span><span style="color:#b48ead;">extern crate</span><span style="color:#c0c5ce;"> nom;</span><span style="color:#c0c5ce;">
+<code class="language-rust" data-lang="rust"><span style="color:#c0c5ce;">#[</span><span style="color:#bf616a;">macro_use</span><span style="color:#c0c5ce;">] </span><span style="color:#b48ead;">extern crate</span><span style="color:#c0c5ce;"> nom;</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">nom::{IResult, bytes::complete::tag};</span><span style="color:#c0c5ce;">
+  </span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">nom::{IResult, bytes::complete::tag};</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#c0c5ce;">[</span><span style="color:#96b5b4;">derive</span><span style="color:#c0c5ce;">(Debug, PartialEq)]</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">struct </span><span style="color:#c0c5ce;">A {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#bf616a;">a</span><span style="color:#c0c5ce;">: </span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#bf616a;">b</span><span style="color:#c0c5ce;">: </span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+  [</span><span style="color:#96b5b4;">derive</span><span style="color:#c0c5ce;">(Debug, PartialEq)]</span><span style="color:#c0c5ce;">
+  </span><span style="color:#b48ead;">struct </span><span style="color:#c0c5ce;">A {</span><span style="color:#c0c5ce;">
+    </span><span style="color:#bf616a;">a</span><span style="color:#c0c5ce;">: </span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
+    </span><span style="color:#bf616a;">b</span><span style="color:#c0c5ce;">: </span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">
+  }</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">ret_int1</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">i</span><span style="color:#c0c5ce;">:&amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">]) -&gt; IResult&lt;&amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">], </span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">&gt; { Ok((i,</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">)) }</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">ret_int2</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">i</span><span style="color:#c0c5ce;">:&amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">]) -&gt; IResult&lt;&amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">], </span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">&gt; { Ok((i,</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">)) }</span><span style="color:#c0c5ce;">
+  </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">ret_int1</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">i</span><span style="color:#c0c5ce;">:&amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">]) -&gt; IResult&lt;&amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">], </span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">&gt; { Ok((i,</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">)) }</span><span style="color:#c0c5ce;">
+  </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">ret_int2</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">i</span><span style="color:#c0c5ce;">:&amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">]) -&gt; IResult&lt;&amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">], </span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">&gt; { Ok((i,</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">)) }</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">f</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">i</span><span style="color:#c0c5ce;">: &amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">]) -&gt; IResult&lt;&amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">], A&gt; {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">// if successful, the parser returns `Ok((remaining_input, output_value))` that we can destructure</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">let </span><span style="color:#c0c5ce;">(i, _) = </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;)(i)?;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">let </span><span style="color:#c0c5ce;">(i, a) = </span><span style="color:#96b5b4;">ret_int1</span><span style="color:#c0c5ce;">(i)?;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">let </span><span style="color:#c0c5ce;">(i, _) = </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">efgh</span><span style="color:#c0c5ce;">&quot;)(i)?;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">let </span><span style="color:#c0c5ce;">(i, b) = </span><span style="color:#96b5b4;">ret_int2</span><span style="color:#c0c5ce;">(i)?;</span><span style="color:#c0c5ce;">
+  </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">f</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">i</span><span style="color:#c0c5ce;">: &amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">]) -&gt; IResult&lt;&amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">], A&gt; {</span><span style="color:#c0c5ce;">
+    </span><span style="color:#65737e;">// if successful, the parser returns `Ok((remaining_input, output_value))` that we can destructure</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">let </span><span style="color:#c0c5ce;">(i, _) = </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;)(i)?;</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">let </span><span style="color:#c0c5ce;">(i, a) = </span><span style="color:#96b5b4;">ret_int1</span><span style="color:#c0c5ce;">(i)?;</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">let </span><span style="color:#c0c5ce;">(i, _) = </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">efgh</span><span style="color:#c0c5ce;">&quot;)(i)?;</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">let </span><span style="color:#c0c5ce;">(i, b) = </span><span style="color:#96b5b4;">ret_int2</span><span style="color:#c0c5ce;">(i)?;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">Ok((i, A { a, b }))</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+    Ok((i, A { a, b }))</span><span style="color:#c0c5ce;">
+  }</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> r = </span><span style="color:#96b5b4;">f</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abcdefghX</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#c0c5ce;">assert_eq!(r, Ok((&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">X</span><span style="color:#c0c5ce;">&quot;[..], A{a: </span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">, b: </span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">})));</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span></pre><h1 id="5-streaming-complete">5 Streaming / Complete</h1>
+  </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> r = </span><span style="color:#96b5b4;">f</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abcdefghX</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+  assert_eq!(r, Ok((&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">X</span><span style="color:#c0c5ce;">&quot;[..], A{a: </span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">, b: </span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">})));</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
+</span></code></pre><h1 id="5-streaming-complete">5 Streaming / Complete</h1>
 <p>Some of nom's modules have <code>streaming</code> or <code>complete</code> submodules. They hold
 different variants of the same combinators.</p>
 <p>A streaming parser assumes that we might not have all of the input data.
@@ -552,60 +548,60 @@ This will be the common case with small files that can be read entirely to
 memory.</p>
 <p>Here is how it works in practice:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">nom::{</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">IResult, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">Err, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">Needed, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">error::{</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">Error, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">ErrorKind</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">bytes, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">character</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#c0c5ce;">};</span><span style="color:#c0c5ce;">
+<code class="language-rust" data-lang="rust"><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">nom::{</span><span style="color:#c0c5ce;">
+ 	IResult, </span><span style="color:#c0c5ce;">
+ 	Err, </span><span style="color:#c0c5ce;">
+ 	Needed, </span><span style="color:#c0c5ce;">
+ 	error::{</span><span style="color:#c0c5ce;">
+ 		Error, </span><span style="color:#c0c5ce;">
+ 		ErrorKind</span><span style="color:#c0c5ce;">
+ 	}, </span><span style="color:#c0c5ce;">
+ 	bytes, </span><span style="color:#c0c5ce;">
+ 	character</span><span style="color:#c0c5ce;">
+ };</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">take_streaming</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">i</span><span style="color:#c0c5ce;">: &amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">]) -&gt; IResult&lt;&amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">], &amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">]&gt; {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">   </span><span style="color:#c0c5ce;">bytes::streaming::take(</span><span style="color:#d08770;">4</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">)(i)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">take_streaming</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">i</span><span style="color:#c0c5ce;">: &amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">]) -&gt; IResult&lt;&amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">], &amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">]&gt; {</span><span style="color:#c0c5ce;">
+   bytes::streaming::take(</span><span style="color:#d08770;">4</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">)(i)</span><span style="color:#c0c5ce;">
+ }</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">take_complete</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">i</span><span style="color:#c0c5ce;">: &amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">]) -&gt; IResult&lt;&amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">], &amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">]&gt; {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">   </span><span style="color:#c0c5ce;">bytes::complete::take(</span><span style="color:#d08770;">4</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">)(i)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">take_complete</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">i</span><span style="color:#c0c5ce;">: &amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">]) -&gt; IResult&lt;&amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">], &amp;[</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">]&gt; {</span><span style="color:#c0c5ce;">
+   bytes::complete::take(</span><span style="color:#d08770;">4</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">)(i)</span><span style="color:#c0c5ce;">
+ }</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#65737e;">// both parsers will take 4 bytes as expected</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#c0c5ce;">assert_eq!(</span><span style="color:#96b5b4;">take_streaming</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abcde</span><span style="color:#c0c5ce;">&quot;[..]), Ok((&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">e</span><span style="color:#c0c5ce;">&quot;[..], &amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;[..])));</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#c0c5ce;">assert_eq!(</span><span style="color:#96b5b4;">take_complete</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abcde</span><span style="color:#c0c5ce;">&quot;[..]), Ok((&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">e</span><span style="color:#c0c5ce;">&quot;[..], &amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;[..])));</span><span style="color:#c0c5ce;">
+ </span><span style="color:#65737e;">// both parsers will take 4 bytes as expected</span><span style="color:#c0c5ce;">
+ assert_eq!(</span><span style="color:#96b5b4;">take_streaming</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abcde</span><span style="color:#c0c5ce;">&quot;[..]), Ok((&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">e</span><span style="color:#c0c5ce;">&quot;[..], &amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;[..])));</span><span style="color:#c0c5ce;">
+ assert_eq!(</span><span style="color:#96b5b4;">take_complete</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abcde</span><span style="color:#c0c5ce;">&quot;[..]), Ok((&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">e</span><span style="color:#c0c5ce;">&quot;[..], &amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;[..])));</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#65737e;">// if the input is smaller than 4 bytes, the streaming parser</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#65737e;">// will return `Incomplete` to indicate that we need more data</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#c0c5ce;">assert_eq!(</span><span style="color:#96b5b4;">take_streaming</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abc</span><span style="color:#c0c5ce;">&quot;[..]), Err(Err::Incomplete(Needed::new(</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">))));</span><span style="color:#c0c5ce;">
+ </span><span style="color:#65737e;">// if the input is smaller than 4 bytes, the streaming parser</span><span style="color:#c0c5ce;">
+ </span><span style="color:#65737e;">// will return `Incomplete` to indicate that we need more data</span><span style="color:#c0c5ce;">
+ assert_eq!(</span><span style="color:#96b5b4;">take_streaming</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abc</span><span style="color:#c0c5ce;">&quot;[..]), Err(Err::Incomplete(Needed::new(</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">))));</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#65737e;">// but the complete parser will return an error</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#c0c5ce;">assert_eq!(</span><span style="color:#96b5b4;">take_complete</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abc</span><span style="color:#c0c5ce;">&quot;[..]), Err(Err::Error(Error::new(&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abc</span><span style="color:#c0c5ce;">&quot;[..], ErrorKind::Eof))));</span><span style="color:#c0c5ce;">
+ </span><span style="color:#65737e;">// but the complete parser will return an error</span><span style="color:#c0c5ce;">
+ assert_eq!(</span><span style="color:#96b5b4;">take_complete</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abc</span><span style="color:#c0c5ce;">&quot;[..]), Err(Err::Error(Error::new(&amp;</span><span style="color:#b48ead;">b</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">abc</span><span style="color:#c0c5ce;">&quot;[..], ErrorKind::Eof))));</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#65737e;">// the alpha0 function recognizes 0 or more alphabetic characters</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">alpha0_streaming</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">i</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; IResult&lt;&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">&gt; {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">   </span><span style="color:#c0c5ce;">character::streaming::alpha0(i)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+ </span><span style="color:#65737e;">// the alpha0 function recognizes 0 or more alphabetic characters</span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">alpha0_streaming</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">i</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; IResult&lt;&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">&gt; {</span><span style="color:#c0c5ce;">
+   character::streaming::alpha0(i)</span><span style="color:#c0c5ce;">
+ }</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">alpha0_complete</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">i</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; IResult&lt;&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">&gt; {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">   </span><span style="color:#c0c5ce;">character::complete::alpha0(i)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">alpha0_complete</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">i</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; IResult&lt;&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">&gt; {</span><span style="color:#c0c5ce;">
+   character::complete::alpha0(i)</span><span style="color:#c0c5ce;">
+ }</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#65737e;">// if there&#39;s a clear limit to the recognized characters, both </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#65737e;">// parsers work the same way</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#c0c5ce;">assert_eq!(</span><span style="color:#96b5b4;">alpha0_streaming</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">abcd;</span><span style="color:#c0c5ce;">&quot;), Ok((&quot;</span><span style="color:#a3be8c;">;</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;)));</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#c0c5ce;">assert_eq!(</span><span style="color:#96b5b4;">alpha0_complete</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">abcd;</span><span style="color:#c0c5ce;">&quot;), Ok((&quot;</span><span style="color:#a3be8c;">;</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;)));</span><span style="color:#c0c5ce;">
+ </span><span style="color:#65737e;">// if there&#39;s a clear limit to the recognized characters, both </span><span style="color:#c0c5ce;">
+ </span><span style="color:#65737e;">// parsers work the same way</span><span style="color:#c0c5ce;">
+ assert_eq!(</span><span style="color:#96b5b4;">alpha0_streaming</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">abcd;</span><span style="color:#c0c5ce;">&quot;), Ok((&quot;</span><span style="color:#a3be8c;">;</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;)));</span><span style="color:#c0c5ce;">
+ assert_eq!(</span><span style="color:#96b5b4;">alpha0_complete</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">abcd;</span><span style="color:#c0c5ce;">&quot;), Ok((&quot;</span><span style="color:#a3be8c;">;</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;)));</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#65737e;">// but when there&#39;s no limit, the streaming version returns </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#65737e;">// `Incomplete`, because it cannot know if more input data </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#65737e;">// should be recognized. The whole input could be &quot;abcd;&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#65737e;">// or &quot;abcde;&quot;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#c0c5ce;">assert_eq!(</span><span style="color:#96b5b4;">alpha0_streaming</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;), Err(Err::Incomplete(Needed::new(</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">))));</span><span style="color:#c0c5ce;">
+ </span><span style="color:#65737e;">// but when there&#39;s no limit, the streaming version returns </span><span style="color:#c0c5ce;">
+ </span><span style="color:#65737e;">// `Incomplete`, because it cannot know if more input data </span><span style="color:#c0c5ce;">
+ </span><span style="color:#65737e;">// should be recognized. The whole input could be &quot;abcd;&quot;, </span><span style="color:#c0c5ce;">
+ </span><span style="color:#65737e;">// or &quot;abcde;&quot;</span><span style="color:#c0c5ce;">
+ assert_eq!(</span><span style="color:#96b5b4;">alpha0_streaming</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;), Err(Err::Incomplete(Needed::new(</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">))));</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#65737e;">// while the complete version knows that all of the data is there</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#c0c5ce;">assert_eq!(</span><span style="color:#96b5b4;">alpha0_complete</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;), Ok((&quot;&quot;, &quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;)));</span><span style="color:#c0c5ce;">
-</span></pre>
+ </span><span style="color:#65737e;">// while the complete version knows that all of the data is there</span><span style="color:#c0c5ce;">
+ assert_eq!(</span><span style="color:#96b5b4;">alpha0_complete</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;), Ok((&quot;&quot;, &quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;)));</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p><strong>Going further:</strong> Read the <a href="https://github.com/Geal/nom/tree/master/doc">guides</a>,
 check out the <a href="https://docs.rs/nom/6.0.1/nom/recipes/index.html">recipes</a>!</p>
 <h1 id="6-list-of-macros-parsers-and-combinators">6 List of macros parsers and combinators</h1>
@@ -614,50 +610,45 @@ documentation on docs.rs, since rustdoc puts all the macros at the top level. Fu
 are organized in module so they are a bit easier to find.</p>
 <h2 id="6-1-basic-elements">6.1 Basic elements</h2>
 <p>Those are used to recognize the lowest level elements of your grammar, like, &quot;here is a dot&quot;, or &quot;here is an big endian integer&quot;.</p>
-<table><thead><tr><th> combinator </th><th> usage </th><th> input </th><th> output </th><th> comment </th></tr></thead><tbody>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.char.html">char</a> </td><td> <code>char!('a')</code> </td><td>  <code>&quot;abc&quot;</code> </td><td> <code>Ok((&quot;bc&quot;, 'a'))</code> </td><td>Matches one character (works with non ASCII chars too) </td></tr>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.is_a.html">is_a</a> </td><td> <code>is_a!(&quot;ab&quot;)</code> </td><td>  <code>&quot;ababc&quot;</code> </td><td> <code>Ok((&quot;c&quot;, &quot;abab&quot;))</code> </td><td>Matches a sequence of any of the characters passed as arguments</td></tr>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.is_not.html">is_not</a> </td><td> <code>is_not!(&quot;cd&quot;)</code> </td><td>  <code>&quot;ababc&quot;</code> </td><td> <code>Ok((&quot;c&quot;, &quot;abab&quot;))</code> </td><td>Matches a sequence of none of the characters passed as arguments</td></tr>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.one_of.html">one_of</a> </td><td> <code>one_of!(&quot;abc&quot;)</code> </td><td>  <code>&quot;abc&quot;</code> </td><td> <code>Ok((&quot;bc&quot;, 'a'))</code> </td><td>Matches one of the provided characters (works with non ASCII characters too)</td></tr>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.none_of.html">none_of</a> </td><td> <code>none_of!(&quot;abc&quot;)</code> </td><td>  <code>&quot;xyab&quot;</code> </td><td> <code>Ok((&quot;yab&quot;, 'x'))</code> </td><td>Matches anything but the provided characters</td></tr>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.tag.html">tag</a> </td><td> <code>tag!(&quot;hello&quot;)</code> </td><td>  <code>&quot;hello world&quot;</code> </td><td> <code>Ok((&quot; world&quot;, &quot;hello&quot;))</code> </td><td>Recognizes a specific suite of characters or bytes</td></tr>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.tag_no_case.html">tag_no_case</a> </td><td> <code>tag_no_case!(&quot;hello&quot;)</code> </td><td>  <code>&quot;HeLLo World&quot;</code> </td><td> <code>Ok((&quot; World&quot;, &quot;HeLLo&quot;))</code> </td><td>Case insensitive comparison. Note that case insensitive comparison is not well defined for unicode, and that you might have bad surprises</td></tr>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.take.html">take</a> </td><td> <code>take!(4)</code> </td><td>  <code>&quot;hello&quot;</code> </td><td> <code>Ok((&quot;o&quot;, &quot;hell&quot;))</code> </td><td>Takes a specific number of bytes or characters</td></tr>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.take_while.html">take_while</a> </td><td> <code>take_while!(is_alphabetic)</code> </td><td>  <code>&quot;abc123&quot;</code> </td><td> <code>Ok((&quot;123&quot;, &quot;abc&quot;))</code> </td><td>Returns the longest list of bytes for which the provided function returns true. <code>take_while1</code> does the same, but must return at least one character</td></tr>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.take_till.html">take_till</a> </td><td> <code>take_till!(is_alphabetic)</code> </td><td>  <code>&quot;123abc&quot;</code> </td><td> <code>Ok((&quot;abc&quot;, &quot;123&quot;))</code> </td><td>Returns the longest list of bytes or characters until the provided function returns true. <code>take_till1</code> does the same, but must return at least one character. This is the reverse behaviour from <code>take_while</code>: <code>take_till!(f)</code> is equivalent to <code>take_while!(\|c\| !f(c))</code></td></tr>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.take_until.html">take_until</a> </td><td> <code>take_until!(&quot;world&quot;)</code> </td><td>  <code>&quot;Hello world&quot;</code> </td><td> <code>Ok((&quot;world&quot;, &quot;Hello &quot;))</code> </td><td>Returns the longest list of bytes or characters until the provided tag is found. <code>take_until1</code> does the same, but must return at least one character</td></tr>
+<table><thead><tr><th>combinator</th><th>usage</th><th>input</th><th>output</th><th>comment</th></tr></thead><tbody>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.char.html">char</a></td><td><code>char!('a')</code></td><td><code>&quot;abc&quot;</code></td><td><code>Ok((&quot;bc&quot;, 'a'))</code></td><td>Matches one character (works with non ASCII chars too)</td></tr>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.is_a.html">is_a</a></td><td><code> is_a!(&quot;ab&quot;)</code></td><td><code>&quot;ababc&quot;</code></td><td><code>Ok((&quot;c&quot;, &quot;abab&quot;))</code></td><td>Matches a sequence of any of the characters passed as arguments</td></tr>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.is_not.html">is_not</a></td><td><code>is_not!(&quot;cd&quot;)</code></td><td><code>&quot;ababc&quot;</code></td><td><code>Ok((&quot;c&quot;, &quot;abab&quot;))</code></td><td>Matches a sequence of none of the characters passed as arguments</td></tr>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.one_of.html">one_of</a></td><td><code>one_of!(&quot;abc&quot;)</code></td><td><code>&quot;abc&quot;</code></td><td><code>Ok((&quot;bc&quot;, 'a'))</code></td><td>Matches one of the provided characters (works with non ASCII characters too)</td></tr>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.none_of.html">none_of</a></td><td><code>none_of!(&quot;abc&quot;)</code></td><td><code>&quot;xyab&quot;</code></td><td><code>Ok((&quot;yab&quot;, 'x'))</code></td><td>Matches anything but the provided characters</td></tr>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.tag.html">tag</a></td><td><code>tag!(&quot;hello&quot;)</code></td><td><code>&quot;hello world&quot;</code></td><td><code>Ok((&quot; world&quot;, &quot;hello&quot;))</code></td><td>Recognizes a specific suite of characters or bytes</td></tr>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.tag_no_case.html">tag_no_case</a></td><td><code>tag_no_case!(&quot;hello&quot;)</code></td><td><code>&quot;HeLLo World&quot;</code></td><td><code>Ok((&quot; World&quot;, &quot;HeLLo&quot;))</code></td><td>Case insensitive comparison. Note that case insensitive comparison is not well defined for unicode, and that you might have bad surprises</td></tr>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.take.html">take</a></td><td><code>take!(4)</code></td><td><code>&quot;hello&quot;</code></td><td><code>Ok((&quot;o&quot;, &quot;hell&quot;))</code></td><td>Takes a specific number of bytes or characters</td></tr>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.take_while.html">take_while</a></td><td><code>take_while!(is_alphabetic)</code></td><td><code>&quot;abc123&quot;</code></td><td><code>Ok((&quot;123&quot;, &quot;abc&quot;))</code></td><td>Returns the longest list of bytes for which the provided function returns true. <code>take_while1</code> does the same, but must return at least one character</td></tr>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.take_till.html">take_till</a></td><td><code>take_till!(is_alphabetic)</code></td><td><code>&quot;123abc&quot;</code></td><td><code>Ok((&quot;abc&quot;, &quot;123&quot;))</code></td><td>Returns the longest list of bytes or characters until the provided function returns true. <code>take_till1</code> does the same, but must return at least one character. This is the reverse behaviour from <code>take_while</code>: <code>take_till!(f)</code> is equivalent to <code>take_while!(\|c\| !f(c))</code></td></tr>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.take_until.html">take_until</a></td><td><code>take_until!(&quot;world&quot;)</code></td><td><code>&quot;Hello world&quot;</code></td><td><code>Ok((&quot;world&quot;, &quot;Hello &quot;))</code></td><td>Returns the longest list of bytes or characters until the provided tag is found. <code>take_until1</code> does the same, but must return at least one character</td></tr>
 </tbody></table>
 <h2 id="6-2-choice-combinators">6.2 Choice combinators</h2>
-<table><thead><tr><th> combinator </th><th> usage </th><th> input </th><th> output </th><th> comment </th></tr></thead><tbody>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.alt.html">alt</a> </td><td> <code>alt!(tag!(&quot;ab&quot;) \| tag!(&quot;cd&quot;))</code> </td><td>  <code>&quot;cdef&quot;</code> </td><td> <code>Ok((&quot;ef&quot;, &quot;cd&quot;))</code> </td><td>Try a list of parsers and return the result of the first successful one</td></tr>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.switch.html">switch</a> </td><td> <code>switch!(take!(2), &quot;ab&quot; =&gt; tag!(&quot;XYZ&quot;) \| &quot;cd&quot; =&gt; tag!(&quot;123&quot;))</code> </td><td> <code>&quot;cd1234&quot;</code> </td><td> <code>Ok((&quot;4&quot;, &quot;123&quot;))</code> </td><td>Choose the next parser depending on the result of the first one, if successful, and returns the result of the second parser</td></tr>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.permutation.html">permutation</a> </td><td> <code>permutation!(tag!(&quot;ab&quot;), tag!(&quot;cd&quot;), tag!(&quot;12&quot;))</code> </td><td> <code>&quot;cd12abc&quot;</code> </td><td> <code>Ok((&quot;c&quot;, (&quot;ab&quot;, &quot;cd&quot;, &quot;12&quot;))</code> </td><td>Succeeds when all its child parser have succeeded, whatever the order</td></tr>
+<table><thead><tr><th>combinator</th><th>usage</th><th>input</th><th>output</th><th>comment</th></tr></thead><tbody>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.alt.html">alt</a></td><td><code>alt!(tag!(&quot;ab&quot;) \| tag!(&quot;cd&quot;))</code></td><td><code>&quot;cdef&quot;</code></td><td><code>Ok((&quot;ef&quot;, &quot;cd&quot;))</code></td><td>Try a list of parsers and return the result of the first successful one</td></tr>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.switch.html">switch</a></td><td><code>switch!(take!(2), &quot;ab&quot; =&gt; tag!(&quot;XYZ&quot;) \| &quot;cd&quot; =&gt; tag!(&quot;123&quot;))</code></td><td><code>&quot;cd1234&quot;</code></td><td><code>Ok((&quot;4&quot;, &quot;123&quot;))</code></td><td>Choose the next parser depending on the result of the first one, if successful, and returns the result of the second parser</td></tr>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.permutation.html">permutation</a></td><td><code>permutation!(tag!(&quot;ab&quot;), tag!(&quot;cd&quot;), tag!(&quot;12&quot;))</code></td><td><code>&quot;cd12abc&quot;</code></td><td><code>Ok((&quot;c&quot;, (&quot;ab&quot;, &quot;cd&quot;, &quot;12&quot;))</code></td><td>Succeeds when all its child parser have succeeded, whatever the order</td></tr>
 </tbody></table>
 <h2 id="6-3-sequence-combinators">6.3 Sequence combinators</h2>
-<table><thead><tr><th> combinator </th><th> usage </th><th> input </th><th> output </th><th> comment </th></tr></thead><tbody>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.delimited.html">delimited</a> </td><td> <code>delimited!(char!('('), take!(2), char!(')'))</code> </td><td> <code>&quot;(ab)cd&quot;</code> </td><td> <code>Ok((&quot;cd&quot;, &quot;ab&quot;))</code> </td></tr>
-<tr></tr>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.preceded.html">preceded</a> </td><td> <code>preceded!(tag!(&quot;ab&quot;), tag!(&quot;XY&quot;))</code> </td><td> <code>&quot;abXYZ&quot;</code> </td><td> <code>Ok((&quot;Z&quot;, &quot;XY&quot;))</code> </td></tr>
-<tr></tr>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.terminated.html">terminated</a> </td><td> <code>terminated!(tag!(&quot;ab&quot;), tag!(&quot;XY&quot;))</code> </td><td> <code>&quot;abXYZ&quot;</code> </td><td> <code>Ok((&quot;Z&quot;, &quot;ab&quot;))</code> </td></tr>
-<tr></tr>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.pair.html">pair</a> </td><td> <code>pair!(tag!(&quot;ab&quot;), tag!(&quot;XY&quot;))</code> </td><td> <code>&quot;abXYZ&quot;</code> </td><td> <code>Ok((&quot;Z&quot;, (&quot;ab&quot;, &quot;XY&quot;)))</code> </td></tr>
-<tr></tr>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.separated_pair.html">separated_pair</a> </td><td> <code>separated_pair!(tag!(&quot;hello&quot;), char!(','), tag!(&quot;world&quot;))</code> </td><td> <code>&quot;hello,world!&quot;</code> </td><td> <code>Ok((&quot;!&quot;, (&quot;hello&quot;, &quot;world&quot;)))</code> </td></tr>
-<tr></tr>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.tuple.html">tuple</a> </td><td> <code>tuple!(tag!(&quot;ab&quot;), tag!(&quot;XY&quot;), take!(1))</code> </td><td> <code>&quot;abXYZ!&quot;</code> </td><td> <code>Ok((&quot;!&quot;, (&quot;ab&quot;, &quot;XY&quot;, &quot;Z&quot;)))</code> </td><td>Chains parsers and assemble the sub results in a tuple. You can use as many child parsers as you can put elements in a tuple</td></tr>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.do_parse.html">do_parse</a> </td><td> <code>do_parse!(tag: take!(2) &gt;&gt; length: be_u8 &gt;&gt; data: take!(length) &gt;&gt; (Buffer { tag: tag, data: data}) )</code> </td><td> <code>&amp;[0, 0, 3, 1, 2, 3][..]</code> </td><td> <code>Buffer { tag: &amp;[0, 0][..], data: &amp;[1, 2, 3][..] }</code> </td><td><code>do_parse</code> applies sub parsers in a sequence. It can store intermediary results and make them available for later parsers</td></tr>
+<table><thead><tr><th>combinator</th><th>usage</th><th>input</th><th>output</th><th>comment</th></tr></thead><tbody>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.delimited.html">delimited</a></td><td><code>delimited!(char!('('), take!(2), char!(')'))</code></td><td><code>&quot;(ab)cd&quot;</code></td><td><code>Ok((&quot;cd&quot;, &quot;ab&quot;))</code></td><td></td></tr>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.preceded.html">preceded</a></td><td><code>preceded!(tag!(&quot;ab&quot;), tag!(&quot;XY&quot;))</code></td><td><code>&quot;abXYZ&quot;</code></td><td><code>Ok((&quot;Z&quot;, &quot;XY&quot;))</code></td><td></td></tr>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.terminated.html">terminated</a></td><td><code>terminated!(tag!(&quot;ab&quot;), tag!(&quot;XY&quot;))</code></td><td><code>&quot;abXYZ&quot;</code></td><td><code>Ok((&quot;Z&quot;, &quot;ab&quot;))</code></td><td></td></tr>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.pair.html">pair</a></td><td><code>pair!(tag!(&quot;ab&quot;), tag!(&quot;XY&quot;))</code></td><td><code>&quot;abXYZ&quot;</code></td><td><code>Ok((&quot;Z&quot;, (&quot;ab&quot;, &quot;XY&quot;)))</code></td><td></td></tr>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.separated_pair.html">separated_pair</a></td><td><code>separated_pair!(tag!(&quot;hello&quot;), char!(','), tag!(&quot;world&quot;))</code></td><td><code>&quot;hello,world!&quot;</code></td><td><code>Ok((&quot;!&quot;, (&quot;hello&quot;, &quot;world&quot;)))</code></td><td></td></tr>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.tuple.html">tuple</a></td><td><code>tuple!(tag!(&quot;ab&quot;), tag!(&quot;XY&quot;), take!(1))</code></td><td><code>&quot;abXYZ!&quot;</code></td><td><code>Ok((&quot;!&quot;, (&quot;ab&quot;, &quot;XY&quot;, &quot;Z&quot;)))</code></td><td>Chains parsers and assemble the sub results in a tuple. You can use as many child parsers as you can put elements in a tuple</td></tr>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.do_parse.html">do_parse</a></td><td><code>do_parse!(tag: take!(2) &gt;&gt; length: be_u8 &gt;&gt; data: take!(length) &gt;&gt; (Buffer { tag: tag, data: data}) )</code></td><td><code>&amp;[0, 0, 3, 1, 2, 3][..]</code></td><td><code>Buffer { tag: &amp;[0, 0][..], data: &amp;[1, 2, 3][..] }</code></td><td><code>do_parse</code> applies sub parsers in a sequence. It can store intermediary results and make them available for later parsers</td></tr>
 </tbody></table>
 <h2 id="6-4-applying-a-parser-multiple-times">6.4 Applying a parser multiple times</h2>
-<table><thead><tr><th> combinator </th><th> usage </th><th> input </th><th> output </th><th> comment </th></tr></thead><tbody>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.count.html">count</a> </td><td> <code>count!(take!(2), 3)</code> </td><td> <code>&quot;abcdefgh&quot;</code> </td><td> <code>Ok((&quot;gh&quot;, vec!(&quot;ab&quot;, &quot;cd&quot;, &quot;ef&quot;)))</code> </td><td>Applies the child parser a specified number of times</td></tr>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.many0.html">many0</a> </td><td> <code>many0!(tag!(&quot;ab&quot;))</code> </td><td>  <code>&quot;abababc&quot;</code> </td><td> <code>Ok((&quot;c&quot;, vec!(&quot;ab&quot;, &quot;ab&quot;, &quot;ab&quot;)))</code> </td><td>Applies the parser 0 or more times and returns the list of results in a Vec. <code>many1</code> does the same operation but must return at least one element</td></tr>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.many_m_n.html">many_m_n</a> </td><td> <code>many_m_n!(1, 3, tag!(&quot;ab&quot;))</code> </td><td> <code>&quot;ababc&quot;</code> </td><td> <code>Ok((&quot;c&quot;, vec!(&quot;ab&quot;, &quot;ab&quot;)))</code> </td><td>Applies the parser between m and n times (n included) and returns the list of results in a Vec</td></tr>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.many_till.html">many_till</a> </td><td> <code>many_till!(tag!( &quot;ab&quot; ), tag!( &quot;ef&quot; ))</code> </td><td> <code>&quot;ababefg&quot;</code> </td><td> <code>Ok((&quot;g&quot;, (vec!(&quot;ab&quot;, &quot;ab&quot;), &quot;ef&quot;)))</code> </td><td>Applies the first parser until the second applies. Returns a tuple containing the list of results from the first in a Vec and the result of the second</td></tr>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.separated_list.html">separated_list</a> </td><td> <code>separated_list!(tag!(&quot;,&quot;), tag!(&quot;ab&quot;))</code> </td><td> <code>&quot;ab,ab,ab.&quot;</code> </td><td> <code>Ok((&quot;.&quot;, vec!(&quot;ab&quot;, &quot;ab&quot;, &quot;ab&quot;)))</code> </td><td><code>separated_nonempty_list</code> works like <code>separated_list</code> but must returns at least one element</td></tr>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.fold_many0.html">fold_many0</a> </td><td> <code>fold_many0!(be_u8, 0, \|acc, item\| acc + item)</code> </td><td> <code>[1, 2, 3]</code> </td><td> <code>Ok(([], 6))</code> </td><td>Applies the parser 0 or more times and folds the list of return values. The <code>fold_many1</code> version must apply the child parser at least one time</td></tr>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.fold_many_m_n.html">fold_many_m_n</a> </td><td> <code>fold_many_m_n!(1, 2, be_u8, 0, \|acc, item\| acc + item)</code> </td><td> <code>[1, 2, 3]</code> </td><td> <code>Ok(([3], 3))</code> </td><td>Applies the parser between m and n times (n included) and folds the list of return value</td></tr>
-<tr><td> <a href="https://docs.rs/nom/latest/nom/macro.length_count.html">length_count</a> </td><td> <code>length_count!(number, tag!(&quot;ab&quot;))</code> </td><td> <code>&quot;2ababab&quot;</code> </td><td> <code>Ok((&quot;ab&quot;, vec!(&quot;ab&quot;, &quot;ab&quot;)))</code> </td><td>Gets a number from the first parser, then applies the second parser that many times</td></tr>
+<table><thead><tr><th>combinator</th><th>usage</th><th>input</th><th>output</th><th>comment</th></tr></thead><tbody>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.count.html">count</a></td><td><code>count!(take!(2), 3)</code></td><td><code>&quot;abcdefgh&quot;</code></td><td><code>Ok((&quot;gh&quot;, vec!(&quot;ab&quot;, &quot;cd&quot;, &quot;ef&quot;)))</code></td><td>Applies the child parser a specified number of times</td></tr>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.many0.html">many0</a></td><td><code>many0!(tag!(&quot;ab&quot;))</code></td><td><code>&quot;abababc&quot;</code></td><td><code>Ok((&quot;c&quot;, vec!(&quot;ab&quot;, &quot;ab&quot;, &quot;ab&quot;)))</code></td><td>Applies the parser 0 or more times and returns the list of results in a Vec. <code>many1</code> does the same operation but must return at least one element</td></tr>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.many_m_n.html">many_m_n</a></td><td><code>many_m_n!(1, 3, tag!(&quot;ab&quot;))</code></td><td><code>&quot;ababc&quot;</code></td><td><code>Ok((&quot;c&quot;, vec!(&quot;ab&quot;, &quot;ab&quot;)))</code></td><td>Applies the parser between m and n times (n included) and returns the list of results in a Vec</td></tr>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.many_till.html">many_till</a></td><td><code>many_till!(tag!( &quot;ab&quot; ), tag!( &quot;ef&quot; ))</code></td><td><code>&quot;ababefg&quot;</code></td><td><code>Ok((&quot;g&quot;, (vec!(&quot;ab&quot;, &quot;ab&quot;), &quot;ef&quot;)))</code></td><td>Applies the first parser until the second applies. Returns a tuple containing the list of results from the first in a Vec and the result of the second</td></tr>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.separated_list.html">separated_list</a></td><td><code>separated_list!(tag!(&quot;,&quot;), tag!(&quot;ab&quot;))</code></td><td><code>&quot;ab,ab,ab.&quot;</code></td><td><code>Ok((&quot;.&quot;, vec!(&quot;ab&quot;, &quot;ab&quot;, &quot;ab&quot;)))</code></td><td><code>separated_nonempty_list</code> works like <code>separated_list</code> but must returns at least one element</td></tr>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.fold_many0.html">fold_many0</a></td><td><code>fold_many0!(be_u8, 0, \|acc, item\| acc + item)</code></td><td><code>[1, 2, 3]</code></td><td><code>Ok(([], 6))</code></td><td>Applies the parser 0 or more times and folds the list of return values. The <code>fold_many1</code> version must apply the child parser at least one time</td></tr>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.fold_many_m_n.html">fold_many_m_n</a></td><td><code>fold_many_m_n!(1, 2, be_u8, 0, \|acc, item\| acc + item)</code></td><td><code>[1, 2, 3]</code></td><td><code>Ok(([3], 3))</code></td><td>Applies the parser between m and n times (n included) and folds the list of return value</td></tr>
+<tr><td><a href="https://docs.rs/nom/latest/nom/macro.length_count.html">length_count</a></td><td><code>length_count!(number, tag!(&quot;ab&quot;))</code></td><td><code>&quot;2ababab&quot;</code></td><td><code>Ok((&quot;ab&quot;, vec!(&quot;ab&quot;, &quot;ab&quot;)))</code></td><td>Gets a number from the first parser, then applies the second parser that many times</td></tr>
 </tbody></table>
 <h2 id="6-5-integers">6.5 Integers</h2>
 <p>Parsing integers from binary formats can be done in two ways: With parser functions, or combinators with configurable endianness:</p>
@@ -678,7 +669,7 @@ are organized in module so they are a bit easier to find.</p>
 <h2 id="6-7-modifiers">6.7 Modifiers</h2>
 <ul>
 <li><code>cond!</code>: Conditional combinator. Wraps another parser and calls it if the condition is met</li>
-<li><code>flat_map!</code>:</li>
+<li><code>flat_map!</code>: </li>
 <li><code>map!</code>: Maps a function on the result of a parser</li>
 <li><code>map_opt!</code>: Maps a function returning an <code>Option</code> on the output of a parser</li>
 <li><code>map_res!</code>: Maps a function returning a <code>Result</code> on the output of a parser</li>
@@ -742,12 +733,12 @@ are organized in module so they are a bit easier to find.</p>
 <li><code>is_space</code>: Tests if byte is ASCII space or tab: <code>[ \t]</code></li>
 <li><code>alpha</code>: Recognizes one or more lowercase and uppercase alphabetic characters: <code>[a-zA-Z]</code></li>
 <li><code>alphanumeric</code>: Recognizes one or more numerical and alphabetic characters: <code>[0-9a-zA-Z]</code></li>
-<li><code>anychar</code>:</li>
-<li><code>begin</code>:</li>
-<li><code>crlf</code>:</li>
+<li><code>anychar</code>: </li>
+<li><code>begin</code>: </li>
+<li><code>crlf</code>: </li>
 <li><code>digit</code>: Recognizes one or more numerical characters: <code>[0-9]</code></li>
 <li><code>double</code>: Recognizes floating point number in a byte string and returns a <code>f64</code></li>
-<li><code>eol</code>:</li>
+<li><code>eol</code>: </li>
 <li><code>float</code>: Recognizes floating point number in a byte string and returns a <code>f32</code></li>
 <li><code>hex_digit</code>: Recognizes one or more hexadecimal numerical characters: <code>[0-9A-Fa-f]</code></li>
 <li><code>hex_u32</code>: Recognizes a hex-encoded integer</li>
@@ -755,11 +746,11 @@ are organized in module so they are a bit easier to find.</p>
 <li><code>multispace</code>: Recognizes one or more spaces, tabs, carriage returns and line feeds</li>
 <li><code>newline</code>: Matches a newline character <code>\n</code></li>
 <li><code>non_empty</code>: Recognizes non empty buffers</li>
-<li><code>not_line_ending</code>:</li>
+<li><code>not_line_ending</code>: </li>
 <li><code>oct_digit</code>: Recognizes one or more octal characters: <code>[0-7]</code></li>
 <li><code>rest</code>: Return the remaining input</li>
-<li><code>shift</code>:</li>
-<li><code>sized_buffer</code>:</li>
+<li><code>shift</code>: </li>
+<li><code>sized_buffer</code>: </li>
 <li><code>space</code>: Recognizes one or more spaces and tabs</li>
 <li><code>tab</code>: Matches a tab character <code>\t</code></li>
 </ul>

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,8 +9,6 @@
 
       <title>@xjump</title>
 
-      
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
       
 
       
@@ -57,31 +53,31 @@
               <ul class="mobile-menu-list">
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me">
+                        <a href="https:&#x2F;&#x2F;xjump.me">
                             Home
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;categories">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                             Categories
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                             Archive
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;rss.xml">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                             RSS
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;about">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                             About
                         </a>
                     </li>
@@ -95,31 +91,31 @@
                     <ul>
                         
                             <li>
-                                <a href="https://xjump.me">
+                                <a href="https:&#x2F;&#x2F;xjump.me">
                                     Home
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;categories">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                                     Categories
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                                     Archive
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;rss.xml">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                                     RSS
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;about">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                                     About
                                 </a>
                             </li>
@@ -181,22 +177,22 @@
 <p>
     Thread例子如下：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">for</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">int</span><span style="color:#c0c5ce;"> i=</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">; i&lt;</span><span style="color:#d08770;">100</span><span style="color:#c0c5ce;">; i++){</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#ebcb8b;">Thread</span><span style="color:#c0c5ce;"> t = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Thread</span><span style="color:#c0c5ce;">()</span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#eff1f5;">@</span><span style="color:#bf616a;">Override</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">run</span><span style="color:#eff1f5;">() {</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">            </span><span style="color:#65737e;">//job details</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">}</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">t.</span><span style="color:#bf616a;">start</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">try</span><span style="color:#c0c5ce;">{ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">t.</span><span style="color:#bf616a;">join</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">catch</span><span style="color:#c0c5ce;">(</span><span style="color:#ebcb8b;">InterruptedException </span><span style="color:#bf616a;">ex</span><span style="color:#c0c5ce;">){</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">ex.</span><span style="color:#bf616a;">printStackTrace</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span></pre><p>
+<code class="language-java" data-lang="java"><span style="color:#b48ead;">for</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">int</span><span style="color:#c0c5ce;"> i=</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">; i&lt;</span><span style="color:#d08770;">100</span><span style="color:#c0c5ce;">; i++){</span><span style="color:#c0c5ce;">
+    </span><span style="color:#ebcb8b;">Thread</span><span style="color:#c0c5ce;"> t = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Thread</span><span style="color:#c0c5ce;">()</span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
+        @</span><span style="color:#bf616a;">Override</span><span style="color:#eff1f5;">
+        </span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">run</span><span style="color:#eff1f5;">() {</span><span style="color:#eff1f5;">
+            </span><span style="color:#65737e;">//job details</span><span style="color:#65737e;">
+        </span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
+    }</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+    t.</span><span style="color:#bf616a;">start</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">try</span><span style="color:#c0c5ce;">{ </span><span style="color:#c0c5ce;">
+        t.</span><span style="color:#bf616a;">join</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+    }</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">catch</span><span style="color:#c0c5ce;">(</span><span style="color:#ebcb8b;">InterruptedException </span><span style="color:#bf616a;">ex</span><span style="color:#c0c5ce;">){</span><span style="color:#c0c5ce;">
+        ex.</span><span style="color:#bf616a;">printStackTrace</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+    }</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
+</span></code></pre><p>
     相应的，ThreadPoolExecutor例子如下：</p>
 
                                     </div>
@@ -339,12 +335,12 @@ MyFramework.framework/</pre>
 
                                     <div class="post__summary">
                                         <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">- (</span><span style="color:#ebcb8b;">NSString </span><span style="color:#c0c5ce;">*)myString {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">@synchronized</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">return </span><span style="color:#c0c5ce;">[[myString </span><span style="color:#8fa1b3;">retain</span><span style="color:#c0c5ce;">] autorelease];</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span></pre><p>
+<code class="language-mm" data-lang="mm"><span style="color:#c0c5ce;">- (</span><span style="color:#ebcb8b;">NSString </span><span style="color:#c0c5ce;">*)</span><span style="color:#bf616a;">myString </span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
+  </span><span style="color:#b48ead;">@synchronized</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">return </span><span style="color:#c0c5ce;">[[myString </span><span style="color:#8fa1b3;">retain</span><span style="color:#c0c5ce;">] autorelease];</span><span style="color:#c0c5ce;">
+  }</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
+</span></code></pre><p>
     转换1：</p>
 
                                     </div>

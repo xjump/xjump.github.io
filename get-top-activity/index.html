@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,8 +9,6 @@
 
       <title>@xjump</title>
 
-      
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
       
 
       
@@ -57,31 +53,31 @@
               <ul class="mobile-menu-list">
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me">
+                        <a href="https:&#x2F;&#x2F;xjump.me">
                             Home
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;categories">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                             Categories
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                             Archive
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;rss.xml">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                             RSS
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;about">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                             About
                         </a>
                     </li>
@@ -95,31 +91,31 @@
                     <ul>
                         
                             <li>
-                                <a href="https://xjump.me">
+                                <a href="https:&#x2F;&#x2F;xjump.me">
                                     Home
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;categories">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                                     Categories
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                                     Archive
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;rss.xml">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                                     RSS
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;about">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                                     About
                                 </a>
                             </li>
@@ -150,13 +146,13 @@
       <p>
     CODE:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">public </span><span style="color:#ebcb8b;">String </span><span style="color:#bf616a;">getTopActivity</span><span style="color:#c0c5ce;">(</span><span style="color:#ebcb8b;">Activity</span><span style="color:#c0c5ce;"> activity) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#ebcb8b;">ActivityManager</span><span style="color:#c0c5ce;"> am = (</span><span style="color:#ebcb8b;">ActivityManager</span><span style="color:#c0c5ce;">)activity.</span><span style="color:#bf616a;">getSystemService</span><span style="color:#c0c5ce;">(</span><span style="color:#ebcb8b;">Activity</span><span style="color:#c0c5ce;">.</span><span style="color:#d08770;">ACTIVITY_SERVICE</span><span style="color:#c0c5ce;">);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#ebcb8b;">ComponentName</span><span style="color:#c0c5ce;"> cn = am.</span><span style="color:#bf616a;">getRunningTasks</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">).</span><span style="color:#bf616a;">get</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">).topActivity;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#d08770;">LOG</span><span style="color:#c0c5ce;">.</span><span style="color:#bf616a;">d</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">topActivity</span><span style="color:#c0c5ce;">&quot; + cn.</span><span style="color:#bf616a;">getClassName</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">return</span><span style="color:#c0c5ce;"> cn.</span><span style="color:#bf616a;">getClassName</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-java" data-lang="java"><span style="color:#b48ead;">public </span><span style="color:#ebcb8b;">String </span><span style="color:#bf616a;">getTopActivity</span><span style="color:#c0c5ce;">(</span><span style="color:#ebcb8b;">Activity</span><span style="color:#c0c5ce;"> activity) {</span><span style="color:#c0c5ce;">
+    </span><span style="color:#ebcb8b;">ActivityManager</span><span style="color:#c0c5ce;"> am = (</span><span style="color:#ebcb8b;">ActivityManager</span><span style="color:#c0c5ce;">)activity.</span><span style="color:#bf616a;">getSystemService</span><span style="color:#c0c5ce;">(</span><span style="color:#ebcb8b;">Activity</span><span style="color:#c0c5ce;">.</span><span style="color:#d08770;">ACTIVITY_SERVICE</span><span style="color:#c0c5ce;">);</span><span style="color:#c0c5ce;">
+    </span><span style="color:#ebcb8b;">ComponentName</span><span style="color:#c0c5ce;"> cn = am.</span><span style="color:#bf616a;">getRunningTasks</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">).</span><span style="color:#bf616a;">get</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">).topActivity;</span><span style="color:#c0c5ce;">
+    </span><span style="color:#d08770;">LOG</span><span style="color:#c0c5ce;">.</span><span style="color:#bf616a;">d</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">topActivity</span><span style="color:#c0c5ce;">&quot; + cn.</span><span style="color:#bf616a;">getClassName</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">return</span><span style="color:#c0c5ce;"> cn.</span><span style="color:#bf616a;">getClassName</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
+</span></code></pre>
     </div>
 
     

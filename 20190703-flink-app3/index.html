@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,8 +9,6 @@
 
       <title>@xjump</title>
 
-      
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
       
 
       
@@ -57,31 +53,31 @@
               <ul class="mobile-menu-list">
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me">
+                        <a href="https:&#x2F;&#x2F;xjump.me">
                             Home
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;categories">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                             Categories
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                             Archive
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;rss.xml">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                             RSS
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;about">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                             About
                         </a>
                     </li>
@@ -95,31 +91,31 @@
                     <ul>
                         
                             <li>
-                                <a href="https://xjump.me">
+                                <a href="https:&#x2F;&#x2F;xjump.me">
                                     Home
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;categories">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                                     Categories
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                                     Archive
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;rss.xml">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                                     RSS
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;about">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                                     About
                                 </a>
                             </li>
@@ -220,7 +216,7 @@
 <p>EventTime是具有反演特性的现代流式计算建模的核心，在如何避免传输延时带来的错窗问题上，Flink使用watermark和Lateness机制进行处理，使得整个基础更加稳固。同时提供丰富的Window生成和计算机制，使得编写流式计算应用变得简单。</p>
 </blockquote>
 <p>成熟的计算系统还必须具备健壮性，才能承担起更重要的业务应用。Flink中的窗口计算大多需要依赖历史计算结果，这种计算称之为<code>有状态的</code>。在分布式系统中，状态是引起复杂性的根源之一。Flink如何保证<code>有状态的计算</code>足够健壮，将在本篇进行说明。</p>
-<p><a name="continue-reading"></a></p>
+<span id="continue-reading"></span>
 <h2 id="2-yi-zhi-xing-fen-lei">2 一致性分类</h2>
 <p>分布式系统引入状态后，就引入了一致性问题。流式计算系统的一致性主要表现在对计算结果的正确性级别。通常分为3种：at-most-once、at-least-once、exactly-once。</p>
 <h3 id="2-1-at-most-once">2.1 at-most-once</h3>
@@ -234,8 +230,8 @@
 <p>Flink的checkpoint设计可谓神来之笔。在事件定义清晰的情况下，引入ckpt事件，结合ckpt算子，在最细粒度进行状态的快照，实现了exactly-once。</p>
 <p>同时，通过ckpt事件的调度，故障阈值的调优，还可以在快照灵敏度上、故障发现及时性方面做更细致的调优。插入ckpt事件的数据流如下所示。</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">[ </span><span style="color:#ebcb8b;">Event</span><span style="color:#c0c5ce;">, </span><span style="color:#ebcb8b;">Event</span><span style="color:#c0c5ce;">, ckpt, </span><span style="color:#ebcb8b;">Event</span><span style="color:#c0c5ce;">, ..., </span><span style="color:#ebcb8b;">Event</span><span style="color:#c0c5ce;">, ckpt, </span><span style="color:#ebcb8b;">Event</span><span style="color:#c0c5ce;">, ..., </span><span style="color:#ebcb8b;">Event</span><span style="color:#c0c5ce;">, ckpt, </span><span style="color:#ebcb8b;">Event</span><span style="color:#c0c5ce;">, ... ]</span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-java" data-lang="java"><span style="color:#c0c5ce;">[ </span><span style="color:#ebcb8b;">Event</span><span style="color:#c0c5ce;">, </span><span style="color:#ebcb8b;">Event</span><span style="color:#c0c5ce;">, ckpt, </span><span style="color:#ebcb8b;">Event</span><span style="color:#c0c5ce;">, ..., </span><span style="color:#ebcb8b;">Event</span><span style="color:#c0c5ce;">, ckpt, </span><span style="color:#ebcb8b;">Event</span><span style="color:#c0c5ce;">, ..., </span><span style="color:#ebcb8b;">Event</span><span style="color:#c0c5ce;">, ckpt, </span><span style="color:#ebcb8b;">Event</span><span style="color:#c0c5ce;">, ... ]</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>而在消费ckpt时，由特殊的算子进行快照即可。</p>
 <h3 id="3-2-gu-zhang-que-ren">3.2 故障确认</h3>
 <p>Flink通过ckpt进行状态快照，但有时临时的存储不可靠并不影响计算结果的正确性。Flink通过多次连续的状态快照失败来确认故障发生。</p>

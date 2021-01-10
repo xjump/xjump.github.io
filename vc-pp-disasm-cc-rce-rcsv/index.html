@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,8 +9,6 @@
 
       <title>@xjump</title>
 
-      
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
       
 
       
@@ -57,31 +53,31 @@
               <ul class="mobile-menu-list">
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me">
+                        <a href="https:&#x2F;&#x2F;xjump.me">
                             Home
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;categories">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                             Categories
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                             Archive
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;rss.xml">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                             RSS
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;about">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                             About
                         </a>
                     </li>
@@ -95,31 +91,31 @@
                     <ul>
                         
                             <li>
-                                <a href="https://xjump.me">
+                                <a href="https:&#x2F;&#x2F;xjump.me">
                                     Home
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;categories">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                                     Categories
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                                     Archive
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;rss.xml">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                                     RSS
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;about">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                                     About
                                 </a>
                             </li>
@@ -150,7 +146,7 @@
       <h3>0xCC</h3>
 <p>在VC++编写的程序编程成Debug版，反汇编代码，函数入口处经常看到如下一段代码：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#8fa1b3;">00EA14E0 </span><span style="color:#d08770;">55                       </span><span style="color:#b48ead;">push        </span><span style="color:#bf616a;">ebp  </span><span style="color:#c0c5ce;">
+<code class="language-asm" data-lang="asm"><span style="color:#8fa1b3;">00EA14E0 </span><span style="color:#d08770;">55                       </span><span style="color:#b48ead;">push        </span><span style="color:#bf616a;">ebp  </span><span style="color:#c0c5ce;">
 </span><span style="color:#8fa1b3;">00EA14E1 8B EC                    </span><span style="color:#b48ead;">mov         </span><span style="color:#bf616a;">ebp</span><span style="color:#c0c5ce;">,</span><span style="color:#bf616a;">esp</span><span style="color:#c0c5ce;">
 </span><span style="color:#8fa1b3;">00EA14E3 </span><span style="color:#d08770;">81 </span><span style="color:#8fa1b3;">EC C0 </span><span style="color:#d08770;">00 00 00        </span><span style="color:#b48ead;">sub         </span><span style="color:#bf616a;">esp</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">0C0h</span><span style="color:#c0c5ce;">
 </span><span style="color:#8fa1b3;">00EA14E9 </span><span style="color:#d08770;">53                       </span><span style="color:#b48ead;">push        </span><span style="color:#bf616a;">ebx  </span><span style="color:#c0c5ce;">
@@ -160,21 +156,21 @@
 </span><span style="color:#8fa1b3;">00EA14F2 B9 </span><span style="color:#d08770;">30 00 00 00           </span><span style="color:#b48ead;">mov         </span><span style="color:#bf616a;">ecx</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">30h</span><span style="color:#c0c5ce;">
 </span><span style="color:#8fa1b3;">00EA14F7 B8 CC CC CC CC           </span><span style="color:#b48ead;">mov         </span><span style="color:#bf616a;">eax</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">0CCCCCCCCh</span><span style="color:#c0c5ce;">
 </span><span style="color:#8fa1b3;">00EA14FC F3 AB                    </span><span style="color:#b48ead;">rep stos    </span><span style="color:#96b5b4;">dword ptr </span><span style="color:#bf616a;">es</span><span style="color:#8fa1b3;">:</span><span style="color:#c0c5ce;">[</span><span style="color:#bf616a;">edi</span><span style="color:#c0c5ce;">]</span><span style="color:#c0c5ce;">
-</span></pre><p><a name="continue-reading"></a></p>
+</span></code></pre><span id="continue-reading"></span>
 <p>其中主要分为3部分，最上面3行完成本函数局部变量栈空间的开辟，中间部分保存需要保护的寄存器（这部分并非必须），最后4行完成栈空间所有字节初始化为0xCC。<br/>
 0xCC对应汇编代码 int 3，即软断点。<br/></p>
 <p>一方面，0xCC可以为某些检查提供标记（_RTC_CheckStackVars）；另一方面，在栈操作错误或调试汇编代码（如使用OD调试shellcode）时可以对感兴趣的逻辑进行细致的分析，这通常可以通过加入</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">__asm {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">int </span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">;   </span><span style="color:#65737e;">// 或 _emit 0xcc</span><span style="color:#65737e;">
+<code class="language-c++" data-lang="c++"><span style="color:#c0c5ce;">__asm {</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">int </span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">;   </span><span style="color:#65737e;">// 或 _emit 0xcc</span><span style="color:#65737e;">
 </span><span style="color:#c0c5ce;">};</span><span style="color:#c0c5ce;">
-</span></pre>
+</span></code></pre>
 <p>来加入断点。<br/><br/></p>
 <h3>_RTC_CheckEsp</h3>
 注意，这个是在Debug下build时才有的，用于快速定位debug版程序栈操作错误。跟/GS是没有关系的。
 <p>esp_check: 堆栈平衡检查，在调用printf前保存esp到esi，在调用printf后，比较esi与esp达到检查esp的目的。</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#8fa1b3;">010A14FE 8B F4             </span><span style="color:#b48ead;">mov         </span><span style="color:#bf616a;">esi</span><span style="color:#c0c5ce;">,</span><span style="color:#bf616a;">esp                                           </span><span style="color:#c0c5ce;">
+<code class="language-asm" data-lang="asm"><span style="color:#8fa1b3;">010A14FE 8B F4             </span><span style="color:#b48ead;">mov         </span><span style="color:#bf616a;">esi</span><span style="color:#c0c5ce;">,</span><span style="color:#bf616a;">esp                                           </span><span style="color:#c0c5ce;">
 </span><span style="color:#8fa1b3;">010A1500 </span><span style="color:#d08770;">68 78 57 </span><span style="color:#8fa1b3;">0A </span><span style="color:#d08770;">01    </span><span style="color:#b48ead;">push        </span><span style="color:#8fa1b3;">offset string </span><span style="color:#a3be8c;">&quot;call printf.\n&quot; </span><span style="color:#8fa1b3;">(</span><span style="color:#d08770;">10A5778h</span><span style="color:#8fa1b3;">)    </span><span style="color:#c0c5ce;">
 </span><span style="color:#8fa1b3;">010A1505 FF </span><span style="color:#d08770;">15 </span><span style="color:#8fa1b3;">BC </span><span style="color:#d08770;">82 </span><span style="color:#8fa1b3;">0A </span><span style="color:#d08770;">01 </span><span style="color:#b48ead;">call        </span><span style="color:#96b5b4;">dword ptr </span><span style="color:#c0c5ce;">[</span><span style="color:#8fa1b3;">__imp__printf (</span><span style="color:#d08770;">10A82BCh</span><span style="color:#8fa1b3;">)</span><span style="color:#c0c5ce;">]             </span><span style="color:#c0c5ce;">
 </span><span style="color:#8fa1b3;">010A150B </span><span style="color:#d08770;">83 </span><span style="color:#8fa1b3;">C4 </span><span style="color:#d08770;">04          </span><span style="color:#b48ead;">add         </span><span style="color:#bf616a;">esp</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">4                                            </span><span style="color:#c0c5ce;">
@@ -207,57 +203,57 @@
 </span><span style="color:#8fa1b3;">010A15F1 8B E5             </span><span style="color:#b48ead;">mov         </span><span style="color:#bf616a;">esp</span><span style="color:#c0c5ce;">,</span><span style="color:#bf616a;">ebp</span><span style="color:#c0c5ce;">
 </span><span style="color:#8fa1b3;">010A15F3 5D                </span><span style="color:#b48ead;">pop         </span><span style="color:#bf616a;">ebp  </span><span style="color:#c0c5ce;">
 </span><span style="color:#8fa1b3;">010A15F4 C3                </span><span style="color:#b48ead;">ret  </span><span style="color:#c0c5ce;">
-</span></pre>
+</span></code></pre>
 <p>这里没有继续深入_RTC_Failure，这个是进行错误提示终止程序的，或许与下面的_RTC_CheckStackVars提示类似。
 <br/><br/></p>
 <h3>_RTC_CheckStackVars</h3>
 <p>_RTC_CheckStackVars 是新版VS（没有深究从哪个版本开始，但vs2008是有这个特性的）为Debug下build的程序提供栈操作错误的检查，方便在快速发现错误。下面是相关的处理流程，这个和/GS保护机制不是一回事。</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">struct </span><span style="color:#c0c5ce;">SVarsInfo</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">DWORD dwVarNum;   </span><span style="color:#65737e;">//需要验证的参数个数</span><span style="color:#65737e;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">struct </span><span style="color:#c0c5ce;">SVarBlock</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">DWORD dwOffset;   </span><span style="color:#65737e;">//相对当前ESP的偏移，由于栈向下增长，所以这里是个 负数</span><span style="color:#65737e;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">DWORD dwSize;     </span><span style="color:#65737e;">//当前参数占用的字节总数</span><span style="color:#65737e;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">PCHAR strVarName; </span><span style="color:#65737e;">//当前变量的名称</span><span style="color:#65737e;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}* pVarBlockArr;    </span><span style="color:#65737e;">//这个是指向存储变量详细信息数据的数组的指针</span><span style="color:#65737e;">
+<code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">struct </span><span style="color:#c0c5ce;">SVarsInfo</span><span style="color:#c0c5ce;">
+{</span><span style="color:#c0c5ce;">
+    DWORD dwVarNum;   </span><span style="color:#65737e;">//需要验证的参数个数</span><span style="color:#65737e;">
+    </span><span style="color:#b48ead;">struct </span><span style="color:#c0c5ce;">SVarBlock</span><span style="color:#c0c5ce;">
+    {</span><span style="color:#c0c5ce;">
+        DWORD dwOffset;   </span><span style="color:#65737e;">//相对当前ESP的偏移，由于栈向下增长，所以这里是个 负数</span><span style="color:#65737e;">
+        </span><span style="color:#c0c5ce;">DWORD dwSize;     </span><span style="color:#65737e;">//当前参数占用的字节总数</span><span style="color:#65737e;">
+        </span><span style="color:#c0c5ce;">PCHAR strVarName; </span><span style="color:#65737e;">//当前变量的名称</span><span style="color:#65737e;">
+    </span><span style="color:#c0c5ce;">}* pVarBlockArr;    </span><span style="color:#65737e;">//这个是指向存储变量详细信息数据的数组的指针</span><span style="color:#65737e;">
 </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#bf616a;">_RTC_CheckStackVars</span><span style="color:#c0c5ce;">(PVOID pVarInfo, _RTC_framedesc* pEBP)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">DWORD dwEBP = pEBP;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">SVarsInfo* varsInfo = (SVarInfo*)pVarInfo;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">for</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">int</span><span style="color:#c0c5ce;"> i=</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">; idwVarNum; i++)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">SVarBlock* varN = varsInfo-&gt;</span><span style="color:#bf616a;">pVarBlockArr</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if</span><span style="color:#c0c5ce;">(*(PDWORD)(dwEBP+varN-&gt;</span><span style="color:#bf616a;">dwOffset</span><span style="color:#c0c5ce;">-</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">)!=</span><span style="color:#d08770;">0xCCCCCCCC</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">_RTC_StackFailure</span><span style="color:#c0c5ce;">(参数首部， 参数尾部); </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if</span><span style="color:#c0c5ce;">(*(PDWORD)(dwEBP+varN-&gt;</span><span style="color:#bf616a;">dwOffset</span><span style="color:#c0c5ce;">+varN-&gt;</span><span style="color:#bf616a;">dwSize</span><span style="color:#c0c5ce;">)!=</span><span style="color:#d08770;">0xCCCCCCCC</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">_RTC_StackFailure</span><span style="color:#c0c5ce;">(参数首部， 参数尾部);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span></pre>
+{</span><span style="color:#c0c5ce;">
+    DWORD dwEBP = pEBP;</span><span style="color:#c0c5ce;">
+    SVarsInfo* varsInfo = (SVarInfo*)pVarInfo;</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">for</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">int</span><span style="color:#c0c5ce;"> i=</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">; idwVarNum; i++)</span><span style="color:#c0c5ce;">
+    {</span><span style="color:#c0c5ce;">
+        SVarBlock* varN = varsInfo-&gt;</span><span style="color:#bf616a;">pVarBlockArr</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if</span><span style="color:#c0c5ce;">(*(PDWORD)(dwEBP+varN-&gt;</span><span style="color:#bf616a;">dwOffset</span><span style="color:#c0c5ce;">-</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">)!=</span><span style="color:#d08770;">0xCCCCCCCC</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+            </span><span style="color:#bf616a;">_RTC_StackFailure</span><span style="color:#c0c5ce;">(参数首部， 参数尾部); </span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if</span><span style="color:#c0c5ce;">(*(PDWORD)(dwEBP+varN-&gt;</span><span style="color:#bf616a;">dwOffset</span><span style="color:#c0c5ce;">+varN-&gt;</span><span style="color:#bf616a;">dwSize</span><span style="color:#c0c5ce;">)!=</span><span style="color:#d08770;">0xCCCCCCCC</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+            </span><span style="color:#bf616a;">_RTC_StackFailure</span><span style="color:#c0c5ce;">(参数首部， 参数尾部);</span><span style="color:#c0c5ce;">
+    }</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>上面是基本的_RTC_CheckStackVars的伪代码逻辑。</p>
 <p>报错内容如下：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">---------------------------</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">Microsoft Visual C++ Debug Library</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">---------------------------</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">Debug Error!</span><span style="color:#c0c5ce;">
+<code class="language-txt" data-lang="txt"><span style="color:#c0c5ce;">---------------------------</span><span style="color:#c0c5ce;">
+Microsoft Visual C++ Debug Library</span><span style="color:#c0c5ce;">
+---------------------------</span><span style="color:#c0c5ce;">
+Debug Error!</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">Program: e:\path\to\my.exe</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">Module: e:\path\to\my.exe</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">File: e:\path\to\my.cpp</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">Line: 19</span><span style="color:#c0c5ce;">
+Program: e:\path\to\my.exe</span><span style="color:#c0c5ce;">
+Module: e:\path\to\my.exe</span><span style="color:#c0c5ce;">
+File: e:\path\to\my.cpp</span><span style="color:#c0c5ce;">
+Line: 19</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">Run-Time Check Failure #2 - Stack around the variable &#39;strTemp&#39; was corrupted.</span><span style="color:#c0c5ce;">
+Run-Time Check Failure #2 - Stack around the variable &#39;strTemp&#39; was corrupted.</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">(Press Retry to debug the application)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">---------------------------</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">中止(A) 重试(R) 忽略(I)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">---------------------------</span><span style="color:#c0c5ce;">
-</span></pre>
+(Press Retry to debug the application)</span><span style="color:#c0c5ce;">
+---------------------------</span><span style="color:#c0c5ce;">
+中止(A) 重试(R) 忽略(I)</span><span style="color:#c0c5ce;">
+---------------------------</span><span style="color:#c0c5ce;">
+</span></code></pre>
     </div>
 
     

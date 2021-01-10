@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,8 +9,6 @@
 
       <title>@xjump</title>
 
-      
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
       
 
       
@@ -57,31 +53,31 @@
               <ul class="mobile-menu-list">
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me">
+                        <a href="https:&#x2F;&#x2F;xjump.me">
                             Home
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;categories">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                             Categories
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                             Archive
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;rss.xml">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                             RSS
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;about">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                             About
                         </a>
                     </li>
@@ -95,31 +91,31 @@
                     <ul>
                         
                             <li>
-                                <a href="https://xjump.me">
+                                <a href="https:&#x2F;&#x2F;xjump.me">
                                     Home
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;categories">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                                     Categories
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                                     Archive
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;rss.xml">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                                     RSS
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;about">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                                     About
                                 </a>
                             </li>
@@ -220,7 +216,7 @@
 <p>Time为数据打上一个维度标签，使得数据集合转化为<code>流</code>。Window利用Time对<code>流</code>进行进一步抽象，按照一定的区间组合来处理<code>流</code>这种数据，从中发现特征，寻找商业价值。</p>
 </blockquote>
 <p>Time是<code>流</code>的关键维度，无Time不成<code>流</code>。Time是Window的基础，因为Window是依据Time的值来进行划分（Global Window可以看作Time从0到无穷大）。剖析Window前，首先需要明确Time是否足够清晰。或者说上一篇文章介绍的EventTime、ProcessingTime、IngestTime是否足够完备？答案是否定的。那么Time还有哪些模糊地带，或者是还有哪些问题需要考虑？</p>
-<p><a name="continue-reading"></a></p>
+<span id="continue-reading"></span>
 <p>首先无论是EventTime还是ProcessingTime或IngestTime，对最终的数据处理都存在不准确问题，下面详细分析Flink对Time的建模。</p>
 <h2 id="2-timede-jian-mo">2 Time的建模</h2>
 <h3 id="2-1-timede-wan-bei-xing">2.1 Time的完备性</h3>
@@ -253,8 +249,8 @@
 <p>在Flink的设计中，还会提供触发器之前就输出近似计算结果的机制，这将由自定义触发器来实现。</p>
 <p>例如：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">window</span><span style="color:#c0c5ce;">&gt;.trigger(ContinuousEventTimeTrigger.of(Time.seconds(1)))</span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-scala" data-lang="scala"><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">window</span><span style="color:#c0c5ce;">&gt;.trigger(ContinuousEventTimeTrigger.of(Time.seconds(1)))</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>将会在收到事件后1秒时计算近似结果。</p>
 <p>Flink有如下内建触发器。</p>
 <h4 id="3-1-1-eventtimetrigger">3.1.1 EventTimeTrigger</h4>
@@ -271,77 +267,77 @@
 <h4 id="3-2-1-reducefunction">3.2.1 ReduceFunction</h4>
 <p>Reduce函数主要用于将当前窗口内的两个元素转化为一个元素。而转化的计算逻辑可以自己定义。如下所示。</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">window</span><span style="color:#c0c5ce;">&gt;.reduce { (</span><span style="color:#bf616a;">v1</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">v2</span><span style="color:#c0c5ce;">) </span><span style="color:#b48ead;">=&gt; </span><span style="color:#c0c5ce;">(a1, a2) }</span><span style="color:#c0c5ce;">
-</span></pre><h4 id="3-2-2-aggregatefunction">3.2.2 AggregateFunction</h4>
+<code class="language-scala" data-lang="scala"><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">window</span><span style="color:#c0c5ce;">&gt;.reduce { (</span><span style="color:#bf616a;">v1</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">v2</span><span style="color:#c0c5ce;">) </span><span style="color:#b48ead;">=&gt; </span><span style="color:#c0c5ce;">(a1, a2) }</span><span style="color:#c0c5ce;">
+</span></code></pre><h4 id="3-2-2-aggregatefunction">3.2.2 AggregateFunction</h4>
 <p>Aggregate函数是更通用的Reduce函数。将会实现更复杂的窗口计算逻辑。参考官方文档，代码如下所示。</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">AverageAggregate </span><span style="color:#b48ead;">extends </span><span style="color:#a3be8c;">AggregateFunction</span><span style="color:#c0c5ce;">[(</span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">Long</span><span style="color:#c0c5ce;">), (</span><span style="color:#b48ead;">Long</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">Long</span><span style="color:#c0c5ce;">), </span><span style="color:#b48ead;">Double</span><span style="color:#c0c5ce;">] </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">  </span><span style="color:#b48ead;">override def </span><span style="color:#8fa1b3;">createAccumulator</span><span style="color:#eff1f5;">() </span><span style="color:#c0c5ce;">= </span><span style="color:#eff1f5;">(</span><span style="color:#d08770;">0L</span><span style="color:#eff1f5;">, </span><span style="color:#d08770;">0L</span><span style="color:#eff1f5;">)</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">  </span><span style="color:#b48ead;">override def </span><span style="color:#8fa1b3;">add</span><span style="color:#eff1f5;">(</span><span style="color:#bf616a;">value</span><span style="color:#eff1f5;">: (</span><span style="color:#ebcb8b;">String</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">), </span><span style="color:#bf616a;">accumulator</span><span style="color:#eff1f5;">: (</span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">)) </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">(accumulator._1 + value._2, accumulator._2 + </span><span style="color:#d08770;">1L</span><span style="color:#eff1f5;">)</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">  </span><span style="color:#b48ead;">override def </span><span style="color:#8fa1b3;">getResult</span><span style="color:#eff1f5;">(</span><span style="color:#bf616a;">accumulator</span><span style="color:#eff1f5;">: (</span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">)) </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> accumulator._1 / accumulator._2</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">  </span><span style="color:#b48ead;">override def </span><span style="color:#8fa1b3;">merge</span><span style="color:#eff1f5;">(</span><span style="color:#bf616a;">a</span><span style="color:#eff1f5;">: (</span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">), </span><span style="color:#bf616a;">b</span><span style="color:#eff1f5;">: (</span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">)) </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">(a._1 + b._1, a._2 + b._2)</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">val </span><span style="color:#c0c5ce;">input: </span><span style="color:#ebcb8b;">DataStream</span><span style="color:#c0c5ce;">[(</span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">Long</span><span style="color:#c0c5ce;">)] = ...</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">input</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">.keyBy(&lt;</span><span style="color:#bf616a;">key</span><span style="color:#c0c5ce;"> selector&gt;)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">.window(&lt;</span><span style="color:#bf616a;">window</span><span style="color:#c0c5ce;"> assigner&gt;)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">.aggregate(new AverageAggregate)</span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-scala" data-lang="scala"><span style="color:#b48ead;">class</span><span style="color:#ebcb8b;"> AverageAggregate </span><span style="color:#b48ead;">extends </span><span style="color:#a3be8c;">AggregateFunction</span><span style="color:#c0c5ce;">[(</span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">Long</span><span style="color:#c0c5ce;">), (</span><span style="color:#b48ead;">Long</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">Long</span><span style="color:#c0c5ce;">), </span><span style="color:#b48ead;">Double</span><span style="color:#c0c5ce;">] </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
+  </span><span style="color:#b48ead;">override def </span><span style="color:#8fa1b3;">createAccumulator</span><span style="color:#eff1f5;">() </span><span style="color:#c0c5ce;">= </span><span style="color:#eff1f5;">(</span><span style="color:#d08770;">0</span><span style="color:#b48ead;">L</span><span style="color:#eff1f5;">, </span><span style="color:#d08770;">0</span><span style="color:#b48ead;">L</span><span style="color:#eff1f5;">)</span><span style="color:#eff1f5;">
+  </span><span style="color:#b48ead;">override def </span><span style="color:#8fa1b3;">add</span><span style="color:#eff1f5;">(</span><span style="color:#bf616a;">value</span><span style="color:#eff1f5;">: (</span><span style="color:#ebcb8b;">String</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">), </span><span style="color:#bf616a;">accumulator</span><span style="color:#eff1f5;">: (</span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">)) </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;">
+    (accumulator._1 + value._2, accumulator._2 + </span><span style="color:#d08770;">1</span><span style="color:#b48ead;">L</span><span style="color:#eff1f5;">)</span><span style="color:#eff1f5;">
+  </span><span style="color:#b48ead;">override def </span><span style="color:#8fa1b3;">getResult</span><span style="color:#eff1f5;">(</span><span style="color:#bf616a;">accumulator</span><span style="color:#eff1f5;">: (</span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">)) </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> accumulator._1 / accumulator._2</span><span style="color:#eff1f5;">
+  </span><span style="color:#b48ead;">override def </span><span style="color:#8fa1b3;">merge</span><span style="color:#eff1f5;">(</span><span style="color:#bf616a;">a</span><span style="color:#eff1f5;">: (</span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">), </span><span style="color:#bf616a;">b</span><span style="color:#eff1f5;">: (</span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">)) </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;">
+    (a._1 + b._1, a._2 + b._2)</span><span style="color:#eff1f5;">
+}</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">val </span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: </span><span style="color:#ebcb8b;">DataStream</span><span style="color:#c0c5ce;">[(</span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">Long</span><span style="color:#c0c5ce;">)] = ...</span><span style="color:#c0c5ce;">
+input</span><span style="color:#c0c5ce;">
+    .keyBy(&lt;</span><span style="color:#bf616a;">key</span><span style="color:#c0c5ce;"> selector&gt;)</span><span style="color:#c0c5ce;">
+    .window(&lt;</span><span style="color:#bf616a;">window</span><span style="color:#c0c5ce;"> assigner&gt;)</span><span style="color:#c0c5ce;">
+    .aggregate(new AverageAggregate)</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>AverageAggregate通过override几个函数来实现对Add/Merge/Result的计算，来最终实现求平均值。</p>
 <h4 id="3-2-3-foldfunction">3.2.3 FoldFunction</h4>
 <p>Fold函数是逐步将窗口中的元素转换成计算结果的处理函数。通过指定窗口的输入元素如何与输出类型的元素组合来完成。对于添加到窗口的每个元素和当前输出值，将逐步调用Fold函数。第一个元素与输出类型的预定义初始值组合。</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">val </span><span style="color:#c0c5ce;">input: </span><span style="color:#ebcb8b;">DataStream</span><span style="color:#c0c5ce;">[(</span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">Long</span><span style="color:#c0c5ce;">)] = ...</span><span style="color:#c0c5ce;">
+<code class="language-scala" data-lang="scala"><span style="color:#b48ead;">val </span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: </span><span style="color:#ebcb8b;">DataStream</span><span style="color:#c0c5ce;">[(</span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">Long</span><span style="color:#c0c5ce;">)] = ...</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">input</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">.keyBy(&lt;</span><span style="color:#bf616a;">key</span><span style="color:#c0c5ce;"> selector&gt;)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">.window(&lt;</span><span style="color:#bf616a;">window</span><span style="color:#c0c5ce;"> assigner&gt;)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">.fold(&quot;&quot;) { (</span><span style="color:#bf616a;">acc</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">v</span><span style="color:#c0c5ce;">) </span><span style="color:#b48ead;">=&gt;</span><span style="color:#c0c5ce;"> acc + v._2 }</span><span style="color:#c0c5ce;">
-</span></pre>
+input</span><span style="color:#c0c5ce;">
+    .keyBy(&lt;</span><span style="color:#bf616a;">key</span><span style="color:#c0c5ce;"> selector&gt;)</span><span style="color:#c0c5ce;">
+    .window(&lt;</span><span style="color:#bf616a;">window</span><span style="color:#c0c5ce;"> assigner&gt;)</span><span style="color:#c0c5ce;">
+    .fold(&quot;&quot;) { (</span><span style="color:#bf616a;">acc</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">v</span><span style="color:#c0c5ce;">) </span><span style="color:#b48ead;">=&gt;</span><span style="color:#c0c5ce;"> acc + v._2 }</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>该代码将fold初始值置为&quot;&quot;，然后每个窗口中的元素v将与上一次的累计结果acc进行<code>acc+v._2</code>操作合并到新的acc中。所以上述代码就是</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">result = &quot;&quot;</span><span style="color:#c0c5ce;">
+<code class="language-python" data-lang="python"><span style="color:#c0c5ce;">result = &quot;&quot;</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">i </span><span style="color:#b48ead;">in </span><span style="color:#c0c5ce;">window:</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">result += i[</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">]</span><span style="color:#c0c5ce;">
-</span></pre><h4 id="3-2-4-processwindowfunction">3.2.4 ProcessWindowFunction</h4>
+    result += i[</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">]</span><span style="color:#c0c5ce;">
+</span></code></pre><h4 id="3-2-4-processwindowfunction">3.2.4 ProcessWindowFunction</h4>
 <p>ProcessWindow是最通用的窗口处理函数。用法如下所示。</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">val </span><span style="color:#c0c5ce;">input: </span><span style="color:#ebcb8b;">DataStream</span><span style="color:#c0c5ce;">[(</span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">Long</span><span style="color:#c0c5ce;">)] = ...</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">input</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#c0c5ce;">.keyBy(</span><span style="color:#bf616a;">_</span><span style="color:#c0c5ce;">._1)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#c0c5ce;">.timeWindow(Time.minutes(</span><span style="color:#d08770;">5</span><span style="color:#c0c5ce;">))</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">  </span><span style="color:#c0c5ce;">.process(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">MyProcessWindowFunction</span><span style="color:#c0c5ce;">())</span><span style="color:#c0c5ce;">
+<code class="language-scala" data-lang="scala"><span style="color:#b48ead;">val </span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: </span><span style="color:#ebcb8b;">DataStream</span><span style="color:#c0c5ce;">[(</span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">Long</span><span style="color:#c0c5ce;">)] = ...</span><span style="color:#c0c5ce;">
+input</span><span style="color:#c0c5ce;">
+  .keyBy(</span><span style="color:#bf616a;">_</span><span style="color:#c0c5ce;">._1)</span><span style="color:#c0c5ce;">
+  .timeWindow(Time.minutes(</span><span style="color:#d08770;">5</span><span style="color:#c0c5ce;">))</span><span style="color:#c0c5ce;">
+  .process(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">MyProcessWindowFunction</span><span style="color:#c0c5ce;">())</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">MyProcessWindowFunction </span><span style="color:#b48ead;">extends </span><span style="color:#a3be8c;">ProcessWindowFunction</span><span style="color:#c0c5ce;">[(</span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">Long</span><span style="color:#c0c5ce;">), </span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;">, </span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;">, </span><span style="color:#ebcb8b;">TimeWindow</span><span style="color:#c0c5ce;">] </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
+</span><span style="color:#b48ead;">class</span><span style="color:#ebcb8b;"> MyProcessWindowFunction </span><span style="color:#b48ead;">extends </span><span style="color:#a3be8c;">ProcessWindowFunction</span><span style="color:#c0c5ce;">[(</span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">Long</span><span style="color:#c0c5ce;">), </span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;">, </span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;">, </span><span style="color:#ebcb8b;">TimeWindow</span><span style="color:#c0c5ce;">] </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
 </span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">  </span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">process</span><span style="color:#eff1f5;">(</span><span style="color:#bf616a;">key</span><span style="color:#eff1f5;">: </span><span style="color:#ebcb8b;">String</span><span style="color:#eff1f5;">, </span><span style="color:#bf616a;">context</span><span style="color:#eff1f5;">: </span><span style="color:#ebcb8b;">Context</span><span style="color:#eff1f5;">, </span><span style="color:#bf616a;">input</span><span style="color:#eff1f5;">: </span><span style="color:#ebcb8b;">Iterable</span><span style="color:#eff1f5;">[(</span><span style="color:#ebcb8b;">String</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">)], </span><span style="color:#bf616a;">out</span><span style="color:#eff1f5;">: </span><span style="color:#ebcb8b;">Collector</span><span style="color:#eff1f5;">[</span><span style="color:#ebcb8b;">String</span><span style="color:#eff1f5;">]): () </span><span style="color:#c0c5ce;">= </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">var </span><span style="color:#eff1f5;">count </span><span style="color:#c0c5ce;">= </span><span style="color:#d08770;">0L</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">for</span><span style="color:#eff1f5;"> (</span><span style="color:#bf616a;">in </span><span style="color:#c0c5ce;">&lt;-</span><span style="color:#eff1f5;"> input) {</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">      </span><span style="color:#eff1f5;">count </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> count + </span><span style="color:#d08770;">1</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">out.collect(</span><span style="color:#96b5b4;">s</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">Window ${</span><span style="color:#eff1f5;">context.window</span><span style="color:#a3be8c;">} count: </span><span style="color:#c0c5ce;">$</span><span style="color:#bf616a;">count</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">)</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">  </span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">}</span><span style="color:#c0c5ce;">
-</span></pre>
+  </span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">process</span><span style="color:#eff1f5;">(</span><span style="color:#bf616a;">key</span><span style="color:#eff1f5;">: </span><span style="color:#ebcb8b;">String</span><span style="color:#eff1f5;">, </span><span style="color:#bf616a;">context</span><span style="color:#eff1f5;">: </span><span style="color:#ebcb8b;">Context</span><span style="color:#eff1f5;">, </span><span style="color:#bf616a;">input</span><span style="color:#eff1f5;">: </span><span style="color:#ebcb8b;">Iterable</span><span style="color:#eff1f5;">[(</span><span style="color:#ebcb8b;">String</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">)], </span><span style="color:#bf616a;">out</span><span style="color:#eff1f5;">: </span><span style="color:#ebcb8b;">Collector</span><span style="color:#eff1f5;">[</span><span style="color:#ebcb8b;">String</span><span style="color:#eff1f5;">]): () </span><span style="color:#c0c5ce;">= </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
+    </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">count </span><span style="color:#c0c5ce;">= </span><span style="color:#d08770;">0</span><span style="color:#b48ead;">L</span><span style="color:#eff1f5;">
+    </span><span style="color:#b48ead;">for </span><span style="color:#eff1f5;">(</span><span style="color:#bf616a;">in </span><span style="color:#c0c5ce;">&lt;-</span><span style="color:#eff1f5;"> input) {</span><span style="color:#eff1f5;">
+      count </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> count + </span><span style="color:#d08770;">1</span><span style="color:#eff1f5;">
+    }</span><span style="color:#eff1f5;">
+    out.collect(</span><span style="color:#96b5b4;">s</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">Window ${</span><span style="color:#eff1f5;">context.window</span><span style="color:#a3be8c;">} count: </span><span style="color:#bf616a;">$count</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">)</span><span style="color:#eff1f5;">
+  }</span><span style="color:#eff1f5;">
+}</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>通过在process中定义计算逻辑，来进行count运算。</p>
 <h3 id="3-3-zhu-chu-qi-evictor">3.3 逐出器（Evictor）</h3>
 <p>逐出器在触发器触发时开始工作，并且可以在窗口函数执行前或执行后进行操作。主要是对窗口内的元素进行移除操作（即逐出）。</p>
 <h3 id="3-4-zai-kan-chi-dao-de-shi-jian">3.4 再看迟到的事件</h3>
 <p>新版本的Flink中提供了Lateness来处理迟到的事件。在默认情况下Lateness值为0，即watermark之后的事件不会纳入窗口进行计算。但Lateness机制的存在可以使得迟到的元素得以处理。参考官方文档，有如下代码来获取迟到的事件。</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">val </span><span style="color:#c0c5ce;">lateOutputTag = OutputTag[</span><span style="color:#ebcb8b;">T</span><span style="color:#c0c5ce;">](&quot;</span><span style="color:#a3be8c;">late-data</span><span style="color:#c0c5ce;">&quot;)</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">val </span><span style="color:#c0c5ce;">input: </span><span style="color:#ebcb8b;">DataStream</span><span style="color:#c0c5ce;">[</span><span style="color:#ebcb8b;">T</span><span style="color:#c0c5ce;">] = ...</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">val </span><span style="color:#c0c5ce;">result = input</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">.keyBy(&lt;</span><span style="color:#bf616a;">key</span><span style="color:#c0c5ce;"> selector&gt;)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">.window(&lt;</span><span style="color:#bf616a;">window</span><span style="color:#c0c5ce;"> assigner&gt;)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">.allowedLateness(&lt;</span><span style="color:#bf616a;">time</span><span style="color:#c0c5ce;">&gt;)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">.sideOutputLateData(lateOutputTag)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">.&lt;</span><span style="color:#bf616a;">windowed</span><span style="color:#c0c5ce;"> transformation&gt;(&lt;</span><span style="color:#bf616a;">window</span><span style="color:#c0c5ce;"> function&gt;)</span><span style="color:#c0c5ce;">
+<code class="language-scala" data-lang="scala"><span style="color:#b48ead;">val </span><span style="color:#bf616a;">lateOutputTag </span><span style="color:#c0c5ce;">= OutputTag[</span><span style="color:#ebcb8b;">T</span><span style="color:#c0c5ce;">](&quot;</span><span style="color:#a3be8c;">late-data</span><span style="color:#c0c5ce;">&quot;)</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">val </span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: </span><span style="color:#ebcb8b;">DataStream</span><span style="color:#c0c5ce;">[</span><span style="color:#ebcb8b;">T</span><span style="color:#c0c5ce;">] = ...</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">val </span><span style="color:#bf616a;">result </span><span style="color:#c0c5ce;">= input</span><span style="color:#c0c5ce;">
+    .keyBy(&lt;</span><span style="color:#bf616a;">key</span><span style="color:#c0c5ce;"> selector&gt;)</span><span style="color:#c0c5ce;">
+    .window(&lt;</span><span style="color:#bf616a;">window</span><span style="color:#c0c5ce;"> assigner&gt;)</span><span style="color:#c0c5ce;">
+    .allowedLateness(&lt;</span><span style="color:#bf616a;">time</span><span style="color:#c0c5ce;">&gt;)</span><span style="color:#c0c5ce;">
+    .sideOutputLateData(lateOutputTag)</span><span style="color:#c0c5ce;">
+    .&lt;</span><span style="color:#bf616a;">windowed</span><span style="color:#c0c5ce;"> transformation&gt;(&lt;</span><span style="color:#bf616a;">window</span><span style="color:#c0c5ce;"> function&gt;)</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">val lateStream = result.getSideOutput(lateOutputTag)</span><span style="color:#c0c5ce;">
-</span></pre><h2 id="4-wo-men-zou-dao-liao-na-li">4 我们走到了哪里</h2>
+val lateStream = result.getSideOutput(lateOutputTag)</span><span style="color:#c0c5ce;">
+</span></code></pre><h2 id="4-wo-men-zou-dao-liao-na-li">4 我们走到了哪里</h2>
 <p>Flink对<code>流</code>有着深刻的理解，并基于此构建了坚实的Time模型和灵活的Window模型。通过提供Window模型上的丰富计算机制，让<code>流</code>的计算变得简单而生动。</p>
 <p>本篇对Flink中Time和Window的机制进行了进一步的分析，而这些都是使用Flink进行复杂计算的基石。接下来将继续探讨Flink中的其他核心概念。</p>
 

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,8 +9,6 @@
 
       <title>@xjump</title>
 
-      
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
       
 
       
@@ -57,31 +53,31 @@
               <ul class="mobile-menu-list">
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me">
+                        <a href="https:&#x2F;&#x2F;xjump.me">
                             Home
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;categories">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                             Categories
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                             Archive
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;rss.xml">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                             RSS
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;about">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                             About
                         </a>
                     </li>
@@ -95,31 +91,31 @@
                     <ul>
                         
                             <li>
-                                <a href="https://xjump.me">
+                                <a href="https:&#x2F;&#x2F;xjump.me">
                                     Home
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;categories">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                                     Categories
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                                     Archive
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;rss.xml">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                                     RSS
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;about">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                                     About
                                 </a>
                             </li>
@@ -152,57 +148,57 @@
     RFC4226记述的是HOTP，一个基于HMAC的动态口令的算法。由于本系统支持HOTP，在这里将介绍一下RFC4226的概要或者直接翻译一些章节。对于一些细节请参照<a href="http://www.ietf.org/rfc/rfc4226.txt" rel="nofollow">RFC 4226原文</a>。</p>
 <h3>Details</h3>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">4.算法的必要条件</span><span style="color:#c0c5ce;">
+<code class="language-txt" data-lang="txt"><span style="color:#c0c5ce;">4.算法的必要条件</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">RFC4226的第四节，介绍了HOTP的算法设计要满足的主要的必要条件。重点强调了终端用户的使用</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">方便性，以及在可能提供最低限的用户界面的低端硬件上的实现能力。特别是具备嵌入到大量的SIM,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">Java卡的能力是一个重要的前提。</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">R1 - 这个算法必须是连续性的-或者基于事件：一个目的是把HOTP算法嵌入到大量的Java智能卡，</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">USB 保护卡(dongles)和GSM SIM卡。</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">R2 - 依靠最小化对电池，按钮数，计算能力和LCD界面尺寸的需求，这个算法应该能很经济的在</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">硬件上实现。</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">R3 - 这个算法必须能利用到不支持任何数据输入的令牌(token),但也可能用在像Secure PIN-pads</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">这样更加复杂的硬件上。</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">R4 - 显示在令牌上的值必须便于用户读取和输入：这要求HOTP的值具有合理的长度。</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">HOTP的值必须至少6位。为了方便在像手机这样的硬件上的输入，一个值得考虑的办法就是把HOTP</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">的值设成只是数字。</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">R5 - 必须具有用户友好的再同期计数器的机制。7.4节和附录E.4将详细介绍本资料建议的计数器</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">再同期机制。</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">R6 - 这个算法必须使用牢固的共享密码。共享密码必须至少128位。本资料推荐160的共享密码。</span><span style="color:#c0c5ce;">
-</span></pre><p><a name="continue-reading"></a></p>
-<p>5.2 算法的概述</p>
+RFC4226的第四节，介绍了HOTP的算法设计要满足的主要的必要条件。重点强调了终端用户的使用</span><span style="color:#c0c5ce;">
+方便性，以及在可能提供最低限的用户界面的低端硬件上的实现能力。特别是具备嵌入到大量的SIM,</span><span style="color:#c0c5ce;">
+Java卡的能力是一个重要的前提。</span><span style="color:#c0c5ce;">
+R1 - 这个算法必须是连续性的-或者基于事件：一个目的是把HOTP算法嵌入到大量的Java智能卡，</span><span style="color:#c0c5ce;">
+USB 保护卡(dongles)和GSM SIM卡。</span><span style="color:#c0c5ce;">
+R2 - 依靠最小化对电池，按钮数，计算能力和LCD界面尺寸的需求，这个算法应该能很经济的在</span><span style="color:#c0c5ce;">
+硬件上实现。</span><span style="color:#c0c5ce;">
+R3 - 这个算法必须能利用到不支持任何数据输入的令牌(token),但也可能用在像Secure PIN-pads</span><span style="color:#c0c5ce;">
+这样更加复杂的硬件上。</span><span style="color:#c0c5ce;">
+R4 - 显示在令牌上的值必须便于用户读取和输入：这要求HOTP的值具有合理的长度。</span><span style="color:#c0c5ce;">
+HOTP的值必须至少6位。为了方便在像手机这样的硬件上的输入，一个值得考虑的办法就是把HOTP</span><span style="color:#c0c5ce;">
+的值设成只是数字。</span><span style="color:#c0c5ce;">
+R5 - 必须具有用户友好的再同期计数器的机制。7.4节和附录E.4将详细介绍本资料建议的计数器</span><span style="color:#c0c5ce;">
+再同期机制。</span><span style="color:#c0c5ce;">
+R6 - 这个算法必须使用牢固的共享密码。共享密码必须至少128位。本资料推荐160的共享密码。</span><span style="color:#c0c5ce;">
+</span></code></pre><span id="continue-reading"></span>
+<p>5.2 算法的概述 </p>
 <p>HOTP算法是基于客户端和服务器端都知道下面两个值: C:一个递增的值，就好比一个计数器一样 K:一个共享的秘匙 每次进行密码验证的时候，双方都利用下面的算法来生成一个动态的值 HOTP(K,C) = Truncate(HMAC-SHA-1(K,C))</p>
 <p>在这里HMAC-SHA-1指的是在<a href="http://www.ietf.org/rfc/rfc2104.txt" rel="nofollow">RFC2104</a>里定义的HASH算法。Truncate代表一个削减函数，以便把一个20位的HMAC-SHA-1算法的结果变成一个便于用户输入的值。（比如6位，8位）</p>
 <p>5.3 生成HOTP值</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">第1步：生成一个HMAC-SHA-1值,让HS = HMAC-SHA-1(K,C) //HS为20位的String</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">第2步：生成一个4位的String(Dynamic Truncation,动态削减)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">让 Sbits = DT(HS)  //DT运算的定义参照下面说明，返回31-bit string</span><span style="color:#c0c5ce;">
+<code class="language-txt" data-lang="txt"><span style="color:#c0c5ce;">第1步：生成一个HMAC-SHA-1值,让HS = HMAC-SHA-1(K,C) //HS为20位的String</span><span style="color:#c0c5ce;">
+    </span><span style="color:#c0c5ce;">
+第2步：生成一个4位的String(Dynamic Truncation,动态削减)</span><span style="color:#c0c5ce;">
+    让 Sbits = DT(HS)  //DT运算的定义参照下面说明，返回31-bit string</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">第3步：计算HOTP值 让 Snum = StToNum(Sbits) // 把S转化成一个0...2^{31}-1</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">的数 Return D = Snum mod 10Digit // D是一个位于0...10{Digit}-1的数</span><span style="color:#c0c5ce;">
+第3步：计算HOTP值 让 Snum = StToNum(Sbits) // 把S转化成一个0...2^{31}-1</span><span style="color:#c0c5ce;">
+    的数 Return D = Snum mod 10Digit // D是一个位于0...10{Digit}-1的数</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">削减函数Truncate执行第2步和第3步处理。</span><span style="color:#c0c5ce;">
-</span></pre><p>DT运算的定义</p>
+削减函数Truncate执行第2步和第3步处理。</span><span style="color:#c0c5ce;">
+</span></code></pre><p>DT运算的定义</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">DT(String)  //String = String[0]...String[19],HMAC-SHA-1运算的结果</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">让 OffsetBits等于String[19]的低位4字节</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">Offset = StToNum(OffsetBits) // 0 &lt;= OffSet &lt;= 15</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">让 P = String[OffSet]...String[OffSet+3]</span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-txt" data-lang="txt"><span style="color:#c0c5ce;">DT(String)  //String = String[0]...String[19],HMAC-SHA-1运算的结果</span><span style="color:#c0c5ce;">
+让 OffsetBits等于String[19]的低位4字节</span><span style="color:#c0c5ce;">
+Offset = StToNum(OffsetBits) // 0 &lt;= OffSet &lt;= 15</span><span style="color:#c0c5ce;">
+让 P = String[OffSet]...String[OffSet+3]</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>返回P的最后31字节 在这里不使用P的最高位字节的目的是为了避免singed,unsigned代来的计算问题。 不同的处理器对singed,unsigned的计算方式不一样，不使用最高位字节可以避免 这样的问题。</p>
-<p>5.4. 计算6位HOTP的例子（Digit = 6）</p>
+<p>5.4. 计算6位HOTP的例子（Digit = 6） </p>
 <p>下面的例子介绍怎样从HMAC-SHA-1运算结果抽取动态的二进制代码。</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">//String[19]的低位4字节</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">int offset   =  hmac_result[19] &amp; 0xf ;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">//不使用最高位，利用 &amp;0x7f</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">int bin_code = (hmac_result[offset]  &amp; 0x7f) &lt;&lt; 24</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">| (hmac_result[offset+1] &amp; 0xff) &lt;&lt; 16</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">| (hmac_result[offset+2] &amp; 0xff) &lt;&lt;  8</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">| (hmac_result[offset+3] &amp; 0xff) ;</span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-txt" data-lang="txt"><span style="color:#c0c5ce;">//String[19]的低位4字节</span><span style="color:#c0c5ce;">
+int offset   =  hmac_result[19] &amp; 0xf ;</span><span style="color:#c0c5ce;">
+//不使用最高位，利用 &amp;0x7f</span><span style="color:#c0c5ce;">
+int bin_code = (hmac_result[offset]  &amp; 0x7f) &lt;&lt; 24</span><span style="color:#c0c5ce;">
+    | (hmac_result[offset+1] &amp; 0xff) &lt;&lt; 16</span><span style="color:#c0c5ce;">
+    | (hmac_result[offset+2] &amp; 0xff) &lt;&lt;  8</span><span style="color:#c0c5ce;">
+    | (hmac_result[offset+3] &amp; 0xff) ;</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>7.2. HOTP值的验证</p>
 <p>HOTP客户端(硬软件令牌)递增计数器的值，然后计算下一个HOTP值。如果认证服务器得到的值和客户端计算出来的值一样，那么HOTP值就被验证了。在这种情况下，服务器把计数器的值加1。</p>
 <p>如果认证服务器得到的值和客户端计算出来的值不一样，服务器在开始寻求另一个途径之前启动再 同步的手续。(look-ahead window，即在接受一定范围内的超前的HOTP值，比如将计数器的值加1， 加2，加3后的值)</p>
@@ -211,9 +207,9 @@
 <p>虽然在一次成功的HOTP认证后才增加服务器计数器的值，在令牌上的计数器的值是只要用户请求一个新的HOTP就会被增加。因此，服务器上的计数器和令牌上的计数器的值就可能不同步。</p>
 <p>推荐在服务器上设置一个超前(look-ahead)变量s,让它来定义look-ahead window的大小。简单的说，就是服务器能计算接下来的s个服务器端HOTP值，然后用它们来检测接受接受到的HOTP客户端。</p>
 <p>在这种情况下，计数器的同步就仅仅是让服务器计算接下来的s个HOTP值并决定是否有一个一致的。 作为一个选择，系统可以要求用户送连续的几个HOTP值(比如2个, 3个)以用来再同步，因为猜测连 续的几个HOTP值比猜测单独的一个HOTP值要困难的多。</p>
-<p>变量s设置的上限确保服务器不会一直在检测HOTP值(导致denial-of-service攻击)并且限制攻击者 可能的猜测范围。在确保不显著影响可用性的同时，s应当尽可能的小。</p>
-<p>7.5. 共有秘匙的管理</p>
-<p>为了减少任何机密信息泄露的风险，用于生成和验证OTP值的共有秘匙的操作必须被安全地进行。 在验证系统里，我们能考虑两种不同的用于生成和保存(安全地)共有秘匙的途径。</p>
+<p>变量s设置的上限确保服务器不会一直在检测HOTP值(导致denial-of-service攻击)并且限制攻击者 可能的猜测范围。在确保不显著影响可用性的同时，s应当尽可能的小。 </p>
+<p>7.5. 共有秘匙的管理 </p>
+<p>为了减少任何机密信息泄露的风险，用于生成和验证OTP值的共有秘匙的操作必须被安全地进行。 在验证系统里，我们能考虑两种不同的用于生成和保存(安全地)共有秘匙的途径。 </p>
 <ul>
 <li>定性生成：秘匙派生自一个主属种子(master seed)以用于配置和验证，并能在被要求的时候随机产生</li>
 <li>随机生成：秘匙在配置时随机生成，秘匙必须马上被保存并管理在整个生命周期</li>
@@ -226,7 +222,7 @@
 <p>随机生成：</p>
 <p>随机生成共有秘匙。我们推荐按照在[RFC4086]里的建议并选择一个好的，安全的随机数源以 用来生成这些秘匙。一个(真正的)随机生成器需要一个自然发生的随机数源。从实际来看，有 两个可以考虑的用来生成共有秘匙的办法：</p>
 <ul>
-<li>基于硬件的生成器: 利用产生于物理现象的随机性。一个好的实装能是基于共振器。</li>
+<li>基于硬件的生成器: 利用产生于物理现象的随机性。一个好的实装能是基于共振器。 </li>
 <li>基于软件的生成器: 设计一个好的软件随机生成器不是一件容易的事。一个简单的，但 有效的实装应该基于多种数据源并应用像SHA-1这样的单方向函数。</li>
 </ul>
 

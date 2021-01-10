@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,8 +9,6 @@
 
       <title>@xjump</title>
 
-      
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
       
 
       
@@ -57,31 +53,31 @@
               <ul class="mobile-menu-list">
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me">
+                        <a href="https:&#x2F;&#x2F;xjump.me">
                             Home
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;categories">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                             Categories
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                             Archive
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;rss.xml">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                             RSS
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;about">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                             About
                         </a>
                     </li>
@@ -95,31 +91,31 @@
                     <ul>
                         
                             <li>
-                                <a href="https://xjump.me">
+                                <a href="https:&#x2F;&#x2F;xjump.me">
                                     Home
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;categories">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                                     Categories
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                                     Archive
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;rss.xml">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                                     RSS
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;about">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                                     About
                                 </a>
                             </li>
@@ -149,54 +145,54 @@
     <div class="post-content">
       <p>
 Albert Au Yeung写的Matrix&nbsp;Factorization 的例子。MF是推荐系统常规算法。</p>
-<p><a name="continue-reading"></a></p>
+<span id="continue-reading"></span>
 <pre style="background-color:#2b303b;">
-<span style="color:#65737e;">#!/usr/bin/env python</span><span style="color:#65737e;">
-</span><span style="color:#65737e;"># -*- coding: utf-8 -*-</span><span style="color:#65737e;">
+<code class="language-python" data-lang="python"><span style="color:#65737e;">#!/usr/bin/env python</span><span style="color:#65737e;">
+# -*- coding: utf-8 -*-</span><span style="color:#65737e;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">numpy  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">   </span><span style="color:#c0c5ce;">
+   </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">matrix_factorisation</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">R</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">P</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">Q</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">K</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">steps</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">5000</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">alpha</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">0.0002</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">beta</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">0.02</span><span style="color:#c0c5ce;">):  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">Q = Q.T  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">step </span><span style="color:#b48ead;">in </span><span style="color:#bf616a;">xrange</span><span style="color:#c0c5ce;">(steps):  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">i </span><span style="color:#b48ead;">in </span><span style="color:#bf616a;">xrange</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">(R)):  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">j </span><span style="color:#b48ead;">in </span><span style="color:#bf616a;">xrange</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">(R[i])):  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">                </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">R[i][j] &gt; </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">:  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">                    </span><span style="color:#c0c5ce;">eij = R[i][j] - numpy.</span><span style="color:#bf616a;">dot</span><span style="color:#c0c5ce;">(P[i,:],Q[:,j])  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">                    </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">k </span><span style="color:#b48ead;">in </span><span style="color:#bf616a;">xrange</span><span style="color:#c0c5ce;">(K):  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">                        </span><span style="color:#c0c5ce;">P[i][k] = P[i][k] + alpha * (</span><span style="color:#d08770;">2 </span><span style="color:#c0c5ce;">* eij * Q[k][j] - beta * P[i][k])  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">                        </span><span style="color:#c0c5ce;">Q[k][j] = Q[k][j] + alpha * (</span><span style="color:#d08770;">2 </span><span style="color:#c0c5ce;">* eij * P[i][k] - beta * Q[k][j])  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">eR = numpy.</span><span style="color:#bf616a;">dot</span><span style="color:#c0c5ce;">(P,Q)  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">e = </span><span style="color:#d08770;">0  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">i </span><span style="color:#b48ead;">in </span><span style="color:#bf616a;">xrange</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">(R)):  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">j </span><span style="color:#b48ead;">in </span><span style="color:#bf616a;">xrange</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">(R[i])):  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">                </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">R[i][j] &gt; </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">:  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">                    </span><span style="color:#c0c5ce;">e = e + </span><span style="color:#96b5b4;">pow</span><span style="color:#c0c5ce;">(R[i][j] - numpy.</span><span style="color:#bf616a;">dot</span><span style="color:#c0c5ce;">(P[i,:],Q[:,j]), </span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">)  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">                    </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">k </span><span style="color:#b48ead;">in </span><span style="color:#bf616a;">xrange</span><span style="color:#c0c5ce;">(K):  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">                        </span><span style="color:#c0c5ce;">e = e + (beta/</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">) * (</span><span style="color:#96b5b4;">pow</span><span style="color:#c0c5ce;">(P[i][k],</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">) + </span><span style="color:#96b5b4;">pow</span><span style="color:#c0c5ce;">(Q[k][j],</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">))  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">e &lt; </span><span style="color:#d08770;">0.001</span><span style="color:#c0c5ce;">:  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">break  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">return </span><span style="color:#c0c5ce;">P, Q.T </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">R = [  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">     </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">5</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">],  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">     </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">],  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">     </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">5</span><span style="color:#c0c5ce;">],  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">     </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">],  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">     </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">5</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">],  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">]  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">   </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">R = numpy.</span><span style="color:#bf616a;">array</span><span style="color:#c0c5ce;">(R)  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">   </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">N = </span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">(R)  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">M = </span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">(R[</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">])  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">K = </span><span style="color:#d08770;">2  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">   </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">P = numpy.random.</span><span style="color:#bf616a;">rand</span><span style="color:#c0c5ce;">(N,K)  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">Q = numpy.random.</span><span style="color:#bf616a;">rand</span><span style="color:#c0c5ce;">(M,K)  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">   </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">nP, nQ = </span><span style="color:#bf616a;">matrix_factorisation</span><span style="color:#c0c5ce;">(R, P, Q, K)  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">nR = numpy.</span><span style="color:#bf616a;">dot</span><span style="color:#c0c5ce;">(nP, nQ.T)  </span><span style="color:#c0c5ce;">
+    Q = Q.T  </span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">step </span><span style="color:#b48ead;">in </span><span style="color:#bf616a;">xrange</span><span style="color:#c0c5ce;">(steps):  </span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">i </span><span style="color:#b48ead;">in </span><span style="color:#bf616a;">xrange</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">(R)):  </span><span style="color:#c0c5ce;">
+            </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">j </span><span style="color:#b48ead;">in </span><span style="color:#bf616a;">xrange</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">(R[i])):  </span><span style="color:#c0c5ce;">
+                </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">R[i][j] &gt; </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">:  </span><span style="color:#c0c5ce;">
+                    eij = R[i][j] - numpy.</span><span style="color:#bf616a;">dot</span><span style="color:#c0c5ce;">(P[i,:],Q[:,j])  </span><span style="color:#c0c5ce;">
+                    </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">k </span><span style="color:#b48ead;">in </span><span style="color:#bf616a;">xrange</span><span style="color:#c0c5ce;">(K):  </span><span style="color:#c0c5ce;">
+                        P[i][k] = P[i][k] + alpha * (</span><span style="color:#d08770;">2 </span><span style="color:#c0c5ce;">* eij * Q[k][j] - beta * P[i][k])  </span><span style="color:#c0c5ce;">
+                        Q[k][j] = Q[k][j] + alpha * (</span><span style="color:#d08770;">2 </span><span style="color:#c0c5ce;">* eij * P[i][k] - beta * Q[k][j])  </span><span style="color:#c0c5ce;">
+        eR = numpy.</span><span style="color:#bf616a;">dot</span><span style="color:#c0c5ce;">(P,Q)  </span><span style="color:#c0c5ce;">
+        e = </span><span style="color:#d08770;">0  </span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">i </span><span style="color:#b48ead;">in </span><span style="color:#bf616a;">xrange</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">(R)):  </span><span style="color:#c0c5ce;">
+            </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">j </span><span style="color:#b48ead;">in </span><span style="color:#bf616a;">xrange</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">(R[i])):  </span><span style="color:#c0c5ce;">
+                </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">R[i][j] &gt; </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">:  </span><span style="color:#c0c5ce;">
+                    e = e + </span><span style="color:#96b5b4;">pow</span><span style="color:#c0c5ce;">(R[i][j] - numpy.</span><span style="color:#bf616a;">dot</span><span style="color:#c0c5ce;">(P[i,:],Q[:,j]), </span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">)  </span><span style="color:#c0c5ce;">
+                    </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">k </span><span style="color:#b48ead;">in </span><span style="color:#bf616a;">xrange</span><span style="color:#c0c5ce;">(K):  </span><span style="color:#c0c5ce;">
+                        e = e + (beta/</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">) * (</span><span style="color:#96b5b4;">pow</span><span style="color:#c0c5ce;">(P[i][k],</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">) + </span><span style="color:#96b5b4;">pow</span><span style="color:#c0c5ce;">(Q[k][j],</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">))  </span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">e &lt; </span><span style="color:#d08770;">0.001</span><span style="color:#c0c5ce;">:  </span><span style="color:#c0c5ce;">
+            </span><span style="color:#b48ead;">break  </span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">return </span><span style="color:#c0c5ce;">P, Q.T </span><span style="color:#c0c5ce;">
+    </span><span style="color:#c0c5ce;">
+R = [  </span><span style="color:#c0c5ce;">
+     [</span><span style="color:#d08770;">5</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">],  </span><span style="color:#c0c5ce;">
+     [</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">],  </span><span style="color:#c0c5ce;">
+     [</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">5</span><span style="color:#c0c5ce;">],  </span><span style="color:#c0c5ce;">
+     [</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">],  </span><span style="color:#c0c5ce;">
+     [</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">5</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">],  </span><span style="color:#c0c5ce;">
+    ]  </span><span style="color:#c0c5ce;">
+   </span><span style="color:#c0c5ce;">
+R = numpy.</span><span style="color:#bf616a;">array</span><span style="color:#c0c5ce;">(R)  </span><span style="color:#c0c5ce;">
+   </span><span style="color:#c0c5ce;">
+N = </span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">(R)  </span><span style="color:#c0c5ce;">
+M = </span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">(R[</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">])  </span><span style="color:#c0c5ce;">
+K = </span><span style="color:#d08770;">2  </span><span style="color:#c0c5ce;">
+   </span><span style="color:#c0c5ce;">
+P = numpy.random.</span><span style="color:#bf616a;">rand</span><span style="color:#c0c5ce;">(N,K)  </span><span style="color:#c0c5ce;">
+Q = numpy.random.</span><span style="color:#bf616a;">rand</span><span style="color:#c0c5ce;">(M,K)  </span><span style="color:#c0c5ce;">
+   </span><span style="color:#c0c5ce;">
+nP, nQ = </span><span style="color:#bf616a;">matrix_factorisation</span><span style="color:#c0c5ce;">(R, P, Q, K)  </span><span style="color:#c0c5ce;">
+nR = numpy.</span><span style="color:#bf616a;">dot</span><span style="color:#c0c5ce;">(nP, nQ.T)  </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#96b5b4;">\t</span><span style="color:#a3be8c;">result of R is</span><span style="color:#c0c5ce;">&#39;</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">nR</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#96b5b4;">\t</span><span style="color:#a3be8c;">original R is</span><span style="color:#c0c5ce;">&#39;</span><span style="color:#c0c5ce;">
@@ -205,7 +201,7 @@ Albert Au Yeung写的Matrix&nbsp;Factorization 的例子。MF是推荐系统常�
 </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">nP</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#96b5b4;">\t</span><span style="color:#a3be8c;">Q is</span><span style="color:#c0c5ce;">&#39;</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">nQ</span><span style="color:#c0c5ce;">
-</span></pre>
+</span></code></pre>
 <p>Original Link:</p>
 <p><a href="http://www.quuxlabs.com/blog/2010/09/matrix-factorization-a-simple-tutorial-and-implementation-in-python/">http://www.quuxlabs.com/blog/2010/09/matrix-factorization-a-simple-tutorial-and-implementation-in-python/</a></p></p>
 

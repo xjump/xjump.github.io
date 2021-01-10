@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,8 +9,6 @@
 
       <title>@xjump</title>
 
-      
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
       
 
       
@@ -57,31 +53,31 @@
               <ul class="mobile-menu-list">
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me">
+                        <a href="https:&#x2F;&#x2F;xjump.me">
                             Home
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;categories">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                             Categories
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                             Archive
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;rss.xml">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                             RSS
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;about">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                             About
                         </a>
                     </li>
@@ -95,31 +91,31 @@
                     <ul>
                         
                             <li>
-                                <a href="https://xjump.me">
+                                <a href="https:&#x2F;&#x2F;xjump.me">
                                     Home
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;categories">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                                     Categories
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                                     Archive
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;rss.xml">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                                     RSS
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;about">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                                     About
                                 </a>
                             </li>
@@ -150,106 +146,106 @@
       <p>动态脚本有诸多用途，对于不停机变更执行逻辑，实现部分开放式的业务动态性非常有帮助。不过好的设计需要考虑性能、边界、变更控制等问题，以达到“受控的动态”能力。</p>
 <p>JVM提供了不错的脚本接口，从<a href="https://docs.oracle.com/javase/8/docs/technotes/guides/vm/multiple-language-support.html">invokedynamic</a>到<a href="https://www.graalvm.org/">GraalVM</a>，多语言、动态语言、高性能是发展方向。</p>
 <p>Groovy作为可以和Java无缝交互的动态语言，利用了invokedynamic来实现核心功能，开发比较活跃，是动态化比较好的选择。下面介绍几种Groovy嵌入Java应用的方法。为达到class缓存、线程安全等目的，一些其他的方法不做介绍。</p>
-<p><a name="continue-reading"></a></p>
+<span id="continue-reading"></span>
 <p>1、直接使用GroovyScriptEngine，加载test1.groovy文件执行：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">public</span><span style="color:#c0c5ce;"> void </span><span style="color:#bf616a;">testRun1</span><span style="color:#c0c5ce;">() {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#ebcb8b;">String</span><span style="color:#b48ead;">[]</span><span style="color:#c0c5ce;"> roots = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;">[] { </span><span style="color:#bf616a;">getCwd</span><span style="color:#c0c5ce;">() + &quot;</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">src</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">test</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">groovy</span><span style="color:#96b5b4;">\\</span><span style="color:#c0c5ce;">&quot;};</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">try </span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#ebcb8b;">GroovyScriptEngine</span><span style="color:#c0c5ce;"> gse = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">GroovyScriptEngine</span><span style="color:#c0c5ce;">(roots);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#ebcb8b;">Binding</span><span style="color:#c0c5ce;"> binding = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Binding</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">binding.</span><span style="color:#bf616a;">setVariable</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">input</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">world</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">gse.</span><span style="color:#bf616a;">run</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">test1.groovy</span><span style="color:#c0c5ce;">&quot;, binding);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#ebcb8b;">System</span><span style="color:#c0c5ce;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#c0c5ce;">(binding.</span><span style="color:#bf616a;">getVariable</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">output</span><span style="color:#c0c5ce;">&quot;));</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">} </span><span style="color:#b48ead;">catch </span><span style="color:#c0c5ce;">(</span><span style="color:#ebcb8b;">Exception </span><span style="color:#bf616a;">e</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">e.</span><span style="color:#bf616a;">printStackTrace</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-java" data-lang="java"><span style="color:#b48ead;">public</span><span style="color:#c0c5ce;"> void </span><span style="color:#bf616a;">testRun1</span><span style="color:#c0c5ce;">() {</span><span style="color:#c0c5ce;">
+    </span><span style="color:#ebcb8b;">String</span><span style="color:#b48ead;">[]</span><span style="color:#c0c5ce;"> roots = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;">[] { </span><span style="color:#bf616a;">getCwd</span><span style="color:#c0c5ce;">() + &quot;</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">src</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">test</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">groovy</span><span style="color:#96b5b4;">\\</span><span style="color:#c0c5ce;">&quot;};</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">try </span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
+        </span><span style="color:#ebcb8b;">GroovyScriptEngine</span><span style="color:#c0c5ce;"> gse = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">GroovyScriptEngine</span><span style="color:#c0c5ce;">(roots);</span><span style="color:#c0c5ce;">
+        </span><span style="color:#ebcb8b;">Binding</span><span style="color:#c0c5ce;"> binding = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Binding</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+        binding.</span><span style="color:#bf616a;">setVariable</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">input</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">world</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+        gse.</span><span style="color:#bf616a;">run</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">test1.groovy</span><span style="color:#c0c5ce;">&quot;, binding);</span><span style="color:#c0c5ce;">
+        </span><span style="color:#ebcb8b;">System</span><span style="color:#c0c5ce;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#c0c5ce;">(binding.</span><span style="color:#bf616a;">getVariable</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">output</span><span style="color:#c0c5ce;">&quot;));</span><span style="color:#c0c5ce;">
+    } </span><span style="color:#b48ead;">catch </span><span style="color:#c0c5ce;">(</span><span style="color:#ebcb8b;">Exception </span><span style="color:#bf616a;">e</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+        e.</span><span style="color:#bf616a;">printStackTrace</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+    }</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>test1.groovy如下:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">output = &quot;</span><span style="color:#a3be8c;">Hello, </span><span style="color:#ab7967;">${</span><span style="color:#a3be8c;">input</span><span style="color:#ab7967;">}</span><span style="color:#a3be8c;">!</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-groovy" data-lang="groovy"><span style="color:#c0c5ce;">output = &quot;</span><span style="color:#a3be8c;">Hello, </span><span style="color:#ab7967;">${</span><span style="color:#a3be8c;">input</span><span style="color:#ab7967;">}</span><span style="color:#a3be8c;">!</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p><em>问题：如何做性能加速？</em></p>
 <p>2、使用GroovyClassLoader，加载test2.groovy文件执行：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">public</span><span style="color:#c0c5ce;"> void </span><span style="color:#bf616a;">testRun2</span><span style="color:#c0c5ce;">() {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#ebcb8b;">ClassLoader</span><span style="color:#c0c5ce;"> parent = </span><span style="color:#bf616a;">getClass</span><span style="color:#c0c5ce;">().</span><span style="color:#bf616a;">getClassLoader</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#ebcb8b;">GroovyClassLoader</span><span style="color:#c0c5ce;"> loader = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">GroovyClassLoader</span><span style="color:#c0c5ce;">(parent);</span><span style="color:#c0c5ce;">
+<code class="language-java" data-lang="java"><span style="color:#b48ead;">public</span><span style="color:#c0c5ce;"> void </span><span style="color:#bf616a;">testRun2</span><span style="color:#c0c5ce;">() {</span><span style="color:#c0c5ce;">
+    </span><span style="color:#ebcb8b;">ClassLoader</span><span style="color:#c0c5ce;"> parent = </span><span style="color:#bf616a;">getClass</span><span style="color:#c0c5ce;">().</span><span style="color:#bf616a;">getClassLoader</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+    </span><span style="color:#ebcb8b;">GroovyClassLoader</span><span style="color:#c0c5ce;"> loader = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">GroovyClassLoader</span><span style="color:#c0c5ce;">(parent);</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">try </span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;"> filePath = </span><span style="color:#bf616a;">getCwd</span><span style="color:#c0c5ce;">() + &quot;</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">src</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">test</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">groovy</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">test2.groovy</span><span style="color:#c0c5ce;">&quot;;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#ebcb8b;">Class</span><span style="color:#c0c5ce;"> groovyClass = loader.</span><span style="color:#bf616a;">parseClass</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">File</span><span style="color:#c0c5ce;">(filePath));</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#ebcb8b;">Binding</span><span style="color:#c0c5ce;"> binding = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Binding</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">binding.</span><span style="color:#bf616a;">setVariable</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">input</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">world</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#ebcb8b;">GroovyObject</span><span style="color:#c0c5ce;"> groovyObject = (</span><span style="color:#ebcb8b;">GroovyObject</span><span style="color:#c0c5ce;">) groovyClass.</span><span style="color:#bf616a;">getDeclaredConstructor</span><span style="color:#c0c5ce;">().</span><span style="color:#bf616a;">newInstance</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#ebcb8b;">Object</span><span style="color:#b48ead;">[]</span><span style="color:#c0c5ce;"> args = {binding};</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">groovyObject.</span><span style="color:#bf616a;">invokeMethod</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">run</span><span style="color:#c0c5ce;">&quot;, args);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#ebcb8b;">System</span><span style="color:#c0c5ce;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#c0c5ce;">(binding.</span><span style="color:#bf616a;">getVariable</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">output</span><span style="color:#c0c5ce;">&quot;));</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">} </span><span style="color:#b48ead;">catch </span><span style="color:#c0c5ce;">(</span><span style="color:#ebcb8b;">Exception </span><span style="color:#bf616a;">e</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">e.</span><span style="color:#bf616a;">printStackTrace</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span></pre>
+    </span><span style="color:#b48ead;">try </span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
+        </span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;"> filePath = </span><span style="color:#bf616a;">getCwd</span><span style="color:#c0c5ce;">() + &quot;</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">src</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">test</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">groovy</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">test2.groovy</span><span style="color:#c0c5ce;">&quot;;</span><span style="color:#c0c5ce;">
+        </span><span style="color:#ebcb8b;">Class</span><span style="color:#c0c5ce;"> groovyClass = loader.</span><span style="color:#bf616a;">parseClass</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">File</span><span style="color:#c0c5ce;">(filePath));</span><span style="color:#c0c5ce;">
+        </span><span style="color:#ebcb8b;">Binding</span><span style="color:#c0c5ce;"> binding = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Binding</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+        binding.</span><span style="color:#bf616a;">setVariable</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">input</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">world</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+        </span><span style="color:#ebcb8b;">GroovyObject</span><span style="color:#c0c5ce;"> groovyObject = (</span><span style="color:#ebcb8b;">GroovyObject</span><span style="color:#c0c5ce;">) groovyClass.</span><span style="color:#bf616a;">getDeclaredConstructor</span><span style="color:#c0c5ce;">().</span><span style="color:#bf616a;">newInstance</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+        </span><span style="color:#ebcb8b;">Object</span><span style="color:#b48ead;">[]</span><span style="color:#c0c5ce;"> args = {binding};</span><span style="color:#c0c5ce;">
+        groovyObject.</span><span style="color:#bf616a;">invokeMethod</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">run</span><span style="color:#c0c5ce;">&quot;, args);</span><span style="color:#c0c5ce;">
+        </span><span style="color:#ebcb8b;">System</span><span style="color:#c0c5ce;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#c0c5ce;">(binding.</span><span style="color:#bf616a;">getVariable</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">output</span><span style="color:#c0c5ce;">&quot;));</span><span style="color:#c0c5ce;">
+    } </span><span style="color:#b48ead;">catch </span><span style="color:#c0c5ce;">(</span><span style="color:#ebcb8b;">Exception </span><span style="color:#bf616a;">e</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+        e.</span><span style="color:#bf616a;">printStackTrace</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+    }</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>test2.groovy如下：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">run</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">binding</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#96b5b4;">println</span><span style="color:#c0c5ce;"> binding.getVariable(&quot;</span><span style="color:#a3be8c;">input</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">binding.setVariable(&quot;</span><span style="color:#a3be8c;">output</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">hi test2</span><span style="color:#c0c5ce;">&quot;)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-groovy" data-lang="groovy"><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">run</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">binding</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+    </span><span style="color:#96b5b4;">println</span><span style="color:#c0c5ce;"> binding.getVariable(&quot;</span><span style="color:#a3be8c;">input</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+    binding.setVariable(&quot;</span><span style="color:#a3be8c;">output</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">hi test2</span><span style="color:#c0c5ce;">&quot;)</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p><em>问题：如何做性能加速？</em></p>
 <p>3、使用ScriptEngineManager获取脚本引擎，加载test3.groovy文件执行：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">public</span><span style="color:#c0c5ce;"> void </span><span style="color:#bf616a;">testRun3</span><span style="color:#c0c5ce;">() {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">try </span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;"> scriptFile = </span><span style="color:#bf616a;">getCwd</span><span style="color:#c0c5ce;">() + &quot;</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">src</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">test</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">groovy</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">test3.groovy</span><span style="color:#c0c5ce;">&quot;;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#ebcb8b;">ScriptEngineManager</span><span style="color:#c0c5ce;"> manager = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">ScriptEngineManager</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#ebcb8b;">ScriptEngine</span><span style="color:#c0c5ce;"> engine = manager.</span><span style="color:#bf616a;">getEngineByName</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">groovy</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#ebcb8b;">SimpleBindings</span><span style="color:#c0c5ce;"> binding = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">SimpleBindings</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">binding.</span><span style="color:#bf616a;">put</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">input</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">groovy ScriptEngineManager</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(engine instanceof </span><span style="color:#ebcb8b;">Compilable</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#ebcb8b;">Compilable</span><span style="color:#c0c5ce;"> compilable = (</span><span style="color:#ebcb8b;">Compilable</span><span style="color:#c0c5ce;">) engine;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#ebcb8b;">CompiledScript</span><span style="color:#c0c5ce;"> compiledScript = compilable.</span><span style="color:#bf616a;">compile</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">FileReader</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">File</span><span style="color:#c0c5ce;">(scriptFile)));</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#ebcb8b;">Object</span><span style="color:#c0c5ce;"> out = compiledScript.</span><span style="color:#bf616a;">eval</span><span style="color:#c0c5ce;">(binding);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#ebcb8b;">System</span><span style="color:#c0c5ce;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">eval output is: </span><span style="color:#c0c5ce;">&quot; + out.</span><span style="color:#bf616a;">toString</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">} </span><span style="color:#b48ead;">catch </span><span style="color:#c0c5ce;">(</span><span style="color:#ebcb8b;">Exception </span><span style="color:#bf616a;">e</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">e.</span><span style="color:#bf616a;">printStackTrace</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-java" data-lang="java"><span style="color:#b48ead;">public</span><span style="color:#c0c5ce;"> void </span><span style="color:#bf616a;">testRun3</span><span style="color:#c0c5ce;">() {</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">try </span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
+        </span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;"> scriptFile = </span><span style="color:#bf616a;">getCwd</span><span style="color:#c0c5ce;">() + &quot;</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">src</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">test</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">groovy</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">test3.groovy</span><span style="color:#c0c5ce;">&quot;;</span><span style="color:#c0c5ce;">
+        </span><span style="color:#ebcb8b;">ScriptEngineManager</span><span style="color:#c0c5ce;"> manager = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">ScriptEngineManager</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+        </span><span style="color:#ebcb8b;">ScriptEngine</span><span style="color:#c0c5ce;"> engine = manager.</span><span style="color:#bf616a;">getEngineByName</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">groovy</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+        </span><span style="color:#ebcb8b;">SimpleBindings</span><span style="color:#c0c5ce;"> binding = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">SimpleBindings</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+        binding.</span><span style="color:#bf616a;">put</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">input</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">groovy ScriptEngineManager</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(engine instanceof </span><span style="color:#ebcb8b;">Compilable</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+            </span><span style="color:#ebcb8b;">Compilable</span><span style="color:#c0c5ce;"> compilable = (</span><span style="color:#ebcb8b;">Compilable</span><span style="color:#c0c5ce;">) engine;</span><span style="color:#c0c5ce;">
+            </span><span style="color:#ebcb8b;">CompiledScript</span><span style="color:#c0c5ce;"> compiledScript = compilable.</span><span style="color:#bf616a;">compile</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">FileReader</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">File</span><span style="color:#c0c5ce;">(scriptFile)));</span><span style="color:#c0c5ce;">
+            </span><span style="color:#ebcb8b;">Object</span><span style="color:#c0c5ce;"> out = compiledScript.</span><span style="color:#bf616a;">eval</span><span style="color:#c0c5ce;">(binding);</span><span style="color:#c0c5ce;">
+            </span><span style="color:#ebcb8b;">System</span><span style="color:#c0c5ce;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">eval output is: </span><span style="color:#c0c5ce;">&quot; + out.</span><span style="color:#bf616a;">toString</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
+        }</span><span style="color:#c0c5ce;">
+    } </span><span style="color:#b48ead;">catch </span><span style="color:#c0c5ce;">(</span><span style="color:#ebcb8b;">Exception </span><span style="color:#bf616a;">e</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+        e.</span><span style="color:#bf616a;">printStackTrace</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+    }</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>test3.groovy如下：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">output = &quot;</span><span style="color:#a3be8c;">Hello, </span><span style="color:#ab7967;">${</span><span style="color:#a3be8c;">input</span><span style="color:#ab7967;">}</span><span style="color:#a3be8c;">!</span><span style="color:#c0c5ce;">&quot;;</span><span style="color:#c0c5ce;">
+<code class="language-groovy" data-lang="groovy"><span style="color:#c0c5ce;">output = &quot;</span><span style="color:#a3be8c;">Hello, </span><span style="color:#ab7967;">${</span><span style="color:#a3be8c;">input</span><span style="color:#ab7967;">}</span><span style="color:#a3be8c;">!</span><span style="color:#c0c5ce;">&quot;;</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">return</span><span style="color:#c0c5ce;"> output;</span><span style="color:#c0c5ce;">
-</span></pre>
+</span></code></pre>
 <p><em>问题：如何做性能加速？</em></p>
 <p>对于jdk8~11使用ScriptEngineManager还可以获取javascript脚本引擎，和testRun3对groovy脚本操作类似。加载test4.js文件执行如下：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">public</span><span style="color:#c0c5ce;"> void </span><span style="color:#bf616a;">testRun4</span><span style="color:#c0c5ce;">() {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">try </span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;"> scriptFile = </span><span style="color:#bf616a;">getCwd</span><span style="color:#c0c5ce;">() + &quot;</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">src</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">test</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">js</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">test4.js</span><span style="color:#c0c5ce;">&quot;;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#ebcb8b;">ScriptEngineManager</span><span style="color:#c0c5ce;"> manager = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">ScriptEngineManager</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#ebcb8b;">ScriptEngine</span><span style="color:#c0c5ce;"> engine = manager.</span><span style="color:#bf616a;">getEngineByName</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">javascript</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#ebcb8b;">SimpleBindings</span><span style="color:#c0c5ce;"> binding = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">SimpleBindings</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">binding.</span><span style="color:#bf616a;">put</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">input</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">javascript ScriptEngineManager</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(engine instanceof </span><span style="color:#ebcb8b;">Compilable</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#ebcb8b;">Compilable</span><span style="color:#c0c5ce;"> compilable = (</span><span style="color:#ebcb8b;">Compilable</span><span style="color:#c0c5ce;">) engine;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#ebcb8b;">CompiledScript</span><span style="color:#c0c5ce;"> compiledScript = compilable.</span><span style="color:#bf616a;">compile</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">FileReader</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">File</span><span style="color:#c0c5ce;">(scriptFile)));</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#ebcb8b;">Object</span><span style="color:#c0c5ce;"> out = compiledScript.</span><span style="color:#bf616a;">eval</span><span style="color:#c0c5ce;">(binding);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#ebcb8b;">System</span><span style="color:#c0c5ce;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">eval output is: </span><span style="color:#c0c5ce;">&quot; + out.</span><span style="color:#bf616a;">toString</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">} </span><span style="color:#b48ead;">catch </span><span style="color:#c0c5ce;">(</span><span style="color:#ebcb8b;">Exception </span><span style="color:#bf616a;">e</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">e.</span><span style="color:#bf616a;">printStackTrace</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-java" data-lang="java"><span style="color:#b48ead;">public</span><span style="color:#c0c5ce;"> void </span><span style="color:#bf616a;">testRun4</span><span style="color:#c0c5ce;">() {</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">try </span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
+        </span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;"> scriptFile = </span><span style="color:#bf616a;">getCwd</span><span style="color:#c0c5ce;">() + &quot;</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">src</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">test</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">js</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">test4.js</span><span style="color:#c0c5ce;">&quot;;</span><span style="color:#c0c5ce;">
+        </span><span style="color:#ebcb8b;">ScriptEngineManager</span><span style="color:#c0c5ce;"> manager = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">ScriptEngineManager</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+        </span><span style="color:#ebcb8b;">ScriptEngine</span><span style="color:#c0c5ce;"> engine = manager.</span><span style="color:#bf616a;">getEngineByName</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">javascript</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+        </span><span style="color:#ebcb8b;">SimpleBindings</span><span style="color:#c0c5ce;"> binding = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">SimpleBindings</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+        binding.</span><span style="color:#bf616a;">put</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">input</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">javascript ScriptEngineManager</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(engine instanceof </span><span style="color:#ebcb8b;">Compilable</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+            </span><span style="color:#ebcb8b;">Compilable</span><span style="color:#c0c5ce;"> compilable = (</span><span style="color:#ebcb8b;">Compilable</span><span style="color:#c0c5ce;">) engine;</span><span style="color:#c0c5ce;">
+            </span><span style="color:#ebcb8b;">CompiledScript</span><span style="color:#c0c5ce;"> compiledScript = compilable.</span><span style="color:#bf616a;">compile</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">FileReader</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">File</span><span style="color:#c0c5ce;">(scriptFile)));</span><span style="color:#c0c5ce;">
+            </span><span style="color:#ebcb8b;">Object</span><span style="color:#c0c5ce;"> out = compiledScript.</span><span style="color:#bf616a;">eval</span><span style="color:#c0c5ce;">(binding);</span><span style="color:#c0c5ce;">
+            </span><span style="color:#ebcb8b;">System</span><span style="color:#c0c5ce;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">eval output is: </span><span style="color:#c0c5ce;">&quot; + out.</span><span style="color:#bf616a;">toString</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
+        }</span><span style="color:#c0c5ce;">
+    } </span><span style="color:#b48ead;">catch </span><span style="color:#c0c5ce;">(</span><span style="color:#ebcb8b;">Exception </span><span style="color:#bf616a;">e</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+        e.</span><span style="color:#bf616a;">printStackTrace</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+    }</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>test4.js如下：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#bf616a;">output </span><span style="color:#c0c5ce;">= &quot;</span><span style="color:#a3be8c;">Hello, </span><span style="color:#c0c5ce;">&quot; + </span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+<code class="language-javascript" data-lang="javascript"><span style="color:#bf616a;">output </span><span style="color:#c0c5ce;">= &quot;</span><span style="color:#a3be8c;">Hello, </span><span style="color:#c0c5ce;">&quot; + </span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
 </span><span style="color:#bf616a;">output</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span></pre>
+</span></code></pre>
     </div>
 
     

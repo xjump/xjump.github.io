@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,8 +9,6 @@
 
       <title>@xjump</title>
 
-      
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
       
 
       
@@ -57,31 +53,31 @@
               <ul class="mobile-menu-list">
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me">
+                        <a href="https:&#x2F;&#x2F;xjump.me">
                             Home
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;categories">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                             Categories
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                             Archive
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;rss.xml">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                             RSS
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;about">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                             About
                         </a>
                     </li>
@@ -95,31 +91,31 @@
                     <ul>
                         
                             <li>
-                                <a href="https://xjump.me">
+                                <a href="https:&#x2F;&#x2F;xjump.me">
                                     Home
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;categories">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                                     Categories
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                                     Archive
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;rss.xml">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                                     RSS
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;about">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                                     About
                                 </a>
                             </li>
@@ -148,10 +144,10 @@
                                     <div class="post__summary">
                                         <p>注：简称《心经》，附（简单字面翻译）。</p>
 <blockquote>
-<p>观自在菩萨（般若智慧已经达到自在境界的菩萨）</p>
+<p>观自在菩萨（般若智慧已经达到自在境界的菩萨） </p>
 </blockquote>
 <blockquote>
-<p>行深般若波罗蜜多时（当他修行般若智慧达到波罗蜜多觉悟境界的时候）</p>
+<p>行深般若波罗蜜多时（当他修行般若智慧达到波罗蜜多觉悟境界的时候） </p>
 </blockquote>
 <blockquote>
 <p>照见五蕴皆空（洞见色、受、想、行、识五蕴乃是人类虚空的妄想）</p>
@@ -212,18 +208,18 @@
 
                                     <div class="post__summary">
                                         <pre style="background-color:#2b303b;">
-<span style="color:#65737e;">//TheSingleton.h</span><span style="color:#65737e;">
+<code class="language-mm" data-lang="mm"><span style="color:#65737e;">//TheSingleton.h</span><span style="color:#65737e;">
 </span><span style="color:#b48ead;">@interface </span><span style="color:#c0c5ce;">TheSingleton </span><span style="color:#8fa1b3;">: </span><span style="color:#a3be8c;">NSObject</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">+(instancetype) </span><span style="color:#8fa1b3;">sharedInstance</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
++(instancetype) </span><span style="color:#8fa1b3;">sharedInstance</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">+(instancetype) </span><span style="color:#8fa1b3;">alloc</span><span style="color:#c0c5ce;"> __attribute__((</span><span style="color:#bf616a;">unavailable</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">alloc not available, call sharedInstance instead</span><span style="color:#c0c5ce;">&quot;))</span><span style="background-color:#bf616a;color:#2b303b;">)</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">-(instancetype) init </span><span style="color:#b48ead;">__attribute__</span><span style="color:#c0c5ce;">((unavailable(&quot;</span><span style="color:#a3be8c;">init not available, call sharedInstance instead</span><span style="color:#c0c5ce;">&quot;)));</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">+(instancetype) </span><span style="color:#b48ead;">new __attribute__</span><span style="color:#c0c5ce;">((unavailable(&quot;</span><span style="color:#a3be8c;">new not available, call sharedInstance instead</span><span style="color:#c0c5ce;">&quot;)));</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">-(instancetype) copy </span><span style="color:#b48ead;">__attribute__</span><span style="color:#c0c5ce;">((unavailable(&quot;</span><span style="color:#a3be8c;">copy not available, call sharedInstance instead</span><span style="color:#c0c5ce;">&quot;)));</span><span style="color:#c0c5ce;">
++(instancetype) </span><span style="color:#8fa1b3;">alloc</span><span style="color:#c0c5ce;"> __attribute__((</span><span style="color:#bf616a;">unavailable</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">alloc not available, call sharedInstance instead</span><span style="color:#c0c5ce;">&quot;))</span><span style="background-color:#bf616a;color:#2b303b;">)</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+-(instancetype) init </span><span style="color:#b48ead;">__attribute__</span><span style="color:#c0c5ce;">((unavailable(&quot;</span><span style="color:#a3be8c;">init not available, call sharedInstance instead</span><span style="color:#c0c5ce;">&quot;)));</span><span style="color:#c0c5ce;">
++(instancetype) </span><span style="color:#b48ead;">new __attribute__</span><span style="color:#c0c5ce;">((unavailable(&quot;</span><span style="color:#a3be8c;">new not available, call sharedInstance instead</span><span style="color:#c0c5ce;">&quot;)));</span><span style="color:#c0c5ce;">
+-(instancetype) copy </span><span style="color:#b48ead;">__attribute__</span><span style="color:#c0c5ce;">((unavailable(&quot;</span><span style="color:#a3be8c;">copy not available, call sharedInstance instead</span><span style="color:#c0c5ce;">&quot;)));</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">@end</span><span style="color:#c0c5ce;">
-</span></pre>
+@end</span><span style="color:#c0c5ce;">
+</span></code></pre>
                                     </div>
                                     <div class="read-more">
                                         <a href="https:&#x2F;&#x2F;xjump.me&#x2F;object-c-cpp1x-singleton&#x2F;">Read more...</a>

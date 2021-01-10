@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,8 +9,6 @@
 
       <title>@xjump</title>
 
-      
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
       
 
       
@@ -57,31 +53,31 @@
               <ul class="mobile-menu-list">
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me">
+                        <a href="https:&#x2F;&#x2F;xjump.me">
                             Home
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;categories">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                             Categories
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                             Archive
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;rss.xml">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                             RSS
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;about">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                             About
                         </a>
                     </li>
@@ -95,31 +91,31 @@
                     <ul>
                         
                             <li>
-                                <a href="https://xjump.me">
+                                <a href="https:&#x2F;&#x2F;xjump.me">
                                     Home
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;categories">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                                     Categories
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                                     Archive
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;rss.xml">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                                     RSS
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;about">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                                     About
                                 </a>
                             </li>
@@ -149,51 +145,51 @@
     <div class="post-content">
       <p>
 使用qrcode库，代码如下：</p>
-<p><a name="continue-reading"></a></p>
+<span id="continue-reading"></span>
 <pre style="background-color:#2b303b;">
-<span style="color:#65737e;">#!/usr/bin/env python</span><span style="color:#65737e;">
-</span><span style="color:#65737e;"># -*- coding: utf-8 -*-  </span><span style="color:#65737e;">
+<code class="language-python" data-lang="python"><span style="color:#65737e;">#!/usr/bin/env python</span><span style="color:#65737e;">
+# -*- coding: utf-8 -*-  </span><span style="color:#65737e;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#65737e;">&#39;&#39;&#39;</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">author: xjump.me#gmail.com</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">reference: </span><span style="color:#65737e;">
-</span><span style="color:#65737e;">    </span><span style="color:#65737e;">https://pypi.python.org/pypi/qrcode</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">&#39;&#39;&#39;</span><span style="color:#c0c5ce;">
+author: xjump.me#gmail.com</span><span style="color:#65737e;">
+reference: </span><span style="color:#65737e;">
+    https://pypi.python.org/pypi/qrcode</span><span style="color:#65737e;">
+&#39;&#39;&#39;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">qrcode</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">qr = qrcode.</span><span style="color:#bf616a;">QRCode</span><span style="color:#c0c5ce;">(</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#bf616a;">version</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#bf616a;">error_correction</span><span style="color:#c0c5ce;">=qrcode.constants.</span><span style="color:#bf616a;">ERROR_CORRECT_L</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#bf616a;">box_size</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">10</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#bf616a;">border</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+qr = qrcode.</span><span style="color:#bf616a;">QRCode</span><span style="color:#c0c5ce;">(</span><span style="color:#c0c5ce;">
+    </span><span style="color:#bf616a;">version</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
+    </span><span style="color:#bf616a;">error_correction</span><span style="color:#c0c5ce;">=qrcode.constants.</span><span style="color:#bf616a;">ERROR_CORRECT_L</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
+    </span><span style="color:#bf616a;">box_size</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">10</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
+    </span><span style="color:#bf616a;">border</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
+)</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">data = &#39;&#39;&#39;</span><span style="color:#a3be8c;">https://xjump.me/item?id=20202220&amp;bizId=Zi8789341324&amp;d</span><span style="color:#a3be8c;">
-</span><span style="color:#a3be8c;">escription=this is a demo item.this is a demo item.this is a demo </span><span style="color:#a3be8c;">
-</span><span style="color:#a3be8c;">item.this is a demo item.this is a demo item.this is a demo item.</span><span style="color:#a3be8c;">
-</span><span style="color:#a3be8c;">this is a demo item.this is a demo item.this is a demo item.this </span><span style="color:#a3be8c;">
-</span><span style="color:#a3be8c;">is a demo item.this is a demo item.this is a demo item.this is a </span><span style="color:#a3be8c;">
-</span><span style="color:#a3be8c;">demo item.this is a demo item.this is a demo item.this is a demo </span><span style="color:#a3be8c;">
-</span><span style="color:#a3be8c;">item.this is a demo item.this is a demo item.this is a demo item.</span><span style="color:#a3be8c;">
-</span><span style="color:#a3be8c;">this is a demo item.this is a demo item.this is a demo item.this </span><span style="color:#a3be8c;">
-</span><span style="color:#a3be8c;">is a demo item.this is a demo item.this is a demo item.this is a </span><span style="color:#a3be8c;">
-</span><span style="color:#a3be8c;">demo item.this is a demo item.this is a demo item.this is a demo </span><span style="color:#a3be8c;">
-</span><span style="color:#a3be8c;">item.this is a demo item.this is a demo item.this is a demo item.</span><span style="color:#a3be8c;">
-</span><span style="color:#a3be8c;">this is a demo item.this is a demo item.this is a demo item.this </span><span style="color:#a3be8c;">
-</span><span style="color:#a3be8c;">is a demo item.this is a demo item.this is a demo item.this is a </span><span style="color:#a3be8c;">
-</span><span style="color:#a3be8c;">demo item.this is a demo item.this is a demo item.this is a demo </span><span style="color:#a3be8c;">
-</span><span style="color:#a3be8c;">item.this is a demo item.this is a demo item.this is a demo item.</span><span style="color:#a3be8c;">
-</span><span style="color:#a3be8c;">this is a demo item.this is a demo item.this is a demo item.this </span><span style="color:#a3be8c;">
-</span><span style="color:#a3be8c;">is a demo item.this is a demo item.this is a demo item.this is a </span><span style="color:#a3be8c;">
-</span><span style="color:#a3be8c;">demo item.this is a demo item.</span><span style="color:#c0c5ce;">&#39;&#39;&#39;</span><span style="color:#c0c5ce;">
+data = &#39;&#39;&#39;</span><span style="color:#a3be8c;">https://xjump.me/item?id=20202220&amp;bizId=Zi8789341324&amp;d</span><span style="color:#a3be8c;">
+escription=this is a demo item.this is a demo item.this is a demo </span><span style="color:#a3be8c;">
+item.this is a demo item.this is a demo item.this is a demo item.</span><span style="color:#a3be8c;">
+this is a demo item.this is a demo item.this is a demo item.this </span><span style="color:#a3be8c;">
+is a demo item.this is a demo item.this is a demo item.this is a </span><span style="color:#a3be8c;">
+demo item.this is a demo item.this is a demo item.this is a demo </span><span style="color:#a3be8c;">
+item.this is a demo item.this is a demo item.this is a demo item.</span><span style="color:#a3be8c;">
+this is a demo item.this is a demo item.this is a demo item.this </span><span style="color:#a3be8c;">
+is a demo item.this is a demo item.this is a demo item.this is a </span><span style="color:#a3be8c;">
+demo item.this is a demo item.this is a demo item.this is a demo </span><span style="color:#a3be8c;">
+item.this is a demo item.this is a demo item.this is a demo item.</span><span style="color:#a3be8c;">
+this is a demo item.this is a demo item.this is a demo item.this </span><span style="color:#a3be8c;">
+is a demo item.this is a demo item.this is a demo item.this is a </span><span style="color:#a3be8c;">
+demo item.this is a demo item.this is a demo item.this is a demo </span><span style="color:#a3be8c;">
+item.this is a demo item.this is a demo item.this is a demo item.</span><span style="color:#a3be8c;">
+this is a demo item.this is a demo item.this is a demo item.this </span><span style="color:#a3be8c;">
+is a demo item.this is a demo item.this is a demo item.this is a </span><span style="color:#a3be8c;">
+demo item.this is a demo item.</span><span style="color:#c0c5ce;">&#39;&#39;&#39;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">qr.</span><span style="color:#bf616a;">add_data</span><span style="color:#c0c5ce;">(data)</span><span style="color:#c0c5ce;">
+qr.</span><span style="color:#bf616a;">add_data</span><span style="color:#c0c5ce;">(data)</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">print </span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">(data)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">qr.</span><span style="color:#bf616a;">make</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">fit</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">True</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+qr.</span><span style="color:#bf616a;">make</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">fit</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">True</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">img = qr.</span><span style="color:#bf616a;">make_image</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">img.</span><span style="color:#bf616a;">show</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
-</span></pre>
+img = qr.</span><span style="color:#bf616a;">make_image</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+img.</span><span style="color:#bf616a;">show</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+</span></code></pre>
     </div>
 
     

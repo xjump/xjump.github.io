@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,8 +9,6 @@
 
       <title>@xjump</title>
 
-      
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
       
 
       
@@ -57,31 +53,31 @@
               <ul class="mobile-menu-list">
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me">
+                        <a href="https:&#x2F;&#x2F;xjump.me">
                             Home
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;categories">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                             Categories
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                             Archive
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;rss.xml">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                             RSS
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;about">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                             About
                         </a>
                     </li>
@@ -95,31 +91,31 @@
                     <ul>
                         
                             <li>
-                                <a href="https://xjump.me">
+                                <a href="https:&#x2F;&#x2F;xjump.me">
                                     Home
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;categories">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                                     Categories
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                                     Archive
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;rss.xml">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                                     RSS
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;about">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                                     About
                                 </a>
                             </li>
@@ -151,166 +147,166 @@
 <h3>1、 CATLRegExp类</h3>
 <p>1, 声明：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">template </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#b48ead;">class</span><span style="color:#c0c5ce;"> CAtlRECharTraits&gt;</span><span style="color:#c0c5ce;">
+<code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">template </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#b48ead;">class</span><span style="color:#c0c5ce;"> CAtlRECharTraits&gt;</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">CAtlRegExp</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span></pre><p><a name="continue-reading"></a></p>
+</span></code></pre><span id="continue-reading"></span>
 <p>2, 初始化：</p>
 <p>与微软的GRETA类库（微软研究院推出的另一个正则表达式类库）不同，CATLRegExp并没有在构造函数中提供初始化匹配字符串的方法，而是让使用者 通过调用它的Parse()方法，使用正则表达式字符串作为参数，就可以构造出一个我们所需要的用于匹配的类，例如我们需要匹配一种时间格式，可以是 h:mm、也可以是hh:mm，那么我们可以这样构造我们的CAtlRegExp类：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">CAtlRegExp &lt;&gt; re;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">re.</span><span style="color:#bf616a;">Parse</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">{[0-9]?[0-9]}:{[0-9][0-9]}</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-cpp" data-lang="cpp"><span style="color:#c0c5ce;">CAtlRegExp &lt;&gt; re;</span><span style="color:#c0c5ce;">
+re.</span><span style="color:#bf616a;">Parse</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">{[0-9]?[0-9]}:{[0-9][0-9]}</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>ATL的正则表达式语法和Perl的正则表达式语法大同小异，不过有一个值得注意的地方就 是ATL中用大括号（{ }）表示其匹配字符串中的Group，我们上面的表达式中，就声明了2 个Group，一个是[0-9]?[0-9]，另一个是[0-9][0-9]。<br /></p>
 <p>3, 匹配：</p>
-<p>调用CATLRegExp的Match()方法，就可以用该类来进行匹配了，Match方法的原型如下：</p>
+<p>调用CATLRegExp的Match()方法，就可以用该类来进行匹配了，Match方法的原型如下： </p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">BOOL </span><span style="color:#8fa1b3;">Match</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">const</span><span style="color:#c0c5ce;"> RECHAR *</span><span style="color:#bf616a;">szIn</span><span style="color:#c0c5ce;">, CAtlREMatchContext&lt;chartraits&gt; *</span><span style="color:#bf616a;">pContext</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">const</span><span style="color:#c0c5ce;"> RECHAR **</span><span style="color:#bf616a;">ppszEnd</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) </span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-cpp" data-lang="cpp"><span style="color:#c0c5ce;">BOOL </span><span style="color:#8fa1b3;">Match</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">const</span><span style="color:#c0c5ce;"> RECHAR *</span><span style="color:#bf616a;">szIn</span><span style="color:#c0c5ce;">, CAtlREMatchContext&lt;chartraits&gt; *</span><span style="color:#bf616a;">pContext</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">const</span><span style="color:#c0c5ce;"> RECHAR **</span><span style="color:#bf616a;">ppszEnd</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) </span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>参数的含义很明显，不过需要注意到第一个参数的型别是：const RECHAR * szIN，是一个 const指针，这表明我们可以方便得使用std::string类的c_str()方法给其传递参数。<br /></p>
 <p>Match的结果通过第二个参数 pContext所指向的CAtlREMatchContext&lt;&gt;类来返回，Match 的结果及其相关信息都被存放在CAtlREMatchContext类中，我们只要访问CAtlREMatchContext的方法和成员就可以得到匹配的结果。<br /></p>
 <h3>2、 CAtlREMatchContext类</h3>
 <p>1, 声明：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">template </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#b48ead;">class</span><span style="color:#c0c5ce;"> CAtlRECharTraits&gt;</span><span style="color:#c0c5ce;">
+<code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">template </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#b48ead;">class</span><span style="color:#c0c5ce;"> CAtlRECharTraits&gt;</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">CAtlREMatchContext</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span></pre>
+</span></code></pre>
 <p>2, 使用：</p>
 <p>CAtlREMatchContext 通过m_uNumGroups成员以及GetMatch（）方法向调用者提供匹配的结果信息。m_uNumGroups代表匹配上的Group有多少 组，GetMatch()则根据传递给它的Group的Index值，返回匹配上的字符串的pStart和pEnd指针，调用者有了这两个指针，自然可以 很方便的得到匹配结果。</p>
 <h3>3、 一个小示例</h3>
 <p>下面这个例子来源于MSDN，演示了CATLRegExp和CAtlREMatchContext类的典型使用方法：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">#include </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">stdafx.h</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#c0c5ce;">
+<code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">#include </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">stdafx.h</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">#include </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#a3be8c;">atlrx.h</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">argc</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">char</span><span style="color:#c0c5ce;">* </span><span style="color:#bf616a;">argv</span><span style="color:#c0c5ce;">[]){</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">CAtlRegExp&lt;&gt; reUrl; </span><span style="color:#65737e;">// five match groups: scheme, authority, path, query, fragment</span><span style="color:#65737e;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">REParseError status = reUrl.</span><span style="color:#bf616a;">Parse</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">({[^:/?#]+}:)?(//{[^/?#]*})?{[^?#]*}(?{[^#]*})?(#{.*})?</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(REPARSE_ERROR_OK != status) { </span><span style="color:#65737e;">// Unexpected error.</span><span style="color:#65737e;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+    CAtlRegExp&lt;&gt; reUrl; </span><span style="color:#65737e;">// five match groups: scheme, authority, path, query, fragment</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">    REParseError status = reUrl.</span><span style="color:#bf616a;">Parse</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">({[^:/?#]+}:)?(//{[^/?#]*})?{[^?#]*}(?{[^#]*})?(#{.*})?</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(REPARSE_ERROR_OK != status) { </span><span style="color:#65737e;">// Unexpected error.</span><span style="color:#65737e;">
+        </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+    }</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">CAtlREMatchContext&lt;&gt; mcUrl;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(!reUrl.</span><span style="color:#bf616a;">Match</span><span style="color:#c0c5ce;">( &quot;</span><span style="color:#a3be8c;">http://search.microsoft.com/us/Search.asp?qu=atl&amp;boolean=ALL#results</span><span style="color:#c0c5ce;">&quot;, &amp;mcUrl)) { </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">// Unexpected error.</span><span style="color:#65737e;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">(UINT nGroupIndex = </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">; nGroupIndex &lt; mcUrl.</span><span style="color:#bf616a;">m_uNumGroups</span><span style="color:#c0c5ce;">; ++nGroupIndex) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">const</span><span style="color:#c0c5ce;"> CAtlREMatchContext&lt;&gt;::RECHAR* szStart = </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">const</span><span style="color:#c0c5ce;"> CAtlREMatchContext&lt;&gt;::RECHAR* szEnd = </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">mcUrl.</span><span style="color:#bf616a;">GetMatch</span><span style="color:#c0c5ce;">(nGroupIndex, &amp;szStart, &amp;szEnd);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">ptrdiff_t nLength = szEnd - szStart;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#96b5b4;">printf</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">: </span><span style="color:#96b5b4;">\&quot;</span><span style="color:#d08770;">%.*s</span><span style="color:#96b5b4;">\&quot;\n</span><span style="color:#c0c5ce;">&quot;, nGroupIndex, nLength, szStart);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+    CAtlREMatchContext&lt;&gt; mcUrl;</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(!reUrl.</span><span style="color:#bf616a;">Match</span><span style="color:#c0c5ce;">( &quot;</span><span style="color:#a3be8c;">http://search.microsoft.com/us/Search.asp?qu=atl&amp;boolean=ALL#results</span><span style="color:#c0c5ce;">&quot;, &amp;mcUrl)) { </span><span style="color:#c0c5ce;">
+    </span><span style="color:#65737e;">// Unexpected error.</span><span style="color:#65737e;">
+        </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+    }</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">(UINT nGroupIndex = </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">; nGroupIndex &lt; mcUrl.</span><span style="color:#bf616a;">m_uNumGroups</span><span style="color:#c0c5ce;">; ++nGroupIndex) {</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">const</span><span style="color:#c0c5ce;"> CAtlREMatchContext&lt;&gt;::RECHAR* szStart = </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">const</span><span style="color:#c0c5ce;"> CAtlREMatchContext&lt;&gt;::RECHAR* szEnd = </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+        mcUrl.</span><span style="color:#bf616a;">GetMatch</span><span style="color:#c0c5ce;">(nGroupIndex, &amp;szStart, &amp;szEnd);</span><span style="color:#c0c5ce;">
+        ptrdiff_t nLength = szEnd - szStart;</span><span style="color:#c0c5ce;">
+        </span><span style="color:#96b5b4;">printf</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">: </span><span style="color:#96b5b4;">\&quot;</span><span style="color:#d08770;">%.*s</span><span style="color:#96b5b4;">\&quot;\n</span><span style="color:#c0c5ce;">&quot;, nGroupIndex, nLength, szStart);</span><span style="color:#c0c5ce;">
+    }</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span></pre>
+</span></code></pre>
 <p>Output</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">0: &quot;http&quot;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">1: &quot;search.microsoft.com&quot;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">2: &quot;/us/Search.asp&quot;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">3: &quot;qu=atl&amp;boolean=ALL&quot;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">4: &quot;results&quot;</span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-txt" data-lang="txt"><span style="color:#c0c5ce;">0: &quot;http&quot;</span><span style="color:#c0c5ce;">
+1: &quot;search.microsoft.com&quot;</span><span style="color:#c0c5ce;">
+2: &quot;/us/Search.asp&quot;</span><span style="color:#c0c5ce;">
+3: &quot;qu=atl&amp;boolean=ALL&quot;</span><span style="color:#c0c5ce;">
+4: &quot;results&quot;</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>例子中所用的正则表达式为：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">({[^:/?#]+}:)?(//{[^/?#]*})?{[^?#]*}(?{[^#]*})?(#{.*})?</span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-re" data-lang="re"><span style="color:#c0c5ce;">({[^:/?#]+}:)?(</span><span style="color:#65737e;">//{[^/?#]*})?{[^?#]*}(?{[^#]*})?(#{.*})?</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>以（）为分界标志，共分成5组，第一组是{<sup class="footnote-reference"><a href="#:/?#">1</a></sup>+}:，^是&quot;非&quot;后面成员的意思，那么也就是说第一组从开头开始，一直到:、/、?、#其中任何一个结束。联系后面的待匹配字符串就可以得出所匹配的结果是http。</p>
 <h3>4、 自定义匹配字符串的缩写形式</h3>
 <p>为了方便，ATL已经帮我们定义了一些经常用到的正则表达式的简略形式。例如：\d代表([0-9])、\n代表(\r|(\r?\n))等。这些缩写形式 都体现在CAtlRECharTraitsA/CAtlRECharTraitsW等类中，把这些类作为模板参数传递给CATLRegExp和 CAtlREMatchContext，我们就可以定义自己的匹配字符串缩写了。</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">CAtlRECharTraitsA </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">static const</span><span style="color:#eff1f5;"> RECHARTYPE</span><span style="color:#c0c5ce;">** </span><span style="color:#8fa1b3;">GetAbbrevs</span><span style="color:#eff1f5;">() {</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#b48ead;">static const</span><span style="color:#eff1f5;"> RECHARTYPE </span><span style="color:#c0c5ce;">*</span><span style="color:#eff1f5;">s_szAbbrevs[] </span><span style="color:#c0c5ce;">= </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">a([a-zA-Z0-9])</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// alpha numeric</span><span style="color:#65737e;">
-</span><span style="color:#eff1f5;">            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">b([ </span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">t])</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// white space (blank)</span><span style="color:#65737e;">
-</span><span style="color:#eff1f5;">            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">c([a-zA-Z])</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// alpha</span><span style="color:#65737e;">
-</span><span style="color:#eff1f5;">            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">d([0-9])</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// digit</span><span style="color:#65737e;">
-</span><span style="color:#eff1f5;">            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">h([0-9a-fA-F])</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// hex digit</span><span style="color:#65737e;">
-</span><span style="color:#eff1f5;">            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">n(</span><span style="color:#96b5b4;">\r</span><span style="color:#a3be8c;">|(</span><span style="color:#96b5b4;">\r</span><span style="color:#a3be8c;">?</span><span style="color:#96b5b4;">\n</span><span style="color:#a3be8c;">))</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// newline</span><span style="color:#65737e;">
-</span><span style="color:#eff1f5;">            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">q(</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">[^</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">]*</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">)|(</span><span style="color:#96b5b4;">\&#39;</span><span style="color:#a3be8c;">[^</span><span style="color:#96b5b4;">\&#39;</span><span style="color:#a3be8c;">;]*</span><span style="color:#96b5b4;">\&#39;</span><span style="color:#a3be8c;">)</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// quoted string</span><span style="color:#65737e;">
-</span><span style="color:#eff1f5;">            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">w([a-zA-Z]+)</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// simple word</span><span style="color:#65737e;">
-</span><span style="color:#eff1f5;">            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">z([0-9]+)</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// integer</span><span style="color:#65737e;">
-</span><span style="color:#eff1f5;">            </span><span style="color:#eff1f5;">NULL </span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#eff1f5;">};</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#b48ead;">return</span><span style="color:#eff1f5;"> s_szAbbrevs;</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">}</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">CAtlRECharTraitsA </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
+    </span><span style="color:#b48ead;">static const</span><span style="color:#eff1f5;"> RECHARTYPE</span><span style="color:#c0c5ce;">** </span><span style="color:#8fa1b3;">GetAbbrevs</span><span style="color:#eff1f5;">() {</span><span style="color:#eff1f5;">
+        </span><span style="color:#b48ead;">static const</span><span style="color:#eff1f5;"> RECHARTYPE </span><span style="color:#c0c5ce;">*</span><span style="color:#eff1f5;">s_szAbbrevs[] </span><span style="color:#c0c5ce;">= </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
+            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">a([a-zA-Z0-9])</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// alpha numeric</span><span style="color:#65737e;">
+            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">b([ </span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">t])</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// white space (blank)</span><span style="color:#65737e;">
+            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">c([a-zA-Z])</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// alpha</span><span style="color:#65737e;">
+            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">d([0-9])</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// digit</span><span style="color:#65737e;">
+            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">h([0-9a-fA-F])</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// hex digit</span><span style="color:#65737e;">
+            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">n(</span><span style="color:#96b5b4;">\r</span><span style="color:#a3be8c;">|(</span><span style="color:#96b5b4;">\r</span><span style="color:#a3be8c;">?</span><span style="color:#96b5b4;">\n</span><span style="color:#a3be8c;">))</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// newline</span><span style="color:#65737e;">
+            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">q(</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">[^</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">]*</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">)|(</span><span style="color:#96b5b4;">\&#39;</span><span style="color:#a3be8c;">[^</span><span style="color:#96b5b4;">\&#39;</span><span style="color:#a3be8c;">;]*</span><span style="color:#96b5b4;">\&#39;</span><span style="color:#a3be8c;">)</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// quoted string</span><span style="color:#65737e;">
+            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">w([a-zA-Z]+)</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// simple word</span><span style="color:#65737e;">
+            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">z([0-9]+)</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// integer</span><span style="color:#65737e;">
+</span><span style="color:#eff1f5;">            NULL </span><span style="color:#eff1f5;">
+        };</span><span style="color:#eff1f5;">
+        </span><span style="color:#b48ead;">return</span><span style="color:#eff1f5;"> s_szAbbrevs;</span><span style="color:#eff1f5;">
+    }</span><span style="color:#eff1f5;">
+}</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>以上是atlrx.h摘录下来的代码，可以很清楚地看到ATL是通过一个GetAbbrevs（）函数来定义字符串缩写的。要定义新的缩写形式，我们只需要这样：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">MyRegTraits </span><span style="color:#eff1f5;">: </span><span style="color:#b48ead;">public </span><span style="color:#a3be8c;">ATL::CAtlRECharTraitsA </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">public</span><span style="color:#eff1f5;">:</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">static const</span><span style="color:#eff1f5;"> RECHARTYPE</span><span style="color:#c0c5ce;">** </span><span style="color:#8fa1b3;">GetAbbrevs</span><span style="color:#eff1f5;">() { </span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#b48ead;">static const</span><span style="color:#eff1f5;"> RECHARTYPE </span><span style="color:#c0c5ce;">*</span><span style="color:#eff1f5;">s_szAbbrevs[] </span><span style="color:#c0c5ce;">= </span><span style="color:#eff1f5;">{ </span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">a([a-zA-Z0-9])</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// alpha numeric &quot;b([ \\t])&quot;, // white space (blank)</span><span style="color:#65737e;">
-</span><span style="color:#eff1f5;">            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">c([a-zA-Z])</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// alpha</span><span style="color:#65737e;">
-</span><span style="color:#eff1f5;">            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">d([0-9])</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// digit</span><span style="color:#65737e;">
-</span><span style="color:#eff1f5;">            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">h([0-9a-fA-F])</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// hex digit</span><span style="color:#65737e;">
-</span><span style="color:#eff1f5;">            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">n(</span><span style="color:#96b5b4;">\r</span><span style="color:#a3be8c;">|(</span><span style="color:#96b5b4;">\r</span><span style="color:#a3be8c;">?</span><span style="color:#96b5b4;">\n</span><span style="color:#a3be8c;">))</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// newline</span><span style="color:#65737e;">
-</span><span style="color:#eff1f5;">            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">q(</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">[^</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">]*</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">)|(</span><span style="color:#96b5b4;">\&#39;</span><span style="color:#a3be8c;">[^</span><span style="color:#96b5b4;">\&#39;</span><span style="color:#a3be8c;">;]*</span><span style="color:#96b5b4;">\&#39;</span><span style="color:#a3be8c;">)</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// quoted string</span><span style="color:#65737e;">
-</span><span style="color:#eff1f5;">            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">w([a-zA-Z]+)</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// simple word</span><span style="color:#65737e;">
-</span><span style="color:#eff1f5;">            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">z([0-9]+)</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// integer</span><span style="color:#65737e;">
-</span><span style="color:#eff1f5;">            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">e([0-8]+)</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">//自己添加</span><span style="color:#65737e;">
-</span><span style="color:#eff1f5;">            </span><span style="color:#eff1f5;">NULL </span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#eff1f5;">};</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#b48ead;">return</span><span style="color:#eff1f5;"> s_szAbbrevs;</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">}</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">MyRegTraits </span><span style="color:#eff1f5;">: </span><span style="color:#b48ead;">public </span><span style="color:#a3be8c;">ATL::CAtlRECharTraitsA </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
+    </span><span style="color:#b48ead;">public</span><span style="color:#eff1f5;">:</span><span style="color:#eff1f5;">
+    </span><span style="color:#b48ead;">static const</span><span style="color:#eff1f5;"> RECHARTYPE</span><span style="color:#c0c5ce;">** </span><span style="color:#8fa1b3;">GetAbbrevs</span><span style="color:#eff1f5;">() { </span><span style="color:#eff1f5;">
+        </span><span style="color:#b48ead;">static const</span><span style="color:#eff1f5;"> RECHARTYPE </span><span style="color:#c0c5ce;">*</span><span style="color:#eff1f5;">s_szAbbrevs[] </span><span style="color:#c0c5ce;">= </span><span style="color:#eff1f5;">{ </span><span style="color:#eff1f5;">
+            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">a([a-zA-Z0-9])</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// alpha numeric &quot;b([ \\t])&quot;, // white space (blank)</span><span style="color:#65737e;">
+            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">c([a-zA-Z])</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// alpha</span><span style="color:#65737e;">
+            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">d([0-9])</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// digit</span><span style="color:#65737e;">
+            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">h([0-9a-fA-F])</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// hex digit</span><span style="color:#65737e;">
+            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">n(</span><span style="color:#96b5b4;">\r</span><span style="color:#a3be8c;">|(</span><span style="color:#96b5b4;">\r</span><span style="color:#a3be8c;">?</span><span style="color:#96b5b4;">\n</span><span style="color:#a3be8c;">))</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// newline</span><span style="color:#65737e;">
+            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">q(</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">[^</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">]*</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">)|(</span><span style="color:#96b5b4;">\&#39;</span><span style="color:#a3be8c;">[^</span><span style="color:#96b5b4;">\&#39;</span><span style="color:#a3be8c;">;]*</span><span style="color:#96b5b4;">\&#39;</span><span style="color:#a3be8c;">)</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// quoted string</span><span style="color:#65737e;">
+            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">w([a-zA-Z]+)</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// simple word</span><span style="color:#65737e;">
+            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">z([0-9]+)</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">// integer</span><span style="color:#65737e;">
+            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">e([0-8]+)</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#65737e;">//自己添加</span><span style="color:#65737e;">
+</span><span style="color:#eff1f5;">            NULL </span><span style="color:#eff1f5;">
+        };</span><span style="color:#eff1f5;">
+        </span><span style="color:#b48ead;">return</span><span style="color:#eff1f5;"> s_szAbbrevs;</span><span style="color:#eff1f5;">
+    }</span><span style="color:#eff1f5;">
+}</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>让我们自己定义的Trait类继承自CAtlRECharTraitsA，然后改写GetAbbrevs()函数，增加 一些需要的简写就可以被使用了。下面的代码示例了使用了我们自己的类中定义的&quot;\e&quot;简略表达：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main </span><span style="color:#c0c5ce;">( ) { </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">ATL::CAtlRegExp&lt;MyRegTraits&gt; re ;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">re.</span><span style="color:#bf616a;">Parse</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">e+</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">ATL::CAtlREMatchContext&lt;MyRegTraits&gt; mc;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">BOOL res1 = re.</span><span style="color:#bf616a;">Match</span><span style="color:#c0c5ce;">( &quot;</span><span style="color:#a3be8c;">678</span><span style="color:#c0c5ce;">&quot;, &amp;mc ); </span><span style="color:#65737e;">// returns TRUE: successful match</span><span style="color:#65737e;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">res1 = re.</span><span style="color:#bf616a;">Match </span><span style="color:#c0c5ce;">( &quot;</span><span style="color:#a3be8c;">999</span><span style="color:#c0c5ce;">&quot; , &amp;mc ) ; </span><span style="color:#65737e;">// returns FALSE：match fail</span><span style="color:#65737e;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main </span><span style="color:#c0c5ce;">( ) { </span><span style="color:#c0c5ce;">
+    ATL::CAtlRegExp&lt;MyRegTraits&gt; re ;</span><span style="color:#c0c5ce;">
+    re.</span><span style="color:#bf616a;">Parse</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">e+</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+    ATL::CAtlREMatchContext&lt;MyRegTraits&gt; mc;</span><span style="color:#c0c5ce;">
+    BOOL res1 = re.</span><span style="color:#bf616a;">Match</span><span style="color:#c0c5ce;">( &quot;</span><span style="color:#a3be8c;">678</span><span style="color:#c0c5ce;">&quot;, &amp;mc ); </span><span style="color:#65737e;">// returns TRUE: successful match</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">    res1 = re.</span><span style="color:#bf616a;">Match </span><span style="color:#c0c5ce;">( &quot;</span><span style="color:#a3be8c;">999</span><span style="color:#c0c5ce;">&quot; , &amp;mc ) ; </span><span style="color:#65737e;">// returns FALSE：match fail</span><span style="color:#65737e;">
+    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>只要在构造ATL::CAtlRegExp和 ATL::CAtlREMatchContext类时，传递过去我们的 MyRegTraits类作为Traits的参数，就可以直接使用自己定义的简略符号了。</p>
 <h3>5.CAtlRegExp对中文的支持</h3>
 <p>在CAtlRegExp中，默认使用CAtlRECharTraits，实际上是CAtlRECharTraitsA。要支持ANSI模式下的中文，必须使用CAtlRECharTraitsMB，见如下代码：
 注意要包含#include &lt;atlrx.h&gt;。</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">char</span><span style="color:#c0c5ce;">* szText = &quot;</span><span style="color:#a3be8c;">测试邮箱地址xjump.me@gmail.com/r/n</span><span style="color:#c0c5ce;">&quot;;</span><span style="color:#c0c5ce;">
+<code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">char</span><span style="color:#c0c5ce;">* szText = &quot;</span><span style="color:#a3be8c;">测试邮箱地址xjump.me@gmail.com/r/n</span><span style="color:#c0c5ce;">&quot;;</span><span style="color:#c0c5ce;">
 </span><span style="color:#65737e;">//匹配电子邮件地址的正则表达式</span><span style="color:#65737e;">
 </span><span style="color:#b48ead;">char</span><span style="color:#c0c5ce;">* szRegExpEmail = &quot;</span><span style="color:#a3be8c;">({[a-zA-Z0-9_/.]+@[a-zA-Z0-9]+[/.][a-zA-Z0-9]+[/.]?[a-zA-Z0-9]+})</span><span style="color:#c0c5ce;">&quot;;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">CAtlRegExp&lt;&gt; reEmail;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">REParseError reError = reEmail.</span><span style="color:#bf616a;">Parse</span><span style="color:#c0c5ce;">((</span><span style="color:#b48ead;">const</span><span style="color:#c0c5ce;"> ATL::CAtlRegExp&lt;&gt;::RECHAR *) szRegExpEmail);</span><span style="color:#c0c5ce;">
+CAtlRegExp&lt;&gt; reEmail;</span><span style="color:#c0c5ce;">
+REParseError reError = reEmail.</span><span style="color:#bf616a;">Parse</span><span style="color:#c0c5ce;">((</span><span style="color:#b48ead;">const</span><span style="color:#c0c5ce;"> ATL::CAtlRegExp&lt;&gt;::RECHAR *) szRegExpEmail);</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(REPARSE_ERROR_OK != reError)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">return</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">return</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">CAtlREMatchContext&lt;&gt; mcEmail;</span><span style="color:#c0c5ce;">
+CAtlREMatchContext&lt;&gt; mcEmail;</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(!reEmail.</span><span style="color:#bf616a;">Match</span><span style="color:#c0c5ce;">((</span><span style="color:#b48ead;">const</span><span style="color:#c0c5ce;"> ATL::CAtlRegExp&lt;&gt;::RECHAR *)szText, &amp;mcEmail)) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">return</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">return</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">char</span><span style="color:#c0c5ce;"> szBuf[</span><span style="color:#d08770;">260</span><span style="color:#c0c5ce;">];</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">(UINT nGroupIndex = </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">; nGroupIndex &lt; mcEmail.</span><span style="color:#bf616a;">m_uNumGroups</span><span style="color:#c0c5ce;">; ++nGroupIndex)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">{ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">const</span><span style="color:#c0c5ce;"> CAtlREMatchContext&lt;&gt;::RECHAR* szStart = </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">const</span><span style="color:#c0c5ce;"> CAtlREMatchContext&lt;&gt;::RECHAR* szEnd = </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+{ </span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">const</span><span style="color:#c0c5ce;"> CAtlREMatchContext&lt;&gt;::RECHAR* szStart = </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">const</span><span style="color:#c0c5ce;"> CAtlREMatchContext&lt;&gt;::RECHAR* szEnd = </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">mcEmail.</span><span style="color:#bf616a;">GetMatch</span><span style="color:#c0c5ce;">(nGroupIndex, &amp;szStart, &amp;szEnd);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#96b5b4;">memcpy</span><span style="color:#c0c5ce;">(szBuf, szStart, szEnd-szStart);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">szBuf[szEnd-szStart] = </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#96b5b4;">printf</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#d08770;">%s</span><span style="color:#96b5b4;">\n</span><span style="color:#c0c5ce;">&quot;, szBuf);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+    mcEmail.</span><span style="color:#bf616a;">GetMatch</span><span style="color:#c0c5ce;">(nGroupIndex, &amp;szStart, &amp;szEnd);</span><span style="color:#c0c5ce;">
+ </span><span style="color:#c0c5ce;">
+    </span><span style="color:#96b5b4;">memcpy</span><span style="color:#c0c5ce;">(szBuf, szStart, szEnd-szStart);</span><span style="color:#c0c5ce;">
+    szBuf[szEnd-szStart] = </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+    </span><span style="color:#96b5b4;">printf</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#d08770;">%s</span><span style="color:#96b5b4;">\n</span><span style="color:#c0c5ce;">&quot;, szBuf);</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span></pre>
+</span></code></pre>
 <p>输出：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">xjump.me@gmail.com</span><span style="color:#c0c5ce;">
-</span></pre><h3>6.结尾</h3>
+<code class="language-txt" data-lang="txt"><span style="color:#c0c5ce;">xjump.me@gmail.com</span><span style="color:#c0c5ce;">
+</span></code></pre><h3>6.结尾</h3>
 <p>虽然现在C++的社区里已经拥有了Boost::regex，GRETA等非常著名的正则表达式库，可是作为VC++自带的模板库，ATL中的正则表达式库 仍然给我们的工作提供了极大的便利。由于ATL是微软官方发布的Library，所以它拥有良好的文档说明、严格的测试以及微软官方的技术支持。另外在用 ATL开发COM组件的时候，更可以方便地利用正则库的巨大威力。</p>
 <p>原文：<br />
 1.http://blog.donews.com/crackme/archive/2006/04/26/847531.aspx<br />

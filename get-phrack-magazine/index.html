@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,8 +9,6 @@
 
       <title>@xjump</title>
 
-      
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
       
 
       
@@ -57,31 +53,31 @@
               <ul class="mobile-menu-list">
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me">
+                        <a href="https:&#x2F;&#x2F;xjump.me">
                             Home
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;categories">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                             Categories
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                             Archive
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;rss.xml">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                             RSS
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;about">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                             About
                         </a>
                     </li>
@@ -95,31 +91,31 @@
                     <ul>
                         
                             <li>
-                                <a href="https://xjump.me">
+                                <a href="https:&#x2F;&#x2F;xjump.me">
                                     Home
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;categories">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                                     Categories
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                                     Archive
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;rss.xml">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                                     RSS
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;about">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                                     About
                                 </a>
                             </li>
@@ -150,23 +146,23 @@
       <p>Phrack Current issue: <a href="http://phrack.org/archives/tgz/phrack68.tar.gz" title="Get current issue tar.gz">68</a><br/>
 Release date: 14/04/2012</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#65737e;">#!/usr/bin/env python</span><span style="color:#65737e;">
-</span><span style="color:#65737e;"># encoding: utf-8</span><span style="color:#65737e;">
+<code class="language-python" data-lang="python"><span style="color:#65737e;">#!/usr/bin/env python</span><span style="color:#65737e;">
+# encoding: utf-8</span><span style="color:#65737e;">
 </span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">urllib</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">os</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#bf616a;">LATEST_ISSUER_NO </span><span style="color:#c0c5ce;">= </span><span style="color:#d08770;">68</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">pwd = os.</span><span style="color:#bf616a;">getcwd</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+pwd = os.</span><span style="color:#bf616a;">getcwd</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">i </span><span style="color:#b48ead;">in </span><span style="color:#96b5b4;">range</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">LATEST_ISSUER_NO</span><span style="color:#c0c5ce;">) :</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">filename = &quot;</span><span style="color:#a3be8c;">phrack</span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">.tar.gz</span><span style="color:#c0c5ce;">&quot; % (i+</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">, )</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">url = &quot;</span><span style="color:#a3be8c;">http://www.phrack.com/archives/tgz/</span><span style="color:#d08770;">%s</span><span style="color:#c0c5ce;">&quot; % (filename, )</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">path = os.path.</span><span style="color:#bf616a;">join</span><span style="color:#c0c5ce;">(pwd, filename)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">data = urllib.</span><span style="color:#bf616a;">urlopen</span><span style="color:#c0c5ce;">(url).</span><span style="color:#bf616a;">read</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">f = </span><span style="color:#bf616a;">file</span><span style="color:#c0c5ce;">(path, &quot;</span><span style="color:#a3be8c;">wb</span><span style="color:#c0c5ce;">&quot;)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">f.</span><span style="color:#bf616a;">write</span><span style="color:#c0c5ce;">(data)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">f.</span><span style="color:#bf616a;">close</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">file </span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;"> download complete!</span><span style="color:#c0c5ce;">&quot; % (filename, )</span><span style="color:#c0c5ce;">
-</span></pre><p><a name="continue-reading"></a></p>
+    filename = &quot;</span><span style="color:#a3be8c;">phrack</span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">.tar.gz</span><span style="color:#c0c5ce;">&quot; % (i+</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">, )</span><span style="color:#c0c5ce;">
+    url = &quot;</span><span style="color:#a3be8c;">http://www.phrack.com/archives/tgz/</span><span style="color:#d08770;">%s</span><span style="color:#c0c5ce;">&quot; % (filename, )</span><span style="color:#c0c5ce;">
+    path = os.path.</span><span style="color:#bf616a;">join</span><span style="color:#c0c5ce;">(pwd, filename)</span><span style="color:#c0c5ce;">
+    data = urllib.</span><span style="color:#bf616a;">urlopen</span><span style="color:#c0c5ce;">(url).</span><span style="color:#bf616a;">read</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+    f = </span><span style="color:#bf616a;">file</span><span style="color:#c0c5ce;">(path, &quot;</span><span style="color:#a3be8c;">wb</span><span style="color:#c0c5ce;">&quot;)</span><span style="color:#c0c5ce;">
+    f.</span><span style="color:#bf616a;">write</span><span style="color:#c0c5ce;">(data)</span><span style="color:#c0c5ce;">
+    f.</span><span style="color:#bf616a;">close</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">file </span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;"> download complete!</span><span style="color:#c0c5ce;">&quot; % (filename, )</span><span style="color:#c0c5ce;">
+</span></code></pre><span id="continue-reading"></span>
 
     </div>
 

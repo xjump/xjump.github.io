@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,8 +9,6 @@
 
       <title>@xjump</title>
 
-      
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
       
 
       
@@ -57,31 +53,31 @@
               <ul class="mobile-menu-list">
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me">
+                        <a href="https:&#x2F;&#x2F;xjump.me">
                             Home
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;categories">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                             Categories
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                             Archive
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;rss.xml">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                             RSS
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;about">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                             About
                         </a>
                     </li>
@@ -95,31 +91,31 @@
                     <ul>
                         
                             <li>
-                                <a href="https://xjump.me">
+                                <a href="https:&#x2F;&#x2F;xjump.me">
                                     Home
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;categories">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                                     Categories
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                                     Archive
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;rss.xml">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                                     RSS
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;about">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                                     About
                                 </a>
                             </li>
@@ -158,7 +154,7 @@
 <li>2008.10 Hbase 0.18,0.19 released</li>
 </ul>
 <p>HBase是bigtable的开源山寨版本。是建立的hdfs之上，提供高可靠性、高性能、列存储、可伸缩、实时读写的数据库系统。</p>
-<p><a name="continue-reading"></a></p>
+<span id="continue-reading"></span>
 <p>它介于nosql和RDBMS之间，仅能通过主键(row key)和主键的range来检索数据，仅支持单行事务(可通过hive支持来实现多表join等复杂操作)。主要用来存储非结构化和半结构化的松散数据。</p>
 <p>与Hadoop一样，HBase目标主要依靠横向扩展，通过不断增加廉价的商用服务器，来增加计算和存储能力。</p>
 <p>HBase中的表一般有这样的特点：</p>
@@ -168,10 +164,10 @@
 <li>3 稀疏:对于为空(null)的列，并不占用存储空间，因此，表可以设计的非常稀疏。</li>
 </ul>
 <p>下面一幅图是Hbase在Hadoop Ecosystem中的位置。</p>
-<p><center><img alt="" src="/images/hbase-intro-ecosystem.png" style="width: 358px; height: 256px;" /></center></p>
+<center><img alt="" src="/images/hbase-intro-ecosystem.png" style="width: 358px; height: 256px;" /></center>
 <h3>二、逻辑视图</h3>
 <p>HBase以表的形式存储数据。表有行和列组成。列划分为若干个列族(row family)</p>
-<p><center><img alt="" src="/images/hbase-intro-store-way.png" style="width: 576px; height: 170px;" /></center></p>
+<center><img alt="" src="/images/hbase-intro-store-way.png" style="width: 576px; height: 170px;" /></center>
 <p><strong>Row Key</strong></p>
 <p>与nosql数据库们一样,row key是用来检索记录的主键。访问hbase table中的行，只有三种方式：
 1 通过单个row key访问;
@@ -193,19 +189,19 @@
 三、物理存储</h3>
 <p>1 已经提到过，Table中的所有行都按照row key的字典序排列。</p>
 <p>2 Table 在行的方向上分割为多个Hregion。</p>
-<p><center><img alt="" src="/images/hbase-intro-table_and_region_.png" style="width: 278px; height: 331px;" /></center></p>
+<center><img alt="" src="/images/hbase-intro-table_and_region_.png" style="width: 278px; height: 331px;" /></center>
 <p>3 region按大小分割的，每个表一开始只有一个region，随着数据不断插入表，region不断增大，当增大到一个阀值的时候，Hregion就会等分会两个新的Hregion。当table中的行不断增多，就会有越来越多的Hregion。</p>
-<p><center><img alt="" src="/images/hbase-intro-regions_.png" style="width: 548px; height: 345px;" /></center></p>
+<center><img alt="" src="/images/hbase-intro-regions_.png" style="width: 548px; height: 345px;" /></center>
 <p>4 HRegion是Hbase中分布式存储和负载均衡的最小单元。最小单元就表示不同的Hregion可以分布在不同的HRegion server上。但一个Hregion是不会拆分到多个server上的。</p>
-<p><center><img alt="" src="/images/hbase-intro-hregion_and_server.png" style="width: 572px; height: 315px;" /></center></p>
-<p><center><img alt="" src="/images/hbase-intro-hbase_and_hadoop.png" style="width: 561px; height: 284px;" /></center></p>
+<center><img alt="" src="/images/hbase-intro-hregion_and_server.png" style="width: 572px; height: 315px;" /></center>
+<center><img alt="" src="/images/hbase-intro-hbase_and_hadoop.png" style="width: 561px; height: 284px;" /></center>
 <p>5 HRegion虽然是分布式存储的最小单元，但并不是存储的最小单元。</p>
 <p>事实上，HRegion由一个或者多个Store组成，每个store保存一个columns family。</p>
 <p>每个Strore又由一个memStore和0至多个StoreFile组成。如图：</p>
 <p>StoreFile以HFile格式保存在HDFS上。</p>
-<p><center><img alt="" src="/images/hbase-intro-storefile-hdfs.png" style="width: 551px; height: 281px;" /></center></p>
+<center><img alt="" src="/images/hbase-intro-storefile-hdfs.png" style="width: 551px; height: 281px;" /></center>
 <p>HFile的格式为：</p>
-<p><center><img alt="" src="/images/hbase-intro-hfile-format.png" style="width: 594px; height: 359px;" /></center></p>
+<center><img alt="" src="/images/hbase-intro-hfile-format.png" style="width: 594px; height: 359px;" /></center>
 <p>HFile分为六个部分：</p>
 <p>Data Block 段保存表中的数据，这部分可以被压缩;</p>
 <p>Meta Block 段 (可选的)，保存用户自定义的kv对，可以被压缩;</p>
@@ -221,9 +217,9 @@
 <p>HLog文件就是一个普通的Hadoop Sequence File，Sequence File 的Key是HLogKey对象，HLogKey中记录了写入数据的归属信息，除了table和region名字外，同时还包括 sequence number和timestamp，timestamp是“写入时间”，sequence number的起始值为0，或者是最近一次存入文件系统中sequence number。HLog Sequece File的Value是HBase的KeyValue对象，即对应HFile中的KeyValue，可参见上文描述。</p>
 <h3>
 四、系统架构</h3>
-<p><center><img alt="" src="/images/hbase-intro-deploy-arch.png" style="width: 554px; height: 360px;" /></center></p>
-<p><center><img alt="" src="/images/hbase-intro-deploy-work-intro.png" style="width: 532px; height: 380px;" /></center></p>
-<p><center><img alt="" src="/images/hbase-intro-deploy-work-intro2.png" style="width: 538px; height: 437px;" /></center></p>
+<center><img alt="" src="/images/hbase-intro-deploy-arch.png" style="width: 554px; height: 360px;" /></center>
+<center><img alt="" src="/images/hbase-intro-deploy-work-intro.png" style="width: 532px; height: 380px;" /></center>
+<center><img alt="" src="/images/hbase-intro-deploy-work-intro2.png" style="width: 538px; height: 437px;" /></center>
 <p><strong>Client</strong></p>
 <p>1 包含访问hbase的接口，client维护着一些cache来加快对hbase的访问，比如regione的位置信息。</p>
 <p><strong>Zookeeper</strong></p>
@@ -248,14 +244,14 @@
 <p>第一层是保存zookeeper里面的文件，它持有root region的位置。</p>
 <p>第二层root region是.META.表的第一个region其中保存了.META.z表其它region的位置。通过root region，我们就可以访问.META.表的数据。</p>
 <p>.META.是第三层，它是一个特殊的表，保存了hbase中所有数据表的region 位置信息。</p>
-<p><center><img alt="" src="/images/hbase-intro-region-locate.png" style="width: 564px; height: 429px;" /></center></p>
+<center><img alt="" src="/images/hbase-intro-region-locate.png" style="width: 564px; height: 429px;" /></center>
 <p>说明：</p>
 <p>1 root region永远不会被split，保证了最需要三次跳转，就能定位到任意region 。</p>
 <p>2.META.表每行保存一个region的位置信息，row key 采用表名+表的最后一样编码而成。</p>
 <p>3 为了加快访问，.META.表的全部region都保存在内存中。假设，.META.表的一行在内存中大约占用1KB。并且每个region限制为128MB。那么上面的三层结构可以保存的region数目为：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;"> </span><span style="color:#c0c5ce;">(128MB/1KB) * (128MB/1KB) = = 2(34)个region</span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-txt" data-lang="txt"><span style="color:#c0c5ce;"> (128MB/1KB) * (128MB/1KB) = = 2(34)个region</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>4 client会将查询过的位置信息保存缓存起来，缓存不会主动失效，因此如果client上的缓存全部失效，则需要进行6次网络来回，才能定位到正确的region(其中三次用来发现缓存失效，另外三次用来获取位置信息)。</p>
 <p><strong>读写过程</strong></p>
 <p>上文提到，hbase使用MemStore和StoreFile存储对表的更新。</p>
@@ -264,7 +260,7 @@
 <p>前面提到过StoreFile是只读的，一旦创建后就不可以再修改。因此Hbase的更新其实是不断追加的操作。当一个Store中的StoreFile达到一定的阈值后，就会进行一次合并(major compact),将对同一个key的修改合并到一起，形成一个大的StoreFile，当StoreFile的大小达到一定阈值后，又会对StoreFile进行split，等分为两个StoreFile。</p>
 <p>由于对表的更新是不断追加的，处理读请求时，需要访问Store中全部的StoreFile和MemStore，将他们的按照row key进行合并，由于StoreFile和MemStore都是经过排序的，并且StoreFile带有内存中索引，合并的过程还是比较快。</p>
 <p><strong>写请求处理过程</strong></p>
-<p><center><img alt="" src="/images/hbase-intro-read-write-flow.png" style="width: 600px; height: 578px;" /></center></p>
+<center><img alt="" src="/images/hbase-intro-read-write-flow.png" style="width: 600px; height: 578px;" /></center>
 <p>1 client向region server提交写请求</p>
 <p>2 region server找到目标region</p>
 <p>3 region检查数据是否与schema一致</p>

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,8 +9,6 @@
 
       <title>@xjump</title>
 
-      
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
       
 
       
@@ -57,31 +53,31 @@
               <ul class="mobile-menu-list">
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me">
+                        <a href="https:&#x2F;&#x2F;xjump.me">
                             Home
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;categories">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                             Categories
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                             Archive
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;rss.xml">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                             RSS
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;about">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                             About
                         </a>
                     </li>
@@ -95,31 +91,31 @@
                     <ul>
                         
                             <li>
-                                <a href="https://xjump.me">
+                                <a href="https:&#x2F;&#x2F;xjump.me">
                                     Home
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;categories">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                                     Categories
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                                     Archive
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;rss.xml">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                                     RSS
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;about">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                                     About
                                 </a>
                             </li>
@@ -184,56 +180,56 @@
 <p>
     附上一段POC：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#65737e;">#!/usr/bin/env python</span><span style="color:#65737e;">
-</span><span style="color:#65737e;"># -*- coding: utf-8 -*-  </span><span style="color:#65737e;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#c0c5ce;">
+<code class="language-python" data-lang="python"><span style="color:#65737e;">#!/usr/bin/env python</span><span style="color:#65737e;">
+# -*- coding: utf-8 -*-  </span><span style="color:#65737e;">
+ </span><span style="color:#c0c5ce;">
 </span><span style="color:#65737e;">&#39;&#39;&#39;</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">author: xjump.me#gmail.com</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">reference: </span><span style="color:#65737e;">
-</span><span style="color:#65737e;">    </span><span style="color:#65737e;">http://code.activestate.com/recipes/572196-rsa/</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">&#39;&#39;&#39;</span><span style="color:#c0c5ce;">
+author: xjump.me#gmail.com</span><span style="color:#65737e;">
+reference: </span><span style="color:#65737e;">
+    http://code.activestate.com/recipes/572196-rsa/</span><span style="color:#65737e;">
+&#39;&#39;&#39;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">egcd</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">a</span><span style="color:#c0c5ce;">,</span><span style="color:#bf616a;">b</span><span style="color:#c0c5ce;">):</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;"># Extended Euclidean Algorithm</span><span style="color:#65737e;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;"># returns x, y, gcd(a,b) such that ax + by = gcd(a,b)</span><span style="color:#65737e;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">u, u1 = </span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">, </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">v, v1 = </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">, </span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">while </span><span style="color:#c0c5ce;">b:</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">q = a // b</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">u, u1 = u1, u - q * u1</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">v, v1 = v1, v - q * v1</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">a, b = b, a - q * b</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">return </span><span style="color:#c0c5ce;">u, v, a</span><span style="color:#c0c5ce;">
+    </span><span style="color:#65737e;"># Extended Euclidean Algorithm</span><span style="color:#65737e;">
+    # returns x, y, gcd(a,b) such that ax + by = gcd(a,b)</span><span style="color:#65737e;">
+    </span><span style="color:#c0c5ce;">u, u1 = </span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">, </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">
+    v, v1 = </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">, </span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">while </span><span style="color:#c0c5ce;">b:</span><span style="color:#c0c5ce;">
+        q = a // b</span><span style="color:#c0c5ce;">
+        u, u1 = u1, u - q * u1</span><span style="color:#c0c5ce;">
+        v, v1 = v1, v - q * v1</span><span style="color:#c0c5ce;">
+        a, b = b, a - q * b</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">return </span><span style="color:#c0c5ce;">u, v, a</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">modInverse</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">e</span><span style="color:#c0c5ce;">,</span><span style="color:#bf616a;">phi_n</span><span style="color:#c0c5ce;">):  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">return </span><span style="color:#bf616a;">egcd</span><span style="color:#c0c5ce;">(e,phi_n)[</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">]%phi_n</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">return </span><span style="color:#bf616a;">egcd</span><span style="color:#c0c5ce;">(e,phi_n)[</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">]%phi_n</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">():</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">p = </span><span style="color:#d08770;">79</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">q = </span><span style="color:#d08770;">87</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">n = p*q</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">phi_n = (p-</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">)*(q-</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">e = </span><span style="color:#d08770;">19</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">d = </span><span style="color:#bf616a;">modInverse</span><span style="color:#c0c5ce;">(e,phi_n)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">p=</span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">, q=</span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">, n=</span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">, e=</span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">, phi_n=</span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">, d=</span><span style="color:#d08770;">%d</span><span style="color:#c0c5ce;">&quot; % (p,q,n,e,phi_n,d)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">m = </span><span style="color:#d08770;">30</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">c = (m**e) % n </span><span style="color:#65737e;"># encrypt by public key (n,e)</span><span style="color:#65737e;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">m1 = (c**d) % n </span><span style="color:#65737e;"># decrypt by private key (n,d) </span><span style="color:#65737e;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">message is </span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">, cipher is </span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">, cipher decrypt out is </span><span style="color:#d08770;">%d</span><span style="color:#c0c5ce;">&quot; % (m, c, m1)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#96b5b4;">\n</span><span style="color:#a3be8c;">================start encryption loops attack.</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">save_c = </span><span style="color:#d08770;">None</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">c1 = c</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">while </span><span style="color:#d08770;">True</span><span style="color:#c0c5ce;">:</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">m = c1</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">c1 = (m**e) % n</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">save_c = m</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">message is </span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">, cipher is </span><span style="color:#d08770;">%d</span><span style="color:#c0c5ce;">&quot; % (m, c1)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">c1 == c: </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">==================got it! after some encryption loops, m is </span><span style="color:#d08770;">%d</span><span style="color:#c0c5ce;">&quot; % (save_c)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+    p = </span><span style="color:#d08770;">79</span><span style="color:#c0c5ce;">
+    q = </span><span style="color:#d08770;">87</span><span style="color:#c0c5ce;">
+    n = p*q</span><span style="color:#c0c5ce;">
+    phi_n = (p-</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">)*(q-</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+    e = </span><span style="color:#d08770;">19</span><span style="color:#c0c5ce;">
+    d = </span><span style="color:#bf616a;">modInverse</span><span style="color:#c0c5ce;">(e,phi_n)</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">p=</span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">, q=</span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">, n=</span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">, e=</span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">, phi_n=</span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">, d=</span><span style="color:#d08770;">%d</span><span style="color:#c0c5ce;">&quot; % (p,q,n,e,phi_n,d)</span><span style="color:#c0c5ce;">
+    m = </span><span style="color:#d08770;">30</span><span style="color:#c0c5ce;">
+    c = (m**e) % n </span><span style="color:#65737e;"># encrypt by public key (n,e)</span><span style="color:#65737e;">
+    </span><span style="color:#c0c5ce;">m1 = (c**d) % n </span><span style="color:#65737e;"># decrypt by private key (n,d) </span><span style="color:#65737e;">
+    </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">message is </span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">, cipher is </span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">, cipher decrypt out is </span><span style="color:#d08770;">%d</span><span style="color:#c0c5ce;">&quot; % (m, c, m1)</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#96b5b4;">\n</span><span style="color:#a3be8c;">================start encryption loops attack.</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#c0c5ce;">
+    save_c = </span><span style="color:#d08770;">None</span><span style="color:#c0c5ce;">
+    c1 = c</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">while </span><span style="color:#d08770;">True</span><span style="color:#c0c5ce;">:</span><span style="color:#c0c5ce;">
+        m = c1</span><span style="color:#c0c5ce;">
+        c1 = (m**e) % n</span><span style="color:#c0c5ce;">
+        save_c = m</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">message is </span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">, cipher is </span><span style="color:#d08770;">%d</span><span style="color:#c0c5ce;">&quot; % (m, c1)</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">c1 == c: </span><span style="color:#c0c5ce;">
+            </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">==================got it! after some encryption loops, m is </span><span style="color:#d08770;">%d</span><span style="color:#c0c5ce;">&quot; % (save_c)</span><span style="color:#c0c5ce;">
+            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#bf616a;">main</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
-</span></pre>
+</span></code></pre>
     </div>
 
     

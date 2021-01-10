@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,8 +9,6 @@
 
       <title>@xjump</title>
 
-      
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
       
 
       
@@ -57,31 +53,31 @@
               <ul class="mobile-menu-list">
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me">
+                        <a href="https:&#x2F;&#x2F;xjump.me">
                             Home
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;categories">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                             Categories
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                             Archive
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;rss.xml">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                             RSS
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;about">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                             About
                         </a>
                     </li>
@@ -95,31 +91,31 @@
                     <ul>
                         
                             <li>
-                                <a href="https://xjump.me">
+                                <a href="https:&#x2F;&#x2F;xjump.me">
                                     Home
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;categories">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                                     Categories
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                                     Archive
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;rss.xml">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                                     RSS
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;about">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                                     About
                                 </a>
                             </li>
@@ -149,15 +145,15 @@
     <div class="post-content">
       <p>
     StackOverflow示例，使用scipy的svd进行PCA：</p>
-<p><a name="continue-reading"></a></p>
+<span id="continue-reading"></span>
 <pre style="background-color:#2b303b;">
-<span style="color:#65737e;">#!/usr/bin/env python</span><span style="color:#65737e;">
-</span><span style="color:#65737e;"># -*- coding: utf-8 -*-</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">&#39;&#39;&#39;</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">ref:</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">    </span><span style="color:#65737e;">http://stackoverflow.com/questions/1730600/principal-</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">           </span><span style="color:#65737e;">component-analysis-in-python</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">&#39;&#39;&#39;</span><span style="color:#c0c5ce;">
+<code class="language-python" data-lang="python"><span style="color:#65737e;">#!/usr/bin/env python</span><span style="color:#65737e;">
+# -*- coding: utf-8 -*-</span><span style="color:#65737e;">
+&#39;&#39;&#39;</span><span style="color:#65737e;">
+ref:</span><span style="color:#65737e;">
+    http://stackoverflow.com/questions/1730600/principal-</span><span style="color:#65737e;">
+           component-analysis-in-python</span><span style="color:#65737e;">
+&#39;&#39;&#39;</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">numpy </span><span style="color:#b48ead;">as </span><span style="color:#c0c5ce;">np</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">from </span><span style="color:#c0c5ce;">scipy.linalg </span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">svd</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">from </span><span style="color:#c0c5ce;">scipy.misc </span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">lena</span><span style="color:#c0c5ce;">
@@ -165,9 +161,9 @@
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#65737e;"># the underlying signal is a sinusoidally modulated image</span><span style="color:#65737e;">
 </span><span style="color:#c0c5ce;">img = </span><span style="color:#bf616a;">lena</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">t = np.</span><span style="color:#bf616a;">arange</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">30</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">time = np.</span><span style="color:#bf616a;">sin</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">0.1</span><span style="color:#c0c5ce;">*t)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">real = time[:,np.newaxis,np.newaxis]*np.</span><span style="color:#bf616a;">repeat</span><span style="color:#c0c5ce;">(img[np.newaxis,</span><span style="color:#d08770;">...</span><span style="color:#c0c5ce;">],</span><span style="color:#d08770;">30</span><span style="color:#c0c5ce;">,</span><span style="color:#bf616a;">axis</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+t = np.</span><span style="color:#bf616a;">arange</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">30</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+time = np.</span><span style="color:#bf616a;">sin</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">0.1</span><span style="color:#c0c5ce;">*t)</span><span style="color:#c0c5ce;">
+real = time[:,np.newaxis,np.newaxis]*np.</span><span style="color:#bf616a;">repeat</span><span style="color:#c0c5ce;">(img[np.newaxis,</span><span style="color:#d08770;">...</span><span style="color:#c0c5ce;">],</span><span style="color:#d08770;">30</span><span style="color:#c0c5ce;">,</span><span style="color:#bf616a;">axis</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#65737e;"># we add some noise</span><span style="color:#65737e;">
 </span><span style="color:#c0c5ce;">noisy = real + np.random.</span><span style="color:#bf616a;">randn</span><span style="color:#c0c5ce;">(*real.shape)*</span><span style="color:#d08770;">255</span><span style="color:#c0c5ce;">
@@ -176,43 +172,43 @@
 </span><span style="color:#c0c5ce;">M = noisy.</span><span style="color:#bf616a;">reshape</span><span style="color:#c0c5ce;">(noisy.shape[</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">],-</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">).T</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#65737e;"># singular value decomposition factorises your data matrix such that</span><span style="color:#65737e;">
-</span><span style="color:#65737e;"># </span><span style="color:#65737e;">
-</span><span style="color:#65737e;">#   M = U*S*V.T     (where &#39;*&#39; is matrix multiplication)</span><span style="color:#65737e;">
-</span><span style="color:#65737e;"># </span><span style="color:#65737e;">
-</span><span style="color:#65737e;"># U and V are the singular matrices, containing orthogonal vectors of</span><span style="color:#65737e;">
-</span><span style="color:#65737e;"># unit length in their rows and columns respectively. S is a diagonal</span><span style="color:#65737e;">
-</span><span style="color:#65737e;"># matrix containing the singular values of M - these values squared will</span><span style="color:#65737e;">
-</span><span style="color:#65737e;"># give the proportional variance explained by each PC. since U and V</span><span style="color:#65737e;">
-</span><span style="color:#65737e;"># both contain orthogonal vectors, U*V.T is a whitened version of M.</span><span style="color:#65737e;">
+# </span><span style="color:#65737e;">
+#   M = U*S*V.T     (where &#39;*&#39; is matrix multiplication)</span><span style="color:#65737e;">
+# </span><span style="color:#65737e;">
+# U and V are the singular matrices, containing orthogonal vectors of</span><span style="color:#65737e;">
+# unit length in their rows and columns respectively. S is a diagonal</span><span style="color:#65737e;">
+# matrix containing the singular values of M - these values squared will</span><span style="color:#65737e;">
+# give the proportional variance explained by each PC. since U and V</span><span style="color:#65737e;">
+# both contain orthogonal vectors, U*V.T is a whitened version of M.</span><span style="color:#65737e;">
 </span><span style="color:#c0c5ce;">U,s,Vt = </span><span style="color:#bf616a;">svd</span><span style="color:#c0c5ce;">(M,</span><span style="color:#bf616a;">full_matrices</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">False</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">V = Vt.T</span><span style="color:#c0c5ce;">
+V = Vt.T</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#65737e;"># sort the PCs by descending order of the singular values (i.e. by the</span><span style="color:#65737e;">
-</span><span style="color:#65737e;"># proportion of total variance they explain)</span><span style="color:#65737e;">
+# proportion of total variance they explain)</span><span style="color:#65737e;">
 </span><span style="color:#c0c5ce;">ind = np.</span><span style="color:#bf616a;">argsort</span><span style="color:#c0c5ce;">(s)[::-</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">]</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">ind=</span><span style="color:#c0c5ce;">&#39;, ind</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">U = U[:,ind]</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">s = s[ind]</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">V = V[:,ind]</span><span style="color:#c0c5ce;">
+U = U[:,ind]</span><span style="color:#c0c5ce;">
+s = s[ind]</span><span style="color:#c0c5ce;">
+V = V[:,ind]</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#65737e;"># if we use all of the PCs we can reconstruct the noisy signal perfectly</span><span style="color:#65737e;">
 </span><span style="color:#c0c5ce;">S = np.</span><span style="color:#bf616a;">diag</span><span style="color:#c0c5ce;">(s)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">Mhat = np.</span><span style="color:#bf616a;">dot</span><span style="color:#c0c5ce;">(U,np.</span><span style="color:#bf616a;">dot</span><span style="color:#c0c5ce;">(S,V.T))</span><span style="color:#c0c5ce;">
+Mhat = np.</span><span style="color:#bf616a;">dot</span><span style="color:#c0c5ce;">(U,np.</span><span style="color:#bf616a;">dot</span><span style="color:#c0c5ce;">(S,V.T))</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">Using all PCs, MSE = </span><span style="color:#d08770;">%.6G</span><span style="color:#c0c5ce;">&quot; %(np.</span><span style="color:#bf616a;">mean</span><span style="color:#c0c5ce;">((M-Mhat)**</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">))</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#65737e;"># if we use only the first 15 PCs the reconstruction is less accurate</span><span style="color:#65737e;">
 </span><span style="color:#c0c5ce;">Mhat2 = np.</span><span style="color:#bf616a;">dot</span><span style="color:#c0c5ce;">(U[:,:</span><span style="color:#d08770;">15</span><span style="color:#c0c5ce;">],np.</span><span style="color:#bf616a;">dot</span><span style="color:#c0c5ce;">(S[:</span><span style="color:#d08770;">15</span><span style="color:#c0c5ce;">,:</span><span style="color:#d08770;">15</span><span style="color:#c0c5ce;">],V[:,:</span><span style="color:#d08770;">15</span><span style="color:#c0c5ce;">].T))</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">Using first 15 PCs, MSE = </span><span style="color:#d08770;">%.6G</span><span style="color:#c0c5ce;">&quot; %(np.</span><span style="color:#bf616a;">mean</span><span style="color:#c0c5ce;">((M-Mhat2)**</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">))</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">fig,[ax1,ax2,ax3] = plt.</span><span style="color:#bf616a;">subplots</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">ax1.</span><span style="color:#bf616a;">imshow</span><span style="color:#c0c5ce;">(img)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">ax1.</span><span style="color:#bf616a;">set_title</span><span style="color:#c0c5ce;">(&#39;</span><span style="color:#a3be8c;">true image</span><span style="color:#c0c5ce;">&#39;)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">ax2.</span><span style="color:#bf616a;">imshow</span><span style="color:#c0c5ce;">(noisy.</span><span style="color:#bf616a;">mean</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">))</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">ax2.</span><span style="color:#bf616a;">set_title</span><span style="color:#c0c5ce;">(&#39;</span><span style="color:#a3be8c;">mean of noisy images</span><span style="color:#c0c5ce;">&#39;)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">ax3.</span><span style="color:#bf616a;">imshow</span><span style="color:#c0c5ce;">(U[:,</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">].</span><span style="color:#bf616a;">reshape</span><span style="color:#c0c5ce;">(img.shape))</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">ax3.</span><span style="color:#bf616a;">set_title</span><span style="color:#c0c5ce;">(&#39;</span><span style="color:#a3be8c;">first spatial PC</span><span style="color:#c0c5ce;">&#39;)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">plt.</span><span style="color:#bf616a;">show</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
-</span></pre>
+fig,[ax1,ax2,ax3] = plt.</span><span style="color:#bf616a;">subplots</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+ax1.</span><span style="color:#bf616a;">imshow</span><span style="color:#c0c5ce;">(img)</span><span style="color:#c0c5ce;">
+ax1.</span><span style="color:#bf616a;">set_title</span><span style="color:#c0c5ce;">(&#39;</span><span style="color:#a3be8c;">true image</span><span style="color:#c0c5ce;">&#39;)</span><span style="color:#c0c5ce;">
+ax2.</span><span style="color:#bf616a;">imshow</span><span style="color:#c0c5ce;">(noisy.</span><span style="color:#bf616a;">mean</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">))</span><span style="color:#c0c5ce;">
+ax2.</span><span style="color:#bf616a;">set_title</span><span style="color:#c0c5ce;">(&#39;</span><span style="color:#a3be8c;">mean of noisy images</span><span style="color:#c0c5ce;">&#39;)</span><span style="color:#c0c5ce;">
+ax3.</span><span style="color:#bf616a;">imshow</span><span style="color:#c0c5ce;">(U[:,</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">].</span><span style="color:#bf616a;">reshape</span><span style="color:#c0c5ce;">(img.shape))</span><span style="color:#c0c5ce;">
+ax3.</span><span style="color:#bf616a;">set_title</span><span style="color:#c0c5ce;">(&#39;</span><span style="color:#a3be8c;">first spatial PC</span><span style="color:#c0c5ce;">&#39;)</span><span style="color:#c0c5ce;">
+plt.</span><span style="color:#bf616a;">show</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+</span></code></pre>
     </div>
 
     

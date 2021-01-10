@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,8 +9,6 @@
 
       <title>@xjump</title>
 
-      
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
       
 
       
@@ -57,31 +53,31 @@
               <ul class="mobile-menu-list">
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me">
+                        <a href="https:&#x2F;&#x2F;xjump.me">
                             Home
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;categories">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                             Categories
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                             Archive
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;rss.xml">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                             RSS
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;about">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                             About
                         </a>
                     </li>
@@ -95,31 +91,31 @@
                     <ul>
                         
                             <li>
-                                <a href="https://xjump.me">
+                                <a href="https:&#x2F;&#x2F;xjump.me">
                                     Home
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;categories">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                                     Categories
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                                     Archive
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;rss.xml">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                                     RSS
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;about">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                                     About
                                 </a>
                             </li>
@@ -148,33 +144,33 @@
 
     <div class="post-content">
       <p>以XOR为基础的加密算法设计时，不能同时使用XOR和加法。代码混淆、内存保护等安全机制中常用XOR类算法进行快速变换，隐藏信息。</p>
-<p><a name="continue-reading"></a></p>
+<span id="continue-reading"></span>
 <p>下面的代码演示的加密过程将导致明文密文空间不一致，因而加解密算法无法正确设计。</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#65737e;">#!/usr/bin/env python</span><span style="color:#65737e;">
-</span><span style="color:#65737e;"># encoding: utf-8</span><span style="color:#65737e;">
+<code class="language-python" data-lang="python"><span style="color:#65737e;">#!/usr/bin/env python</span><span style="color:#65737e;">
+# encoding: utf-8</span><span style="color:#65737e;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">result = []</span><span style="color:#c0c5ce;">
+result = []</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">i </span><span style="color:#b48ead;">in </span><span style="color:#96b5b4;">range</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">128</span><span style="color:#c0c5ce;">):</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">key = ((i^</span><span style="color:#d08770;">234</span><span style="color:#c0c5ce;">)+</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">&gt;&gt;</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">)&amp;</span><span style="color:#d08770;">0x0F</span><span style="color:#c0c5ce;">&amp;</span><span style="color:#d08770;">0xFF</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">p = (key^i)&amp;</span><span style="color:#d08770;">0xFF</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">p</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">result.</span><span style="color:#bf616a;">append</span><span style="color:#c0c5ce;">(p)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">m = </span><span style="color:#bf616a;">set</span><span style="color:#c0c5ce;">(result)</span><span style="color:#c0c5ce;">
+    key = ((i^</span><span style="color:#d08770;">234</span><span style="color:#c0c5ce;">)+</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">&gt;&gt;</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">)&amp;</span><span style="color:#d08770;">0x0F</span><span style="color:#c0c5ce;">&amp;</span><span style="color:#d08770;">0xFF</span><span style="color:#c0c5ce;">
+    p = (key^i)&amp;</span><span style="color:#d08770;">0xFF</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">p</span><span style="color:#c0c5ce;">
+    result.</span><span style="color:#bf616a;">append</span><span style="color:#c0c5ce;">(p)</span><span style="color:#c0c5ce;">
+    </span><span style="color:#c0c5ce;">
+m = </span><span style="color:#bf616a;">set</span><span style="color:#c0c5ce;">(result)</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">m,</span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">(m)</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">result = []</span><span style="color:#c0c5ce;">
+result = []</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">i </span><span style="color:#b48ead;">in </span><span style="color:#96b5b4;">range</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">128</span><span style="color:#c0c5ce;">):</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">key = ((i^</span><span style="color:#d08770;">243</span><span style="color:#c0c5ce;">)+</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">&gt;&gt;</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">)&amp;</span><span style="color:#d08770;">0x0F</span><span style="color:#c0c5ce;">&amp;</span><span style="color:#d08770;">0xFF</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">p = (key^i)&amp;</span><span style="color:#d08770;">0xFF</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">p</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">result.</span><span style="color:#bf616a;">append</span><span style="color:#c0c5ce;">(p)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">m = </span><span style="color:#bf616a;">set</span><span style="color:#c0c5ce;">(result)</span><span style="color:#c0c5ce;">
+    key = ((i^</span><span style="color:#d08770;">243</span><span style="color:#c0c5ce;">)+</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">&gt;&gt;</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">)&amp;</span><span style="color:#d08770;">0x0F</span><span style="color:#c0c5ce;">&amp;</span><span style="color:#d08770;">0xFF</span><span style="color:#c0c5ce;">
+    p = (key^i)&amp;</span><span style="color:#d08770;">0xFF</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">p</span><span style="color:#c0c5ce;">
+    result.</span><span style="color:#bf616a;">append</span><span style="color:#c0c5ce;">(p)</span><span style="color:#c0c5ce;">
+    </span><span style="color:#c0c5ce;">
+m = </span><span style="color:#bf616a;">set</span><span style="color:#c0c5ce;">(result)</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">m, </span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">(m)</span><span style="color:#c0c5ce;">
-</span></pre>
+</span></code></pre>
     </div>
 
     

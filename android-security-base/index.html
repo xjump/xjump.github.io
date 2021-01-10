@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,8 +9,6 @@
 
       <title>@xjump</title>
 
-      
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
       
 
       
@@ -57,31 +53,31 @@
               <ul class="mobile-menu-list">
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me">
+                        <a href="https:&#x2F;&#x2F;xjump.me">
                             Home
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;categories">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                             Categories
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                             Archive
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;rss.xml">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                             RSS
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;about">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                             About
                         </a>
                     </li>
@@ -95,31 +91,31 @@
                     <ul>
                         
                             <li>
-                                <a href="https://xjump.me">
+                                <a href="https:&#x2F;&#x2F;xjump.me">
                                     Home
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;categories">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                                     Categories
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                                     Archive
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;rss.xml">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                                     RSS
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;about">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                                     About
                                 </a>
                             </li>
@@ -150,7 +146,7 @@
       <p>简介： Android 是业界流行的开源移动平台，受到广泛关注并为多个手机制造商作为手机的操作系统平台，因此，研究其安全架构及权限控制机制具有非常的重要性。本文从 Android 层次化安全架构入手，详细地介绍 Android 平台的安全架构及其权限控制机制，涵盖 Android 应用程序权限申请方法等，并从源代码实现层面来解析该机制。</p>
 <h3>Android 层次化安全架构</h3>
 <p>Android 作为一个移动设备的平台，其软件层次结构包括了一个操作系统（OS），中间件（MiddleWare）和应用程序（Application）。根据 Android 的软件框图，其软件层次结构自下而上分为以下几个层次：</p>
-<p><a name="continue-reading"></a></p>
+<span id="continue-reading"></span>
 <ul>
 <li>操作系统层（OS）</li>
 <li>各种库（Libraries）和 Android 运行环境（RunTime）</li>
@@ -188,8 +184,8 @@ Android 使用 Linux2.6 作为操作系统，Linux2.6 是一种标准的技术�
 <h3>（3）应用程序框架（Application Framework）</h3>
 <p>Android 的应用程序框架为应用程序层的开发者提供 APIs，它实际上是一个应用程序的框架。由于上层的应用程序是以 JAVA 构建的，因此本层次提供的首先包含了 UI 程序中所需要的各种控件： 例如： Views ( 视图组件 ) 包括 lists( 列表 ), grids( 栅格 ), text boxes( 文本框 ), buttons( 按钮 ) 等，甚至一个嵌入式的 Web 浏览器。一个 Android 的应用程序可以利用应用程序框架中的以下几个部分： Activity （活动）、Broadcast Intent Receiver （广播意图接收者）、Service （服务）、Content Provider （内容提供者）。</p>
 <h3>（4）应用程序（Application）</h3>
-<p>Android 的应用程序主要是用户界面（User Interface），通常以 JAVA 程序编写，其中还可以包含各种资源文件（放置在 res 目录中）。JAVA 程序及相关资源经过编译后，将生成一个 APK 包。Android 本身提供了主屏幕（Home），联系人（Contact），电话（Phone），浏览器（Browsers）等众多的核心应用。同时应用程序的开发者还可 以使用应用程序框架层的 API 实现自己的程序。
-<center></p>
+<p>Android 的应用程序主要是用户界面（User Interface），通常以 JAVA 程序编写，其中还可以包含各种资源文件（放置在 res 目录中）。JAVA 程序及相关资源经过编译后，将生成一个 APK 包。Android 本身提供了主屏幕（Home），联系人（Contact），电话（Phone），浏览器（Browsers）等众多的核心应用。同时应用程序的开发者还可 以使用应用程序框架层的 API 实现自己的程序。</p>
+<center> 
 <p> <strong>图 1. Android 分层安全架构图</strong></p>
 <img alt="图 1. Android 分层安全架构图" src="/images/image001.gif" style="width: 568px; height: 396px;" />
 </center>
@@ -212,10 +208,10 @@ Android 使用 Linux2.6 作为操作系统，Linux2.6 是一种标准的技术�
 <p>Broadcast Receiver 没有用户界面。然而，它们可以启动一个 activity 来响应它们收到的信息，或者用 <a href="http://developer.android.com/reference/android/app/NotificationManager.html">NotificationManager</a>来通知用户。通知可以用很多种方式来吸引用户的注意力──闪动背灯、震动、播放声音等等。一般来说是在状态栏上放一个持久的图标，用户可以打开它并获取消息。</p>
 <p>与此组件相关的概念是 Intent，Intent 是一个对动作和行为的抽象描述，负责组件之间程序之间进行消息传递。而 Broadcast Receiver 组件则提供了一种把 Intent 作为一个消息广播出去，由所有对其感兴趣的程序对其作出反应的机制。举个简单的例子，为了实现一个系统启动后播放音乐的功能，则可以定义 Intent 为 android.intent.action.BOOT_COMPLETED，由 Broadcast Receiver 组件将其进行广播，而系统中的 Media Player 接收到该信息后则进行播放。</p>
 <p>如上所述，4 个组件之间的关系如下图：</p>
-<p><center>
-<p><strong>图 2. Android 各组件关系图</strong></p>
-<img alt="图 2. Android 各组件关系图" src="/images/image002.jpg" style="width: 389px; height: 165px;" />
-</center></p>
+<center>
+    <p><strong>图 2. Android 各组件关系图</strong></p>
+    <img alt="图 2. Android 各组件关系图" src="/images/image002.jpg" style="width: 389px; height: 165px;" />
+</center>
 <h3>Android 的权限分类</h3>
 <p>根据用户的使用过程体验，可以将 Android 涉及的权限大致分为如下三类：</p>
 <ul>
@@ -226,56 +222,55 @@ Android 使用 Linux2.6 作为操作系统，Linux2.6 是一种标准的技术�
 <h3>Android 系统权限定义</h3>
 <p>Android 系统在 /system/core/private/android_filesystem_config.h 头文件中对 Android 用户 / 用户组作了如下定义，且权限均基于该用户 / 用户组设置。</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_ROOT             </span><span style="color:#d08770;">0  </span><span style="color:#65737e;">/* traditional unix root user */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_SYSTEM        </span><span style="color:#d08770;">1000  </span><span style="color:#65737e;">/* system server */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_RADIO         </span><span style="color:#d08770;">1001  </span><span style="color:#65737e;">/* telephony subsystem, RIL */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_BLUETOOTH     </span><span style="color:#d08770;">1002  </span><span style="color:#65737e;">/* bluetooth subsystem */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_GRAPHICS      </span><span style="color:#d08770;">1003  </span><span style="color:#65737e;">/* graphics devices */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_INPUT         </span><span style="color:#d08770;">1004  </span><span style="color:#65737e;">/* input devices */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_AUDIO         </span><span style="color:#d08770;">1005  </span><span style="color:#65737e;">/* audio devices */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_CAMERA        </span><span style="color:#d08770;">1006  </span><span style="color:#65737e;">/* camera devices */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_LOG           </span><span style="color:#d08770;">1007  </span><span style="color:#65737e;">/* log devices */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_COMPASS       </span><span style="color:#d08770;">1008  </span><span style="color:#65737e;">/* compass device */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_MOUNT         </span><span style="color:#d08770;">1009  </span><span style="color:#65737e;">/* mountd socket */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_WIFI          </span><span style="color:#d08770;">1010  </span><span style="color:#65737e;">/* wifi subsystem */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_ADB           </span><span style="color:#d08770;">1011  </span><span style="color:#65737e;">/* android debug bridge (adbd) */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_INSTALL       </span><span style="color:#d08770;">1012  </span><span style="color:#65737e;">/* group for installing packages */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_MEDIA         </span><span style="color:#d08770;">1013  </span><span style="color:#65737e;">/* mediaserver process */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_DHCP          </span><span style="color:#d08770;">1014  </span><span style="color:#65737e;">/* dhcp client */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_SDCARD_RW     </span><span style="color:#d08770;">1015  </span><span style="color:#65737e;">/* external storage write access */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_VPN           </span><span style="color:#d08770;">1016  </span><span style="color:#65737e;">/* vpn system */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_KEYSTORE      </span><span style="color:#d08770;">1017  </span><span style="color:#65737e;">/* keystore subsystem */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_USB           </span><span style="color:#d08770;">1018  </span><span style="color:#65737e;">/* USB devices */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_DRM           </span><span style="color:#d08770;">1019  </span><span style="color:#65737e;">/* DRM server */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_DRMIO         </span><span style="color:#d08770;">1020  </span><span style="color:#65737e;">/* DRM IO server */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_GPS           </span><span style="color:#d08770;">1021  </span><span style="color:#65737e;">/* GPS daemon */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_NFC           </span><span style="color:#d08770;">1022  </span><span style="color:#65737e;">/* nfc subsystem */ </span><span style="color:#c0c5ce;">
+<code class="language-cpp" data-lang="cpp"><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_ROOT             </span><span style="color:#d08770;">0  </span><span style="color:#65737e;">/* traditional unix root user */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_SYSTEM        </span><span style="color:#d08770;">1000  </span><span style="color:#65737e;">/* system server */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_RADIO         </span><span style="color:#d08770;">1001  </span><span style="color:#65737e;">/* telephony subsystem, RIL */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_BLUETOOTH     </span><span style="color:#d08770;">1002  </span><span style="color:#65737e;">/* bluetooth subsystem */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_GRAPHICS      </span><span style="color:#d08770;">1003  </span><span style="color:#65737e;">/* graphics devices */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_INPUT         </span><span style="color:#d08770;">1004  </span><span style="color:#65737e;">/* input devices */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_AUDIO         </span><span style="color:#d08770;">1005  </span><span style="color:#65737e;">/* audio devices */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_CAMERA        </span><span style="color:#d08770;">1006  </span><span style="color:#65737e;">/* camera devices */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_LOG           </span><span style="color:#d08770;">1007  </span><span style="color:#65737e;">/* log devices */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_COMPASS       </span><span style="color:#d08770;">1008  </span><span style="color:#65737e;">/* compass device */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_MOUNT         </span><span style="color:#d08770;">1009  </span><span style="color:#65737e;">/* mountd socket */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_WIFI          </span><span style="color:#d08770;">1010  </span><span style="color:#65737e;">/* wifi subsystem */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_ADB           </span><span style="color:#d08770;">1011  </span><span style="color:#65737e;">/* android debug bridge (adbd) */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_INSTALL       </span><span style="color:#d08770;">1012  </span><span style="color:#65737e;">/* group for installing packages */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_MEDIA         </span><span style="color:#d08770;">1013  </span><span style="color:#65737e;">/* mediaserver process */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_DHCP          </span><span style="color:#d08770;">1014  </span><span style="color:#65737e;">/* dhcp client */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_SDCARD_RW     </span><span style="color:#d08770;">1015  </span><span style="color:#65737e;">/* external storage write access */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_VPN           </span><span style="color:#d08770;">1016  </span><span style="color:#65737e;">/* vpn system */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_KEYSTORE      </span><span style="color:#d08770;">1017  </span><span style="color:#65737e;">/* keystore subsystem */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_USB           </span><span style="color:#d08770;">1018  </span><span style="color:#65737e;">/* USB devices */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_DRM           </span><span style="color:#d08770;">1019  </span><span style="color:#65737e;">/* DRM server */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_DRMIO         </span><span style="color:#d08770;">1020  </span><span style="color:#65737e;">/* DRM IO server */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_GPS           </span><span style="color:#d08770;">1021  </span><span style="color:#65737e;">/* GPS daemon */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_NFC           </span><span style="color:#d08770;">1022  </span><span style="color:#65737e;">/* nfc subsystem */ </span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_SHELL         </span><span style="color:#d08770;">2000  </span><span style="color:#65737e;">/* adb and debug shell user */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_CACHE         </span><span style="color:#d08770;">2001  </span><span style="color:#65737e;">/* cache access */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_DIAG          </span><span style="color:#d08770;">2002  </span><span style="color:#65737e;">/* access to diagnostic resources */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_SHELL         </span><span style="color:#d08770;">2000  </span><span style="color:#65737e;">/* adb and debug shell user */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_CACHE         </span><span style="color:#d08770;">2001  </span><span style="color:#65737e;">/* cache access */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_DIAG          </span><span style="color:#d08770;">2002  </span><span style="color:#65737e;">/* access to diagnostic resources */ </span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#65737e;">/* The 3000 series are intended for use as supplemental group id&#39;s only. </span><span style="color:#65737e;">
-</span><span style="color:#65737e;">  </span><span style="color:#65737e;">* They indicate special Android capabilities that the kernel is aware of. */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_NET_BT_ADMIN  </span><span style="color:#d08770;">3001  </span><span style="color:#65737e;">/* bluetooth: create any socket */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_NET_BT        </span><span style="color:#d08770;">3002  </span><span style="color:#65737e;">/* bluetooth: create sco, rfcomm or </span><span style="color:#65737e;">
-</span><span style="color:#65737e;">                                    </span><span style="color:#65737e;">l2cap sockets */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_INET          </span><span style="color:#d08770;">3003  </span><span style="color:#65737e;">/* can create AF_INET and AF_INET6 sockets */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_NET_RAW       </span><span style="color:#d08770;">3004  </span><span style="color:#65737e;">/* can create raw INET sockets */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_NET_ADMIN     </span><span style="color:#d08770;">3005  </span><span style="color:#65737e;">/* can configure interfaces and </span><span style="color:#65737e;">
-</span><span style="color:#65737e;">                                    </span><span style="color:#65737e;">routing tables. */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#65737e;">/* The 3000 series are intended for use as supplemental group id&#39;s only. </span><span style="color:#65737e;">
+  * They indicate special Android capabilities that the kernel is aware of. */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_NET_BT_ADMIN  </span><span style="color:#d08770;">3001  </span><span style="color:#65737e;">/* bluetooth: create any socket */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_NET_BT        </span><span style="color:#d08770;">3002  </span><span style="color:#65737e;">/* bluetooth: create sco, rfcomm or </span><span style="color:#65737e;">
+                                    l2cap sockets */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_INET          </span><span style="color:#d08770;">3003  </span><span style="color:#65737e;">/* can create AF_INET and AF_INET6 sockets */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_NET_RAW       </span><span style="color:#d08770;">3004  </span><span style="color:#65737e;">/* can create raw INET sockets */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_NET_ADMIN     </span><span style="color:#d08770;">3005  </span><span style="color:#65737e;">/* can configure interfaces and </span><span style="color:#65737e;">
+                                    routing tables. */ </span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_MISC          </span><span style="color:#d08770;">9998  </span><span style="color:#65737e;">/* access to misc storage */ </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_NOBODY        </span><span style="color:#d08770;">9999 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_APP           </span><span style="color:#d08770;">10000 </span><span style="color:#65737e;">/* first app user */ </span><span style="color:#c0c5ce;">
-</span></pre>
-<p><br /></p>
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_MISC          </span><span style="color:#d08770;">9998  </span><span style="color:#65737e;">/* access to misc storage */ </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_NOBODY        </span><span style="color:#d08770;">9999 </span><span style="color:#c0c5ce;">
+ </span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">AID_APP           </span><span style="color:#d08770;">10000 </span><span style="color:#65737e;">/* first app user */ </span><span style="color:#c0c5ce;">
+</span></code></pre><br />
 <p>值得注意的是：每个应用程序在安装到 Android 系统后，系统都会为其分配一个用户 ID，如 app_4、app_11 等。以下是 Calendar 和 Terminal 软件在 Android 系统中进程浏览的结果（其中，黑色字体标明的即为应用分配的用户 ID）：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;"> </span><span style="color:#c0c5ce;">USER     PID   PPID  VSIZE  RSS     WCHAN    PC         NAME </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#c0c5ce;">app_16    2855  2363  216196 20960 ffffffff afd0ee48 S com.android.providers.calendar </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#c0c5ce;">app_91    4178  2363  218872 25076 ffffffff afd0ee48 S jackpal.androidterm </span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-txt" data-lang="txt"><span style="color:#c0c5ce;"> USER     PID   PPID  VSIZE  RSS     WCHAN    PC         NAME </span><span style="color:#c0c5ce;">
+ app_16    2855  2363  216196 20960 ffffffff afd0ee48 S com.android.providers.calendar </span><span style="color:#c0c5ce;">
+ app_91    4178  2363  218872 25076 ffffffff afd0ee48 S jackpal.androidterm </span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>在 Android 系统中，上述用户 / 用户组对文件的访问遵循 Linux 系统的访问控制原则，即根据长度为 10 个字符的权限控制符来决定用户 / 用户组对文件的访问权限。该控制符的格式遵循下列规则：</p>
 <ul>
 <li>第 1 个字符：表示一种特殊的文件类型。其中字符可为 d( 表示该文件是一个目录 )、b( 表示该文件是一个系统设备，使用块输入 / 输出与外界交互，通常为一个磁盘 )、c( 表示该文件是一个系统设备，使用连续的字符输入 / 输出与外界交互，如串口和声音设备 )，'.'表示该文件是一个普通文件，没有特殊属性。</li>
@@ -288,8 +283,8 @@ Android 使用 Linux2.6 作为操作系统，Linux2.6 是一种标准的技术�
 </ul>
 <p>举个例子，</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">drwxrwxr--  2 root   root    4096  2 月 11 10:36 lu</span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-txt" data-lang="txt"><span style="color:#c0c5ce;">drwxrwxr--  2 root   root    4096  2 月 11 10:36 lu</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>表示的访问控制权限（黑色字体标明）为：<br/>
 因为 lu 的第 1 个位置的字符是 d，所以由此知道 lu 是一个目录。第 2 至 4 位置上的属性是 rwx，表示用户 root 拥有权限列表显示 lu 中所有的文件、创建新文件或者删除 lu 中现有的文件，或者将 lu 作为当前工作目录。第 5 至 7 个位置上的权限是 rwx，表示 root 组的成员拥有和 root 一样的权限。第 8 至 10 位上的权限仅是 r--，表示不是 root 的用户及不属于 root 组的成员只有对 lu 目录列表的权限。这些用户不能创建或者删除 lu 中的文件、执行 junk 中的可执行文件，或者将 junk 作为他们的当前工作目录。</p>
 <h3>Android 应用程序权限申请</h3>
@@ -318,58 +313,58 @@ Android 使用 Linux2.6 作为操作系统，Linux2.6 是一种标准的技术�
 </ul>
 <p>下面结合 cookie 实例中的 AndroidManifest.xml 文件来说明一下，原 XML 文件如下：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;"> </span><span style="color:#65737e;">&lt;!--?xml version=”1.0 ″ encoding=”utf-8 ″ ?--&gt; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">manifest </span><span style="color:#d08770;">android:versioncode</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">1</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#d08770;">android:versionname</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">1.0</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#d08770;">package</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">moandroid.cookie</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#d08770;">xmlns:android</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">http://schemas.android.com/apk/res/android</span><span style="color:#c0c5ce;">&quot;&gt; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">application </span><span style="color:#d08770;">android:icon</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">@drawable/icon</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#d08770;">android:label</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">@string/app_name</span><span style="color:#c0c5ce;">&quot;&gt; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">activity </span><span style="color:#d08770;">android:label</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">@string/app_name”</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#d08770;">android:name</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">.cookie”</span><span style="color:#c0c5ce;">&quot;&gt; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">intent-filter</span><span style="color:#c0c5ce;">&gt; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">                </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">action </span><span style="color:#d08770;">android:name</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">android.intent.action.MAIN</span><span style="color:#c0c5ce;">&quot;&gt; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">                    </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">category </span><span style="color:#d08770;">android:name</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">android.intent.category.LAUNCHER</span><span style="color:#c0c5ce;">&quot;&gt; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">                    </span><span style="color:#c0c5ce;">&lt;/</span><span style="color:#bf616a;">category</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">                </span><span style="color:#c0c5ce;">&lt;/</span><span style="color:#bf616a;">action</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#c0c5ce;">&lt;/</span><span style="color:#bf616a;">intent-filter</span><span style="color:#c0c5ce;">&gt; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">&lt;/</span><span style="color:#bf616a;">activity</span><span style="color:#c0c5ce;">&gt; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">&lt;/</span><span style="color:#bf616a;">application</span><span style="color:#c0c5ce;">&gt; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">uses-sdk </span><span style="color:#d08770;">android:minsdkversion</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">3</span><span style="color:#c0c5ce;">&quot;&gt;&lt;/</span><span style="color:#bf616a;">uses-sdk</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">&lt;/</span><span style="color:#bf616a;">manifest</span><span style="color:#c0c5ce;">&gt; </span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-xml" data-lang="xml"><span style="color:#c0c5ce;"> </span><span style="color:#65737e;">&lt;!--?xml version=”1.0 ″ encoding=”utf-8 ″ ?--&gt; </span><span style="color:#c0c5ce;">
+ &lt;</span><span style="color:#bf616a;">manifest </span><span style="color:#d08770;">android:versioncode</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">1</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#d08770;">android:versionname</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">1.0</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#c0c5ce;">
+    </span><span style="color:#d08770;">package</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">moandroid.cookie</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#c0c5ce;">
+    </span><span style="color:#d08770;">xmlns:android</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">http://schemas.android.com/apk/res/android</span><span style="color:#c0c5ce;">&quot;&gt; </span><span style="color:#c0c5ce;">
+    &lt;</span><span style="color:#bf616a;">application </span><span style="color:#d08770;">android:icon</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">@drawable/icon</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#d08770;">android:label</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">@string/app_name</span><span style="color:#c0c5ce;">&quot;&gt; </span><span style="color:#c0c5ce;">
+        &lt;</span><span style="color:#bf616a;">activity </span><span style="color:#d08770;">android:label</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">@string/app_name”</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#d08770;">android:name</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">.cookie”</span><span style="color:#c0c5ce;">&quot;&gt; </span><span style="color:#c0c5ce;">
+            &lt;</span><span style="color:#bf616a;">intent-filter</span><span style="color:#c0c5ce;">&gt; </span><span style="color:#c0c5ce;">
+                &lt;</span><span style="color:#bf616a;">action </span><span style="color:#d08770;">android:name</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">android.intent.action.MAIN</span><span style="color:#c0c5ce;">&quot;&gt; </span><span style="color:#c0c5ce;">
+                    &lt;</span><span style="color:#bf616a;">category </span><span style="color:#d08770;">android:name</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">android.intent.category.LAUNCHER</span><span style="color:#c0c5ce;">&quot;&gt; </span><span style="color:#c0c5ce;">
+                    &lt;/</span><span style="color:#bf616a;">category</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+                &lt;/</span><span style="color:#bf616a;">action</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+            &lt;/</span><span style="color:#bf616a;">intent-filter</span><span style="color:#c0c5ce;">&gt; </span><span style="color:#c0c5ce;">
+        &lt;/</span><span style="color:#bf616a;">activity</span><span style="color:#c0c5ce;">&gt; </span><span style="color:#c0c5ce;">
+    &lt;/</span><span style="color:#bf616a;">application</span><span style="color:#c0c5ce;">&gt; </span><span style="color:#c0c5ce;">
+    &lt;</span><span style="color:#bf616a;">uses-sdk </span><span style="color:#d08770;">android:minsdkversion</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">3</span><span style="color:#c0c5ce;">&quot;&gt;&lt;/</span><span style="color:#bf616a;">uses-sdk</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+&lt;/</span><span style="color:#bf616a;">manifest</span><span style="color:#c0c5ce;">&gt; </span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>除了头部的 XML 信息说明外，首先是 manifest 项（也就是根节点），其属性包括：schemas URL 地址、包名（moandroid.cookie），以及程序的版本说明。其次是 manifest 的子节点 application，其属性包括：程序图标、程序名称。前面带有 @ 表示引用资源，例如：@drawable/icon 表示引用的是 drawable 资源中的 icon，可以在其源工程的 res/drawable 中找到。然后就是 application 的子节点 activity，其属性包括：activity 的名称、activity 的标签名，其子节点 intent-filter 则是对 activity 的说明。</p>
 <p>而在 intent-filter 中，action android:name=&quot;android.intent.action.MAIN&quot;和 category android:name=&quot;android.intent.category.LAUNCHER&quot;用以说明程序启动时的入口 activity 是哪个。如果这两个属性值中分别含有 MAIN 和 LAUNCHER，则说明它就是启动程序时的入口活动。uses-sdk android:minSdkVersion=&quot;3&quot; 说明程序使用的 Android SDK 的最低版本，其中 1 表示 Android 1.0，2 表示 Android 1.1，而 3 则表示 Android 1.5。</p>
 <h3>如何进行应用程序权限申请</h3>
 <p>如下所示，文中黑体标记的部分为应用程序权限申请内容：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;"> </span><span style="color:#65737e;">&lt;!--?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?--&gt; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">manifest </span><span style="color:#d08770;">android:versioncode</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">1</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#d08770;">android:versionname</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">1.0.0</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#d08770;">package</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">cn.com.fetion.android</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#d08770;">xmlns:android</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">http://schemas.android.com/apk/res/android</span><span style="color:#c0c5ce;">&quot;&gt; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">application </span><span style="color:#d08770;">android:icon</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">@drawable/icon</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#d08770;">android:label</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">@string/app_name</span><span style="color:#c0c5ce;">&quot;&gt; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">activity </span><span style="color:#d08770;">android:label</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">@string/app_name</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#d08770;">android:name</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">.welcomActivity</span><span style="color:#c0c5ce;">&quot;&gt; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">intent-filter</span><span style="color:#c0c5ce;">&gt; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">                </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">action </span><span style="color:#d08770;">android:name</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">android.intent.action.MAIN</span><span style="color:#c0c5ce;">&quot;&gt; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">                    </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">category </span><span style="color:#d08770;">android:name</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">android.intent.category.LAUNCHER</span><span style="color:#c0c5ce;">&quot;&gt; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">                    </span><span style="color:#c0c5ce;">&lt;/</span><span style="color:#bf616a;">category</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">                </span><span style="color:#c0c5ce;">&lt;/</span><span style="color:#bf616a;">action</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#c0c5ce;">&lt;/</span><span style="color:#bf616a;">intent-filter</span><span style="color:#c0c5ce;">&gt; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">&lt;/</span><span style="color:#bf616a;">activity</span><span style="color:#c0c5ce;">&gt; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">&lt;/</span><span style="color:#bf616a;">application</span><span style="color:#c0c5ce;">&gt; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">uses-permission </span><span style="color:#d08770;">android:name</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">android.permission.SEND_SMS</span><span style="color:#c0c5ce;">&quot;&gt;&lt;/</span><span style="color:#bf616a;">uses-permission</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">&lt;/</span><span style="color:#bf616a;">manifest</span><span style="color:#c0c5ce;">&gt; </span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-xml" data-lang="xml"><span style="color:#c0c5ce;"> </span><span style="color:#65737e;">&lt;!--?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?--&gt; </span><span style="color:#c0c5ce;">
+&lt;</span><span style="color:#bf616a;">manifest </span><span style="color:#d08770;">android:versioncode</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">1</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#d08770;">android:versionname</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">1.0.0</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#c0c5ce;">
+    </span><span style="color:#d08770;">package</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">cn.com.fetion.android</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#c0c5ce;">
+    </span><span style="color:#d08770;">xmlns:android</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">http://schemas.android.com/apk/res/android</span><span style="color:#c0c5ce;">&quot;&gt; </span><span style="color:#c0c5ce;">
+    &lt;</span><span style="color:#bf616a;">application </span><span style="color:#d08770;">android:icon</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">@drawable/icon</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#d08770;">android:label</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">@string/app_name</span><span style="color:#c0c5ce;">&quot;&gt; </span><span style="color:#c0c5ce;">
+        &lt;</span><span style="color:#bf616a;">activity </span><span style="color:#d08770;">android:label</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">@string/app_name</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#d08770;">android:name</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">.welcomActivity</span><span style="color:#c0c5ce;">&quot;&gt; </span><span style="color:#c0c5ce;">
+            &lt;</span><span style="color:#bf616a;">intent-filter</span><span style="color:#c0c5ce;">&gt; </span><span style="color:#c0c5ce;">
+                &lt;</span><span style="color:#bf616a;">action </span><span style="color:#d08770;">android:name</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">android.intent.action.MAIN</span><span style="color:#c0c5ce;">&quot;&gt; </span><span style="color:#c0c5ce;">
+                    &lt;</span><span style="color:#bf616a;">category </span><span style="color:#d08770;">android:name</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">android.intent.category.LAUNCHER</span><span style="color:#c0c5ce;">&quot;&gt; </span><span style="color:#c0c5ce;">
+                    &lt;/</span><span style="color:#bf616a;">category</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+                &lt;/</span><span style="color:#bf616a;">action</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+            &lt;/</span><span style="color:#bf616a;">intent-filter</span><span style="color:#c0c5ce;">&gt; </span><span style="color:#c0c5ce;">
+        &lt;/</span><span style="color:#bf616a;">activity</span><span style="color:#c0c5ce;">&gt; </span><span style="color:#c0c5ce;">
+    &lt;/</span><span style="color:#bf616a;">application</span><span style="color:#c0c5ce;">&gt; </span><span style="color:#c0c5ce;">
+    &lt;</span><span style="color:#bf616a;">uses-permission </span><span style="color:#d08770;">android:name</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">android.permission.SEND_SMS</span><span style="color:#c0c5ce;">&quot;&gt;&lt;/</span><span style="color:#bf616a;">uses-permission</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+&lt;/</span><span style="color:#bf616a;">manifest</span><span style="color:#c0c5ce;">&gt; </span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>如上述文件描述中加下划线的斜体部分，该文件的作用是说明该软件需要发送短信的功能。</p>
 <p>Android 定义了百余种 permission，可供开发人员使用，具体详见网址：http://developers.androidcn.com/reference/android/Manifest.permission.html。</p>
 <p>在文件中，用户还可以自定义权限。permission 就是自定义权限的声明，可以用来限制 app 中特殊组件，特性与 app 内部或者和其他 app 之间访问。写了一个引用自定义权限的例子，在安装 app 的时候，提示权限：</p>
 <p>定义权限如下：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;"> </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">permission </span><span style="color:#d08770;">android:description</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">@string/test</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#d08770;">android:icon</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">@drawable/ic_launcher</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#d08770;">android:label</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">自定义权限</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#d08770;">android:name</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">com.example.project.TEST</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#d08770;">android:protectionlevel</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">normal</span><span style="color:#c0c5ce;">&quot;&gt; </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#c0c5ce;">&lt;/</span><span style="color:#bf616a;">permission</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+<code class="language-xml" data-lang="xml"><span style="color:#c0c5ce;"> &lt;</span><span style="color:#bf616a;">permission </span><span style="color:#d08770;">android:description</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">@string/test</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#c0c5ce;">
+    </span><span style="color:#d08770;">android:icon</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">@drawable/ic_launcher</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#c0c5ce;">
+    </span><span style="color:#d08770;">android:label</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">自定义权限</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#c0c5ce;">
+    </span><span style="color:#d08770;">android:name</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">com.example.project.TEST</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#c0c5ce;">
+    </span><span style="color:#d08770;">android:protectionlevel</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">normal</span><span style="color:#c0c5ce;">&quot;&gt; </span><span style="color:#c0c5ce;">
+ &lt;/</span><span style="color:#bf616a;">permission</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span></pre>
+</span></code></pre>
 <p>声明的含义如下；</p>
 <ul>
 <li>
@@ -392,10 +387,10 @@ Android 使用 Linux2.6 作为操作系统，Linux2.6 是一种标准的技术�
 </li>
 </ul>
 <p>值得注意的是：通过测试发现一种特殊的情况，应用程序可以在程序运行时申请 root 权限，如下图，在使用 Android Terminal Emulator 时尝试使用 su 命令切换到 root 用户。若用户已通过 hacking 的方式使得 Android 系统获得了 root 权限，则可以允许该程序以 root 用户权限执行；反之即算用户选择&quot;允许&quot;，也不能使程序以 root 用户权限执行。</p>
-<p><center>
-<p><strong>图 3. Android 用户权限赋予示意图</strong></p>
-<img alt="图 3. Android 用户权限赋予示意图" src="/images/image003.gif" style="width: 279px; height: 378px;" />
-</center></p>
+<center>
+    <p><strong>图 3. Android 用户权限赋予示意图</strong></p>
+    <img alt="图 3. Android 用户权限赋予示意图" src="/images/image003.gif" style="width: 279px; height: 378px;" />
+</center>
 <h3>Android 系统对应用程序权限申请的处理方式分析</h3>
 <p>对 Android 源代码中的如下文件进行分析：</p>
 <ul>
@@ -409,10 +404,10 @@ Android 使用 Linux2.6 作为操作系统，Linux2.6 是一种标准的技术�
 <li>显示对话框，请求用户确认是否满足这些权限需求；</li>
 <li>若同意，则应用程序正常安装，并被赋予相应的权限；若否定，则应用程序不被安装。系统仅提供给用户选择&quot;是&quot;或者&quot;否&quot;的权利，没有选择其中某些权限进行授权的权利。</li>
 </ul>
-<p><center>
-<p><strong>图 4. Android 用户权限赋予示意图</strong></p>
-<img alt="图 4. Android 用户权限赋予示意图" src="/images/image004.jpg" style="width: 449px; height: 542px;" />
-</center></p>
+<center>
+    <p><strong>图 4. Android 用户权限赋予示意图</strong></p>
+    <img alt="图 4. Android 用户权限赋予示意图" src="/images/image004.jpg" style="width: 449px; height: 542px;" />
+</center>
 <h3>参考资料</h3>
 <p>1、参考 <a href="http://www.android.com/">Android主站点</a>，获取 Android 开发及应用相关的最新信息。<br/>
 2、阅读 <a href="http://siis.cse.psu.edu/android_sec_tutorial.html">Android Security Tutorial</a>，了解业界关于 Android 安全的研究。<br/>

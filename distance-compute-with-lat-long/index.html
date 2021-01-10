@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,8 +9,6 @@
 
       <title>@xjump</title>
 
-      
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
       
 
       
@@ -57,31 +53,31 @@
               <ul class="mobile-menu-list">
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me">
+                        <a href="https:&#x2F;&#x2F;xjump.me">
                             Home
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;categories">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                             Categories
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                             Archive
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;rss.xml">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                             RSS
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;about">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                             About
                         </a>
                     </li>
@@ -95,31 +91,31 @@
                     <ul>
                         
                             <li>
-                                <a href="https://xjump.me">
+                                <a href="https:&#x2F;&#x2F;xjump.me">
                                     Home
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;categories">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                                     Categories
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                                     Archive
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;rss.xml">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                                     RSS
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;about">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                                     About
                                 </a>
                             </li>
@@ -148,52 +144,52 @@
 
     <div class="post-content">
       <p>公式推导比较简单，直接上代码：</p>
-<p><a name="continue-reading"></a></p>
+<span id="continue-reading"></span>
 <pre style="background-color:#2b303b;">
-<span style="color:#65737e;">#!/usr/bin/env python</span><span style="color:#65737e;">
-</span><span style="color:#65737e;"># -*- coding=utf-8 -*-</span><span style="color:#65737e;">
+<code class="language-py" data-lang="py"><span style="color:#65737e;">#!/usr/bin/env python</span><span style="color:#65737e;">
+# -*- coding=utf-8 -*-</span><span style="color:#65737e;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#65737e;">&#39;&#39;&#39;</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">经纬度求球面距离</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">file: R.py</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">ref:</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">  </span><span style="color:#65737e;">http://blog.csdn.net/csfreebird/article/details/6820823</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">&#39;&#39;&#39;</span><span style="color:#c0c5ce;">
+经纬度求球面距离</span><span style="color:#65737e;">
+file: R.py</span><span style="color:#65737e;">
+ref:</span><span style="color:#65737e;">
+  http://blog.csdn.net/csfreebird/article/details/6820823</span><span style="color:#65737e;">
+&#39;&#39;&#39;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">math</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">lat1 = </span><span style="color:#d08770;">40.0028</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">long1 = </span><span style="color:#d08770;">126.77654</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">lat2 = </span><span style="color:#d08770;">40.010092</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">long2 = </span><span style="color:#d08770;">126.58763</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">R = </span><span style="color:#d08770;">6378.137</span><span style="color:#c0c5ce;">*</span><span style="color:#d08770;">1000</span><span style="color:#c0c5ce;">
+lat1 = </span><span style="color:#d08770;">40.0028</span><span style="color:#c0c5ce;">
+long1 = </span><span style="color:#d08770;">126.77654</span><span style="color:#c0c5ce;">
+lat2 = </span><span style="color:#d08770;">40.010092</span><span style="color:#c0c5ce;">
+long2 = </span><span style="color:#d08770;">126.58763</span><span style="color:#c0c5ce;">
+R = </span><span style="color:#d08770;">6378.137</span><span style="color:#c0c5ce;">*</span><span style="color:#d08770;">1000</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">func1</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">lat00</span><span style="color:#c0c5ce;">,</span><span style="color:#bf616a;">long00</span><span style="color:#c0c5ce;">,</span><span style="color:#bf616a;">lat11</span><span style="color:#c0c5ce;">,</span><span style="color:#bf616a;">long11</span><span style="color:#c0c5ce;">):</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">a = (lat00-lat11)*math.pi/</span><span style="color:#d08770;">180</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">b = (long00-long11)*math.pi/</span><span style="color:#d08770;">180</span><span style="color:#c0c5ce;">
+    a = (lat00-lat11)*math.pi/</span><span style="color:#d08770;">180</span><span style="color:#c0c5ce;">
+    b = (long00-long11)*math.pi/</span><span style="color:#d08770;">180</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">a1 = math.</span><span style="color:#bf616a;">sin</span><span style="color:#c0c5ce;">(a)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">b1 = math.</span><span style="color:#bf616a;">sin</span><span style="color:#c0c5ce;">(b)</span><span style="color:#c0c5ce;">
+    a1 = math.</span><span style="color:#bf616a;">sin</span><span style="color:#c0c5ce;">(a)</span><span style="color:#c0c5ce;">
+    b1 = math.</span><span style="color:#bf616a;">sin</span><span style="color:#c0c5ce;">(b)</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">if</span><span style="color:#c0c5ce;">(a==b and a==math.pi):</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">y = </span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">*math.pi*R</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">else</span><span style="color:#c0c5ce;">:</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">y = </span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">*R*math.</span><span style="color:#bf616a;">asin</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">pow</span><span style="color:#c0c5ce;">((a1*a1+b1*b1),</span><span style="color:#d08770;">0.5</span><span style="color:#c0c5ce;">)*</span><span style="color:#d08770;">0.5</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">return </span><span style="color:#c0c5ce;">y</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">if</span><span style="color:#c0c5ce;">(a==b and a==math.pi):</span><span style="color:#c0c5ce;">
+        y = </span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">*math.pi*R</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">else</span><span style="color:#c0c5ce;">:</span><span style="color:#c0c5ce;">
+        y = </span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">*R*math.</span><span style="color:#bf616a;">asin</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">pow</span><span style="color:#c0c5ce;">((a1*a1+b1*b1),</span><span style="color:#d08770;">0.5</span><span style="color:#c0c5ce;">)*</span><span style="color:#d08770;">0.5</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">return </span><span style="color:#c0c5ce;">y</span><span style="color:#c0c5ce;">
+    </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">func2</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">lat00</span><span style="color:#c0c5ce;">,</span><span style="color:#bf616a;">long00</span><span style="color:#c0c5ce;">,</span><span style="color:#bf616a;">lat11</span><span style="color:#c0c5ce;">,</span><span style="color:#bf616a;">long11</span><span style="color:#c0c5ce;">):</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">a00 = lat00*math.pi/</span><span style="color:#d08770;">180</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">a11 = lat11*math.pi/</span><span style="color:#d08770;">180</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">a = a00-a11</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">b = (long00-long11)*math.pi/</span><span style="color:#d08770;">180</span><span style="color:#c0c5ce;">
+    a00 = lat00*math.pi/</span><span style="color:#d08770;">180</span><span style="color:#c0c5ce;">
+    a11 = lat11*math.pi/</span><span style="color:#d08770;">180</span><span style="color:#c0c5ce;">
+    a = a00-a11</span><span style="color:#c0c5ce;">
+    b = (long00-long11)*math.pi/</span><span style="color:#d08770;">180</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">y = </span><span style="color:#d08770;">2 </span><span style="color:#c0c5ce;">* R * math.</span><span style="color:#bf616a;">asin</span><span style="color:#c0c5ce;">(math.</span><span style="color:#bf616a;">sqrt</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">pow</span><span style="color:#c0c5ce;">(math.</span><span style="color:#bf616a;">sin</span><span style="color:#c0c5ce;">(a*</span><span style="color:#d08770;">0.5</span><span style="color:#c0c5ce;">),</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">) + math.</span><span style="color:#bf616a;">cos</span><span style="color:#c0c5ce;">(a00)*math.</span><span style="color:#bf616a;">cos</span><span style="color:#c0c5ce;">(a11)*</span><span style="color:#96b5b4;">pow</span><span style="color:#c0c5ce;">(math.</span><span style="color:#bf616a;">sin</span><span style="color:#c0c5ce;">(b*</span><span style="color:#d08770;">0.5</span><span style="color:#c0c5ce;">),</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">)));</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">return </span><span style="color:#c0c5ce;">y;</span><span style="color:#c0c5ce;">
+    y = </span><span style="color:#d08770;">2 </span><span style="color:#c0c5ce;">* R * math.</span><span style="color:#bf616a;">asin</span><span style="color:#c0c5ce;">(math.</span><span style="color:#bf616a;">sqrt</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">pow</span><span style="color:#c0c5ce;">(math.</span><span style="color:#bf616a;">sin</span><span style="color:#c0c5ce;">(a*</span><span style="color:#d08770;">0.5</span><span style="color:#c0c5ce;">),</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">) + math.</span><span style="color:#bf616a;">cos</span><span style="color:#c0c5ce;">(a00)*math.</span><span style="color:#bf616a;">cos</span><span style="color:#c0c5ce;">(a11)*</span><span style="color:#96b5b4;">pow</span><span style="color:#c0c5ce;">(math.</span><span style="color:#bf616a;">sin</span><span style="color:#c0c5ce;">(b*</span><span style="color:#d08770;">0.5</span><span style="color:#c0c5ce;">),</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">)));</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">return </span><span style="color:#c0c5ce;">y;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">y = </span><span style="color:#bf616a;">func1</span><span style="color:#c0c5ce;">(lat1,long1,lat2,long2)    </span><span style="color:#c0c5ce;">
+y = </span><span style="color:#bf616a;">func1</span><span style="color:#c0c5ce;">(lat1,long1,lat2,long2)    </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">y</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">y = </span><span style="color:#bf616a;">func2</span><span style="color:#c0c5ce;">(lat1,long1,lat2,long2)</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">y&lt;/pre&gt;</span></pre>
+y = </span><span style="color:#bf616a;">func2</span><span style="color:#c0c5ce;">(lat1,long1,lat2,long2)</span><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">y&lt;/pre&gt;</span></code></pre>
     </div>
 
     

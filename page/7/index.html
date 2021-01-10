@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,8 +9,6 @@
 
       <title>@xjump</title>
 
-      
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
       
 
       
@@ -57,31 +53,31 @@
               <ul class="mobile-menu-list">
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me">
+                        <a href="https:&#x2F;&#x2F;xjump.me">
                             Home
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;categories">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                             Categories
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                             Archive
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;rss.xml">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                             RSS
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;about">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                             About
                         </a>
                     </li>
@@ -95,31 +91,31 @@
                     <ul>
                         
                             <li>
-                                <a href="https://xjump.me">
+                                <a href="https:&#x2F;&#x2F;xjump.me">
                                     Home
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;categories">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                                     Categories
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                                     Archive
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;rss.xml">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                                     RSS
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;about">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                                     About
                                 </a>
                             </li>
@@ -147,44 +143,44 @@
 
                                     <div class="post__summary">
                                         <pre style="background-color:#2b303b;">
-<span style="color:#65737e;">#!/usr/bin/env python</span><span style="color:#65737e;">
-</span><span style="color:#65737e;"># -*- coding: utf-8 -*-</span><span style="color:#65737e;">
-</span><span style="color:#c0c5ce;"> </span><span style="color:#c0c5ce;">
+<code class="language-python" data-lang="python"><span style="color:#65737e;">#!/usr/bin/env python</span><span style="color:#65737e;">
+# -*- coding: utf-8 -*-</span><span style="color:#65737e;">
+ </span><span style="color:#c0c5ce;">
 </span><span style="color:#65737e;">&#39;&#39;&#39;</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">file: kd_tree_kNN.py</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">author: xjump.me#at#gmail#dot#com</span><span style="color:#65737e;">
+file: kd_tree_kNN.py</span><span style="color:#65737e;">
+author: xjump.me#at#gmail#dot#com</span><span style="color:#65737e;">
 </span><span style="color:#65737e;">
-</span><span style="color:#65737e;">REF:</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">    </span><span style="color:#65737e;">http://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.KDTree.html</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">&#39;&#39;&#39;</span><span style="color:#c0c5ce;">
+REF:</span><span style="color:#65737e;">
+    http://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.KDTree.html</span><span style="color:#65737e;">
+&#39;&#39;&#39;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">numpy </span><span style="color:#b48ead;">as </span><span style="color:#c0c5ce;">np</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">operator</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">from </span><span style="color:#c0c5ce;">scipy.spatial </span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">cKDTree </span><span style="color:#b48ead;">as </span><span style="color:#c0c5ce;">KDTree</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">sys</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">sys.</span><span style="color:#bf616a;">setrecursionlimit</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">10000</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
+sys.</span><span style="color:#bf616a;">setrecursionlimit</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">10000</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">__name__==&amp;quot;__main__&amp;quot;:</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">v0 = np.</span><span style="color:#bf616a;">array</span><span style="color:#c0c5ce;">([</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">5</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">6</span><span style="color:#c0c5ce;">])</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">train_data_set = np.</span><span style="color:#bf616a;">array</span><span style="color:#c0c5ce;">([</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">1.2</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">6</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">9</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">17</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">6</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">59</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">1.2</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">44</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">6</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">23</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">9</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">51</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">100</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">18</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">39</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">21</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">66</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">8</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">28</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">88</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">33</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">24</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">0.5</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">56</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">22</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">99</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">0.6</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">[</span><span style="color:#d08770;">70</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">13</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">9</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">])</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">tree = </span><span style="color:#bf616a;">KDTree</span><span style="color:#c0c5ce;">(train_data_set)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">k </span><span style="color:#b48ead;">in </span><span style="color:#96b5b4;">range</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">10</span><span style="color:#c0c5ce;">):</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">k=</span><span style="color:#c0c5ce;">&#39;,k</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#65737e;">#test sample v0, return 3 nearest point, dimesion is k</span><span style="color:#65737e;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">tree.</span><span style="color:#bf616a;">query</span><span style="color:#c0c5ce;">(v0,</span><span style="color:#bf616a;">k</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#bf616a;">p</span><span style="color:#c0c5ce;">=k)</span><span style="color:#c0c5ce;">
-</span></pre>
+    v0 = np.</span><span style="color:#bf616a;">array</span><span style="color:#c0c5ce;">([</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">5</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">6</span><span style="color:#c0c5ce;">])</span><span style="color:#c0c5ce;">
+    train_data_set = np.</span><span style="color:#bf616a;">array</span><span style="color:#c0c5ce;">([</span><span style="color:#c0c5ce;">
+        [</span><span style="color:#d08770;">1.2</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">6</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
+        [</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">9</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">17</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">6</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">59</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
+        [</span><span style="color:#d08770;">1.2</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">44</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">6</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">23</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
+        [</span><span style="color:#d08770;">9</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">51</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">100</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
+        [</span><span style="color:#d08770;">18</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">39</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">21</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
+        [</span><span style="color:#d08770;">66</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">8</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">28</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">88</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
+        [</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">33</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
+        [</span><span style="color:#d08770;">24</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">0.5</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">56</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
+        [</span><span style="color:#d08770;">22</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">99</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">0.6</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
+        [</span><span style="color:#d08770;">70</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">13</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">9</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">7</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">],</span><span style="color:#c0c5ce;">
+    ])</span><span style="color:#c0c5ce;">
+    tree = </span><span style="color:#bf616a;">KDTree</span><span style="color:#c0c5ce;">(train_data_set)</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">k </span><span style="color:#b48ead;">in </span><span style="color:#96b5b4;">range</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#d08770;">10</span><span style="color:#c0c5ce;">):</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">k=</span><span style="color:#c0c5ce;">&#39;,k</span><span style="color:#c0c5ce;">
+        </span><span style="color:#65737e;">#test sample v0, return 3 nearest point, dimesion is k</span><span style="color:#65737e;">
+        </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">tree.</span><span style="color:#bf616a;">query</span><span style="color:#c0c5ce;">(v0,</span><span style="color:#bf616a;">k</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">3</span><span style="color:#c0c5ce;">,</span><span style="color:#bf616a;">p</span><span style="color:#c0c5ce;">=k)</span><span style="color:#c0c5ce;">
+</span></code></pre>
                                     </div>
                                     <div class="read-more">
                                         <a href="https:&#x2F;&#x2F;xjump.me&#x2F;kd-tree-knn&#x2F;">Read more...</a>
@@ -229,7 +225,7 @@
                                         <h3>HBase简介</h3>
 <p>HBase, Hadoop Database，是一个高可靠性、高性能、面向列、可伸缩的分布式存储系统，利用HBase技术可在廉价PC Server上搭建起大规模结构化存储集群。</p>
 <p>HBase是Google Bigtable的开源实现，类似Google Bigtable利用GFS作为其文件存储系统，HBase利用Hadoop HDFS作为其文件存储系统；Google运行MapReduce来处理Bigtable中的海量数据，HBase同样利用Hadoop MapReduce来处理HBase中的海量数据；Google Bigtable利用 Chubby作为协同服务，HBase利用Zookeeper作为对应。</p>
-<p><center><img src="/images/hbase-intro-ecosystem.png"/></center></p>
+<center><img src="/images/hbase-intro-ecosystem.png"/></center>
 
                                     </div>
                                     <div class="read-more">

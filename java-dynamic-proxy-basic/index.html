@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,8 +9,6 @@
 
       <title>@xjump</title>
 
-      
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
       
 
       
@@ -57,31 +53,31 @@
               <ul class="mobile-menu-list">
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me">
+                        <a href="https:&#x2F;&#x2F;xjump.me">
                             Home
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;categories">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                             Categories
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                             Archive
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;rss.xml">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                             RSS
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;about">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                             About
                         </a>
                     </li>
@@ -95,31 +91,31 @@
                     <ul>
                         
                             <li>
-                                <a href="https://xjump.me">
+                                <a href="https:&#x2F;&#x2F;xjump.me">
                                     Home
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;categories">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                                     Categories
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                                     Archive
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;rss.xml">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                                     RSS
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;about">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                                     About
                                 </a>
                             </li>
@@ -157,7 +153,7 @@
     1）控制调用流程，如权限控制、隐藏、监控调用记录等；</p>
 <p>
     2）篡改调用方提供的Request（即Input），如对分布式操作进行Map；</p>
-<p><a name="continue-reading"></a></p>
+<span id="continue-reading"></span>
 <p>
     3）篡改被调用方返回的Response（即Output），如对分布式操作结果进行Reduce。</p>
 <p>
@@ -169,77 +165,77 @@
 <p>
     接口ITest.java</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">package </span><span style="color:#c0c5ce;">me.xjump.test.proxy;</span><span style="color:#c0c5ce;">
+<code class="language-java" data-lang="java"><span style="color:#b48ead;">package </span><span style="color:#c0c5ce;">me.xjump.test.proxy;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">public interface </span><span style="color:#ebcb8b;">ITest </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">m</span><span style="color:#eff1f5;">();</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
-</span></pre><p>
+    </span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">m</span><span style="color:#eff1f5;">();</span><span style="color:#eff1f5;">
+}</span><span style="color:#c0c5ce;">
+</span></code></pre><p>
     对象Test1.java</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">package </span><span style="color:#c0c5ce;">me.xjump.test.proxy;</span><span style="color:#c0c5ce;">
+<code class="language-java" data-lang="java"><span style="color:#b48ead;">package </span><span style="color:#c0c5ce;">me.xjump.test.proxy;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">public class </span><span style="color:#ebcb8b;">Test1 </span><span style="color:#b48ead;">implements </span><span style="color:#a3be8c;">ITest </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
 </span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">@</span><span style="color:#bf616a;">Override</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">m</span><span style="color:#eff1f5;">() {</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#ebcb8b;">System</span><span style="color:#eff1f5;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">Test1.m() called.</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">m1</span><span style="color:#eff1f5;">() {</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#ebcb8b;">System</span><span style="color:#eff1f5;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">Test1.m1() called.</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
-</span></pre><p>
+    @</span><span style="color:#bf616a;">Override</span><span style="color:#eff1f5;">
+    </span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">m</span><span style="color:#eff1f5;">() {</span><span style="color:#eff1f5;">
+        </span><span style="color:#ebcb8b;">System</span><span style="color:#eff1f5;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">Test1.m() called.</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
+    }</span><span style="color:#eff1f5;">
+    </span><span style="color:#eff1f5;">
+    </span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">m1</span><span style="color:#eff1f5;">() {</span><span style="color:#eff1f5;">
+        </span><span style="color:#ebcb8b;">System</span><span style="color:#eff1f5;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">Test1.m1() called.</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
+    }</span><span style="color:#eff1f5;">
+}</span><span style="color:#c0c5ce;">
+</span></code></pre><p>
     对象Test2.java</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">package </span><span style="color:#c0c5ce;">me.xjump.test.proxy;</span><span style="color:#c0c5ce;">
+<code class="language-java" data-lang="java"><span style="color:#b48ead;">package </span><span style="color:#c0c5ce;">me.xjump.test.proxy;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">public class </span><span style="color:#ebcb8b;">Test2 </span><span style="color:#b48ead;">implements </span><span style="color:#a3be8c;">ITest </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
 </span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">@</span><span style="color:#bf616a;">Override</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">m</span><span style="color:#eff1f5;">() {</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#ebcb8b;">System</span><span style="color:#eff1f5;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">Test2.m() called.</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">m1</span><span style="color:#eff1f5;">() {</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#ebcb8b;">System</span><span style="color:#eff1f5;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">Test2.m1() called.</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
-</span></pre><p>
+    @</span><span style="color:#bf616a;">Override</span><span style="color:#eff1f5;">
+    </span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">m</span><span style="color:#eff1f5;">() {</span><span style="color:#eff1f5;">
+        </span><span style="color:#ebcb8b;">System</span><span style="color:#eff1f5;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">Test2.m() called.</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
+    }</span><span style="color:#eff1f5;">
+    </span><span style="color:#eff1f5;">
+    </span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">m1</span><span style="color:#eff1f5;">() {</span><span style="color:#eff1f5;">
+        </span><span style="color:#ebcb8b;">System</span><span style="color:#eff1f5;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">Test2.m1() called.</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
+    }</span><span style="color:#eff1f5;">
+}</span><span style="color:#c0c5ce;">
+</span></code></pre><p>
     代理类StaticProxyForITest.java</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">package </span><span style="color:#c0c5ce;">me.xjump.test.proxy;</span><span style="color:#c0c5ce;">
+<code class="language-java" data-lang="java"><span style="color:#b48ead;">package </span><span style="color:#c0c5ce;">me.xjump.test.proxy;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">public class </span><span style="color:#ebcb8b;">StaticProxyForITest </span><span style="color:#b48ead;">implements </span><span style="color:#a3be8c;">ITest </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
 </span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">private </span><span style="color:#ebcb8b;">ITest </span><span style="color:#eff1f5;">test1;  </span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">public </span><span style="color:#8fa1b3;">StaticProxyForITest</span><span style="color:#eff1f5;">(</span><span style="color:#ebcb8b;">ITest </span><span style="color:#bf616a;">test12</span><span style="color:#eff1f5;">) {  </span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#bf616a;">this</span><span style="color:#eff1f5;">.test1 </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> test12;  </span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">}  </span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">@</span><span style="color:#bf616a;">Override</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">m</span><span style="color:#eff1f5;">() {</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#ebcb8b;">System</span><span style="color:#eff1f5;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">before m() call.</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#eff1f5;">test1.</span><span style="color:#bf616a;">m</span><span style="color:#eff1f5;">();</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#ebcb8b;">System</span><span style="color:#eff1f5;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">after m() call.</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
-</span></pre><p>
+    </span><span style="color:#b48ead;">private </span><span style="color:#ebcb8b;">ITest </span><span style="color:#eff1f5;">test1;  </span><span style="color:#eff1f5;">
+    </span><span style="color:#eff1f5;">
+    </span><span style="color:#b48ead;">public </span><span style="color:#8fa1b3;">StaticProxyForITest</span><span style="color:#eff1f5;">(</span><span style="color:#ebcb8b;">ITest </span><span style="color:#bf616a;">test12</span><span style="color:#eff1f5;">) {  </span><span style="color:#eff1f5;">
+        </span><span style="color:#bf616a;">this</span><span style="color:#eff1f5;">.test1 </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> test12;  </span><span style="color:#eff1f5;">
+    }  </span><span style="color:#eff1f5;">
+    @</span><span style="color:#bf616a;">Override</span><span style="color:#eff1f5;">
+    </span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">m</span><span style="color:#eff1f5;">() {</span><span style="color:#eff1f5;">
+        </span><span style="color:#ebcb8b;">System</span><span style="color:#eff1f5;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">before m() call.</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
+        test1.</span><span style="color:#bf616a;">m</span><span style="color:#eff1f5;">();</span><span style="color:#eff1f5;">
+        </span><span style="color:#ebcb8b;">System</span><span style="color:#eff1f5;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">after m() call.</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
+    }</span><span style="color:#eff1f5;">
+}</span><span style="color:#c0c5ce;">
+</span></code></pre><p>
     应用：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">private static</span><span style="color:#c0c5ce;"> void </span><span style="color:#bf616a;">testStaticProxy</span><span style="color:#c0c5ce;">() {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#ebcb8b;">System</span><span style="color:#c0c5ce;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">static proxy test, Proxy Pattern.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#ebcb8b;">ITest</span><span style="color:#c0c5ce;"> test1 = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Test1</span><span style="color:#c0c5ce;">();  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#ebcb8b;">ITest</span><span style="color:#c0c5ce;"> test2 = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Test2</span><span style="color:#c0c5ce;">();  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#ebcb8b;">StaticProxyForITest</span><span style="color:#c0c5ce;"> test1Proxy = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">StaticProxyForITest</span><span style="color:#c0c5ce;">(test1);  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">test1Proxy.</span><span style="color:#bf616a;">m</span><span style="color:#c0c5ce;">(); </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">//test1Proxy.m1(); 静态代理时,无法调用非接口方法m1</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#ebcb8b;">StaticProxyForITest</span><span style="color:#c0c5ce;"> test2Proxy = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">StaticProxyForITest</span><span style="color:#c0c5ce;">(test2);  </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">test2Proxy.</span><span style="color:#bf616a;">m</span><span style="color:#c0c5ce;">(); </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">//test2Proxy.m1(); 静态代理时,无法调用非接口方法m1</span><span style="color:#c0c5ce;">
+<code class="language-java" data-lang="java"><span style="color:#b48ead;">private static</span><span style="color:#c0c5ce;"> void </span><span style="color:#bf616a;">testStaticProxy</span><span style="color:#c0c5ce;">() {</span><span style="color:#c0c5ce;">
+    </span><span style="color:#ebcb8b;">System</span><span style="color:#c0c5ce;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">static proxy test, Proxy Pattern.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+    </span><span style="color:#ebcb8b;">ITest</span><span style="color:#c0c5ce;"> test1 = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Test1</span><span style="color:#c0c5ce;">();  </span><span style="color:#c0c5ce;">
+    </span><span style="color:#ebcb8b;">ITest</span><span style="color:#c0c5ce;"> test2 = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Test2</span><span style="color:#c0c5ce;">();  </span><span style="color:#c0c5ce;">
+    </span><span style="color:#ebcb8b;">StaticProxyForITest</span><span style="color:#c0c5ce;"> test1Proxy = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">StaticProxyForITest</span><span style="color:#c0c5ce;">(test1);  </span><span style="color:#c0c5ce;">
+    test1Proxy.</span><span style="color:#bf616a;">m</span><span style="color:#c0c5ce;">(); </span><span style="color:#c0c5ce;">
+    </span><span style="color:#65737e;">//test1Proxy.m1(); 静态代理时,无法调用非接口方法m1</span><span style="color:#65737e;">
+    </span><span style="color:#ebcb8b;">StaticProxyForITest</span><span style="color:#c0c5ce;"> test2Proxy = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">StaticProxyForITest</span><span style="color:#c0c5ce;">(test2);  </span><span style="color:#c0c5ce;">
+    test2Proxy.</span><span style="color:#bf616a;">m</span><span style="color:#c0c5ce;">(); </span><span style="color:#c0c5ce;">
+    </span><span style="color:#65737e;">//test2Proxy.m1(); 静态代理时,无法调用非接口方法m1</span><span style="color:#65737e;">
 </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span></pre><p>
+</span></code></pre><p>
     从上述代码来看，静态代理需要为每个Interface编写ProxyWrapper类来实现对Interface中方法的代理。</p>
 <p>
     从实现上看，无法编写一次代码，就完美做到对需关注所有方法hook。这是静态代理的局限性，但静态代理作为经典的设计模式，并非毫无用处。例如，静态代理的性能就比动态代理要好很多。</p>
@@ -250,7 +246,7 @@
 <p>
     DynamicProxyJDK.java</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">package </span><span style="color:#c0c5ce;">me.xjump.test.proxy;</span><span style="color:#c0c5ce;">
+<code class="language-java" data-lang="java"><span style="color:#b48ead;">package </span><span style="color:#c0c5ce;">me.xjump.test.proxy;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">java.lang.reflect.</span><span style="color:#ebcb8b;">InvocationHandler</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">java.lang.reflect.</span><span style="color:#ebcb8b;">Method</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
@@ -258,40 +254,40 @@
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">public class </span><span style="color:#ebcb8b;">DynamicProxyJDK </span><span style="color:#b48ead;">implements </span><span style="color:#a3be8c;">InvocationHandler </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
 </span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">private </span><span style="color:#ebcb8b;">Object </span><span style="color:#eff1f5;">target;</span><span style="color:#eff1f5;">
+    </span><span style="color:#b48ead;">private </span><span style="color:#ebcb8b;">Object </span><span style="color:#eff1f5;">target;</span><span style="color:#eff1f5;">
 </span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">public </span><span style="color:#ebcb8b;">Object </span><span style="color:#8fa1b3;">bindToHandler</span><span style="color:#eff1f5;">(</span><span style="color:#ebcb8b;">Object </span><span style="color:#bf616a;">target</span><span style="color:#eff1f5;">) {</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#bf616a;">this</span><span style="color:#eff1f5;">.target </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> target;</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#b48ead;">return </span><span style="color:#ebcb8b;">Proxy</span><span style="color:#eff1f5;">.</span><span style="color:#bf616a;">newProxyInstance</span><span style="color:#eff1f5;">(target.</span><span style="color:#bf616a;">getClass</span><span style="color:#eff1f5;">().</span><span style="color:#bf616a;">getClassLoader</span><span style="color:#eff1f5;">(),</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">                </span><span style="color:#eff1f5;">target.</span><span style="color:#bf616a;">getClass</span><span style="color:#eff1f5;">().</span><span style="color:#bf616a;">getInterfaces</span><span style="color:#eff1f5;">(), </span><span style="color:#bf616a;">this</span><span style="color:#eff1f5;">); </span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
+    </span><span style="color:#b48ead;">public </span><span style="color:#ebcb8b;">Object </span><span style="color:#8fa1b3;">bindToHandler</span><span style="color:#eff1f5;">(</span><span style="color:#ebcb8b;">Object </span><span style="color:#bf616a;">target</span><span style="color:#eff1f5;">) {</span><span style="color:#eff1f5;">
+        </span><span style="color:#bf616a;">this</span><span style="color:#eff1f5;">.target </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> target;</span><span style="color:#eff1f5;">
+        </span><span style="color:#b48ead;">return </span><span style="color:#ebcb8b;">Proxy</span><span style="color:#eff1f5;">.</span><span style="color:#bf616a;">newProxyInstance</span><span style="color:#eff1f5;">(target.</span><span style="color:#bf616a;">getClass</span><span style="color:#eff1f5;">().</span><span style="color:#bf616a;">getClassLoader</span><span style="color:#eff1f5;">(),</span><span style="color:#eff1f5;">
+                target.</span><span style="color:#bf616a;">getClass</span><span style="color:#eff1f5;">().</span><span style="color:#bf616a;">getInterfaces</span><span style="color:#eff1f5;">(), </span><span style="color:#bf616a;">this</span><span style="color:#eff1f5;">); </span><span style="color:#eff1f5;">
+    }</span><span style="color:#eff1f5;">
 </span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">@</span><span style="color:#bf616a;">Override</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">public </span><span style="color:#ebcb8b;">Object </span><span style="color:#8fa1b3;">invoke</span><span style="color:#eff1f5;">(</span><span style="color:#ebcb8b;">Object </span><span style="color:#bf616a;">proxy</span><span style="color:#eff1f5;">, </span><span style="color:#ebcb8b;">Method </span><span style="color:#bf616a;">method</span><span style="color:#eff1f5;">, </span><span style="color:#ebcb8b;">Object</span><span style="color:#b48ead;">[] </span><span style="color:#bf616a;">args</span><span style="color:#eff1f5;">)</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">            </span><span style="color:#b48ead;">throws </span><span style="color:#ebcb8b;">Throwable </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#ebcb8b;">Object</span><span style="color:#eff1f5;"> result </span><span style="color:#c0c5ce;">= </span><span style="color:#d08770;">null</span><span style="color:#eff1f5;">;</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#ebcb8b;">System</span><span style="color:#eff1f5;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">before invoke.</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#eff1f5;">result </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> method.</span><span style="color:#bf616a;">invoke</span><span style="color:#eff1f5;">(target, args);</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#ebcb8b;">System</span><span style="color:#eff1f5;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">after invoke.</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#b48ead;">return</span><span style="color:#eff1f5;"> result;</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
-</span></pre><p>
+    @</span><span style="color:#bf616a;">Override</span><span style="color:#eff1f5;">
+    </span><span style="color:#b48ead;">public </span><span style="color:#ebcb8b;">Object </span><span style="color:#8fa1b3;">invoke</span><span style="color:#eff1f5;">(</span><span style="color:#ebcb8b;">Object </span><span style="color:#bf616a;">proxy</span><span style="color:#eff1f5;">, </span><span style="color:#ebcb8b;">Method </span><span style="color:#bf616a;">method</span><span style="color:#eff1f5;">, </span><span style="color:#ebcb8b;">Object</span><span style="color:#b48ead;">[] </span><span style="color:#bf616a;">args</span><span style="color:#eff1f5;">)</span><span style="color:#eff1f5;">
+            </span><span style="color:#b48ead;">throws </span><span style="color:#ebcb8b;">Throwable </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
+        </span><span style="color:#ebcb8b;">Object</span><span style="color:#eff1f5;"> result </span><span style="color:#c0c5ce;">= </span><span style="color:#d08770;">null</span><span style="color:#eff1f5;">;</span><span style="color:#eff1f5;">
+        </span><span style="color:#ebcb8b;">System</span><span style="color:#eff1f5;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">before invoke.</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
+        result </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> method.</span><span style="color:#bf616a;">invoke</span><span style="color:#eff1f5;">(target, args);</span><span style="color:#eff1f5;">
+        </span><span style="color:#ebcb8b;">System</span><span style="color:#eff1f5;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">after invoke.</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
+        </span><span style="color:#b48ead;">return</span><span style="color:#eff1f5;"> result;</span><span style="color:#eff1f5;">
+    }</span><span style="color:#eff1f5;">
+}</span><span style="color:#c0c5ce;">
+</span></code></pre><p>
     应用：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">private static</span><span style="color:#c0c5ce;"> void </span><span style="color:#bf616a;">testDynamicProxyJDK</span><span style="color:#c0c5ce;">() {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#ebcb8b;">System</span><span style="color:#c0c5ce;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#96b5b4;">\n</span><span style="color:#a3be8c;">JDK dynamic proxy test1.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#ebcb8b;">DynamicProxyJDK</span><span style="color:#c0c5ce;"> testDynamicProxyJDK = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">DynamicProxyJDK</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#ebcb8b;">ITest</span><span style="color:#c0c5ce;"> test1jdk = (</span><span style="color:#ebcb8b;">ITest</span><span style="color:#c0c5ce;">)testDynamicProxyJDK.</span><span style="color:#bf616a;">bindToHandler</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Test1</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">test1jdk.</span><span style="color:#bf616a;">m</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">//test1jdk.m1(); jdk动态代理时,无法调用m1</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#ebcb8b;">System</span><span style="color:#c0c5ce;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#96b5b4;">\n</span><span style="color:#a3be8c;">JDK dynamic proxy test2.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#ebcb8b;">ITest</span><span style="color:#c0c5ce;"> test2jdk = (</span><span style="color:#ebcb8b;">ITest</span><span style="color:#c0c5ce;">)testDynamicProxyJDK.</span><span style="color:#bf616a;">bindToHandler</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Test2</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">test2jdk.</span><span style="color:#bf616a;">m</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">//test2jdk.m1(); jdk动态代理时,无法调用m1</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">test1jdk.</span><span style="color:#bf616a;">m</span><span style="color:#c0c5ce;">();</span><span style="color:#65737e;">//这里打印?</span><span style="color:#c0c5ce;">
+<code class="language-java" data-lang="java"><span style="color:#b48ead;">private static</span><span style="color:#c0c5ce;"> void </span><span style="color:#bf616a;">testDynamicProxyJDK</span><span style="color:#c0c5ce;">() {</span><span style="color:#c0c5ce;">
+    </span><span style="color:#ebcb8b;">System</span><span style="color:#c0c5ce;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#96b5b4;">\n</span><span style="color:#a3be8c;">JDK dynamic proxy test1.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+    </span><span style="color:#ebcb8b;">DynamicProxyJDK</span><span style="color:#c0c5ce;"> testDynamicProxyJDK = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">DynamicProxyJDK</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+    </span><span style="color:#ebcb8b;">ITest</span><span style="color:#c0c5ce;"> test1jdk = (</span><span style="color:#ebcb8b;">ITest</span><span style="color:#c0c5ce;">)testDynamicProxyJDK.</span><span style="color:#bf616a;">bindToHandler</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Test1</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
+    test1jdk.</span><span style="color:#bf616a;">m</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+    </span><span style="color:#65737e;">//test1jdk.m1(); jdk动态代理时,无法调用m1</span><span style="color:#65737e;">
+    </span><span style="color:#ebcb8b;">System</span><span style="color:#c0c5ce;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#96b5b4;">\n</span><span style="color:#a3be8c;">JDK dynamic proxy test2.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+    </span><span style="color:#ebcb8b;">ITest</span><span style="color:#c0c5ce;"> test2jdk = (</span><span style="color:#ebcb8b;">ITest</span><span style="color:#c0c5ce;">)testDynamicProxyJDK.</span><span style="color:#bf616a;">bindToHandler</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Test2</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
+    test2jdk.</span><span style="color:#bf616a;">m</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+    </span><span style="color:#65737e;">//test2jdk.m1(); jdk动态代理时,无法调用m1</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">    test1jdk.</span><span style="color:#bf616a;">m</span><span style="color:#c0c5ce;">();</span><span style="color:#65737e;">//这里打印?</span><span style="color:#65737e;">
 </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span></pre><p>
+</span></code></pre><p>
     JDK动态代理的关键在实现java.lang.reflect.InvocationHandler这个Interface的invoke方法。</p>
 <p>
     需要注意的是：</p>
@@ -306,7 +302,7 @@
 <p>
     DynamicProxyCGLib.java</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">package </span><span style="color:#c0c5ce;">me.xjump.test.proxy;</span><span style="color:#c0c5ce;">
+<code class="language-java" data-lang="java"><span style="color:#b48ead;">package </span><span style="color:#c0c5ce;">me.xjump.test.proxy;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">java.lang.reflect.</span><span style="color:#ebcb8b;">Method</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
@@ -316,37 +312,37 @@
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">public class </span><span style="color:#ebcb8b;">DynamicProxyCGLib </span><span style="color:#b48ead;">implements </span><span style="color:#a3be8c;">MethodInterceptor </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
 </span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">public </span><span style="color:#ebcb8b;">Object </span><span style="color:#8fa1b3;">createProxyInstance</span><span style="color:#eff1f5;">(</span><span style="color:#ebcb8b;">Object </span><span style="color:#bf616a;">target</span><span style="color:#eff1f5;">) {</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#ebcb8b;">Enhancer</span><span style="color:#eff1f5;"> enhancer </span><span style="color:#c0c5ce;">= </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Enhancer</span><span style="color:#eff1f5;">();</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#eff1f5;">enhancer.</span><span style="color:#bf616a;">setSuperclass</span><span style="color:#eff1f5;">(target.</span><span style="color:#bf616a;">getClass</span><span style="color:#eff1f5;">());</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#eff1f5;">enhancer.</span><span style="color:#bf616a;">setCallback</span><span style="color:#eff1f5;">(</span><span style="color:#bf616a;">this</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#b48ead;">return</span><span style="color:#eff1f5;"> enhancer.</span><span style="color:#bf616a;">create</span><span style="color:#eff1f5;">();</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
+    </span><span style="color:#b48ead;">public </span><span style="color:#ebcb8b;">Object </span><span style="color:#8fa1b3;">createProxyInstance</span><span style="color:#eff1f5;">(</span><span style="color:#ebcb8b;">Object </span><span style="color:#bf616a;">target</span><span style="color:#eff1f5;">) {</span><span style="color:#eff1f5;">
+        </span><span style="color:#ebcb8b;">Enhancer</span><span style="color:#eff1f5;"> enhancer </span><span style="color:#c0c5ce;">= </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Enhancer</span><span style="color:#eff1f5;">();</span><span style="color:#eff1f5;">
+        enhancer.</span><span style="color:#bf616a;">setSuperclass</span><span style="color:#eff1f5;">(target.</span><span style="color:#bf616a;">getClass</span><span style="color:#eff1f5;">());</span><span style="color:#eff1f5;">
+        enhancer.</span><span style="color:#bf616a;">setCallback</span><span style="color:#eff1f5;">(</span><span style="color:#bf616a;">this</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
+        </span><span style="color:#b48ead;">return</span><span style="color:#eff1f5;"> enhancer.</span><span style="color:#bf616a;">create</span><span style="color:#eff1f5;">();</span><span style="color:#eff1f5;">
+    }</span><span style="color:#eff1f5;">
 </span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">@</span><span style="color:#bf616a;">Override</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">public </span><span style="color:#ebcb8b;">Object </span><span style="color:#8fa1b3;">intercept</span><span style="color:#eff1f5;">(</span><span style="color:#ebcb8b;">Object </span><span style="color:#bf616a;">obj</span><span style="color:#eff1f5;">, </span><span style="color:#ebcb8b;">Method </span><span style="color:#bf616a;">method</span><span style="color:#eff1f5;">, </span><span style="color:#ebcb8b;">Object</span><span style="color:#b48ead;">[] </span><span style="color:#bf616a;">args</span><span style="color:#eff1f5;">,</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">            </span><span style="color:#ebcb8b;">MethodProxy </span><span style="color:#bf616a;">proxy</span><span style="color:#eff1f5;">) </span><span style="color:#b48ead;">throws </span><span style="color:#ebcb8b;">Throwable </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#ebcb8b;">Object</span><span style="color:#eff1f5;"> result </span><span style="color:#c0c5ce;">= </span><span style="color:#d08770;">null</span><span style="color:#eff1f5;">;</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#ebcb8b;">System</span><span style="color:#eff1f5;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">Test1DynamicProxyCGLib: befor invoke.</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#eff1f5;">result </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> proxy.</span><span style="color:#bf616a;">invokeSuper</span><span style="color:#eff1f5;">(obj, args);</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#ebcb8b;">System</span><span style="color:#eff1f5;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">Test1DynamicProxyCGLib: after invoke.</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#b48ead;">return</span><span style="color:#eff1f5;"> result;</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
-</span></pre><p>
+    @</span><span style="color:#bf616a;">Override</span><span style="color:#eff1f5;">
+    </span><span style="color:#b48ead;">public </span><span style="color:#ebcb8b;">Object </span><span style="color:#8fa1b3;">intercept</span><span style="color:#eff1f5;">(</span><span style="color:#ebcb8b;">Object </span><span style="color:#bf616a;">obj</span><span style="color:#eff1f5;">, </span><span style="color:#ebcb8b;">Method </span><span style="color:#bf616a;">method</span><span style="color:#eff1f5;">, </span><span style="color:#ebcb8b;">Object</span><span style="color:#b48ead;">[] </span><span style="color:#bf616a;">args</span><span style="color:#eff1f5;">,</span><span style="color:#eff1f5;">
+            </span><span style="color:#ebcb8b;">MethodProxy </span><span style="color:#bf616a;">proxy</span><span style="color:#eff1f5;">) </span><span style="color:#b48ead;">throws </span><span style="color:#ebcb8b;">Throwable </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
+        </span><span style="color:#ebcb8b;">Object</span><span style="color:#eff1f5;"> result </span><span style="color:#c0c5ce;">= </span><span style="color:#d08770;">null</span><span style="color:#eff1f5;">;</span><span style="color:#eff1f5;">
+        </span><span style="color:#ebcb8b;">System</span><span style="color:#eff1f5;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">Test1DynamicProxyCGLib: befor invoke.</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
+        result </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> proxy.</span><span style="color:#bf616a;">invokeSuper</span><span style="color:#eff1f5;">(obj, args);</span><span style="color:#eff1f5;">
+        </span><span style="color:#ebcb8b;">System</span><span style="color:#eff1f5;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">Test1DynamicProxyCGLib: after invoke.</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
+        </span><span style="color:#b48ead;">return</span><span style="color:#eff1f5;"> result;</span><span style="color:#eff1f5;">
+    }</span><span style="color:#eff1f5;">
+}</span><span style="color:#c0c5ce;">
+</span></code></pre><p>
     应用：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">private static</span><span style="color:#c0c5ce;"> void </span><span style="color:#bf616a;">testDynamicProxyCGLib</span><span style="color:#c0c5ce;">() {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#ebcb8b;">System</span><span style="color:#c0c5ce;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#96b5b4;">\n</span><span style="color:#a3be8c;">CGLib dynamic proxy test1.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#ebcb8b;">DynamicProxyCGLib</span><span style="color:#c0c5ce;"> testDynamicProxyCGLib = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">DynamicProxyCGLib</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#ebcb8b;">Test1</span><span style="color:#c0c5ce;"> test1cglib = (</span><span style="color:#ebcb8b;">Test1</span><span style="color:#c0c5ce;">)testDynamicProxyCGLib.</span><span style="color:#bf616a;">createProxyInstance</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Test1</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">test1cglib.</span><span style="color:#bf616a;">m</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#ebcb8b;">System</span><span style="color:#c0c5ce;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#96b5b4;">\n</span><span style="color:#a3be8c;">CGLib dynamic proxy test2.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#ebcb8b;">Test2</span><span style="color:#c0c5ce;"> test2cglib = (</span><span style="color:#ebcb8b;">Test2</span><span style="color:#c0c5ce;">)testDynamicProxyCGLib.</span><span style="color:#bf616a;">createProxyInstance</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Test2</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">test2cglib.</span><span style="color:#bf616a;">m</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">test1cglib.</span><span style="color:#bf616a;">m</span><span style="color:#c0c5ce;">();</span><span style="color:#65737e;">//这里打印?</span><span style="color:#c0c5ce;">
+<code class="language-java" data-lang="java"><span style="color:#b48ead;">private static</span><span style="color:#c0c5ce;"> void </span><span style="color:#bf616a;">testDynamicProxyCGLib</span><span style="color:#c0c5ce;">() {</span><span style="color:#c0c5ce;">
+    </span><span style="color:#ebcb8b;">System</span><span style="color:#c0c5ce;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#96b5b4;">\n</span><span style="color:#a3be8c;">CGLib dynamic proxy test1.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+    </span><span style="color:#ebcb8b;">DynamicProxyCGLib</span><span style="color:#c0c5ce;"> testDynamicProxyCGLib = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">DynamicProxyCGLib</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+    </span><span style="color:#ebcb8b;">Test1</span><span style="color:#c0c5ce;"> test1cglib = (</span><span style="color:#ebcb8b;">Test1</span><span style="color:#c0c5ce;">)testDynamicProxyCGLib.</span><span style="color:#bf616a;">createProxyInstance</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Test1</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
+    test1cglib.</span><span style="color:#bf616a;">m</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+    </span><span style="color:#ebcb8b;">System</span><span style="color:#c0c5ce;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#96b5b4;">\n</span><span style="color:#a3be8c;">CGLib dynamic proxy test2.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+    </span><span style="color:#ebcb8b;">Test2</span><span style="color:#c0c5ce;"> test2cglib = (</span><span style="color:#ebcb8b;">Test2</span><span style="color:#c0c5ce;">)testDynamicProxyCGLib.</span><span style="color:#bf616a;">createProxyInstance</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Test2</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
+    test2cglib.</span><span style="color:#bf616a;">m</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+    test1cglib.</span><span style="color:#bf616a;">m</span><span style="color:#c0c5ce;">();</span><span style="color:#65737e;">//这里打印?</span><span style="color:#65737e;">
 </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span></pre>
+</span></code></pre>
     </div>
 
     

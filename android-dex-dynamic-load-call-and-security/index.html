@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,8 +9,6 @@
 
       <title>@xjump</title>
 
-      
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
       
 
       
@@ -57,31 +53,31 @@
               <ul class="mobile-menu-list">
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me">
+                        <a href="https:&#x2F;&#x2F;xjump.me">
                             Home
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;categories">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                             Categories
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                             Archive
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;rss.xml">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                             RSS
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;about">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                             About
                         </a>
                     </li>
@@ -95,31 +91,31 @@
                     <ul>
                         
                             <li>
-                                <a href="https://xjump.me">
+                                <a href="https:&#x2F;&#x2F;xjump.me">
                                     Home
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;categories">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                                     Categories
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                                     Archive
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;rss.xml">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                                     RSS
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;about">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                                     About
                                 </a>
                             </li>
@@ -150,301 +146,301 @@
       <p>首先，动态加载与调用不是个新问题，方法也非常直接。关键就是使用DexClassLoader。</p>
 <p>这个方法有一个副作用，那就是/proc/self/maps下会留下很多份dex加载记录，需要到jvm GC时才能释放，内存泄漏倒是没有，就是不太好看。</p>
 <p>对于入参不是String，返回结果不是String的情况，做个Ser/De来搞定即可，接口的界面也能保持干净。</p>
-<p><a name="continue-reading"></a></p>
+<span id="continue-reading"></span>
 <p>注意，如果要保证Dex文件的安全，这个方法是不行的。关键点在DexClassLoader的构造函数第二个参数cachedDir，所有的简单加壳都会走到这里，解密脱壳后的Dex文件写到这个cachedDir目录下。所以有些简单的脱壳机在这里hook就能解决战斗了。</p>
-<p>复杂的加壳/脱壳的对抗需要去寻找jvm加载Dex的更底层的api了，比如<a href="https://bbs.ichunqiu.com/thread-12734-1-1.html?from=paper/">这里</a>介绍的这些api：</p>
+<p>复杂的加壳/脱壳的对抗需要去寻找jvm加载Dex的更底层的api了，比如<a href="https://bbs.ichunqiu.com/thread-12734-1-1.html?from=paper/">这里</a>介绍的这些api： </p>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">const</span><span style="color:#c0c5ce;"> DalvikNativeMethod dvm_dalvik_system_DexFile[] = { </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">{ &quot;</span><span style="color:#a3be8c;">openDexFile</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">(Ljava/lang/String;Ljava/lang/String;I)I</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">Dalvik_dalvik_system_DexFile_openDexFile }, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">{ &quot;</span><span style="color:#a3be8c;">openDexFile</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">([B)I</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">Dalvik_dalvik_system_DexFile_openDexFile_bytearray }, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">{ &quot;</span><span style="color:#a3be8c;">closeDexFile</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">(I)V</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">Dalvik_dalvik_system_DexFile_closeDexFile }, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">{ &quot;</span><span style="color:#a3be8c;">defineClass</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">(Ljava/lang/String;Ljava/lang/ClassLoader;I)Ljava/lang/Class;</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">Dalvik_dalvik_system_DexFile_defineClass }, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">{ &quot;</span><span style="color:#a3be8c;">getClassNameList</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">(I)[Ljava/lang/String;</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">Dalvik_dalvik_system_DexFile_getClassNameList }, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">{ &quot;</span><span style="color:#a3be8c;">isDexOptNeeded</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">(Ljava/lang/String;)Z</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">Dalvik_dalvik_system_DexFile_isDexOptNeeded }, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">{ </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">, </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">, </span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">}, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">};</span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-c++" data-lang="c++"><span style="color:#b48ead;">const</span><span style="color:#c0c5ce;"> DalvikNativeMethod dvm_dalvik_system_DexFile[] = { </span><span style="color:#c0c5ce;">
+    { &quot;</span><span style="color:#a3be8c;">openDexFile</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">(Ljava/lang/String;Ljava/lang/String;I)I</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
+    Dalvik_dalvik_system_DexFile_openDexFile }, </span><span style="color:#c0c5ce;">
+    { &quot;</span><span style="color:#a3be8c;">openDexFile</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">([B)I</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
+    Dalvik_dalvik_system_DexFile_openDexFile_bytearray }, </span><span style="color:#c0c5ce;">
+    { &quot;</span><span style="color:#a3be8c;">closeDexFile</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">(I)V</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
+    Dalvik_dalvik_system_DexFile_closeDexFile }, </span><span style="color:#c0c5ce;">
+    { &quot;</span><span style="color:#a3be8c;">defineClass</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">(Ljava/lang/String;Ljava/lang/ClassLoader;I)Ljava/lang/Class;</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
+    Dalvik_dalvik_system_DexFile_defineClass }, </span><span style="color:#c0c5ce;">
+    { &quot;</span><span style="color:#a3be8c;">getClassNameList</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">(I)[Ljava/lang/String;</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
+    Dalvik_dalvik_system_DexFile_getClassNameList }, </span><span style="color:#c0c5ce;">
+    { &quot;</span><span style="color:#a3be8c;">isDexOptNeeded</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">(Ljava/lang/String;)Z</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
+    Dalvik_dalvik_system_DexFile_isDexOptNeeded }, </span><span style="color:#c0c5ce;">
+    { </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">, </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">, </span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">}, </span><span style="color:#c0c5ce;">
+};</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>当然，Dex加壳/脱壳的对抗并没有止于此，寻找更底层的api，或者更本质的讲，寻找更底层的代码片段来Hook/Call就是更进一步的对抗方向了。但结论是明显的，无论如何，逆向工程最终会胜利。</p>
 <p>附，加载过程示例代码（Java）如下：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">btnLoadDexAndCall.</span><span style="color:#bf616a;">setOnClickListener</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">View</span><span style="color:#c0c5ce;">.</span><span style="color:#ebcb8b;">OnClickListener</span><span style="color:#c0c5ce;">() </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">@</span><span style="color:#bf616a;">Override</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">onClick</span><span style="color:#eff1f5;">(</span><span style="color:#ebcb8b;">View </span><span style="color:#bf616a;">view</span><span style="color:#eff1f5;">) {</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#ebcb8b;">Class</span><span style="color:#eff1f5;"> libProviderClazz </span><span style="color:#c0c5ce;">= </span><span style="color:#d08770;">null</span><span style="color:#eff1f5;">;</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#b48ead;">try </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">            </span><span style="color:#eff1f5;">libProviderClazz </span><span style="color:#c0c5ce;">= </span><span style="color:#ebcb8b;">Class</span><span style="color:#eff1f5;">.</span><span style="color:#bf616a;">forName</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">me.xjump.utils.Test</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#eff1f5;">}</span><span style="color:#b48ead;">catch</span><span style="color:#eff1f5;">(</span><span style="color:#ebcb8b;">ClassNotFoundException </span><span style="color:#bf616a;">ex</span><span style="color:#eff1f5;">) {   </span><span style="color:#65737e;">// 每次都会到这里。不是Dex，而是jar包的情况可以自己探索一下。</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">            </span><span style="color:#ebcb8b;">Log</span><span style="color:#eff1f5;">.</span><span style="color:#bf616a;">e</span><span style="color:#eff1f5;">(</span><span style="color:#d08770;">TAG</span><span style="color:#eff1f5;">, ex.</span><span style="color:#bf616a;">toString</span><span style="color:#eff1f5;">());</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">            </span><span style="color:#b48ead;">try </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">                </span><span style="color:#b48ead;">final </span><span style="color:#ebcb8b;">File</span><span style="color:#eff1f5;"> dexPath </span><span style="color:#c0c5ce;">= </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">File</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">/data/local/tmp/classes1.dex</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">                </span><span style="color:#ebcb8b;">Log</span><span style="color:#eff1f5;">.</span><span style="color:#bf616a;">d</span><span style="color:#eff1f5;">(</span><span style="color:#d08770;">TAG</span><span style="color:#eff1f5;">, dexPath.</span><span style="color:#bf616a;">getAbsolutePath</span><span style="color:#eff1f5;">());</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">                </span><span style="color:#ebcb8b;">ClassLoader</span><span style="color:#eff1f5;"> loader </span><span style="color:#c0c5ce;">= </span><span style="color:#ebcb8b;">ClassLoader</span><span style="color:#eff1f5;">.</span><span style="color:#bf616a;">getSystemClassLoader</span><span style="color:#eff1f5;">();</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">                </span><span style="color:#ebcb8b;">DexClassLoader</span><span style="color:#eff1f5;"> cl </span><span style="color:#c0c5ce;">= </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">DexClassLoader</span><span style="color:#eff1f5;">(dexPath.</span><span style="color:#bf616a;">getAbsolutePath</span><span style="color:#eff1f5;">(),</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">                        </span><span style="color:#eff1f5;">ctx.</span><span style="color:#bf616a;">getFilesDir</span><span style="color:#eff1f5;">().</span><span style="color:#bf616a;">toString</span><span style="color:#eff1f5;">(), </span><span style="color:#d08770;">null</span><span style="color:#eff1f5;">, loader);</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">                </span><span style="color:#eff1f5;">libProviderClazz </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> cl.</span><span style="color:#bf616a;">loadClass</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">me.xjump.utils.Test</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">                </span><span style="color:#ebcb8b;">Method</span><span style="color:#eff1f5;"> method </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> libProviderClazz.</span><span style="color:#bf616a;">getMethod</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">testme</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#ebcb8b;">String</span><span style="color:#eff1f5;">.</span><span style="color:#bf616a;">class</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">                </span><span style="color:#ebcb8b;">Log</span><span style="color:#eff1f5;">.</span><span style="color:#bf616a;">w</span><span style="color:#eff1f5;">(</span><span style="color:#d08770;">TAG</span><span style="color:#eff1f5;">, method.</span><span style="color:#bf616a;">invoke</span><span style="color:#eff1f5;">(</span><span style="color:#d08770;">null</span><span style="color:#eff1f5;">, </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">message</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">).</span><span style="color:#bf616a;">toString</span><span style="color:#eff1f5;">());</span><span style="color:#eff1f5;">
+<code class="language-java" data-lang="java"><span style="color:#c0c5ce;">btnLoadDexAndCall.</span><span style="color:#bf616a;">setOnClickListener</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">View</span><span style="color:#c0c5ce;">.</span><span style="color:#ebcb8b;">OnClickListener</span><span style="color:#c0c5ce;">() </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
+    @</span><span style="color:#bf616a;">Override</span><span style="color:#eff1f5;">
+    </span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">onClick</span><span style="color:#eff1f5;">(</span><span style="color:#ebcb8b;">View </span><span style="color:#bf616a;">view</span><span style="color:#eff1f5;">) {</span><span style="color:#eff1f5;">
+        </span><span style="color:#ebcb8b;">Class</span><span style="color:#eff1f5;"> libProviderClazz </span><span style="color:#c0c5ce;">= </span><span style="color:#d08770;">null</span><span style="color:#eff1f5;">;</span><span style="color:#eff1f5;">
+        </span><span style="color:#b48ead;">try </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
+            libProviderClazz </span><span style="color:#c0c5ce;">= </span><span style="color:#ebcb8b;">Class</span><span style="color:#eff1f5;">.</span><span style="color:#bf616a;">forName</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">me.xjump.utils.Test</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
+        }</span><span style="color:#b48ead;">catch</span><span style="color:#eff1f5;">(</span><span style="color:#ebcb8b;">ClassNotFoundException </span><span style="color:#bf616a;">ex</span><span style="color:#eff1f5;">) {   </span><span style="color:#65737e;">// 每次都会到这里。不是Dex，而是jar包的情况可以自己探索一下。</span><span style="color:#65737e;">
+            </span><span style="color:#ebcb8b;">Log</span><span style="color:#eff1f5;">.</span><span style="color:#bf616a;">e</span><span style="color:#eff1f5;">(</span><span style="color:#d08770;">TAG</span><span style="color:#eff1f5;">, ex.</span><span style="color:#bf616a;">toString</span><span style="color:#eff1f5;">());</span><span style="color:#eff1f5;">
+            </span><span style="color:#b48ead;">try </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
+                </span><span style="color:#b48ead;">final </span><span style="color:#ebcb8b;">File</span><span style="color:#eff1f5;"> dexPath </span><span style="color:#c0c5ce;">= </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">File</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">/data/local/tmp/classes1.dex</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
+                </span><span style="color:#ebcb8b;">Log</span><span style="color:#eff1f5;">.</span><span style="color:#bf616a;">d</span><span style="color:#eff1f5;">(</span><span style="color:#d08770;">TAG</span><span style="color:#eff1f5;">, dexPath.</span><span style="color:#bf616a;">getAbsolutePath</span><span style="color:#eff1f5;">());</span><span style="color:#eff1f5;">
+                </span><span style="color:#ebcb8b;">ClassLoader</span><span style="color:#eff1f5;"> loader </span><span style="color:#c0c5ce;">= </span><span style="color:#ebcb8b;">ClassLoader</span><span style="color:#eff1f5;">.</span><span style="color:#bf616a;">getSystemClassLoader</span><span style="color:#eff1f5;">();</span><span style="color:#eff1f5;">
+                </span><span style="color:#ebcb8b;">DexClassLoader</span><span style="color:#eff1f5;"> cl </span><span style="color:#c0c5ce;">= </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">DexClassLoader</span><span style="color:#eff1f5;">(dexPath.</span><span style="color:#bf616a;">getAbsolutePath</span><span style="color:#eff1f5;">(),</span><span style="color:#eff1f5;">
+                        ctx.</span><span style="color:#bf616a;">getFilesDir</span><span style="color:#eff1f5;">().</span><span style="color:#bf616a;">toString</span><span style="color:#eff1f5;">(), </span><span style="color:#d08770;">null</span><span style="color:#eff1f5;">, loader);</span><span style="color:#eff1f5;">
+                libProviderClazz </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> cl.</span><span style="color:#bf616a;">loadClass</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">me.xjump.utils.Test</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
+                </span><span style="color:#ebcb8b;">Method</span><span style="color:#eff1f5;"> method </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> libProviderClazz.</span><span style="color:#bf616a;">getMethod</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">testme</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#ebcb8b;">String</span><span style="color:#eff1f5;">.</span><span style="color:#bf616a;">class</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
+                </span><span style="color:#ebcb8b;">Log</span><span style="color:#eff1f5;">.</span><span style="color:#bf616a;">w</span><span style="color:#eff1f5;">(</span><span style="color:#d08770;">TAG</span><span style="color:#eff1f5;">, method.</span><span style="color:#bf616a;">invoke</span><span style="color:#eff1f5;">(</span><span style="color:#d08770;">null</span><span style="color:#eff1f5;">, </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">message</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">).</span><span style="color:#bf616a;">toString</span><span style="color:#eff1f5;">());</span><span style="color:#eff1f5;">
 </span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">            </span><span style="color:#eff1f5;">} </span><span style="color:#b48ead;">catch </span><span style="color:#eff1f5;">(</span><span style="color:#ebcb8b;">Exception </span><span style="color:#bf616a;">exception</span><span style="color:#eff1f5;">) {</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">                </span><span style="color:#ebcb8b;">Log</span><span style="color:#eff1f5;">.</span><span style="color:#bf616a;">e</span><span style="color:#eff1f5;">(</span><span style="color:#d08770;">TAG</span><span style="color:#eff1f5;">, exception.</span><span style="color:#bf616a;">toString</span><span style="color:#eff1f5;">());</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">                </span><span style="color:#eff1f5;">exception.</span><span style="color:#bf616a;">printStackTrace</span><span style="color:#eff1f5;">();</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">            </span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">        </span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">    </span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">}</span><span style="color:#c0c5ce;">);</span><span style="color:#c0c5ce;">
-</span></pre>
+            } </span><span style="color:#b48ead;">catch </span><span style="color:#eff1f5;">(</span><span style="color:#ebcb8b;">Exception </span><span style="color:#bf616a;">exception</span><span style="color:#eff1f5;">) {</span><span style="color:#eff1f5;">
+                </span><span style="color:#ebcb8b;">Log</span><span style="color:#eff1f5;">.</span><span style="color:#bf616a;">e</span><span style="color:#eff1f5;">(</span><span style="color:#d08770;">TAG</span><span style="color:#eff1f5;">, exception.</span><span style="color:#bf616a;">toString</span><span style="color:#eff1f5;">());</span><span style="color:#eff1f5;">
+                exception.</span><span style="color:#bf616a;">printStackTrace</span><span style="color:#eff1f5;">();</span><span style="color:#eff1f5;">
+            }</span><span style="color:#eff1f5;">
+        }</span><span style="color:#eff1f5;">
+    }</span><span style="color:#eff1f5;">
+}</span><span style="color:#c0c5ce;">);</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>翻译成C++/jni的代码如下：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">std::string </span><span style="color:#8fa1b3;">callDexStaticMethod</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">const</span><span style="color:#c0c5ce;"> std::string &amp;</span><span style="color:#bf616a;">dexFile</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">const</span><span style="color:#c0c5ce;"> std::string &amp;</span><span style="color:#bf616a;">dexCacheDir</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">                                </span><span style="color:#b48ead;">const</span><span style="color:#c0c5ce;"> std::string &amp;</span><span style="color:#bf616a;">clz</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">const</span><span style="color:#c0c5ce;"> std::string &amp;</span><span style="color:#bf616a;">staticMethod</span><span style="color:#c0c5ce;">, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">                                </span><span style="color:#b48ead;">const</span><span style="color:#c0c5ce;"> std::string&amp; </span><span style="color:#bf616a;">args</span><span style="color:#c0c5ce;">) </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">std::string ret = &quot;&quot;;</span><span style="color:#c0c5ce;">
+<code class="language-c++" data-lang="c++"><span style="color:#c0c5ce;">std::string </span><span style="color:#8fa1b3;">callDexStaticMethod</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">const</span><span style="color:#c0c5ce;"> std::string &amp;</span><span style="color:#bf616a;">dexFile</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">const</span><span style="color:#c0c5ce;"> std::string &amp;</span><span style="color:#bf616a;">dexCacheDir</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
+                                </span><span style="color:#b48ead;">const</span><span style="color:#c0c5ce;"> std::string &amp;</span><span style="color:#bf616a;">clz</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">const</span><span style="color:#c0c5ce;"> std::string &amp;</span><span style="color:#bf616a;">staticMethod</span><span style="color:#c0c5ce;">, </span><span style="color:#c0c5ce;">
+                                </span><span style="color:#b48ead;">const</span><span style="color:#c0c5ce;"> std::string&amp; </span><span style="color:#bf616a;">args</span><span style="color:#c0c5ce;">) </span><span style="color:#c0c5ce;">
+{</span><span style="color:#c0c5ce;">
+    std::string ret = &quot;&quot;;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">int</span><span style="color:#c0c5ce;"> status = -</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">std::string className = &quot;&quot;;</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">int</span><span style="color:#c0c5ce;"> status = -</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+    std::string className = &quot;&quot;;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">JNIEnv *env = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">jstring jDexPath = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">jstring jDestDexPath = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">jstring jClz = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">jstring jArgs = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+    JNIEnv *env = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+    jstring jDexPath = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+    jstring jDestDexPath = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+    jstring jClz = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+    jstring jArgs = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">jclass classloaderClass = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">jmethodID getSysLoaderMethod = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">jobject sysLoader = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">jclass dexLoaderClass = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">jmethodID initDexLoaderMethod = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">jobject dexLoader = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">jmethodID loadClassMethod = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">jclass javaClientClass = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">jmethodID javaClientStaticFuncMethod = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">jstring result = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+    jclass classloaderClass = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+    jmethodID getSysLoaderMethod = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+    jobject sysLoader = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+    jclass dexLoaderClass = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+    jmethodID initDexLoaderMethod = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+    jobject dexLoader = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+    jmethodID loadClassMethod = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+    jclass javaClientClass = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+    jmethodID javaClientStaticFuncMethod = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+    jstring result = </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">do </span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(g_JVM == </span><span style="color:#d08770;">nullptr</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] g_JVM is null.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">status = ((JavaVM *) g_JVM)-&gt;</span><span style="color:#bf616a;">AttachCurrentThread</span><span style="color:#c0c5ce;">(&amp;env, </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(status != </span><span style="color:#d08770;">0 </span><span style="color:#c0c5ce;">|| env == </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] init: failed to attach current thread </span><span style="color:#d08770;">%d</span><span style="color:#c0c5ce;">&quot;, status);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">do </span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(g_JVM == </span><span style="color:#d08770;">nullptr</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] g_JVM is null.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+        }</span><span style="color:#c0c5ce;">
+        status = ((JavaVM *) g_JVM)-&gt;</span><span style="color:#bf616a;">AttachCurrentThread</span><span style="color:#c0c5ce;">(&amp;env, </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">);</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(status != </span><span style="color:#d08770;">0 </span><span style="color:#c0c5ce;">|| env == </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] init: failed to attach current thread </span><span style="color:#d08770;">%d</span><span style="color:#c0c5ce;">&quot;, status);</span><span style="color:#c0c5ce;">
+            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+        }</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#bf616a;">LOGI</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[*] dex=</span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;">,dexDest=</span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;">,clz=</span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;">,method=</span><span style="color:#d08770;">%s</span><span style="color:#c0c5ce;">&quot;, dexFile.</span><span style="color:#bf616a;">c_str</span><span style="color:#c0c5ce;">(), dexCacheDir.</span><span style="color:#bf616a;">c_str</span><span style="color:#c0c5ce;">(),</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">             </span><span style="color:#c0c5ce;">clz.</span><span style="color:#bf616a;">c_str</span><span style="color:#c0c5ce;">(), staticMethod.</span><span style="color:#bf616a;">c_str</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
+        </span><span style="color:#bf616a;">LOGI</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[*] dex=</span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;">,dexDest=</span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;">,clz=</span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;">,method=</span><span style="color:#d08770;">%s</span><span style="color:#c0c5ce;">&quot;, dexFile.</span><span style="color:#bf616a;">c_str</span><span style="color:#c0c5ce;">(), dexCacheDir.</span><span style="color:#bf616a;">c_str</span><span style="color:#c0c5ce;">(),</span><span style="color:#c0c5ce;">
+             clz.</span><span style="color:#bf616a;">c_str</span><span style="color:#c0c5ce;">(), staticMethod.</span><span style="color:#bf616a;">c_str</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">jDexPath = </span><span style="color:#bf616a;">CppUtils::stdString2jstring</span><span style="color:#c0c5ce;">(env, dexFile.</span><span style="color:#bf616a;">c_str</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">jDestDexPath = </span><span style="color:#bf616a;">CppUtils::stdString2jstring</span><span style="color:#c0c5ce;">(env, dexCacheDir.</span><span style="color:#bf616a;">c_str</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">jClz = </span><span style="color:#bf616a;">CppUtils::stdString2jstring</span><span style="color:#c0c5ce;">(env, clz.</span><span style="color:#bf616a;">c_str</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">jArgs = </span><span style="color:#bf616a;">CppUtils::stdString2jstring</span><span style="color:#c0c5ce;">(env, args.</span><span style="color:#bf616a;">c_str</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if</span><span style="color:#c0c5ce;">(jDexPath==</span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">|| jDestDexPath==</span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">|| jClz==</span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">||jArgs==</span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] jDexPath/jDestDexPath/jClz/jArgs is null.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">className = &quot;</span><span style="color:#a3be8c;">java/lang/ClassLoader</span><span style="color:#c0c5ce;">&quot;;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">classloaderClass = env-&gt;</span><span style="color:#bf616a;">FindClass</span><span style="color:#c0c5ce;">(className.</span><span style="color:#bf616a;">c_str</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env-&gt;</span><span style="color:#bf616a;">ExceptionCheck</span><span style="color:#c0c5ce;">()) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] find </span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;"> cls exception.</span><span style="color:#c0c5ce;">&quot;, className.</span><span style="color:#bf616a;">c_str</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#65737e;">//env-&gt;ExceptionDescribe();</span><span style="color:#65737e;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#c0c5ce;">env-&gt;</span><span style="color:#bf616a;">ExceptionClear</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(classloaderClass == </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] class(</span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;">) not find.</span><span style="color:#c0c5ce;">&quot;, className.</span><span style="color:#bf616a;">c_str</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+        jDexPath = CppUtils::</span><span style="color:#bf616a;">stdString2jstring</span><span style="color:#c0c5ce;">(env, dexFile.</span><span style="color:#bf616a;">c_str</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
+        jDestDexPath = CppUtils::</span><span style="color:#bf616a;">stdString2jstring</span><span style="color:#c0c5ce;">(env, dexCacheDir.</span><span style="color:#bf616a;">c_str</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
+        jClz = CppUtils::</span><span style="color:#bf616a;">stdString2jstring</span><span style="color:#c0c5ce;">(env, clz.</span><span style="color:#bf616a;">c_str</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
+        jArgs = CppUtils::</span><span style="color:#bf616a;">stdString2jstring</span><span style="color:#c0c5ce;">(env, args.</span><span style="color:#bf616a;">c_str</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if</span><span style="color:#c0c5ce;">(jDexPath==</span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">|| jDestDexPath==</span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">|| jClz==</span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">||jArgs==</span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] jDexPath/jDestDexPath/jClz/jArgs is null.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+        }</span><span style="color:#c0c5ce;">
+        className = &quot;</span><span style="color:#a3be8c;">java/lang/ClassLoader</span><span style="color:#c0c5ce;">&quot;;</span><span style="color:#c0c5ce;">
+        classloaderClass = env-&gt;</span><span style="color:#bf616a;">FindClass</span><span style="color:#c0c5ce;">(className.</span><span style="color:#bf616a;">c_str</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env-&gt;</span><span style="color:#bf616a;">ExceptionCheck</span><span style="color:#c0c5ce;">()) {</span><span style="color:#c0c5ce;">
+            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] find </span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;"> cls exception.</span><span style="color:#c0c5ce;">&quot;, className.</span><span style="color:#bf616a;">c_str</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
+            </span><span style="color:#65737e;">//env-&gt;ExceptionDescribe();</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">            env-&gt;</span><span style="color:#bf616a;">ExceptionClear</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+        }</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(classloaderClass == </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] class(</span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;">) not find.</span><span style="color:#c0c5ce;">&quot;, className.</span><span style="color:#bf616a;">c_str</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
+            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+        }</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">getSysLoaderMethod = env-&gt;</span><span style="color:#bf616a;">GetStaticMethodID</span><span style="color:#c0c5ce;">(classloaderClass,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">                                                    </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">getSystemClassLoader</span><span style="color:#c0c5ce;">&quot;,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">                                                    </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">()Ljava/lang/ClassLoader;</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env-&gt;</span><span style="color:#bf616a;">ExceptionCheck</span><span style="color:#c0c5ce;">()) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] getSysLoaderMethod exception.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#65737e;">//env-&gt;ExceptionDescribe();</span><span style="color:#65737e;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#c0c5ce;">env-&gt;</span><span style="color:#bf616a;">ExceptionClear</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(getSysLoaderMethod == </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] getSysLoaderMethod not find.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+        getSysLoaderMethod = env-&gt;</span><span style="color:#bf616a;">GetStaticMethodID</span><span style="color:#c0c5ce;">(classloaderClass,</span><span style="color:#c0c5ce;">
+                                                    &quot;</span><span style="color:#a3be8c;">getSystemClassLoader</span><span style="color:#c0c5ce;">&quot;,</span><span style="color:#c0c5ce;">
+                                                    &quot;</span><span style="color:#a3be8c;">()Ljava/lang/ClassLoader;</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env-&gt;</span><span style="color:#bf616a;">ExceptionCheck</span><span style="color:#c0c5ce;">()) {</span><span style="color:#c0c5ce;">
+            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] getSysLoaderMethod exception.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+            </span><span style="color:#65737e;">//env-&gt;ExceptionDescribe();</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">            env-&gt;</span><span style="color:#bf616a;">ExceptionClear</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+        }</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(getSysLoaderMethod == </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] getSysLoaderMethod not find.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+        }</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">sysLoader = env-&gt;</span><span style="color:#bf616a;">CallStaticObjectMethod</span><span style="color:#c0c5ce;">(classloaderClass, getSysLoaderMethod);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env-&gt;</span><span style="color:#bf616a;">ExceptionCheck</span><span style="color:#c0c5ce;">()) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] sysLoader exception.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#65737e;">//env-&gt;ExceptionDescribe();</span><span style="color:#65737e;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#c0c5ce;">env-&gt;</span><span style="color:#bf616a;">ExceptionClear</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(sysLoader == </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] sysLoader not find.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+        sysLoader = env-&gt;</span><span style="color:#bf616a;">CallStaticObjectMethod</span><span style="color:#c0c5ce;">(classloaderClass, getSysLoaderMethod);</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env-&gt;</span><span style="color:#bf616a;">ExceptionCheck</span><span style="color:#c0c5ce;">()) {</span><span style="color:#c0c5ce;">
+            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] sysLoader exception.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+            </span><span style="color:#65737e;">//env-&gt;ExceptionDescribe();</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">            env-&gt;</span><span style="color:#bf616a;">ExceptionClear</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+        }</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(sysLoader == </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] sysLoader not find.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+        }</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">dexLoaderClass = env-&gt;</span><span style="color:#bf616a;">FindClass</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">dalvik/system/DexClassLoader</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env-&gt;</span><span style="color:#bf616a;">ExceptionCheck</span><span style="color:#c0c5ce;">()) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] dexLoaderClass exception.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#65737e;">//env-&gt;ExceptionDescribe();</span><span style="color:#65737e;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#c0c5ce;">env-&gt;</span><span style="color:#bf616a;">ExceptionClear</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(dexLoaderClass == </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] dexLoaderClass not find.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">initDexLoaderMethod = env-&gt;</span><span style="color:#bf616a;">GetMethodID</span><span style="color:#c0c5ce;">(dexLoaderClass, &quot;</span><span style="color:#a3be8c;">&lt;init&gt;</span><span style="color:#c0c5ce;">&quot;,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">                                               </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">(Ljava/lang/String;Ljava/lang/String;</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">                                               </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">Ljava/lang/String;Ljava/lang/ClassLoader;)V</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env-&gt;</span><span style="color:#bf616a;">ExceptionCheck</span><span style="color:#c0c5ce;">()) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] initDexLoaderMethod exception.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#65737e;">//env-&gt;ExceptionDescribe();</span><span style="color:#65737e;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#c0c5ce;">env-&gt;</span><span style="color:#bf616a;">ExceptionClear</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(initDexLoaderMethod == </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] initDexLoaderMethod not find.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+        dexLoaderClass = env-&gt;</span><span style="color:#bf616a;">FindClass</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">dalvik/system/DexClassLoader</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env-&gt;</span><span style="color:#bf616a;">ExceptionCheck</span><span style="color:#c0c5ce;">()) {</span><span style="color:#c0c5ce;">
+            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] dexLoaderClass exception.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+            </span><span style="color:#65737e;">//env-&gt;ExceptionDescribe();</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">            env-&gt;</span><span style="color:#bf616a;">ExceptionClear</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+        }</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(dexLoaderClass == </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] dexLoaderClass not find.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+        }</span><span style="color:#c0c5ce;">
+        initDexLoaderMethod = env-&gt;</span><span style="color:#bf616a;">GetMethodID</span><span style="color:#c0c5ce;">(dexLoaderClass, &quot;</span><span style="color:#a3be8c;">&lt;init&gt;</span><span style="color:#c0c5ce;">&quot;,</span><span style="color:#c0c5ce;">
+                                               &quot;</span><span style="color:#a3be8c;">(Ljava/lang/String;Ljava/lang/String;</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#c0c5ce;">
+                                               &quot;</span><span style="color:#a3be8c;">Ljava/lang/String;Ljava/lang/ClassLoader;)V</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env-&gt;</span><span style="color:#bf616a;">ExceptionCheck</span><span style="color:#c0c5ce;">()) {</span><span style="color:#c0c5ce;">
+            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] initDexLoaderMethod exception.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+            </span><span style="color:#65737e;">//env-&gt;ExceptionDescribe();</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">            env-&gt;</span><span style="color:#bf616a;">ExceptionClear</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+        }</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(initDexLoaderMethod == </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] initDexLoaderMethod not find.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+        }</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">dexLoader = env-&gt;</span><span style="color:#bf616a;">NewObject</span><span style="color:#c0c5ce;">(dexLoaderClass, initDexLoaderMethod,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">                                   </span><span style="color:#c0c5ce;">jDexPath, jDestDexPath, </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">, sysLoader);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env-&gt;</span><span style="color:#bf616a;">ExceptionCheck</span><span style="color:#c0c5ce;">()) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] dexLoader exception.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#65737e;">//env-&gt;ExceptionDescribe();</span><span style="color:#65737e;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#c0c5ce;">env-&gt;</span><span style="color:#bf616a;">ExceptionClear</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(dexLoader == </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] dexLoader not find.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+        dexLoader = env-&gt;</span><span style="color:#bf616a;">NewObject</span><span style="color:#c0c5ce;">(dexLoaderClass, initDexLoaderMethod,</span><span style="color:#c0c5ce;">
+                                   jDexPath, jDestDexPath, </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">, sysLoader);</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env-&gt;</span><span style="color:#bf616a;">ExceptionCheck</span><span style="color:#c0c5ce;">()) {</span><span style="color:#c0c5ce;">
+            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] dexLoader exception.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+            </span><span style="color:#65737e;">//env-&gt;ExceptionDescribe();</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">            env-&gt;</span><span style="color:#bf616a;">ExceptionClear</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+        }</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(dexLoader == </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] dexLoader not find.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+        }</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">loadClassMethod = env-&gt;</span><span style="color:#bf616a;">GetMethodID</span><span style="color:#c0c5ce;">(classloaderClass, &quot;</span><span style="color:#a3be8c;">loadClass</span><span style="color:#c0c5ce;">&quot;,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">                                           </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">(Ljava/lang/String;)Ljava/lang/Class;</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env-&gt;</span><span style="color:#bf616a;">ExceptionCheck</span><span style="color:#c0c5ce;">()) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] loadClassMethod exception.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#65737e;">//env-&gt;ExceptionDescribe();</span><span style="color:#65737e;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#c0c5ce;">env-&gt;</span><span style="color:#bf616a;">ExceptionClear</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(loadClassMethod == </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] loadClassMethod not find.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+        loadClassMethod = env-&gt;</span><span style="color:#bf616a;">GetMethodID</span><span style="color:#c0c5ce;">(classloaderClass, &quot;</span><span style="color:#a3be8c;">loadClass</span><span style="color:#c0c5ce;">&quot;,</span><span style="color:#c0c5ce;">
+                                           &quot;</span><span style="color:#a3be8c;">(Ljava/lang/String;)Ljava/lang/Class;</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env-&gt;</span><span style="color:#bf616a;">ExceptionCheck</span><span style="color:#c0c5ce;">()) {</span><span style="color:#c0c5ce;">
+            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] loadClassMethod exception.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+            </span><span style="color:#65737e;">//env-&gt;ExceptionDescribe();</span><span style="color:#65737e;">
+</span><span style="color:#c0c5ce;">            env-&gt;</span><span style="color:#bf616a;">ExceptionClear</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+        }</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(loadClassMethod == </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] loadClassMethod not find.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+        }</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">javaClientClass = (jclass) env-&gt;</span><span style="color:#bf616a;">CallObjectMethod</span><span style="color:#c0c5ce;">(dexLoader, loadClassMethod, jClz);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env-&gt;</span><span style="color:#bf616a;">ExceptionCheck</span><span style="color:#c0c5ce;">()) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] javaClientClass exception.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#c0c5ce;">env-&gt;</span><span style="color:#bf616a;">ExceptionDescribe</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#c0c5ce;">env-&gt;</span><span style="color:#bf616a;">ExceptionClear</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(javaClientClass == </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] javaClientClass not find.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">javaClientStaticFuncMethod = env-&gt;</span><span style="color:#bf616a;">GetStaticMethodID</span><span style="color:#c0c5ce;">(javaClientClass,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">                                                            </span><span style="color:#c0c5ce;">staticMethod.</span><span style="color:#bf616a;">c_str</span><span style="color:#c0c5ce;">(),</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">                                                            </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">(Ljava/lang/String;)Ljava/lang/String;</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env-&gt;</span><span style="color:#bf616a;">ExceptionCheck</span><span style="color:#c0c5ce;">()) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] javaClientStaticFuncMethod exception.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#c0c5ce;">env-&gt;</span><span style="color:#bf616a;">ExceptionDescribe</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#c0c5ce;">env-&gt;</span><span style="color:#bf616a;">ExceptionClear</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(javaClientStaticFuncMethod == </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] javaClientStaticFuncMethod not find.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">result = (jstring) env-&gt;</span><span style="color:#bf616a;">CallStaticObjectMethod</span><span style="color:#c0c5ce;">(javaClientClass,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">                </span><span style="color:#c0c5ce;">javaClientStaticFuncMethod, jArgs);</span><span style="color:#c0c5ce;">
+        javaClientClass = (jclass) env-&gt;</span><span style="color:#bf616a;">CallObjectMethod</span><span style="color:#c0c5ce;">(dexLoader, loadClassMethod, jClz);</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env-&gt;</span><span style="color:#bf616a;">ExceptionCheck</span><span style="color:#c0c5ce;">()) {</span><span style="color:#c0c5ce;">
+            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] javaClientClass exception.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+            env-&gt;</span><span style="color:#bf616a;">ExceptionDescribe</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+            env-&gt;</span><span style="color:#bf616a;">ExceptionClear</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+        }</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(javaClientClass == </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] javaClientClass not find.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+        }</span><span style="color:#c0c5ce;">
+        javaClientStaticFuncMethod = env-&gt;</span><span style="color:#bf616a;">GetStaticMethodID</span><span style="color:#c0c5ce;">(javaClientClass,</span><span style="color:#c0c5ce;">
+                                                            staticMethod.</span><span style="color:#bf616a;">c_str</span><span style="color:#c0c5ce;">(),</span><span style="color:#c0c5ce;">
+                                                            &quot;</span><span style="color:#a3be8c;">(Ljava/lang/String;)Ljava/lang/String;</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env-&gt;</span><span style="color:#bf616a;">ExceptionCheck</span><span style="color:#c0c5ce;">()) {</span><span style="color:#c0c5ce;">
+            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] javaClientStaticFuncMethod exception.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+            env-&gt;</span><span style="color:#bf616a;">ExceptionDescribe</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+            env-&gt;</span><span style="color:#bf616a;">ExceptionClear</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+        }</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(javaClientStaticFuncMethod == </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] javaClientStaticFuncMethod not find.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+        }</span><span style="color:#c0c5ce;">
+        result = (jstring) env-&gt;</span><span style="color:#bf616a;">CallStaticObjectMethod</span><span style="color:#c0c5ce;">(javaClientClass,</span><span style="color:#c0c5ce;">
+                javaClientStaticFuncMethod, jArgs);</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env-&gt;</span><span style="color:#bf616a;">ExceptionCheck</span><span style="color:#c0c5ce;">()) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] result exception.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#c0c5ce;">env-&gt;</span><span style="color:#bf616a;">ExceptionDescribe</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#c0c5ce;">env-&gt;</span><span style="color:#bf616a;">ExceptionClear</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(result == </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] result not find.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">ret = </span><span style="color:#bf616a;">CppUtils::jstring2StdString</span><span style="color:#c0c5ce;">(env, result);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#bf616a;">LOGD</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[+] call ok, ret=</span><span style="color:#d08770;">%s</span><span style="color:#c0c5ce;">&quot;, ret.</span><span style="color:#bf616a;">c_str</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env-&gt;</span><span style="color:#bf616a;">ExceptionCheck</span><span style="color:#c0c5ce;">()) {</span><span style="color:#c0c5ce;">
+            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] result exception.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+            env-&gt;</span><span style="color:#bf616a;">ExceptionDescribe</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+            env-&gt;</span><span style="color:#bf616a;">ExceptionClear</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+        }</span><span style="color:#c0c5ce;">
+        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(result == </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+            </span><span style="color:#bf616a;">LOGE</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[-] result not find.</span><span style="color:#c0c5ce;">&quot;);</span><span style="color:#c0c5ce;">
+            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+        }</span><span style="color:#c0c5ce;">
+        ret = CppUtils::</span><span style="color:#bf616a;">jstring2StdString</span><span style="color:#c0c5ce;">(env, result);</span><span style="color:#c0c5ce;">
+        </span><span style="color:#bf616a;">LOGD</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">[+] call ok, ret=</span><span style="color:#d08770;">%s</span><span style="color:#c0c5ce;">&quot;, ret.</span><span style="color:#bf616a;">c_str</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">} </span><span style="color:#b48ead;">while </span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">);</span><span style="color:#c0c5ce;">
+    } </span><span style="color:#b48ead;">while </span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">);</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env != </span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">&amp;&amp; result != </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">env-&gt;</span><span style="color:#bf616a;">DeleteLocalRef</span><span style="color:#c0c5ce;">(result);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env != </span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">&amp;&amp; result != </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+        env-&gt;</span><span style="color:#bf616a;">DeleteLocalRef</span><span style="color:#c0c5ce;">(result);</span><span style="color:#c0c5ce;">
+    }</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">/*</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">     </span><span style="color:#65737e;">if(env!=NULL &amp;&amp; javaClientStaticFuncMethod!=NULL) {</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">         </span><span style="color:#65737e;">env-&gt;DeleteLocalRef(javaClientStaticFuncMethod);</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">     </span><span style="color:#65737e;">}</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">    </span><span style="color:#65737e;">*/</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env != </span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">&amp;&amp; javaClientClass != </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">env-&gt;</span><span style="color:#bf616a;">DeleteLocalRef</span><span style="color:#c0c5ce;">(javaClientClass);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">/*</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">      </span><span style="color:#65737e;">if(env!=NULL &amp;&amp; loadClassMethod!=NULL) {</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">          </span><span style="color:#65737e;">env-&gt;DeleteLocalRef(loadClassMethod);</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">      </span><span style="color:#65737e;">}</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">      </span><span style="color:#65737e;">*/</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env != </span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">&amp;&amp; dexLoader != </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">env-&gt;</span><span style="color:#bf616a;">DeleteLocalRef</span><span style="color:#c0c5ce;">(dexLoader);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">/*</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">    </span><span style="color:#65737e;">if(env!=NULL &amp;&amp; initDexLoaderMethod!=NULL) {</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">        </span><span style="color:#65737e;">env-&gt;DeleteLocalRef(initDexLoaderMethod);</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">    </span><span style="color:#65737e;">}</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">    </span><span style="color:#65737e;">*/</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env != </span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">&amp;&amp; dexLoaderClass != </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">env-&gt;</span><span style="color:#bf616a;">DeleteLocalRef</span><span style="color:#c0c5ce;">(dexLoaderClass);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+    </span><span style="color:#65737e;">/*</span><span style="color:#65737e;">
+     if(env!=NULL &amp;&amp; javaClientStaticFuncMethod!=NULL) {</span><span style="color:#65737e;">
+         env-&gt;DeleteLocalRef(javaClientStaticFuncMethod);</span><span style="color:#65737e;">
+     }</span><span style="color:#65737e;">
+    */</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env != </span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">&amp;&amp; javaClientClass != </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+        env-&gt;</span><span style="color:#bf616a;">DeleteLocalRef</span><span style="color:#c0c5ce;">(javaClientClass);</span><span style="color:#c0c5ce;">
+    }</span><span style="color:#c0c5ce;">
+    </span><span style="color:#65737e;">/*</span><span style="color:#65737e;">
+      if(env!=NULL &amp;&amp; loadClassMethod!=NULL) {</span><span style="color:#65737e;">
+          env-&gt;DeleteLocalRef(loadClassMethod);</span><span style="color:#65737e;">
+      }</span><span style="color:#65737e;">
+      */</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env != </span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">&amp;&amp; dexLoader != </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+        env-&gt;</span><span style="color:#bf616a;">DeleteLocalRef</span><span style="color:#c0c5ce;">(dexLoader);</span><span style="color:#c0c5ce;">
+    }</span><span style="color:#c0c5ce;">
+    </span><span style="color:#65737e;">/*</span><span style="color:#65737e;">
+    if(env!=NULL &amp;&amp; initDexLoaderMethod!=NULL) {</span><span style="color:#65737e;">
+        env-&gt;DeleteLocalRef(initDexLoaderMethod);</span><span style="color:#65737e;">
+    }</span><span style="color:#65737e;">
+    */</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env != </span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">&amp;&amp; dexLoaderClass != </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+        env-&gt;</span><span style="color:#bf616a;">DeleteLocalRef</span><span style="color:#c0c5ce;">(dexLoaderClass);</span><span style="color:#c0c5ce;">
+    }</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env != </span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">&amp;&amp; sysLoader != </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">env-&gt;</span><span style="color:#bf616a;">DeleteLocalRef</span><span style="color:#c0c5ce;">(sysLoader);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env != </span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">&amp;&amp; sysLoader != </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+        env-&gt;</span><span style="color:#bf616a;">DeleteLocalRef</span><span style="color:#c0c5ce;">(sysLoader);</span><span style="color:#c0c5ce;">
+    }</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">/*</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">    </span><span style="color:#65737e;">if(env!=NULL &amp;&amp; getSysLoaderMethod!=NULL) {</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">        </span><span style="color:#65737e;">env-&gt;DeleteLocalRef(getSysLoaderMethod);</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">    </span><span style="color:#65737e;">}</span><span style="color:#65737e;">
-</span><span style="color:#65737e;">    </span><span style="color:#65737e;">*/</span><span style="color:#c0c5ce;">
+    </span><span style="color:#65737e;">/*</span><span style="color:#65737e;">
+    if(env!=NULL &amp;&amp; getSysLoaderMethod!=NULL) {</span><span style="color:#65737e;">
+        env-&gt;DeleteLocalRef(getSysLoaderMethod);</span><span style="color:#65737e;">
+    }</span><span style="color:#65737e;">
+    */</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env != </span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">&amp;&amp; classloaderClass != </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">env-&gt;</span><span style="color:#bf616a;">DeleteLocalRef</span><span style="color:#c0c5ce;">(classloaderClass);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env != </span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">&amp;&amp; classloaderClass != </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+        env-&gt;</span><span style="color:#bf616a;">DeleteLocalRef</span><span style="color:#c0c5ce;">(classloaderClass);</span><span style="color:#c0c5ce;">
+    }</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env != </span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">&amp;&amp; jDexPath != </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">env-&gt;</span><span style="color:#bf616a;">DeleteLocalRef</span><span style="color:#c0c5ce;">(jDexPath);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env != </span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">&amp;&amp; jDestDexPath != </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">env-&gt;</span><span style="color:#bf616a;">DeleteLocalRef</span><span style="color:#c0c5ce;">(jDestDexPath);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env != </span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">&amp;&amp; jClz != </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">env-&gt;</span><span style="color:#bf616a;">DeleteLocalRef</span><span style="color:#c0c5ce;">(jClz);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env != </span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">&amp;&amp; jArgs != </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">env-&gt;</span><span style="color:#bf616a;">DeleteLocalRef</span><span style="color:#c0c5ce;">(jArgs);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env != </span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">&amp;&amp; jDexPath != </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+        env-&gt;</span><span style="color:#bf616a;">DeleteLocalRef</span><span style="color:#c0c5ce;">(jDexPath);</span><span style="color:#c0c5ce;">
+    }</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env != </span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">&amp;&amp; jDestDexPath != </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+        env-&gt;</span><span style="color:#bf616a;">DeleteLocalRef</span><span style="color:#c0c5ce;">(jDestDexPath);</span><span style="color:#c0c5ce;">
+    }</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env != </span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">&amp;&amp; jClz != </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+        env-&gt;</span><span style="color:#bf616a;">DeleteLocalRef</span><span style="color:#c0c5ce;">(jClz);</span><span style="color:#c0c5ce;">
+    }</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env != </span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">&amp;&amp; jArgs != </span><span style="color:#d08770;">NULL</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+        env-&gt;</span><span style="color:#bf616a;">DeleteLocalRef</span><span style="color:#c0c5ce;">(jArgs);</span><span style="color:#c0c5ce;">
+    }</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env != </span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">&amp;&amp; status != </span><span style="color:#d08770;">0 </span><span style="color:#c0c5ce;">&amp;&amp; g_JVM != </span><span style="color:#d08770;">nullptr</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">        </span><span style="color:#c0c5ce;">g_JVM-&gt;</span><span style="color:#bf616a;">DetachCurrentThread</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(env != </span><span style="color:#d08770;">NULL </span><span style="color:#c0c5ce;">&amp;&amp; status != </span><span style="color:#d08770;">0 </span><span style="color:#c0c5ce;">&amp;&amp; g_JVM != </span><span style="color:#d08770;">nullptr</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
+        g_JVM-&gt;</span><span style="color:#bf616a;">DetachCurrentThread</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
+    }</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">return</span><span style="color:#c0c5ce;"> ret;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span></pre>
+    </span><span style="color:#b48ead;">return</span><span style="color:#c0c5ce;"> ret;</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
+</span></code></pre>
     </div>
 
     

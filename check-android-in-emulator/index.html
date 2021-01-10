@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,8 +9,6 @@
 
       <title>@xjump</title>
 
-      
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
       
 
       
@@ -57,31 +53,31 @@
               <ul class="mobile-menu-list">
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me">
+                        <a href="https:&#x2F;&#x2F;xjump.me">
                             Home
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;categories">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                             Categories
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                             Archive
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;rss.xml">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                             RSS
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;about">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                             About
                         </a>
                     </li>
@@ -95,31 +91,31 @@
                     <ul>
                         
                             <li>
-                                <a href="https://xjump.me">
+                                <a href="https:&#x2F;&#x2F;xjump.me">
                                     Home
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;categories">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                                     Categories
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                                     Archive
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;rss.xml">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                                     RSS
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;about">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                                     About
                                 </a>
                             </li>
@@ -155,7 +151,7 @@
     &nbsp;</div>
 <div>
     1、依赖android.os.Build中的信息。如果使用普通的android sdk，那么 Build.PRODUCT == "sdk"；如果使用了 google api sdk，那么 Build.PRODUCT == "google_sdk"</div>
-<p><a name="continue-reading"></a></p>
+<span id="continue-reading"></span>
 <div>
     &nbsp;</div>
 <div>
@@ -166,14 +162,14 @@
     代码如下:</div>
 <div>
 <pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">public boolean </span><span style="color:#bf616a;">isEmulator</span><span style="color:#c0c5ce;">() {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;"> android_id = </span><span style="color:#ebcb8b;">Settings</span><span style="color:#c0c5ce;">.</span><span style="color:#ebcb8b;">Secure</span><span style="color:#c0c5ce;">.</span><span style="color:#bf616a;">getString</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">getContentResolver</span><span style="color:#c0c5ce;">(), </span><span style="color:#ebcb8b;">Settings</span><span style="color:#c0c5ce;">.</span><span style="color:#ebcb8b;">Secure</span><span style="color:#c0c5ce;">.</span><span style="color:#d08770;">ANDROID_ID</span><span style="color:#c0c5ce;">);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#ebcb8b;">Log</span><span style="color:#c0c5ce;">.</span><span style="color:#bf616a;">d</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">TAG</span><span style="color:#c0c5ce;">+&quot;</span><span style="color:#a3be8c;">isEmulator</span><span style="color:#c0c5ce;">&quot;,&quot;</span><span style="color:#a3be8c;">ANDROID_ID: </span><span style="color:#c0c5ce;">&quot;+android_id);</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#ebcb8b;">Log</span><span style="color:#c0c5ce;">.</span><span style="color:#bf616a;">d</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">TAG</span><span style="color:#c0c5ce;">+&quot;</span><span style="color:#a3be8c;">isEmulator</span><span style="color:#c0c5ce;">&quot;,&quot;</span><span style="color:#a3be8c;">Build.PRODUCT: </span><span style="color:#c0c5ce;">&quot;+</span><span style="color:#ebcb8b;">Build</span><span style="color:#c0c5ce;">.</span><span style="color:#d08770;">PRODUCT</span><span style="color:#c0c5ce;">); </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">boolean</span><span style="color:#c0c5ce;"> inEmulator = </span><span style="color:#ebcb8b;">TextUtils</span><span style="color:#c0c5ce;">.</span><span style="color:#bf616a;">isEmpty</span><span style="color:#c0c5ce;">(android_id) || &quot;</span><span style="color:#a3be8c;">google_sdk</span><span style="color:#c0c5ce;">&quot;.</span><span style="color:#bf616a;">equals</span><span style="color:#c0c5ce;">( </span><span style="color:#ebcb8b;">Build</span><span style="color:#c0c5ce;">.</span><span style="color:#d08770;">PRODUCT </span><span style="color:#c0c5ce;">) || &quot;</span><span style="color:#a3be8c;">sdk</span><span style="color:#c0c5ce;">&quot;.</span><span style="color:#bf616a;">equals</span><span style="color:#c0c5ce;">(</span><span style="color:#ebcb8b;">Build</span><span style="color:#c0c5ce;">.</span><span style="color:#d08770;">PRODUCT</span><span style="color:#c0c5ce;">);            </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">return</span><span style="color:#c0c5ce;"> inEmulator;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">}</span><span style="color:#c0c5ce;">
-</span></pre></div>
+<code class="language-java" data-lang="java"><span style="color:#b48ead;">public boolean </span><span style="color:#bf616a;">isEmulator</span><span style="color:#c0c5ce;">() {</span><span style="color:#c0c5ce;">
+    </span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;"> android_id = </span><span style="color:#ebcb8b;">Settings</span><span style="color:#c0c5ce;">.</span><span style="color:#ebcb8b;">Secure</span><span style="color:#c0c5ce;">.</span><span style="color:#bf616a;">getString</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">getContentResolver</span><span style="color:#c0c5ce;">(), </span><span style="color:#ebcb8b;">Settings</span><span style="color:#c0c5ce;">.</span><span style="color:#ebcb8b;">Secure</span><span style="color:#c0c5ce;">.</span><span style="color:#d08770;">ANDROID_ID</span><span style="color:#c0c5ce;">);</span><span style="color:#c0c5ce;">
+    </span><span style="color:#ebcb8b;">Log</span><span style="color:#c0c5ce;">.</span><span style="color:#bf616a;">d</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">TAG</span><span style="color:#c0c5ce;">+&quot;</span><span style="color:#a3be8c;">isEmulator</span><span style="color:#c0c5ce;">&quot;,&quot;</span><span style="color:#a3be8c;">ANDROID_ID: </span><span style="color:#c0c5ce;">&quot;+android_id);</span><span style="color:#c0c5ce;">
+    </span><span style="color:#ebcb8b;">Log</span><span style="color:#c0c5ce;">.</span><span style="color:#bf616a;">d</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">TAG</span><span style="color:#c0c5ce;">+&quot;</span><span style="color:#a3be8c;">isEmulator</span><span style="color:#c0c5ce;">&quot;,&quot;</span><span style="color:#a3be8c;">Build.PRODUCT: </span><span style="color:#c0c5ce;">&quot;+</span><span style="color:#ebcb8b;">Build</span><span style="color:#c0c5ce;">.</span><span style="color:#d08770;">PRODUCT</span><span style="color:#c0c5ce;">); </span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">boolean</span><span style="color:#c0c5ce;"> inEmulator = </span><span style="color:#ebcb8b;">TextUtils</span><span style="color:#c0c5ce;">.</span><span style="color:#bf616a;">isEmpty</span><span style="color:#c0c5ce;">(android_id) || &quot;</span><span style="color:#a3be8c;">google_sdk</span><span style="color:#c0c5ce;">&quot;.</span><span style="color:#bf616a;">equals</span><span style="color:#c0c5ce;">( </span><span style="color:#ebcb8b;">Build</span><span style="color:#c0c5ce;">.</span><span style="color:#d08770;">PRODUCT </span><span style="color:#c0c5ce;">) || &quot;</span><span style="color:#a3be8c;">sdk</span><span style="color:#c0c5ce;">&quot;.</span><span style="color:#bf616a;">equals</span><span style="color:#c0c5ce;">(</span><span style="color:#ebcb8b;">Build</span><span style="color:#c0c5ce;">.</span><span style="color:#d08770;">PRODUCT</span><span style="color:#c0c5ce;">);            </span><span style="color:#c0c5ce;">
+    </span><span style="color:#b48ead;">return</span><span style="color:#c0c5ce;"> inEmulator;</span><span style="color:#c0c5ce;">
+}</span><span style="color:#c0c5ce;">
+</span></code></pre></div>
 
     </div>
 

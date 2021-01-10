@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,8 +9,6 @@
 
       <title>@xjump</title>
 
-      
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
       
 
       
@@ -57,31 +53,31 @@
               <ul class="mobile-menu-list">
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me">
+                        <a href="https:&#x2F;&#x2F;xjump.me">
                             Home
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;categories">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                             Categories
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                             Archive
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;rss.xml">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                             RSS
                         </a>
                     </li>
                 
                     <li class="mobile-menu-item">
-                        <a href="https://xjump.me&#x2F;about">
+                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                             About
                         </a>
                     </li>
@@ -95,31 +91,31 @@
                     <ul>
                         
                             <li>
-                                <a href="https://xjump.me">
+                                <a href="https:&#x2F;&#x2F;xjump.me">
                                     Home
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;categories">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">
                                     Categories
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;tags&#x2F;all">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">
                                     Archive
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;rss.xml">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">
                                     RSS
                                 </a>
                             </li>
                         
                             <li>
-                                <a href="https://xjump.me&#x2F;about">
+                                <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">
                                     About
                                 </a>
                             </li>
@@ -148,9 +144,9 @@
                                     <div class="post__summary">
                                         <h2 id="1-flinkyu-da-shu-ju-ji-suan">1 Flink与大数据计算</h2>
 <p>Flink以Stream模型为基础对数据计算进行建模，为批和流的处理实现了统一。并在低延迟、稳定性、编程接口友好等方面具有较大的优势，是大数据实时计算的利器。从下图（摘自官方）可以看出，Flink将来自各个数据源（Source）的数据进行计算，让后将结果交给各个下游数据宿（Sink）进行后续消费。同时，对于Source和Sink也可以是Flink计算应用，进行更复杂的级联，构建更丰富的数据处理模式。</p>
-<p><center>
+<center>
 <img alt="Flink" src="/images/flink/flink-home-graphic.png" style="width: 800px; height: 263px;" />
-</center></p>
+</center>
 
                                     </div>
                                     <div class="read-more">
@@ -220,16 +216,16 @@
                                         <p>Java 11已于2018-09-25发布，作为一个LTS版本，值得重点关注。但从Java 8升级上来还是会碰到不少问题。</p>
 <p>1、 project需要增加jaxb依赖，否则编译报错。</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">Caused by: java.lang.NoClassDefFoundError: javax/xml/bind/JAXBException</span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-txt" data-lang="txt"><span style="color:#c0c5ce;">Caused by: java.lang.NoClassDefFoundError: javax/xml/bind/JAXBException</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>增加下面的依赖：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">dependency</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">groupId</span><span style="color:#c0c5ce;">&gt;javax.xml.bind&lt;/</span><span style="color:#bf616a;">groupId</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">artifactId</span><span style="color:#c0c5ce;">&gt;jaxb-api&lt;/</span><span style="color:#bf616a;">artifactId</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">    </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">version</span><span style="color:#c0c5ce;">&gt;2.3.0&lt;/</span><span style="color:#bf616a;">version</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">&lt;/</span><span style="color:#bf616a;">dependency</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-xml" data-lang="xml"><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">dependency</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+    &lt;</span><span style="color:#bf616a;">groupId</span><span style="color:#c0c5ce;">&gt;javax.xml.bind&lt;/</span><span style="color:#bf616a;">groupId</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+    &lt;</span><span style="color:#bf616a;">artifactId</span><span style="color:#c0c5ce;">&gt;jaxb-api&lt;/</span><span style="color:#bf616a;">artifactId</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+    &lt;</span><span style="color:#bf616a;">version</span><span style="color:#c0c5ce;">&gt;2.3.0&lt;/</span><span style="color:#bf616a;">version</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+&lt;/</span><span style="color:#bf616a;">dependency</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
+</span></code></pre>
                                     </div>
                                     <div class="read-more">
                                         <a href="https:&#x2F;&#x2F;xjump.me&#x2F;java11-update-notes&#x2F;">Read more...</a>
@@ -253,16 +249,16 @@
 <p>人孰无过，过而能改，善莫大焉。程序运行过程中总是会出现各种各样的问题，导致程序出现异常或错误，这些异常和错误本身不是 bug，但是如果不处理好的话就会成为 bug。不同编程语言提供了不同的机制来处理错误和异常，一般分为两大类：把错误当作值来处理；抛出异常。</p>
 <p>Rust 提供以下基础设施做错误处理：</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">Option, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">Result,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">unwrap, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">expect,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">combinators,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">try! </span><span style="background-color:#bf616a;color:#2b303b;">macro</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">Error </span><span style="color:#b48ead;">trait</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">From </span><span style="color:#b48ead;">trait</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">Carrier </span><span style="color:#b48ead;">trait</span><span style="color:#c0c5ce;">/Try </span><span style="color:#b48ead;">trait</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
-</span></pre>
+<code class="language-rust" data-lang="rust"><span style="color:#c0c5ce;">Option, </span><span style="color:#c0c5ce;">
+Result,</span><span style="color:#c0c5ce;">
+unwrap, </span><span style="color:#c0c5ce;">
+expect,</span><span style="color:#c0c5ce;">
+combinators,</span><span style="color:#c0c5ce;">
+try! </span><span style="background-color:#bf616a;color:#2b303b;">macro</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
+Error </span><span style="color:#b48ead;">trait</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
+From </span><span style="color:#b48ead;">trait</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
+Carrier </span><span style="color:#b48ead;">trait</span><span style="color:#c0c5ce;">/Try </span><span style="color:#b48ead;">trait</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
+</span></code></pre>
 <p>Rust 并没有提供基于 exception 的错误处理机制，虽然 panic! 宏在让进程挂掉时也抛出堆栈，同时也可以用 std::panic::catch_unwind 捕捉 panic，但是极其不推荐用来处理常规错误。</p>
 
                                     </div>
