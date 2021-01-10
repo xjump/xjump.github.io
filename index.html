@@ -186,52 +186,52 @@
 <p>nom is a parser combinator library with a focus on safe parsing,
 streaming patterns, and as much as possible zero copy.</p>
 <p>Example</p>
-<pre style="background-color:#2b303b;">
-<code class="language-rust" data-lang="rust"><span style="color:#b48ead;">extern crate</span><span style="color:#c0c5ce;"> nom;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">use </span><span style="color:#c0c5ce;">nom::{</span><span style="color:#c0c5ce;">
-	IResult,</span><span style="color:#c0c5ce;">
-	bytes::complete::{tag, take_while_m_n},</span><span style="color:#c0c5ce;">
-	combinator::map_res,</span><span style="color:#c0c5ce;">
-	sequence::tuple</span><span style="color:#c0c5ce;">
-};</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-#[</span><span style="color:#bf616a;">derive</span><span style="color:#c0c5ce;">(Debug,PartialEq)]</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">pub struct </span><span style="color:#c0c5ce;">Color {</span><span style="color:#c0c5ce;">
-	</span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">red</span><span style="color:#c0c5ce;">:     </span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
-	</span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">green</span><span style="color:#c0c5ce;">:   </span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
-	</span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">blue</span><span style="color:#c0c5ce;">:    </span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
-}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">from_hex</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; Result&lt;</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">, std::num::ParseIntError&gt; {</span><span style="color:#c0c5ce;">
-	</span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">::from_str_radix(input, </span><span style="color:#d08770;">16</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
-}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">is_hex_digit</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">c</span><span style="color:#c0c5ce;">: </span><span style="color:#b48ead;">char</span><span style="color:#c0c5ce;">) -&gt; </span><span style="color:#b48ead;">bool </span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
-	c.</span><span style="color:#96b5b4;">is_digit</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">16</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
-}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">hex_primary</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; IResult&lt;&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">u8</span><span style="color:#c0c5ce;">&gt; {</span><span style="color:#c0c5ce;">
-	</span><span style="color:#96b5b4;">map_res</span><span style="color:#c0c5ce;">(</span><span style="color:#c0c5ce;">
-		</span><span style="color:#96b5b4;">take_while_m_n</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">, </span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">, is_hex_digit),</span><span style="color:#c0c5ce;">
-		from_hex</span><span style="color:#c0c5ce;">
-	)(input)</span><span style="color:#c0c5ce;">
-}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">hex_color</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; IResult&lt;&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, Color&gt; {</span><span style="color:#c0c5ce;">
-	</span><span style="color:#b48ead;">let </span><span style="color:#c0c5ce;">(input, _) = </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">#</span><span style="color:#c0c5ce;">&quot;)(input)?;</span><span style="color:#c0c5ce;">
-	</span><span style="color:#b48ead;">let </span><span style="color:#c0c5ce;">(input, (red, green, blue)) = </span><span style="color:#96b5b4;">tuple</span><span style="color:#c0c5ce;">((hex_primary, hex_primary, hex_primary))(input)?;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-	Ok((input, Color { red, green, blue }))</span><span style="color:#c0c5ce;">
-}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">() {</span><span style="color:#c0c5ce;">
-	assert_eq!(</span><span style="color:#96b5b4;">hex_color</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">#2F14DF</span><span style="color:#c0c5ce;">&quot;), Ok((&quot;&quot;, Color {</span><span style="color:#c0c5ce;">
-		red: </span><span style="color:#d08770;">47</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
-		green: </span><span style="color:#d08770;">20</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
-		blue: </span><span style="color:#d08770;">223</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
-	})));</span><span style="color:#c0c5ce;">
-}</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-rust" data-lang="rust"><span style="color:#c792ea;">extern crate</span><span style="color:#eeffff;"> nom</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="color:#c792ea;">use </span><span style="color:#eeffff;">nom</span><span style="color:#89ddff;">::{</span><span style="color:#eeffff;">
+	IResult</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;">
+	bytes</span><span style="color:#89ddff;">::</span><span style="color:#eeffff;">complete</span><span style="color:#89ddff;">::{</span><span style="color:#eeffff;">tag</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> take_while_m_n</span><span style="color:#89ddff;">},</span><span style="color:#eeffff;">
+	combinator</span><span style="color:#89ddff;">::</span><span style="color:#eeffff;">map_res</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;">
+	sequence</span><span style="color:#89ddff;">::</span><span style="color:#eeffff;">tuple</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">};</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">#[</span><span style="color:#eeffff;">derive</span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">Debug</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;">PartialEq</span><span style="color:#89ddff;">)]</span><span style="color:#eeffff;">
+</span><span style="color:#c792ea;">pub </span><span style="font-style:italic;color:#c792ea;">struct </span><span style="color:#eeffff;">Color </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+	</span><span style="color:#c792ea;">pub </span><span style="color:#eeffff;">red</span><span style="color:#89ddff;">:     </span><span style="font-style:italic;color:#c792ea;">u8</span><span style="color:#eeffff;">,</span><span style="color:#eeffff;">
+	</span><span style="color:#c792ea;">pub </span><span style="color:#eeffff;">green</span><span style="color:#89ddff;">:   </span><span style="font-style:italic;color:#c792ea;">u8</span><span style="color:#eeffff;">,</span><span style="color:#eeffff;">
+	</span><span style="color:#c792ea;">pub </span><span style="color:#eeffff;">blue</span><span style="color:#89ddff;">:    </span><span style="font-style:italic;color:#c792ea;">u8</span><span style="color:#eeffff;">,</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">fn </span><span style="color:#82aaff;">from_hex</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">input</span><span style="color:#89ddff;">: &amp;</span><span style="font-style:italic;color:#c792ea;">str</span><span style="color:#89ddff;">) -&gt; </span><span style="color:#ffcb6b;">Result</span><span style="color:#89ddff;">&lt;</span><span style="font-style:italic;color:#c792ea;">u8</span><span style="color:#eeffff;">, std</span><span style="color:#89ddff;">::</span><span style="color:#eeffff;">num</span><span style="color:#89ddff;">::</span><span style="color:#eeffff;">ParseIntError</span><span style="color:#89ddff;">&gt; {</span><span style="color:#eeffff;">
+	</span><span style="font-style:italic;color:#c792ea;">u8</span><span style="color:#89ddff;">::</span><span style="color:#eeffff;">from_str_radix</span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">input</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">16</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">fn </span><span style="color:#82aaff;">is_hex_digit</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">c</span><span style="color:#89ddff;">: </span><span style="font-style:italic;color:#c792ea;">char</span><span style="color:#89ddff;">) -&gt; </span><span style="font-style:italic;color:#c792ea;">bool </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+	c</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">is_digit</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">16</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">fn </span><span style="color:#82aaff;">hex_primary</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">input</span><span style="color:#89ddff;">: &amp;</span><span style="font-style:italic;color:#c792ea;">str</span><span style="color:#89ddff;">) -&gt; </span><span style="color:#eeffff;">IResult</span><span style="color:#89ddff;">&lt;&amp;</span><span style="font-style:italic;color:#c792ea;">str</span><span style="color:#eeffff;">, </span><span style="font-style:italic;color:#c792ea;">u8</span><span style="color:#89ddff;">&gt; {</span><span style="color:#eeffff;">
+	</span><span style="color:#82aaff;">map_res</span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">
+		</span><span style="color:#82aaff;">take_while_m_n</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> is_hex_digit</span><span style="color:#89ddff;">),</span><span style="color:#eeffff;">
+		from_hex</span><span style="color:#eeffff;">
+	</span><span style="color:#89ddff;">)(</span><span style="color:#eeffff;">input</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">fn </span><span style="color:#82aaff;">hex_color</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">input</span><span style="color:#89ddff;">: &amp;</span><span style="font-style:italic;color:#c792ea;">str</span><span style="color:#89ddff;">) -&gt; </span><span style="color:#eeffff;">IResult</span><span style="color:#89ddff;">&lt;&amp;</span><span style="font-style:italic;color:#c792ea;">str</span><span style="color:#eeffff;">, Color</span><span style="color:#89ddff;">&gt; {</span><span style="color:#eeffff;">
+	</span><span style="font-style:italic;color:#c792ea;">let </span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">input</span><span style="color:#89ddff;">, _) = </span><span style="color:#82aaff;">tag</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">#</span><span style="color:#89ddff;">&quot;)(</span><span style="color:#eeffff;">input</span><span style="color:#89ddff;">)?;</span><span style="color:#eeffff;">
+	</span><span style="font-style:italic;color:#c792ea;">let </span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">input</span><span style="color:#89ddff;">, (</span><span style="color:#eeffff;">red</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> green</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> blue</span><span style="color:#89ddff;">)) = </span><span style="color:#82aaff;">tuple</span><span style="color:#89ddff;">((</span><span style="color:#eeffff;">hex_primary</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> hex_primary</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> hex_primary</span><span style="color:#89ddff;">))(</span><span style="color:#eeffff;">input</span><span style="color:#89ddff;">)?;</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+	</span><span style="color:#ffcb6b;">Ok</span><span style="color:#89ddff;">((</span><span style="color:#eeffff;">input</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> Color </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;"> red</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> green</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> blue </span><span style="color:#89ddff;">}))</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">fn </span><span style="color:#82aaff;">main</span><span style="color:#89ddff;">() {</span><span style="color:#eeffff;">
+	assert_eq!</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">hex_color</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">#2F14DF</span><span style="color:#89ddff;">&quot;), </span><span style="color:#ffcb6b;">Ok</span><span style="color:#89ddff;">((&quot;&quot;,</span><span style="color:#eeffff;"> Color </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+		red</span><span style="color:#89ddff;">: </span><span style="color:#f78c6c;">47</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;">
+		green</span><span style="color:#89ddff;">: </span><span style="color:#f78c6c;">20</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;">
+		blue</span><span style="color:#89ddff;">: </span><span style="color:#f78c6c;">223</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;">
+	</span><span style="color:#89ddff;">})));</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
 </span></code></pre>
                                     </div>
                                     <div class="read-more">
@@ -254,24 +254,24 @@ streaming patterns, and as much as possible zero copy.</p>
                                     <div class="post__summary">
                                         <h2 id="1-git">1 git</h2>
 <p>github的repo拖不下来可以参考:</p>
-<pre style="background-color:#2b303b;">
-<code><span style="color:#c0c5ce;">[http]</span><span style="color:#c0c5ce;">
-	proxy = &quot;socks5://127.0.0.1:1091&quot;</span><span style="color:#c0c5ce;">
-	sslVerify = false</span><span style="color:#c0c5ce;">
-	postBuffer = 524288000</span><span style="color:#c0c5ce;">
-	lowSpeedLimit = 0</span><span style="color:#c0c5ce;">
-	lowSpeedTime = 999999</span><span style="color:#c0c5ce;">
-  </span><span style="color:#c0c5ce;">
-[https]</span><span style="color:#c0c5ce;">
-	proxy = &quot;socks5://127.0.0.1:1091&quot;</span><span style="color:#c0c5ce;">
-	sslVerify = false</span><span style="color:#c0c5ce;">
-	postBuffer = 524288000</span><span style="color:#c0c5ce;">
-	lowSpeedLimit = 0</span><span style="color:#c0c5ce;">
-	lowSpeedTime = 999999</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-[core]</span><span style="color:#c0c5ce;">
-	symlinks = true</span><span style="color:#c0c5ce;">
-	gitProxy = &#39;socks5://127.0.0.1:1091&#39;</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code><span style="color:#eeffff;">[http]</span><span style="color:#eeffff;">
+	proxy = &quot;socks5://127.0.0.1:1091&quot;</span><span style="color:#eeffff;">
+	sslVerify = false</span><span style="color:#eeffff;">
+	postBuffer = 524288000</span><span style="color:#eeffff;">
+	lowSpeedLimit = 0</span><span style="color:#eeffff;">
+	lowSpeedTime = 999999</span><span style="color:#eeffff;">
+  </span><span style="color:#eeffff;">
+[https]</span><span style="color:#eeffff;">
+	proxy = &quot;socks5://127.0.0.1:1091&quot;</span><span style="color:#eeffff;">
+	sslVerify = false</span><span style="color:#eeffff;">
+	postBuffer = 524288000</span><span style="color:#eeffff;">
+	lowSpeedLimit = 0</span><span style="color:#eeffff;">
+	lowSpeedTime = 999999</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+[core]</span><span style="color:#eeffff;">
+	symlinks = true</span><span style="color:#eeffff;">
+	gitProxy = &#39;socks5://127.0.0.1:1091&#39;</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>修改到~/.gitconfig文件中作为全局配置。</p>
 

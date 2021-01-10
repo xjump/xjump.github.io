@@ -146,25 +146,25 @@
       <p>
 iOS 4.1+获取当前连接的网络信息：
 </p>
-<pre style="background-color:#2b303b;">
-<code class="language-mm" data-lang="mm"><span style="color:#b48ead;">#import </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#a3be8c;">SystemConfiguration/CaptiveNetwork.h</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-- (</span><span style="color:#b48ead;">id</span><span style="color:#c0c5ce;">)fetchSSIDInfo</span><span style="color:#c0c5ce;">
-{</span><span style="color:#c0c5ce;">
-    </span><span style="color:#ebcb8b;">NSArray </span><span style="color:#c0c5ce;">*ifs = (</span><span style="color:#b48ead;">id</span><span style="color:#c0c5ce;">)</span><span style="color:#bf616a;">CNCopySupportedInterfaces</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-    </span><span style="color:#96b5b4;">NSLog</span><span style="color:#c0c5ce;">(@&quot;</span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;">: Supported interfaces: </span><span style="color:#d08770;">%@</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#d08770;">__func__</span><span style="color:#c0c5ce;">, ifs);</span><span style="color:#c0c5ce;">
-    </span><span style="color:#b48ead;">id </span><span style="color:#c0c5ce;">info = </span><span style="color:#d08770;">nil</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-    </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">(</span><span style="color:#ebcb8b;">NSString </span><span style="color:#c0c5ce;">*ifnam in ifs) {</span><span style="color:#c0c5ce;">
-        info = (</span><span style="color:#b48ead;">id</span><span style="color:#c0c5ce;">)</span><span style="color:#bf616a;">CNCopyCurrentNetworkInfo</span><span style="color:#c0c5ce;">((CFStringRef)ifnam);</span><span style="color:#c0c5ce;">
-        </span><span style="color:#96b5b4;">NSLog</span><span style="color:#c0c5ce;">(@&quot;</span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;">: </span><span style="color:#d08770;">%@</span><span style="color:#a3be8c;"> =&gt; </span><span style="color:#d08770;">%@</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#d08770;">__func__</span><span style="color:#c0c5ce;">, ifnam, info);</span><span style="color:#c0c5ce;">
-        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(info &amp;&amp; [info </span><span style="color:#8fa1b3;">count</span><span style="color:#c0c5ce;">]) {</span><span style="color:#c0c5ce;">
-            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-        }</span><span style="color:#c0c5ce;">
-        [info </span><span style="color:#8fa1b3;">release</span><span style="color:#c0c5ce;">];</span><span style="color:#c0c5ce;">
-    }</span><span style="color:#c0c5ce;">
-    [ifs </span><span style="color:#8fa1b3;">release</span><span style="color:#c0c5ce;">];</span><span style="color:#c0c5ce;">
-    </span><span style="color:#b48ead;">return </span><span style="color:#c0c5ce;">[info </span><span style="color:#8fa1b3;">autorelease</span><span style="color:#c0c5ce;">];</span><span style="color:#c0c5ce;">
-}</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-mm" data-lang="mm"><span style="font-style:italic;color:#c792ea;">#import </span><span style="color:#89ddff;">&lt;</span><span style="color:#c3e88d;">SystemConfiguration/CaptiveNetwork.h</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">- (</span><span style="font-style:italic;color:#c792ea;">id</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">fetchSSIDInfo</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+    </span><span style="color:#ffcb6b;">NSArray </span><span style="color:#89ddff;">*</span><span style="color:#eeffff;">ifs </span><span style="color:#89ddff;">= (</span><span style="font-style:italic;color:#c792ea;">id</span><span style="color:#89ddff;">)</span><span style="color:#82aaff;">CNCopySupportedInterfaces</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
+    </span><span style="color:#82aaff;">NSLog</span><span style="color:#89ddff;">(@&quot;</span><span style="color:#eeffff;">%s</span><span style="color:#c3e88d;">: Supported interfaces: </span><span style="color:#eeffff;">%@</span><span style="color:#89ddff;">&quot;, </span><span style="color:#f78c6c;">__func__</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> ifs</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">id </span><span style="color:#eeffff;">info </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">nil</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">for </span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">NSString </span><span style="color:#89ddff;">*</span><span style="color:#eeffff;">ifnam in ifs</span><span style="color:#89ddff;">) {</span><span style="color:#eeffff;">
+        info </span><span style="color:#89ddff;">= (</span><span style="font-style:italic;color:#c792ea;">id</span><span style="color:#89ddff;">)</span><span style="color:#82aaff;">CNCopyCurrentNetworkInfo</span><span style="color:#89ddff;">((</span><span style="color:#82aaff;">CFStringRef</span><span style="color:#89ddff;">)</span><span style="color:#82aaff;">ifnam</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
+        </span><span style="color:#82aaff;">NSLog</span><span style="color:#89ddff;">(@&quot;</span><span style="color:#eeffff;">%s</span><span style="color:#c3e88d;">: </span><span style="color:#eeffff;">%@</span><span style="color:#c3e88d;"> =&gt; </span><span style="color:#eeffff;">%@</span><span style="color:#89ddff;">&quot;, </span><span style="color:#f78c6c;">__func__</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> ifnam</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> info</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
+        </span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">info </span><span style="color:#89ddff;">&amp;&amp; [</span><span style="color:#eeffff;">info </span><span style="color:#82aaff;">count</span><span style="color:#89ddff;">]) {</span><span style="color:#eeffff;">
+            </span><span style="font-style:italic;color:#c792ea;">break</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+        </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+        </span><span style="color:#89ddff;">[</span><span style="color:#eeffff;">info </span><span style="color:#82aaff;">release</span><span style="color:#89ddff;">];</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">[</span><span style="color:#eeffff;">ifs </span><span style="color:#82aaff;">release</span><span style="color:#89ddff;">];</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">return </span><span style="color:#89ddff;">[</span><span style="color:#eeffff;">info </span><span style="color:#82aaff;">autorelease</span><span style="color:#89ddff;">];</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
 </span></code></pre><span id="continue-reading"></span>
 <p>
     ref:</p>

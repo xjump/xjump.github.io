@@ -144,19 +144,19 @@
 
     <div class="post-content">
       <p>借助windows自带命令行工具hh.exe。</p>
-<pre style="background-color:#2b303b;">
-<code class="language-sh" data-lang="sh"><span style="color:#bf616a;">@echo</span><span style="color:#c0c5ce;"> off</span><span style="color:#c0c5ce;">
-</span><span style="color:#bf616a;">title</span><span style="color:#c0c5ce;"> CHM电子书反编器BAT版</span><span style="color:#c0c5ce;">
-</span><span style="color:#bf616a;">color</span><span style="color:#c0c5ce;"> a</span><span style="color:#c0c5ce;">
-</span><span style="color:#bf616a;">echo.</span><span style="color:#c0c5ce;">
-</span><span style="color:#96b5b4;">set</span><span style="color:#c0c5ce;"> /p urlfile=请把要反编的CHM电子书拖进来(再按回车键)</span><span style="color:#bf616a;">：</span><span style="color:#c0c5ce;">
-</span><span style="color:#bf616a;">copy </span><span style="color:#c0c5ce;">%</span><span style="color:#bf616a;">urlfile</span><span style="color:#c0c5ce;">% chmfile.chm &gt; nul</span><span style="color:#c0c5ce;">
-</span><span style="color:#bf616a;">hh -decompile</span><span style="color:#c0c5ce;"> .</span><span style="color:#96b5b4;">\h</span><span style="color:#c0c5ce;">tml chmfile.chm</span><span style="color:#c0c5ce;">
-</span><span style="color:#bf616a;">del</span><span style="color:#c0c5ce;"> /q chmfile.chm &gt; nul </span><span style="color:#c0c5ce;">
-</span><span style="color:#bf616a;">echo.</span><span style="color:#c0c5ce;">
-</span><span style="color:#96b5b4;">echo</span><span style="color:#c0c5ce;"> 反编文件成功。保存在.</span><span style="color:#96b5b4;">\h</span><span style="color:#c0c5ce;">tml文件夹中，按任意键退出！</span><span style="color:#c0c5ce;">
-</span><span style="color:#bf616a;">rem</span><span style="color:#c0c5ce;"> pause &gt; nul</span><span style="color:#c0c5ce;">
-</span><span style="color:#96b5b4;">exit </span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-sh" data-lang="sh"><span style="color:#82aaff;">@echo off</span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">title CHM电子书反编器BAT版</span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">color a</span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">echo.</span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">set /p urlfile=请把要反编的CHM电子书拖进来(再按回车键</span><span style="color:#eeffff;">)</span><span style="color:#82aaff;">：</span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">copy </span><span style="color:#89ddff;">%</span><span style="color:#eeffff;">urlfile</span><span style="color:#89ddff;">%</span><span style="color:#82aaff;"> chmfile.chm </span><span style="color:#89ddff;">&gt;</span><span style="color:#82aaff;"> nul</span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">hh</span><span style="color:#89ddff;"> -</span><span style="color:#f78c6c;">decompile</span><span style="color:#82aaff;"> .</span><span style="color:#89ddff;">\h</span><span style="color:#82aaff;">tml chmfile.chm</span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">del /q chmfile.chm </span><span style="color:#89ddff;">&gt;</span><span style="color:#82aaff;"> nul </span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">echo.</span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">echo 反编文件成功。保存在.</span><span style="color:#89ddff;">\h</span><span style="color:#82aaff;">tml文件夹中，按任意键退出！</span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">rem pause </span><span style="color:#89ddff;">&gt;</span><span style="color:#82aaff;"> nul</span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">exit </span><span style="color:#eeffff;">
 </span></code></pre>
 <p>Original Link: <a href="http://www.jb51.net/softjc/44629.html">http://www.jb51.net/softjc/44629.html</a></p>
 

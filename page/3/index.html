@@ -176,22 +176,22 @@
     <strong>1）Thread & ThreadPoolExecutor</strong></p>
 <p>
     Thread例子如下：</p>
-<pre style="background-color:#2b303b;">
-<code class="language-java" data-lang="java"><span style="color:#b48ead;">for</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">int</span><span style="color:#c0c5ce;"> i=</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">; i&lt;</span><span style="color:#d08770;">100</span><span style="color:#c0c5ce;">; i++){</span><span style="color:#c0c5ce;">
-    </span><span style="color:#ebcb8b;">Thread</span><span style="color:#c0c5ce;"> t = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Thread</span><span style="color:#c0c5ce;">()</span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
-        @</span><span style="color:#bf616a;">Override</span><span style="color:#eff1f5;">
-        </span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">run</span><span style="color:#eff1f5;">() {</span><span style="color:#eff1f5;">
-            </span><span style="color:#65737e;">//job details</span><span style="color:#65737e;">
-        </span><span style="color:#eff1f5;">}</span><span style="color:#eff1f5;">
-    }</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-    t.</span><span style="color:#bf616a;">start</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-    </span><span style="color:#b48ead;">try</span><span style="color:#c0c5ce;">{ </span><span style="color:#c0c5ce;">
-        t.</span><span style="color:#bf616a;">join</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-    }</span><span style="color:#c0c5ce;">
-    </span><span style="color:#b48ead;">catch</span><span style="color:#c0c5ce;">(</span><span style="color:#ebcb8b;">InterruptedException </span><span style="color:#bf616a;">ex</span><span style="color:#c0c5ce;">){</span><span style="color:#c0c5ce;">
-        ex.</span><span style="color:#bf616a;">printStackTrace</span><span style="color:#c0c5ce;">();</span><span style="color:#c0c5ce;">
-    }</span><span style="color:#c0c5ce;">
-}</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-java" data-lang="java"><span style="font-style:italic;color:#c792ea;">for</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">&lt;</span><span style="color:#f78c6c;">100</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">++){</span><span style="color:#eeffff;">
+    </span><span style="color:#ffcb6b;">Thread</span><span style="color:#eeffff;"> t </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Thread</span><span style="color:#89ddff;">(){</span><span style="color:#eeffff;">
+        </span><span style="color:#89ddff;">@</span><span style="color:#eeffff;">Override</span><span style="color:#eeffff;">
+        </span><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">run</span><span style="color:#89ddff;">() {</span><span style="color:#eeffff;">
+            </span><span style="font-style:italic;color:#4a4a4a;">//job details</span><span style="font-style:italic;color:#4a4a4a;">
+        </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">};</span><span style="color:#eeffff;">
+    t</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">start</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">try</span><span style="color:#89ddff;">{ </span><span style="color:#eeffff;">
+        t</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">join</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">catch</span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">InterruptedException </span><span style="color:#f78c6c;">ex</span><span style="color:#89ddff;">){</span><span style="color:#eeffff;">
+        ex</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
 </span></code></pre><p>
     相应的，ThreadPoolExecutor例子如下：</p>
 
@@ -334,12 +334,12 @@ MyFramework.framework/</pre>
     </header>
 
                                     <div class="post__summary">
-                                        <pre style="background-color:#2b303b;">
-<code class="language-mm" data-lang="mm"><span style="color:#c0c5ce;">- (</span><span style="color:#ebcb8b;">NSString </span><span style="color:#c0c5ce;">*)</span><span style="color:#bf616a;">myString </span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
-  </span><span style="color:#b48ead;">@synchronized</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">) {</span><span style="color:#c0c5ce;">
-    </span><span style="color:#b48ead;">return </span><span style="color:#c0c5ce;">[[myString </span><span style="color:#8fa1b3;">retain</span><span style="color:#c0c5ce;">] autorelease];</span><span style="color:#c0c5ce;">
-  }</span><span style="color:#c0c5ce;">
-}</span><span style="color:#c0c5ce;">
+                                        <pre style="background-color:#212121;">
+<code class="language-mm" data-lang="mm"><span style="color:#89ddff;">- (</span><span style="color:#ffcb6b;">NSString </span><span style="color:#89ddff;">*)</span><span style="color:#82aaff;">myString </span><span style="color:#89ddff;">{</span><span style="color:#82aaff;">
+  </span><span style="font-style:italic;color:#89ddff;">@</span><span style="font-style:italic;color:#c792ea;">synchronized</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#ff5370;">self</span><span style="color:#89ddff;">) {</span><span style="color:#82aaff;">
+    </span><span style="font-style:italic;color:#c792ea;">return </span><span style="color:#89ddff;">[[</span><span style="color:#82aaff;">myString retain</span><span style="color:#89ddff;">]</span><span style="color:#82aaff;"> autorelease</span><span style="color:#89ddff;">];</span><span style="color:#82aaff;">
+  </span><span style="color:#89ddff;">}</span><span style="color:#82aaff;">
+</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
 </span></code></pre><p>
     转换1：</p>
 

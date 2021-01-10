@@ -144,12 +144,12 @@
                                     <div class="post__summary">
                                         <p><strong>字符串分割：</strong></p>
 <p>方法一：列表综合，适用任意长度序列</p>
-<pre style="background-color:#2b303b;">
-<code class="language-python" data-lang="python"><span style="color:#c0c5ce;">[s[i:i+</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">] </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">i </span><span style="color:#b48ead;">in </span><span style="color:#96b5b4;">range</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">, </span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">(seq), </span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">)]</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-python" data-lang="python"><span style="color:#89ddff;">[</span><span style="color:#eeffff;">s</span><span style="color:#89ddff;">[</span><span style="color:#eeffff;">i</span><span style="color:#89ddff;">:</span><span style="color:#eeffff;">i</span><span style="color:#89ddff;">+</span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">] </span><span style="font-style:italic;color:#c792ea;">for </span><span style="color:#eeffff;">i </span><span style="font-style:italic;color:#c792ea;">in </span><span style="color:#82aaff;">range</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">, </span><span style="color:#82aaff;">len</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">seq</span><span style="color:#89ddff;">), </span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">)]</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>方法二：re 模块，适用字符串，总长度要求是片段长度的整数倍</p>
-<pre style="background-color:#2b303b;">
-<code class="language-python" data-lang="python"><span style="color:#c0c5ce;">re.</span><span style="color:#bf616a;">compile</span><span style="color:#c0c5ce;">(r&amp;&#39;</span><span style="color:#a3be8c;">.</span><span style="color:#d08770;">{4}</span><span style="color:#c0c5ce;">&#39;).</span><span style="color:#bf616a;">findall</span><span style="color:#c0c5ce;">(s)</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-python" data-lang="python"><span style="color:#82aaff;">re</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">compile</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">r</span><span style="color:#89ddff;">&amp;&#39;</span><span style="color:#c3e88d;">.</span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">4</span><span style="color:#89ddff;">}&#39;).</span><span style="color:#82aaff;">findall</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">s</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
 </span></code></pre>
                                     </div>
                                     <div class="read-more">
@@ -172,12 +172,12 @@
                                     <div class="post__summary">
                                         <p>download <a href="https://github.com/bagder/curl/archive/curl-7_28_1.zip">https://github.com/bagder/curl/archive/curl-7_28_1.zip</a></p>
 <p>VC prompt:</p>
-<pre style="background-color:#2b303b;">
-<code class="language-sh" data-lang="sh"><span style="color:#96b5b4;">cd</span><span style="color:#c0c5ce;"> curl-src</span><span style="color:#c0c5ce;">
-</span><span style="color:#bf616a;">copy</span><span style="color:#c0c5ce;"> include</span><span style="color:#96b5b4;">\c</span><span style="color:#c0c5ce;">url</span><span style="color:#96b5b4;">\c</span><span style="color:#c0c5ce;">urlbuild.h.dist include</span><span style="color:#96b5b4;">\c</span><span style="color:#c0c5ce;">url</span><span style="color:#96b5b4;">\c</span><span style="color:#c0c5ce;">urlbuild.h</span><span style="color:#c0c5ce;">
-</span><span style="color:#bf616a;">copy</span><span style="color:#c0c5ce;"> src</span><span style="color:#96b5b4;">\h</span><span style="color:#c0c5ce;">ugehelp.c.cvs src</span><span style="color:#96b5b4;">\h</span><span style="color:#c0c5ce;">ugehelp.c</span><span style="color:#c0c5ce;">
-</span><span style="color:#96b5b4;">cd</span><span style="color:#c0c5ce;"> crul-src</span><span style="color:#96b5b4;">\w</span><span style="color:#c0c5ce;">inbuild</span><span style="color:#c0c5ce;">
-</span><span style="color:#bf616a;">nmake -f</span><span style="color:#c0c5ce;"> Makefile.vc mode=static USE_IDN=no</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-sh" data-lang="sh"><span style="color:#82aaff;">cd curl-src</span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">copy include</span><span style="color:#89ddff;">\c</span><span style="color:#82aaff;">url</span><span style="color:#89ddff;">\c</span><span style="color:#82aaff;">urlbuild.h.dist include</span><span style="color:#89ddff;">\c</span><span style="color:#82aaff;">url</span><span style="color:#89ddff;">\c</span><span style="color:#82aaff;">urlbuild.h</span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">copy src</span><span style="color:#89ddff;">\h</span><span style="color:#82aaff;">ugehelp.c.cvs src</span><span style="color:#89ddff;">\h</span><span style="color:#82aaff;">ugehelp.c</span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">cd crul-src</span><span style="color:#89ddff;">\w</span><span style="color:#82aaff;">inbuild</span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">nmake</span><span style="color:#89ddff;"> -</span><span style="color:#f78c6c;">f</span><span style="color:#82aaff;"> Makefile.vc mode=static USE_IDN=no</span><span style="color:#eeffff;">
 </span></code></pre>
                                     </div>
                                     <div class="read-more">
@@ -243,9 +243,9 @@
                                         <p>ATL中，由于ATL Server的需要，需要对Client发送过来的地址、命令等复杂文字字段信息解码，而正则表达式是公认的最强大的文字解析工具，所以，ATL提供了一些用于正则表达式的库方便了我们的工作。</p>
 <h3>1、 CATLRegExp类</h3>
 <p>1, 声明：</p>
-<pre style="background-color:#2b303b;">
-<code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">template </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#b48ead;">class</span><span style="color:#c0c5ce;"> CAtlRECharTraits&gt;</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">CAtlRegExp</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-cpp" data-lang="cpp"><span style="font-style:italic;color:#c792ea;">template </span><span style="color:#89ddff;">&lt;</span><span style="font-style:italic;color:#c792ea;">class</span><span style="color:#eeffff;"> CAtlRECharTraits</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">class </span><span style="color:#ffcb6b;">CAtlRegExp</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
 </span></code></pre>
                                     </div>
                                     <div class="read-more">

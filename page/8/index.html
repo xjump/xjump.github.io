@@ -238,19 +238,19 @@
                                         <p>
 Dump JavaScript object for PyV8 and NodeJS.</p>
 <p>POC</p>
-<pre style="background-color:#2b303b;">
-<code class="language-javascript" data-lang="javascript"><span style="color:#b48ead;">function </span><span style="color:#8fa1b3;">dump</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">obj</span><span style="color:#c0c5ce;">){</span><span style="color:#c0c5ce;">
-    </span><span style="color:#b48ead;">for</span><span style="color:#c0c5ce;">(</span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">item </span><span style="color:#c0c5ce;">in </span><span style="color:#bf616a;">obj</span><span style="color:#c0c5ce;">){</span><span style="color:#c0c5ce;">
-        </span><span style="color:#b48ead;">if</span><span style="color:#c0c5ce;">(typeof </span><span style="color:#bf616a;">item </span><span style="color:#c0c5ce;">=== &quot;</span><span style="color:#a3be8c;">Object</span><span style="color:#c0c5ce;">&quot;){</span><span style="color:#c0c5ce;">
-            </span><span style="color:#8fa1b3;">Print</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">Object&#39;s source is:</span><span style="color:#c0c5ce;">&quot; + </span><span style="color:#bf616a;">item</span><span style="color:#c0c5ce;">.</span><span style="color:#96b5b4;">toSource</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
-            </span><span style="color:#8fa1b3;">dump</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">item</span><span style="color:#c0c5ce;">);</span><span style="color:#c0c5ce;">
-        }</span><span style="color:#b48ead;">else if</span><span style="color:#c0c5ce;">(typeof </span><span style="color:#bf616a;">obj</span><span style="color:#c0c5ce;">[</span><span style="color:#bf616a;">item</span><span style="color:#c0c5ce;">] ===&quot;</span><span style="color:#a3be8c;">Object</span><span style="color:#c0c5ce;">&quot;){</span><span style="color:#c0c5ce;">
-            </span><span style="color:#8fa1b3;">dump</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">obj</span><span style="color:#c0c5ce;">[</span><span style="color:#bf616a;">item</span><span style="color:#c0c5ce;">]);</span><span style="color:#c0c5ce;">
-        }</span><span style="color:#b48ead;">else</span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
-            </span><span style="color:#8fa1b3;">Print</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">item</span><span style="color:#c0c5ce;">.</span><span style="color:#96b5b4;">toString</span><span style="color:#c0c5ce;">());</span><span style="color:#c0c5ce;">
-        }</span><span style="color:#c0c5ce;">
-    }</span><span style="color:#c0c5ce;">
-}</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-javascript" data-lang="javascript"><span style="font-style:italic;color:#c792ea;">function </span><span style="color:#82aaff;">dump</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">obj</span><span style="color:#89ddff;">){</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">for</span><span style="color:#eeffff;">(</span><span style="font-style:italic;color:#c792ea;">var </span><span style="color:#eeffff;">item </span><span style="color:#89ddff;">in </span><span style="color:#eeffff;">obj)</span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+        </span><span style="font-style:italic;color:#c792ea;">if</span><span style="color:#eeffff;">(</span><span style="color:#89ddff;">typeof </span><span style="color:#eeffff;">item </span><span style="color:#89ddff;">=== &quot;</span><span style="color:#c3e88d;">Object</span><span style="color:#89ddff;">&quot;</span><span style="color:#eeffff;">)</span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+            </span><span style="color:#82aaff;">Print</span><span style="color:#eeffff;">(</span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">Object&#39;s source is:</span><span style="color:#89ddff;">&quot; + </span><span style="color:#eeffff;">item</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">toSource</span><span style="color:#eeffff;">())</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+            </span><span style="color:#82aaff;">dump</span><span style="color:#eeffff;">(item)</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+        </span><span style="color:#89ddff;">}</span><span style="font-style:italic;color:#c792ea;">else if</span><span style="color:#eeffff;">(</span><span style="color:#89ddff;">typeof </span><span style="color:#eeffff;">obj[item] </span><span style="color:#89ddff;">===&quot;</span><span style="color:#c3e88d;">Object</span><span style="color:#89ddff;">&quot;</span><span style="color:#eeffff;">)</span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+            </span><span style="color:#82aaff;">dump</span><span style="color:#eeffff;">(obj[item])</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+        </span><span style="color:#89ddff;">}</span><span style="font-style:italic;color:#c792ea;">else</span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+            </span><span style="color:#82aaff;">Print</span><span style="color:#eeffff;">(item</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">toString</span><span style="color:#eeffff;">())</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+        </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
 </span></code></pre>
                                     </div>
                                     <div class="read-more">

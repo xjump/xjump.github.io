@@ -207,18 +207,18 @@
     </header>
 
                                     <div class="post__summary">
-                                        <pre style="background-color:#2b303b;">
-<code class="language-mm" data-lang="mm"><span style="color:#65737e;">//TheSingleton.h</span><span style="color:#65737e;">
-</span><span style="color:#b48ead;">@interface </span><span style="color:#c0c5ce;">TheSingleton </span><span style="color:#8fa1b3;">: </span><span style="color:#a3be8c;">NSObject</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-+(instancetype) </span><span style="color:#8fa1b3;">sharedInstance</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-+(instancetype) </span><span style="color:#8fa1b3;">alloc</span><span style="color:#c0c5ce;"> __attribute__((</span><span style="color:#bf616a;">unavailable</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">alloc not available, call sharedInstance instead</span><span style="color:#c0c5ce;">&quot;))</span><span style="background-color:#bf616a;color:#2b303b;">)</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
--(instancetype) init </span><span style="color:#b48ead;">__attribute__</span><span style="color:#c0c5ce;">((unavailable(&quot;</span><span style="color:#a3be8c;">init not available, call sharedInstance instead</span><span style="color:#c0c5ce;">&quot;)));</span><span style="color:#c0c5ce;">
-+(instancetype) </span><span style="color:#b48ead;">new __attribute__</span><span style="color:#c0c5ce;">((unavailable(&quot;</span><span style="color:#a3be8c;">new not available, call sharedInstance instead</span><span style="color:#c0c5ce;">&quot;)));</span><span style="color:#c0c5ce;">
--(instancetype) copy </span><span style="color:#b48ead;">__attribute__</span><span style="color:#c0c5ce;">((unavailable(&quot;</span><span style="color:#a3be8c;">copy not available, call sharedInstance instead</span><span style="color:#c0c5ce;">&quot;)));</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-@end</span><span style="color:#c0c5ce;">
+                                        <pre style="background-color:#212121;">
+<code class="language-mm" data-lang="mm"><span style="font-style:italic;color:#4a4a4a;">//TheSingleton.h</span><span style="font-style:italic;color:#4a4a4a;">
+</span><span style="font-style:italic;color:#89ddff;">@</span><span style="font-style:italic;color:#c792ea;">interface </span><span style="color:#eeffff;">TheSingleton </span><span style="color:#89ddff;">: </span><span style="color:#c3e88d;">NSObject</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
++</span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">instancetype</span><span style="color:#89ddff;">) </span><span style="color:#82aaff;">sharedInstance</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
++</span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">instancetype</span><span style="color:#89ddff;">) </span><span style="color:#82aaff;">alloc</span><span style="color:#eeffff;"> __attribute__</span><span style="color:#89ddff;">((</span><span style="color:#82aaff;">unavailable</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">alloc not available, call sharedInstance instead</span><span style="color:#89ddff;">&quot;))</span><span style="background-color:#ff5370;color:#ffffff;">)</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">-(</span><span style="color:#eeffff;">instancetype</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;"> init </span><span style="color:#c792ea;">__attribute__</span><span style="color:#89ddff;">((</span><span style="color:#eeffff;">unavailable</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">init not available, call sharedInstance instead</span><span style="color:#89ddff;">&quot;)));</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">+(</span><span style="color:#eeffff;">instancetype</span><span style="color:#89ddff;">) </span><span style="font-style:italic;color:#c792ea;">new </span><span style="color:#c792ea;">__attribute__</span><span style="color:#89ddff;">((</span><span style="color:#eeffff;">unavailable</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">new not available, call sharedInstance instead</span><span style="color:#89ddff;">&quot;)));</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">-(</span><span style="color:#eeffff;">instancetype</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;"> copy </span><span style="color:#c792ea;">__attribute__</span><span style="color:#89ddff;">((</span><span style="color:#eeffff;">unavailable</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">copy not available, call sharedInstance instead</span><span style="color:#89ddff;">&quot;)));</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+@end</span><span style="color:#eeffff;">
 </span></code></pre>
                                     </div>
                                     <div class="read-more">

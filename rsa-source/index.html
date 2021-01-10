@@ -179,56 +179,56 @@
     对于裸签名，原理上就是将上面的m和c调换，使用私钥加密，公钥解密。需要注意的是，PKI中的数字签名并不仅仅是裸签名。</p>
 <p>
     附上一段POC：</p>
-<pre style="background-color:#2b303b;">
-<code class="language-python" data-lang="python"><span style="color:#65737e;">#!/usr/bin/env python</span><span style="color:#65737e;">
-# -*- coding: utf-8 -*-  </span><span style="color:#65737e;">
- </span><span style="color:#c0c5ce;">
-</span><span style="color:#65737e;">&#39;&#39;&#39;</span><span style="color:#65737e;">
-author: xjump.me#gmail.com</span><span style="color:#65737e;">
-reference: </span><span style="color:#65737e;">
-    http://code.activestate.com/recipes/572196-rsa/</span><span style="color:#65737e;">
-&#39;&#39;&#39;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">egcd</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">a</span><span style="color:#c0c5ce;">,</span><span style="color:#bf616a;">b</span><span style="color:#c0c5ce;">):</span><span style="color:#c0c5ce;">
-    </span><span style="color:#65737e;"># Extended Euclidean Algorithm</span><span style="color:#65737e;">
-    # returns x, y, gcd(a,b) such that ax + by = gcd(a,b)</span><span style="color:#65737e;">
-    </span><span style="color:#c0c5ce;">u, u1 = </span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">, </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">
-    v, v1 = </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">, </span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">
-    </span><span style="color:#b48ead;">while </span><span style="color:#c0c5ce;">b:</span><span style="color:#c0c5ce;">
-        q = a // b</span><span style="color:#c0c5ce;">
-        u, u1 = u1, u - q * u1</span><span style="color:#c0c5ce;">
-        v, v1 = v1, v - q * v1</span><span style="color:#c0c5ce;">
-        a, b = b, a - q * b</span><span style="color:#c0c5ce;">
-    </span><span style="color:#b48ead;">return </span><span style="color:#c0c5ce;">u, v, a</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">modInverse</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">e</span><span style="color:#c0c5ce;">,</span><span style="color:#bf616a;">phi_n</span><span style="color:#c0c5ce;">):  </span><span style="color:#c0c5ce;">
-    </span><span style="color:#b48ead;">return </span><span style="color:#bf616a;">egcd</span><span style="color:#c0c5ce;">(e,phi_n)[</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">]%phi_n</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">():</span><span style="color:#c0c5ce;">
-    p = </span><span style="color:#d08770;">79</span><span style="color:#c0c5ce;">
-    q = </span><span style="color:#d08770;">87</span><span style="color:#c0c5ce;">
-    n = p*q</span><span style="color:#c0c5ce;">
-    phi_n = (p-</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">)*(q-</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
-    e = </span><span style="color:#d08770;">19</span><span style="color:#c0c5ce;">
-    d = </span><span style="color:#bf616a;">modInverse</span><span style="color:#c0c5ce;">(e,phi_n)</span><span style="color:#c0c5ce;">
-    </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">p=</span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">, q=</span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">, n=</span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">, e=</span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">, phi_n=</span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">, d=</span><span style="color:#d08770;">%d</span><span style="color:#c0c5ce;">&quot; % (p,q,n,e,phi_n,d)</span><span style="color:#c0c5ce;">
-    m = </span><span style="color:#d08770;">30</span><span style="color:#c0c5ce;">
-    c = (m**e) % n </span><span style="color:#65737e;"># encrypt by public key (n,e)</span><span style="color:#65737e;">
-    </span><span style="color:#c0c5ce;">m1 = (c**d) % n </span><span style="color:#65737e;"># decrypt by private key (n,d) </span><span style="color:#65737e;">
-    </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">message is </span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">, cipher is </span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">, cipher decrypt out is </span><span style="color:#d08770;">%d</span><span style="color:#c0c5ce;">&quot; % (m, c, m1)</span><span style="color:#c0c5ce;">
-    </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#96b5b4;">\n</span><span style="color:#a3be8c;">================start encryption loops attack.</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#c0c5ce;">
-    save_c = </span><span style="color:#d08770;">None</span><span style="color:#c0c5ce;">
-    c1 = c</span><span style="color:#c0c5ce;">
-    </span><span style="color:#b48ead;">while </span><span style="color:#d08770;">True</span><span style="color:#c0c5ce;">:</span><span style="color:#c0c5ce;">
-        m = c1</span><span style="color:#c0c5ce;">
-        c1 = (m**e) % n</span><span style="color:#c0c5ce;">
-        save_c = m</span><span style="color:#c0c5ce;">
-        </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">message is </span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">, cipher is </span><span style="color:#d08770;">%d</span><span style="color:#c0c5ce;">&quot; % (m, c1)</span><span style="color:#c0c5ce;">
-        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">c1 == c: </span><span style="color:#c0c5ce;">
-            </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">==================got it! after some encryption loops, m is </span><span style="color:#d08770;">%d</span><span style="color:#c0c5ce;">&quot; % (save_c)</span><span style="color:#c0c5ce;">
-            </span><span style="color:#b48ead;">break</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#bf616a;">main</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-python" data-lang="python"><span style="font-style:italic;color:#4a4a4a;">#!/usr/bin/env python</span><span style="font-style:italic;color:#4a4a4a;">
+# -*- coding: utf-8 -*-  </span><span style="font-style:italic;color:#4a4a4a;">
+ </span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#4a4a4a;">&#39;&#39;&#39;</span><span style="font-style:italic;color:#4a4a4a;">
+author: xjump.me#gmail.com</span><span style="font-style:italic;color:#4a4a4a;">
+reference: </span><span style="font-style:italic;color:#4a4a4a;">
+    http://code.activestate.com/recipes/572196-rsa/</span><span style="font-style:italic;color:#4a4a4a;">
+&#39;&#39;&#39;</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">def </span><span style="color:#82aaff;">egcd</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">a</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">b</span><span style="color:#89ddff;">):</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#4a4a4a;"># Extended Euclidean Algorithm</span><span style="font-style:italic;color:#4a4a4a;">
+    # returns x, y, gcd(a,b) such that ax + by = gcd(a,b)</span><span style="font-style:italic;color:#4a4a4a;">
+    </span><span style="color:#eeffff;">u, u1 </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">1</span><span style="color:#eeffff;">, </span><span style="color:#f78c6c;">0</span><span style="color:#eeffff;">
+    v, v1 </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">0</span><span style="color:#eeffff;">, </span><span style="color:#f78c6c;">1</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">while </span><span style="color:#eeffff;">b</span><span style="color:#89ddff;">:</span><span style="color:#eeffff;">
+        q </span><span style="color:#89ddff;">= </span><span style="color:#eeffff;">a </span><span style="color:#89ddff;">// </span><span style="color:#eeffff;">b</span><span style="color:#eeffff;">
+        u, u1 </span><span style="color:#89ddff;">= </span><span style="color:#eeffff;">u1, u </span><span style="color:#89ddff;">- </span><span style="color:#eeffff;">q </span><span style="color:#89ddff;">* </span><span style="color:#eeffff;">u1</span><span style="color:#eeffff;">
+        v, v1 </span><span style="color:#89ddff;">= </span><span style="color:#eeffff;">v1, v </span><span style="color:#89ddff;">- </span><span style="color:#eeffff;">q </span><span style="color:#89ddff;">* </span><span style="color:#eeffff;">v1</span><span style="color:#eeffff;">
+        a, b </span><span style="color:#89ddff;">= </span><span style="color:#eeffff;">b, a </span><span style="color:#89ddff;">- </span><span style="color:#eeffff;">q </span><span style="color:#89ddff;">* </span><span style="color:#eeffff;">b</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">return </span><span style="color:#eeffff;">u, v, a</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">def </span><span style="color:#82aaff;">modInverse</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">e</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">phi_n</span><span style="color:#89ddff;">):  </span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">return </span><span style="color:#82aaff;">egcd</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">e</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;">phi_n</span><span style="color:#89ddff;">)[</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">]%</span><span style="color:#eeffff;">phi_n</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">def </span><span style="color:#82aaff;">main</span><span style="color:#89ddff;">():</span><span style="color:#eeffff;">
+    p </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">79</span><span style="color:#eeffff;">
+    q </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">87</span><span style="color:#eeffff;">
+    n </span><span style="color:#89ddff;">= </span><span style="color:#eeffff;">p</span><span style="color:#89ddff;">*</span><span style="color:#eeffff;">q</span><span style="color:#eeffff;">
+    phi_n </span><span style="color:#89ddff;">= (</span><span style="color:#eeffff;">p</span><span style="color:#89ddff;">-</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">)*(</span><span style="color:#eeffff;">q</span><span style="color:#89ddff;">-</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+    e </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">19</span><span style="color:#eeffff;">
+    d </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">modInverse</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">e</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;">phi_n</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+    </span><span style="color:#c792ea;">print </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">p=</span><span style="color:#eeffff;">%d</span><span style="color:#c3e88d;">, q=</span><span style="color:#eeffff;">%d</span><span style="color:#c3e88d;">, n=</span><span style="color:#eeffff;">%d</span><span style="color:#c3e88d;">, e=</span><span style="color:#eeffff;">%d</span><span style="color:#c3e88d;">, phi_n=</span><span style="color:#eeffff;">%d</span><span style="color:#c3e88d;">, d=</span><span style="color:#eeffff;">%d</span><span style="color:#89ddff;">&quot; % (</span><span style="color:#eeffff;">p</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;">q</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;">n</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;">e</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;">phi_n</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;">d</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+    m </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">30</span><span style="color:#eeffff;">
+    c </span><span style="color:#89ddff;">= (</span><span style="color:#eeffff;">m</span><span style="color:#89ddff;">**</span><span style="color:#eeffff;">e</span><span style="color:#89ddff;">) % </span><span style="color:#eeffff;">n </span><span style="font-style:italic;color:#4a4a4a;"># encrypt by public key (n,e)</span><span style="font-style:italic;color:#4a4a4a;">
+    </span><span style="color:#eeffff;">m1 </span><span style="color:#89ddff;">= (</span><span style="color:#eeffff;">c</span><span style="color:#89ddff;">**</span><span style="color:#eeffff;">d</span><span style="color:#89ddff;">) % </span><span style="color:#eeffff;">n </span><span style="font-style:italic;color:#4a4a4a;"># decrypt by private key (n,d) </span><span style="font-style:italic;color:#4a4a4a;">
+    </span><span style="color:#c792ea;">print </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">message is </span><span style="color:#eeffff;">%d</span><span style="color:#c3e88d;">, cipher is </span><span style="color:#eeffff;">%d</span><span style="color:#c3e88d;">, cipher decrypt out is </span><span style="color:#eeffff;">%d</span><span style="color:#89ddff;">&quot; % (</span><span style="color:#eeffff;">m</span><span style="color:#89ddff;">, </span><span style="color:#eeffff;">c</span><span style="color:#89ddff;">, </span><span style="color:#eeffff;">m1</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+    </span><span style="color:#c792ea;">print </span><span style="color:#89ddff;">&quot;\n</span><span style="color:#c3e88d;">================start encryption loops attack.</span><span style="color:#89ddff;">&quot;</span><span style="color:#eeffff;">
+    save_c </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">None</span><span style="color:#eeffff;">
+    c1 </span><span style="color:#89ddff;">= </span><span style="color:#eeffff;">c</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">while </span><span style="color:#f78c6c;">True</span><span style="color:#89ddff;">:</span><span style="color:#eeffff;">
+        m </span><span style="color:#89ddff;">= </span><span style="color:#eeffff;">c1</span><span style="color:#eeffff;">
+        c1 </span><span style="color:#89ddff;">= (</span><span style="color:#eeffff;">m</span><span style="color:#89ddff;">**</span><span style="color:#eeffff;">e</span><span style="color:#89ddff;">) % </span><span style="color:#eeffff;">n</span><span style="color:#eeffff;">
+        save_c </span><span style="color:#89ddff;">= </span><span style="color:#eeffff;">m</span><span style="color:#eeffff;">
+        </span><span style="color:#c792ea;">print </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">message is </span><span style="color:#eeffff;">%d</span><span style="color:#c3e88d;">, cipher is </span><span style="color:#eeffff;">%d</span><span style="color:#89ddff;">&quot; % (</span><span style="color:#eeffff;">m</span><span style="color:#89ddff;">, </span><span style="color:#eeffff;">c1</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+        </span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#eeffff;">c1 </span><span style="color:#89ddff;">== </span><span style="color:#eeffff;">c</span><span style="color:#89ddff;">: </span><span style="color:#eeffff;">
+            </span><span style="color:#c792ea;">print </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">==================got it! after some encryption loops, m is </span><span style="color:#eeffff;">%d</span><span style="color:#89ddff;">&quot; % (</span><span style="color:#eeffff;">save_c</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+            </span><span style="font-style:italic;color:#c792ea;">break</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">main</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
 </span></code></pre>
     </div>
 

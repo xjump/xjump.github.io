@@ -143,119 +143,119 @@
     </header>
 
     <div class="post-content">
-      <pre style="background-color:#2b303b;">
-<code class="language-mm" data-lang="mm"><span style="color:#65737e;">//TheSingleton.h</span><span style="color:#65737e;">
-</span><span style="color:#b48ead;">@interface </span><span style="color:#c0c5ce;">TheSingleton </span><span style="color:#8fa1b3;">: </span><span style="color:#a3be8c;">NSObject</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-+(instancetype) </span><span style="color:#8fa1b3;">sharedInstance</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-+(instancetype) </span><span style="color:#8fa1b3;">alloc</span><span style="color:#c0c5ce;"> __attribute__((</span><span style="color:#bf616a;">unavailable</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">alloc not available, call sharedInstance instead</span><span style="color:#c0c5ce;">&quot;))</span><span style="background-color:#bf616a;color:#2b303b;">)</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
--(instancetype) init </span><span style="color:#b48ead;">__attribute__</span><span style="color:#c0c5ce;">((unavailable(&quot;</span><span style="color:#a3be8c;">init not available, call sharedInstance instead</span><span style="color:#c0c5ce;">&quot;)));</span><span style="color:#c0c5ce;">
-+(instancetype) </span><span style="color:#b48ead;">new __attribute__</span><span style="color:#c0c5ce;">((unavailable(&quot;</span><span style="color:#a3be8c;">new not available, call sharedInstance instead</span><span style="color:#c0c5ce;">&quot;)));</span><span style="color:#c0c5ce;">
--(instancetype) copy </span><span style="color:#b48ead;">__attribute__</span><span style="color:#c0c5ce;">((unavailable(&quot;</span><span style="color:#a3be8c;">copy not available, call sharedInstance instead</span><span style="color:#c0c5ce;">&quot;)));</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-@end</span><span style="color:#c0c5ce;">
+      <pre style="background-color:#212121;">
+<code class="language-mm" data-lang="mm"><span style="font-style:italic;color:#4a4a4a;">//TheSingleton.h</span><span style="font-style:italic;color:#4a4a4a;">
+</span><span style="font-style:italic;color:#89ddff;">@</span><span style="font-style:italic;color:#c792ea;">interface </span><span style="color:#eeffff;">TheSingleton </span><span style="color:#89ddff;">: </span><span style="color:#c3e88d;">NSObject</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
++</span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">instancetype</span><span style="color:#89ddff;">) </span><span style="color:#82aaff;">sharedInstance</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
++</span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">instancetype</span><span style="color:#89ddff;">) </span><span style="color:#82aaff;">alloc</span><span style="color:#eeffff;"> __attribute__</span><span style="color:#89ddff;">((</span><span style="color:#82aaff;">unavailable</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">alloc not available, call sharedInstance instead</span><span style="color:#89ddff;">&quot;))</span><span style="background-color:#ff5370;color:#ffffff;">)</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">-(</span><span style="color:#eeffff;">instancetype</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;"> init </span><span style="color:#c792ea;">__attribute__</span><span style="color:#89ddff;">((</span><span style="color:#eeffff;">unavailable</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">init not available, call sharedInstance instead</span><span style="color:#89ddff;">&quot;)));</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">+(</span><span style="color:#eeffff;">instancetype</span><span style="color:#89ddff;">) </span><span style="font-style:italic;color:#c792ea;">new </span><span style="color:#c792ea;">__attribute__</span><span style="color:#89ddff;">((</span><span style="color:#eeffff;">unavailable</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">new not available, call sharedInstance instead</span><span style="color:#89ddff;">&quot;)));</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">-(</span><span style="color:#eeffff;">instancetype</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;"> copy </span><span style="color:#c792ea;">__attribute__</span><span style="color:#89ddff;">((</span><span style="color:#eeffff;">unavailable</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">copy not available, call sharedInstance instead</span><span style="color:#89ddff;">&quot;)));</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+@end</span><span style="color:#eeffff;">
 </span></code></pre><span id="continue-reading"></span>
-<pre style="background-color:#2b303b;">
-<code class="language-mm" data-lang="mm"><span style="color:#65737e;">//TheSingleton.m</span><span style="color:#65737e;">
-</span><span style="color:#b48ead;">@implementation </span><span style="color:#c0c5ce;">TheSingleton</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-+(instancetype) </span><span style="color:#8fa1b3;">sharedInstance </span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
-    </span><span style="color:#b48ead;">static</span><span style="color:#c0c5ce;"> dispatch_once_t pred;</span><span style="color:#c0c5ce;">
-    </span><span style="color:#b48ead;">static id </span><span style="color:#c0c5ce;">shared = </span><span style="color:#d08770;">nil</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-    </span><span style="color:#bf616a;">dispatch_once</span><span style="color:#c0c5ce;">(&amp;pred, ^{</span><span style="color:#c0c5ce;">
-        shared = [[</span><span style="color:#bf616a;">super </span><span style="color:#8fa1b3;">alloc</span><span style="color:#c0c5ce;">] initUniqueInstance];</span><span style="color:#c0c5ce;">
-    });</span><span style="color:#c0c5ce;">
-    </span><span style="color:#b48ead;">return</span><span style="color:#c0c5ce;"> shared;</span><span style="color:#c0c5ce;">
-}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
--(instancetype) </span><span style="color:#8fa1b3;">initUniqueInstance </span><span style="color:#c0c5ce;">{</span><span style="color:#c0c5ce;">
-    </span><span style="color:#b48ead;">id </span><span style="color:#c0c5ce;">me = [</span><span style="color:#bf616a;">super </span><span style="color:#8fa1b3;">init</span><span style="color:#c0c5ce;">];</span><span style="color:#c0c5ce;">
-    </span><span style="color:#65737e;">// other initialize here.</span><span style="color:#65737e;">
-    </span><span style="color:#b48ead;">return</span><span style="color:#c0c5ce;"> me;</span><span style="color:#c0c5ce;">
-}</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">@end</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-mm" data-lang="mm"><span style="font-style:italic;color:#4a4a4a;">//TheSingleton.m</span><span style="font-style:italic;color:#4a4a4a;">
+</span><span style="font-style:italic;color:#89ddff;">@</span><span style="font-style:italic;color:#c792ea;">implementation </span><span style="color:#eeffff;">TheSingleton</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
++</span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">instancetype</span><span style="color:#89ddff;">) </span><span style="color:#82aaff;">sharedInstance </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+    </span><span style="color:#c792ea;">static</span><span style="color:#eeffff;"> dispatch_once_t pred</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+    </span><span style="color:#c792ea;">static </span><span style="font-style:italic;color:#c792ea;">id </span><span style="color:#eeffff;">shared </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">nil</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+    </span><span style="color:#82aaff;">dispatch_once</span><span style="color:#89ddff;">(&amp;</span><span style="color:#82aaff;">pred</span><span style="color:#89ddff;">, ^{</span><span style="color:#82aaff;">
+        shared </span><span style="color:#89ddff;">= [[</span><span style="font-style:italic;color:#ff5370;">super </span><span style="color:#82aaff;">alloc</span><span style="color:#89ddff;">]</span><span style="color:#82aaff;"> initUniqueInstance</span><span style="color:#89ddff;">];</span><span style="color:#82aaff;">
+    </span><span style="color:#89ddff;">});</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">return</span><span style="color:#eeffff;"> shared</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+-</span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">instancetype</span><span style="color:#89ddff;">) </span><span style="color:#82aaff;">initUniqueInstance </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">id </span><span style="color:#eeffff;">me </span><span style="color:#89ddff;">= [</span><span style="font-style:italic;color:#ff5370;">super </span><span style="color:#82aaff;">init</span><span style="color:#89ddff;">];</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#4a4a4a;">// other initialize here.</span><span style="font-style:italic;color:#4a4a4a;">
+    </span><span style="font-style:italic;color:#c792ea;">return</span><span style="color:#eeffff;"> me</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#89ddff;">@</span><span style="font-style:italic;color:#c792ea;">end</span><span style="color:#eeffff;">
 </span></code></pre><p>
     ObjC版使用：</p>
-<pre style="background-color:#2b303b;">
-<code class="language-mm" data-lang="mm"><span style="color:#c0c5ce;">TheSingleton* instance = [TheSingleton </span><span style="color:#8fa1b3;">sharedInstance</span><span style="color:#c0c5ce;">];</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-mm" data-lang="mm"><span style="color:#eeffff;">TheSingleton</span><span style="color:#89ddff;">*</span><span style="color:#eeffff;"> instance </span><span style="color:#89ddff;">= [</span><span style="color:#eeffff;">TheSingleton </span><span style="color:#82aaff;">sharedInstance</span><span style="color:#89ddff;">];</span><span style="color:#eeffff;">
 </span></code></pre><p>
     swift 版：</p>
-<pre style="background-color:#2b303b;">
-<code class="language-swift" data-lang="swift"><span style="color:#b48ead;">class</span><span style="color:#c0c5ce;"> TheSingleton {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    </span><span style="color:#b48ead;">class var</span><span style="color:#c0c5ce;"> sharedInstance : TheSingleton {</span><span style="color:#c0c5ce;">
-        </span><span style="color:#b48ead;">struct</span><span style="color:#c0c5ce;"> Static {</span><span style="color:#c0c5ce;">
-            </span><span style="color:#b48ead;">static var</span><span style="color:#c0c5ce;"> onceToken : dispatch_once_t = </span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">
-            </span><span style="color:#b48ead;">static var</span><span style="color:#c0c5ce;"> instance : TheSingleton? = </span><span style="color:#d08770;">nil</span><span style="color:#c0c5ce;">
-        }</span><span style="color:#c0c5ce;">
-        dispatch_once(&amp;Static.onceToken) {</span><span style="color:#c0c5ce;">
-            Static.instance = TheSingleton()</span><span style="color:#c0c5ce;">
-        }</span><span style="color:#c0c5ce;">
-        </span><span style="color:#b48ead;">return</span><span style="color:#c0c5ce;"> Static.instance!</span><span style="color:#c0c5ce;">
-    }</span><span style="color:#c0c5ce;">
-}</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-swift" data-lang="swift"><span style="font-style:italic;color:#c792ea;">class</span><span style="color:#eeffff;"> TheSingleton {</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">class var</span><span style="color:#eeffff;"> sharedInstance </span><span style="color:#89ddff;">:</span><span style="color:#eeffff;"> TheSingleton {</span><span style="color:#eeffff;">
+        </span><span style="font-style:italic;color:#c792ea;">struct</span><span style="color:#eeffff;"> Static {</span><span style="color:#eeffff;">
+            </span><span style="color:#c792ea;">static </span><span style="font-style:italic;color:#c792ea;">var</span><span style="color:#eeffff;"> onceToken </span><span style="color:#89ddff;">:</span><span style="color:#eeffff;"> dispatch_once_t </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">0</span><span style="color:#eeffff;">
+            </span><span style="color:#c792ea;">static </span><span style="font-style:italic;color:#c792ea;">var</span><span style="color:#eeffff;"> instance </span><span style="color:#89ddff;">:</span><span style="color:#eeffff;"> TheSingleton? </span><span style="color:#89ddff;">= </span><span style="color:#eeffff;">nil</span><span style="color:#eeffff;">
+        }</span><span style="color:#eeffff;">
+        dispatch_once(</span><span style="color:#89ddff;">&amp;</span><span style="color:#eeffff;">Static</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">onceToken) {</span><span style="color:#eeffff;">
+            Static</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">instance </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> TheSingleton()</span><span style="color:#eeffff;">
+        }</span><span style="color:#eeffff;">
+        </span><span style="font-style:italic;color:#c792ea;">return</span><span style="color:#eeffff;"> Static</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">instance</span><span style="color:#89ddff;">!</span><span style="color:#eeffff;">
+    }</span><span style="color:#eeffff;">
+}</span><span style="color:#eeffff;">
 </span></code></pre><p>
     或者：</p>
-<pre style="background-color:#2b303b;">
-<code class="language-swift" data-lang="swift"><span style="color:#b48ead;">class</span><span style="color:#c0c5ce;"> TheSingleton {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    </span><span style="color:#b48ead;">class var</span><span style="color:#c0c5ce;"> sharedInstance : TheSingleton {</span><span style="color:#c0c5ce;">
-        </span><span style="color:#b48ead;">struct</span><span style="color:#c0c5ce;"> Static {</span><span style="color:#c0c5ce;">
-            </span><span style="color:#b48ead;">static let</span><span style="color:#c0c5ce;"> instance : TheSingleton = TheSingleton()</span><span style="color:#c0c5ce;">
-        }</span><span style="color:#c0c5ce;">
-        </span><span style="color:#b48ead;">return</span><span style="color:#c0c5ce;"> Static.instance</span><span style="color:#c0c5ce;">
-    }</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-}</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-swift" data-lang="swift"><span style="font-style:italic;color:#c792ea;">class</span><span style="color:#eeffff;"> TheSingleton {</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">class var</span><span style="color:#eeffff;"> sharedInstance </span><span style="color:#89ddff;">:</span><span style="color:#eeffff;"> TheSingleton {</span><span style="color:#eeffff;">
+        </span><span style="font-style:italic;color:#c792ea;">struct</span><span style="color:#eeffff;"> Static {</span><span style="color:#eeffff;">
+            </span><span style="color:#c792ea;">static </span><span style="font-style:italic;color:#c792ea;">let</span><span style="color:#eeffff;"> instance </span><span style="color:#89ddff;">:</span><span style="color:#eeffff;"> TheSingleton </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> TheSingleton()</span><span style="color:#eeffff;">
+        }</span><span style="color:#eeffff;">
+        </span><span style="font-style:italic;color:#c792ea;">return</span><span style="color:#eeffff;"> Static</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">instance</span><span style="color:#eeffff;">
+    }</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+}</span><span style="color:#eeffff;">
 </span></code></pre><p>
     swift版使用：</p>
-<pre style="background-color:#2b303b;">
-<code class="language-swift" data-lang="swift"><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> instance = TheSingleton.sharedInstance</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-swift" data-lang="swift"><span style="font-style:italic;color:#c792ea;">let</span><span style="color:#eeffff;"> instance </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> TheSingleton</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">sharedInstance</span><span style="color:#eeffff;">
 </span></code></pre><p>
     &nbsp;</p>
 <p>
     C++1x Singleton，下面的方法已经过时了，其实C++11有更简单的实现方式：</p>
-<pre style="background-color:#2b303b;">
-<code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">#ifndef</span><span style="color:#c0c5ce;"> SINGLETON_H</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">#define </span><span style="color:#c0c5ce;">SINGLETON_H</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">#include </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#a3be8c;">mutex</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">#include </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#a3be8c;">functional</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">#include </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#a3be8c;">memory</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">#include </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#a3be8c;">utility</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">template</span><span style="color:#c0c5ce;">&lt;</span><span style="color:#b48ead;">class</span><span style="color:#c0c5ce;"> SingleClass&gt;</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">Singleton</span><span style="color:#eff1f5;">
-{</span><span style="color:#eff1f5;">
-</span><span style="color:#b48ead;">public</span><span style="color:#eff1f5;">:</span><span style="color:#eff1f5;">
-  </span><span style="color:#8fa1b3;">Singleton</span><span style="color:#eff1f5;">() </span><span style="color:#c0c5ce;">= </span><span style="color:#b48ead;">default</span><span style="color:#eff1f5;">;</span><span style="color:#eff1f5;">
-  </span><span style="color:#b48ead;">virtual </span><span style="color:#8fa1b3;">~Singleton</span><span style="color:#eff1f5;">() </span><span style="color:#c0c5ce;">= </span><span style="color:#b48ead;">default</span><span style="color:#eff1f5;">;</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">
-  </span><span style="color:#8fa1b3;">Singleton</span><span style="color:#eff1f5;">(</span><span style="color:#b48ead;">const</span><span style="color:#eff1f5;"> Singleton</span><span style="color:#c0c5ce;">&amp;</span><span style="color:#eff1f5;">) </span><span style="color:#c0c5ce;">= </span><span style="color:#b48ead;">delete</span><span style="color:#eff1f5;">;</span><span style="color:#eff1f5;">
-  Singleton</span><span style="color:#c0c5ce;">&amp; </span><span style="color:#8fa1b3;">operator=</span><span style="color:#eff1f5;">(</span><span style="color:#b48ead;">const</span><span style="color:#eff1f5;"> Singleton</span><span style="color:#c0c5ce;">&amp;</span><span style="color:#eff1f5;">) </span><span style="color:#c0c5ce;">= </span><span style="color:#b48ead;">delete</span><span style="color:#eff1f5;">;</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">
-  </span><span style="color:#b48ead;">template</span><span style="color:#eff1f5;">&lt;</span><span style="color:#b48ead;">typename</span><span style="color:#eff1f5;"> IMPL </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> SingleClass, </span><span style="color:#b48ead;">typename</span><span style="color:#c0c5ce;">...</span><span style="color:#eff1f5;"> Args&gt;</span><span style="color:#eff1f5;">
-  </span><span style="color:#b48ead;">static</span><span style="color:#eff1f5;"> SingleClass</span><span style="color:#c0c5ce;">&amp; </span><span style="color:#8fa1b3;">instance</span><span style="color:#eff1f5;">(Args</span><span style="color:#c0c5ce;">&amp;&amp;... </span><span style="color:#bf616a;">args</span><span style="color:#eff1f5;">)</span><span style="color:#eff1f5;">
-  {</span><span style="color:#eff1f5;">
-    std::</span><span style="color:#bf616a;">call_once</span><span style="color:#eff1f5;">(</span><span style="color:#bf616a;">get_once_flag</span><span style="color:#eff1f5;">(), [](Args </span><span style="color:#c0c5ce;">&amp;&amp; ...</span><span style="color:#eff1f5;"> arg) {</span><span style="color:#eff1f5;">
-      _instance.</span><span style="color:#bf616a;">reset</span><span style="color:#eff1f5;">(</span><span style="color:#b48ead;">new </span><span style="color:#bf616a;">IMPL</span><span style="color:#eff1f5;">(std::</span><span style="color:#bf616a;">forward</span><span style="color:#eff1f5;">&lt;Args&gt;(arg)</span><span style="color:#c0c5ce;">...</span><span style="color:#eff1f5;">));</span><span style="color:#eff1f5;">
-    }, std::</span><span style="color:#bf616a;">forward</span><span style="color:#eff1f5;">&lt;Args&gt;(args)</span><span style="color:#c0c5ce;">...</span><span style="color:#eff1f5;">);</span><span style="color:#eff1f5;">
-    </span><span style="color:#b48ead;">return </span><span style="color:#c0c5ce;">*</span><span style="color:#eff1f5;">(_instance.</span><span style="color:#bf616a;">get</span><span style="color:#eff1f5;">());</span><span style="color:#eff1f5;">
-  };</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">
-</span><span style="color:#b48ead;">private</span><span style="color:#eff1f5;">:</span><span style="color:#eff1f5;">
-  </span><span style="color:#b48ead;">static</span><span style="color:#eff1f5;"> std::unique_ptr&lt;SingleClass&gt; _instance;</span><span style="color:#eff1f5;">
-  </span><span style="color:#b48ead;">static</span><span style="color:#eff1f5;"> std::once_flag</span><span style="color:#c0c5ce;">&amp; </span><span style="color:#8fa1b3;">get_once_flag</span><span style="color:#eff1f5;">() {</span><span style="color:#eff1f5;">
-    </span><span style="color:#b48ead;">static</span><span style="color:#eff1f5;"> std::once_flag once;</span><span style="color:#eff1f5;">
-    </span><span style="color:#b48ead;">return</span><span style="color:#eff1f5;"> once;</span><span style="color:#eff1f5;">
-  };</span><span style="color:#eff1f5;">
-}</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">template</span><span style="color:#c0c5ce;">&lt;</span><span style="color:#b48ead;">class</span><span style="color:#c0c5ce;"> T&gt; std::unique_ptr&lt;T&gt; Singleton&lt;T&gt;::_instance = </span><span style="color:#d08770;">nullptr</span><span style="color:#c0c5ce;">;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">#endif</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-cpp" data-lang="cpp"><span style="font-style:italic;color:#c792ea;">#ifndef</span><span style="color:#eeffff;"> SINGLETON_H</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">#define </span><span style="color:#eeffff;">SINGLETON_H</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">#include </span><span style="color:#89ddff;">&lt;</span><span style="color:#c3e88d;">mutex</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">#include </span><span style="color:#89ddff;">&lt;</span><span style="color:#c3e88d;">functional</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">#include </span><span style="color:#89ddff;">&lt;</span><span style="color:#c3e88d;">memory</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">#include </span><span style="color:#89ddff;">&lt;</span><span style="color:#c3e88d;">utility</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">template</span><span style="color:#89ddff;">&lt;</span><span style="font-style:italic;color:#c792ea;">class</span><span style="color:#eeffff;"> SingleClass</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">class </span><span style="color:#ffcb6b;">Singleton</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+</span><span style="color:#c792ea;">public</span><span style="color:#89ddff;">:</span><span style="color:#eeffff;">
+  </span><span style="color:#82aaff;">Singleton</span><span style="color:#89ddff;">() = </span><span style="color:#c792ea;">default</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+  </span><span style="color:#c792ea;">virtual </span><span style="color:#82aaff;">~Singleton</span><span style="color:#89ddff;">() = </span><span style="color:#c792ea;">default</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+  </span><span style="color:#82aaff;">Singleton</span><span style="color:#89ddff;">(</span><span style="color:#c792ea;">const</span><span style="color:#eeffff;"> Singleton</span><span style="color:#89ddff;">&amp;) = </span><span style="color:#c792ea;">delete</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+  Singleton</span><span style="color:#89ddff;">&amp; </span><span style="color:#82aaff;">operator=</span><span style="color:#89ddff;">(</span><span style="color:#c792ea;">const</span><span style="color:#eeffff;"> Singleton</span><span style="color:#89ddff;">&amp;) = </span><span style="color:#c792ea;">delete</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+  </span><span style="font-style:italic;color:#c792ea;">template</span><span style="color:#89ddff;">&lt;</span><span style="font-style:italic;color:#c792ea;">typename</span><span style="color:#eeffff;"> IMPL </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> SingleClass</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#c792ea;">typename</span><span style="color:#89ddff;">...</span><span style="color:#eeffff;"> Args</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;">
+  </span><span style="color:#c792ea;">static</span><span style="color:#eeffff;"> SingleClass</span><span style="color:#89ddff;">&amp; </span><span style="color:#82aaff;">instance</span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">Args</span><span style="color:#89ddff;">&amp;&amp;... </span><span style="color:#f78c6c;">args</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+  </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+    </span><span style="color:#82aaff;">std</span><span style="color:#89ddff;">::</span><span style="color:#82aaff;">call_once</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">get_once_flag</span><span style="color:#89ddff;">(), [](</span><span style="color:#82aaff;">Args </span><span style="color:#89ddff;">&amp;&amp; ...</span><span style="color:#82aaff;"> arg</span><span style="color:#89ddff;">) {</span><span style="color:#82aaff;">
+      _instance</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">reset</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">new </span><span style="color:#82aaff;">IMPL</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">std</span><span style="color:#89ddff;">::</span><span style="color:#82aaff;">forward</span><span style="color:#89ddff;">&lt;</span><span style="color:#82aaff;">Args</span><span style="color:#89ddff;">&gt;(</span><span style="color:#82aaff;">arg</span><span style="color:#89ddff;">)...));</span><span style="color:#82aaff;">
+    </span><span style="color:#89ddff;">}, </span><span style="color:#82aaff;">std</span><span style="color:#89ddff;">::</span><span style="color:#82aaff;">forward</span><span style="color:#89ddff;">&lt;</span><span style="color:#82aaff;">Args</span><span style="color:#89ddff;">&gt;(</span><span style="color:#82aaff;">args</span><span style="color:#89ddff;">)...);</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">return </span><span style="color:#89ddff;">*(</span><span style="color:#eeffff;">_instance</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">get</span><span style="color:#89ddff;">());</span><span style="color:#eeffff;">
+  </span><span style="color:#89ddff;">};</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="color:#c792ea;">private</span><span style="color:#89ddff;">:</span><span style="color:#eeffff;">
+  </span><span style="color:#c792ea;">static</span><span style="color:#eeffff;"> std</span><span style="color:#89ddff;">::</span><span style="color:#eeffff;">unique_ptr</span><span style="color:#89ddff;">&lt;</span><span style="color:#eeffff;">SingleClass</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;"> _instance</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+  </span><span style="color:#c792ea;">static</span><span style="color:#eeffff;"> std</span><span style="color:#89ddff;">::</span><span style="color:#eeffff;">once_flag</span><span style="color:#89ddff;">&amp; </span><span style="color:#82aaff;">get_once_flag</span><span style="color:#89ddff;">() {</span><span style="color:#eeffff;">
+    </span><span style="color:#c792ea;">static</span><span style="color:#eeffff;"> std</span><span style="color:#89ddff;">::</span><span style="color:#eeffff;">once_flag once</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">return</span><span style="color:#eeffff;"> once</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+  </span><span style="color:#89ddff;">};</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">};</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">template</span><span style="color:#89ddff;">&lt;</span><span style="font-style:italic;color:#c792ea;">class</span><span style="color:#eeffff;"> T</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;"> std</span><span style="color:#89ddff;">::</span><span style="color:#eeffff;">unique_ptr</span><span style="color:#89ddff;">&lt;</span><span style="color:#eeffff;">T</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;"> Singleton</span><span style="color:#89ddff;">&lt;</span><span style="color:#eeffff;">T</span><span style="color:#89ddff;">&gt;::</span><span style="color:#eeffff;">_instance </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">nullptr</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">#endif</span><span style="color:#eeffff;">
 </span></code></pre>
     </div>
 

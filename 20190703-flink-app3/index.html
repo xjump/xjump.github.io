@@ -229,8 +229,8 @@
 <h3 id="3-1-checkpoint">3.1 checkpoint</h3>
 <p>Flink的checkpoint设计可谓神来之笔。在事件定义清晰的情况下，引入ckpt事件，结合ckpt算子，在最细粒度进行状态的快照，实现了exactly-once。</p>
 <p>同时，通过ckpt事件的调度，故障阈值的调优，还可以在快照灵敏度上、故障发现及时性方面做更细致的调优。插入ckpt事件的数据流如下所示。</p>
-<pre style="background-color:#2b303b;">
-<code class="language-java" data-lang="java"><span style="color:#c0c5ce;">[ </span><span style="color:#ebcb8b;">Event</span><span style="color:#c0c5ce;">, </span><span style="color:#ebcb8b;">Event</span><span style="color:#c0c5ce;">, ckpt, </span><span style="color:#ebcb8b;">Event</span><span style="color:#c0c5ce;">, ..., </span><span style="color:#ebcb8b;">Event</span><span style="color:#c0c5ce;">, ckpt, </span><span style="color:#ebcb8b;">Event</span><span style="color:#c0c5ce;">, ..., </span><span style="color:#ebcb8b;">Event</span><span style="color:#c0c5ce;">, ckpt, </span><span style="color:#ebcb8b;">Event</span><span style="color:#c0c5ce;">, ... ]</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-java" data-lang="java"><span style="color:#eeffff;">[ </span><span style="color:#ffcb6b;">Event</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">Event</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> ckpt</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">Event</span><span style="color:#89ddff;">, ..., </span><span style="color:#ffcb6b;">Event</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> ckpt</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">Event</span><span style="color:#89ddff;">, ..., </span><span style="color:#ffcb6b;">Event</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> ckpt</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">Event</span><span style="color:#89ddff;">, ...</span><span style="color:#eeffff;"> ]</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>而在消费ckpt时，由特殊的算子进行快照即可。</p>
 <h3 id="3-2-gu-zhang-que-ren">3.2 故障确认</h3>

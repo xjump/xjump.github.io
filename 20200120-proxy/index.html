@@ -196,90 +196,90 @@
     <div class="post-content">
       <h2 id="1-git">1 git</h2>
 <p>github的repo拖不下来可以参考:</p>
-<pre style="background-color:#2b303b;">
-<code><span style="color:#c0c5ce;">[http]</span><span style="color:#c0c5ce;">
-	proxy = &quot;socks5://127.0.0.1:1091&quot;</span><span style="color:#c0c5ce;">
-	sslVerify = false</span><span style="color:#c0c5ce;">
-	postBuffer = 524288000</span><span style="color:#c0c5ce;">
-	lowSpeedLimit = 0</span><span style="color:#c0c5ce;">
-	lowSpeedTime = 999999</span><span style="color:#c0c5ce;">
-  </span><span style="color:#c0c5ce;">
-[https]</span><span style="color:#c0c5ce;">
-	proxy = &quot;socks5://127.0.0.1:1091&quot;</span><span style="color:#c0c5ce;">
-	sslVerify = false</span><span style="color:#c0c5ce;">
-	postBuffer = 524288000</span><span style="color:#c0c5ce;">
-	lowSpeedLimit = 0</span><span style="color:#c0c5ce;">
-	lowSpeedTime = 999999</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-[core]</span><span style="color:#c0c5ce;">
-	symlinks = true</span><span style="color:#c0c5ce;">
-	gitProxy = &#39;socks5://127.0.0.1:1091&#39;</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code><span style="color:#eeffff;">[http]</span><span style="color:#eeffff;">
+	proxy = &quot;socks5://127.0.0.1:1091&quot;</span><span style="color:#eeffff;">
+	sslVerify = false</span><span style="color:#eeffff;">
+	postBuffer = 524288000</span><span style="color:#eeffff;">
+	lowSpeedLimit = 0</span><span style="color:#eeffff;">
+	lowSpeedTime = 999999</span><span style="color:#eeffff;">
+  </span><span style="color:#eeffff;">
+[https]</span><span style="color:#eeffff;">
+	proxy = &quot;socks5://127.0.0.1:1091&quot;</span><span style="color:#eeffff;">
+	sslVerify = false</span><span style="color:#eeffff;">
+	postBuffer = 524288000</span><span style="color:#eeffff;">
+	lowSpeedLimit = 0</span><span style="color:#eeffff;">
+	lowSpeedTime = 999999</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+[core]</span><span style="color:#eeffff;">
+	symlinks = true</span><span style="color:#eeffff;">
+	gitProxy = &#39;socks5://127.0.0.1:1091&#39;</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>修改到~/.gitconfig文件中作为全局配置。</p>
 <span id="continue-reading"></span>
 <h2 id="2-python">2 Python</h2>
 <p>Python的urllib可以自动使用环境变量指定的proxy，设置如下:</p>
-<pre style="background-color:#2b303b;">
-<code><span style="color:#c0c5ce;">import os</span><span style="color:#c0c5ce;">
-os.environ[&#39;HTTP_PROXY&#39;] = &#39;127.0.0.1:1093&#39;</span><span style="color:#c0c5ce;">
-os.environ[&#39;HTTPS_PROXY&#39;] = &#39;127.0.0.1:1093&#39;</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code><span style="color:#eeffff;">import os</span><span style="color:#eeffff;">
+os.environ[&#39;HTTP_PROXY&#39;] = &#39;127.0.0.1:1093&#39;</span><span style="color:#eeffff;">
+os.environ[&#39;HTTPS_PROXY&#39;] = &#39;127.0.0.1:1093&#39;</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>注意需要增加到urllib的import之前。</p>
 <p>另外，对于pip安装工具的代理设置，如果使用socks5，需要安装pysock</p>
-<pre style="background-color:#2b303b;">
-<code><span style="color:#c0c5ce;">pip install pysocks</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code><span style="color:#eeffff;">pip install pysocks</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>然后在使用pip时添加参数:</p>
-<pre style="background-color:#2b303b;">
-<code><span style="color:#c0c5ce;">pip install --proxy=&#39;socks5://127.0.0.1:1091&#39; numpy</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code><span style="color:#eeffff;">pip install --proxy=&#39;socks5://127.0.0.1:1091&#39; numpy</span><span style="color:#eeffff;">
 </span></code></pre><h2 id="3-cargo">3 Cargo</h2>
 <p>Cargo是Rust的包管理工具，需要修改cargo的配置文件：</p>
-<pre style="background-color:#2b303b;">
-<code><span style="color:#c0c5ce;">[http]</span><span style="color:#c0c5ce;">
-  proxy = &quot;socks5://127.0.0.1:1091&quot;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-[https]</span><span style="color:#c0c5ce;">
-  proxy = &quot;socks5://127.0.0.1:1091&quot;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code><span style="color:#eeffff;">[http]</span><span style="color:#eeffff;">
+  proxy = &quot;socks5://127.0.0.1:1091&quot;</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+[https]</span><span style="color:#eeffff;">
+  proxy = &quot;socks5://127.0.0.1:1091&quot;</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>改全局的话改~/.cargo/config文件。改当前项目可以改$ProjRoot/.cargo/config文件，不存在可以新创建。</p>
 <h2 id="4-flutter">4 Flutter</h2>
 <p>Flutter可以修改$FlutterRoot/bin/flutter.bat|flutter，增加到第一行：</p>
-<pre style="background-color:#2b303b;">
-<code><span style="color:#c0c5ce;">REM for windows</span><span style="color:#c0c5ce;">
-set https_proxy=socks5://127.0.0.1:1091</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-# for *nix</span><span style="color:#c0c5ce;">
-export https_proxy=&quot;socks5://127.0.0.1:1091&quot;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code><span style="color:#eeffff;">REM for windows</span><span style="color:#eeffff;">
+set https_proxy=socks5://127.0.0.1:1091</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+# for *nix</span><span style="color:#eeffff;">
+export https_proxy=&quot;socks5://127.0.0.1:1091&quot;</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>由于flutter用的是dart的基础设施，所以也可以改$FlutterRoot/bin/cache/dart-sdk/pub.bat|pub，也是增加到第一行：</p>
-<pre style="background-color:#2b303b;">
-<code><span style="color:#c0c5ce;">REM for windows</span><span style="color:#c0c5ce;">
-set https_proxy=socks5://127.0.0.1:1091</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-# for *nix</span><span style="color:#c0c5ce;">
-export https_proxy=&quot;socks5://127.0.0.1:1091&quot;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code><span style="color:#eeffff;">REM for windows</span><span style="color:#eeffff;">
+set https_proxy=socks5://127.0.0.1:1091</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+# for *nix</span><span style="color:#eeffff;">
+export https_proxy=&quot;socks5://127.0.0.1:1091&quot;</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
 </span></code></pre><h2 id="5-android-studio-gradle">5 Android Studio Gradle</h2>
 <p>找到$PROJ/gradle.properties文件，<br />
 增加如下配置：</p>
-<pre style="background-color:#2b303b;">
-<code><span style="color:#c0c5ce;">systemProp.https.proxyHost=127.0.0.1</span><span style="color:#c0c5ce;">
-systemProp.https.proxyPort=1093</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code><span style="color:#eeffff;">systemProp.https.proxyHost=127.0.0.1</span><span style="color:#eeffff;">
+systemProp.https.proxyPort=1093</span><span style="color:#eeffff;">
 </span></code></pre><h2 id="6-hg">6 hg</h2>
-<pre style="background-color:#2b303b;">
-<code><span style="color:#c0c5ce;">[http_proxy]</span><span style="color:#c0c5ce;">
-host=127.0.0.1:1093</span><span style="color:#c0c5ce;">
-user=username</span><span style="color:#c0c5ce;">
-passwd=password</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code><span style="color:#eeffff;">[http_proxy]</span><span style="color:#eeffff;">
+host=127.0.0.1:1093</span><span style="color:#eeffff;">
+user=username</span><span style="color:#eeffff;">
+passwd=password</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>~/.hgrc for *nix, ~/mercurial.ini for windows</p>
 <h2 id="7-npm">7 npm</h2>
-<pre style="background-color:#2b303b;">
-<code><span style="color:#c0c5ce;">npm config set proxy http://127.0.0.1:1093</span><span style="color:#c0c5ce;">
-npm config set https-proxy http://127.0.0.1:1093</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code><span style="color:#eeffff;">npm config set proxy http://127.0.0.1:1093</span><span style="color:#eeffff;">
+npm config set https-proxy http://127.0.0.1:1093</span><span style="color:#eeffff;">
 </span></code></pre><h2 id="8-qi-ta">8 其他</h2>
 <p>使用系统httpclient的和flutter相同。</p>
 

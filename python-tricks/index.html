@@ -145,70 +145,70 @@
     <div class="post-content">
       <p><strong>字符串分割：</strong></p>
 <p>方法一：列表综合，适用任意长度序列</p>
-<pre style="background-color:#2b303b;">
-<code class="language-python" data-lang="python"><span style="color:#c0c5ce;">[s[i:i+</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">] </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">i </span><span style="color:#b48ead;">in </span><span style="color:#96b5b4;">range</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">0</span><span style="color:#c0c5ce;">, </span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">(seq), </span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">)]</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-python" data-lang="python"><span style="color:#89ddff;">[</span><span style="color:#eeffff;">s</span><span style="color:#89ddff;">[</span><span style="color:#eeffff;">i</span><span style="color:#89ddff;">:</span><span style="color:#eeffff;">i</span><span style="color:#89ddff;">+</span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">] </span><span style="font-style:italic;color:#c792ea;">for </span><span style="color:#eeffff;">i </span><span style="font-style:italic;color:#c792ea;">in </span><span style="color:#82aaff;">range</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">, </span><span style="color:#82aaff;">len</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">seq</span><span style="color:#89ddff;">), </span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">)]</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>方法二：re 模块，适用字符串，总长度要求是片段长度的整数倍</p>
-<pre style="background-color:#2b303b;">
-<code class="language-python" data-lang="python"><span style="color:#c0c5ce;">re.</span><span style="color:#bf616a;">compile</span><span style="color:#c0c5ce;">(r&amp;&#39;</span><span style="color:#a3be8c;">.</span><span style="color:#d08770;">{4}</span><span style="color:#c0c5ce;">&#39;).</span><span style="color:#bf616a;">findall</span><span style="color:#c0c5ce;">(s)</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-python" data-lang="python"><span style="color:#82aaff;">re</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">compile</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">r</span><span style="color:#89ddff;">&amp;&#39;</span><span style="color:#c3e88d;">.</span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">4</span><span style="color:#89ddff;">}&#39;).</span><span style="color:#82aaff;">findall</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">s</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
 </span></code></pre><span id="continue-reading"></span>
 <p>方法三：struct 模块，适用字符串，总长度要求是片段长度的整数倍</p>
-<pre style="background-color:#2b303b;">
-<code class="language-python" data-lang="python"><span style="color:#c0c5ce;">struct.</span><span style="color:#bf616a;">unpack</span><span style="color:#c0c5ce;">(&amp;&#39;</span><span style="color:#a3be8c;">4s</span><span style="color:#c0c5ce;">&#39;*</span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">(s)/</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">, s)</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-python" data-lang="python"><span style="color:#82aaff;">struct</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">unpack</span><span style="color:#89ddff;">(&amp;&#39;</span><span style="color:#c3e88d;">4s</span><span style="color:#89ddff;">&#39;*</span><span style="color:#82aaff;">len</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">s</span><span style="color:#89ddff;">)/</span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">, </span><span style="color:#82aaff;">s</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
 </span></code></pre><p><strong>文件夹拷贝：</strong></p>
-<pre style="background-color:#2b303b;">
-<code class="language-python" data-lang="python"><span style="color:#65737e;">#!/usr/bin/env python</span><span style="color:#65737e;">
-# encoding: utf-8</span><span style="color:#65737e;">
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">os</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">sys</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">shutil</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-__doc__ = &#39;&#39;&#39; </span><span style="color:#a3be8c;">copy all files from  directory to an destination ,</span><span style="color:#a3be8c;">
-It recreate directory tree of src to dst and replace or create </span><span style="color:#a3be8c;">
-file in this directory.</span><span style="color:#a3be8c;">
-If you have tree like this</span><span style="color:#a3be8c;">
-src/A/dir/file</span><span style="color:#a3be8c;">
-src/B/dir/sdir/file2</span><span style="color:#a3be8c;">
-src/B/dir/file</span><span style="color:#a3be8c;">
-and</span><span style="color:#a3be8c;">
-then after script src dst </span><span style="color:#a3be8c;">
-dst/dir/file</span><span style="color:#a3be8c;">
-dst/dir/sdir/file2 -&gt; this is the B file2 wich is taken</span><span style="color:#a3be8c;">
-http://code.activestate.com/recipes/577493-recurse-copy-file/</span><span style="color:#a3be8c;">
-</span><span style="color:#c0c5ce;">&#39;&#39;&#39;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">copytree</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">src</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">dst</span><span style="color:#c0c5ce;">):</span><span style="color:#c0c5ce;">
-    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">os.path.</span><span style="color:#bf616a;">isdir</span><span style="color:#c0c5ce;">(src):</span><span style="color:#c0c5ce;">
-        </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">not os.path.</span><span style="color:#bf616a;">exists</span><span style="color:#c0c5ce;">(dst):</span><span style="color:#c0c5ce;">
-            os.</span><span style="color:#bf616a;">makedirs</span><span style="color:#c0c5ce;">(dst)</span><span style="color:#c0c5ce;">
-        </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">name </span><span style="color:#b48ead;">in </span><span style="color:#c0c5ce;">os.</span><span style="color:#bf616a;">listdir</span><span style="color:#c0c5ce;">(src):</span><span style="color:#c0c5ce;">
-            </span><span style="color:#bf616a;">copytree</span><span style="color:#c0c5ce;">(os.path.</span><span style="color:#bf616a;">join</span><span style="color:#c0c5ce;">(src, name),</span><span style="color:#c0c5ce;">
-                     os.path.</span><span style="color:#bf616a;">join</span><span style="color:#c0c5ce;">(dst, name))</span><span style="color:#c0c5ce;">
-    </span><span style="color:#b48ead;">else</span><span style="color:#c0c5ce;">:</span><span style="color:#c0c5ce;">
-        shutil.</span><span style="color:#bf616a;">copyfile</span><span style="color:#c0c5ce;">(src, dst)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">main</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">dsrc</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">ddst</span><span style="color:#c0c5ce;">):</span><span style="color:#c0c5ce;">
-    </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">dirname </span><span style="color:#b48ead;">in </span><span style="color:#c0c5ce;">os.</span><span style="color:#bf616a;">listdir</span><span style="color:#c0c5ce;">(dsrc):</span><span style="color:#c0c5ce;">
-        tocopy = os.path.</span><span style="color:#bf616a;">join</span><span style="color:#c0c5ce;">(dsrc, dirname)</span><span style="color:#c0c5ce;">
-        </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">d </span><span style="color:#b48ead;">in </span><span style="color:#c0c5ce;">os.</span><span style="color:#bf616a;">listdir</span><span style="color:#c0c5ce;">(tocopy):</span><span style="color:#c0c5ce;">
-            src = os.path.</span><span style="color:#bf616a;">join</span><span style="color:#c0c5ce;">(tocopy,d)</span><span style="color:#c0c5ce;">
-            dst = os.path.</span><span style="color:#bf616a;">join</span><span style="color:#c0c5ce;">(ddst,d)</span><span style="color:#c0c5ce;">
-            </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">os.path.</span><span style="color:#bf616a;">isdir</span><span style="color:#c0c5ce;">(src):</span><span style="color:#c0c5ce;">
-                </span><span style="color:#bf616a;">copytree</span><span style="color:#c0c5ce;">(src, dst)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">__name__ == &#39;</span><span style="color:#a3be8c;">__main__</span><span style="color:#c0c5ce;">&#39;:</span><span style="color:#c0c5ce;">
-    src = sys.argv[</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">]</span><span style="color:#c0c5ce;">
-    dst = sys.argv[</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">]</span><span style="color:#c0c5ce;">
-    </span><span style="color:#bf616a;">main</span><span style="color:#c0c5ce;">(src, dst)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-python" data-lang="python"><span style="font-style:italic;color:#4a4a4a;">#!/usr/bin/env python</span><span style="font-style:italic;color:#4a4a4a;">
+# encoding: utf-8</span><span style="font-style:italic;color:#4a4a4a;">
+</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">import </span><span style="color:#eeffff;">os</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">import </span><span style="color:#eeffff;">sys</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">import </span><span style="color:#eeffff;">shutil</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+__doc__ </span><span style="color:#89ddff;">= &#39;&#39;&#39; </span><span style="color:#c3e88d;">copy all files from  directory to an destination ,</span><span style="color:#c3e88d;">
+It recreate directory tree of src to dst and replace or create </span><span style="color:#c3e88d;">
+file in this directory.</span><span style="color:#c3e88d;">
+If you have tree like this</span><span style="color:#c3e88d;">
+src/A/dir/file</span><span style="color:#c3e88d;">
+src/B/dir/sdir/file2</span><span style="color:#c3e88d;">
+src/B/dir/file</span><span style="color:#c3e88d;">
+and</span><span style="color:#c3e88d;">
+then after script src dst </span><span style="color:#c3e88d;">
+dst/dir/file</span><span style="color:#c3e88d;">
+dst/dir/sdir/file2 -&gt; this is the B file2 wich is taken</span><span style="color:#c3e88d;">
+http://code.activestate.com/recipes/577493-recurse-copy-file/</span><span style="color:#c3e88d;">
+</span><span style="color:#89ddff;">&#39;&#39;&#39;</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">def </span><span style="color:#82aaff;">copytree</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">src</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">dst</span><span style="color:#89ddff;">):</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#82aaff;">os</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">path</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">isdir</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">src</span><span style="color:#89ddff;">):</span><span style="color:#eeffff;">
+        </span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#89ddff;">not </span><span style="color:#82aaff;">os</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">path</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">exists</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">dst</span><span style="color:#89ddff;">):</span><span style="color:#eeffff;">
+            </span><span style="color:#82aaff;">os</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">makedirs</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">dst</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+        </span><span style="font-style:italic;color:#c792ea;">for </span><span style="color:#eeffff;">name </span><span style="font-style:italic;color:#c792ea;">in </span><span style="color:#82aaff;">os</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">listdir</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">src</span><span style="color:#89ddff;">):</span><span style="color:#eeffff;">
+            </span><span style="color:#82aaff;">copytree</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">os</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">path</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">join</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">src</span><span style="color:#89ddff;">, </span><span style="color:#82aaff;">name</span><span style="color:#89ddff;">),</span><span style="color:#82aaff;">
+                     os</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">path</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">join</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">dst</span><span style="color:#89ddff;">, </span><span style="color:#82aaff;">name</span><span style="color:#89ddff;">))</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">else</span><span style="color:#89ddff;">:</span><span style="color:#eeffff;">
+        </span><span style="color:#82aaff;">shutil</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">copyfile</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">src</span><span style="color:#89ddff;">, </span><span style="color:#82aaff;">dst</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">def </span><span style="color:#82aaff;">main</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">dsrc</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">ddst</span><span style="color:#89ddff;">):</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">for </span><span style="color:#eeffff;">dirname </span><span style="font-style:italic;color:#c792ea;">in </span><span style="color:#82aaff;">os</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">listdir</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">dsrc</span><span style="color:#89ddff;">):</span><span style="color:#eeffff;">
+        tocopy </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">os</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">path</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">join</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">dsrc</span><span style="color:#89ddff;">, </span><span style="color:#82aaff;">dirname</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+        </span><span style="font-style:italic;color:#c792ea;">for </span><span style="color:#eeffff;">d </span><span style="font-style:italic;color:#c792ea;">in </span><span style="color:#82aaff;">os</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">listdir</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">tocopy</span><span style="color:#89ddff;">):</span><span style="color:#eeffff;">
+            src </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">os</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">path</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">join</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">tocopy</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;">d</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+            dst </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">os</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">path</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">join</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">ddst</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;">d</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+            </span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#82aaff;">os</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">path</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">isdir</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">src</span><span style="color:#89ddff;">):</span><span style="color:#eeffff;">
+                </span><span style="color:#82aaff;">copytree</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">src</span><span style="color:#89ddff;">, </span><span style="color:#82aaff;">dst</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#eeffff;">__name__ </span><span style="color:#89ddff;">== &#39;</span><span style="color:#c3e88d;">__main__</span><span style="color:#89ddff;">&#39;:</span><span style="color:#eeffff;">
+    src </span><span style="color:#89ddff;">= </span><span style="color:#eeffff;">sys</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">argv</span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">]</span><span style="color:#eeffff;">
+    dst </span><span style="color:#89ddff;">= </span><span style="color:#eeffff;">sys</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">argv</span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">]</span><span style="color:#eeffff;">
+    </span><span style="color:#82aaff;">main</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">src</span><span style="color:#89ddff;">, </span><span style="color:#82aaff;">dst</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
 </span></code></pre><p><strong>多行字符串：</strong></p>
-<pre style="background-color:#2b303b;">
-<code class="language-python" data-lang="python"><span style="color:#c0c5ce;">&gt;&gt;&gt; t = (&#39;</span><span style="color:#a3be8c;">hello</span><span style="color:#c0c5ce;">&#39;</span><span style="color:#c0c5ce;">
- </span><span style="color:#d08770;">... </span><span style="color:#c0c5ce;">&#39; &#39;</span><span style="color:#c0c5ce;">
- </span><span style="color:#d08770;">... </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">world</span><span style="color:#c0c5ce;">&#39;)</span><span style="color:#c0c5ce;">
-&gt;&gt;&gt; t</span><span style="color:#c0c5ce;">
-&#39;</span><span style="color:#a3be8c;">hello world</span><span style="color:#c0c5ce;">&#39;</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-python" data-lang="python"><span style="color:#89ddff;">&gt;&gt;&gt; </span><span style="color:#eeffff;">t </span><span style="color:#89ddff;">= (&#39;</span><span style="color:#c3e88d;">hello</span><span style="color:#89ddff;">&#39;</span><span style="color:#eeffff;">
+ </span><span style="color:#f78c6c;">... </span><span style="color:#89ddff;">&#39; &#39;</span><span style="color:#eeffff;">
+ </span><span style="color:#f78c6c;">... </span><span style="color:#89ddff;">&#39;</span><span style="color:#c3e88d;">world</span><span style="color:#89ddff;">&#39;)</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">&gt;&gt;&gt; </span><span style="color:#eeffff;">t</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">&#39;</span><span style="color:#c3e88d;">hello world</span><span style="color:#89ddff;">&#39;</span><span style="color:#eeffff;">
 </span></code></pre>
     </div>
 

@@ -146,49 +146,49 @@
       <p>
 使用qrcode库，代码如下：</p>
 <span id="continue-reading"></span>
-<pre style="background-color:#2b303b;">
-<code class="language-python" data-lang="python"><span style="color:#65737e;">#!/usr/bin/env python</span><span style="color:#65737e;">
-# -*- coding: utf-8 -*-  </span><span style="color:#65737e;">
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#65737e;">&#39;&#39;&#39;</span><span style="color:#65737e;">
-author: xjump.me#gmail.com</span><span style="color:#65737e;">
-reference: </span><span style="color:#65737e;">
-    https://pypi.python.org/pypi/qrcode</span><span style="color:#65737e;">
-&#39;&#39;&#39;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">qrcode</span><span style="color:#c0c5ce;">
-qr = qrcode.</span><span style="color:#bf616a;">QRCode</span><span style="color:#c0c5ce;">(</span><span style="color:#c0c5ce;">
-    </span><span style="color:#bf616a;">version</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
-    </span><span style="color:#bf616a;">error_correction</span><span style="color:#c0c5ce;">=qrcode.constants.</span><span style="color:#bf616a;">ERROR_CORRECT_L</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
-    </span><span style="color:#bf616a;">box_size</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">10</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
-    </span><span style="color:#bf616a;">border</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">,</span><span style="color:#c0c5ce;">
-)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-data = &#39;&#39;&#39;</span><span style="color:#a3be8c;">https://xjump.me/item?id=20202220&amp;bizId=Zi8789341324&amp;d</span><span style="color:#a3be8c;">
-escription=this is a demo item.this is a demo item.this is a demo </span><span style="color:#a3be8c;">
-item.this is a demo item.this is a demo item.this is a demo item.</span><span style="color:#a3be8c;">
-this is a demo item.this is a demo item.this is a demo item.this </span><span style="color:#a3be8c;">
-is a demo item.this is a demo item.this is a demo item.this is a </span><span style="color:#a3be8c;">
-demo item.this is a demo item.this is a demo item.this is a demo </span><span style="color:#a3be8c;">
-item.this is a demo item.this is a demo item.this is a demo item.</span><span style="color:#a3be8c;">
-this is a demo item.this is a demo item.this is a demo item.this </span><span style="color:#a3be8c;">
-is a demo item.this is a demo item.this is a demo item.this is a </span><span style="color:#a3be8c;">
-demo item.this is a demo item.this is a demo item.this is a demo </span><span style="color:#a3be8c;">
-item.this is a demo item.this is a demo item.this is a demo item.</span><span style="color:#a3be8c;">
-this is a demo item.this is a demo item.this is a demo item.this </span><span style="color:#a3be8c;">
-is a demo item.this is a demo item.this is a demo item.this is a </span><span style="color:#a3be8c;">
-demo item.this is a demo item.this is a demo item.this is a demo </span><span style="color:#a3be8c;">
-item.this is a demo item.this is a demo item.this is a demo item.</span><span style="color:#a3be8c;">
-this is a demo item.this is a demo item.this is a demo item.this </span><span style="color:#a3be8c;">
-is a demo item.this is a demo item.this is a demo item.this is a </span><span style="color:#a3be8c;">
-demo item.this is a demo item.</span><span style="color:#c0c5ce;">&#39;&#39;&#39;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-qr.</span><span style="color:#bf616a;">add_data</span><span style="color:#c0c5ce;">(data)</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">print </span><span style="color:#96b5b4;">len</span><span style="color:#c0c5ce;">(data)</span><span style="color:#c0c5ce;">
-qr.</span><span style="color:#bf616a;">make</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">fit</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">True</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-img = qr.</span><span style="color:#bf616a;">make_image</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
-img.</span><span style="color:#bf616a;">show</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-python" data-lang="python"><span style="font-style:italic;color:#4a4a4a;">#!/usr/bin/env python</span><span style="font-style:italic;color:#4a4a4a;">
+# -*- coding: utf-8 -*-  </span><span style="font-style:italic;color:#4a4a4a;">
+</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#4a4a4a;">&#39;&#39;&#39;</span><span style="font-style:italic;color:#4a4a4a;">
+author: xjump.me#gmail.com</span><span style="font-style:italic;color:#4a4a4a;">
+reference: </span><span style="font-style:italic;color:#4a4a4a;">
+    https://pypi.python.org/pypi/qrcode</span><span style="font-style:italic;color:#4a4a4a;">
+&#39;&#39;&#39;</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">import </span><span style="color:#eeffff;">qrcode</span><span style="color:#eeffff;">
+qr </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">qrcode</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">QRCode</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">
+    </span><span style="color:#f78c6c;">version</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;">
+    </span><span style="color:#f78c6c;">error_correction</span><span style="color:#89ddff;">=</span><span style="color:#82aaff;">qrcode</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">constants</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">ERROR_CORRECT_L</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;">
+    </span><span style="color:#f78c6c;">box_size</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;">
+    </span><span style="color:#f78c6c;">border</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;">
+</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+data </span><span style="color:#89ddff;">= &#39;&#39;&#39;</span><span style="color:#c3e88d;">https://xjump.me/item?id=20202220&amp;bizId=Zi8789341324&amp;d</span><span style="color:#c3e88d;">
+escription=this is a demo item.this is a demo item.this is a demo </span><span style="color:#c3e88d;">
+item.this is a demo item.this is a demo item.this is a demo item.</span><span style="color:#c3e88d;">
+this is a demo item.this is a demo item.this is a demo item.this </span><span style="color:#c3e88d;">
+is a demo item.this is a demo item.this is a demo item.this is a </span><span style="color:#c3e88d;">
+demo item.this is a demo item.this is a demo item.this is a demo </span><span style="color:#c3e88d;">
+item.this is a demo item.this is a demo item.this is a demo item.</span><span style="color:#c3e88d;">
+this is a demo item.this is a demo item.this is a demo item.this </span><span style="color:#c3e88d;">
+is a demo item.this is a demo item.this is a demo item.this is a </span><span style="color:#c3e88d;">
+demo item.this is a demo item.this is a demo item.this is a demo </span><span style="color:#c3e88d;">
+item.this is a demo item.this is a demo item.this is a demo item.</span><span style="color:#c3e88d;">
+this is a demo item.this is a demo item.this is a demo item.this </span><span style="color:#c3e88d;">
+is a demo item.this is a demo item.this is a demo item.this is a </span><span style="color:#c3e88d;">
+demo item.this is a demo item.this is a demo item.this is a demo </span><span style="color:#c3e88d;">
+item.this is a demo item.this is a demo item.this is a demo item.</span><span style="color:#c3e88d;">
+this is a demo item.this is a demo item.this is a demo item.this </span><span style="color:#c3e88d;">
+is a demo item.this is a demo item.this is a demo item.this is a </span><span style="color:#c3e88d;">
+demo item.this is a demo item.</span><span style="color:#89ddff;">&#39;&#39;&#39;</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">qr</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">add_data</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">data</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+</span><span style="color:#c792ea;">print </span><span style="color:#82aaff;">len</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">data</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">qr</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">make</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">fit</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">True</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+img </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">qr</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">make_image</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">img</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">show</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
 </span></code></pre>
     </div>
 

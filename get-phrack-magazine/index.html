@@ -145,23 +145,23 @@
     <div class="post-content">
       <p>Phrack Current issue: <a href="http://phrack.org/archives/tgz/phrack68.tar.gz" title="Get current issue tar.gz">68</a><br/>
 Release date: 14/04/2012</p>
-<pre style="background-color:#2b303b;">
-<code class="language-python" data-lang="python"><span style="color:#65737e;">#!/usr/bin/env python</span><span style="color:#65737e;">
-# encoding: utf-8</span><span style="color:#65737e;">
-</span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">urllib</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">os</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#bf616a;">LATEST_ISSUER_NO </span><span style="color:#c0c5ce;">= </span><span style="color:#d08770;">68</span><span style="color:#c0c5ce;">
-pwd = os.</span><span style="color:#bf616a;">getcwd</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">i </span><span style="color:#b48ead;">in </span><span style="color:#96b5b4;">range</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">LATEST_ISSUER_NO</span><span style="color:#c0c5ce;">) :</span><span style="color:#c0c5ce;">
-    filename = &quot;</span><span style="color:#a3be8c;">phrack</span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">.tar.gz</span><span style="color:#c0c5ce;">&quot; % (i+</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">, )</span><span style="color:#c0c5ce;">
-    url = &quot;</span><span style="color:#a3be8c;">http://www.phrack.com/archives/tgz/</span><span style="color:#d08770;">%s</span><span style="color:#c0c5ce;">&quot; % (filename, )</span><span style="color:#c0c5ce;">
-    path = os.path.</span><span style="color:#bf616a;">join</span><span style="color:#c0c5ce;">(pwd, filename)</span><span style="color:#c0c5ce;">
-    data = urllib.</span><span style="color:#bf616a;">urlopen</span><span style="color:#c0c5ce;">(url).</span><span style="color:#bf616a;">read</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
-    f = </span><span style="color:#bf616a;">file</span><span style="color:#c0c5ce;">(path, &quot;</span><span style="color:#a3be8c;">wb</span><span style="color:#c0c5ce;">&quot;)</span><span style="color:#c0c5ce;">
-    f.</span><span style="color:#bf616a;">write</span><span style="color:#c0c5ce;">(data)</span><span style="color:#c0c5ce;">
-    f.</span><span style="color:#bf616a;">close</span><span style="color:#c0c5ce;">()</span><span style="color:#c0c5ce;">
-    </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">file </span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;"> download complete!</span><span style="color:#c0c5ce;">&quot; % (filename, )</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-python" data-lang="python"><span style="font-style:italic;color:#4a4a4a;">#!/usr/bin/env python</span><span style="font-style:italic;color:#4a4a4a;">
+# encoding: utf-8</span><span style="font-style:italic;color:#4a4a4a;">
+</span><span style="font-style:italic;color:#c792ea;">import </span><span style="color:#eeffff;">urllib</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">import </span><span style="color:#eeffff;">os</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+LATEST_ISSUER_NO </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">68</span><span style="color:#eeffff;">
+pwd </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">os</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">getcwd</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">for </span><span style="color:#eeffff;">i </span><span style="font-style:italic;color:#c792ea;">in </span><span style="color:#82aaff;">range</span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">LATEST_ISSUER_NO</span><span style="color:#89ddff;">) :</span><span style="color:#eeffff;">
+    filename </span><span style="color:#89ddff;">= &quot;</span><span style="color:#c3e88d;">phrack</span><span style="color:#eeffff;">%d</span><span style="color:#c3e88d;">.tar.gz</span><span style="color:#89ddff;">&quot; % (</span><span style="color:#eeffff;">i</span><span style="color:#89ddff;">+</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">, )</span><span style="color:#eeffff;">
+    url </span><span style="color:#89ddff;">= &quot;</span><span style="color:#c3e88d;">http://www.phrack.com/archives/tgz/</span><span style="color:#eeffff;">%s</span><span style="color:#89ddff;">&quot; % (</span><span style="color:#eeffff;">filename</span><span style="color:#89ddff;">, )</span><span style="color:#eeffff;">
+    path </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">os</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">path</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">join</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">pwd</span><span style="color:#89ddff;">, </span><span style="color:#82aaff;">filename</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+    data </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">urllib</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">urlopen</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">url</span><span style="color:#89ddff;">).</span><span style="color:#82aaff;">read</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
+    f </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">file</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">path</span><span style="color:#89ddff;">, &quot;</span><span style="color:#c3e88d;">wb</span><span style="color:#89ddff;">&quot;)</span><span style="color:#eeffff;">
+    </span><span style="color:#82aaff;">f</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">write</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">data</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+    </span><span style="color:#82aaff;">f</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">close</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
+    </span><span style="color:#c792ea;">print </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">file </span><span style="color:#eeffff;">%s</span><span style="color:#c3e88d;"> download complete!</span><span style="color:#89ddff;">&quot; % (</span><span style="color:#eeffff;">filename</span><span style="color:#89ddff;">, )</span><span style="color:#eeffff;">
 </span></code></pre><span id="continue-reading"></span>
 
     </div>

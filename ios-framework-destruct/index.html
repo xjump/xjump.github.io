@@ -570,89 +570,89 @@ MyFramework.framework/</pre>
 </table>
 <p class="p4">
     关于Info.plist文件，一个现实中的例子如下：</p>
-<pre style="background-color:#2b303b;">
-<code class="language-python" data-lang="python"><span style="color:#c0c5ce;">&gt;&gt;&gt; a =biplist.</span><span style="color:#bf616a;">readPlist</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">Info.plist</span><span style="color:#c0c5ce;">&quot;)</span><span style="color:#c0c5ce;">
-&gt;&gt;&gt; </span><span style="color:#b48ead;">print </span><span style="color:#c0c5ce;">json.</span><span style="color:#bf616a;">dumps</span><span style="color:#c0c5ce;">(a,</span><span style="color:#bf616a;">indent</span><span style="color:#c0c5ce;">=</span><span style="color:#d08770;">4</span><span style="color:#c0c5ce;">)</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-{</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    &quot;</span><span style="color:#a3be8c;">CFBundleInfoDictionaryVersion</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">6.0</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    &quot;</span><span style="color:#a3be8c;">NSHumanReadableCopyright</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">Copyright </span><span style="color:#96b5b4;">\u00a9</span><span style="color:#a3be8c;"> 2013~2014 xjump. All rights reserved.</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    &quot;</span><span style="color:#a3be8c;">CFPlugInTypes</span><span style="color:#c0c5ce;">&quot;: {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-        &quot;</span><span style="color:#a3be8c;">00000000-0000-0000-0000-000000000000</span><span style="color:#c0c5ce;">&quot;: [</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-            &quot;</span><span style="color:#a3be8c;">00000000-0000-0000-0000-000000000000</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-        ]</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    }, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    &quot;</span><span style="color:#a3be8c;">DTXcodeBuild</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">6A317</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    &quot;</span><span style="color:#a3be8c;">CFBundleSupportedPlatforms</span><span style="color:#c0c5ce;">&quot;: [</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-        &quot;</span><span style="color:#a3be8c;">iPhoneOS</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    ], </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    &quot;</span><span style="color:#a3be8c;">CFBundleIdentifier</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">me.xjump.XRemoteShell</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    &quot;</span><span style="color:#a3be8c;">DTSDKName</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">iphoneos8.0</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    &quot;</span><span style="color:#a3be8c;">DTSDKBuild</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">12A365</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    &quot;</span><span style="color:#a3be8c;">CFBundleShortVersionString</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">1.0</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    &quot;</span><span style="color:#a3be8c;">BuildMachineOSBuild</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">13F34</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    &quot;</span><span style="color:#a3be8c;">CFBundleExecutable</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">XRemoteShell</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    &quot;</span><span style="color:#a3be8c;">MinimumOSVersion</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">5.1.1</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    &quot;</span><span style="color:#a3be8c;">CFBundleVersion</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">1</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    &quot;</span><span style="color:#a3be8c;">UIDeviceFamily</span><span style="color:#c0c5ce;">&quot;: [</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-        </span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-        </span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    ], </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    &quot;</span><span style="color:#a3be8c;">DTPlatformBuild</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">12A365</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    &quot;</span><span style="color:#a3be8c;">DTXcode</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">0600</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    &quot;</span><span style="color:#a3be8c;">CFPlugInFactories</span><span style="color:#c0c5ce;">&quot;: {</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-        &quot;</span><span style="color:#a3be8c;">00000000-0000-0000-0000-000000000000</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">MyFactoryFunction</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    }, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    &quot;</span><span style="color:#a3be8c;">CFBundleDevelopmentRegion</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">English</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    &quot;</span><span style="color:#a3be8c;">DTPlatformName</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">iphoneos</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    &quot;</span><span style="color:#a3be8c;">CFPlugInUnloadFunction</span><span style="color:#c0c5ce;">&quot;: &quot;&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    &quot;</span><span style="color:#a3be8c;">CFPlugInDynamicRegistration</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">NO</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    &quot;</span><span style="color:#a3be8c;">DTCompiler</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">com.apple.compilers.llvm.clang.1_0</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    &quot;</span><span style="color:#a3be8c;">CFBundleSignature</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">????</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    &quot;</span><span style="color:#a3be8c;">CFPlugInDynamicRegisterFunction</span><span style="color:#c0c5ce;">&quot;: &quot;&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    &quot;</span><span style="color:#a3be8c;">DTPlatformVersion</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">8.0</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    &quot;</span><span style="color:#a3be8c;">CFBundleName</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">XRemoteShell</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-    &quot;</span><span style="color:#a3be8c;">CFBundlePackageType</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">BNDL</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-}</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-python" data-lang="python"><span style="color:#89ddff;">&gt;&gt;&gt; </span><span style="color:#eeffff;">a </span><span style="color:#89ddff;">=</span><span style="color:#82aaff;">biplist</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">readPlist</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">Info.plist</span><span style="color:#89ddff;">&quot;)</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">&gt;&gt;&gt; </span><span style="color:#c792ea;">print </span><span style="color:#82aaff;">json</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">dumps</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">a</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">indent</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">CFBundleInfoDictionaryVersion</span><span style="color:#89ddff;">&quot;: &quot;</span><span style="color:#c3e88d;">6.0</span><span style="color:#89ddff;">&quot;, </span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">NSHumanReadableCopyright</span><span style="color:#89ddff;">&quot;: &quot;</span><span style="color:#c3e88d;">Copyright </span><span style="color:#89ddff;">\u00a9</span><span style="color:#c3e88d;"> 2013~2014 xjump. All rights reserved.</span><span style="color:#89ddff;">&quot;, </span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">CFPlugInTypes</span><span style="color:#89ddff;">&quot;: {</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+        </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">00000000-0000-0000-0000-000000000000</span><span style="color:#89ddff;">&quot;: [</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+            </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">00000000-0000-0000-0000-000000000000</span><span style="color:#89ddff;">&quot;</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+        </span><span style="color:#89ddff;">]</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">}, </span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">DTXcodeBuild</span><span style="color:#89ddff;">&quot;: &quot;</span><span style="color:#c3e88d;">6A317</span><span style="color:#89ddff;">&quot;, </span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">CFBundleSupportedPlatforms</span><span style="color:#89ddff;">&quot;: [</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+        </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">iPhoneOS</span><span style="color:#89ddff;">&quot;</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">], </span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">CFBundleIdentifier</span><span style="color:#89ddff;">&quot;: &quot;</span><span style="color:#c3e88d;">me.xjump.XRemoteShell</span><span style="color:#89ddff;">&quot;, </span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">DTSDKName</span><span style="color:#89ddff;">&quot;: &quot;</span><span style="color:#c3e88d;">iphoneos8.0</span><span style="color:#89ddff;">&quot;, </span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">DTSDKBuild</span><span style="color:#89ddff;">&quot;: &quot;</span><span style="color:#c3e88d;">12A365</span><span style="color:#89ddff;">&quot;, </span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">CFBundleShortVersionString</span><span style="color:#89ddff;">&quot;: &quot;</span><span style="color:#c3e88d;">1.0</span><span style="color:#89ddff;">&quot;, </span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">BuildMachineOSBuild</span><span style="color:#89ddff;">&quot;: &quot;</span><span style="color:#c3e88d;">13F34</span><span style="color:#89ddff;">&quot;, </span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">CFBundleExecutable</span><span style="color:#89ddff;">&quot;: &quot;</span><span style="color:#c3e88d;">XRemoteShell</span><span style="color:#89ddff;">&quot;, </span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">MinimumOSVersion</span><span style="color:#89ddff;">&quot;: &quot;</span><span style="color:#c3e88d;">5.1.1</span><span style="color:#89ddff;">&quot;, </span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">CFBundleVersion</span><span style="color:#89ddff;">&quot;: &quot;</span><span style="color:#c3e88d;">1</span><span style="color:#89ddff;">&quot;, </span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">UIDeviceFamily</span><span style="color:#89ddff;">&quot;: [</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+        </span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">, </span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+        </span><span style="color:#f78c6c;">2</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">], </span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">DTPlatformBuild</span><span style="color:#89ddff;">&quot;: &quot;</span><span style="color:#c3e88d;">12A365</span><span style="color:#89ddff;">&quot;, </span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">DTXcode</span><span style="color:#89ddff;">&quot;: &quot;</span><span style="color:#c3e88d;">0600</span><span style="color:#89ddff;">&quot;, </span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">CFPlugInFactories</span><span style="color:#89ddff;">&quot;: {</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+        </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">00000000-0000-0000-0000-000000000000</span><span style="color:#89ddff;">&quot;: &quot;</span><span style="color:#c3e88d;">MyFactoryFunction</span><span style="color:#89ddff;">&quot;</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">}, </span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">CFBundleDevelopmentRegion</span><span style="color:#89ddff;">&quot;: &quot;</span><span style="color:#c3e88d;">English</span><span style="color:#89ddff;">&quot;, </span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">DTPlatformName</span><span style="color:#89ddff;">&quot;: &quot;</span><span style="color:#c3e88d;">iphoneos</span><span style="color:#89ddff;">&quot;, </span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">CFPlugInUnloadFunction</span><span style="color:#89ddff;">&quot;: &quot;&quot;, </span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">CFPlugInDynamicRegistration</span><span style="color:#89ddff;">&quot;: &quot;</span><span style="color:#c3e88d;">NO</span><span style="color:#89ddff;">&quot;, </span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">DTCompiler</span><span style="color:#89ddff;">&quot;: &quot;</span><span style="color:#c3e88d;">com.apple.compilers.llvm.clang.1_0</span><span style="color:#89ddff;">&quot;, </span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">CFBundleSignature</span><span style="color:#89ddff;">&quot;: &quot;</span><span style="color:#c3e88d;">????</span><span style="color:#89ddff;">&quot;, </span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">CFPlugInDynamicRegisterFunction</span><span style="color:#89ddff;">&quot;: &quot;&quot;, </span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">DTPlatformVersion</span><span style="color:#89ddff;">&quot;: &quot;</span><span style="color:#c3e88d;">8.0</span><span style="color:#89ddff;">&quot;, </span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">CFBundleName</span><span style="color:#89ddff;">&quot;: &quot;</span><span style="color:#c3e88d;">XRemoteShell</span><span style="color:#89ddff;">&quot;, </span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">CFBundlePackageType</span><span style="color:#89ddff;">&quot;: &quot;</span><span style="color:#c3e88d;">BNDL</span><span style="color:#89ddff;">&quot;</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
 </span></code></pre><p>
     &nbsp;</p>
 <p>

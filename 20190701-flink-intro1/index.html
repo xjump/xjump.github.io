@@ -217,11 +217,11 @@
 <p>这部分将通过创建简单的计算应用到创建真实的PV、UV计算应用，来体验Flink。</p>
 <h3 id="2-1-xia-zai-bing-qi-dong-flink">2.1 下载并启动Flink</h3>
 <p>首先下载并启动Flink，这一步并非必须，只是为了更好的在单机进行集群模拟体验。</p>
-<pre style="background-color:#2b303b;">
-<code class="language-bash" data-lang="bash"><span style="color:#bf616a;">wget</span><span style="color:#c0c5ce;"> http://mirror.bit.edu.cn/apache/flink/flink-1.8.1/flink-1.8.1-bin-scala_2.12.tgz</span><span style="color:#c0c5ce;">
-</span><span style="color:#bf616a;">tar</span><span style="color:#c0c5ce;"> zxf flink-1.8.1-bin-scala_2.12.tgz</span><span style="color:#c0c5ce;">
-</span><span style="color:#96b5b4;">cd</span><span style="color:#c0c5ce;"> flink-1.8.1/bin</span><span style="color:#c0c5ce;">
-</span><span style="color:#bf616a;">./start-cluster.sh</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-bash" data-lang="bash"><span style="color:#82aaff;">wget http://mirror.bit.edu.cn/apache/flink/flink-1.8.1/flink-1.8.1-bin-scala_2.12.tgz</span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">tar zxf flink-1.8.1-bin-scala_2.12.tgz</span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">cd flink-1.8.1/bin</span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">./start-cluster.sh</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>Windows下比较简单，下载解压后通过<code>start-cluster.bat</code>进行启动。</p>
 <p>通过上述<code>start-cluster</code>启动脚本输出情况，判断是否启动正常，并访问<code>http://127.0.0.1:8081</code>查看Flink工作情况。</p>
@@ -229,71 +229,71 @@
 <p>计算应用可以选择Java或Scala语言来编写。根据使用不同层面的API，可以选择低级别的functor和高级别的SQL来实现计算逻辑。</p>
 <p>下面通过Scala编写的简单PV、UV计算来进行说明。</p>
 <p>首先，参考<a href=https://ci.apache.org/projects/flink/flink-docs-release-1.8/dev/projectsetup/scala_api_quickstart.html>这里</a>使用maven模板创建应用：</p>
-<pre style="background-color:#2b303b;">
-<code class="language-bash" data-lang="bash"><span style="color:#bf616a;">mvn</span><span style="color:#c0c5ce;"> archetype:generate</span><span style="color:#bf616a;"> -DarchetypeGroupId</span><span style="color:#c0c5ce;">=org.apache.flink</span><span style="color:#bf616a;"> -DarchetypeArtifactId</span><span style="color:#c0c5ce;">=flink-quickstart-scala</span><span style="color:#bf616a;"> -DarchetypeVersion</span><span style="color:#c0c5ce;">=1.8.0</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-bash" data-lang="bash"><span style="color:#82aaff;">mvn archetype:generate</span><span style="color:#89ddff;"> -</span><span style="color:#f78c6c;">DarchetypeGroupId</span><span style="color:#89ddff;">=</span><span style="color:#82aaff;">org.apache.flink</span><span style="color:#89ddff;"> -</span><span style="color:#f78c6c;">DarchetypeArtifactId</span><span style="color:#89ddff;">=</span><span style="color:#82aaff;">flink-quickstart-scala</span><span style="color:#89ddff;"> -</span><span style="color:#f78c6c;">DarchetypeVersion</span><span style="color:#89ddff;">=</span><span style="color:#82aaff;">1.8.0</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>根据archtype生成project通过</p>
-<pre style="background-color:#2b303b;">
-<code class="language-bash" data-lang="bash"><span style="color:#bf616a;">mvn</span><span style="color:#c0c5ce;"> idea:idea</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-bash" data-lang="bash"><span style="color:#82aaff;">mvn idea:idea</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>创建idea项目文件，导入idea。</p>
 <p>修改StreamingJob如下：</p>
-<pre style="background-color:#2b303b;">
-<code class="language-scala" data-lang="scala"><span style="color:#b48ead;">package </span><span style="color:#c0c5ce;">me.xjump</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">import</span><span style="color:#c0c5ce;"> org.apache.flink.streaming.api.scala.</span><span style="color:#bf616a;">_</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">import</span><span style="color:#c0c5ce;"> org.apache.flink.streaming.api.windowing.time.Time</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">object</span><span style="color:#ebcb8b;"> StreamingJob </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
-  </span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">main</span><span style="color:#eff1f5;">(</span><span style="color:#bf616a;">args</span><span style="color:#eff1f5;">: </span><span style="color:#ebcb8b;">Array</span><span style="color:#eff1f5;">[</span><span style="color:#ebcb8b;">String</span><span style="color:#eff1f5;">]) {</span><span style="color:#eff1f5;">
-    </span><span style="color:#b48ead;">val </span><span style="color:#bf616a;">env </span><span style="color:#c0c5ce;">= </span><span style="color:#eff1f5;">StreamExecutionEnvironment.getExecutionEnvironment</span><span style="color:#eff1f5;">
-    </span><span style="color:#b48ead;">val </span><span style="color:#bf616a;">text </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> env.socketTextStream(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">localhost</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#d08770;">9999</span><span style="color:#eff1f5;">)</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">
-    </span><span style="color:#b48ead;">val </span><span style="color:#bf616a;">words </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> text.flatMap {</span><span style="color:#eff1f5;">
-      </span><span style="color:#bf616a;">_</span><span style="color:#eff1f5;">.toLowerCase.split(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">W+</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">)</span><span style="color:#eff1f5;">
-      .filter {</span><span style="color:#eff1f5;">
-        </span><span style="color:#bf616a;">_</span><span style="color:#eff1f5;">.nonEmpty</span><span style="color:#eff1f5;">
-      }</span><span style="color:#eff1f5;">
-    }</span><span style="color:#eff1f5;">
-    </span><span style="color:#b48ead;">val </span><span style="color:#bf616a;">count </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> words</span><span style="color:#eff1f5;">
-      .map {</span><span style="color:#eff1f5;">
-        (</span><span style="color:#bf616a;">_</span><span style="color:#eff1f5;">, </span><span style="color:#d08770;">1</span><span style="color:#eff1f5;">)</span><span style="color:#eff1f5;">
-      }</span><span style="color:#eff1f5;">
-      .keyBy(</span><span style="color:#d08770;">0</span><span style="color:#eff1f5;">)</span><span style="color:#eff1f5;">
-      .timeWindow(Time.seconds(</span><span style="color:#d08770;">5</span><span style="color:#eff1f5;">))</span><span style="color:#eff1f5;">
-      .sum(</span><span style="color:#d08770;">1</span><span style="color:#eff1f5;">)</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">
-    count.print</span><span style="color:#eff1f5;">
-    env.execute(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">Flink Streaming Scala demo1</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">)</span><span style="color:#eff1f5;">
-  }</span><span style="color:#eff1f5;">
-}</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-scala" data-lang="scala"><span style="font-style:italic;color:#c792ea;">package </span><span style="color:#eeffff;">me.xjump</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="color:#c792ea;">import</span><span style="color:#eeffff;"> org</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">apache</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">flink</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">streaming</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">api</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">scala</span><span style="color:#89ddff;">.</span><span style="font-style:italic;color:#ff5370;">_</span><span style="color:#eeffff;">
+</span><span style="color:#c792ea;">import</span><span style="color:#eeffff;"> org</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">apache</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">flink</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">streaming</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">api</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">windowing</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">time</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">Time</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">object</span><span style="color:#ffcb6b;"> StreamingJob </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+  </span><span style="font-style:italic;color:#c792ea;">def </span><span style="color:#82aaff;">main</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">args</span><span style="color:#89ddff;">: </span><span style="color:#ffcb6b;">Array</span><span style="color:#89ddff;">[</span><span style="color:#ffcb6b;">String</span><span style="color:#89ddff;">]) {</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">val </span><span style="color:#eeffff;">env </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">StreamExecutionEnvironment</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">getExecutionEnvironment</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">val </span><span style="color:#eeffff;">text </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> env</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">socketTextStream</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">localhost</span><span style="color:#89ddff;">&quot;, </span><span style="color:#f78c6c;">9999</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">val </span><span style="color:#eeffff;">words </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> text</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">flatMap </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+      </span><span style="font-style:italic;color:#ff5370;">_</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">toLowerCase</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">split</span><span style="color:#89ddff;">(&quot;\\</span><span style="color:#c3e88d;">W+</span><span style="color:#89ddff;">&quot;)</span><span style="color:#eeffff;">
+      </span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">filter </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+        </span><span style="font-style:italic;color:#ff5370;">_</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">nonEmpty</span><span style="color:#eeffff;">
+      </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">val </span><span style="color:#eeffff;">count </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> words</span><span style="color:#eeffff;">
+      </span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">map </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+        </span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#ff5370;">_</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+      </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+      </span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">keyBy</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+      </span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">timeWindow</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">Time</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">seconds</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">5</span><span style="color:#89ddff;">))</span><span style="color:#eeffff;">
+      </span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">sum</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    count</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">print</span><span style="color:#eeffff;">
+    env</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">execute</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">Flink Streaming Scala demo1</span><span style="color:#89ddff;">&quot;)</span><span style="color:#eeffff;">
+  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
 </span></code></pre><h3 id="2-3-ce-shi-diao-shi-ji-suan-ying-yong">2.3 测试&amp;调试计算应用</h3>
 <p>启动nc监听socket</p>
-<pre style="background-color:#2b303b;">
-<code class="language-bash" data-lang="bash"><span style="color:#65737e;">#windows</span><span style="color:#65737e;">
-</span><span style="color:#bf616a;">nc -l -p</span><span style="color:#c0c5ce;"> 9999</span><span style="color:#c0c5ce;">
-</span><span style="color:#65737e;">#*nix</span><span style="color:#65737e;">
-</span><span style="color:#bf616a;">nc -lk</span><span style="color:#c0c5ce;"> 9999</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-bash" data-lang="bash"><span style="font-style:italic;color:#4a4a4a;">#windows</span><span style="font-style:italic;color:#4a4a4a;">
+</span><span style="color:#82aaff;">nc</span><span style="color:#89ddff;"> -</span><span style="color:#f78c6c;">l</span><span style="color:#89ddff;"> -</span><span style="color:#f78c6c;">p</span><span style="color:#82aaff;"> 9999</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#4a4a4a;">#*nix</span><span style="font-style:italic;color:#4a4a4a;">
+</span><span style="color:#82aaff;">nc</span><span style="color:#89ddff;"> -</span><span style="color:#f78c6c;">lk</span><span style="color:#82aaff;"> 9999</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>然后，启动Flink计算应用，也就是启动上述StreamingJob的main，可以在idea中直接运行main函数。</p>
 <p>注意顺序不要弄反了，否则可能导致StreamingJob启动失败。</p>
 <p>在nc命令窗口输入</p>
-<pre style="background-color:#2b303b;">
-<code><span style="color:#c0c5ce;">I like apple, you like orange.</span><span style="color:#c0c5ce;">
-go go go</span><span style="color:#c0c5ce;">
-Flink streaming job.</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code><span style="color:#eeffff;">I like apple, you like orange.</span><span style="color:#eeffff;">
+go go go</span><span style="color:#eeffff;">
+Flink streaming job.</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>然后在StreamingJob的控制台看到计算结果：</p>
-<pre style="background-color:#2b303b;">
-<code><span style="color:#c0c5ce;">2&gt; (i,1)</span><span style="color:#c0c5ce;">
-10&gt; (like,2)</span><span style="color:#c0c5ce;">
-7&gt; (you,1)</span><span style="color:#c0c5ce;">
-10&gt; (apple,1)</span><span style="color:#c0c5ce;">
-7&gt; (orange,1)</span><span style="color:#c0c5ce;">
-8&gt; (go,3)</span><span style="color:#c0c5ce;">
-2&gt; (streaming,1)</span><span style="color:#c0c5ce;">
-12&gt; (job,1)</span><span style="color:#c0c5ce;">
-10&gt; (Flink,1)</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code><span style="color:#eeffff;">2&gt; (i,1)</span><span style="color:#eeffff;">
+10&gt; (like,2)</span><span style="color:#eeffff;">
+7&gt; (you,1)</span><span style="color:#eeffff;">
+10&gt; (apple,1)</span><span style="color:#eeffff;">
+7&gt; (orange,1)</span><span style="color:#eeffff;">
+8&gt; (go,3)</span><span style="color:#eeffff;">
+2&gt; (streaming,1)</span><span style="color:#eeffff;">
+12&gt; (job,1)</span><span style="color:#eeffff;">
+10&gt; (Flink,1)</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>在idea中下断点，可以对StreamingJob进行调试。</p>
 <h3 id="2-4-bian-xie-shi-yong-de-ji-suan-ying-yong">2.4 编写实用的计算应用</h3>
@@ -321,128 +321,128 @@ Flink streaming job.</span><span style="color:#c0c5ce;">
 <li><code>Tumbling Window</code>
 可以翻译为滚动窗口。指的是按照一定的区间长度来切分时间，并且区间的起点、终点都是固定的。比如每天从00:00:00到23:59:59，或者每分钟，每小时等等。窗口对应的时间区间起点、终点是固定的，区间长度也是固定的。例如</li>
 </ul>
-<pre style="background-color:#2b303b;">
-<code class="language-scala" data-lang="scala"><span style="color:#c0c5ce;">TumblingProcessingTimeWindows.of(Time.seconds(</span><span style="color:#d08770;">5</span><span style="color:#c0c5ce;">))</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-scala" data-lang="scala"><span style="color:#f78c6c;">TumblingProcessingTimeWindows</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">of</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">Time</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">seconds</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">5</span><span style="color:#89ddff;">))</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>表示以ProcessingTime为基准，每5秒一个滚动窗口来创建window。</p>
 <ul>
 <li><code>Sliding Window</code>
 可以翻译为滑动窗口。指的是按照一定的区间长度来切分时间，但区间的起点、终点都是在移动的。比如最后15分钟，最后一周，最后3小时等等。窗口对应的时间区间只有长度固定，而起点、终点都不固定。例如</li>
 </ul>
-<pre style="background-color:#2b303b;">
-<code class="language-scala" data-lang="scala"><span style="color:#c0c5ce;">SlidingEventTimeWindows.of(Time.seconds(</span><span style="color:#d08770;">30</span><span style="color:#c0c5ce;">), Time.seconds(</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">))</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-scala" data-lang="scala"><span style="color:#f78c6c;">SlidingEventTimeWindows</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">of</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">Time</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">seconds</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">30</span><span style="color:#89ddff;">), </span><span style="color:#f78c6c;">Time</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">seconds</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">))</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>表示以EventTime为基准，30秒为滑动窗口长度，最小滑动单位为1秒来创建window。Flink可以指定的最小滑动单位的最小值是1毫秒。</p>
 <ul>
 <li><code>Session Window</code>
 可以翻译为会话窗口。指的是按照相邻两个时间的时间间隔为窗口边界，但区间的起点、终点都是不固定的。比如最小间隔为10秒，那么相邻事件超过10秒的将归为不同的窗口。例如</li>
 </ul>
-<pre style="background-color:#2b303b;">
-<code class="language-scala" data-lang="scala"><span style="color:#c0c5ce;">ProcessingTimeSessionWindows.withGap(Time.minutes(</span><span style="color:#d08770;">10</span><span style="color:#c0c5ce;">))</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-scala" data-lang="scala"><span style="color:#f78c6c;">ProcessingTimeSessionWindows</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">withGap</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">Time</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">minutes</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">))</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>表示以ProcessingTime为基准，10分钟为Gap（时间间隔）来创建window。该窗口起点和终点都不固定，长度也不固定，但如果相邻两个事件间隔超过了10分钟，那么后一个事件将属于一个新的窗口。</p>
 <p>又例如</p>
-<pre style="background-color:#2b303b;">
-<code class="language-scala" data-lang="scala"><span style="color:#c0c5ce;">DynamicProcessingTimeSessionWindows.withDynamicGap(</span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">SessionWindowTimeGapExtractor</span><span style="color:#c0c5ce;">[</span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;">] {</span><span style="color:#c0c5ce;">
-  </span><span style="color:#b48ead;">override def </span><span style="color:#8fa1b3;">extract</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">element</span><span style="color:#c0c5ce;">: </span><span style="color:#ebcb8b;">String</span><span style="color:#c0c5ce;">): </span><span style="color:#b48ead;">Long </span><span style="color:#c0c5ce;">= {</span><span style="color:#c0c5ce;">
-    </span><span style="color:#65737e;">// determine and return session gap</span><span style="color:#c0c5ce;">
-  }</span><span style="color:#c0c5ce;">
-})</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-scala" data-lang="scala"><span style="color:#f78c6c;">DynamicProcessingTimeSessionWindows</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">withDynamicGap</span><span style="color:#89ddff;">(</span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">SessionWindowTimeGapExtractor</span><span style="color:#89ddff;">[</span><span style="color:#ffcb6b;">String</span><span style="color:#89ddff;">] {</span><span style="color:#eeffff;">
+  </span><span style="color:#c792ea;">override </span><span style="font-style:italic;color:#c792ea;">def </span><span style="color:#82aaff;">extract</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">element</span><span style="color:#89ddff;">: </span><span style="color:#ffcb6b;">String</span><span style="color:#89ddff;">): </span><span style="font-style:italic;color:#c792ea;">Long </span><span style="color:#89ddff;">= {</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#4a4a4a;">// determine and return session gap</span><span style="color:#eeffff;">
+  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">})</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>表示以ProcessingTime为基准，从一个String为Event对象的事件中动态提取窗口间隔值，来动态的创建会话窗口。</p>
 <ul>
 <li><code>Global Window</code>
 可以翻译为全局窗口。指的是时间区间是无界的。全局窗口通过如下方式创建</li>
 </ul>
-<pre style="background-color:#2b303b;">
-<code class="language-scala" data-lang="scala"><span style="color:#c0c5ce;">GlobalWindows.create()</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-scala" data-lang="scala"><span style="color:#f78c6c;">GlobalWindows</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">create</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
 </span></code></pre><h4 id="2-4-3-ji-suan-pvhe-uv">2.4.3 计算PV和UV</h4>
 <p>有了上述时间和窗口的概念，计算PV和UV可以翻译为：在一定的时间内，访问某个URL的次数和用户数。由于一个URL被访问一次可以直接计数，但多个URL被多个用户访问，可能存在用户访问多个URL的情况，所以对于用户的计数是要去重的，也就是需要进行Distinct Count。</p>
 <p>这里窗口选择上可以是翻滚窗口，也可以是滑动窗口，看需要而定。</p>
 <p>修改StreamingJob如下</p>
-<pre style="background-color:#2b303b;">
-<code class="language-scala" data-lang="scala"><span style="color:#b48ead;">package </span><span style="color:#c0c5ce;">me.xjump</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">import</span><span style="color:#c0c5ce;"> org.apache.flink.streaming.api.scala.</span><span style="color:#bf616a;">_</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">import</span><span style="color:#c0c5ce;"> org.apache.flink.streaming.api.scala.extensions.</span><span style="color:#bf616a;">_</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">import</span><span style="color:#c0c5ce;"> org.apache.flink.streaming.api.windowing.assigners.TumblingProcessingTimeWindows</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">import</span><span style="color:#c0c5ce;"> org.apache.flink.streaming.api.windowing.time.Time</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">import</span><span style="color:#c0c5ce;"> org.apache.flink.streaming.api.windowing.triggers.ContinuousProcessingTimeTrigger</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#b48ead;">object</span><span style="color:#ebcb8b;"> StreamingJob </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
-  </span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">main</span><span style="color:#eff1f5;">(</span><span style="color:#bf616a;">args</span><span style="color:#eff1f5;">: </span><span style="color:#ebcb8b;">Array</span><span style="color:#eff1f5;">[</span><span style="color:#ebcb8b;">String</span><span style="color:#eff1f5;">]) {</span><span style="color:#eff1f5;">
-    </span><span style="color:#b48ead;">val </span><span style="color:#bf616a;">env </span><span style="color:#c0c5ce;">= </span><span style="color:#eff1f5;">StreamExecutionEnvironment.getExecutionEnvironment</span><span style="color:#eff1f5;">
-    </span><span style="color:#b48ead;">val </span><span style="color:#bf616a;">text </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> env.socketTextStream(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">localhost</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#d08770;">9999</span><span style="color:#eff1f5;">)</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">
-    </span><span style="color:#b48ead;">val </span><span style="color:#bf616a;">dataInput </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> text.map(</span><span style="color:#bf616a;">x</span><span style="color:#b48ead;">=&gt; </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
-      </span><span style="color:#b48ead;">val </span><span style="color:#bf616a;">it </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> x.split(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">,</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">)</span><span style="color:#eff1f5;">
-      .filter {</span><span style="color:#eff1f5;">
-        </span><span style="color:#bf616a;">_</span><span style="color:#eff1f5;">.nonEmpty</span><span style="color:#eff1f5;">
-      }</span><span style="color:#eff1f5;">
-      it </span><span style="color:#65737e;">// it(0)=url,it(1)=uid</span><span style="color:#eff1f5;">
-    })</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">
-    </span><span style="color:#b48ead;">val </span><span style="color:#bf616a;">pvuv </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> dataInput</span><span style="color:#eff1f5;">
-      .keyBy(</span><span style="color:#d08770;">0</span><span style="color:#eff1f5;">)</span><span style="color:#eff1f5;">
-      .window(TumblingProcessingTimeWindows.of(Time.seconds(</span><span style="color:#d08770;">5</span><span style="color:#eff1f5;">)))</span><span style="color:#eff1f5;">
-      .trigger(ContinuousProcessingTimeTrigger.of(Time.seconds(</span><span style="color:#d08770;">1</span><span style="color:#eff1f5;">)))</span><span style="color:#eff1f5;">
-      .applyWith((</span><span style="color:#c0c5ce;">&quot;&quot;</span><span style="color:#eff1f5;">, List.empty[</span><span style="color:#b48ead;">Int</span><span style="color:#eff1f5;">], Set.empty[</span><span style="color:#b48ead;">Int</span><span style="color:#eff1f5;">], </span><span style="color:#d08770;">0</span><span style="color:#b48ead;">L</span><span style="color:#eff1f5;">, </span><span style="color:#d08770;">0</span><span style="color:#b48ead;">L</span><span style="color:#eff1f5;">))(</span><span style="color:#eff1f5;">
-        foldFunction </span><span style="color:#c0c5ce;">= </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
-          </span><span style="color:#b48ead;">case </span><span style="color:#eff1f5;">((</span><span style="color:#bf616a;">_</span><span style="color:#eff1f5;">, </span><span style="color:#bf616a;">list</span><span style="color:#eff1f5;">, </span><span style="color:#bf616a;">set</span><span style="color:#eff1f5;">, </span><span style="color:#bf616a;">_</span><span style="color:#eff1f5;">, </span><span style="color:#d08770;">0</span><span style="color:#eff1f5;">), </span><span style="color:#bf616a;">item</span><span style="color:#eff1f5;">) </span><span style="color:#b48ead;">=&gt; </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
-            </span><span style="color:#b48ead;">val </span><span style="color:#bf616a;">url</span><span style="color:#eff1f5;">:</span><span style="color:#ebcb8b;">String </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> item(</span><span style="color:#d08770;">0</span><span style="color:#eff1f5;">)</span><span style="color:#eff1f5;">
-            </span><span style="color:#b48ead;">val </span><span style="color:#bf616a;">uid</span><span style="color:#eff1f5;">:</span><span style="color:#ebcb8b;">String </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> item(</span><span style="color:#d08770;">1</span><span style="color:#eff1f5;">)</span><span style="color:#eff1f5;">
-            (url + </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">_</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;"> + uid, url.hashCode +: list, set + uid.hashCode, </span><span style="color:#d08770;">0</span><span style="color:#b48ead;">L</span><span style="color:#eff1f5;">, </span><span style="color:#d08770;">0</span><span style="color:#b48ead;">L</span><span style="color:#eff1f5;">)</span><span style="color:#eff1f5;">
-          }</span><span style="color:#eff1f5;">
-        }</span><span style="color:#eff1f5;">
-        , windowFunction </span><span style="color:#c0c5ce;">= </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
-          </span><span style="color:#b48ead;">case </span><span style="color:#eff1f5;">(</span><span style="color:#bf616a;">key</span><span style="color:#eff1f5;">, </span><span style="color:#bf616a;">window</span><span style="color:#eff1f5;">, </span><span style="color:#bf616a;">result</span><span style="color:#eff1f5;">) </span><span style="color:#b48ead;">=&gt; </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
-            result.map {</span><span style="color:#eff1f5;">
-              </span><span style="color:#b48ead;">case </span><span style="color:#eff1f5;">(</span><span style="color:#bf616a;">it</span><span style="color:#eff1f5;">, </span><span style="color:#bf616a;">list</span><span style="color:#eff1f5;">, </span><span style="color:#bf616a;">set</span><span style="color:#eff1f5;">, </span><span style="color:#bf616a;">_</span><span style="color:#eff1f5;">, </span><span style="color:#bf616a;">_</span><span style="color:#eff1f5;">) </span><span style="color:#b48ead;">=&gt; </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
-                (it, list.size, set.size, window.getStart, window.getEnd)</span><span style="color:#eff1f5;">
-              }</span><span style="color:#eff1f5;">
-            }</span><span style="color:#eff1f5;">
-          }</span><span style="color:#eff1f5;">
-        }</span><span style="color:#eff1f5;">
-      ).keyBy(</span><span style="color:#d08770;">0</span><span style="color:#eff1f5;">)</span><span style="color:#eff1f5;">
-      .flatMapWithState[(</span><span style="color:#ebcb8b;">String</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">Int</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">Int</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">Long</span><span style="color:#eff1f5;">),(</span><span style="color:#b48ead;">Int</span><span style="color:#eff1f5;">, </span><span style="color:#b48ead;">Int</span><span style="color:#eff1f5;">)]{</span><span style="color:#eff1f5;">
-        </span><span style="color:#b48ead;">case </span><span style="color:#eff1f5;">((</span><span style="color:#bf616a;">key</span><span style="color:#eff1f5;">, </span><span style="color:#bf616a;">numpv</span><span style="color:#eff1f5;">, </span><span style="color:#bf616a;">numuv</span><span style="color:#eff1f5;">, </span><span style="color:#bf616a;">begin</span><span style="color:#eff1f5;">, </span><span style="color:#bf616a;">end</span><span style="color:#eff1f5;">), </span><span style="color:#bf616a;">curr</span><span style="color:#eff1f5;">) </span><span style="color:#b48ead;">=&gt;</span><span style="color:#eff1f5;">
-          curr </span><span style="color:#b48ead;">match </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
-            </span><span style="color:#b48ead;">case </span><span style="color:#eff1f5;">Some(</span><span style="color:#bf616a;">numCurr</span><span style="color:#eff1f5;">) </span><span style="color:#b48ead;">if</span><span style="color:#eff1f5;"> numCurr </span><span style="color:#c0c5ce;">== </span><span style="color:#eff1f5;">(numuv, numpv) </span><span style="color:#b48ead;">=&gt;</span><span style="color:#eff1f5;">
-              (Seq.empty, Some((numuv, numpv)))</span><span style="color:#eff1f5;">
-            </span><span style="color:#b48ead;">case </span><span style="color:#bf616a;">_ </span><span style="color:#b48ead;">=&gt;</span><span style="color:#eff1f5;">
-              (Seq((key, numpv, numuv, begin, end)), Some((numuv, numpv)))</span><span style="color:#eff1f5;">
-          }</span><span style="color:#eff1f5;">
-      }</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">
-    </span><span style="color:#b48ead;">val </span><span style="color:#bf616a;">resulted </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> pvuv.map(</span><span style="color:#bf616a;">x </span><span style="color:#b48ead;">=&gt; </span><span style="color:#eff1f5;">{</span><span style="color:#eff1f5;">
-      </span><span style="color:#b48ead;">val </span><span style="color:#bf616a;">keys </span><span style="color:#c0c5ce;">=</span><span style="color:#eff1f5;"> x._1.split(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">_</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">)</span><span style="color:#eff1f5;">
-      (keys(</span><span style="color:#d08770;">0</span><span style="color:#eff1f5;">), x._2, x._3)</span><span style="color:#eff1f5;">
-    })</span><span style="color:#eff1f5;">
-</span><span style="color:#eff1f5;">
-    resulted.print</span><span style="color:#eff1f5;">
-    env.execute(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">Flink Streaming pv &amp; uv</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">)</span><span style="color:#eff1f5;">
-  }</span><span style="color:#eff1f5;">
-}</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-scala" data-lang="scala"><span style="font-style:italic;color:#c792ea;">package </span><span style="color:#eeffff;">me.xjump</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="color:#c792ea;">import</span><span style="color:#eeffff;"> org</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">apache</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">flink</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">streaming</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">api</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">scala</span><span style="color:#89ddff;">.</span><span style="font-style:italic;color:#ff5370;">_</span><span style="color:#eeffff;">
+</span><span style="color:#c792ea;">import</span><span style="color:#eeffff;"> org</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">apache</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">flink</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">streaming</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">api</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">scala</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">extensions</span><span style="color:#89ddff;">.</span><span style="font-style:italic;color:#ff5370;">_</span><span style="color:#eeffff;">
+</span><span style="color:#c792ea;">import</span><span style="color:#eeffff;"> org</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">apache</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">flink</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">streaming</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">api</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">windowing</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">assigners</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">TumblingProcessingTimeWindows</span><span style="color:#eeffff;">
+</span><span style="color:#c792ea;">import</span><span style="color:#eeffff;"> org</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">apache</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">flink</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">streaming</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">api</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">windowing</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">time</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">Time</span><span style="color:#eeffff;">
+</span><span style="color:#c792ea;">import</span><span style="color:#eeffff;"> org</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">apache</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">flink</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">streaming</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">api</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">windowing</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">triggers</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">ContinuousProcessingTimeTrigger</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">object</span><span style="color:#ffcb6b;"> StreamingJob </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+  </span><span style="font-style:italic;color:#c792ea;">def </span><span style="color:#82aaff;">main</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">args</span><span style="color:#89ddff;">: </span><span style="color:#ffcb6b;">Array</span><span style="color:#89ddff;">[</span><span style="color:#ffcb6b;">String</span><span style="color:#89ddff;">]) {</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">val </span><span style="color:#eeffff;">env </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">StreamExecutionEnvironment</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">getExecutionEnvironment</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">val </span><span style="color:#eeffff;">text </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> env</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">socketTextStream</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">localhost</span><span style="color:#89ddff;">&quot;, </span><span style="color:#f78c6c;">9999</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">val </span><span style="color:#eeffff;">dataInput </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> text</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">map</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">x</span><span style="font-style:italic;color:#c792ea;">=&gt; </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+      </span><span style="font-style:italic;color:#c792ea;">val </span><span style="color:#eeffff;">it </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> x</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">split</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">,</span><span style="color:#89ddff;">&quot;)</span><span style="color:#eeffff;">
+      </span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">filter </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+        </span><span style="font-style:italic;color:#ff5370;">_</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">nonEmpty</span><span style="color:#eeffff;">
+      </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+      it </span><span style="font-style:italic;color:#4a4a4a;">// it(0)=url,it(1)=uid</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">})</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">val </span><span style="color:#eeffff;">pvuv </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> dataInput</span><span style="color:#eeffff;">
+      </span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">keyBy</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+      </span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">window</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">TumblingProcessingTimeWindows</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">of</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">Time</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">seconds</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">5</span><span style="color:#89ddff;">)))</span><span style="color:#eeffff;">
+      </span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">trigger</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">ContinuousProcessingTimeTrigger</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">of</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">Time</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">seconds</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">)))</span><span style="color:#eeffff;">
+      </span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">applyWith</span><span style="color:#89ddff;">((&quot;&quot;, </span><span style="color:#f78c6c;">List</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">empty</span><span style="color:#89ddff;">[</span><span style="font-style:italic;color:#c792ea;">Int</span><span style="color:#89ddff;">], </span><span style="color:#f78c6c;">Set</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">empty</span><span style="color:#89ddff;">[</span><span style="font-style:italic;color:#c792ea;">Int</span><span style="color:#89ddff;">], </span><span style="color:#f78c6c;">0</span><span style="font-style:italic;color:#c792ea;">L</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">0</span><span style="font-style:italic;color:#c792ea;">L</span><span style="color:#89ddff;">))(</span><span style="color:#eeffff;">
+        foldFunction </span><span style="color:#89ddff;">= {</span><span style="color:#eeffff;">
+          </span><span style="color:#c792ea;">case </span><span style="color:#89ddff;">((</span><span style="font-style:italic;color:#ff5370;">_</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">list</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">set</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#ff5370;">_</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">), </span><span style="color:#f78c6c;">item</span><span style="color:#89ddff;">) </span><span style="font-style:italic;color:#c792ea;">=&gt; </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+            </span><span style="font-style:italic;color:#c792ea;">val </span><span style="color:#eeffff;">url</span><span style="color:#89ddff;">:</span><span style="color:#ffcb6b;">String </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> item</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+            </span><span style="font-style:italic;color:#c792ea;">val </span><span style="color:#eeffff;">uid</span><span style="color:#89ddff;">:</span><span style="color:#ffcb6b;">String </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> item</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+            </span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">url + </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">_</span><span style="color:#89ddff;">&quot;</span><span style="color:#eeffff;"> + uid</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> url</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">hashCode +: list</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> set + uid</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">hashCode</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">0</span><span style="font-style:italic;color:#c792ea;">L</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">0</span><span style="font-style:italic;color:#c792ea;">L</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+          </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+        </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+        </span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> windowFunction </span><span style="color:#89ddff;">= {</span><span style="color:#eeffff;">
+          </span><span style="color:#c792ea;">case </span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">key</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">window</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">result</span><span style="color:#89ddff;">) </span><span style="font-style:italic;color:#c792ea;">=&gt; </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+            result</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">map </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+              </span><span style="color:#c792ea;">case </span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">it</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">list</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">set</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#ff5370;">_</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#ff5370;">_</span><span style="color:#89ddff;">) </span><span style="font-style:italic;color:#c792ea;">=&gt; </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+                </span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">it</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> list</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">size</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> set</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">size</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> window</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">getStart</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> window</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">getEnd</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+              </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+            </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+          </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+        </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+      </span><span style="color:#89ddff;">).</span><span style="color:#eeffff;">keyBy</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+      </span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">flatMapWithState</span><span style="color:#89ddff;">[(</span><span style="color:#ffcb6b;">String</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#c792ea;">Int</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#c792ea;">Int</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#c792ea;">Long</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#c792ea;">Long</span><span style="color:#89ddff;">),(</span><span style="font-style:italic;color:#c792ea;">Int</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#c792ea;">Int</span><span style="color:#89ddff;">)]{</span><span style="color:#eeffff;">
+        </span><span style="color:#c792ea;">case </span><span style="color:#89ddff;">((</span><span style="color:#f78c6c;">key</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">numpv</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">numuv</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">begin</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">end</span><span style="color:#89ddff;">), </span><span style="color:#f78c6c;">curr</span><span style="color:#89ddff;">) </span><span style="font-style:italic;color:#c792ea;">=&gt;</span><span style="color:#eeffff;">
+          curr </span><span style="font-style:italic;color:#c792ea;">match </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+            </span><span style="color:#c792ea;">case </span><span style="color:#f78c6c;">Some</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">numCurr</span><span style="color:#89ddff;">) </span><span style="font-style:italic;color:#c792ea;">if</span><span style="color:#eeffff;"> numCurr </span><span style="color:#89ddff;">== (</span><span style="color:#eeffff;">numuv</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> numpv</span><span style="color:#89ddff;">) </span><span style="font-style:italic;color:#c792ea;">=&gt;</span><span style="color:#eeffff;">
+              </span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">Seq</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">empty</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">Some</span><span style="color:#89ddff;">((</span><span style="color:#eeffff;">numuv</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> numpv</span><span style="color:#89ddff;">)))</span><span style="color:#eeffff;">
+            </span><span style="color:#c792ea;">case </span><span style="font-style:italic;color:#ff5370;">_ </span><span style="font-style:italic;color:#c792ea;">=&gt;</span><span style="color:#eeffff;">
+              </span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">Seq</span><span style="color:#89ddff;">((</span><span style="color:#eeffff;">key</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> numpv</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> numuv</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> begin</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> end</span><span style="color:#89ddff;">)), </span><span style="color:#f78c6c;">Some</span><span style="color:#89ddff;">((</span><span style="color:#eeffff;">numuv</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> numpv</span><span style="color:#89ddff;">)))</span><span style="color:#eeffff;">
+          </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+      </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">val </span><span style="color:#eeffff;">resulted </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> pvuv</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">map</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">x </span><span style="font-style:italic;color:#c792ea;">=&gt; </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+      </span><span style="font-style:italic;color:#c792ea;">val </span><span style="color:#eeffff;">keys </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> x</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">_1</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">split</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">_</span><span style="color:#89ddff;">&quot;)</span><span style="color:#eeffff;">
+      </span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">keys</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">),</span><span style="color:#eeffff;"> x</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">_2</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> x</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">_3</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">})</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+    resulted</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">print</span><span style="color:#eeffff;">
+    env</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">execute</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">Flink Streaming pv &amp; uv</span><span style="color:#89ddff;">&quot;)</span><span style="color:#eeffff;">
+  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>同样的，在nc窗口输入：</p>
-<pre style="background-color:#2b303b;">
-<code><span style="color:#c0c5ce;">url,uid1212</span><span style="color:#c0c5ce;">
-url2,uid1212</span><span style="color:#c0c5ce;">
-url3,uid1212</span><span style="color:#c0c5ce;">
-url,uid1212</span><span style="color:#c0c5ce;">
-url,uid1213</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code><span style="color:#eeffff;">url,uid1212</span><span style="color:#eeffff;">
+url2,uid1212</span><span style="color:#eeffff;">
+url3,uid1212</span><span style="color:#eeffff;">
+url,uid1212</span><span style="color:#eeffff;">
+url,uid1213</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>将会在StreamingJob的main控制台看到输出</p>
-<pre style="background-color:#2b303b;">
-<code><span style="color:#c0c5ce;">3&gt; (url,1,1)</span><span style="color:#c0c5ce;">
-5&gt; (url2,1,1)</span><span style="color:#c0c5ce;">
-7&gt; (url3,1,1)</span><span style="color:#c0c5ce;">
-7&gt; (url,1,1)</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code><span style="color:#eeffff;">3&gt; (url,1,1)</span><span style="color:#eeffff;">
+5&gt; (url2,1,1)</span><span style="color:#eeffff;">
+7&gt; (url3,1,1)</span><span style="color:#eeffff;">
+7&gt; (url,1,1)</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>最后在<code>http://127.0.0.1:8081</code>进行集群（尽管是单节点）进行Job提交，步骤如下
 首先生成jar包</p>
-<pre style="background-color:#2b303b;">
-<code class="language-bash" data-lang="bash"><span style="color:#bf616a;">mvn</span><span style="color:#c0c5ce;"> clean package</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code class="language-bash" data-lang="bash"><span style="color:#82aaff;">mvn clean package</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>然后将jar文件提交通过web console提交，并启动任务。</p>
 <p>最后在nc窗口输入数据，观察stdout的输出结果。</p>
@@ -450,8 +450,8 @@ url,uid1213</span><span style="color:#c0c5ce;">
 <h3 id="3-1-scalayu-flinkde-ban-ben-chong-tu-wen-ti">3.1 scala与Flink的版本冲突问题</h3>
 <p>测试过程中发现scala 2.12.8与Flink 1.8.1-scala_2.12冲突，将StreamingJob切换到scala_2.12.7解决。</p>
 <p>问题现象为StreamingJob启动报错</p>
-<pre style="background-color:#2b303b;">
-<code><span style="color:#c0c5ce;">java.lang.NoClassDefFoundError: scala/math/Ordering$$anon$9</span><span style="color:#c0c5ce;">
+<pre style="background-color:#212121;">
+<code><span style="color:#eeffff;">java.lang.NoClassDefFoundError: scala/math/Ordering$$anon$9</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>Flink项目bug参考：<a href=http://mail-archives.apache.org/mod_mbox/flink-issues/201905.mbox/%3cJIRA.13232397.1557388276000.223081.1557391740894@Atlassian.JIRA%3e>Flink-12461</a></p>
 <h3 id="3-2-flinkhe-xin-gai-nian-jie-shao">3.2 Flink核心概念介绍</h3>
