@@ -145,7 +145,7 @@
     <div class="post-content">
       <h3>Introduction</h3>
 <p>
-    RFC4226记述的是HOTP，一个基于HMAC的动态口令的算法。由于本系统支持HOTP，在这里将介绍一下RFC4226的概要或者直接翻译一些章节。对于一些细节请参照<a href="http://www.ietf.org/rfc/rfc4226.txt" rel="nofollow">RFC 4226原文</a>。</p>
+  RFC4226记述的是HOTP，一个基于HMAC的动态口令的算法。由于本系统支持HOTP，在这里将介绍一下RFC4226的概要或者直接翻译一些章节。对于一些细节请参照<a href="http://www.ietf.org/rfc/rfc4226.txt" rel="nofollow">RFC 4226原文</a>。</p>
 <h3>Details</h3>
 <pre style="background-color:#212121;">
 <code class="language-txt" data-lang="txt"><span style="color:#eeffff;">4.算法的必要条件</span><span style="color:#eeffff;">
@@ -172,12 +172,12 @@ R6 - 这个算法必须使用牢固的共享密码。共享密码必须至少128
 <p>5.3 生成HOTP值</p>
 <pre style="background-color:#212121;">
 <code class="language-txt" data-lang="txt"><span style="color:#eeffff;">第1步：生成一个HMAC-SHA-1值,让HS = HMAC-SHA-1(K,C) //HS为20位的String</span><span style="color:#eeffff;">
-    </span><span style="color:#eeffff;">
+  </span><span style="color:#eeffff;">
 第2步：生成一个4位的String(Dynamic Truncation,动态削减)</span><span style="color:#eeffff;">
-    让 Sbits = DT(HS)  //DT运算的定义参照下面说明，返回31-bit string</span><span style="color:#eeffff;">
+  让 Sbits = DT(HS)  //DT运算的定义参照下面说明，返回31-bit string</span><span style="color:#eeffff;">
 </span><span style="color:#eeffff;">
 第3步：计算HOTP值 让 Snum = StToNum(Sbits) // 把S转化成一个0...2^{31}-1</span><span style="color:#eeffff;">
-    的数 Return D = Snum mod 10Digit // D是一个位于0...10{Digit}-1的数</span><span style="color:#eeffff;">
+  的数 Return D = Snum mod 10Digit // D是一个位于0...10{Digit}-1的数</span><span style="color:#eeffff;">
 </span><span style="color:#eeffff;">
 削减函数Truncate执行第2步和第3步处理。</span><span style="color:#eeffff;">
 </span></code></pre><p>DT运算的定义</p>
@@ -191,13 +191,13 @@ Offset = StToNum(OffsetBits) // 0 &lt;= OffSet &lt;= 15</span><span style="color
 <p>5.4. 计算6位HOTP的例子（Digit = 6） </p>
 <p>下面的例子介绍怎样从HMAC-SHA-1运算结果抽取动态的二进制代码。</p>
 <pre style="background-color:#212121;">
-<code class="language-txt" data-lang="txt"><span style="color:#eeffff;">//String[19]的低位4字节</span><span style="color:#eeffff;">
-int offset   =  hmac_result[19] &amp; 0xf ;</span><span style="color:#eeffff;">
-//不使用最高位，利用 &amp;0x7f</span><span style="color:#eeffff;">
-int bin_code = (hmac_result[offset]  &amp; 0x7f) &lt;&lt; 24</span><span style="color:#eeffff;">
-    | (hmac_result[offset+1] &amp; 0xff) &lt;&lt; 16</span><span style="color:#eeffff;">
-    | (hmac_result[offset+2] &amp; 0xff) &lt;&lt;  8</span><span style="color:#eeffff;">
-    | (hmac_result[offset+3] &amp; 0xff) ;</span><span style="color:#eeffff;">
+<code class="language-cpp" data-lang="cpp"><span style="font-style:italic;color:#4a4a4a;">//String[19]的低位4字节</span><span style="font-style:italic;color:#4a4a4a;">
+</span><span style="font-style:italic;color:#c792ea;">int</span><span style="color:#eeffff;"> offset   </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;">  hmac_result</span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">19</span><span style="color:#89ddff;">] &amp; 0x</span><span style="color:#f78c6c;">f </span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#4a4a4a;">//不使用最高位，利用 &amp;0x7f</span><span style="font-style:italic;color:#4a4a4a;">
+</span><span style="font-style:italic;color:#c792ea;">int</span><span style="color:#eeffff;"> bin_code </span><span style="color:#89ddff;">= (</span><span style="color:#eeffff;">hmac_result</span><span style="color:#89ddff;">[</span><span style="color:#eeffff;">offset</span><span style="color:#89ddff;">]  &amp; 0x</span><span style="color:#f78c6c;">7f</span><span style="color:#89ddff;">) &lt;&lt; </span><span style="color:#f78c6c;">24</span><span style="color:#eeffff;">
+  </span><span style="color:#89ddff;">| (</span><span style="color:#eeffff;">hmac_result</span><span style="color:#89ddff;">[</span><span style="color:#eeffff;">offset</span><span style="color:#89ddff;">+</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">] &amp; 0x</span><span style="color:#f78c6c;">ff</span><span style="color:#89ddff;">) &lt;&lt; </span><span style="color:#f78c6c;">16</span><span style="color:#eeffff;">
+  </span><span style="color:#89ddff;">| (</span><span style="color:#eeffff;">hmac_result</span><span style="color:#89ddff;">[</span><span style="color:#eeffff;">offset</span><span style="color:#89ddff;">+</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">] &amp; 0x</span><span style="color:#f78c6c;">ff</span><span style="color:#89ddff;">) &lt;&lt;  </span><span style="color:#f78c6c;">8</span><span style="color:#eeffff;">
+  </span><span style="color:#89ddff;">| (</span><span style="color:#eeffff;">hmac_result</span><span style="color:#89ddff;">[</span><span style="color:#eeffff;">offset</span><span style="color:#89ddff;">+</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">] &amp; 0x</span><span style="color:#f78c6c;">ff</span><span style="color:#89ddff;">) ;</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>7.2. HOTP值的验证</p>
 <p>HOTP客户端(硬软件令牌)递增计数器的值，然后计算下一个HOTP值。如果认证服务器得到的值和客户端计算出来的值一样，那么HOTP值就被验证了。在这种情况下，服务器把计数器的值加1。</p>

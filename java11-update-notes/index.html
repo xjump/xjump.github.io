@@ -151,9 +151,9 @@
 <p>增加下面的依赖：</p>
 <pre style="background-color:#212121;">
 <code class="language-xml" data-lang="xml"><span style="color:#89ddff;">&lt;</span><span style="color:#f07178;">dependency</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&lt;</span><span style="color:#f07178;">groupId</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;">javax.xml.bind</span><span style="color:#89ddff;">&lt;/</span><span style="color:#f07178;">groupId</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&lt;</span><span style="color:#f07178;">artifactId</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;">jaxb-api</span><span style="color:#89ddff;">&lt;/</span><span style="color:#f07178;">artifactId</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&lt;</span><span style="color:#f07178;">version</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;">2.3.0</span><span style="color:#89ddff;">&lt;/</span><span style="color:#f07178;">version</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;">
+  </span><span style="color:#89ddff;">&lt;</span><span style="color:#f07178;">groupId</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;">javax.xml.bind</span><span style="color:#89ddff;">&lt;/</span><span style="color:#f07178;">groupId</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;">
+  </span><span style="color:#89ddff;">&lt;</span><span style="color:#f07178;">artifactId</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;">jaxb-api</span><span style="color:#89ddff;">&lt;/</span><span style="color:#f07178;">artifactId</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;">
+  </span><span style="color:#89ddff;">&lt;</span><span style="color:#f07178;">version</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;">2.3.0</span><span style="color:#89ddff;">&lt;/</span><span style="color:#f07178;">version</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;">
 </span><span style="color:#89ddff;">&lt;/</span><span style="color:#f07178;">dependency</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;">
 </span></code></pre><span id="continue-reading"></span>
 <p>2、 某些GC废弃了，就不要用了。比如下面这个报错说明UseParNewGC这个新生代的GC就不支持了。</p>
@@ -167,34 +167,34 @@
 <pre style="background-color:#212121;">
 <code class="language-txt" data-lang="txt"><span style="color:#eeffff;">Here is a detailed summary of the flags and flag combinations that will stop working:</span><span style="color:#eeffff;">
 </span><span style="color:#eeffff;">
-DefNew + CMS       : -XX:-UseParNewGC -XX:+UseConcMarkSweepGC</span><span style="color:#eeffff;">
+DefNew + CMS     : -XX:-UseParNewGC -XX:+UseConcMarkSweepGC</span><span style="color:#eeffff;">
 ParNew + SerialOld : -XX:+UseParNewGC</span><span style="color:#eeffff;">
-ParNew + iCMS      : -Xincgc</span><span style="color:#eeffff;">
-ParNew + iCMS      : -XX:+CMSIncrementalMode -XX:+UseConcMarkSweepGC</span><span style="color:#eeffff;">
-DefNew + iCMS      : -XX:+CMSIncrementalMode -XX:+UseConcMarkSweepGC -XX:-UseParNewGC</span><span style="color:#eeffff;">
-CMS foreground     : -XX:+UseCMSCompactAtFullCollection</span><span style="color:#eeffff;">
-CMS foreground     : -XX:+CMSFullGCsBeforeCompaction</span><span style="color:#eeffff;">
-CMS foreground     : -XX:+UseCMSCollectionPassing</span><span style="color:#eeffff;">
+ParNew + iCMS    : -Xincgc</span><span style="color:#eeffff;">
+ParNew + iCMS    : -XX:+CMSIncrementalMode -XX:+UseConcMarkSweepGC</span><span style="color:#eeffff;">
+DefNew + iCMS    : -XX:+CMSIncrementalMode -XX:+UseConcMarkSweepGC -XX:-UseParNewGC</span><span style="color:#eeffff;">
+CMS foreground   : -XX:+UseCMSCompactAtFullCollection</span><span style="color:#eeffff;">
+CMS foreground   : -XX:+CMSFullGCsBeforeCompaction</span><span style="color:#eeffff;">
+CMS foreground   : -XX:+UseCMSCollectionPassing</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>那么还有哪些可以用呢？当然是<a href="https://tech.meituan.com/g1.html"> G1</a> 了，还有处于Experimental的ZGC，性能超强。看数据：</p>
 <pre style="background-color:#212121;">
 <code class="language-txt" data-lang="txt"><span style="color:#eeffff;">128G heap (Lower is better)</span><span style="color:#eeffff;">
 </span><span style="color:#eeffff;">
 ZGC</span><span style="color:#eeffff;">
-                avg: 1.091ms (+/-0.215ms)</span><span style="color:#eeffff;">
-    95th percentile: 1.380ms</span><span style="color:#eeffff;">
-    99th percentile: 1.512ms</span><span style="color:#eeffff;">
+        avg: 1.091ms (+/-0.215ms)</span><span style="color:#eeffff;">
+  95th percentile: 1.380ms</span><span style="color:#eeffff;">
+  99th percentile: 1.512ms</span><span style="color:#eeffff;">
   99.9th percentile: 1.663ms</span><span style="color:#eeffff;">
  99.99th percentile: 1.681ms</span><span style="color:#eeffff;">
-                max: 1.681ms</span><span style="color:#eeffff;">
+        max: 1.681ms</span><span style="color:#eeffff;">
 </span><span style="color:#eeffff;">
 G1</span><span style="color:#eeffff;">
-                avg: 156.806ms (+/-71.126ms)</span><span style="color:#eeffff;">
-    95th percentile: 316.672ms</span><span style="color:#eeffff;">
-    99th percentile: 428.095ms</span><span style="color:#eeffff;">
+        avg: 156.806ms (+/-71.126ms)</span><span style="color:#eeffff;">
+  95th percentile: 316.672ms</span><span style="color:#eeffff;">
+  99th percentile: 428.095ms</span><span style="color:#eeffff;">
   99.9th percentile: 543.846ms</span><span style="color:#eeffff;">
  99.99th percentile: 543.846ms</span><span style="color:#eeffff;">
-                max: 543.846ms</span><span style="color:#eeffff;">
+        max: 543.846ms</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>有关ZGC的介绍在<a href="http://openjdk.java.net/jeps/333">JEP-333</a><br />
 源码下载<a href="http://hg.openjdk.java.net/jdk/jdk11/branches">browser-&gt;zip</a><br />

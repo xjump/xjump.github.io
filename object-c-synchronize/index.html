@@ -134,7 +134,7 @@
     
     <header class="post__header">
         <h1 class="post__title">
-            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;object-c-synchronize&#x2F;">ObjC synchronize，GCD</a>
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;object-c-synchronize&#x2F;">mm synchronize，GCD</a>
         </h1>
         <div class="post__meta">
             <span class="post__time">2014-10-10</span>
@@ -164,17 +164,17 @@
 </span></code></pre><p>
     转换2：</p>
 <pre style="background-color:#212121;">
-<code class="language-mm" data-lang="mm"><span style="font-style:italic;color:#4a4a4a;">// needs #import objc/objc-sync.h</span><span style="font-style:italic;color:#4a4a4a;">
+<code class="language-mm" data-lang="mm"><span style="font-style:italic;color:#4a4a4a;">// needs #import mm/mm-sync.h</span><span style="font-style:italic;color:#4a4a4a;">
 </span><span style="color:#89ddff;">- (</span><span style="color:#ffcb6b;">NSString</span><span style="color:#89ddff;">*) </span><span style="color:#82aaff;">myString </span><span style="color:#89ddff;">{</span><span style="color:#82aaff;">
   </span><span style="font-style:italic;color:#c792ea;">id </span><span style="color:#82aaff;">retVal </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">nil</span><span style="color:#89ddff;">;</span><span style="color:#82aaff;">
-  objc_sync_enter</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#ff5370;">self</span><span style="color:#89ddff;">);</span><span style="color:#82aaff;">
+  mm_sync_enter</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#ff5370;">self</span><span style="color:#89ddff;">);</span><span style="color:#82aaff;">
   </span><span style="font-style:italic;color:#89ddff;">@</span><span style="font-style:italic;color:#c792ea;">try </span><span style="color:#89ddff;">{</span><span style="color:#82aaff;">
     retVal </span><span style="color:#89ddff;">= [[</span><span style="color:#82aaff;">myString retain</span><span style="color:#89ddff;">]</span><span style="color:#82aaff;"> autorelease</span><span style="color:#89ddff;">];</span><span style="color:#82aaff;">
   </span><span style="color:#89ddff;">}</span><span style="color:#82aaff;">
   </span><span style="font-style:italic;color:#89ddff;">@</span><span style="font-style:italic;color:#c792ea;">catch</span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">NSException</span><span style="color:#89ddff;">*</span><span style="color:#82aaff;"> ex</span><span style="color:#89ddff;">) {</span><span style="color:#82aaff;">
   </span><span style="color:#89ddff;">}</span><span style="color:#82aaff;">
   @finaly </span><span style="color:#89ddff;">{</span><span style="color:#82aaff;">
-    objc_sync_exit</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#ff5370;">self</span><span style="color:#89ddff;">);</span><span style="color:#82aaff;">
+    mm_sync_exit</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#ff5370;">self</span><span style="color:#89ddff;">);</span><span style="color:#82aaff;">
   </span><span style="color:#89ddff;">}</span><span style="color:#82aaff;">
   </span><span style="font-style:italic;color:#c792ea;">return</span><span style="color:#82aaff;"> retVal</span><span style="color:#89ddff;">;</span><span style="color:#82aaff;">
 </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
@@ -295,11 +295,11 @@ BACKGROUND, LOW, DEFAULT, HIGH 分别代表不同的优先级，高优先级队�
 <p><a href="http://blog.csdn.net/totogo2010/article/details/8016129">http://blog.csdn.net/totogo2010/article/details/8016129</a></p>
 <p><a href="http://stackoverflow.com/questions/19822700/difference-between-dispatch-async-and-dispatch-sync-on-serial-queue">http://stackoverflow.com/questions/19822700/difference-between-dispatch-async-and-dispatch-sync-on-serial-queue</a></p>
 <p><a href="http://stackoverflow.com/questions/16283652/understanding-dispatch-async">http://stackoverflow.com/questions/16283652/understanding-dispatch-async</a></p>
-<p><a href="http://objccn.io/issue-2-1/">http://objccn.io/issue-2-1/</a></p>
-<p><a href="http://opensource.apple.com/source/objc4/objc4-437.1/runtime/objc-sync.m">http://opensource.apple.com/source/objc4/objc4-437.1/runtime/objc-sync.m</a></p>
+<p><a href="http://mmcn.io/issue-2-1/">http://mmcn.io/issue-2-1/</a></p>
+<p><a href="http://opensource.apple.com/source/mm4/mm4-437.1/runtime/mm-sync.m">http://opensource.apple.com/source/mm4/mm4-437.1/runtime/mm-sync.m</a></p>
 <p><a href="http://www.kuro5hin.org/story/2011/1/21/193921/656">http://www.kuro5hin.org/story/2011/1/21/193921/656</a></p>
-<p><a href="http://www.objc.io/issue-2/thread-safe-class-design.html">http://www.objc.io/issue-2/thread-safe-class-design.html</a></p>
-<p><a href="http://objccn.io/issue-2-4/">http://objccn.io/issue-2-4/</a></p>
+<p><a href="http://www.mm.io/issue-2/thread-safe-class-design.html">http://www.mm.io/issue-2/thread-safe-class-design.html</a></p>
+<p><a href="http://mmcn.io/issue-2-4/">http://mmcn.io/issue-2-4/</a></p>
 
     </div>
 
@@ -321,7 +321,7 @@ BACKGROUND, LOW, DEFAULT, HIGH 分别代表不同的优先级，高优先级队�
                         <a class="previous" href="https:&#x2F;&#x2F;xjump.me&#x2F;bore&#x2F;">‹ 般若波罗蜜多心经</a>
                     
                     
-                        <a class="next" href="https:&#x2F;&#x2F;xjump.me&#x2F;ios-framework-destruct&#x2F;">iOS framework结构 ›</a>
+                        <a class="next" href="https:&#x2F;&#x2F;xjump.me&#x2F;jvm-attack&#x2F;">JVM App exploit ›</a>
                     
                     
                     

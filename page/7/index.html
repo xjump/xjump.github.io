@@ -133,64 +133,6 @@
                                     
     <header class="post__header">
         <h1 class="post__title">
-            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;kd-tree-knn&#x2F;">kd_tree_kNN分类</a>
-        </h1>
-        <div class="post__meta">
-            <span class="post__time">2013-10-14</span>
-            
-        </div>
-    </header>
-
-                                    <div class="post__summary">
-                                        <pre style="background-color:#212121;">
-<code class="language-python" data-lang="python"><span style="font-style:italic;color:#4a4a4a;">#!/usr/bin/env python</span><span style="font-style:italic;color:#4a4a4a;">
-# -*- coding: utf-8 -*-</span><span style="font-style:italic;color:#4a4a4a;">
- </span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#4a4a4a;">&#39;&#39;&#39;</span><span style="font-style:italic;color:#4a4a4a;">
-file: kd_tree_kNN.py</span><span style="font-style:italic;color:#4a4a4a;">
-author: xjump.me#at#gmail#dot#com</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="font-style:italic;color:#4a4a4a;">
-REF:</span><span style="font-style:italic;color:#4a4a4a;">
-    http://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.KDTree.html</span><span style="font-style:italic;color:#4a4a4a;">
-&#39;&#39;&#39;</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">import </span><span style="color:#eeffff;">numpy </span><span style="font-style:italic;color:#c792ea;">as </span><span style="color:#eeffff;">np</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">import </span><span style="color:#eeffff;">operator</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">from </span><span style="color:#eeffff;">scipy</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">spatial </span><span style="font-style:italic;color:#c792ea;">import </span><span style="color:#eeffff;">cKDTree </span><span style="font-style:italic;color:#c792ea;">as </span><span style="color:#eeffff;">KDTree</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">import </span><span style="color:#eeffff;">sys</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">sys</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">setrecursionlimit</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10000</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#eeffff;">__name__</span><span style="color:#89ddff;">==&amp;</span><span style="color:#eeffff;">quot</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">__main__</span><span style="color:#89ddff;">&amp;</span><span style="color:#eeffff;">quot</span><span style="color:#89ddff;">;:</span><span style="color:#eeffff;">
-    v0 </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">np</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">array</span><span style="color:#89ddff;">([</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">5</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">6</span><span style="color:#89ddff;">])</span><span style="color:#eeffff;">
-    train_data_set </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">np</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">array</span><span style="color:#89ddff;">([</span><span style="color:#82aaff;">
-        </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">.</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">6</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">],</span><span style="color:#82aaff;">
-        </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">9</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">17</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">6</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">59</span><span style="color:#89ddff;">],</span><span style="color:#82aaff;">
-        </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">.</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">44</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">6</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">23</span><span style="color:#89ddff;">],</span><span style="color:#82aaff;">
-        </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">9</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">51</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">100</span><span style="color:#89ddff;">],</span><span style="color:#82aaff;">
-        </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">18</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">39</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">21</span><span style="color:#89ddff;">],</span><span style="color:#82aaff;">
-        </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">66</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">8</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">28</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">88</span><span style="color:#89ddff;">],</span><span style="color:#82aaff;">
-        </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">33</span><span style="color:#89ddff;">],</span><span style="color:#82aaff;">
-        </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">24</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">.</span><span style="color:#f78c6c;">5</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">56</span><span style="color:#89ddff;">],</span><span style="color:#82aaff;">
-        </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">22</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">99</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">.</span><span style="color:#f78c6c;">6</span><span style="color:#89ddff;">],</span><span style="color:#82aaff;">
-        </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">70</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">13</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">9</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">],</span><span style="color:#82aaff;">
-    </span><span style="color:#89ddff;">])</span><span style="color:#eeffff;">
-    tree </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">KDTree</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">train_data_set</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#c792ea;">for </span><span style="color:#eeffff;">k </span><span style="font-style:italic;color:#c792ea;">in </span><span style="color:#82aaff;">range</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">):</span><span style="color:#eeffff;">
-        </span><span style="color:#c792ea;">print </span><span style="color:#89ddff;">&#39;</span><span style="color:#c3e88d;">k=</span><span style="color:#89ddff;">&#39;</span><span style="color:#eeffff;">,k</span><span style="color:#eeffff;">
-        </span><span style="font-style:italic;color:#4a4a4a;">#test sample v0, return 3 nearest point, dimesion is k</span><span style="font-style:italic;color:#4a4a4a;">
-        </span><span style="color:#c792ea;">print </span><span style="color:#82aaff;">tree</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">query</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">v0</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">k</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">p</span><span style="color:#89ddff;">=</span><span style="color:#82aaff;">k</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-</span></code></pre>
-                                    </div>
-                                    <div class="read-more">
-                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;kd-tree-knn&#x2F;">Read more...</a>
-                                    </div>
-                                </article>
-                            
-                                <article class="post">
-                                    
-    <header class="post__header">
-        <h1 class="post__title">
             <a href="https:&#x2F;&#x2F;xjump.me&#x2F;knn-classify&#x2F;">kNN分类例子</a>
         </h1>
         <div class="post__meta">
@@ -281,6 +223,29 @@ REF:</span><span style="font-style:italic;color:#4a4a4a;">
                                     </div>
                                     <div class="read-more">
                                         <a href="https:&#x2F;&#x2F;xjump.me&#x2F;find-your-passion&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;struts-s2-016-vul-checker&#x2F;">struts_s2-016_vul_checker</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2013-07-21</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p>
+最近的struts2漏洞检测脚本，现在各大网站应该已经修复。
+</p>
+
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;struts-s2-016-vul-checker&#x2F;">Read more...</a>
                                     </div>
                                 </article>
                             

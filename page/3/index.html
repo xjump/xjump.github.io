@@ -143,15 +143,15 @@
 
                                     <div class="post__summary">
                                         <p>
-    <strong>0、代理的本质</strong></p>
+  <strong>0、代理的本质</strong></p>
 <p>
-    如果把对象间方法的调用理解为client到server之间的通信，那么Proxy的本质是实现一个具有特定功能的中间人。在Java中存在多种方式实现对对象方法调用的代理。</p>
+  如果把对象间方法的调用理解为client到server之间的通信，那么Proxy的本质是实现一个具有特定功能的中间人。在Java中存在多种方式实现对对象方法调用的代理。</p>
 <p>
-    有了中间人之后，就可以对调用进行hook，达到如下目的：</p>
+  有了中间人之后，就可以对调用进行hook，达到如下目的：</p>
 <p>
-    1）控制调用流程，如权限控制、隐藏、监控调用记录等；</p>
+  1）控制调用流程，如权限控制、隐藏、监控调用记录等；</p>
 <p>
-    2）篡改调用方提供的Request（即Input），如对分布式操作进行Map；</p>
+  2）篡改调用方提供的Request（即Input），如对分布式操作进行Map；</p>
 
                                     </div>
                                     <div class="read-more">
@@ -173,27 +173,27 @@
 
                                     <div class="post__summary">
                                         <p>
-    <strong>1）Thread & ThreadPoolExecutor</strong></p>
+  <strong>1）Thread & ThreadPoolExecutor</strong></p>
 <p>
-    Thread例子如下：</p>
+  Thread例子如下：</p>
 <pre style="background-color:#212121;">
 <code class="language-java" data-lang="java"><span style="font-style:italic;color:#c792ea;">for</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">&lt;</span><span style="color:#f78c6c;">100</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">++){</span><span style="color:#eeffff;">
-    </span><span style="color:#ffcb6b;">Thread</span><span style="color:#eeffff;"> t </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Thread</span><span style="color:#89ddff;">(){</span><span style="color:#eeffff;">
-        </span><span style="color:#89ddff;">@</span><span style="color:#eeffff;">Override</span><span style="color:#eeffff;">
-        </span><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">run</span><span style="color:#89ddff;">() {</span><span style="color:#eeffff;">
-            </span><span style="font-style:italic;color:#4a4a4a;">//job details</span><span style="font-style:italic;color:#4a4a4a;">
-        </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">};</span><span style="color:#eeffff;">
-    t</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">start</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#c792ea;">try</span><span style="color:#89ddff;">{ </span><span style="color:#eeffff;">
-        t</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">join</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
+  </span><span style="color:#ffcb6b;">Thread</span><span style="color:#eeffff;"> t </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Thread</span><span style="color:#89ddff;">(){</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">@</span><span style="color:#eeffff;">Override</span><span style="color:#eeffff;">
+    </span><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">run</span><span style="color:#89ddff;">() {</span><span style="color:#eeffff;">
+      </span><span style="font-style:italic;color:#4a4a4a;">//job details</span><span style="font-style:italic;color:#4a4a4a;">
     </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#c792ea;">catch</span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">InterruptedException </span><span style="color:#f78c6c;">ex</span><span style="color:#89ddff;">){</span><span style="color:#eeffff;">
-        ex</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+  </span><span style="color:#89ddff;">};</span><span style="color:#eeffff;">
+  t</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">start</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
+  </span><span style="font-style:italic;color:#c792ea;">try</span><span style="color:#89ddff;">{ </span><span style="color:#eeffff;">
+    t</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">join</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
+  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+  </span><span style="font-style:italic;color:#c792ea;">catch</span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">InterruptedException </span><span style="color:#f78c6c;">ex</span><span style="color:#89ddff;">){</span><span style="color:#eeffff;">
+    ex</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
+  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
 </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
 </span></code></pre><p>
-    相应的，ThreadPoolExecutor例子如下：</p>
+  相应的，ThreadPoolExecutor例子如下：</p>
 
                                     </div>
                                     <div class="read-more">
@@ -233,99 +233,7 @@
                                     
     <header class="post__header">
         <h1 class="post__title">
-            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;ios-framework-destruct&#x2F;">iOS framework结构</a>
-        </h1>
-        <div class="post__meta">
-            <span class="post__time">2014-10-22</span>
-            
-        </div>
-    </header>
-
-                                    <div class="post__summary">
-                                        <p class="p4">
-    <span class="caption_number" style="font-family: 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif; font-size: 13px; font-weight: 700; color: rgb(0, 0, 0);">Listing 1 (From dev doc of apple.com)</span><span style="color: rgb(0, 0, 0); font-family: 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif; font-size: 13px;">&nbsp;&nbsp;A simple framework bundle</span></p>
-<table style="width: 600px; border-collapse: collapse; border-style: solid; border-color: rgb(199, 207, 213); padding-bottom: 4px; color: rgb(0, 0, 0); font-family: 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif; background-color: rgb(241, 245, 249);">
-    <tbody>
-        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
-            <td scope="row" style="padding: 0.5em;">
-                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
-MyFramework.framework/</pre>
-            </td>
-        </tr>
-        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
-            <td scope="row" style="padding: 0.5em;">
-                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
-    MyFramework  -> Versions/Current/MyFramework</pre>
-            </td>
-        </tr>
-        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
-            <td scope="row" style="padding: 0.5em;">
-                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
-    Resources    -> Versions/Current/Resources</pre>
-            </td>
-        </tr>
-        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
-            <td scope="row" style="padding: 0.5em;">
-                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
-    Versions/</pre>
-            </td>
-        </tr>
-        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
-            <td scope="row" style="padding: 0.5em;">
-                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
-        A/</pre>
-            </td>
-        </tr>
-        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
-            <td scope="row" style="padding: 0.5em;">
-                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
-            MyFramework</pre>
-            </td>
-        </tr>
-        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
-            <td scope="row" style="padding: 0.5em;">
-                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
-            Resources/</pre>
-            </td>
-        </tr>
-        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
-            <td scope="row" style="padding: 0.5em;">
-                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
-                English.lproj/</pre>
-            </td>
-        </tr>
-        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
-            <td scope="row" style="padding: 0.5em;">
-                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
-                    InfoPlist.strings</pre>
-            </td>
-        </tr>
-        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
-            <td scope="row" style="padding: 0.5em;">
-                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
-                Info.plist</pre>
-            </td>
-        </tr>
-        <tr style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(255, 255, 255);">
-            <td scope="row" style="padding: 0.5em;">
-                <pre style="margin: -0.083em 0.333em 0px 0.5em; font-family: Courier, Consolas, monospace; color: rgb(102, 102, 102); line-height: 13.5020751953125px; white-space: pre-wrap;">
-        Current  -> A</pre>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-                                    </div>
-                                    <div class="read-more">
-                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;ios-framework-destruct&#x2F;">Read more...</a>
-                                    </div>
-                                </article>
-                            
-                                <article class="post">
-                                    
-    <header class="post__header">
-        <h1 class="post__title">
-            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;object-c-synchronize&#x2F;">ObjC synchronize，GCD</a>
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;object-c-synchronize&#x2F;">mm synchronize，GCD</a>
         </h1>
         <div class="post__meta">
             <span class="post__time">2014-10-10</span>
@@ -346,6 +254,36 @@ MyFramework.framework/</pre>
                                     </div>
                                     <div class="read-more">
                                         <a href="https:&#x2F;&#x2F;xjump.me&#x2F;object-c-synchronize&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;bore&#x2F;">般若波罗蜜多心经</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2014-09-30</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p>注：简称《心经》，附（简单字面翻译）。</p>
+<blockquote>
+<p>观自在菩萨（般若智慧已经达到自在境界的菩萨） </p>
+</blockquote>
+<blockquote>
+<p>行深般若波罗蜜多时（当他修行般若智慧达到波罗蜜多觉悟境界的时候） </p>
+</blockquote>
+<blockquote>
+<p>照见五蕴皆空（洞见色、受、想、行、识五蕴乃是人类虚空的妄想）</p>
+</blockquote>
+
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;bore&#x2F;">Read more...</a>
                                     </div>
                                 </article>
                             

@@ -133,29 +133,6 @@
                                     
     <header class="post__header">
         <h1 class="post__title">
-            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;struts-s2-016-vul-checker&#x2F;">struts_s2-016_vul_checker</a>
-        </h1>
-        <div class="post__meta">
-            <span class="post__time">2013-07-21</span>
-            
-        </div>
-    </header>
-
-                                    <div class="post__summary">
-                                        <p>
-最近的struts2漏洞检测脚本，现在各大网站应该已经修复。
-</p>
-
-                                    </div>
-                                    <div class="read-more">
-                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;struts-s2-016-vul-checker&#x2F;">Read more...</a>
-                                    </div>
-                                </article>
-                            
-                                <article class="post">
-                                    
-    <header class="post__header">
-        <h1 class="post__title">
             <a href="https:&#x2F;&#x2F;xjump.me&#x2F;get-top-activity&#x2F;">获取顶层Activity</a>
         </h1>
         <div class="post__meta">
@@ -240,21 +217,42 @@ Dump JavaScript object for PyV8 and NodeJS.</p>
 <p>POC</p>
 <pre style="background-color:#212121;">
 <code class="language-javascript" data-lang="javascript"><span style="font-style:italic;color:#c792ea;">function </span><span style="color:#82aaff;">dump</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">obj</span><span style="color:#89ddff;">){</span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#c792ea;">for</span><span style="color:#eeffff;">(</span><span style="font-style:italic;color:#c792ea;">var </span><span style="color:#eeffff;">item </span><span style="color:#89ddff;">in </span><span style="color:#eeffff;">obj)</span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
-        </span><span style="font-style:italic;color:#c792ea;">if</span><span style="color:#eeffff;">(</span><span style="color:#89ddff;">typeof </span><span style="color:#eeffff;">item </span><span style="color:#89ddff;">=== &quot;</span><span style="color:#c3e88d;">Object</span><span style="color:#89ddff;">&quot;</span><span style="color:#eeffff;">)</span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
-            </span><span style="color:#82aaff;">Print</span><span style="color:#eeffff;">(</span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">Object&#39;s source is:</span><span style="color:#89ddff;">&quot; + </span><span style="color:#eeffff;">item</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">toSource</span><span style="color:#eeffff;">())</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-            </span><span style="color:#82aaff;">dump</span><span style="color:#eeffff;">(item)</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-        </span><span style="color:#89ddff;">}</span><span style="font-style:italic;color:#c792ea;">else if</span><span style="color:#eeffff;">(</span><span style="color:#89ddff;">typeof </span><span style="color:#eeffff;">obj[item] </span><span style="color:#89ddff;">===&quot;</span><span style="color:#c3e88d;">Object</span><span style="color:#89ddff;">&quot;</span><span style="color:#eeffff;">)</span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
-            </span><span style="color:#82aaff;">dump</span><span style="color:#eeffff;">(obj[item])</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-        </span><span style="color:#89ddff;">}</span><span style="font-style:italic;color:#c792ea;">else</span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
-            </span><span style="color:#82aaff;">Print</span><span style="color:#eeffff;">(item</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">toString</span><span style="color:#eeffff;">())</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-        </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+  </span><span style="font-style:italic;color:#c792ea;">for</span><span style="color:#eeffff;">(</span><span style="font-style:italic;color:#c792ea;">var </span><span style="color:#eeffff;">item </span><span style="color:#89ddff;">in </span><span style="color:#eeffff;">obj)</span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">if</span><span style="color:#eeffff;">(</span><span style="color:#89ddff;">typeof </span><span style="color:#eeffff;">item </span><span style="color:#89ddff;">=== &quot;</span><span style="color:#c3e88d;">Object</span><span style="color:#89ddff;">&quot;</span><span style="color:#eeffff;">)</span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+      </span><span style="color:#82aaff;">Print</span><span style="color:#eeffff;">(</span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">Object&#39;s source is:</span><span style="color:#89ddff;">&quot; + </span><span style="color:#eeffff;">item</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">toSource</span><span style="color:#eeffff;">())</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+      </span><span style="color:#82aaff;">dump</span><span style="color:#eeffff;">(item)</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">}</span><span style="font-style:italic;color:#c792ea;">else if</span><span style="color:#eeffff;">(</span><span style="color:#89ddff;">typeof </span><span style="color:#eeffff;">obj[item] </span><span style="color:#89ddff;">===&quot;</span><span style="color:#c3e88d;">Object</span><span style="color:#89ddff;">&quot;</span><span style="color:#eeffff;">)</span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+      </span><span style="color:#82aaff;">dump</span><span style="color:#eeffff;">(obj[item])</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">}</span><span style="font-style:italic;color:#c792ea;">else</span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
+      </span><span style="color:#82aaff;">Print</span><span style="color:#eeffff;">(item</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">toString</span><span style="color:#eeffff;">())</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
     </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
 </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
 </span></code></pre>
                                     </div>
                                     <div class="read-more">
                                         <a href="https:&#x2F;&#x2F;xjump.me&#x2F;dump-obj-js&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;xor-crypto-algo-trap&#x2F;">XORWithAdd加密算法设计问题</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2013-04-06</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p>以XOR为基础的加密算法设计时，不能同时使用XOR和加法。代码混淆、内存保护等安全机制中常用XOR类算法进行快速变换，隐藏信息。</p>
+
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;xor-crypto-algo-trap&#x2F;">Read more...</a>
                                     </div>
                                 </article>
                             

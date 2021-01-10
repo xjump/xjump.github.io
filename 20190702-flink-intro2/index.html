@@ -281,9 +281,9 @@
 </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
 </span><span style="font-style:italic;color:#c792ea;">val </span><span style="color:#eeffff;">input</span><span style="color:#89ddff;">: </span><span style="color:#ffcb6b;">DataStream</span><span style="color:#89ddff;">[(</span><span style="color:#ffcb6b;">String</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#c792ea;">Long</span><span style="color:#89ddff;">)] = ...</span><span style="color:#eeffff;">
 input</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">keyBy</span><span style="color:#89ddff;">(&lt;</span><span style="color:#f07178;">key</span><span style="color:#89ddff;"> selector&gt;</span><span style="color:#eeffff;">)</span><span style="color:#eeffff;">
-    .window(</span><span style="color:#89ddff;">&lt;</span><span style="color:#f07178;">window</span><span style="color:#89ddff;"> assigner&gt;</span><span style="color:#eeffff;">)</span><span style="color:#eeffff;">
-    .aggregate(new AverageAggregate)</span><span style="color:#eeffff;">
+  </span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">keyBy</span><span style="color:#89ddff;">(&lt;</span><span style="color:#f07178;">key</span><span style="color:#89ddff;"> selector&gt;</span><span style="color:#eeffff;">)</span><span style="color:#eeffff;">
+  .window(</span><span style="color:#89ddff;">&lt;</span><span style="color:#f07178;">window</span><span style="color:#89ddff;"> assigner&gt;</span><span style="color:#eeffff;">)</span><span style="color:#eeffff;">
+  .aggregate(new AverageAggregate)</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>AverageAggregate通过override几个函数来实现对Add/Merge/Result的计算，来最终实现求平均值。</p>
 <h4 id="3-2-3-foldfunction">3.2.3 FoldFunction</h4>
@@ -292,15 +292,15 @@ input</span><span style="color:#eeffff;">
 <code class="language-scala" data-lang="scala"><span style="font-style:italic;color:#c792ea;">val </span><span style="color:#eeffff;">input</span><span style="color:#89ddff;">: </span><span style="color:#ffcb6b;">DataStream</span><span style="color:#89ddff;">[(</span><span style="color:#ffcb6b;">String</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#c792ea;">Long</span><span style="color:#89ddff;">)] = ...</span><span style="color:#eeffff;">
 </span><span style="color:#eeffff;">
 input</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">keyBy</span><span style="color:#89ddff;">(&lt;</span><span style="color:#f07178;">key</span><span style="color:#89ddff;"> selector&gt;</span><span style="color:#eeffff;">)</span><span style="color:#eeffff;">
-    .window(</span><span style="color:#89ddff;">&lt;</span><span style="color:#f07178;">window</span><span style="color:#89ddff;"> assigner&gt;</span><span style="color:#eeffff;">)</span><span style="color:#eeffff;">
-    .fold(&quot;&quot;) </span><span style="color:#89ddff;">{ (</span><span style="color:#f78c6c;">acc</span><span style="color:#eeffff;">, </span><span style="color:#f78c6c;">v</span><span style="color:#89ddff;">) </span><span style="font-style:italic;color:#c792ea;">=&gt;</span><span style="color:#eeffff;"> acc + v</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">_2 </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+  </span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">keyBy</span><span style="color:#89ddff;">(&lt;</span><span style="color:#f07178;">key</span><span style="color:#89ddff;"> selector&gt;</span><span style="color:#eeffff;">)</span><span style="color:#eeffff;">
+  .window(</span><span style="color:#89ddff;">&lt;</span><span style="color:#f07178;">window</span><span style="color:#89ddff;"> assigner&gt;</span><span style="color:#eeffff;">)</span><span style="color:#eeffff;">
+  .fold(&quot;&quot;) </span><span style="color:#89ddff;">{ (</span><span style="color:#f78c6c;">acc</span><span style="color:#eeffff;">, </span><span style="color:#f78c6c;">v</span><span style="color:#89ddff;">) </span><span style="font-style:italic;color:#c792ea;">=&gt;</span><span style="color:#eeffff;"> acc + v</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">_2 </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>该代码将fold初始值置为&quot;&quot;，然后每个窗口中的元素v将与上一次的累计结果acc进行<code>acc+v._2</code>操作合并到新的acc中。所以上述代码就是</p>
 <pre style="background-color:#212121;">
 <code class="language-python" data-lang="python"><span style="color:#eeffff;">result </span><span style="color:#89ddff;">= &quot;&quot;</span><span style="color:#eeffff;">
 </span><span style="font-style:italic;color:#c792ea;">for </span><span style="color:#eeffff;">i </span><span style="font-style:italic;color:#c792ea;">in </span><span style="color:#eeffff;">window</span><span style="color:#89ddff;">:</span><span style="color:#eeffff;">
-    result </span><span style="color:#89ddff;">+= </span><span style="color:#eeffff;">i</span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">]</span><span style="color:#eeffff;">
+  result </span><span style="color:#89ddff;">+= </span><span style="color:#eeffff;">i</span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">]</span><span style="color:#eeffff;">
 </span></code></pre><h4 id="3-2-4-processwindowfunction">3.2.4 ProcessWindowFunction</h4>
 <p>ProcessWindow是最通用的窗口处理函数。用法如下所示。</p>
 <pre style="background-color:#212121;">
@@ -330,11 +330,11 @@ input</span><span style="color:#eeffff;">
 <code class="language-scala" data-lang="scala"><span style="font-style:italic;color:#c792ea;">val </span><span style="color:#eeffff;">lateOutputTag </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">OutputTag</span><span style="color:#89ddff;">[</span><span style="color:#ffcb6b;">T</span><span style="color:#89ddff;">](&quot;</span><span style="color:#c3e88d;">late-data</span><span style="color:#89ddff;">&quot;)</span><span style="color:#eeffff;">
 </span><span style="font-style:italic;color:#c792ea;">val </span><span style="color:#eeffff;">input</span><span style="color:#89ddff;">: </span><span style="color:#ffcb6b;">DataStream</span><span style="color:#89ddff;">[</span><span style="color:#ffcb6b;">T</span><span style="color:#89ddff;">] = ...</span><span style="color:#eeffff;">
 </span><span style="font-style:italic;color:#c792ea;">val </span><span style="color:#eeffff;">result </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> input</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">keyBy</span><span style="color:#89ddff;">(&lt;</span><span style="color:#f07178;">key</span><span style="color:#89ddff;"> selector&gt;</span><span style="color:#eeffff;">)</span><span style="color:#eeffff;">
-    .window(</span><span style="color:#89ddff;">&lt;</span><span style="color:#f07178;">window</span><span style="color:#89ddff;"> assigner&gt;</span><span style="color:#eeffff;">)</span><span style="color:#eeffff;">
-    .allowedLateness(</span><span style="color:#89ddff;">&lt;</span><span style="color:#f07178;">time</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;">)</span><span style="color:#eeffff;">
-    .sideOutputLateData(lateOutputTag)</span><span style="color:#eeffff;">
-    .</span><span style="color:#89ddff;">&lt;</span><span style="color:#f07178;">windowed</span><span style="color:#89ddff;"> transformation&gt;</span><span style="color:#eeffff;">(</span><span style="color:#89ddff;">&lt;</span><span style="color:#f07178;">window</span><span style="color:#89ddff;"> function&gt;</span><span style="color:#eeffff;">)</span><span style="color:#eeffff;">
+  </span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">keyBy</span><span style="color:#89ddff;">(&lt;</span><span style="color:#f07178;">key</span><span style="color:#89ddff;"> selector&gt;</span><span style="color:#eeffff;">)</span><span style="color:#eeffff;">
+  .window(</span><span style="color:#89ddff;">&lt;</span><span style="color:#f07178;">window</span><span style="color:#89ddff;"> assigner&gt;</span><span style="color:#eeffff;">)</span><span style="color:#eeffff;">
+  .allowedLateness(</span><span style="color:#89ddff;">&lt;</span><span style="color:#f07178;">time</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;">)</span><span style="color:#eeffff;">
+  .sideOutputLateData(lateOutputTag)</span><span style="color:#eeffff;">
+  .</span><span style="color:#89ddff;">&lt;</span><span style="color:#f07178;">windowed</span><span style="color:#89ddff;"> transformation&gt;</span><span style="color:#eeffff;">(</span><span style="color:#89ddff;">&lt;</span><span style="color:#f07178;">window</span><span style="color:#89ddff;"> function&gt;</span><span style="color:#eeffff;">)</span><span style="color:#eeffff;">
 </span><span style="color:#eeffff;">
 val lateStream = result.getSideOutput(lateOutputTag)</span><span style="color:#eeffff;">
 </span></code></pre><h2 id="4-wo-men-zou-dao-liao-na-li">4 我们走到了哪里</h2>

@@ -133,26 +133,6 @@
                                     
     <header class="post__header">
         <h1 class="post__title">
-            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;bitcoin-ecc-algo&#x2F;">why bitcoin use ecc-secp256k1 and ripemd160?</a>
-        </h1>
-        <div class="post__meta">
-            <span class="post__time">2013-12-19</span>
-            
-        </div>
-    </header>
-
-                                    <div class="post__summary">
-                                        
-                                    </div>
-                                    <div class="read-more">
-                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;bitcoin-ecc-algo&#x2F;">Read more...</a>
-                                    </div>
-                                </article>
-                            
-                                <article class="post">
-                                    
-    <header class="post__header">
-        <h1 class="post__title">
             <a href="https:&#x2F;&#x2F;xjump.me&#x2F;mahout-similarity&#x2F;">Mahout相似性度量（转）</a>
         </h1>
         <div class="post__meta">
@@ -236,24 +216,46 @@ iOS 4.1+获取当前连接的网络信息：
 </span><span style="color:#eeffff;">
 </span><span style="color:#89ddff;">- (</span><span style="font-style:italic;color:#c792ea;">id</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">fetchSSIDInfo</span><span style="color:#eeffff;">
 </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
-    </span><span style="color:#ffcb6b;">NSArray </span><span style="color:#89ddff;">*</span><span style="color:#eeffff;">ifs </span><span style="color:#89ddff;">= (</span><span style="font-style:italic;color:#c792ea;">id</span><span style="color:#89ddff;">)</span><span style="color:#82aaff;">CNCopySupportedInterfaces</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-    </span><span style="color:#82aaff;">NSLog</span><span style="color:#89ddff;">(@&quot;</span><span style="color:#eeffff;">%s</span><span style="color:#c3e88d;">: Supported interfaces: </span><span style="color:#eeffff;">%@</span><span style="color:#89ddff;">&quot;, </span><span style="color:#f78c6c;">__func__</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> ifs</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#c792ea;">id </span><span style="color:#eeffff;">info </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">nil</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#c792ea;">for </span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">NSString </span><span style="color:#89ddff;">*</span><span style="color:#eeffff;">ifnam in ifs</span><span style="color:#89ddff;">) {</span><span style="color:#eeffff;">
-        info </span><span style="color:#89ddff;">= (</span><span style="font-style:italic;color:#c792ea;">id</span><span style="color:#89ddff;">)</span><span style="color:#82aaff;">CNCopyCurrentNetworkInfo</span><span style="color:#89ddff;">((</span><span style="color:#82aaff;">CFStringRef</span><span style="color:#89ddff;">)</span><span style="color:#82aaff;">ifnam</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-        </span><span style="color:#82aaff;">NSLog</span><span style="color:#89ddff;">(@&quot;</span><span style="color:#eeffff;">%s</span><span style="color:#c3e88d;">: </span><span style="color:#eeffff;">%@</span><span style="color:#c3e88d;"> =&gt; </span><span style="color:#eeffff;">%@</span><span style="color:#89ddff;">&quot;, </span><span style="color:#f78c6c;">__func__</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> ifnam</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> info</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-        </span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">info </span><span style="color:#89ddff;">&amp;&amp; [</span><span style="color:#eeffff;">info </span><span style="color:#82aaff;">count</span><span style="color:#89ddff;">]) {</span><span style="color:#eeffff;">
-            </span><span style="font-style:italic;color:#c792ea;">break</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-        </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-        </span><span style="color:#89ddff;">[</span><span style="color:#eeffff;">info </span><span style="color:#82aaff;">release</span><span style="color:#89ddff;">];</span><span style="color:#eeffff;">
+  </span><span style="color:#ffcb6b;">NSArray </span><span style="color:#89ddff;">*</span><span style="color:#eeffff;">ifs </span><span style="color:#89ddff;">= (</span><span style="font-style:italic;color:#c792ea;">id</span><span style="color:#89ddff;">)</span><span style="color:#82aaff;">CNCopySupportedInterfaces</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
+  </span><span style="color:#82aaff;">NSLog</span><span style="color:#89ddff;">(@&quot;</span><span style="color:#eeffff;">%s</span><span style="color:#c3e88d;">: Supported interfaces: </span><span style="color:#eeffff;">%@</span><span style="color:#89ddff;">&quot;, </span><span style="color:#f78c6c;">__func__</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> ifs</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
+  </span><span style="font-style:italic;color:#c792ea;">id </span><span style="color:#eeffff;">info </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">nil</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+  </span><span style="font-style:italic;color:#c792ea;">for </span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">NSString </span><span style="color:#89ddff;">*</span><span style="color:#eeffff;">ifnam in ifs</span><span style="color:#89ddff;">) {</span><span style="color:#eeffff;">
+    info </span><span style="color:#89ddff;">= (</span><span style="font-style:italic;color:#c792ea;">id</span><span style="color:#89ddff;">)</span><span style="color:#82aaff;">CNCopyCurrentNetworkInfo</span><span style="color:#89ddff;">((</span><span style="color:#82aaff;">CFStringRef</span><span style="color:#89ddff;">)</span><span style="color:#82aaff;">ifnam</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
+    </span><span style="color:#82aaff;">NSLog</span><span style="color:#89ddff;">(@&quot;</span><span style="color:#eeffff;">%s</span><span style="color:#c3e88d;">: </span><span style="color:#eeffff;">%@</span><span style="color:#c3e88d;"> =&gt; </span><span style="color:#eeffff;">%@</span><span style="color:#89ddff;">&quot;, </span><span style="color:#f78c6c;">__func__</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> ifnam</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> info</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
+    </span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">info </span><span style="color:#89ddff;">&amp;&amp; [</span><span style="color:#eeffff;">info </span><span style="color:#82aaff;">count</span><span style="color:#89ddff;">]) {</span><span style="color:#eeffff;">
+      </span><span style="font-style:italic;color:#c792ea;">break</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
     </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">[</span><span style="color:#eeffff;">ifs </span><span style="color:#82aaff;">release</span><span style="color:#89ddff;">];</span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#c792ea;">return </span><span style="color:#89ddff;">[</span><span style="color:#eeffff;">info </span><span style="color:#82aaff;">autorelease</span><span style="color:#89ddff;">];</span><span style="color:#eeffff;">
+    </span><span style="color:#89ddff;">[</span><span style="color:#eeffff;">info </span><span style="color:#82aaff;">release</span><span style="color:#89ddff;">];</span><span style="color:#eeffff;">
+  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+  </span><span style="color:#89ddff;">[</span><span style="color:#eeffff;">ifs </span><span style="color:#82aaff;">release</span><span style="color:#89ddff;">];</span><span style="color:#eeffff;">
+  </span><span style="font-style:italic;color:#c792ea;">return </span><span style="color:#89ddff;">[</span><span style="color:#eeffff;">info </span><span style="color:#82aaff;">autorelease</span><span style="color:#89ddff;">];</span><span style="color:#eeffff;">
 </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
 </span></code></pre>
                                     </div>
                                     <div class="read-more">
                                         <a href="https:&#x2F;&#x2F;xjump.me&#x2F;get-wifi-connection-info&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;python-qrcode-generate&#x2F;">Python 生成二维码</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2013-11-21</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p>
+使用qrcode库，代码如下：</p>
+
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;python-qrcode-generate&#x2F;">Read more...</a>
                                     </div>
                                 </article>
                             
