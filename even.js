@@ -40,7 +40,10 @@ function initToc() {
     for (let i = 0; i < array.length - 1; i++) {
       if (target > array[i].offsetTop && target <= array[i + 1].offsetTop) return i
     }
-    if (target > array[array.length - 1].offsetTop) return array.length - 1
+
+    if (array[array.length - 1] && (target > array[array.length - 1].offsetTop)) { 
+      return array.length - 1 
+    }
     return -1
   }
 
