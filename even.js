@@ -41,7 +41,7 @@ function initToc() {
       if (target > array[i].offsetTop && target <= array[i + 1].offsetTop) return i
     }
 
-    if (array[array.length - 1] && (target > array[array.length - 1].offsetTop)) { 
+    if (array && array[array.length - 1] && (target > array[array.length - 1].offsetTop)) { 
       return array.length - 1 
     }
     return -1
