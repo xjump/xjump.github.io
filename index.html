@@ -255,23 +255,23 @@ streaming patterns, and as much as possible zero copy.</p>
                                         <h2 id="1-git">1 git</h2>
 <p>github的repo拖不下来可以参考:</p>
 <pre style="background-color:#212121;">
-<code><span style="color:#eeffff;">[http]</span><span style="color:#eeffff;">
-  proxy = &quot;socks5://127.0.0.1:1091&quot;</span><span style="color:#eeffff;">
-  sslVerify = false</span><span style="color:#eeffff;">
-  postBuffer = 524288000</span><span style="color:#eeffff;">
-  lowSpeedLimit = 0</span><span style="color:#eeffff;">
-  lowSpeedTime = 999999</span><span style="color:#eeffff;">
-  </span><span style="color:#eeffff;">
+<code class="language-ini" data-lang="ini"><span style="font-style:italic;color:#c792ea;">[http]</span><span style="color:#eeffff;">
+  </span><span style="color:#f78c6c;">proxy </span><span style="color:#89ddff;">= </span><span style="color:#c3e88d;">&quot;socks5://127.0.0.1:1091&quot;</span><span style="color:#eeffff;">
+  </span><span style="color:#f78c6c;">sslVerify </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">false</span><span style="color:#eeffff;">
+  </span><span style="color:#f78c6c;">postBuffer </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">524288000</span><span style="color:#eeffff;">
+  </span><span style="color:#f78c6c;">lowSpeedLimit </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">0</span><span style="color:#eeffff;">
+  </span><span style="color:#f78c6c;">lowSpeedTime </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">999999</span><span style="color:#eeffff;">
+  </span><span style="font-style:italic;color:#c792ea;">
 [https]</span><span style="color:#eeffff;">
-  proxy = &quot;socks5://127.0.0.1:1091&quot;</span><span style="color:#eeffff;">
-  sslVerify = false</span><span style="color:#eeffff;">
-  postBuffer = 524288000</span><span style="color:#eeffff;">
-  lowSpeedLimit = 0</span><span style="color:#eeffff;">
-  lowSpeedTime = 999999</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
+  </span><span style="color:#f78c6c;">proxy </span><span style="color:#89ddff;">= </span><span style="color:#c3e88d;">&quot;socks5://127.0.0.1:1091&quot;</span><span style="color:#eeffff;">
+  </span><span style="color:#f78c6c;">sslVerify </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">false</span><span style="color:#eeffff;">
+  </span><span style="color:#f78c6c;">postBuffer </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">524288000</span><span style="color:#eeffff;">
+  </span><span style="color:#f78c6c;">lowSpeedLimit </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">0</span><span style="color:#eeffff;">
+  </span><span style="color:#f78c6c;">lowSpeedTime </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">999999</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">
 [core]</span><span style="color:#eeffff;">
-  symlinks = true</span><span style="color:#eeffff;">
-  gitProxy = &#39;socks5://127.0.0.1:1091&#39;</span><span style="color:#eeffff;">
+  </span><span style="color:#f78c6c;">symlinks </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">true</span><span style="color:#eeffff;">
+  </span><span style="color:#f78c6c;">gitProxy </span><span style="color:#89ddff;">= </span><span style="color:#c3e88d;">&#39;socks5://127.0.0.1:1091&#39;</span><span style="color:#eeffff;">
 </span></code></pre>
 <p>修改到~/.gitconfig文件中作为全局配置。</p>
 

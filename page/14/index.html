@@ -133,6 +133,65 @@
                                     
     <header class="post__header">
         <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;atl-regex&#x2F;">ATL中的正则表达式 CATLRegExp</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2012-12-09</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <p>ATL中，由于ATL Server的需要，需要对Client发送过来的地址、命令等复杂文字字段信息解码，而正则表达式是公认的最强大的文字解析工具，所以，ATL提供了一些用于正则表达式的库方便了我们的工作。</p>
+<h3>1、 CATLRegExp类</h3>
+<p>1, 声明：</p>
+<pre style="background-color:#212121;">
+<code class="language-cpp" data-lang="cpp"><span style="font-style:italic;color:#c792ea;">template </span><span style="color:#89ddff;">&lt;</span><span style="font-style:italic;color:#c792ea;">class</span><span style="color:#eeffff;"> CAtlRECharTraits</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">class </span><span style="color:#ffcb6b;">CAtlRegExp</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+</span></code></pre>
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;atl-regex&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;vc-pp-disasm-cc-rce-rcsv&#x2F;">VC++中反汇编0xCC,_RTC_CheckEsp与_RTC_CheckStackVars</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2012-12-08</span>
+            
+        </div>
+    </header>
+
+                                    <div class="post__summary">
+                                        <h3>0xCC</h3>
+<p>在VC++编写的程序编程成Debug版，反汇编代码，函数入口处经常看到如下一段代码：</p>
+<pre style="background-color:#212121;">
+<code class="language-asm" data-lang="asm"><span style="color:#82aaff;">00EA14E0 </span><span style="color:#f78c6c;">55                   </span><span style="font-style:italic;color:#c792ea;">push    </span><span style="color:#f78c6c;">ebp  </span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">00EA14E1 8B EC                </span><span style="font-style:italic;color:#c792ea;">mov     </span><span style="color:#f78c6c;">ebp</span><span style="color:#eeffff;">,</span><span style="color:#f78c6c;">esp</span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">00EA14E3 </span><span style="color:#f78c6c;">81 </span><span style="color:#82aaff;">EC C0 </span><span style="color:#f78c6c;">00 00 00    </span><span style="font-style:italic;color:#c792ea;">sub     </span><span style="color:#f78c6c;">esp</span><span style="color:#eeffff;">,</span><span style="color:#f78c6c;">0C0h</span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">00EA14E9 </span><span style="color:#f78c6c;">53                   </span><span style="font-style:italic;color:#c792ea;">push    </span><span style="color:#f78c6c;">ebx  </span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">00EA14EA </span><span style="color:#f78c6c;">56                   </span><span style="font-style:italic;color:#c792ea;">push    </span><span style="color:#f78c6c;">esi  </span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">00EA14EB </span><span style="color:#f78c6c;">57                   </span><span style="font-style:italic;color:#c792ea;">push    </span><span style="color:#f78c6c;">edi  </span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">00EA14EC 8D BD </span><span style="color:#f78c6c;">40 </span><span style="color:#82aaff;">FF FF FF    </span><span style="font-style:italic;color:#c792ea;">lea     </span><span style="color:#f78c6c;">edi</span><span style="color:#eeffff;">,[</span><span style="color:#f78c6c;">ebp</span><span style="color:#eeffff;">-</span><span style="color:#f78c6c;">0C0h</span><span style="color:#eeffff;">]</span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">00EA14F2 B9 </span><span style="color:#f78c6c;">30 00 00 00       </span><span style="font-style:italic;color:#c792ea;">mov     </span><span style="color:#f78c6c;">ecx</span><span style="color:#eeffff;">,</span><span style="color:#f78c6c;">30h</span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">00EA14F7 B8 CC CC CC CC       </span><span style="font-style:italic;color:#c792ea;">mov     </span><span style="color:#f78c6c;">eax</span><span style="color:#eeffff;">,</span><span style="color:#f78c6c;">0CCCCCCCCh</span><span style="color:#eeffff;">
+</span><span style="color:#82aaff;">00EA14FC F3 AB                </span><span style="font-style:italic;color:#c792ea;">rep stos  </span><span style="color:#82aaff;">dword ptr </span><span style="color:#f78c6c;">es</span><span style="color:#82aaff;">:</span><span style="color:#eeffff;">[</span><span style="color:#f78c6c;">edi</span><span style="color:#eeffff;">]</span><span style="color:#eeffff;">
+</span></code></pre>
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;vc-pp-disasm-cc-rce-rcsv&#x2F;">Read more...</a>
+                                    </div>
+                                </article>
+                            
+                                <article class="post">
+                                    
+    <header class="post__header">
+        <h1 class="post__title">
             <a href="https:&#x2F;&#x2F;xjump.me&#x2F;get-phrack-magazine&#x2F;">Download Phrack magazine</a>
         </h1>
         <div class="post__meta">
@@ -225,75 +284,13 @@ mem </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">BI
                                     </div>
                                 </article>
                             
-                                <article class="post">
-                                    
-    <header class="post__header">
-        <h1 class="post__title">
-            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;lua-implementation&#x2F;">Lua 5.0的实现（中英文对照）</a>
-        </h1>
-        <div class="post__meta">
-            <span class="post__time">2012-09-19</span>
-            
-        </div>
-    </header>
-
-                                    <div class="post__summary">
-                                        <p><strong>Author</strong><br/>
-Roberto Ierusalimschy (Department of Computer Science, PUC-Rio, Rio de Janeiro, Brazil roberto@inf.puc-rio.br)<br/>
-Luiz Henrique de Figueiredo(IMPA-Instituto de Matematica Pura e Aplicada, Rio de Janeiro, Brazil lhf@impa.br)<br/>
-Waldemar Celes(Department of Computer Science, PUC-Rio, Rio de Janeiro, Brazil celes@inf.puc-rio.br)<br/></p>
-<p>翻译： xjump.me#at#gmail.com, @xjump<br/>
-原文： <a href="http://www.lua.org/doc/jucs05.pdf">http://www.lua.org/doc/jucs05.pdf</a> </p>
-<p><strong>Abstract </strong>
-We discuss the main novelties of the implementation of Lua 5.0: its register-based virtaul machine, the new algorithm for optimizing tables used as arrays, the implementation of closures, and the addition of coroutines.<br/>
-<strong>Key Words </strong>
-compilers, virtual machines, hash tables, closures, coroutines<br/>
-<strong>Category </strong>
-D.3.4, D.3.3, D.3.2, E.2<br/></p>
-<p><strong>摘要 </strong>
-我们讨论了Lua 5.0实现上的主要优点：基于寄存器的虚拟机，tables用于数组时新的优化算法，闭包的实现，以及协程。<br/>
-<strong>关键字 </strong>
-编译器，虚拟机，Hash表，闭包，协程<br/>
-<strong>类别 </strong>
-D.3.4，D.3.3，D.3.2，E.2<br/></p>
-<h3>
-1 Introduct<br/>
-1 介绍  
-</h3>
-Lua was born in an academic laboratory as a tool for in-house software development but somehow was adopted by several industrial projects around the world and is now widely used in the game industry. [1]<br/>
-Lua诞生于一个学术实验室，当时是作为一个内部软件开发工具的，但逐渐被移植到了全世界的各个行业的工程中，而且现在广泛的用于游戏行业。[1]<br/>
-
-                                    </div>
-                                    <div class="read-more">
-                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;lua-implementation&#x2F;">Read more...</a>
-                                    </div>
-                                </article>
-                            
-                                <article class="post">
-                                    
-    <header class="post__header">
-        <h1 class="post__title">
-            <a href="https:&#x2F;&#x2F;xjump.me&#x2F;axoffice-activex-of-office-object&#x2F;">AxOffice</a>
-        </h1>
-        <div class="post__meta">
-            <span class="post__time">2009-12-13</span>
-            
-        </div>
-    </header>
-
-                                    <div class="post__summary">
-                                        
-                                    </div>
-                                    <div class="read-more">
-                                        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;axoffice-activex-of-office-object&#x2F;">Read more...</a>
-                                    </div>
-                                </article>
-                            
                         </div>
                         <nav class="pagination">
                             
                                 <a class="previous" href="https:&#x2F;&#x2F;xjump.me&#x2F;page&#x2F;13&#x2F;">‹ Previous</a>
                             
+                            
+                                <a class="next" href="https:&#x2F;&#x2F;xjump.me&#x2F;page&#x2F;15&#x2F;">Next ›</a>
                             
                         </nav>
                     
