@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <title>@xjump</title>
+
+
+  <script type="text/javascript" src="/slideout/1.0.1/slideout.min.js"></script>
+
+  <link rel="stylesheet" href="/katex/0.10.1/katex.min.css">
+  <script type="text/javascript" defer src="/katex/0.10.1/katex.min.js" ></script>
+  <script type="text/javascript" defer src="/katex/0.10.1/contrib/mathtex-script-type.min.js" ></script>
+
+  <script type="text/javascript" defer src="/katex/0.10.1/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+
+
+
+  <link rel="stylesheet" href="/site.css">
+
+  <link rel="stylesheet" href="/katex/0.10.1/katex.min.css"  >
+
+
+
+
+
+</head>
+
+<body>
+  <div class="container">
+    <div id="mobile-navbar" class="mobile-navbar">
+      <div class="mobile-header-logo">
+      <a href="/" class="logo">@xjump</a>
+      </div>
+      <div class="mobile-navbar-icon icon-out">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+      <ul class="mobile-menu-list">
+      
+        <li class="mobile-menu-item">
+        <a href="https:&#x2F;&#x2F;xjump.me">Home</a>
+        </li>
+      
+        <li class="mobile-menu-item">
+        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">Categories</a>
+        </li>
+      
+        <li class="mobile-menu-item">
+        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">Archive</a>
+        </li>
+      
+        <li class="mobile-menu-item">
+        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">RSS</a>
+        </li>
+      
+        <li class="mobile-menu-item">
+        <a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">About</a>
+        </li>
+      
+      </ul>
+    </nav>
+
+    <header id="header">
+      <div class="logo"><a href="https:&#x2F;&#x2F;xjump.me">@xjump</a></div>
+      <nav class="menu">
+        <ul>
+        
+    <li><a href="https:&#x2F;&#x2F;xjump.me">Home </a></li>
+        
+    <li><a href="https:&#x2F;&#x2F;xjump.me&#x2F;categories">Categories </a></li>
+        
+    <li><a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all">Archive </a></li>
+        
+    <li><a href="https:&#x2F;&#x2F;xjump.me&#x2F;rss.xml">RSS </a></li>
+        
+    <li><a href="https:&#x2F;&#x2F;xjump.me&#x2F;about">About </a></li>
+        
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="content" id="mobile-panel">
+
+
+
+
+<article class="post">
+
+<header class="post__header">
+  <h1 class="post__title"><a href="https:&#x2F;&#x2F;xjump.me&#x2F;20130406-xor-crypto-algo-trap&#x2F;">XORWithAdd加密算法设计问题</a></h1>
+  <div class="post__meta">
+    <span class="post__time">2013-04-06</span>
+
+  </div>
+</header>
+
+ <div class="post-content"><p>以XOR为基础的加密算法设计时，不能同时使用XOR和加法。代码混淆、内存保护等安全机制中常用XOR类算法进行快速变换，隐藏信息。</p>
+<span id="continue-reading"></span>
+<p>下面的代码演示的加密过程将导致明文密文空间不一致，因而加解密算法无法正确设计。</p>
+<pre style="background-color:#212121;">
+<code class="language-python" data-lang="python"><span style="font-style:italic;color:#4a4a4a;">#!/usr/bin/env python</span><span style="font-style:italic;color:#4a4a4a;">
+# encoding: utf-8</span><span style="font-style:italic;color:#4a4a4a;">
+</span><span style="color:#eeffff;">
+result </span><span style="color:#89ddff;">= []</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">for </span><span style="color:#eeffff;">i </span><span style="font-style:italic;color:#c792ea;">in </span><span style="color:#82aaff;">range</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">128</span><span style="color:#89ddff;">):</span><span style="color:#eeffff;">
+  key </span><span style="color:#89ddff;">= ((</span><span style="color:#eeffff;">i</span><span style="color:#89ddff;">^</span><span style="color:#f78c6c;">234</span><span style="color:#89ddff;">)+</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">&gt;&gt;</span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">)&amp;0x</span><span style="color:#f78c6c;">0F</span><span style="color:#89ddff;">&amp;0x</span><span style="color:#f78c6c;">FF</span><span style="color:#eeffff;">
+  p </span><span style="color:#89ddff;">= (</span><span style="color:#eeffff;">key</span><span style="color:#89ddff;">^</span><span style="color:#eeffff;">i</span><span style="color:#89ddff;">)&amp;0x</span><span style="color:#f78c6c;">FF</span><span style="color:#eeffff;">
+  </span><span style="color:#c792ea;">print </span><span style="color:#eeffff;">p</span><span style="color:#eeffff;">
+  </span><span style="color:#82aaff;">result</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">append</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">p</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+  </span><span style="color:#eeffff;">
+m </span><span style="color:#89ddff;">= </span><span style="color:#ffcb6b;">set</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">result</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+</span><span style="color:#c792ea;">print </span><span style="color:#eeffff;">m,</span><span style="color:#82aaff;">len</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">m</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+</span><span style="color:#eeffff;">
+result </span><span style="color:#89ddff;">= []</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#c792ea;">for </span><span style="color:#eeffff;">i </span><span style="font-style:italic;color:#c792ea;">in </span><span style="color:#82aaff;">range</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">128</span><span style="color:#89ddff;">):</span><span style="color:#eeffff;">
+  key </span><span style="color:#89ddff;">= ((</span><span style="color:#eeffff;">i</span><span style="color:#89ddff;">^</span><span style="color:#f78c6c;">243</span><span style="color:#89ddff;">)+</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">&gt;&gt;</span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">)&amp;0x</span><span style="color:#f78c6c;">0F</span><span style="color:#89ddff;">&amp;0x</span><span style="color:#f78c6c;">FF</span><span style="color:#eeffff;">
+  p </span><span style="color:#89ddff;">= (</span><span style="color:#eeffff;">key</span><span style="color:#89ddff;">^</span><span style="color:#eeffff;">i</span><span style="color:#89ddff;">)&amp;0x</span><span style="color:#f78c6c;">FF</span><span style="color:#eeffff;">
+  </span><span style="color:#c792ea;">print </span><span style="color:#eeffff;">p</span><span style="color:#eeffff;">
+  </span><span style="color:#82aaff;">result</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">append</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">p</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+  </span><span style="color:#eeffff;">
+m </span><span style="color:#89ddff;">= </span><span style="color:#ffcb6b;">set</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">result</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+</span><span style="color:#c792ea;">print </span><span style="color:#eeffff;">m, </span><span style="color:#82aaff;">len</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">m</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+</span></code></pre></div>
+
+
+  <div class="post-footer">
+
+  
+    <div class="post-tags">
+    
+      <!-- <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all&#x2F;">#all</a> -->
+    
+    </div>
+  
+  
+    <div class="post-nav">
+    
+      <a class="previous" href="https:&#x2F;&#x2F;xjump.me&#x2F;20130329-pyv8-gen-javascript-ast&#x2F;">‹ 使用PyV8构建JavaScript抽象语法树（AST）</a>
+    
+    
+      <a class="next" href="https:&#x2F;&#x2F;xjump.me&#x2F;20130508-dump-obj-js&#x2F;">dump objects info from JavaScript ›</a>
+    
+    
+    
+    </div>
+  
+
+  </div>
+
+
+</article>
+
+      </div>
+    </main>
+
+
+
+  </div>
+
+
+<script type="text/javascript" src="/even.js"></script>
+
+</body></html>
