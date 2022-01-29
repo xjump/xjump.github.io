@@ -154,8 +154,7 @@
 链 接: <a href="http://bbs.pediy.com/showthread.php?t=157419">http://bbs.pediy.com/showthread.php?t=157419</a><br/>
 关键字：Android, Hook, API, Binder, 注入, 拦截<br/>
 转载请注明出处<br/></p>
-<span id="continue-reading"></span>
-<h1 id="0-yin-yan">〇、引言</h1>
+<span id="continue-reading"></span><h1 id="0-yin-yan">〇、引言</h1>
 <p>Linux下的远程注入与HOOK网上已有不少文章与代码实现，而对于Android平台，注入有不少，但HOOK却不多。经过了两个多礼拜的研究，我初步实现了在拥有root权限的Android 2.3平台上针对system_server中binder通讯的拦截，写下来分享一下。</p>
 <h1 id="yi-dong-tai-lian-jie-ji-zhi">一、动态链接机制</h1>
 <p>首先回顾一下Linux平台上，一个模块甲需要调用另外一个模块乙中的函数时的动态链接机制：</p>
@@ -187,139 +186,130 @@
 <h2 id="3-2-zhu-ru-gong-xiang-ku-zhong-de-xin-han-shu-shi-xian">3.2 注入共享库中的新函数实现</h2>
 <p>在这个常驻system_server进程内的共享库里，只实现了简单几个函数，其中do_hook函数在注入后通过外界调用，它不做具体的hook动作，仅仅只是把所需的两个函数地址写入Android的Property供外界使用：</p>
 <p>代码:</p>
-<pre style="background-color:#212121;">
-<code class="language-cpp" data-lang="cpp"><span style="font-style:italic;color:#4a4a4a;">// 将新旧ioctl地址写入Andorid的Property供外界使用</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="font-style:italic;color:#c792ea;">int </span><span style="color:#82aaff;">do_hook</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#89ddff;">* </span><span style="color:#f78c6c;">param</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
-  old_ioctl </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> ioctl</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">printf</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">Ioctl addr: </span><span style="color:#eeffff;">%p</span><span style="color:#c3e88d;">. New addr </span><span style="color:#eeffff;">%p</span><span style="color:#89ddff;">\n&quot;,</span><span style="color:#82aaff;"> ioctl</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> new_ioctl</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">char</span><span style="color:#eeffff;"> value</span><span style="color:#89ddff;">[</span><span style="color:#eeffff;">PROPERTY_VALUE_MAX</span><span style="color:#89ddff;">] = {&#39;\0&#39;};</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">snprintf</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">value</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> PROPERTY_VALUE_MAX</span><span style="color:#89ddff;">, &quot;</span><span style="color:#eeffff;">%u</span><span style="color:#89ddff;">&quot;,</span><span style="color:#82aaff;"> ioctl</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">property_set</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">PROP_OLD_IOCTL_ADDR</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> value</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">snprintf</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">value</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> PROPERTY_VALUE_MAX</span><span style="color:#89ddff;">, &quot;</span><span style="color:#eeffff;">%u</span><span style="color:#89ddff;">&quot;,</span><span style="color:#82aaff;"> new_ioctl</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">property_set</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">PROP_NEW_IOCTL_ADDR</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> value</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">return </span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#4a4a4a;">// 全局变量用以保存旧的ioctl地址，其实也可直接使用ioctl</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="font-style:italic;color:#c792ea;">int </span><span style="color:#89ddff;">(*</span><span style="color:#eeffff;">old_ioctl</span><span style="color:#89ddff;">) (</span><span style="font-style:italic;color:#c792ea;">int</span><span style="color:#eeffff;"> __fd</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#c792ea;">unsigned long int</span><span style="color:#eeffff;"> __request</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#89ddff;">*</span><span style="color:#eeffff;"> arg</span><span style="color:#89ddff;">) = </span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#4a4a4a;">// 欲接替ioctl的新函数地址，其中内部调用了老的ioctl</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="font-style:italic;color:#c792ea;">int </span><span style="color:#82aaff;">new_ioctl </span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int </span><span style="color:#f78c6c;">__fd</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#c792ea;">unsigned long int </span><span style="color:#f78c6c;">__request</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#89ddff;">* </span><span style="color:#f78c6c;">arg</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#89ddff;">(</span><span style="color:#eeffff;"> __request </span><span style="color:#89ddff;">==</span><span style="color:#eeffff;"> BINDER_WRITE_READ </span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
-    call_count</span><span style="color:#89ddff;">++;</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#c792ea;">char</span><span style="color:#eeffff;"> value</span><span style="color:#89ddff;">[</span><span style="color:#eeffff;">PROPERTY_VALUE_MAX</span><span style="color:#89ddff;">] = {&#39;\0&#39;};</span><span style="color:#eeffff;">
-    </span><span style="color:#82aaff;">snprintf</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">value</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> PROPERTY_VALUE_MAX</span><span style="color:#89ddff;">, &quot;</span><span style="color:#eeffff;">%d</span><span style="color:#89ddff;">&quot;,</span><span style="color:#82aaff;"> call_count</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-    </span><span style="color:#82aaff;">property_set</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">PROP_IOCTL_CALL_COUNT</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> value</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">int</span><span style="color:#eeffff;"> res </span><span style="color:#89ddff;">= (*</span><span style="color:#eeffff;">old_ioctl</span><span style="color:#89ddff;">)(</span><span style="color:#eeffff;">__fd</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> __request</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> arg</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">return</span><span style="color:#eeffff;"> res</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+<pre data-lang="cpp" style="background-color:#212121;color:#eeffff;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="font-style:italic;color:#4a4a4a;">// 将新旧ioctl地址写入Andorid的Property供外界使用
+</span><span style="font-style:italic;color:#c792ea;">int </span><span style="color:#82aaff;">do_hook</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#89ddff;">* </span><span style="color:#f78c6c;">param</span><span style="color:#89ddff;">)
+</span><span style="color:#89ddff;">{
+</span><span>  old_ioctl </span><span style="color:#89ddff;">=</span><span> ioctl</span><span style="color:#89ddff;">;
+</span><span>  </span><span style="color:#82aaff;">printf</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">Ioctl addr: </span><span>%p</span><span style="color:#c3e88d;">. New addr </span><span>%p</span><span style="color:#89ddff;">\n&quot;,</span><span style="color:#82aaff;"> ioctl</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> new_ioctl</span><span style="color:#89ddff;">);
+</span><span>
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">char</span><span> value</span><span style="color:#89ddff;">[</span><span>PROPERTY_VALUE_MAX</span><span style="color:#89ddff;">] = {&#39;\0&#39;};
+</span><span>  </span><span style="color:#82aaff;">snprintf</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">value</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> PROPERTY_VALUE_MAX</span><span style="color:#89ddff;">, &quot;</span><span>%u</span><span style="color:#89ddff;">&quot;,</span><span style="color:#82aaff;"> ioctl</span><span style="color:#89ddff;">);
+</span><span>  </span><span style="color:#82aaff;">property_set</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">PROP_OLD_IOCTL_ADDR</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> value</span><span style="color:#89ddff;">);
+</span><span>
+</span><span>  </span><span style="color:#82aaff;">snprintf</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">value</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> PROPERTY_VALUE_MAX</span><span style="color:#89ddff;">, &quot;</span><span>%u</span><span style="color:#89ddff;">&quot;,</span><span style="color:#82aaff;"> new_ioctl</span><span style="color:#89ddff;">);
+</span><span>  </span><span style="color:#82aaff;">property_set</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">PROP_NEW_IOCTL_ADDR</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> value</span><span style="color:#89ddff;">);
+</span><span>
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">return </span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;
+</span><span style="color:#89ddff;">}
+</span><span>
+</span><span style="font-style:italic;color:#4a4a4a;">// 全局变量用以保存旧的ioctl地址，其实也可直接使用ioctl
+</span><span style="font-style:italic;color:#c792ea;">int </span><span style="color:#89ddff;">(*</span><span>old_ioctl</span><span style="color:#89ddff;">) (</span><span style="font-style:italic;color:#c792ea;">int</span><span> __fd</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#c792ea;">unsigned long int</span><span> __request</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#89ddff;">*</span><span> arg</span><span style="color:#89ddff;">) = </span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;
+</span><span>
+</span><span style="font-style:italic;color:#4a4a4a;">// 欲接替ioctl的新函数地址，其中内部调用了老的ioctl
+</span><span style="font-style:italic;color:#c792ea;">int </span><span style="color:#82aaff;">new_ioctl </span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int </span><span style="color:#f78c6c;">__fd</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#c792ea;">unsigned long int </span><span style="color:#f78c6c;">__request</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#89ddff;">* </span><span style="color:#f78c6c;">arg</span><span style="color:#89ddff;">)
+</span><span style="color:#89ddff;">{
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#89ddff;">(</span><span> __request </span><span style="color:#89ddff;">==</span><span> BINDER_WRITE_READ </span><span style="color:#89ddff;">)
+</span><span>  </span><span style="color:#89ddff;">{
+</span><span>    call_count</span><span style="color:#89ddff;">++;
+</span><span>
+</span><span>    </span><span style="font-style:italic;color:#c792ea;">char</span><span> value</span><span style="color:#89ddff;">[</span><span>PROPERTY_VALUE_MAX</span><span style="color:#89ddff;">] = {&#39;\0&#39;};
+</span><span>    </span><span style="color:#82aaff;">snprintf</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">value</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> PROPERTY_VALUE_MAX</span><span style="color:#89ddff;">, &quot;</span><span>%d</span><span style="color:#89ddff;">&quot;,</span><span style="color:#82aaff;"> call_count</span><span style="color:#89ddff;">);
+</span><span>    </span><span style="color:#82aaff;">property_set</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">PROP_IOCTL_CALL_COUNT</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> value</span><span style="color:#89ddff;">);
+</span><span>  </span><span style="color:#89ddff;">}
+</span><span>
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">int</span><span> res </span><span style="color:#89ddff;">= (*</span><span>old_ioctl</span><span style="color:#89ddff;">)(</span><span>__fd</span><span style="color:#89ddff;">,</span><span> __request</span><span style="color:#89ddff;">,</span><span> arg</span><span style="color:#89ddff;">);
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">return</span><span> res</span><span style="color:#89ddff;">;
+</span><span style="color:#89ddff;">}
 </span></code></pre>
 <p>new_ioctl函数中，判断调用参数是否是BINDER_WRITE_READ通讯命令，是的话增加计数，并将计数写入Property，这样外界就能看见调用计数，才知道拦截成功了。</p>
 <h2 id="3-3-zhu-ru-cheng-xu-de-sou-suo-ji-zhi-shi-xian">3.3 注入程序的搜索机制实现</h2>
 <p>注入程序在上述第四步之后的流程是本文的核心。程序由于涉及到elf解析，还得使用linux下的elf.h。</p>
 <p>由于设置属性的property_set是个异步过程，因此调用共享库中的设置Property函数后，注入程序需要循环等待属性被设置上，类似于：</p>
 <p>代码:</p>
-<pre style="background-color:#212121;">
-<code class="language-cpp" data-lang="cpp"><span style="font-style:italic;color:#c792ea;">char</span><span style="color:#eeffff;"> value</span><span style="color:#89ddff;">[</span><span style="color:#eeffff;">PROPERTY_VALUE_MAX</span><span style="color:#89ddff;">] = {&#39;\0&#39;};</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">do </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">sleep</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">property_get</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">PROP_OLD_IOCTL_ADDR</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> value</span><span style="color:#89ddff;">, &quot;</span><span style="color:#c3e88d;">0</span><span style="color:#89ddff;">&quot;);</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">} </span><span style="font-style:italic;color:#c792ea;">while </span><span style="color:#89ddff;">( </span><span style="color:#82aaff;">strcmp</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">value</span><span style="color:#89ddff;">, &quot;</span><span style="color:#c3e88d;">0</span><span style="color:#89ddff;">&quot;) == </span><span style="color:#f78c6c;">0 </span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">unsigned long</span><span style="color:#eeffff;"> old_ioctl_addr </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">atoi</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">value</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
+<pre data-lang="cpp" style="background-color:#212121;color:#eeffff;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="font-style:italic;color:#c792ea;">char</span><span> value</span><span style="color:#89ddff;">[</span><span>PROPERTY_VALUE_MAX</span><span style="color:#89ddff;">] = {&#39;\0&#39;};
+</span><span style="font-style:italic;color:#c792ea;">do </span><span style="color:#89ddff;">{
+</span><span>  </span><span style="color:#82aaff;">sleep</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">);
+</span><span>  </span><span style="color:#82aaff;">property_get</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">PROP_OLD_IOCTL_ADDR</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> value</span><span style="color:#89ddff;">, &quot;</span><span style="color:#c3e88d;">0</span><span style="color:#89ddff;">&quot;);
+</span><span style="color:#89ddff;">} </span><span style="font-style:italic;color:#c792ea;">while </span><span style="color:#89ddff;">( </span><span style="color:#82aaff;">strcmp</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">value</span><span style="color:#89ddff;">, &quot;</span><span style="color:#c3e88d;">0</span><span style="color:#89ddff;">&quot;) == </span><span style="color:#f78c6c;">0 </span><span style="color:#89ddff;">);
+</span><span style="font-style:italic;color:#c792ea;">unsigned long</span><span> old_ioctl_addr </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">atoi</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">value</span><span style="color:#89ddff;">);
 </span></code></pre>
 <p>然后通过调用get_module_base，分析/proc/&lt;system_server的pid&gt;/maps文件，得到libbinder.so的加载基址（get_module_base也是LibInject中提供的）。</p>
 <p>代码:</p>
-<pre style="background-color:#212121;">
-<code class="language-cpp" data-lang="cpp"><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#89ddff;">*</span><span style="color:#eeffff;"> binder_addr </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">get_module_base</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">target_pid</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> BINDER_LIB_PATH</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
+<pre data-lang="cpp" style="background-color:#212121;color:#eeffff;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#89ddff;">*</span><span> binder_addr </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">get_module_base</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">target_pid</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> BINDER_LIB_PATH</span><span style="color:#89ddff;">);
 </span></code></pre>
 <p>拿到新旧ioctl地址和libbinder.so基址后，就要搜索libbinder.so的GOT表，找匹配项。搜索libbinder.so既可以搜/system/lib/libbinder.so文件的内容，也可以通过ptrace的PEEKTEXT来搜system_server中被加载的libbinder.so在内存中的映像，我选择了前者，因为后者在实现时似乎有点问题，读到的Section内容不太对头，不确定是我程序问题还是被linker给改了。</p>
 <p>打开/system/lib/libbinder.so文件，获取其ELF头。</p>
 <p>代码:</p>
-<pre style="background-color:#212121;">
-<code class="language-cpp" data-lang="cpp"><span style="color:#82aaff;">read</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">fd</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> ehdr</span><span style="color:#89ddff;">, sizeof(</span><span style="color:#82aaff;">Elf32_Ehdr</span><span style="color:#89ddff;">));</span><span style="color:#eeffff;">
+<pre data-lang="cpp" style="background-color:#212121;color:#eeffff;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#82aaff;">read</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">fd</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> ehdr</span><span style="color:#89ddff;">, sizeof(</span><span style="color:#82aaff;">Elf32_Ehdr</span><span style="color:#89ddff;">));
 </span></code></pre>
 <p>获得其Section Header区表的地址、数量和大小，并获得字符串表Section的索引号：</p>
 <p>代码:</p>
-<pre style="background-color:#212121;">
-<code class="language-cpp" data-lang="cpp"><span style="font-style:italic;color:#c792ea;">unsigned long</span><span style="color:#eeffff;"> shdr_addr </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> ehdr</span><span style="color:#89ddff;">-&gt;</span><span style="color:#eeffff;">e_shoff</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">int</span><span style="color:#eeffff;"> shnum </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> ehdr</span><span style="color:#89ddff;">-&gt;</span><span style="color:#eeffff;">e_shnum</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">int</span><span style="color:#eeffff;"> shent_size </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> ehdr</span><span style="color:#89ddff;">-&gt;</span><span style="color:#eeffff;">e_shentsize</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">unsigned long</span><span style="color:#eeffff;"> stridx </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> ehdr</span><span style="color:#89ddff;">-&gt;</span><span style="color:#eeffff;">e_shstrndx</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
+<pre data-lang="cpp" style="background-color:#212121;color:#eeffff;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="font-style:italic;color:#c792ea;">unsigned long</span><span> shdr_addr </span><span style="color:#89ddff;">=</span><span> ehdr</span><span style="color:#89ddff;">-&gt;</span><span>e_shoff</span><span style="color:#89ddff;">;
+</span><span style="font-style:italic;color:#c792ea;">int</span><span> shnum </span><span style="color:#89ddff;">=</span><span> ehdr</span><span style="color:#89ddff;">-&gt;</span><span>e_shnum</span><span style="color:#89ddff;">;
+</span><span style="font-style:italic;color:#c792ea;">int</span><span> shent_size </span><span style="color:#89ddff;">=</span><span> ehdr</span><span style="color:#89ddff;">-&gt;</span><span>e_shentsize</span><span style="color:#89ddff;">;
+</span><span style="font-style:italic;color:#c792ea;">unsigned long</span><span> stridx </span><span style="color:#89ddff;">=</span><span> ehdr</span><span style="color:#89ddff;">-&gt;</span><span>e_shstrndx</span><span style="color:#89ddff;">;
 </span></code></pre>
 <p>先提前把字符串表的内容读出来供遍历Section时比对其name用：</p>
 <p>代码:</p>
-<pre style="background-color:#212121;">
-<code class="language-cpp" data-lang="cpp"><span style="font-style:italic;color:#4a4a4a;">// 读取Section Header中关于字符串表的描述，得到其尺寸和位置</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#82aaff;">lseek</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">fd</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> shdr_addr </span><span style="color:#89ddff;">+</span><span style="color:#82aaff;"> stridx </span><span style="color:#89ddff;">*</span><span style="color:#82aaff;"> shent_size</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> SEEK_SET</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">read</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">fd</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> shdr</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> shent_size</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#4a4a4a;">// 根据尺寸分配内存</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="font-style:italic;color:#c792ea;">char </span><span style="color:#89ddff;">*</span><span style="color:#eeffff;"> string_table </span><span style="color:#89ddff;">= (</span><span style="font-style:italic;color:#c792ea;">char </span><span style="color:#89ddff;">*)</span><span style="color:#82aaff;">malloc</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">shdr</span><span style="color:#89ddff;">-&gt;</span><span style="color:#eeffff;">sh_size</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">lseek</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">fd</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> shdr</span><span style="color:#89ddff;">-&gt;</span><span style="color:#eeffff;">sh_offset</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> SEEK_SET</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#4a4a4a;">// 将字符串表内容读入</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#82aaff;">read</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">fd</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> string_table</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> shdr</span><span style="color:#89ddff;">-&gt;</span><span style="color:#eeffff;">sh_size</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
+<pre data-lang="cpp" style="background-color:#212121;color:#eeffff;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="font-style:italic;color:#4a4a4a;">// 读取Section Header中关于字符串表的描述，得到其尺寸和位置
+</span><span style="color:#82aaff;">lseek</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">fd</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> shdr_addr </span><span style="color:#89ddff;">+</span><span style="color:#82aaff;"> stridx </span><span style="color:#89ddff;">*</span><span style="color:#82aaff;"> shent_size</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> SEEK_SET</span><span style="color:#89ddff;">);
+</span><span style="color:#82aaff;">read</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">fd</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> shdr</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> shent_size</span><span style="color:#89ddff;">);
+</span><span>
+</span><span style="font-style:italic;color:#4a4a4a;">// 根据尺寸分配内存
+</span><span style="font-style:italic;color:#c792ea;">char </span><span style="color:#89ddff;">*</span><span> string_table </span><span style="color:#89ddff;">= (</span><span style="font-style:italic;color:#c792ea;">char </span><span style="color:#89ddff;">*)</span><span style="color:#82aaff;">malloc</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">shdr</span><span style="color:#89ddff;">-&gt;</span><span>sh_size</span><span style="color:#89ddff;">);
+</span><span style="color:#82aaff;">lseek</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">fd</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> shdr</span><span style="color:#89ddff;">-&gt;</span><span>sh_offset</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> SEEK_SET</span><span style="color:#89ddff;">);
+</span><span>
+</span><span style="font-style:italic;color:#4a4a4a;">// 将字符串表内容读入
+</span><span style="color:#82aaff;">read</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">fd</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> string_table</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> shdr</span><span style="color:#89ddff;">-&gt;</span><span>sh_size</span><span style="color:#89ddff;">);
 </span></code></pre>
 <p>再重新遍历Section Header，找名为.got表的Section：</p>
 <p>代码:</p>
-<pre style="background-color:#212121;">
-<code class="language-cpp" data-lang="cpp"><span style="color:#82aaff;">lseek</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">fd</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> shdr_addr</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> SEEK_SET</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">int</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">for </span><span style="color:#89ddff;">(</span><span style="color:#eeffff;"> i </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;"> i </span><span style="color:#89ddff;">&lt;</span><span style="color:#eeffff;"> shnum</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">++ )</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">read</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">fd</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> shdr</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> shent_size</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#89ddff;">(</span><span style="color:#eeffff;"> shdr</span><span style="color:#89ddff;">-&gt;</span><span style="color:#eeffff;">sh_type </span><span style="color:#89ddff;">==</span><span style="color:#eeffff;"> SHT_PROGBITS </span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#c792ea;">int</span><span style="color:#eeffff;"> name_idx </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> shdr</span><span style="color:#89ddff;">-&gt;</span><span style="color:#eeffff;">sh_name</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#89ddff;">( </span><span style="color:#82aaff;">strcmp</span><span style="color:#89ddff;">(&amp;(</span><span style="color:#82aaff;">string_table</span><span style="color:#89ddff;">[</span><span style="color:#82aaff;">name_idx</span><span style="color:#89ddff;">]), &quot;</span><span style="color:#c3e88d;">.got</span><span style="color:#89ddff;">&quot;) == </span><span style="color:#f78c6c;">0 </span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
-      </span><span style="font-style:italic;color:#4a4a4a;">/* 就是 GOT 表！ */</span><span style="color:#eeffff;">
-      </span><span style="color:#89ddff;">*</span><span style="color:#eeffff;">out_addr </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> base_addr </span><span style="color:#89ddff;">+</span><span style="color:#eeffff;"> shdr</span><span style="color:#89ddff;">-&gt;</span><span style="color:#eeffff;">sh_offset</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-      </span><span style="color:#89ddff;">*</span><span style="color:#eeffff;">out_size </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> shdr</span><span style="color:#89ddff;">-&gt;</span><span style="color:#eeffff;">sh_size</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-      </span><span style="font-style:italic;color:#c792ea;">return </span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+<pre data-lang="cpp" style="background-color:#212121;color:#eeffff;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#82aaff;">lseek</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">fd</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> shdr_addr</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> SEEK_SET</span><span style="color:#89ddff;">);
+</span><span style="font-style:italic;color:#c792ea;">int</span><span> i</span><span style="color:#89ddff;">;
+</span><span style="font-style:italic;color:#c792ea;">for </span><span style="color:#89ddff;">(</span><span> i </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;</span><span> i </span><span style="color:#89ddff;">&lt;</span><span> shnum</span><span style="color:#89ddff;">;</span><span> i</span><span style="color:#89ddff;">++ )
+</span><span style="color:#89ddff;">{
+</span><span>  </span><span style="color:#82aaff;">read</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">fd</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> shdr</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> shent_size</span><span style="color:#89ddff;">);
+</span><span>
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#89ddff;">(</span><span> shdr</span><span style="color:#89ddff;">-&gt;</span><span>sh_type </span><span style="color:#89ddff;">==</span><span> SHT_PROGBITS </span><span style="color:#89ddff;">)
+</span><span>  </span><span style="color:#89ddff;">{
+</span><span>    </span><span style="font-style:italic;color:#c792ea;">int</span><span> name_idx </span><span style="color:#89ddff;">=</span><span> shdr</span><span style="color:#89ddff;">-&gt;</span><span>sh_name</span><span style="color:#89ddff;">;
+</span><span>    </span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#89ddff;">( </span><span style="color:#82aaff;">strcmp</span><span style="color:#89ddff;">(&amp;(</span><span style="color:#82aaff;">string_table</span><span style="color:#89ddff;">[</span><span style="color:#82aaff;">name_idx</span><span style="color:#89ddff;">]), &quot;</span><span style="color:#c3e88d;">.got</span><span style="color:#89ddff;">&quot;) == </span><span style="color:#f78c6c;">0 </span><span style="color:#89ddff;">)
+</span><span>    </span><span style="color:#89ddff;">{
+</span><span>      </span><span style="font-style:italic;color:#4a4a4a;">/* 就是 GOT 表！ */
+</span><span>      </span><span style="color:#89ddff;">*</span><span>out_addr </span><span style="color:#89ddff;">=</span><span> base_addr </span><span style="color:#89ddff;">+</span><span> shdr</span><span style="color:#89ddff;">-&gt;</span><span>sh_offset</span><span style="color:#89ddff;">;
+</span><span>      </span><span style="color:#89ddff;">*</span><span>out_size </span><span style="color:#89ddff;">=</span><span> shdr</span><span style="color:#89ddff;">-&gt;</span><span>sh_size</span><span style="color:#89ddff;">;
+</span><span>
+</span><span>      </span><span style="font-style:italic;color:#c792ea;">return </span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;
+</span><span>    </span><span style="color:#89ddff;">}
+</span><span>  </span><span style="color:#89ddff;">}
+</span><span style="color:#89ddff;">}
 </span></code></pre>
 <p>这样，out_addr和out_size，就是system_server中libbinder.so的GOT表所在的位置和长度。</p>
 <p>然后搜索与Hook就好办了：</p>
 <p>代码:</p>
-<pre style="background-color:#212121;">
-<code class="language-cpp" data-lang="cpp"><span style="font-style:italic;color:#c792ea;">for </span><span style="color:#89ddff;">(</span><span style="color:#eeffff;"> i </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;"> i </span><span style="color:#89ddff;">&lt;</span><span style="color:#eeffff;"> out_size</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;"> i </span><span style="color:#89ddff;">++)</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">ptrace_readdata</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">target_pid</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> out_addr</span><span style="color:#89ddff;">, &amp;</span><span style="color:#82aaff;">got_item</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#89ddff;">(</span><span style="color:#eeffff;"> got_item </span><span style="color:#89ddff;">==</span><span style="color:#eeffff;"> old_ioctl_addr </span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#4a4a4a;">/* !!! 拿到了 ioctl 地址 !!! 改成我们的。 */</span><span style="color:#eeffff;">
-    </span><span style="color:#82aaff;">ptrace_writedata</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">target_pid</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> out_addr</span><span style="color:#89ddff;">, &amp;</span><span style="color:#82aaff;">new_ioctl_addr</span><span style="color:#89ddff;">, sizeof(</span><span style="color:#82aaff;">new_ioctl_addr</span><span style="color:#89ddff;">));</span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#c792ea;">break</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">else if </span><span style="color:#89ddff;">(</span><span style="color:#eeffff;"> got_item </span><span style="color:#89ddff;">==</span><span style="color:#eeffff;"> new_ioctl_addr </span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#4a4a4a;">/* 已经是我们的了，不重复Hook。 */</span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#c792ea;">break</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-  out_addr</span><span style="color:#89ddff;">++;</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+<pre data-lang="cpp" style="background-color:#212121;color:#eeffff;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="font-style:italic;color:#c792ea;">for </span><span style="color:#89ddff;">(</span><span> i </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;</span><span> i </span><span style="color:#89ddff;">&lt;</span><span> out_size</span><span style="color:#89ddff;">;</span><span> i </span><span style="color:#89ddff;">++)
+</span><span style="color:#89ddff;">{
+</span><span>  </span><span style="color:#82aaff;">ptrace_readdata</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">target_pid</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> out_addr</span><span style="color:#89ddff;">, &amp;</span><span style="color:#82aaff;">got_item</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">);
+</span><span>
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#89ddff;">(</span><span> got_item </span><span style="color:#89ddff;">==</span><span> old_ioctl_addr </span><span style="color:#89ddff;">)
+</span><span>  </span><span style="color:#89ddff;">{
+</span><span>    </span><span style="font-style:italic;color:#4a4a4a;">/* !!! 拿到了 ioctl 地址 !!! 改成我们的。 */
+</span><span>    </span><span style="color:#82aaff;">ptrace_writedata</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">target_pid</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> out_addr</span><span style="color:#89ddff;">, &amp;</span><span style="color:#82aaff;">new_ioctl_addr</span><span style="color:#89ddff;">, sizeof(</span><span style="color:#82aaff;">new_ioctl_addr</span><span style="color:#89ddff;">));
+</span><span>    </span><span style="font-style:italic;color:#c792ea;">break</span><span style="color:#89ddff;">;
+</span><span>  </span><span style="color:#89ddff;">}
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">else if </span><span style="color:#89ddff;">(</span><span> got_item </span><span style="color:#89ddff;">==</span><span> new_ioctl_addr </span><span style="color:#89ddff;">)
+</span><span>  </span><span style="color:#89ddff;">{
+</span><span>    </span><span style="font-style:italic;color:#4a4a4a;">/* 已经是我们的了，不重复Hook。 */
+</span><span>    </span><span style="font-style:italic;color:#c792ea;">break</span><span style="color:#89ddff;">;
+</span><span>  </span><span style="color:#89ddff;">}
+</span><span>  out_addr</span><span style="color:#89ddff;">++;
+</span><span style="color:#89ddff;">}
 </span></code></pre>
 <p>写Android.mk将其在 Android 2.3 源码树下编译后，adb push上去（共有注入程序、shellcode使用的共享库、我们的共享库三个文件），运行注入程序，提示注入成功。如果再次运行，则提示已经注入过了。</p>
 <p>再跑命令：</p>
-<pre style="background-color:#212121;">
-<code class="language-sh" data-lang="sh"><span style="font-style:italic;color:#4a4a4a;"># getprop persist.sys.ioctl.callcount</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#82aaff;">getprop persist.sys.ioctl.callcount</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">502</span><span style="color:#eeffff;">
+<pre data-lang="sh" style="background-color:#212121;color:#eeffff;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="font-style:italic;color:#4a4a4a;"># getprop persist.sys.ioctl.callcount
+</span><span style="color:#82aaff;">getprop persist.sys.ioctl.callcount
+</span><span style="color:#82aaff;">502
 </span></code></pre>
 <p>随便动动手机，数字在不断增加中，不过有点影响性能。</p>
 <h1 id="si-bu-chong-shuo-ming">四、补充说明</h1>
@@ -329,8 +319,7 @@
 <li>system_server是system用户，不是有权限写所有名字的Property，这里用了persist.sys.开头的属性名，而persist.sys.开头的属性会保存至磁盘，因此性能会差点儿。</li>
 <li>ioctl虽然实质声明是个可变参数：</li>
 </ol>
-<pre style="background-color:#212121;">
-<code class="language-cpp" data-lang="cpp"><span style="font-style:italic;color:#c792ea;">int </span><span style="color:#82aaff;">new_ioctl </span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int </span><span style="color:#f78c6c;">__fd</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#c792ea;">unsigned long int </span><span style="color:#f78c6c;">__request</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#4a4a4a;">/*void * arg*/ </span><span style="color:#89ddff;">...)</span><span style="color:#eeffff;">
+<pre data-lang="cpp" style="background-color:#212121;color:#eeffff;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="font-style:italic;color:#c792ea;">int </span><span style="color:#82aaff;">new_ioctl </span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int </span><span style="color:#f78c6c;">__fd</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#c792ea;">unsigned long int </span><span style="color:#f78c6c;">__request</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#4a4a4a;">/*void * arg*/ </span><span style="color:#89ddff;">...)
 </span></code></pre>
 <p>这种声明的函数要直接透明地将参数从旧函数传递给新函数似乎还不可行，搜了很多资料也没找到。幸好搜了一把libbinder.so源码，里头对ioctl的调用参数均是仨，干脆就不处理变长形式了。
 5. 如果不以root身份运行注入程序，则ptrace附加时会失败。
@@ -352,7 +341,7 @@
   
     <div class="post-tags">
     
-      <!-- <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all&#x2F;">#all</a> -->
+      <!-- <a href="https://xjump.me/tags/all/">#all</a> -->
     
     </div>
   

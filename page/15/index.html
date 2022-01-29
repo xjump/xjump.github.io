@@ -95,6 +95,38 @@
   <article class="post">
   
 <header class="post__header">
+  <h1 class="post__title"><a href="https:&#x2F;&#x2F;xjump.me&#x2F;20121103-m2crypto-gen-key-pair&#x2F;">M2Crypto生成DSA及RSA密钥</a></h1>
+  <div class="post__meta">
+    <span class="post__time">2012-11-03</span>
+
+  </div>
+</header>
+
+  <div class="post__summary">
+  <p>DSA：</p>
+<pre data-lang="python" style="background-color:#212121;color:#eeffff;" class="language-python "><code class="language-python" data-lang="python"><span style="font-style:italic;color:#4a4a4a;">#!/usr/bin/env python
+</span><span style="font-style:italic;color:#4a4a4a;"># -*- coding=utf-8 -*-
+</span><span style="font-style:italic;color:#4a4a4a;">#author: xjump.me#at#gmail.com
+</span><span style="font-style:italic;color:#4a4a4a;">#file: gendsa.py
+</span><span>
+</span><span style="font-style:italic;color:#c792ea;">from </span><span>M2Crypto </span><span style="font-style:italic;color:#c792ea;">import </span><span>DSA</span><span style="color:#89ddff;">, </span><span>BIO
+</span><span>dsa </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">DSA</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">gen_params</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">1024</span><span style="color:#89ddff;">)
+</span><span>mem </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">BIO</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">MemoryBuffer</span><span style="color:#89ddff;">()
+</span><span style="color:#82aaff;">dsa</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">gen_key</span><span style="color:#89ddff;">()
+</span><span style="color:#82aaff;">dsa</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">save_key_bio</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">mem</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">cipher</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">None</span><span style="color:#89ddff;">)
+</span><span style="color:#82aaff;">dsa</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">save_pub_key_bio</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">mem</span><span style="color:#89ddff;">)
+</span><span style="color:#c792ea;">print </span><span style="color:#82aaff;">mem</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">getvalue</span><span style="color:#89ddff;">()
+</span></code></pre>
+
+  </div>
+  <div class="read-more">
+  <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20121103-m2crypto-gen-key-pair&#x2F;">Read more...</a>
+  </div>
+  </article>
+
+  <article class="post">
+  
+<header class="post__header">
   <h1 class="post__title"><a href="https:&#x2F;&#x2F;xjump.me&#x2F;20120919-lua-implementation&#x2F;">Lua 5.0的实现（中英文对照）</a></h1>
   <div class="post__meta">
     <span class="post__time">2012-09-19</span>

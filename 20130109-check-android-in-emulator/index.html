@@ -111,8 +111,7 @@
   &nbsp;</div>
 <div>
   1、依赖android.os.Build中的信息。如果使用普通的android sdk，那么 Build.PRODUCT == "sdk"；如果使用了 google api sdk，那么 Build.PRODUCT == "google_sdk"</div>
-<span id="continue-reading"></span>
-<div>
+<span id="continue-reading"></span><div>
   &nbsp;</div>
 <div>
   2、模拟器中 Settings.Secure.ANDROID_ID == "", 但在android 2.2 中有个bug，所有设备的 android_id 都是 9774d56d682e549c</div>
@@ -121,15 +120,15 @@
 <div>
   代码如下:</div>
 <div>
-<pre style="background-color:#212121;">
-<code class="language-java" data-lang="java"><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">boolean </span><span style="color:#82aaff;">isEmulator</span><span style="color:#89ddff;">() {</span><span style="color:#eeffff;">
-  </span><span style="color:#ffcb6b;">String</span><span style="color:#eeffff;"> android_id </span><span style="color:#89ddff;">= </span><span style="color:#ffcb6b;">Settings</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">Secure</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">getString</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">getContentResolver</span><span style="color:#89ddff;">(), </span><span style="color:#ffcb6b;">Settings</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">Secure</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">ANDROID_ID</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-  </span><span style="color:#ffcb6b;">Log</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">d</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">TAG</span><span style="color:#89ddff;">+&quot;</span><span style="color:#c3e88d;">isEmulator</span><span style="color:#89ddff;">&quot;,&quot;</span><span style="color:#c3e88d;">ANDROID_ID: </span><span style="color:#89ddff;">&quot;+</span><span style="color:#82aaff;">android_id</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-  </span><span style="color:#ffcb6b;">Log</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">d</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">TAG</span><span style="color:#89ddff;">+&quot;</span><span style="color:#c3e88d;">isEmulator</span><span style="color:#89ddff;">&quot;,&quot;</span><span style="color:#c3e88d;">Build.PRODUCT: </span><span style="color:#89ddff;">&quot;+</span><span style="color:#ffcb6b;">Build</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">PRODUCT</span><span style="color:#89ddff;">); </span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">boolean</span><span style="color:#eeffff;"> inEmulator </span><span style="color:#89ddff;">= </span><span style="color:#ffcb6b;">TextUtils</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">isEmpty</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">android_id</span><span style="color:#89ddff;">) || &quot;</span><span style="color:#c3e88d;">google_sdk</span><span style="color:#89ddff;">&quot;.</span><span style="color:#82aaff;">equals</span><span style="color:#89ddff;">( </span><span style="color:#ffcb6b;">Build</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">PRODUCT </span><span style="color:#89ddff;">) || &quot;</span><span style="color:#c3e88d;">sdk</span><span style="color:#89ddff;">&quot;.</span><span style="color:#82aaff;">equals</span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">Build</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">PRODUCT</span><span style="color:#89ddff;">);      </span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">return</span><span style="color:#eeffff;"> inEmulator</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span></code></pre></div>
+<pre data-lang="java" style="background-color:#212121;color:#eeffff;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">boolean </span><span style="color:#82aaff;">isEmulator</span><span style="color:#89ddff;">() {
+</span><span>  </span><span style="color:#ffcb6b;">String</span><span> android_id </span><span style="color:#89ddff;">= </span><span style="color:#ffcb6b;">Settings</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">Secure</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">getString</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">getContentResolver</span><span style="color:#89ddff;">(), </span><span style="color:#ffcb6b;">Settings</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">Secure</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">ANDROID_ID</span><span style="color:#89ddff;">);
+</span><span>  </span><span style="color:#ffcb6b;">Log</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">d</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">TAG</span><span style="color:#89ddff;">+&quot;</span><span style="color:#c3e88d;">isEmulator</span><span style="color:#89ddff;">&quot;,&quot;</span><span style="color:#c3e88d;">ANDROID_ID: </span><span style="color:#89ddff;">&quot;+</span><span style="color:#82aaff;">android_id</span><span style="color:#89ddff;">);
+</span><span>  </span><span style="color:#ffcb6b;">Log</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">d</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">TAG</span><span style="color:#89ddff;">+&quot;</span><span style="color:#c3e88d;">isEmulator</span><span style="color:#89ddff;">&quot;,&quot;</span><span style="color:#c3e88d;">Build.PRODUCT: </span><span style="color:#89ddff;">&quot;+</span><span style="color:#ffcb6b;">Build</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">PRODUCT</span><span style="color:#89ddff;">); 
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">boolean</span><span> inEmulator </span><span style="color:#89ddff;">= </span><span style="color:#ffcb6b;">TextUtils</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">isEmpty</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">android_id</span><span style="color:#89ddff;">) || &quot;</span><span style="color:#c3e88d;">google_sdk</span><span style="color:#89ddff;">&quot;.</span><span style="color:#82aaff;">equals</span><span style="color:#89ddff;">( </span><span style="color:#ffcb6b;">Build</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">PRODUCT </span><span style="color:#89ddff;">) || &quot;</span><span style="color:#c3e88d;">sdk</span><span style="color:#89ddff;">&quot;.</span><span style="color:#82aaff;">equals</span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">Build</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">PRODUCT</span><span style="color:#89ddff;">);      
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">return</span><span> inEmulator</span><span style="color:#89ddff;">;
+</span><span style="color:#89ddff;">}
+</span></code></pre>
+</div>
 </div>
 
 
@@ -138,7 +137,7 @@
   
     <div class="post-tags">
     
-      <!-- <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all&#x2F;">#all</a> -->
+      <!-- <a href="https://xjump.me/tags/all/">#all</a> -->
     
     </div>
   

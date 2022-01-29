@@ -107,10 +107,10 @@
 <p>这样处理后就会使得明文块转化成与module差不多的大整数。</p>
 <p>如果是私钥加密（forPrivateKey=true),密钥长度为1024位，那么输出 的密文块长度也是128字节，输入的明文块的长度为128-11，即输入的明文块最大是117字节，如果输入的明文块小于117字节，比如输入的明文块长度为64字节，那么对这个明文块进行补齐，在明文块前添加两个字节0x0001（代表私钥加密），然后在后面的52字节为字节0xff，在最后一字节，即52（117-64-1），从零开始，添加一个字节0x00，再在补齐的后面添加实际的明文块。</p>
 <p>下面是示意图：</p>
-<pre style="background-color:#212121;">
-<code class="language-txt" data-lang="txt"><span style="color:#eeffff;">公钥加密：| 0x0002 | RRRRRRRR | 0x00 | DDDDDDDDDDDD；其中R至少8个字节，R表示随机字节</span><span style="color:#eeffff;">
-私钥加密：| 0x0001 | FFFFFFFF | 0x00 | DDDDDDDDDDDD；其中F至少8个字节，F表示字节值为0xFF</span><span style="color:#eeffff;">
-</span></code></pre></div>
+<pre data-lang="txt" style="background-color:#212121;color:#eeffff;" class="language-txt "><code class="language-txt" data-lang="txt"><span>公钥加密：| 0x0002 | RRRRRRRR | 0x00 | DDDDDDDDDDDD；其中R至少8个字节，R表示随机字节
+</span><span>私钥加密：| 0x0001 | FFFFFFFF | 0x00 | DDDDDDDDDDDD；其中F至少8个字节，F表示字节值为0xFF
+</span></code></pre>
+</div>
 
 
   <div class="post-footer">
@@ -118,7 +118,7 @@
   
     <div class="post-tags">
     
-      <!-- <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all&#x2F;">#all</a> -->
+      <!-- <a href="https://xjump.me/tags/all/">#all</a> -->
     
     </div>
   

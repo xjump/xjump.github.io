@@ -95,6 +95,38 @@
   <article class="post">
   
 <header class="post__header">
+  <h1 class="post__title"><a href="https:&#x2F;&#x2F;xjump.me&#x2F;20180815-rust-error-handling&#x2F;">Rust错误处理（转）</a></h1>
+  <div class="post__meta">
+    <span class="post__time">2018-08-15</span>
+
+  </div>
+</header>
+
+  <div class="post__summary">
+  <p><em>转自：https://zhuanlan.zhihu.com/p/25506762，修改排版等内容</em></p>
+<p>人孰无过，过而能改，善莫大焉。程序运行过程中总是会出现各种各样的问题，导致程序出现异常或错误，这些异常和错误本身不是 bug，但是如果不处理好的话就会成为 bug。不同编程语言提供了不同的机制来处理错误和异常，一般分为两大类：把错误当作值来处理；抛出异常。</p>
+<p>Rust 提供以下基础设施做错误处理：</p>
+<pre data-lang="rust" style="background-color:#212121;color:#eeffff;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#ffcb6b;">Option</span><span style="color:#89ddff;">, 
+</span><span style="color:#ffcb6b;">Result</span><span style="color:#89ddff;">,
+</span><span>unwrap</span><span style="color:#89ddff;">, 
+</span><span>expect</span><span style="color:#89ddff;">,
+</span><span>combinators</span><span style="color:#89ddff;">,
+</span><span>try</span><span style="color:#89ddff;">! </span><span style="background-color:#ff5370;color:#ffffff;">macro</span><span style="color:#89ddff;">,
+</span><span>Error </span><span style="font-style:italic;color:#c792ea;">trait</span><span style="color:#89ddff;">,
+</span><span style="color:#ffcb6b;">From </span><span style="font-style:italic;color:#c792ea;">trait</span><span style="color:#89ddff;">,
+</span><span>Carrier </span><span style="font-style:italic;color:#c792ea;">trait</span><span style="color:#89ddff;">/</span><span>Try </span><span style="font-style:italic;color:#c792ea;">trait</span><span style="color:#89ddff;">,
+</span></code></pre>
+<p>Rust 并没有提供基于 exception 的错误处理机制，虽然 panic! 宏在让进程挂掉时也抛出堆栈，同时也可以用 std::panic::catch_unwind 捕捉 panic，但是极其不推荐用来处理常规错误。</p>
+
+  </div>
+  <div class="read-more">
+  <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20180815-rust-error-handling&#x2F;">Read more...</a>
+  </div>
+  </article>
+
+  <article class="post">
+  
+<header class="post__header">
   <h1 class="post__title"><a href="https:&#x2F;&#x2F;xjump.me&#x2F;20150314-java-dynamic-proxy-basic&#x2F;">Java动态代理应用基础</a></h1>
   <div class="post__meta">
     <span class="post__time">2015-03-14</span>
@@ -135,23 +167,23 @@
   <strong>1）Thread & ThreadPoolExecutor</strong></p>
 <p>
   Thread例子如下：</p>
-<pre style="background-color:#212121;">
-<code class="language-java" data-lang="java"><span style="font-style:italic;color:#c792ea;">for</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">&lt;</span><span style="color:#f78c6c;">100</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">++){</span><span style="color:#eeffff;">
-  </span><span style="color:#ffcb6b;">Thread</span><span style="color:#eeffff;"> t </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Thread</span><span style="color:#89ddff;">(){</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">@</span><span style="color:#eeffff;">Override</span><span style="color:#eeffff;">
-    </span><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">run</span><span style="color:#89ddff;">() {</span><span style="color:#eeffff;">
-      </span><span style="font-style:italic;color:#4a4a4a;">//job details</span><span style="font-style:italic;color:#4a4a4a;">
-    </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">};</span><span style="color:#eeffff;">
-  t</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">start</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">try</span><span style="color:#89ddff;">{ </span><span style="color:#eeffff;">
-    t</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">join</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">catch</span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">InterruptedException </span><span style="color:#f78c6c;">ex</span><span style="color:#89ddff;">){</span><span style="color:#eeffff;">
-    ex</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span></code></pre><p>
+<pre data-lang="java" style="background-color:#212121;color:#eeffff;" class="language-java "><code class="language-java" data-lang="java"><span style="font-style:italic;color:#c792ea;">for</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int</span><span> i</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;</span><span> i</span><span style="color:#89ddff;">&lt;</span><span style="color:#f78c6c;">100</span><span style="color:#89ddff;">;</span><span> i</span><span style="color:#89ddff;">++){
+</span><span>  </span><span style="color:#ffcb6b;">Thread</span><span> t </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Thread</span><span style="color:#89ddff;">(){
+</span><span>    </span><span style="color:#89ddff;">@</span><span>Override
+</span><span>    </span><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">run</span><span style="color:#89ddff;">() {
+</span><span>      </span><span style="font-style:italic;color:#4a4a4a;">//job details
+</span><span>    </span><span style="color:#89ddff;">}
+</span><span>  </span><span style="color:#89ddff;">};
+</span><span>  t</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">start</span><span style="color:#89ddff;">();
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">try</span><span style="color:#89ddff;">{ 
+</span><span>    t</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">join</span><span style="color:#89ddff;">();
+</span><span>  </span><span style="color:#89ddff;">}
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">catch</span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">InterruptedException </span><span style="color:#f78c6c;">ex</span><span style="color:#89ddff;">){
+</span><span>    ex</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();
+</span><span>  </span><span style="color:#89ddff;">}
+</span><span style="color:#89ddff;">}
+</span></code></pre>
+<p>
   相应的，ThreadPoolExecutor例子如下：</p>
 
   </div>
@@ -197,36 +229,18 @@
 </header>
 
   <div class="post__summary">
-  <pre style="background-color:#212121;">
-<code class="language-mm" data-lang="mm"><span style="color:#89ddff;">- (</span><span style="color:#ffcb6b;">NSString </span><span style="color:#89ddff;">*)</span><span style="color:#82aaff;">myString </span><span style="color:#89ddff;">{</span><span style="color:#82aaff;">
-  </span><span style="font-style:italic;color:#89ddff;">@</span><span style="font-style:italic;color:#c792ea;">synchronized</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#ff5370;">self</span><span style="color:#89ddff;">) {</span><span style="color:#82aaff;">
-    </span><span style="font-style:italic;color:#c792ea;">return </span><span style="color:#89ddff;">[[</span><span style="color:#82aaff;">myString retain</span><span style="color:#89ddff;">]</span><span style="color:#82aaff;"> autorelease</span><span style="color:#89ddff;">];</span><span style="color:#82aaff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#82aaff;">
-</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span></code></pre><p>
+  <pre data-lang="mm" style="background-color:#212121;color:#eeffff;" class="language-mm "><code class="language-mm" data-lang="mm"><span style="color:#89ddff;">- (</span><span style="color:#ffcb6b;">NSString </span><span style="color:#89ddff;">*)</span><span style="color:#82aaff;">myString </span><span style="color:#89ddff;">{
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#89ddff;">@</span><span style="font-style:italic;color:#c792ea;">synchronized</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#ff5370;">self</span><span style="color:#89ddff;">) {
+</span><span style="color:#82aaff;">    </span><span style="font-style:italic;color:#c792ea;">return </span><span style="color:#89ddff;">[[</span><span style="color:#82aaff;">myString retain</span><span style="color:#89ddff;">]</span><span style="color:#82aaff;"> autorelease</span><span style="color:#89ddff;">];
+</span><span style="color:#82aaff;">  </span><span style="color:#89ddff;">}
+</span><span style="color:#89ddff;">}
+</span></code></pre>
+<p>
     转换1：</p>
 
   </div>
   <div class="read-more">
   <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20141010-object-c-synchronize&#x2F;">Read more...</a>
-  </div>
-  </article>
-
-  <article class="post">
-  
-<header class="post__header">
-  <h1 class="post__title"><a href="https:&#x2F;&#x2F;xjump.me&#x2F;20141001-jgj&#x2F;">金刚经</a></h1>
-  <div class="post__meta">
-    <span class="post__time">2014-10-01</span>
-
-  </div>
-</header>
-
-  <div class="post__summary">
-  
-  </div>
-  <div class="read-more">
-  <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20141001-jgj&#x2F;">Read more...</a>
   </div>
   </article>
 

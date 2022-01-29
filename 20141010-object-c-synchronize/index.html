@@ -103,42 +103,41 @@
   </div>
 </header>
 
- <div class="post-content"><pre style="background-color:#212121;">
-<code class="language-mm" data-lang="mm"><span style="color:#89ddff;">- (</span><span style="color:#ffcb6b;">NSString </span><span style="color:#89ddff;">*)</span><span style="color:#82aaff;">myString </span><span style="color:#89ddff;">{</span><span style="color:#82aaff;">
-  </span><span style="font-style:italic;color:#89ddff;">@</span><span style="font-style:italic;color:#c792ea;">synchronized</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#ff5370;">self</span><span style="color:#89ddff;">) {</span><span style="color:#82aaff;">
-    </span><span style="font-style:italic;color:#c792ea;">return </span><span style="color:#89ddff;">[[</span><span style="color:#82aaff;">myString retain</span><span style="color:#89ddff;">]</span><span style="color:#82aaff;"> autorelease</span><span style="color:#89ddff;">];</span><span style="color:#82aaff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#82aaff;">
-</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span></code></pre><p>
+ <div class="post-content"><pre data-lang="mm" style="background-color:#212121;color:#eeffff;" class="language-mm "><code class="language-mm" data-lang="mm"><span style="color:#89ddff;">- (</span><span style="color:#ffcb6b;">NSString </span><span style="color:#89ddff;">*)</span><span style="color:#82aaff;">myString </span><span style="color:#89ddff;">{
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#89ddff;">@</span><span style="font-style:italic;color:#c792ea;">synchronized</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#ff5370;">self</span><span style="color:#89ddff;">) {
+</span><span style="color:#82aaff;">    </span><span style="font-style:italic;color:#c792ea;">return </span><span style="color:#89ddff;">[[</span><span style="color:#82aaff;">myString retain</span><span style="color:#89ddff;">]</span><span style="color:#82aaff;"> autorelease</span><span style="color:#89ddff;">];
+</span><span style="color:#82aaff;">  </span><span style="color:#89ddff;">}
+</span><span style="color:#89ddff;">}
+</span></code></pre>
+<p>
     转换1：</p>
-<span id="continue-reading"></span>
-<pre style="background-color:#212121;">
-<code class="language-mm" data-lang="mm"><span style="color:#89ddff;">- (</span><span style="color:#ffcb6b;">NSString </span><span style="color:#89ddff;">*)</span><span style="color:#82aaff;">myString </span><span style="color:#89ddff;">{</span><span style="color:#82aaff;">
-  </span><span style="color:#ffcb6b;">NSString </span><span style="color:#89ddff;">*</span><span style="color:#82aaff;">retval </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">nil</span><span style="color:#89ddff;">;</span><span style="color:#82aaff;">
-  </span><span style="color:#ffcb6b;">pthread_mutex_t </span><span style="color:#89ddff;">*</span><span style="color:#82aaff;">self_mutex </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">LOOK_UP_MUTEX</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#ff5370;">self</span><span style="color:#89ddff;">);</span><span style="color:#82aaff;">
-  pthread_mutex_lock</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">self_mutex</span><span style="color:#89ddff;">);</span><span style="color:#82aaff;">
-  retval </span><span style="color:#89ddff;">= [[</span><span style="color:#82aaff;">myString retain</span><span style="color:#89ddff;">]</span><span style="color:#82aaff;"> autorelease</span><span style="color:#89ddff;">]; </span><span style="font-style:italic;color:#4a4a4a;">//Exception-Safe need</span><span style="font-style:italic;color:#4a4a4a;">
-  </span><span style="color:#82aaff;">pthread_mutex_unlock</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">self_mutex</span><span style="color:#89ddff;">);</span><span style="color:#82aaff;">
-  </span><span style="font-style:italic;color:#c792ea;">return</span><span style="color:#82aaff;"> retval</span><span style="color:#89ddff;">;</span><span style="color:#82aaff;">
-</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span></code></pre><p>
+<span id="continue-reading"></span><pre data-lang="mm" style="background-color:#212121;color:#eeffff;" class="language-mm "><code class="language-mm" data-lang="mm"><span style="color:#89ddff;">- (</span><span style="color:#ffcb6b;">NSString </span><span style="color:#89ddff;">*)</span><span style="color:#82aaff;">myString </span><span style="color:#89ddff;">{
+</span><span style="color:#82aaff;">  </span><span style="color:#ffcb6b;">NSString </span><span style="color:#89ddff;">*</span><span style="color:#82aaff;">retval </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">nil</span><span style="color:#89ddff;">;
+</span><span style="color:#82aaff;">  </span><span style="color:#ffcb6b;">pthread_mutex_t </span><span style="color:#89ddff;">*</span><span style="color:#82aaff;">self_mutex </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">LOOK_UP_MUTEX</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#ff5370;">self</span><span style="color:#89ddff;">);
+</span><span style="color:#82aaff;">  pthread_mutex_lock</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">self_mutex</span><span style="color:#89ddff;">);
+</span><span style="color:#82aaff;">  retval </span><span style="color:#89ddff;">= [[</span><span style="color:#82aaff;">myString retain</span><span style="color:#89ddff;">]</span><span style="color:#82aaff;"> autorelease</span><span style="color:#89ddff;">]; </span><span style="font-style:italic;color:#4a4a4a;">//Exception-Safe need
+</span><span style="color:#82aaff;">  pthread_mutex_unlock</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">self_mutex</span><span style="color:#89ddff;">);
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">return</span><span style="color:#82aaff;"> retval</span><span style="color:#89ddff;">;
+</span><span style="color:#89ddff;">}
+</span></code></pre>
+<p>
     转换2：</p>
-<pre style="background-color:#212121;">
-<code class="language-mm" data-lang="mm"><span style="font-style:italic;color:#4a4a4a;">// needs #import mm/mm-sync.h</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#89ddff;">- (</span><span style="color:#ffcb6b;">NSString</span><span style="color:#89ddff;">*) </span><span style="color:#82aaff;">myString </span><span style="color:#89ddff;">{</span><span style="color:#82aaff;">
-  </span><span style="font-style:italic;color:#c792ea;">id </span><span style="color:#82aaff;">retVal </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">nil</span><span style="color:#89ddff;">;</span><span style="color:#82aaff;">
-  mm_sync_enter</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#ff5370;">self</span><span style="color:#89ddff;">);</span><span style="color:#82aaff;">
-  </span><span style="font-style:italic;color:#89ddff;">@</span><span style="font-style:italic;color:#c792ea;">try </span><span style="color:#89ddff;">{</span><span style="color:#82aaff;">
-    retVal </span><span style="color:#89ddff;">= [[</span><span style="color:#82aaff;">myString retain</span><span style="color:#89ddff;">]</span><span style="color:#82aaff;"> autorelease</span><span style="color:#89ddff;">];</span><span style="color:#82aaff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#82aaff;">
-  </span><span style="font-style:italic;color:#89ddff;">@</span><span style="font-style:italic;color:#c792ea;">catch</span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">NSException</span><span style="color:#89ddff;">*</span><span style="color:#82aaff;"> ex</span><span style="color:#89ddff;">) {</span><span style="color:#82aaff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#82aaff;">
-  @finaly </span><span style="color:#89ddff;">{</span><span style="color:#82aaff;">
-    mm_sync_exit</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#ff5370;">self</span><span style="color:#89ddff;">);</span><span style="color:#82aaff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#82aaff;">
-  </span><span style="font-style:italic;color:#c792ea;">return</span><span style="color:#82aaff;"> retVal</span><span style="color:#89ddff;">;</span><span style="color:#82aaff;">
-</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span></code></pre><p>
+<pre data-lang="mm" style="background-color:#212121;color:#eeffff;" class="language-mm "><code class="language-mm" data-lang="mm"><span style="font-style:italic;color:#4a4a4a;">// needs #import mm/mm-sync.h
+</span><span style="color:#89ddff;">- (</span><span style="color:#ffcb6b;">NSString</span><span style="color:#89ddff;">*) </span><span style="color:#82aaff;">myString </span><span style="color:#89ddff;">{
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">id </span><span style="color:#82aaff;">retVal </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">nil</span><span style="color:#89ddff;">;
+</span><span style="color:#82aaff;">  mm_sync_enter</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#ff5370;">self</span><span style="color:#89ddff;">);
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#89ddff;">@</span><span style="font-style:italic;color:#c792ea;">try </span><span style="color:#89ddff;">{
+</span><span style="color:#82aaff;">    retVal </span><span style="color:#89ddff;">= [[</span><span style="color:#82aaff;">myString retain</span><span style="color:#89ddff;">]</span><span style="color:#82aaff;"> autorelease</span><span style="color:#89ddff;">];
+</span><span style="color:#82aaff;">  </span><span style="color:#89ddff;">}
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#89ddff;">@</span><span style="font-style:italic;color:#c792ea;">catch</span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">NSException</span><span style="color:#89ddff;">*</span><span style="color:#82aaff;"> ex</span><span style="color:#89ddff;">) {
+</span><span style="color:#82aaff;">  </span><span style="color:#89ddff;">}
+</span><span style="color:#82aaff;">  @finaly </span><span style="color:#89ddff;">{
+</span><span style="color:#82aaff;">    mm_sync_exit</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#ff5370;">self</span><span style="color:#89ddff;">);
+</span><span style="color:#82aaff;">  </span><span style="color:#89ddff;">}
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#c792ea;">return</span><span style="color:#82aaff;"> retVal</span><span style="color:#89ddff;">;
+</span><span style="color:#89ddff;">}
+</span></code></pre>
+<p>
     更高效的是spin_lock，可以对需要并发共享的数据进行非常精细的控制。但如何做到异常安全，需要非常小心。</p>
 <p><strong>GCD</strong></p>
 <p>
@@ -149,103 +148,102 @@
     由于async在处理同步时较为复杂，GCD提供了dispatch_group_async、dispatch_barrier_async来完成异步任务的时序同步。</p>
 <p>
     dispatch_barrier_async保证barrier之前的async task执行结束后，barrier之后的任务才开始执行：</p>
-<pre style="background-color:#212121;">
-<code class="language-mm" data-lang="mm"><span style="color:#eeffff;">dispatch_queue_t queue </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">dispatch_queue_create</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">me.xjump.concurrent_barrier</span><span style="color:#89ddff;">&quot;,</span><span style="color:#82aaff;"> DISPATCH_QUEUE_CONCURRENT</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">dispatch_async</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">queue</span><span style="color:#89ddff;">, ^{</span><span style="color:#82aaff;">
-    </span><span style="color:#89ddff;">[</span><span style="color:#ffcb6b;">NSThread </span><span style="color:#82aaff;">sleepForTimeInterval</span><span style="color:#89ddff;">:</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">];</span><span style="color:#82aaff;">
-    NSLog</span><span style="color:#89ddff;">(@&quot;</span><span style="color:#c3e88d;">dispatch_async1</span><span style="color:#89ddff;">&quot;);</span><span style="color:#82aaff;">
-</span><span style="color:#89ddff;">});</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">dispatch_async</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">queue</span><span style="color:#89ddff;">, ^{</span><span style="color:#82aaff;">
-    </span><span style="color:#89ddff;">[</span><span style="color:#ffcb6b;">NSThread </span><span style="color:#82aaff;">sleepForTimeInterval</span><span style="color:#89ddff;">:</span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">];</span><span style="color:#82aaff;">
-    NSLog</span><span style="color:#89ddff;">(@&quot;</span><span style="color:#c3e88d;">dispatch_async2</span><span style="color:#89ddff;">&quot;);</span><span style="color:#82aaff;">
-</span><span style="color:#89ddff;">});</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">dispatch_barrier_async</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">queue</span><span style="color:#89ddff;">, ^{</span><span style="color:#82aaff;">
-    NSLog</span><span style="color:#89ddff;">(@&quot;</span><span style="color:#c3e88d;">dispatch_barrier_async</span><span style="color:#89ddff;">&quot;);</span><span style="color:#82aaff;">
-    </span><span style="color:#89ddff;">[</span><span style="color:#ffcb6b;">NSThread </span><span style="color:#82aaff;">sleepForTimeInterval</span><span style="color:#89ddff;">:</span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">];</span><span style="color:#82aaff;">
-</span><span style="color:#89ddff;">});</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">dispatch_async</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">queue</span><span style="color:#89ddff;">, ^{</span><span style="color:#82aaff;">
-    </span><span style="color:#89ddff;">[</span><span style="color:#ffcb6b;">NSThread </span><span style="color:#82aaff;">sleepForTimeInterval</span><span style="color:#89ddff;">:</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">];</span><span style="color:#82aaff;">
-    NSLog</span><span style="color:#89ddff;">(@&quot;</span><span style="color:#c3e88d;">dispatch_async3</span><span style="color:#89ddff;">&quot;);</span><span style="color:#82aaff;">
-</span><span style="color:#89ddff;">});</span><span style="color:#eeffff;">
-</span></code></pre><p>group_async可以实现一批async task执行结束后，在notify回调中进行批任务完成处理：</p>
-<pre style="background-color:#212121;">
-<code class="language-mm" data-lang="mm"><span style="color:#eeffff;">dispatch_queue_t queue </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">dispatch_get_global_queue</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">DISPATCH_QUEUE_PRIORITY_DEFAULT</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-dispatch_group_t group </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">dispatch_group_create</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">dispatch_group_async</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">group</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> queue</span><span style="color:#89ddff;">, ^{</span><span style="color:#82aaff;">
-    </span><span style="color:#89ddff;">[</span><span style="color:#ffcb6b;">NSThread </span><span style="color:#82aaff;">sleepForTimeInterval</span><span style="color:#89ddff;">:</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">];</span><span style="color:#82aaff;">
-    NSLog</span><span style="color:#89ddff;">(@&quot;</span><span style="color:#c3e88d;">group1</span><span style="color:#89ddff;">&quot;);</span><span style="color:#82aaff;">
-</span><span style="color:#89ddff;">});</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">dispatch_group_async</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">group</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> queue</span><span style="color:#89ddff;">, ^{</span><span style="color:#82aaff;">
-    </span><span style="color:#89ddff;">[</span><span style="color:#ffcb6b;">NSThread </span><span style="color:#82aaff;">sleepForTimeInterval</span><span style="color:#89ddff;">:</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">];</span><span style="color:#82aaff;">
-    NSLog</span><span style="color:#89ddff;">(@&quot;</span><span style="color:#c3e88d;">group2</span><span style="color:#89ddff;">&quot;);</span><span style="color:#82aaff;">
-</span><span style="color:#89ddff;">});</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">dispatch_group_async</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">group</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> queue</span><span style="color:#89ddff;">, ^{</span><span style="color:#82aaff;">
-    </span><span style="color:#89ddff;">[</span><span style="color:#ffcb6b;">NSThread </span><span style="color:#82aaff;">sleepForTimeInterval</span><span style="color:#89ddff;">:</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">];</span><span style="color:#82aaff;">
-    NSLog</span><span style="color:#89ddff;">(@&quot;</span><span style="color:#c3e88d;">group3</span><span style="color:#89ddff;">&quot;);</span><span style="color:#82aaff;">
-</span><span style="color:#89ddff;">});</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">dispatch_group_notify</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">group</span><span style="color:#89ddff;">, </span><span style="color:#82aaff;">dispatch_get_main_queue</span><span style="color:#89ddff;">(), ^{</span><span style="color:#82aaff;">
-    NSLog</span><span style="color:#89ddff;">(@&quot;</span><span style="color:#c3e88d;">updateUi</span><span style="color:#89ddff;">&quot;);</span><span style="color:#82aaff;">
-</span><span style="color:#89ddff;">});</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">dispatch_release</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">group</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-</span></code></pre><p>避免在main线程中调用，但需要同步等待结果：</p>
-<pre style="background-color:#212121;">
-<code class="language-mm" data-lang="mm"><span style="color:#eeffff;">dispatch_semaphore_t sema </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">dispatch_semaphore_create</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#4a4a4a;">// check sema is nil??</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#82aaff;">dispatch_async</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">dispatch_get_global_queue</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">), ^{</span><span style="color:#82aaff;">
-  </span><span style="font-style:italic;color:#89ddff;">@</span><span style="font-style:italic;color:#c792ea;">try </span><span style="color:#89ddff;">{</span><span style="color:#82aaff;">
-     result </span><span style="color:#89ddff;">= [</span><span style="color:#82aaff;">service callSomeMethod</span><span style="color:#89ddff;">];</span><span style="color:#82aaff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#82aaff;">
-  </span><span style="font-style:italic;color:#89ddff;">@</span><span style="font-style:italic;color:#c792ea;">catch </span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">NSException </span><span style="color:#89ddff;">*</span><span style="color:#82aaff;">exception</span><span style="color:#89ddff;">) {</span><span style="color:#82aaff;">
-     NSLog</span><span style="color:#89ddff;">(@&quot;</span><span style="color:#eeffff;">%@</span><span style="color:#89ddff;">&quot;,</span><span style="color:#82aaff;"> exception</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">reason</span><span style="color:#89ddff;">);</span><span style="color:#82aaff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#82aaff;">
-  </span><span style="font-style:italic;color:#89ddff;">@</span><span style="font-style:italic;color:#c792ea;">finally </span><span style="color:#89ddff;">{</span><span style="color:#82aaff;">
-     dispatch_semaphore_signal</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">sema</span><span style="color:#89ddff;">);</span><span style="color:#82aaff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#82aaff;">
-</span><span style="color:#89ddff;">});</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#4a4a4a;">// dispatch_time( dispatch_time_t when, int64_t delta);</span><span style="font-style:italic;color:#4a4a4a;">
-// dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, 1000*1000*3);</span><span style="font-style:italic;color:#4a4a4a;">
-// dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);</span><span style="font-style:italic;color:#4a4a4a;">
-// dispatch_release(sema);</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#eeffff;">dispatch_time_t timeout </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">dispatch_time</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">DISPATCH_TIME_NOW</span><span style="color:#89ddff;">, (</span><span style="color:#ffcb6b;">int64_t</span><span style="color:#89ddff;">)(</span><span style="color:#f78c6c;">60</span><span style="color:#89ddff;">.</span><span style="color:#f78c6c;">0 </span><span style="color:#89ddff;">*</span><span style="color:#82aaff;"> NSEC_PER_SEC</span><span style="color:#89ddff;">));</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">if</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">==</span><span style="color:#82aaff;">dispatch_semaphore_wait</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">sema</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> timeout</span><span style="color:#89ddff;">)){</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">dispatch_release</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">sema</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span></code></pre><p>
+<pre data-lang="mm" style="background-color:#212121;color:#eeffff;" class="language-mm "><code class="language-mm" data-lang="mm"><span>dispatch_queue_t queue </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">dispatch_queue_create</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">me.xjump.concurrent_barrier</span><span style="color:#89ddff;">&quot;,</span><span style="color:#82aaff;"> DISPATCH_QUEUE_CONCURRENT</span><span style="color:#89ddff;">);
+</span><span style="color:#82aaff;">dispatch_async</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">queue</span><span style="color:#89ddff;">, ^{
+</span><span style="color:#82aaff;">    </span><span style="color:#89ddff;">[</span><span style="color:#ffcb6b;">NSThread </span><span style="color:#82aaff;">sleepForTimeInterval</span><span style="color:#89ddff;">:</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">];
+</span><span style="color:#82aaff;">    NSLog</span><span style="color:#89ddff;">(@&quot;</span><span style="color:#c3e88d;">dispatch_async1</span><span style="color:#89ddff;">&quot;);
+</span><span style="color:#89ddff;">});
+</span><span style="color:#82aaff;">dispatch_async</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">queue</span><span style="color:#89ddff;">, ^{
+</span><span style="color:#82aaff;">    </span><span style="color:#89ddff;">[</span><span style="color:#ffcb6b;">NSThread </span><span style="color:#82aaff;">sleepForTimeInterval</span><span style="color:#89ddff;">:</span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">];
+</span><span style="color:#82aaff;">    NSLog</span><span style="color:#89ddff;">(@&quot;</span><span style="color:#c3e88d;">dispatch_async2</span><span style="color:#89ddff;">&quot;);
+</span><span style="color:#89ddff;">});
+</span><span style="color:#82aaff;">dispatch_barrier_async</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">queue</span><span style="color:#89ddff;">, ^{
+</span><span style="color:#82aaff;">    NSLog</span><span style="color:#89ddff;">(@&quot;</span><span style="color:#c3e88d;">dispatch_barrier_async</span><span style="color:#89ddff;">&quot;);
+</span><span style="color:#82aaff;">    </span><span style="color:#89ddff;">[</span><span style="color:#ffcb6b;">NSThread </span><span style="color:#82aaff;">sleepForTimeInterval</span><span style="color:#89ddff;">:</span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">];
+</span><span style="color:#89ddff;">});
+</span><span style="color:#82aaff;">dispatch_async</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">queue</span><span style="color:#89ddff;">, ^{
+</span><span style="color:#82aaff;">    </span><span style="color:#89ddff;">[</span><span style="color:#ffcb6b;">NSThread </span><span style="color:#82aaff;">sleepForTimeInterval</span><span style="color:#89ddff;">:</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">];
+</span><span style="color:#82aaff;">    NSLog</span><span style="color:#89ddff;">(@&quot;</span><span style="color:#c3e88d;">dispatch_async3</span><span style="color:#89ddff;">&quot;);
+</span><span style="color:#89ddff;">});
+</span></code></pre>
+<p>group_async可以实现一批async task执行结束后，在notify回调中进行批任务完成处理：</p>
+<pre data-lang="mm" style="background-color:#212121;color:#eeffff;" class="language-mm "><code class="language-mm" data-lang="mm"><span>dispatch_queue_t queue </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">dispatch_get_global_queue</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">DISPATCH_QUEUE_PRIORITY_DEFAULT</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">);
+</span><span>dispatch_group_t group </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">dispatch_group_create</span><span style="color:#89ddff;">();
+</span><span style="color:#82aaff;">dispatch_group_async</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">group</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> queue</span><span style="color:#89ddff;">, ^{
+</span><span style="color:#82aaff;">    </span><span style="color:#89ddff;">[</span><span style="color:#ffcb6b;">NSThread </span><span style="color:#82aaff;">sleepForTimeInterval</span><span style="color:#89ddff;">:</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">];
+</span><span style="color:#82aaff;">    NSLog</span><span style="color:#89ddff;">(@&quot;</span><span style="color:#c3e88d;">group1</span><span style="color:#89ddff;">&quot;);
+</span><span style="color:#89ddff;">});
+</span><span style="color:#82aaff;">dispatch_group_async</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">group</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> queue</span><span style="color:#89ddff;">, ^{
+</span><span style="color:#82aaff;">    </span><span style="color:#89ddff;">[</span><span style="color:#ffcb6b;">NSThread </span><span style="color:#82aaff;">sleepForTimeInterval</span><span style="color:#89ddff;">:</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">];
+</span><span style="color:#82aaff;">    NSLog</span><span style="color:#89ddff;">(@&quot;</span><span style="color:#c3e88d;">group2</span><span style="color:#89ddff;">&quot;);
+</span><span style="color:#89ddff;">});
+</span><span style="color:#82aaff;">dispatch_group_async</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">group</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> queue</span><span style="color:#89ddff;">, ^{
+</span><span style="color:#82aaff;">    </span><span style="color:#89ddff;">[</span><span style="color:#ffcb6b;">NSThread </span><span style="color:#82aaff;">sleepForTimeInterval</span><span style="color:#89ddff;">:</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">];
+</span><span style="color:#82aaff;">    NSLog</span><span style="color:#89ddff;">(@&quot;</span><span style="color:#c3e88d;">group3</span><span style="color:#89ddff;">&quot;);
+</span><span style="color:#89ddff;">});
+</span><span style="color:#82aaff;">dispatch_group_notify</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">group</span><span style="color:#89ddff;">, </span><span style="color:#82aaff;">dispatch_get_main_queue</span><span style="color:#89ddff;">(), ^{
+</span><span style="color:#82aaff;">    NSLog</span><span style="color:#89ddff;">(@&quot;</span><span style="color:#c3e88d;">updateUi</span><span style="color:#89ddff;">&quot;);
+</span><span style="color:#89ddff;">});
+</span><span style="color:#82aaff;">dispatch_release</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">group</span><span style="color:#89ddff;">);
+</span></code></pre>
+<p>避免在main线程中调用，但需要同步等待结果：</p>
+<pre data-lang="mm" style="background-color:#212121;color:#eeffff;" class="language-mm "><code class="language-mm" data-lang="mm"><span>dispatch_semaphore_t sema </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">dispatch_semaphore_create</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">);
+</span><span style="font-style:italic;color:#4a4a4a;">// check sema is nil??
+</span><span style="color:#82aaff;">dispatch_async</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">dispatch_get_global_queue</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">), ^{
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#89ddff;">@</span><span style="font-style:italic;color:#c792ea;">try </span><span style="color:#89ddff;">{
+</span><span style="color:#82aaff;">     result </span><span style="color:#89ddff;">= [</span><span style="color:#82aaff;">service callSomeMethod</span><span style="color:#89ddff;">];
+</span><span style="color:#82aaff;">  </span><span style="color:#89ddff;">}
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#89ddff;">@</span><span style="font-style:italic;color:#c792ea;">catch </span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">NSException </span><span style="color:#89ddff;">*</span><span style="color:#82aaff;">exception</span><span style="color:#89ddff;">) {
+</span><span style="color:#82aaff;">     NSLog</span><span style="color:#89ddff;">(@&quot;</span><span>%@</span><span style="color:#89ddff;">&quot;,</span><span style="color:#82aaff;"> exception</span><span style="color:#89ddff;">.</span><span>reason</span><span style="color:#89ddff;">);
+</span><span style="color:#82aaff;">  </span><span style="color:#89ddff;">}
+</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#89ddff;">@</span><span style="font-style:italic;color:#c792ea;">finally </span><span style="color:#89ddff;">{
+</span><span style="color:#82aaff;">     dispatch_semaphore_signal</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">sema</span><span style="color:#89ddff;">);
+</span><span style="color:#82aaff;">  </span><span style="color:#89ddff;">}
+</span><span style="color:#89ddff;">});
+</span><span style="font-style:italic;color:#4a4a4a;">// dispatch_time( dispatch_time_t when, int64_t delta);
+</span><span style="font-style:italic;color:#4a4a4a;">// dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, 1000*1000*3);
+</span><span style="font-style:italic;color:#4a4a4a;">// dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+</span><span style="font-style:italic;color:#4a4a4a;">// dispatch_release(sema);
+</span><span>dispatch_time_t timeout </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">dispatch_time</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">DISPATCH_TIME_NOW</span><span style="color:#89ddff;">, (</span><span style="color:#ffcb6b;">int64_t</span><span style="color:#89ddff;">)(</span><span style="color:#f78c6c;">60</span><span style="color:#89ddff;">.</span><span style="color:#f78c6c;">0 </span><span style="color:#89ddff;">*</span><span style="color:#82aaff;"> NSEC_PER_SEC</span><span style="color:#89ddff;">));
+</span><span style="font-style:italic;color:#c792ea;">if</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">==</span><span style="color:#82aaff;">dispatch_semaphore_wait</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">sema</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> timeout</span><span style="color:#89ddff;">)){
+</span><span>  </span><span style="color:#82aaff;">dispatch_release</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">sema</span><span style="color:#89ddff;">);
+</span><span style="color:#89ddff;">}
+</span></code></pre>
+<p>
 在非main线程处理业务，处理结束后更新UI：</p>
-<pre style="background-color:#212121;">
-<code class="language-mm" data-lang="mm"><span style="color:#82aaff;">dispatch_async</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">dispatch_get_global_queue</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">DISPATCH_QUEUE_PRIORITY_DEFAULT</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">), ^(</span><span style="font-style:italic;color:#c792ea;">void</span><span style="color:#89ddff;">){</span><span style="color:#82aaff;">
-    </span><span style="font-style:italic;color:#4a4a4a;">// biz start ...</span><span style="font-style:italic;color:#4a4a4a;">
-    // bala bala</span><span style="font-style:italic;color:#4a4a4a;">
-    // biz end</span><span style="font-style:italic;color:#4a4a4a;">
-    </span><span style="color:#82aaff;">dispatch_async</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">dispatch_get_main_queue</span><span style="color:#89ddff;">(), ^(</span><span style="font-style:italic;color:#c792ea;">void</span><span style="color:#89ddff;">){</span><span style="color:#82aaff;">
-        </span><span style="font-style:italic;color:#4a4a4a;">// update UI</span><span style="font-style:italic;color:#4a4a4a;">
-    </span><span style="color:#89ddff;">});</span><span style="color:#82aaff;">
-</span><span style="color:#89ddff;">});</span><span style="color:#eeffff;">
-</span></code></pre><p>
+<pre data-lang="mm" style="background-color:#212121;color:#eeffff;" class="language-mm "><code class="language-mm" data-lang="mm"><span style="color:#82aaff;">dispatch_async</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">dispatch_get_global_queue</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">DISPATCH_QUEUE_PRIORITY_DEFAULT</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">), ^(</span><span style="font-style:italic;color:#c792ea;">void</span><span style="color:#89ddff;">){
+</span><span style="color:#82aaff;">    </span><span style="font-style:italic;color:#4a4a4a;">// biz start ...
+</span><span style="color:#82aaff;">    </span><span style="font-style:italic;color:#4a4a4a;">// bala bala
+</span><span style="color:#82aaff;">    </span><span style="font-style:italic;color:#4a4a4a;">// biz end
+</span><span style="color:#82aaff;">    dispatch_async</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">dispatch_get_main_queue</span><span style="color:#89ddff;">(), ^(</span><span style="font-style:italic;color:#c792ea;">void</span><span style="color:#89ddff;">){
+</span><span style="color:#82aaff;">        </span><span style="font-style:italic;color:#4a4a4a;">// update UI
+</span><span style="color:#82aaff;">    </span><span style="color:#89ddff;">});
+</span><span style="color:#89ddff;">});
+</span></code></pre>
+<p>
     关于global queue的并发特性：</p>
-<pre style="background-color:#212121;">
-<code class="language-txt" data-lang="txt"><span style="color:#eeffff;">DISPATCH_QUEUE_PRIORITY_BACKGROUND：并行队列，任务会串行执行；</span><span style="color:#eeffff;">
-DISPATCH_QUEUE_PRIORITY_LOW：并行队列，任务会串行执行；</span><span style="color:#eeffff;">
-DISPATCH_QUEUE_PRIORITY_DEFAULT：并行队列，任务会串行执行；</span><span style="color:#eeffff;">
-DISPATCH_QUEUE_PRIORITY_HIGH：并行队列，任务会串行执行；</span><span style="color:#eeffff;">
-BACKGROUND, LOW, DEFAULT, HIGH 分别代表不同的优先级，高优先级队列中的任务会优先调度。</span><span style="color:#eeffff;">
-</span></code></pre><pre style="background-color:#212121;">
-<code class="language-cpp" data-lang="cpp"><span style="font-style:italic;color:#c792ea;">#define </span><span style="color:#eeffff;">DISPATCH_QUEUE_PRIORITY_HIGH </span><span style="color:#f78c6c;">2</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">#define </span><span style="color:#eeffff;">DISPATCH_QUEUE_PRIORITY_DEFAULT </span><span style="color:#f78c6c;">0</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">#define </span><span style="color:#eeffff;">DISPATCH_QUEUE_PRIORITY_LOW </span><span style="color:#89ddff;">(-</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">#define </span><span style="color:#eeffff;">DISPATCH_QUEUE_PRIORITY_BACKGROUND INT16_MIN</span><span style="color:#eeffff;">
-</span></code></pre><p>
+<pre data-lang="txt" style="background-color:#212121;color:#eeffff;" class="language-txt "><code class="language-txt" data-lang="txt"><span>DISPATCH_QUEUE_PRIORITY_BACKGROUND：并行队列，任务会串行执行；
+</span><span>DISPATCH_QUEUE_PRIORITY_LOW：并行队列，任务会串行执行；
+</span><span>DISPATCH_QUEUE_PRIORITY_DEFAULT：并行队列，任务会串行执行；
+</span><span>DISPATCH_QUEUE_PRIORITY_HIGH：并行队列，任务会串行执行；
+</span><span>BACKGROUND, LOW, DEFAULT, HIGH 分别代表不同的优先级，高优先级队列中的任务会优先调度。
+</span></code></pre>
+<pre data-lang="cpp" style="background-color:#212121;color:#eeffff;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="font-style:italic;color:#c792ea;">#define </span><span>DISPATCH_QUEUE_PRIORITY_HIGH </span><span style="color:#f78c6c;">2
+</span><span style="font-style:italic;color:#c792ea;">#define </span><span>DISPATCH_QUEUE_PRIORITY_DEFAULT </span><span style="color:#f78c6c;">0
+</span><span style="font-style:italic;color:#c792ea;">#define </span><span>DISPATCH_QUEUE_PRIORITY_LOW </span><span style="color:#89ddff;">(-</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">)
+</span><span style="font-style:italic;color:#c792ea;">#define </span><span>DISPATCH_QUEUE_PRIORITY_BACKGROUND INT16_MIN
+</span></code></pre>
+<p>
     而对于main queue来说，只能由main线程获取队列任务，然后进行调度执行，所以是串行的。</p>
 <p>
     当main、global这两个任务队列不能满足要求时，还可以创建自定义的队列。</p>
 <p>
     创建concurrent queue：</p>
-<pre style="background-color:#212121;">
-<code class="language-mm" data-lang="mm"><span style="color:#eeffff;">dispatch_queue_t q </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">dispatch_queue_create</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">me.xjump.concurrent_queue</span><span style="color:#89ddff;">&quot;,</span><span style="color:#82aaff;"> DISPATCH_QUEUE_CONCURRENT</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-</span></code></pre><p>
+<pre data-lang="mm" style="background-color:#212121;color:#eeffff;" class="language-mm "><code class="language-mm" data-lang="mm"><span>dispatch_queue_t q </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">dispatch_queue_create</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">me.xjump.concurrent_queue</span><span style="color:#89ddff;">&quot;,</span><span style="color:#82aaff;"> DISPATCH_QUEUE_CONCURRENT</span><span style="color:#89ddff;">);
+</span></code></pre>
+<p>
     创建serial queue：</p>
-<pre style="background-color:#212121;">
-<code class="language-mm" data-lang="mm"><span style="color:#eeffff;">dispatch_queue_t q </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">dispatch_queue_create</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">me.xjump.serial_queue</span><span style="color:#89ddff;">&quot;,</span><span style="color:#82aaff;"> DISPATCH_QUEUE_SERIAL</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
+<pre data-lang="mm" style="background-color:#212121;color:#eeffff;" class="language-mm "><code class="language-mm" data-lang="mm"><span>dispatch_queue_t q </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">dispatch_queue_create</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">me.xjump.serial_queue</span><span style="color:#89ddff;">&quot;,</span><span style="color:#82aaff;"> DISPATCH_QUEUE_SERIAL</span><span style="color:#89ddff;">);
 </span></code></pre>
 <p>从GCD api手册上了看，有dispatch_get_global_queue，但没有获取自定义的queue的api，这个时候，可以使用Singleton和map来实现。</p>
 <p>关于GCD，线程池实际上是共享的，看下图：</p>
@@ -268,7 +266,7 @@ BACKGROUND, LOW, DEFAULT, HIGH 分别代表不同的优先级，高优先级队�
   
     <div class="post-tags">
     
-      <!-- <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all&#x2F;">#all</a> -->
+      <!-- <a href="https://xjump.me/tags/all/">#all</a> -->
     
     </div>
   

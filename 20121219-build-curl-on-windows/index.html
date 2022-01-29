@@ -105,14 +105,13 @@
 
  <div class="post-content"><p>download <a href="https://github.com/bagder/curl/archive/curl-7_28_1.zip">https://github.com/bagder/curl/archive/curl-7_28_1.zip</a></p>
 <p>VC prompt:</p>
-<pre style="background-color:#212121;">
-<code class="language-sh" data-lang="sh"><span style="color:#82aaff;">cd curl-src</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">copy include</span><span style="color:#89ddff;">\c</span><span style="color:#82aaff;">url</span><span style="color:#89ddff;">\c</span><span style="color:#82aaff;">urlbuild.h.dist include</span><span style="color:#89ddff;">\c</span><span style="color:#82aaff;">url</span><span style="color:#89ddff;">\c</span><span style="color:#82aaff;">urlbuild.h</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">copy src</span><span style="color:#89ddff;">\h</span><span style="color:#82aaff;">ugehelp.c.cvs src</span><span style="color:#89ddff;">\h</span><span style="color:#82aaff;">ugehelp.c</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">cd crul-src</span><span style="color:#89ddff;">\w</span><span style="color:#82aaff;">inbuild</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">nmake</span><span style="color:#89ddff;"> -</span><span style="color:#f78c6c;">f</span><span style="color:#82aaff;"> Makefile.vc mode=static USE_IDN=no</span><span style="color:#eeffff;">
-</span></code></pre><span id="continue-reading"></span>
-<p>MT modify:</p>
+<pre data-lang="sh" style="background-color:#212121;color:#eeffff;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#82aaff;">cd curl-src
+</span><span style="color:#82aaff;">copy include</span><span style="color:#89ddff;">\c</span><span style="color:#82aaff;">url</span><span style="color:#89ddff;">\c</span><span style="color:#82aaff;">urlbuild.h.dist include</span><span style="color:#89ddff;">\c</span><span style="color:#82aaff;">url</span><span style="color:#89ddff;">\c</span><span style="color:#82aaff;">urlbuild.h
+</span><span style="color:#82aaff;">copy src</span><span style="color:#89ddff;">\h</span><span style="color:#82aaff;">ugehelp.c.cvs src</span><span style="color:#89ddff;">\h</span><span style="color:#82aaff;">ugehelp.c
+</span><span style="color:#82aaff;">cd crul-src</span><span style="color:#89ddff;">\w</span><span style="color:#82aaff;">inbuild
+</span><span style="color:#82aaff;">nmake</span><span style="color:#89ddff;"> -</span><span style="color:#f78c6c;">f</span><span style="color:#82aaff;"> Makefile.vc mode=static USE_IDN=no
+</span></code></pre>
+<span id="continue-reading"></span><p>MT modify:</p>
 <p>curl\winbuild\MakefileBuild.vc</p>
 <p>Line:234~235 MD->MT</p>
 </div>
@@ -123,7 +122,7 @@
   
     <div class="post-tags">
     
-      <!-- <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all&#x2F;">#all</a> -->
+      <!-- <a href="https://xjump.me/tags/all/">#all</a> -->
     
     </div>
   

@@ -106,31 +106,31 @@
  <div class="post-content"><p>以XOR为基础的加密算法设计时，不能同时使用XOR和加法。代码混淆、内存保护等安全机制中常用XOR类算法进行快速变换，隐藏信息。</p>
 <span id="continue-reading"></span>
 <p>下面的代码演示的加密过程将导致明文密文空间不一致，因而加解密算法无法正确设计。</p>
-<pre style="background-color:#212121;">
-<code class="language-python" data-lang="python"><span style="font-style:italic;color:#4a4a4a;">#!/usr/bin/env python</span><span style="font-style:italic;color:#4a4a4a;">
-# encoding: utf-8</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#eeffff;">
-result </span><span style="color:#89ddff;">= []</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">for </span><span style="color:#eeffff;">i </span><span style="font-style:italic;color:#c792ea;">in </span><span style="color:#82aaff;">range</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">128</span><span style="color:#89ddff;">):</span><span style="color:#eeffff;">
-  key </span><span style="color:#89ddff;">= ((</span><span style="color:#eeffff;">i</span><span style="color:#89ddff;">^</span><span style="color:#f78c6c;">234</span><span style="color:#89ddff;">)+</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">&gt;&gt;</span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">)&amp;0x</span><span style="color:#f78c6c;">0F</span><span style="color:#89ddff;">&amp;0x</span><span style="color:#f78c6c;">FF</span><span style="color:#eeffff;">
-  p </span><span style="color:#89ddff;">= (</span><span style="color:#eeffff;">key</span><span style="color:#89ddff;">^</span><span style="color:#eeffff;">i</span><span style="color:#89ddff;">)&amp;0x</span><span style="color:#f78c6c;">FF</span><span style="color:#eeffff;">
-  </span><span style="color:#c792ea;">print </span><span style="color:#eeffff;">p</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">result</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">append</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">p</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-  </span><span style="color:#eeffff;">
-m </span><span style="color:#89ddff;">= </span><span style="color:#ffcb6b;">set</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">result</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-</span><span style="color:#c792ea;">print </span><span style="color:#eeffff;">m,</span><span style="color:#82aaff;">len</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">m</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-result </span><span style="color:#89ddff;">= []</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">for </span><span style="color:#eeffff;">i </span><span style="font-style:italic;color:#c792ea;">in </span><span style="color:#82aaff;">range</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">128</span><span style="color:#89ddff;">):</span><span style="color:#eeffff;">
-  key </span><span style="color:#89ddff;">= ((</span><span style="color:#eeffff;">i</span><span style="color:#89ddff;">^</span><span style="color:#f78c6c;">243</span><span style="color:#89ddff;">)+</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">&gt;&gt;</span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">)&amp;0x</span><span style="color:#f78c6c;">0F</span><span style="color:#89ddff;">&amp;0x</span><span style="color:#f78c6c;">FF</span><span style="color:#eeffff;">
-  p </span><span style="color:#89ddff;">= (</span><span style="color:#eeffff;">key</span><span style="color:#89ddff;">^</span><span style="color:#eeffff;">i</span><span style="color:#89ddff;">)&amp;0x</span><span style="color:#f78c6c;">FF</span><span style="color:#eeffff;">
-  </span><span style="color:#c792ea;">print </span><span style="color:#eeffff;">p</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">result</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">append</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">p</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-  </span><span style="color:#eeffff;">
-m </span><span style="color:#89ddff;">= </span><span style="color:#ffcb6b;">set</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">result</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-</span><span style="color:#c792ea;">print </span><span style="color:#eeffff;">m, </span><span style="color:#82aaff;">len</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">m</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-</span></code></pre></div>
+<pre data-lang="python" style="background-color:#212121;color:#eeffff;" class="language-python "><code class="language-python" data-lang="python"><span style="font-style:italic;color:#4a4a4a;">#!/usr/bin/env python
+</span><span style="font-style:italic;color:#4a4a4a;"># encoding: utf-8
+</span><span>
+</span><span>result </span><span style="color:#89ddff;">= []
+</span><span style="font-style:italic;color:#c792ea;">for </span><span>i </span><span style="font-style:italic;color:#c792ea;">in </span><span style="color:#82aaff;">range</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">128</span><span style="color:#89ddff;">):
+</span><span>  key </span><span style="color:#89ddff;">= ((</span><span>i</span><span style="color:#89ddff;">^</span><span style="color:#f78c6c;">234</span><span style="color:#89ddff;">)+</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">&gt;&gt;</span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">)&amp;0x</span><span style="color:#f78c6c;">0F</span><span style="color:#89ddff;">&amp;0x</span><span style="color:#f78c6c;">FF
+</span><span>  p </span><span style="color:#89ddff;">= (</span><span>key</span><span style="color:#89ddff;">^</span><span>i</span><span style="color:#89ddff;">)&amp;0x</span><span style="color:#f78c6c;">FF
+</span><span>  </span><span style="color:#c792ea;">print </span><span>p
+</span><span>  </span><span style="color:#82aaff;">result</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">append</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">p</span><span style="color:#89ddff;">)
+</span><span>  
+</span><span>m </span><span style="color:#89ddff;">= </span><span style="color:#ffcb6b;">set</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">result</span><span style="color:#89ddff;">)
+</span><span style="color:#c792ea;">print </span><span>m,</span><span style="color:#82aaff;">len</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">m</span><span style="color:#89ddff;">)
+</span><span>
+</span><span>
+</span><span>result </span><span style="color:#89ddff;">= []
+</span><span style="font-style:italic;color:#c792ea;">for </span><span>i </span><span style="font-style:italic;color:#c792ea;">in </span><span style="color:#82aaff;">range</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">128</span><span style="color:#89ddff;">):
+</span><span>  key </span><span style="color:#89ddff;">= ((</span><span>i</span><span style="color:#89ddff;">^</span><span style="color:#f78c6c;">243</span><span style="color:#89ddff;">)+</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">&gt;&gt;</span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">)&amp;0x</span><span style="color:#f78c6c;">0F</span><span style="color:#89ddff;">&amp;0x</span><span style="color:#f78c6c;">FF
+</span><span>  p </span><span style="color:#89ddff;">= (</span><span>key</span><span style="color:#89ddff;">^</span><span>i</span><span style="color:#89ddff;">)&amp;0x</span><span style="color:#f78c6c;">FF
+</span><span>  </span><span style="color:#c792ea;">print </span><span>p
+</span><span>  </span><span style="color:#82aaff;">result</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">append</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">p</span><span style="color:#89ddff;">)
+</span><span>  
+</span><span>m </span><span style="color:#89ddff;">= </span><span style="color:#ffcb6b;">set</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">result</span><span style="color:#89ddff;">)
+</span><span style="color:#c792ea;">print </span><span>m, </span><span style="color:#82aaff;">len</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">m</span><span style="color:#89ddff;">)
+</span></code></pre>
+</div>
 
 
   <div class="post-footer">
@@ -138,7 +138,7 @@ m </span><span style="color:#89ddff;">= </span><span style="color:#ffcb6b;">set<
   
     <div class="post-tags">
     
-      <!-- <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all&#x2F;">#all</a> -->
+      <!-- <a href="https://xjump.me/tags/all/">#all</a> -->
     
     </div>
   

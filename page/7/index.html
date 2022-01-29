@@ -95,6 +95,26 @@
   <article class="post">
   
 <header class="post__header">
+  <h1 class="post__title"><a href="https:&#x2F;&#x2F;xjump.me&#x2F;20131115-mf-sample&#x2F;">Matrix Factorization Sample</a></h1>
+  <div class="post__meta">
+    <span class="post__time">2013-11-15</span>
+
+  </div>
+</header>
+
+  <div class="post__summary">
+  <p>
+Albert Au Yeung写的Matrix&nbsp;Factorization 的例子。MF是推荐系统常规算法。</p>
+
+  </div>
+  <div class="read-more">
+  <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20131115-mf-sample&#x2F;">Read more...</a>
+  </div>
+  </article>
+
+  <article class="post">
+  
+<header class="post__header">
   <h1 class="post__title"><a href="https:&#x2F;&#x2F;xjump.me&#x2F;20131016-openssl-engine&#x2F;">使用OpenSSL Engine访问PKCS#11及CryptoAPI</a></h1>
   <div class="post__meta">
     <span class="post__time">2013-10-16</span>
@@ -126,45 +146,45 @@
 </header>
 
   <div class="post__summary">
-  <pre style="background-color:#212121;">
-<code class="language-python" data-lang="python"><span style="font-style:italic;color:#4a4a4a;">#!/usr/bin/env python</span><span style="font-style:italic;color:#4a4a4a;">
-# -*- coding: utf-8 -*-</span><span style="font-style:italic;color:#4a4a4a;">
- </span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#4a4a4a;">&#39;&#39;&#39;</span><span style="font-style:italic;color:#4a4a4a;">
-file: kd_tree_kNN.py</span><span style="font-style:italic;color:#4a4a4a;">
-author: xjump.me#at#gmail#dot#com</span><span style="font-style:italic;color:#4a4a4a;">
+  <pre data-lang="python" style="background-color:#212121;color:#eeffff;" class="language-python "><code class="language-python" data-lang="python"><span style="font-style:italic;color:#4a4a4a;">#!/usr/bin/env python
+</span><span style="font-style:italic;color:#4a4a4a;"># -*- coding: utf-8 -*-
+</span><span> 
+</span><span style="font-style:italic;color:#4a4a4a;">&#39;&#39;&#39;
+</span><span style="font-style:italic;color:#4a4a4a;">file: kd_tree_kNN.py
+</span><span style="font-style:italic;color:#4a4a4a;">author: xjump.me#at#gmail#dot#com
 </span><span style="font-style:italic;color:#4a4a4a;">
-REF:</span><span style="font-style:italic;color:#4a4a4a;">
-  http://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.KDTree.html</span><span style="font-style:italic;color:#4a4a4a;">
-&#39;&#39;&#39;</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">import </span><span style="color:#eeffff;">numpy </span><span style="font-style:italic;color:#c792ea;">as </span><span style="color:#eeffff;">np</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">import </span><span style="color:#eeffff;">operator</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">from </span><span style="color:#eeffff;">scipy</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">spatial </span><span style="font-style:italic;color:#c792ea;">import </span><span style="color:#eeffff;">cKDTree </span><span style="font-style:italic;color:#c792ea;">as </span><span style="color:#eeffff;">KDTree</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">import </span><span style="color:#eeffff;">sys</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">sys</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">setrecursionlimit</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10000</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#eeffff;">__name__</span><span style="color:#89ddff;">==&amp;</span><span style="color:#eeffff;">quot</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">__main__</span><span style="color:#89ddff;">&amp;</span><span style="color:#eeffff;">quot</span><span style="color:#89ddff;">;:</span><span style="color:#eeffff;">
-  v0 </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">np</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">array</span><span style="color:#89ddff;">([</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">5</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">6</span><span style="color:#89ddff;">])</span><span style="color:#eeffff;">
-  train_data_set </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">np</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">array</span><span style="color:#89ddff;">([</span><span style="color:#82aaff;">
-    </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">.</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">6</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">],</span><span style="color:#82aaff;">
-    </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">9</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">17</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">6</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">59</span><span style="color:#89ddff;">],</span><span style="color:#82aaff;">
-    </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">.</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">44</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">6</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">23</span><span style="color:#89ddff;">],</span><span style="color:#82aaff;">
-    </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">9</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">51</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">100</span><span style="color:#89ddff;">],</span><span style="color:#82aaff;">
-    </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">18</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">39</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">21</span><span style="color:#89ddff;">],</span><span style="color:#82aaff;">
-    </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">66</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">8</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">28</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">88</span><span style="color:#89ddff;">],</span><span style="color:#82aaff;">
-    </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">33</span><span style="color:#89ddff;">],</span><span style="color:#82aaff;">
-    </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">24</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">.</span><span style="color:#f78c6c;">5</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">56</span><span style="color:#89ddff;">],</span><span style="color:#82aaff;">
-    </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">22</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">99</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">.</span><span style="color:#f78c6c;">6</span><span style="color:#89ddff;">],</span><span style="color:#82aaff;">
-    </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">70</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">13</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">9</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">],</span><span style="color:#82aaff;">
-  </span><span style="color:#89ddff;">])</span><span style="color:#eeffff;">
-  tree </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">KDTree</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">train_data_set</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">for </span><span style="color:#eeffff;">k </span><span style="font-style:italic;color:#c792ea;">in </span><span style="color:#82aaff;">range</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">):</span><span style="color:#eeffff;">
-    </span><span style="color:#c792ea;">print </span><span style="color:#89ddff;">&#39;</span><span style="color:#c3e88d;">k=</span><span style="color:#89ddff;">&#39;</span><span style="color:#eeffff;">,k</span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#4a4a4a;">#test sample v0, return 3 nearest point, dimesion is k</span><span style="font-style:italic;color:#4a4a4a;">
-    </span><span style="color:#c792ea;">print </span><span style="color:#82aaff;">tree</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">query</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">v0</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">k</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">p</span><span style="color:#89ddff;">=</span><span style="color:#82aaff;">k</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+</span><span style="font-style:italic;color:#4a4a4a;">REF:
+</span><span style="font-style:italic;color:#4a4a4a;">  http://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.KDTree.html
+</span><span style="font-style:italic;color:#4a4a4a;">&#39;&#39;&#39;
+</span><span>
+</span><span style="font-style:italic;color:#c792ea;">import </span><span>numpy </span><span style="font-style:italic;color:#c792ea;">as </span><span>np
+</span><span style="font-style:italic;color:#c792ea;">import </span><span>operator
+</span><span style="font-style:italic;color:#c792ea;">from </span><span>scipy</span><span style="color:#89ddff;">.</span><span>spatial </span><span style="font-style:italic;color:#c792ea;">import </span><span>cKDTree </span><span style="font-style:italic;color:#c792ea;">as </span><span>KDTree
+</span><span>
+</span><span style="font-style:italic;color:#c792ea;">import </span><span>sys
+</span><span style="color:#82aaff;">sys</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">setrecursionlimit</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10000</span><span style="color:#89ddff;">)
+</span><span>
+</span><span style="font-style:italic;color:#c792ea;">if </span><span>__name__</span><span style="color:#89ddff;">==&amp;</span><span>quot</span><span style="color:#89ddff;">;</span><span>__main__</span><span style="color:#89ddff;">&amp;</span><span>quot</span><span style="color:#89ddff;">;:
+</span><span>  v0 </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">np</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">array</span><span style="color:#89ddff;">([</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">5</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">6</span><span style="color:#89ddff;">])
+</span><span>  train_data_set </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">np</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">array</span><span style="color:#89ddff;">([
+</span><span style="color:#82aaff;">    </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">.</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">6</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">],
+</span><span style="color:#82aaff;">    </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">9</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">17</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">6</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">59</span><span style="color:#89ddff;">],
+</span><span style="color:#82aaff;">    </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">.</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">44</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">6</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">23</span><span style="color:#89ddff;">],
+</span><span style="color:#82aaff;">    </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">9</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">51</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">100</span><span style="color:#89ddff;">],
+</span><span style="color:#82aaff;">    </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">18</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">39</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">21</span><span style="color:#89ddff;">],
+</span><span style="color:#82aaff;">    </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">66</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">8</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">28</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">88</span><span style="color:#89ddff;">],
+</span><span style="color:#82aaff;">    </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">33</span><span style="color:#89ddff;">],
+</span><span style="color:#82aaff;">    </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">24</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">.</span><span style="color:#f78c6c;">5</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">56</span><span style="color:#89ddff;">],
+</span><span style="color:#82aaff;">    </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">22</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">99</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">.</span><span style="color:#f78c6c;">6</span><span style="color:#89ddff;">],
+</span><span style="color:#82aaff;">    </span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">70</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">13</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">9</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">7</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">],
+</span><span style="color:#82aaff;">  </span><span style="color:#89ddff;">])
+</span><span>  tree </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">KDTree</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">train_data_set</span><span style="color:#89ddff;">)
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">for </span><span>k </span><span style="font-style:italic;color:#c792ea;">in </span><span style="color:#82aaff;">range</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">):
+</span><span>    </span><span style="color:#c792ea;">print </span><span style="color:#89ddff;">&#39;</span><span style="color:#c3e88d;">k=</span><span style="color:#89ddff;">&#39;</span><span>,k
+</span><span>    </span><span style="font-style:italic;color:#4a4a4a;">#test sample v0, return 3 nearest point, dimesion is k
+</span><span>    </span><span style="color:#c792ea;">print </span><span style="color:#82aaff;">tree</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">query</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">v0</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">k</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">,</span><span style="color:#f78c6c;">p</span><span style="color:#89ddff;">=</span><span style="color:#82aaff;">k</span><span style="color:#89ddff;">)
 </span></code></pre>
+
   </div>
   <div class="read-more">
   <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20131014-kd-tree-knn&#x2F;">Read more...</a>
@@ -210,35 +230,6 @@ REF:</span><span style="font-style:italic;color:#4a4a4a;">
   </div>
   <div class="read-more">
   <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20130910-hbase-tech-intro&#x2F;">Read more...</a>
-  </div>
-  </article>
-
-  <article class="post">
-  
-<header class="post__header">
-  <h1 class="post__title"><a href="https:&#x2F;&#x2F;xjump.me&#x2F;20130903-hbase-intro&#x2F;">HBase介绍（转）</a></h1>
-  <div class="post__meta">
-    <span class="post__time">2013-09-03</span>
-
-  </div>
-</header>
-
-  <div class="post__summary">
-  <h3> 一、简介</h3>
-<p>history</p>
-<ul>
-<li>started by chad walters and jim</li>
-<li>2006.11 G release paper on BigTable</li>
-<li>2007.2 inital HBase prototype created as Hadoop contrib</li>
-<li>2007.10 First useable Hbase</li>
-<li>2008.1 Hadoop become Apache top-level project and Hbase becomes subproject</li>
-<li>2008.10 Hbase 0.18,0.19 released</li>
-</ul>
-<p>HBase是bigtable的开源山寨版本。是建立的hdfs之上，提供高可靠性、高性能、列存储、可伸缩、实时读写的数据库系统。</p>
-
-  </div>
-  <div class="read-more">
-  <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20130903-hbase-intro&#x2F;">Read more...</a>
   </div>
   </article>
 

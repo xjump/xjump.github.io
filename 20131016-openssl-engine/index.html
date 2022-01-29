@@ -108,56 +108,55 @@
 </p>
 <p>
 <center><img alt="" src="/images/openssl_arch.png" /></p></center>
-<span id="continue-reading"></span>
-<p>
+<span id="continue-reading"></span><p>
 由于以前对于engine方面的东西一直没有涉及到，最近研究<a href="http://www.opensc.org">OpenSC</a>后，对使用Engine访问PKCS#11接口、CryptoAPI接口有了更深的理解。用Python写了一个简单的例子：
 </p>
-<pre style="background-color:#212121;">
-<code class="language-python" data-lang="python"><span style="font-style:italic;color:#4a4a4a;">#!/usr/bin/env python</span><span style="font-style:italic;color:#4a4a4a;">
-# -*- coding: utf-8 -*-</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#4a4a4a;">&#39;&#39;&#39;</span><span style="font-style:italic;color:#4a4a4a;">
-All right reserved.</span><span style="font-style:italic;color:#4a4a4a;">
-author: xjump.me#at#gmail.com</span><span style="font-style:italic;color:#4a4a4a;">
-file: test_engine.py</span><span style="font-style:italic;color:#4a4a4a;">
-useage:</span><span style="font-style:italic;color:#4a4a4a;">
-  plug-in the alipay usb key and</span><span style="font-style:italic;color:#4a4a4a;">
-  run `python test_engine.py`</span><span style="font-style:italic;color:#4a4a4a;">
-ref:</span><span style="font-style:italic;color:#4a4a4a;">
-  http://www.openssl.org/</span><span style="font-style:italic;color:#4a4a4a;">
-  http://www.opensc.org/</span><span style="font-style:italic;color:#4a4a4a;">
-  http://stackoverflow.com/questions/2195179/need-help-using-m2crypto-engine-to-access-usb-token</span><span style="font-style:italic;color:#4a4a4a;">
-&#39;&#39;&#39;</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">import </span><span style="color:#eeffff;">os</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">from </span><span style="color:#eeffff;">M2Crypto </span><span style="font-style:italic;color:#c792ea;">import </span><span style="color:#eeffff;">Engine</span><span style="color:#89ddff;">, </span><span style="color:#eeffff;">m2</span><span style="color:#89ddff;">, </span><span style="color:#eeffff;">X509</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-cwd </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">os</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">getcwd</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">def </span><span style="color:#82aaff;">test_pkcs11</span><span style="color:#89ddff;">():</span><span style="color:#eeffff;">
-  e </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">Engine</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">load_dynamic_engine</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">pkcs11</span><span style="color:#89ddff;">&quot;, </span><span style="color:#82aaff;">os</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">path</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">join</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">cwd</span><span style="color:#89ddff;">, &quot;</span><span style="color:#c3e88d;">engine_pkcs11.dll</span><span style="color:#89ddff;">&quot;))</span><span style="color:#eeffff;">
-  pkcs11 </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">Engine</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">Engine</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">pkcs11</span><span style="color:#89ddff;">&quot;)</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">pkcs11</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">ctrl_cmd_string</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">MODULE_PATH</span><span style="color:#89ddff;">&quot;, </span><span style="font-style:italic;color:#c792ea;">r</span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">C:</span><span style="color:#f78c6c;">\W</span><span style="color:#c3e88d;">indows</span><span style="color:#f78c6c;">\S</span><span style="color:#c3e88d;">ystem32</span><span style="color:#f78c6c;">\W</span><span style="color:#c3e88d;">atchData</span><span style="color:#f78c6c;">\W</span><span style="color:#c3e88d;">atchdata AliPay CSP v3</span><span style="color:#f78c6c;">.</span><span style="color:#c3e88d;">3</span><span style="color:#f78c6c;">\W</span><span style="color:#c3e88d;">DP11_ZFD_v33</span><span style="color:#f78c6c;">.</span><span style="color:#c3e88d;">dll</span><span style="color:#89ddff;">&quot;)</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">m2</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">engine_init</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">m2</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">engine_by_id</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">pkcs11</span><span style="color:#89ddff;">&quot;))</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-  cert </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">e</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">load_certificate</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">slot_4097</span><span style="color:#89ddff;">&quot;)</span><span style="color:#eeffff;">
-  </span><span style="color:#c792ea;">print </span><span style="color:#82aaff;">cert</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">as_text</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">pkcs11</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">finish</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
-  </span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">def </span><span style="color:#82aaff;">test_capi</span><span style="color:#89ddff;">():</span><span style="color:#eeffff;">
-  e </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">Engine</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">load_dynamic_engine</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">capi</span><span style="color:#89ddff;">&quot;, </span><span style="color:#82aaff;">os</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">path</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">join</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">cwd</span><span style="color:#89ddff;">, &quot;</span><span style="color:#c3e88d;">capi.dll</span><span style="color:#89ddff;">&quot;))</span><span style="color:#eeffff;">
-  capi </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">Engine</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">Engine</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">capi</span><span style="color:#89ddff;">&quot;)</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">m2</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">engine_init</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">m2</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">engine_by_id</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">capi</span><span style="color:#89ddff;">&quot;))</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">capi</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">ctrl_cmd_string</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">list_containers</span><span style="color:#89ddff;">&quot;,</span><span style="color:#f78c6c;">None</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">capi</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">ctrl_cmd_string</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">list_certs</span><span style="color:#89ddff;">&quot;,</span><span style="color:#f78c6c;">None</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">capi</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">ctrl_cmd_string</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">list_csps</span><span style="color:#89ddff;">&quot;,</span><span style="color:#f78c6c;">None</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">capi</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">finish</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#eeffff;">__name__</span><span style="color:#89ddff;">==&quot;</span><span style="color:#c3e88d;">__main__</span><span style="color:#89ddff;">&quot;:</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">test_capi</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">test_pkcs11</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">Engine</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">cleanup</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
-</span></code></pre><p>
+<pre data-lang="python" style="background-color:#212121;color:#eeffff;" class="language-python "><code class="language-python" data-lang="python"><span style="font-style:italic;color:#4a4a4a;">#!/usr/bin/env python
+</span><span style="font-style:italic;color:#4a4a4a;"># -*- coding: utf-8 -*-
+</span><span>
+</span><span style="font-style:italic;color:#4a4a4a;">&#39;&#39;&#39;
+</span><span style="font-style:italic;color:#4a4a4a;">All right reserved.
+</span><span style="font-style:italic;color:#4a4a4a;">author: xjump.me#at#gmail.com
+</span><span style="font-style:italic;color:#4a4a4a;">file: test_engine.py
+</span><span style="font-style:italic;color:#4a4a4a;">useage:
+</span><span style="font-style:italic;color:#4a4a4a;">  plug-in the alipay usb key and
+</span><span style="font-style:italic;color:#4a4a4a;">  run `python test_engine.py`
+</span><span style="font-style:italic;color:#4a4a4a;">ref:
+</span><span style="font-style:italic;color:#4a4a4a;">  http://www.openssl.org/
+</span><span style="font-style:italic;color:#4a4a4a;">  http://www.opensc.org/
+</span><span style="font-style:italic;color:#4a4a4a;">  http://stackoverflow.com/questions/2195179/need-help-using-m2crypto-engine-to-access-usb-token
+</span><span style="font-style:italic;color:#4a4a4a;">&#39;&#39;&#39;
+</span><span>
+</span><span style="font-style:italic;color:#c792ea;">import </span><span>os
+</span><span style="font-style:italic;color:#c792ea;">from </span><span>M2Crypto </span><span style="font-style:italic;color:#c792ea;">import </span><span>Engine</span><span style="color:#89ddff;">, </span><span>m2</span><span style="color:#89ddff;">, </span><span>X509
+</span><span>
+</span><span>cwd </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">os</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">getcwd</span><span style="color:#89ddff;">()
+</span><span>
+</span><span style="font-style:italic;color:#c792ea;">def </span><span style="color:#82aaff;">test_pkcs11</span><span style="color:#89ddff;">():
+</span><span>  e </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">Engine</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">load_dynamic_engine</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">pkcs11</span><span style="color:#89ddff;">&quot;, </span><span style="color:#82aaff;">os</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">path</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">join</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">cwd</span><span style="color:#89ddff;">, &quot;</span><span style="color:#c3e88d;">engine_pkcs11.dll</span><span style="color:#89ddff;">&quot;))
+</span><span>  pkcs11 </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">Engine</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">Engine</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">pkcs11</span><span style="color:#89ddff;">&quot;)
+</span><span>  </span><span style="color:#82aaff;">pkcs11</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">ctrl_cmd_string</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">MODULE_PATH</span><span style="color:#89ddff;">&quot;, </span><span style="font-style:italic;color:#c792ea;">r</span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">C:</span><span style="color:#f78c6c;">\W</span><span style="color:#c3e88d;">indows</span><span style="color:#f78c6c;">\S</span><span style="color:#c3e88d;">ystem32</span><span style="color:#f78c6c;">\W</span><span style="color:#c3e88d;">atchData</span><span style="color:#f78c6c;">\W</span><span style="color:#c3e88d;">atchdata AliPay CSP v3</span><span style="color:#f78c6c;">.</span><span style="color:#c3e88d;">3</span><span style="color:#f78c6c;">\W</span><span style="color:#c3e88d;">DP11_ZFD_v33</span><span style="color:#f78c6c;">.</span><span style="color:#c3e88d;">dll</span><span style="color:#89ddff;">&quot;)
+</span><span>  </span><span style="color:#82aaff;">m2</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">engine_init</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">m2</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">engine_by_id</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">pkcs11</span><span style="color:#89ddff;">&quot;))
+</span><span>
+</span><span>  cert </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">e</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">load_certificate</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">slot_4097</span><span style="color:#89ddff;">&quot;)
+</span><span>  </span><span style="color:#c792ea;">print </span><span style="color:#82aaff;">cert</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">as_text</span><span style="color:#89ddff;">()
+</span><span>  </span><span style="color:#82aaff;">pkcs11</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">finish</span><span style="color:#89ddff;">()
+</span><span>  
+</span><span style="font-style:italic;color:#c792ea;">def </span><span style="color:#82aaff;">test_capi</span><span style="color:#89ddff;">():
+</span><span>  e </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">Engine</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">load_dynamic_engine</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">capi</span><span style="color:#89ddff;">&quot;, </span><span style="color:#82aaff;">os</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">path</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">join</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">cwd</span><span style="color:#89ddff;">, &quot;</span><span style="color:#c3e88d;">capi.dll</span><span style="color:#89ddff;">&quot;))
+</span><span>  capi </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">Engine</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">Engine</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">capi</span><span style="color:#89ddff;">&quot;)
+</span><span>  </span><span style="color:#82aaff;">m2</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">engine_init</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">m2</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">engine_by_id</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">capi</span><span style="color:#89ddff;">&quot;))
+</span><span>  </span><span style="color:#82aaff;">capi</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">ctrl_cmd_string</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">list_containers</span><span style="color:#89ddff;">&quot;,</span><span style="color:#f78c6c;">None</span><span style="color:#89ddff;">)
+</span><span>  </span><span style="color:#82aaff;">capi</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">ctrl_cmd_string</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">list_certs</span><span style="color:#89ddff;">&quot;,</span><span style="color:#f78c6c;">None</span><span style="color:#89ddff;">)
+</span><span>  </span><span style="color:#82aaff;">capi</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">ctrl_cmd_string</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">list_csps</span><span style="color:#89ddff;">&quot;,</span><span style="color:#f78c6c;">None</span><span style="color:#89ddff;">)
+</span><span>  </span><span style="color:#82aaff;">capi</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">finish</span><span style="color:#89ddff;">()
+</span><span>
+</span><span style="font-style:italic;color:#c792ea;">if </span><span>__name__</span><span style="color:#89ddff;">==&quot;</span><span style="color:#c3e88d;">__main__</span><span style="color:#89ddff;">&quot;:
+</span><span>  </span><span style="color:#82aaff;">test_capi</span><span style="color:#89ddff;">()
+</span><span>  </span><span style="color:#82aaff;">test_pkcs11</span><span style="color:#89ddff;">()
+</span><span>  </span><span style="color:#82aaff;">Engine</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">cleanup</span><span style="color:#89ddff;">()
+</span></code></pre>
+<p>
 插入支付盾，可以读出公钥证书。对于PKI证书来说，安全性取决于私钥，获取公钥证书是无害的：
 </p>
 <p>
@@ -172,69 +171,69 @@ cwd </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">os
 <p>
 capi引擎支持的所有命令在openssl-x.y.z/engines/e_capi.c<a href="https://github.com/openssl/openssl/blob/master/engines/e_capi.c#L216">文件中</a>：
 </p>
-<pre style="background-color:#212121;">
-<code class="language-cpp" data-lang="cpp"><span style="color:#c792ea;">static const</span><span style="color:#eeffff;"> ENGINE_CMD_DEFN capi_cmd_defns</span><span style="color:#89ddff;">[] = {</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">CAPI_CMD_LIST_CERTS</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">list_certs</span><span style="color:#89ddff;">&quot;,</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">List all certificates in store</span><span style="color:#89ddff;">&quot;,</span><span style="color:#eeffff;">
-    ENGINE_CMD_FLAG_NO_INPUT</span><span style="color:#89ddff;">},</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">CAPI_CMD_LOOKUP_CERT</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">lookup_cert</span><span style="color:#89ddff;">&quot;,</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">Lookup and output certificates</span><span style="color:#89ddff;">&quot;,</span><span style="color:#eeffff;">
-    ENGINE_CMD_FLAG_STRING</span><span style="color:#89ddff;">},</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">CAPI_CMD_DEBUG_LEVEL</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">debug_level</span><span style="color:#89ddff;">&quot;,</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">debug level (1=errors, 2=trace)</span><span style="color:#89ddff;">&quot;,</span><span style="color:#eeffff;">
-    ENGINE_CMD_FLAG_NUMERIC</span><span style="color:#89ddff;">},</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">CAPI_CMD_DEBUG_FILE</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">debug_file</span><span style="color:#89ddff;">&quot;,</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">debugging filename)</span><span style="color:#89ddff;">&quot;,</span><span style="color:#eeffff;">
-    ENGINE_CMD_FLAG_STRING</span><span style="color:#89ddff;">},</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">CAPI_CMD_KEYTYPE</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">key_type</span><span style="color:#89ddff;">&quot;,</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">Key type: 1=AT_KEYEXCHANGE (default), 2=AT_SIGNATURE</span><span style="color:#89ddff;">&quot;,</span><span style="color:#eeffff;">
-    ENGINE_CMD_FLAG_NUMERIC</span><span style="color:#89ddff;">},</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">CAPI_CMD_LIST_CSPS</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">list_csps</span><span style="color:#89ddff;">&quot;,</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">List all CSPs</span><span style="color:#89ddff;">&quot;,</span><span style="color:#eeffff;">
-    ENGINE_CMD_FLAG_NO_INPUT</span><span style="color:#89ddff;">},</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">CAPI_CMD_SET_CSP_IDX</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">csp_idx</span><span style="color:#89ddff;">&quot;,</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">Set CSP by index</span><span style="color:#89ddff;">&quot;,</span><span style="color:#eeffff;">
-    ENGINE_CMD_FLAG_NUMERIC</span><span style="color:#89ddff;">},</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">CAPI_CMD_SET_CSP_NAME</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">csp_name</span><span style="color:#89ddff;">&quot;,</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">Set CSP name, (default CSP used if not specified)</span><span style="color:#89ddff;">&quot;,</span><span style="color:#eeffff;">
-    ENGINE_CMD_FLAG_STRING</span><span style="color:#89ddff;">},</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">CAPI_CMD_SET_CSP_TYPE</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">csp_type</span><span style="color:#89ddff;">&quot;,</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">Set CSP type, (default RSA_PROV_FULL)</span><span style="color:#89ddff;">&quot;,</span><span style="color:#eeffff;">
-    ENGINE_CMD_FLAG_NUMERIC</span><span style="color:#89ddff;">},</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">CAPI_CMD_LIST_CONTAINERS</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">list_containers</span><span style="color:#89ddff;">&quot;,</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">list container names</span><span style="color:#89ddff;">&quot;,</span><span style="color:#eeffff;">
-    ENGINE_CMD_FLAG_NO_INPUT</span><span style="color:#89ddff;">},</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">CAPI_CMD_LIST_OPTIONS</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">list_options</span><span style="color:#89ddff;">&quot;,</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">Set list options (1=summary,2=friendly name, 4=full printout, 8=PEM output, 16=XXX, </span><span style="color:#89ddff;">&quot;</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">32=private key info)</span><span style="color:#89ddff;">&quot;,</span><span style="color:#eeffff;">
-    ENGINE_CMD_FLAG_NUMERIC</span><span style="color:#89ddff;">},</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">CAPI_CMD_LOOKUP_METHOD</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">lookup_method</span><span style="color:#89ddff;">&quot;,</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">Set key lookup method (1=substring, 2=friendlyname, 3=container name)</span><span style="color:#89ddff;">&quot;,</span><span style="color:#eeffff;">
-    ENGINE_CMD_FLAG_NUMERIC</span><span style="color:#89ddff;">},</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">CAPI_CMD_STORE_NAME</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">store_name</span><span style="color:#89ddff;">&quot;,</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">certificate store name, default </span><span style="color:#89ddff;">\&quot;</span><span style="color:#c3e88d;">MY</span><span style="color:#89ddff;">\&quot;&quot;,</span><span style="color:#eeffff;">
-    ENGINE_CMD_FLAG_STRING</span><span style="color:#89ddff;">},</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">CAPI_CMD_STORE_FLAGS</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">store_flags</span><span style="color:#89ddff;">&quot;,</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">Certificate store flags: 1 = system store</span><span style="color:#89ddff;">&quot;,</span><span style="color:#eeffff;">
-    ENGINE_CMD_FLAG_NUMERIC</span><span style="color:#89ddff;">},</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">{</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">NULL</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">NULL</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">};</span><span style="color:#eeffff;">
-</span></code></pre><p>
+<pre data-lang="cpp" style="background-color:#212121;color:#eeffff;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#c792ea;">static const</span><span> ENGINE_CMD_DEFN capi_cmd_defns</span><span style="color:#89ddff;">[] = {
+</span><span>  </span><span style="color:#89ddff;">{</span><span>CAPI_CMD_LIST_CERTS</span><span style="color:#89ddff;">,
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">list_certs</span><span style="color:#89ddff;">&quot;,
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">List all certificates in store</span><span style="color:#89ddff;">&quot;,
+</span><span>    ENGINE_CMD_FLAG_NO_INPUT</span><span style="color:#89ddff;">},
+</span><span>  </span><span style="color:#89ddff;">{</span><span>CAPI_CMD_LOOKUP_CERT</span><span style="color:#89ddff;">,
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">lookup_cert</span><span style="color:#89ddff;">&quot;,
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">Lookup and output certificates</span><span style="color:#89ddff;">&quot;,
+</span><span>    ENGINE_CMD_FLAG_STRING</span><span style="color:#89ddff;">},
+</span><span>  </span><span style="color:#89ddff;">{</span><span>CAPI_CMD_DEBUG_LEVEL</span><span style="color:#89ddff;">,
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">debug_level</span><span style="color:#89ddff;">&quot;,
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">debug level (1=errors, 2=trace)</span><span style="color:#89ddff;">&quot;,
+</span><span>    ENGINE_CMD_FLAG_NUMERIC</span><span style="color:#89ddff;">},
+</span><span>  </span><span style="color:#89ddff;">{</span><span>CAPI_CMD_DEBUG_FILE</span><span style="color:#89ddff;">,
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">debug_file</span><span style="color:#89ddff;">&quot;,
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">debugging filename)</span><span style="color:#89ddff;">&quot;,
+</span><span>    ENGINE_CMD_FLAG_STRING</span><span style="color:#89ddff;">},
+</span><span>  </span><span style="color:#89ddff;">{</span><span>CAPI_CMD_KEYTYPE</span><span style="color:#89ddff;">,
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">key_type</span><span style="color:#89ddff;">&quot;,
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">Key type: 1=AT_KEYEXCHANGE (default), 2=AT_SIGNATURE</span><span style="color:#89ddff;">&quot;,
+</span><span>    ENGINE_CMD_FLAG_NUMERIC</span><span style="color:#89ddff;">},
+</span><span>  </span><span style="color:#89ddff;">{</span><span>CAPI_CMD_LIST_CSPS</span><span style="color:#89ddff;">,
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">list_csps</span><span style="color:#89ddff;">&quot;,
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">List all CSPs</span><span style="color:#89ddff;">&quot;,
+</span><span>    ENGINE_CMD_FLAG_NO_INPUT</span><span style="color:#89ddff;">},
+</span><span>  </span><span style="color:#89ddff;">{</span><span>CAPI_CMD_SET_CSP_IDX</span><span style="color:#89ddff;">,
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">csp_idx</span><span style="color:#89ddff;">&quot;,
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">Set CSP by index</span><span style="color:#89ddff;">&quot;,
+</span><span>    ENGINE_CMD_FLAG_NUMERIC</span><span style="color:#89ddff;">},
+</span><span>  </span><span style="color:#89ddff;">{</span><span>CAPI_CMD_SET_CSP_NAME</span><span style="color:#89ddff;">,
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">csp_name</span><span style="color:#89ddff;">&quot;,
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">Set CSP name, (default CSP used if not specified)</span><span style="color:#89ddff;">&quot;,
+</span><span>    ENGINE_CMD_FLAG_STRING</span><span style="color:#89ddff;">},
+</span><span>  </span><span style="color:#89ddff;">{</span><span>CAPI_CMD_SET_CSP_TYPE</span><span style="color:#89ddff;">,
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">csp_type</span><span style="color:#89ddff;">&quot;,
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">Set CSP type, (default RSA_PROV_FULL)</span><span style="color:#89ddff;">&quot;,
+</span><span>    ENGINE_CMD_FLAG_NUMERIC</span><span style="color:#89ddff;">},
+</span><span>  </span><span style="color:#89ddff;">{</span><span>CAPI_CMD_LIST_CONTAINERS</span><span style="color:#89ddff;">,
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">list_containers</span><span style="color:#89ddff;">&quot;,
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">list container names</span><span style="color:#89ddff;">&quot;,
+</span><span>    ENGINE_CMD_FLAG_NO_INPUT</span><span style="color:#89ddff;">},
+</span><span>  </span><span style="color:#89ddff;">{</span><span>CAPI_CMD_LIST_OPTIONS</span><span style="color:#89ddff;">,
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">list_options</span><span style="color:#89ddff;">&quot;,
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">Set list options (1=summary,2=friendly name, 4=full printout, 8=PEM output, 16=XXX, </span><span style="color:#89ddff;">&quot;
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">32=private key info)</span><span style="color:#89ddff;">&quot;,
+</span><span>    ENGINE_CMD_FLAG_NUMERIC</span><span style="color:#89ddff;">},
+</span><span>  </span><span style="color:#89ddff;">{</span><span>CAPI_CMD_LOOKUP_METHOD</span><span style="color:#89ddff;">,
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">lookup_method</span><span style="color:#89ddff;">&quot;,
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">Set key lookup method (1=substring, 2=friendlyname, 3=container name)</span><span style="color:#89ddff;">&quot;,
+</span><span>    ENGINE_CMD_FLAG_NUMERIC</span><span style="color:#89ddff;">},
+</span><span>  </span><span style="color:#89ddff;">{</span><span>CAPI_CMD_STORE_NAME</span><span style="color:#89ddff;">,
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">store_name</span><span style="color:#89ddff;">&quot;,
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">certificate store name, default </span><span style="color:#89ddff;">\&quot;</span><span style="color:#c3e88d;">MY</span><span style="color:#89ddff;">\&quot;&quot;,
+</span><span>    ENGINE_CMD_FLAG_STRING</span><span style="color:#89ddff;">},
+</span><span>  </span><span style="color:#89ddff;">{</span><span>CAPI_CMD_STORE_FLAGS</span><span style="color:#89ddff;">,
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">store_flags</span><span style="color:#89ddff;">&quot;,
+</span><span>    </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">Certificate store flags: 1 = system store</span><span style="color:#89ddff;">&quot;,
+</span><span>    ENGINE_CMD_FLAG_NUMERIC</span><span style="color:#89ddff;">},
+</span><span>
+</span><span>  </span><span style="color:#89ddff;">{</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">NULL</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">NULL</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">}
+</span><span>  </span><span style="color:#89ddff;">};
+</span></code></pre>
+<p>
 经过测试，OpenSC的engine_pkcs11实现功能较为完善，而OpenSSL的CAPI引擎访问CryptoAPI实现较为简单。当然，windows下直接使用CryptoAPI访问PKI体系更方便。</p>
 </div>
 
@@ -244,7 +243,7 @@ capi引擎支持的所有命令在openssl-x.y.z/engines/e_capi.c<a href="https:/
   
     <div class="post-tags">
     
-      <!-- <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all&#x2F;">#all</a> -->
+      <!-- <a href="https://xjump.me/tags/all/">#all</a> -->
     
     </div>
   

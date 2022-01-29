@@ -95,6 +95,24 @@
   <article class="post">
   
 <header class="post__header">
+  <h1 class="post__title"><a href="https:&#x2F;&#x2F;xjump.me&#x2F;20141001-jgj&#x2F;">金刚经</a></h1>
+  <div class="post__meta">
+    <span class="post__time">2014-10-01</span>
+
+  </div>
+</header>
+
+  <div class="post__summary">
+  
+  </div>
+  <div class="read-more">
+  <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20141001-jgj&#x2F;">Read more...</a>
+  </div>
+  </article>
+
+  <article class="post">
+  
+<header class="post__header">
   <h1 class="post__title"><a href="https:&#x2F;&#x2F;xjump.me&#x2F;20140930-bore&#x2F;">般若波罗蜜多心经</a></h1>
   <div class="post__meta">
     <span class="post__time">2014-09-30</span>
@@ -197,40 +215,22 @@
 </header>
 
   <div class="post__summary">
-  <pre style="background-color:#212121;">
-<code class="language-mm" data-lang="mm"><span style="font-style:italic;color:#4a4a4a;">//TheSingleton.h</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="font-style:italic;color:#89ddff;">@</span><span style="font-style:italic;color:#c792ea;">interface </span><span style="color:#eeffff;">TheSingleton </span><span style="color:#89ddff;">: </span><span style="color:#c3e88d;">NSObject</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-+</span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">instancetype</span><span style="color:#89ddff;">) </span><span style="color:#82aaff;">sharedInstance</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-+</span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">instancetype</span><span style="color:#89ddff;">) </span><span style="color:#82aaff;">alloc</span><span style="color:#eeffff;"> __attribute__</span><span style="color:#89ddff;">((</span><span style="color:#82aaff;">unavailable</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">alloc not available, call sharedInstance instead</span><span style="color:#89ddff;">&quot;))</span><span style="background-color:#ff5370;color:#ffffff;">)</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">-(</span><span style="color:#eeffff;">instancetype</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;"> init </span><span style="color:#c792ea;">__attribute__</span><span style="color:#89ddff;">((</span><span style="color:#eeffff;">unavailable</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">init not available, call sharedInstance instead</span><span style="color:#89ddff;">&quot;)));</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">+(</span><span style="color:#eeffff;">instancetype</span><span style="color:#89ddff;">) </span><span style="font-style:italic;color:#c792ea;">new </span><span style="color:#c792ea;">__attribute__</span><span style="color:#89ddff;">((</span><span style="color:#eeffff;">unavailable</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">new not available, call sharedInstance instead</span><span style="color:#89ddff;">&quot;)));</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">-(</span><span style="color:#eeffff;">instancetype</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;"> copy </span><span style="color:#c792ea;">__attribute__</span><span style="color:#89ddff;">((</span><span style="color:#eeffff;">unavailable</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">copy not available, call sharedInstance instead</span><span style="color:#89ddff;">&quot;)));</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-@end</span><span style="color:#eeffff;">
+  <pre data-lang="mm" style="background-color:#212121;color:#eeffff;" class="language-mm "><code class="language-mm" data-lang="mm"><span style="font-style:italic;color:#4a4a4a;">//TheSingleton.h
+</span><span style="font-style:italic;color:#89ddff;">@</span><span style="font-style:italic;color:#c792ea;">interface </span><span>TheSingleton </span><span style="color:#89ddff;">: </span><span style="color:#c3e88d;">NSObject
+</span><span>
+</span><span>+</span><span style="color:#89ddff;">(</span><span>instancetype</span><span style="color:#89ddff;">) </span><span style="color:#82aaff;">sharedInstance</span><span style="color:#89ddff;">;
+</span><span>
+</span><span>+</span><span style="color:#89ddff;">(</span><span>instancetype</span><span style="color:#89ddff;">) </span><span style="color:#82aaff;">alloc</span><span> __attribute__</span><span style="color:#89ddff;">((</span><span style="color:#82aaff;">unavailable</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">alloc not available, call sharedInstance instead</span><span style="color:#89ddff;">&quot;))</span><span style="background-color:#ff5370;color:#ffffff;">)</span><span style="color:#89ddff;">;
+</span><span style="color:#89ddff;">-(</span><span>instancetype</span><span style="color:#89ddff;">)</span><span> init </span><span style="color:#c792ea;">__attribute__</span><span style="color:#89ddff;">((</span><span>unavailable</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">init not available, call sharedInstance instead</span><span style="color:#89ddff;">&quot;)));
+</span><span style="color:#89ddff;">+(</span><span>instancetype</span><span style="color:#89ddff;">) </span><span style="font-style:italic;color:#c792ea;">new </span><span style="color:#c792ea;">__attribute__</span><span style="color:#89ddff;">((</span><span>unavailable</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">new not available, call sharedInstance instead</span><span style="color:#89ddff;">&quot;)));
+</span><span style="color:#89ddff;">-(</span><span>instancetype</span><span style="color:#89ddff;">)</span><span> copy </span><span style="color:#c792ea;">__attribute__</span><span style="color:#89ddff;">((</span><span>unavailable</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">copy not available, call sharedInstance instead</span><span style="color:#89ddff;">&quot;)));
+</span><span>
+</span><span>@end
 </span></code></pre>
+
   </div>
   <div class="read-more">
   <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20140910-object-c-cpp1x-singleton&#x2F;">Read more...</a>
-  </div>
-  </article>
-
-  <article class="post">
-  
-<header class="post__header">
-  <h1 class="post__title"><a href="https:&#x2F;&#x2F;xjump.me&#x2F;20140630-cve-2014-0038&#x2F;">CVE-2014-0038</a></h1>
-  <div class="post__meta">
-    <span class="post__time">2014-06-30</span>
-
-  </div>
-</header>
-
-  <div class="post__summary">
-  
-  </div>
-  <div class="read-more">
-  <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20140630-cve-2014-0038&#x2F;">Read more...</a>
   </div>
   </article>
 

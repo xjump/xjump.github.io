@@ -95,6 +95,26 @@
   <article class="post">
   
 <header class="post__header">
+  <h1 class="post__title"><a href="https:&#x2F;&#x2F;xjump.me&#x2F;20131210-js-sniffer&#x2F;">javascript探测执行环境</a></h1>
+  <div class="post__meta">
+    <span class="post__time">2013-12-10</span>
+
+  </div>
+</header>
+
+  <div class="post__summary">
+  <p>
+1、探测调用者：</p>
+
+  </div>
+  <div class="read-more">
+  <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20131210-js-sniffer&#x2F;">Read more...</a>
+  </div>
+  </article>
+
+  <article class="post">
+  
+<header class="post__header">
   <h1 class="post__title"><a href="https:&#x2F;&#x2F;xjump.me&#x2F;20131130-get-wifi-connection-info&#x2F;">iOS 4.1+获取网络连接信息</a></h1>
   <div class="post__meta">
     <span class="post__time">2013-11-30</span>
@@ -106,26 +126,26 @@
   <p>
 iOS 4.1+获取当前连接的网络信息：
 </p>
-<pre style="background-color:#212121;">
-<code class="language-mm" data-lang="mm"><span style="font-style:italic;color:#c792ea;">#import </span><span style="color:#89ddff;">&lt;</span><span style="color:#c3e88d;">SystemConfiguration/CaptiveNetwork.h</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">- (</span><span style="font-style:italic;color:#c792ea;">id</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">fetchSSIDInfo</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
-  </span><span style="color:#ffcb6b;">NSArray </span><span style="color:#89ddff;">*</span><span style="color:#eeffff;">ifs </span><span style="color:#89ddff;">= (</span><span style="font-style:italic;color:#c792ea;">id</span><span style="color:#89ddff;">)</span><span style="color:#82aaff;">CNCopySupportedInterfaces</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">NSLog</span><span style="color:#89ddff;">(@&quot;</span><span style="color:#eeffff;">%s</span><span style="color:#c3e88d;">: Supported interfaces: </span><span style="color:#eeffff;">%@</span><span style="color:#89ddff;">&quot;, </span><span style="color:#f78c6c;">__func__</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> ifs</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">id </span><span style="color:#eeffff;">info </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">nil</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">for </span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">NSString </span><span style="color:#89ddff;">*</span><span style="color:#eeffff;">ifnam in ifs</span><span style="color:#89ddff;">) {</span><span style="color:#eeffff;">
-    info </span><span style="color:#89ddff;">= (</span><span style="font-style:italic;color:#c792ea;">id</span><span style="color:#89ddff;">)</span><span style="color:#82aaff;">CNCopyCurrentNetworkInfo</span><span style="color:#89ddff;">((</span><span style="color:#82aaff;">CFStringRef</span><span style="color:#89ddff;">)</span><span style="color:#82aaff;">ifnam</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-    </span><span style="color:#82aaff;">NSLog</span><span style="color:#89ddff;">(@&quot;</span><span style="color:#eeffff;">%s</span><span style="color:#c3e88d;">: </span><span style="color:#eeffff;">%@</span><span style="color:#c3e88d;"> =&gt; </span><span style="color:#eeffff;">%@</span><span style="color:#89ddff;">&quot;, </span><span style="color:#f78c6c;">__func__</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> ifnam</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;"> info</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">info </span><span style="color:#89ddff;">&amp;&amp; [</span><span style="color:#eeffff;">info </span><span style="color:#82aaff;">count</span><span style="color:#89ddff;">]) {</span><span style="color:#eeffff;">
-      </span><span style="font-style:italic;color:#c792ea;">break</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">[</span><span style="color:#eeffff;">info </span><span style="color:#82aaff;">release</span><span style="color:#89ddff;">];</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">[</span><span style="color:#eeffff;">ifs </span><span style="color:#82aaff;">release</span><span style="color:#89ddff;">];</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">return </span><span style="color:#89ddff;">[</span><span style="color:#eeffff;">info </span><span style="color:#82aaff;">autorelease</span><span style="color:#89ddff;">];</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
+<pre data-lang="mm" style="background-color:#212121;color:#eeffff;" class="language-mm "><code class="language-mm" data-lang="mm"><span style="font-style:italic;color:#c792ea;">#import </span><span style="color:#89ddff;">&lt;</span><span style="color:#c3e88d;">SystemConfiguration/CaptiveNetwork.h</span><span style="color:#89ddff;">&gt;
+</span><span>
+</span><span style="color:#89ddff;">- (</span><span style="font-style:italic;color:#c792ea;">id</span><span style="color:#89ddff;">)</span><span>fetchSSIDInfo
+</span><span style="color:#89ddff;">{
+</span><span>  </span><span style="color:#ffcb6b;">NSArray </span><span style="color:#89ddff;">*</span><span>ifs </span><span style="color:#89ddff;">= (</span><span style="font-style:italic;color:#c792ea;">id</span><span style="color:#89ddff;">)</span><span style="color:#82aaff;">CNCopySupportedInterfaces</span><span style="color:#89ddff;">();
+</span><span>  </span><span style="color:#82aaff;">NSLog</span><span style="color:#89ddff;">(@&quot;</span><span>%s</span><span style="color:#c3e88d;">: Supported interfaces: </span><span>%@</span><span style="color:#89ddff;">&quot;, </span><span style="color:#f78c6c;">__func__</span><span style="color:#89ddff;">,</span><span> ifs</span><span style="color:#89ddff;">);
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">id </span><span>info </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">nil</span><span style="color:#89ddff;">;
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">for </span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">NSString </span><span style="color:#89ddff;">*</span><span>ifnam in ifs</span><span style="color:#89ddff;">) {
+</span><span>    info </span><span style="color:#89ddff;">= (</span><span style="font-style:italic;color:#c792ea;">id</span><span style="color:#89ddff;">)</span><span style="color:#82aaff;">CNCopyCurrentNetworkInfo</span><span style="color:#89ddff;">((</span><span style="color:#82aaff;">CFStringRef</span><span style="color:#89ddff;">)</span><span style="color:#82aaff;">ifnam</span><span style="color:#89ddff;">);
+</span><span>    </span><span style="color:#82aaff;">NSLog</span><span style="color:#89ddff;">(@&quot;</span><span>%s</span><span style="color:#c3e88d;">: </span><span>%@</span><span style="color:#c3e88d;"> =&gt; </span><span>%@</span><span style="color:#89ddff;">&quot;, </span><span style="color:#f78c6c;">__func__</span><span style="color:#89ddff;">,</span><span> ifnam</span><span style="color:#89ddff;">,</span><span> info</span><span style="color:#89ddff;">);
+</span><span>    </span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#89ddff;">(</span><span>info </span><span style="color:#89ddff;">&amp;&amp; [</span><span>info </span><span style="color:#82aaff;">count</span><span style="color:#89ddff;">]) {
+</span><span>      </span><span style="font-style:italic;color:#c792ea;">break</span><span style="color:#89ddff;">;
+</span><span>    </span><span style="color:#89ddff;">}
+</span><span>    </span><span style="color:#89ddff;">[</span><span>info </span><span style="color:#82aaff;">release</span><span style="color:#89ddff;">];
+</span><span>  </span><span style="color:#89ddff;">}
+</span><span>  </span><span style="color:#89ddff;">[</span><span>ifs </span><span style="color:#82aaff;">release</span><span style="color:#89ddff;">];
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">return </span><span style="color:#89ddff;">[</span><span>info </span><span style="color:#82aaff;">autorelease</span><span style="color:#89ddff;">];
+</span><span style="color:#89ddff;">}
 </span></code></pre>
+
   </div>
   <div class="read-more">
   <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20131130-get-wifi-connection-info&#x2F;">Read more...</a>
@@ -192,26 +212,6 @@ iOS 4.1+获取当前连接的网络信息：
   </div>
   <div class="read-more">
   <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20131116-pca-scipy-example&#x2F;">Read more...</a>
-  </div>
-  </article>
-
-  <article class="post">
-  
-<header class="post__header">
-  <h1 class="post__title"><a href="https:&#x2F;&#x2F;xjump.me&#x2F;20131115-mf-sample&#x2F;">Matrix Factorization Sample</a></h1>
-  <div class="post__meta">
-    <span class="post__time">2013-11-15</span>
-
-  </div>
-</header>
-
-  <div class="post__summary">
-  <p>
-Albert Au Yeung写的Matrix&nbsp;Factorization 的例子。MF是推荐系统常规算法。</p>
-
-  </div>
-  <div class="read-more">
-  <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20131115-mf-sample&#x2F;">Read more...</a>
   </div>
   </article>
 

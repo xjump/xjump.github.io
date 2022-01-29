@@ -107,138 +107,134 @@
   <strong>1）Thread & ThreadPoolExecutor</strong></p>
 <p>
   Thread例子如下：</p>
-<pre style="background-color:#212121;">
-<code class="language-java" data-lang="java"><span style="font-style:italic;color:#c792ea;">for</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">&lt;</span><span style="color:#f78c6c;">100</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">++){</span><span style="color:#eeffff;">
-  </span><span style="color:#ffcb6b;">Thread</span><span style="color:#eeffff;"> t </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Thread</span><span style="color:#89ddff;">(){</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">@</span><span style="color:#eeffff;">Override</span><span style="color:#eeffff;">
-    </span><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">run</span><span style="color:#89ddff;">() {</span><span style="color:#eeffff;">
-      </span><span style="font-style:italic;color:#4a4a4a;">//job details</span><span style="font-style:italic;color:#4a4a4a;">
-    </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">};</span><span style="color:#eeffff;">
-  t</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">start</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">try</span><span style="color:#89ddff;">{ </span><span style="color:#eeffff;">
-    t</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">join</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">catch</span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">InterruptedException </span><span style="color:#f78c6c;">ex</span><span style="color:#89ddff;">){</span><span style="color:#eeffff;">
-    ex</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span></code></pre><p>
+<pre data-lang="java" style="background-color:#212121;color:#eeffff;" class="language-java "><code class="language-java" data-lang="java"><span style="font-style:italic;color:#c792ea;">for</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int</span><span> i</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;</span><span> i</span><span style="color:#89ddff;">&lt;</span><span style="color:#f78c6c;">100</span><span style="color:#89ddff;">;</span><span> i</span><span style="color:#89ddff;">++){
+</span><span>  </span><span style="color:#ffcb6b;">Thread</span><span> t </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Thread</span><span style="color:#89ddff;">(){
+</span><span>    </span><span style="color:#89ddff;">@</span><span>Override
+</span><span>    </span><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">run</span><span style="color:#89ddff;">() {
+</span><span>      </span><span style="font-style:italic;color:#4a4a4a;">//job details
+</span><span>    </span><span style="color:#89ddff;">}
+</span><span>  </span><span style="color:#89ddff;">};
+</span><span>  t</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">start</span><span style="color:#89ddff;">();
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">try</span><span style="color:#89ddff;">{ 
+</span><span>    t</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">join</span><span style="color:#89ddff;">();
+</span><span>  </span><span style="color:#89ddff;">}
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">catch</span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">InterruptedException </span><span style="color:#f78c6c;">ex</span><span style="color:#89ddff;">){
+</span><span>    ex</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();
+</span><span>  </span><span style="color:#89ddff;">}
+</span><span style="color:#89ddff;">}
+</span></code></pre>
+<p>
   相应的，ThreadPoolExecutor例子如下：</p>
-<span id="continue-reading"></span>
-<pre style="background-color:#212121;">
-<code class="language-java" data-lang="java"><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#eeffff;"> tp </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">60</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">TimeUnit</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">SECONDS</span><span style="color:#89ddff;">, </span><span style="color:#eeffff;">
-       </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">LinkedBlockingQueue</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">Runnable</span><span style="color:#89ddff;">&gt;(</span><span style="color:#f78c6c;">100</span><span style="color:#89ddff;">));</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">for</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">&lt;</span><span style="color:#f78c6c;">100</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">++){</span><span style="color:#eeffff;">
-  tp</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">execute</span><span style="color:#89ddff;">(</span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Runnable</span><span style="color:#89ddff;">() </span><span style="color:#82aaff;">
-  </span><span style="color:#89ddff;">{</span><span style="color:#82aaff;">
-    </span><span style="color:#89ddff;">@</span><span style="color:#eeffff;">Override</span><span style="color:#82aaff;">
-    </span><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">run</span><span style="color:#89ddff;">() {</span><span style="color:#82aaff;">
-      </span><span style="font-style:italic;color:#4a4a4a;">//job details</span><span style="font-style:italic;color:#4a4a4a;">
-    </span><span style="color:#89ddff;">}</span><span style="color:#82aaff;">
-  </span><span style="color:#89ddff;">});</span><span style="color:#eeffff;">
-  tp</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">shutdown</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">try</span><span style="color:#89ddff;">{ </span><span style="color:#eeffff;">
-    tp</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">awaitTermination</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">TimeUnit</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">DAYS</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">catch</span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">InterruptedException </span><span style="color:#f78c6c;">ex</span><span style="color:#89ddff;">){</span><span style="color:#eeffff;">
-    ex</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span></code></pre><p>
+<span id="continue-reading"></span><pre data-lang="java" style="background-color:#212121;color:#eeffff;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span> tp </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">60</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">TimeUnit</span><span style="color:#89ddff;">.</span><span>SECONDS</span><span style="color:#89ddff;">, 
+</span><span>       </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">LinkedBlockingQueue</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">Runnable</span><span style="color:#89ddff;">&gt;(</span><span style="color:#f78c6c;">100</span><span style="color:#89ddff;">));
+</span><span style="font-style:italic;color:#c792ea;">for</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int</span><span> i</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;</span><span> i</span><span style="color:#89ddff;">&lt;</span><span style="color:#f78c6c;">100</span><span style="color:#89ddff;">;</span><span> i</span><span style="color:#89ddff;">++){
+</span><span>  tp</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">execute</span><span style="color:#89ddff;">(</span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Runnable</span><span style="color:#89ddff;">() 
+</span><span style="color:#82aaff;">  </span><span style="color:#89ddff;">{
+</span><span style="color:#82aaff;">    </span><span style="color:#89ddff;">@</span><span>Override
+</span><span style="color:#82aaff;">    </span><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">run</span><span style="color:#89ddff;">() {
+</span><span style="color:#82aaff;">      </span><span style="font-style:italic;color:#4a4a4a;">//job details
+</span><span style="color:#82aaff;">    </span><span style="color:#89ddff;">}
+</span><span style="color:#82aaff;">  </span><span style="color:#89ddff;">});
+</span><span>  tp</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">shutdown</span><span style="color:#89ddff;">();
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">try</span><span style="color:#89ddff;">{ 
+</span><span>    tp</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">awaitTermination</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">TimeUnit</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">DAYS</span><span style="color:#89ddff;">);
+</span><span>  </span><span style="color:#89ddff;">}
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">catch</span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">InterruptedException </span><span style="color:#f78c6c;">ex</span><span style="color:#89ddff;">){
+</span><span>    ex</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();
+</span><span>  </span><span style="color:#89ddff;">}
+</span><span style="color:#89ddff;">}
+</span></code></pre>
+<p>
    </p>
 <p>
   构造函数及说明：</p>
-<pre style="background-color:#212121;">
-<code class="language-java" data-lang="java"><span style="color:#ffcb6b;">java</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">util</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">concurrent</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int</span><span style="color:#eeffff;"> corePoolSize</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#c792ea;">int</span><span style="color:#eeffff;"> maximumPoolSize</span><span style="color:#89ddff;">, </span><span style="color:#eeffff;">
-     </span><span style="font-style:italic;color:#c792ea;">long</span><span style="color:#eeffff;"> keepAliveTime</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">TimeUnit</span><span style="color:#eeffff;"> unit</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">BlockingQueue</span><span style="color:#eeffff;"> workQueue</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-</span><span style="color:#ffcb6b;">java</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">util</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">concurrent</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int</span><span style="color:#eeffff;"> corePoolSize</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#c792ea;">int</span><span style="color:#eeffff;"> maximumPoolSize</span><span style="color:#89ddff;">, </span><span style="color:#eeffff;">
-     </span><span style="font-style:italic;color:#c792ea;">long</span><span style="color:#eeffff;"> keepAliveTime</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">TimeUnit</span><span style="color:#eeffff;"> unit</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">BlockingQueue</span><span style="color:#eeffff;"> workQueue</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">RejectedExecutionHandler</span><span style="color:#eeffff;"> handler</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-</span><span style="color:#ffcb6b;">java</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">util</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">concurrent</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int</span><span style="color:#eeffff;"> corePoolSize</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#c792ea;">int</span><span style="color:#eeffff;"> maximumPoolSize</span><span style="color:#89ddff;">, </span><span style="color:#eeffff;">
-     </span><span style="font-style:italic;color:#c792ea;">long</span><span style="color:#eeffff;"> keepAliveTime</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">TimeUnit</span><span style="color:#eeffff;"> unit</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">BlockingQueue</span><span style="color:#eeffff;"> workQueue</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">ThreadFactory</span><span style="color:#eeffff;"> threadFactory</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-</span><span style="color:#ffcb6b;">java</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">util</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">concurrent</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int</span><span style="color:#eeffff;"> corePoolSize</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#c792ea;">int</span><span style="color:#eeffff;"> maximumPoolSize</span><span style="color:#89ddff;">, </span><span style="color:#eeffff;">
-     </span><span style="font-style:italic;color:#c792ea;">long</span><span style="color:#eeffff;"> keepAliveTime</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">TimeUnit</span><span style="color:#eeffff;"> unit</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">BlockingQueue</span><span style="color:#eeffff;"> workQueue</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">ThreadFactory</span><span style="color:#eeffff;"> threadFactory</span><span style="color:#89ddff;">, </span><span style="color:#eeffff;">
-     </span><span style="color:#ffcb6b;">RejectedExecutionHandler</span><span style="color:#eeffff;"> handler</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-</span></code></pre><pre style="background-color:#212121;">
-<code class="language-txt" data-lang="txt"><span style="color:#eeffff;">int corePoolSize, 线程池维持线程数</span><span style="color:#eeffff;">
-int maximumPoolSize, 线程池允许最大线程数</span><span style="color:#eeffff;">
-long keepAliveTime, 最大线程数回收至维持线程数时，被回收线程保持IDLE的时间</span><span style="color:#eeffff;">
-TimeUnit unit, keepAliveTime的时间单位</span><span style="color:#eeffff;">
-BlockingQueue workQueue, 有三种队列，同步（默认SynchronousQueue）、固定大小（ArrayBlockingQueue）、无限制大小（LinkedBlockingQueue）</span><span style="color:#eeffff;">
-ThreadFactory threadFactory, 线程数不够时创建线程的Factory</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-RejectedExecutionHandler handler, 线程池压力过大，maximumPoolSize满，workQueue满，无法执行execute提交的Runnable时，交给handler处理。有4种内置的handler：</span><span style="color:#eeffff;">
-  ThreadPoolExecutor.AbortPolicy，处理程序遭到拒绝将抛出运行时RejectedExecutionException；</span><span style="color:#eeffff;">
-  ThreadPoolExecutor.CallerRunsPolicy，线程调用运行该任务的 execute 本身。此策略提供简单的反馈控制机制，能够减缓新任务的提交速度；</span><span style="color:#eeffff;">
-  ThreadPoolExecutor.DiscardPolicy，不能执行的任务将被删除；</span><span style="color:#eeffff;">
-  ThreadPoolExecutor.DiscardOldestPolicy，如果执行程序尚未关闭，则位于工作队列头部的任务将被删除，然后重试执行程序（如果再次失败，则重复此过程）。</span><span style="color:#eeffff;">
+<pre data-lang="java" style="background-color:#212121;color:#eeffff;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#ffcb6b;">java</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">util</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">concurrent</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int</span><span> corePoolSize</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#c792ea;">int</span><span> maximumPoolSize</span><span style="color:#89ddff;">, 
+</span><span>     </span><span style="font-style:italic;color:#c792ea;">long</span><span> keepAliveTime</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">TimeUnit</span><span> unit</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">BlockingQueue</span><span> workQueue</span><span style="color:#89ddff;">)
+</span><span style="color:#ffcb6b;">java</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">util</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">concurrent</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int</span><span> corePoolSize</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#c792ea;">int</span><span> maximumPoolSize</span><span style="color:#89ddff;">, 
+</span><span>     </span><span style="font-style:italic;color:#c792ea;">long</span><span> keepAliveTime</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">TimeUnit</span><span> unit</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">BlockingQueue</span><span> workQueue</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">RejectedExecutionHandler</span><span> handler</span><span style="color:#89ddff;">)
+</span><span style="color:#ffcb6b;">java</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">util</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">concurrent</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int</span><span> corePoolSize</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#c792ea;">int</span><span> maximumPoolSize</span><span style="color:#89ddff;">, 
+</span><span>     </span><span style="font-style:italic;color:#c792ea;">long</span><span> keepAliveTime</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">TimeUnit</span><span> unit</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">BlockingQueue</span><span> workQueue</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">ThreadFactory</span><span> threadFactory</span><span style="color:#89ddff;">)
+</span><span style="color:#ffcb6b;">java</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">util</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">concurrent</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#89ddff;">.</span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int</span><span> corePoolSize</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#c792ea;">int</span><span> maximumPoolSize</span><span style="color:#89ddff;">, 
+</span><span>     </span><span style="font-style:italic;color:#c792ea;">long</span><span> keepAliveTime</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">TimeUnit</span><span> unit</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">BlockingQueue</span><span> workQueue</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">ThreadFactory</span><span> threadFactory</span><span style="color:#89ddff;">, 
+</span><span>     </span><span style="color:#ffcb6b;">RejectedExecutionHandler</span><span> handler</span><span style="color:#89ddff;">)
+</span></code></pre>
+<pre data-lang="txt" style="background-color:#212121;color:#eeffff;" class="language-txt "><code class="language-txt" data-lang="txt"><span>int corePoolSize, 线程池维持线程数
+</span><span>int maximumPoolSize, 线程池允许最大线程数
+</span><span>long keepAliveTime, 最大线程数回收至维持线程数时，被回收线程保持IDLE的时间
+</span><span>TimeUnit unit, keepAliveTime的时间单位
+</span><span>BlockingQueue workQueue, 有三种队列，同步（默认SynchronousQueue）、固定大小（ArrayBlockingQueue）、无限制大小（LinkedBlockingQueue）
+</span><span>ThreadFactory threadFactory, 线程数不够时创建线程的Factory
+</span><span>
+</span><span>RejectedExecutionHandler handler, 线程池压力过大，maximumPoolSize满，workQueue满，无法执行execute提交的Runnable时，交给handler处理。有4种内置的handler：
+</span><span>  ThreadPoolExecutor.AbortPolicy，处理程序遭到拒绝将抛出运行时RejectedExecutionException；
+</span><span>  ThreadPoolExecutor.CallerRunsPolicy，线程调用运行该任务的 execute 本身。此策略提供简单的反馈控制机制，能够减缓新任务的提交速度；
+</span><span>  ThreadPoolExecutor.DiscardPolicy，不能执行的任务将被删除；
+</span><span>  ThreadPoolExecutor.DiscardOldestPolicy，如果执行程序尚未关闭，则位于工作队列头部的任务将被删除，然后重试执行程序（如果再次失败，则重复此过程）。
 </span></code></pre>
 <p>线程池终止：</p>
-<pre style="background-color:#212121;">
-<code class="language-txt" data-lang="txt"><span style="color:#eeffff;">/**</span><span style="color:#eeffff;">
- * runState provides the main lifecyle control, taking on values:</span><span style="color:#eeffff;">
- *</span><span style="color:#eeffff;">
- *   RUNNING:  Accept new tasks and process queued tasks</span><span style="color:#eeffff;">
- *   SHUTDOWN: Don&#39;t accept new tasks, but process queued tasks</span><span style="color:#eeffff;">
- *   STOP:   Don&#39;t accept new tasks, don&#39;t process queued tasks,</span><span style="color:#eeffff;">
- *       and interrupt in-progress tasks</span><span style="color:#eeffff;">
- *   TERMINATED: Same as STOP, plus all threads have terminated</span><span style="color:#eeffff;">
- *</span><span style="color:#eeffff;">
- * The numerical order among these values matters, to allow</span><span style="color:#eeffff;">
- * ordered comparisons. The runState monotonically increases over</span><span style="color:#eeffff;">
- * time, but need not hit each state. The transitions are:</span><span style="color:#eeffff;">
- *</span><span style="color:#eeffff;">
- * RUNNING -&gt; SHUTDOWN</span><span style="color:#eeffff;">
- *  On invocation of shutdown(), perhaps implicitly in finalize()</span><span style="color:#eeffff;">
- * (RUNNING or SHUTDOWN) -&gt; STOP</span><span style="color:#eeffff;">
- *  On invocation of shutdownNow()</span><span style="color:#eeffff;">
- * SHUTDOWN -&gt; TERMINATED</span><span style="color:#eeffff;">
- *  When both queue and pool are empty</span><span style="color:#eeffff;">
- * STOP -&gt; TERMINATED</span><span style="color:#eeffff;">
- *  When pool is empty</span><span style="color:#eeffff;">
- */</span><span style="color:#eeffff;">
+<pre data-lang="txt" style="background-color:#212121;color:#eeffff;" class="language-txt "><code class="language-txt" data-lang="txt"><span>/**
+</span><span> * runState provides the main lifecyle control, taking on values:
+</span><span> *
+</span><span> *   RUNNING:  Accept new tasks and process queued tasks
+</span><span> *   SHUTDOWN: Don&#39;t accept new tasks, but process queued tasks
+</span><span> *   STOP:   Don&#39;t accept new tasks, don&#39;t process queued tasks,
+</span><span> *       and interrupt in-progress tasks
+</span><span> *   TERMINATED: Same as STOP, plus all threads have terminated
+</span><span> *
+</span><span> * The numerical order among these values matters, to allow
+</span><span> * ordered comparisons. The runState monotonically increases over
+</span><span> * time, but need not hit each state. The transitions are:
+</span><span> *
+</span><span> * RUNNING -&gt; SHUTDOWN
+</span><span> *  On invocation of shutdown(), perhaps implicitly in finalize()
+</span><span> * (RUNNING or SHUTDOWN) -&gt; STOP
+</span><span> *  On invocation of shutdownNow()
+</span><span> * SHUTDOWN -&gt; TERMINATED
+</span><span> *  When both queue and pool are empty
+</span><span> * STOP -&gt; TERMINATED
+</span><span> *  When pool is empty
+</span><span> */
 </span></code></pre>
 <p>API原型如下：</p>
-<pre style="background-color:#212121;">
-<code class="language-java" data-lang="java"><span style="color:#eeffff;">tp</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">shutdown</span><span style="color:#89ddff;">(); </span><span style="color:#eeffff;">
-tp</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">shutdownNow</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-tp</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">awaitTermination</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">timeout</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> timeout_unit</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
+<pre data-lang="java" style="background-color:#212121;color:#eeffff;" class="language-java "><code class="language-java" data-lang="java"><span>tp</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">shutdown</span><span style="color:#89ddff;">(); 
+</span><span>tp</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">shutdownNow</span><span style="color:#89ddff;">();
+</span><span>tp</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">awaitTermination</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">timeout</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> timeout_unit</span><span style="color:#89ddff;">);
 </span></code></pre>
 <p>使用Executors创建线程池：</p>
-<pre style="background-color:#212121;">
-<code class="language-java" data-lang="java"><span style="color:#ffcb6b;">ExecutorService</span><span style="color:#eeffff;"> es1 </span><span style="color:#89ddff;">= </span><span style="color:#ffcb6b;">Executors</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">newCachedThreadPool</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-</span><span style="color:#ffcb6b;">ExecutorService</span><span style="color:#eeffff;"> es2 </span><span style="color:#89ddff;">= </span><span style="color:#ffcb6b;">Executors</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">newFixedThreadPool</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-</span><span style="color:#ffcb6b;">ExecutorService</span><span style="color:#eeffff;"> es3 </span><span style="color:#89ddff;">= </span><span style="color:#ffcb6b;">Executors</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">newSingleThreadExecutor</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-</span><span style="color:#ffcb6b;">ExecutorService</span><span style="color:#eeffff;"> es4 </span><span style="color:#89ddff;">= </span><span style="color:#ffcb6b;">Executors</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">newScheduledThreadPool</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-</span><span style="color:#ffcb6b;">ExecutorService</span><span style="color:#eeffff;"> es5 </span><span style="color:#89ddff;">= </span><span style="color:#ffcb6b;">Executors</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">newSingleThreadScheduledExecutor</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-</span></code></pre><p>
+<pre data-lang="java" style="background-color:#212121;color:#eeffff;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#ffcb6b;">ExecutorService</span><span> es1 </span><span style="color:#89ddff;">= </span><span style="color:#ffcb6b;">Executors</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">newCachedThreadPool</span><span style="color:#89ddff;">();
+</span><span style="color:#ffcb6b;">ExecutorService</span><span> es2 </span><span style="color:#89ddff;">= </span><span style="color:#ffcb6b;">Executors</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">newFixedThreadPool</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">);
+</span><span style="color:#ffcb6b;">ExecutorService</span><span> es3 </span><span style="color:#89ddff;">= </span><span style="color:#ffcb6b;">Executors</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">newSingleThreadExecutor</span><span style="color:#89ddff;">();
+</span><span style="color:#ffcb6b;">ExecutorService</span><span> es4 </span><span style="color:#89ddff;">= </span><span style="color:#ffcb6b;">Executors</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">newScheduledThreadPool</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">);
+</span><span style="color:#ffcb6b;">ExecutorService</span><span> es5 </span><span style="color:#89ddff;">= </span><span style="color:#ffcb6b;">Executors</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">newSingleThreadScheduledExecutor</span><span style="color:#89ddff;">();
+</span></code></pre>
+<p>
   <strong>2） synchronized </strong></p>
 <p>
   synchronized是关键字，可以修饰方法或语句块，其语义是reentrant block lock。思考并明确如下代码synchronized的作用是？</p>
-<pre style="background-color:#212121;">
-<code class="language-java" data-lang="java"><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">class </span><span style="color:#ffcb6b;">TestSynchronized </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-  </span><span style="color:#c792ea;">public static synchronized </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">m1</span><span style="color:#89ddff;">(){}</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-  </span><span style="color:#c792ea;">public static synchronized </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">m2</span><span style="color:#89ddff;">(){}</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-  </span><span style="color:#c792ea;">public synchronized </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">m3</span><span style="color:#89ddff;">(){}</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-  </span><span style="color:#c792ea;">public synchronized </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">m4</span><span style="color:#89ddff;">(){}</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-  </span><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">m5</span><span style="color:#89ddff;">() {</span><span style="color:#eeffff;">
-    </span><span style="color:#c792ea;">synchronized</span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">TestSynchronized</span><span style="color:#89ddff;">.</span><span style="font-style:italic;color:#ff5370;">class</span><span style="color:#89ddff;">){</span><span style="color:#eeffff;">
-      </span><span style="font-style:italic;color:#4a4a4a;">//stat...</span><span style="font-style:italic;color:#4a4a4a;">
-    </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-  </span><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">m6</span><span style="color:#89ddff;">() {</span><span style="color:#eeffff;">
-    </span><span style="color:#c792ea;">synchronized</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#ff5370;">this</span><span style="color:#89ddff;">){</span><span style="color:#eeffff;">
-      </span><span style="font-style:italic;color:#4a4a4a;">//stat...</span><span style="font-style:italic;color:#4a4a4a;">
-    </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span></code></pre><p>
+<pre data-lang="java" style="background-color:#212121;color:#eeffff;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">class </span><span style="color:#ffcb6b;">TestSynchronized </span><span style="color:#89ddff;">{
+</span><span>
+</span><span>  </span><span style="color:#c792ea;">public static synchronized </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">m1</span><span style="color:#89ddff;">(){}
+</span><span>
+</span><span>  </span><span style="color:#c792ea;">public static synchronized </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">m2</span><span style="color:#89ddff;">(){}
+</span><span>
+</span><span>  </span><span style="color:#c792ea;">public synchronized </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">m3</span><span style="color:#89ddff;">(){}
+</span><span>
+</span><span>  </span><span style="color:#c792ea;">public synchronized </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">m4</span><span style="color:#89ddff;">(){}
+</span><span>
+</span><span>  </span><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">m5</span><span style="color:#89ddff;">() {
+</span><span>    </span><span style="color:#c792ea;">synchronized</span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">TestSynchronized</span><span style="color:#89ddff;">.</span><span style="font-style:italic;color:#ff5370;">class</span><span style="color:#89ddff;">){
+</span><span>      </span><span style="font-style:italic;color:#4a4a4a;">//stat...
+</span><span>    </span><span style="color:#89ddff;">}
+</span><span>  </span><span style="color:#89ddff;">}
+</span><span>
+</span><span>  </span><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">m6</span><span style="color:#89ddff;">() {
+</span><span>    </span><span style="color:#c792ea;">synchronized</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#ff5370;">this</span><span style="color:#89ddff;">){
+</span><span>      </span><span style="font-style:italic;color:#4a4a4a;">//stat...
+</span><span>    </span><span style="color:#89ddff;">}
+</span><span>  </span><span style="color:#89ddff;">}
+</span><span style="color:#89ddff;">}
+</span></code></pre>
+<p>
    </p>
 <p>
   <strong>3）volatile</strong></p>
@@ -252,11 +248,11 @@ tp</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">await
   <strong>4）object.wait(), object.notify(), object.notifyAll(), Thread.sleep(), Thread.yield()</strong></p>
 <p>
   wait、notify、notifyAll都是Java Object对象的方法，需要注意的是对这3个方法的调用必须在该对象（obj）线程锁获取后执行。通常在</p>
-<pre style="background-color:#212121;">
-<code class="language-java" data-lang="java"><span style="color:#c792ea;">synchronized</span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">obj</span><span style="color:#89ddff;">) {</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span></code></pre><p>中执行obj.wait()即obj.notify()、obj.notifyAll()。</p>
+<pre data-lang="java" style="background-color:#212121;color:#eeffff;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#c792ea;">synchronized</span><span style="color:#89ddff;">(</span><span>obj</span><span style="color:#89ddff;">) {
+</span><span>
+</span><span style="color:#89ddff;">}
+</span></code></pre>
+<p>中执行obj.wait()即obj.notify()、obj.notifyAll()。</p>
 <p>
   obj.wait()和Thread.sleep()具有相似的语义，即释放CPU控制权，使当前线程进入IDLE状态。但wait()还会释放obj的线程锁。与之功能相似的还有Thread.yield()。</p>
 <p>
@@ -273,106 +269,103 @@ tp</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">await
    </p>
 <p>
   <strong>5）Locks</strong></p>
-<pre style="background-color:#212121;">
-<code class="language-txt" data-lang="txt"><span style="color:#eeffff;">java.util.concurrent.locks</span><span style="color:#eeffff;">
-|-Lock</span><span style="color:#eeffff;">
-  |-ReentrantLock</span><span style="color:#eeffff;">
-  |-ReentrantReadWriteLock.ReadLock</span><span style="color:#eeffff;">
-  |-ReentrantReadWriteLock.WriteLock</span><span style="color:#eeffff;">
-|-Condition</span><span style="color:#eeffff;">
-  |-AbstractQueuedLongSynchronizer.ConditionObject</span><span style="color:#eeffff;">
-  |-AbstractQueuedSynchronizer.ConditionObject</span><span style="color:#eeffff;">
-|-ReadWriteLock</span><span style="color:#eeffff;">
-  |-ReentrantReadWriteLock</span><span style="color:#eeffff;">
+<pre data-lang="txt" style="background-color:#212121;color:#eeffff;" class="language-txt "><code class="language-txt" data-lang="txt"><span>java.util.concurrent.locks
+</span><span>|-Lock
+</span><span>  |-ReentrantLock
+</span><span>  |-ReentrantReadWriteLock.ReadLock
+</span><span>  |-ReentrantReadWriteLock.WriteLock
+</span><span>|-Condition
+</span><span>  |-AbstractQueuedLongSynchronizer.ConditionObject
+</span><span>  |-AbstractQueuedSynchronizer.ConditionObject
+</span><span>|-ReadWriteLock
+</span><span>  |-ReentrantReadWriteLock
 </span></code></pre>
 <p>简单的Lock：</p>
-<pre style="background-color:#212121;">
-<code class="language-java" data-lang="java"><span style="font-style:italic;color:#4a4a4a;">//Lock用法</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#ffcb6b;">Lock</span><span style="color:#eeffff;"> lock </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">ReentrantLock</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-lock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">lock</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#4a4a4a;">//stat</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#eeffff;">lock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">unlock</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-</span></code></pre><p>
+<pre data-lang="java" style="background-color:#212121;color:#eeffff;" class="language-java "><code class="language-java" data-lang="java"><span style="font-style:italic;color:#4a4a4a;">//Lock用法
+</span><span style="color:#ffcb6b;">Lock</span><span> lock </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">ReentrantLock</span><span style="color:#89ddff;">();
+</span><span>lock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">lock</span><span style="color:#89ddff;">();
+</span><span style="font-style:italic;color:#4a4a4a;">//stat
+</span><span>lock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">unlock</span><span style="color:#89ddff;">();
+</span></code></pre>
+<p>
   读写Lock：</p>
-<pre style="background-color:#212121;">
-<code class="language-java" data-lang="java"><span style="font-style:italic;color:#4a4a4a;">//ReadWriteLock用法     </span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#ffcb6b;">ReadWriteLock</span><span style="color:#eeffff;"> lock </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">ReentrantReadWriteLock</span><span style="color:#89ddff;">(); </span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#4a4a4a;">//写场景 </span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#ffcb6b;">Lock</span><span style="color:#eeffff;"> writeLock </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> lock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">writeLock</span><span style="color:#89ddff;">();  </span><span style="color:#eeffff;">
-writeLock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">lock</span><span style="color:#89ddff;">();  </span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#4a4a4a;">//write job</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#eeffff;">writeLock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">unlock</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#4a4a4a;">//读场景</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#ffcb6b;">Lock</span><span style="color:#eeffff;"> readLock </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> lock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">readLock</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-readLock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">lock</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#4a4a4a;">//read job</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#eeffff;">readLock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">unlock</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
+<pre data-lang="java" style="background-color:#212121;color:#eeffff;" class="language-java "><code class="language-java" data-lang="java"><span style="font-style:italic;color:#4a4a4a;">//ReadWriteLock用法     
+</span><span style="color:#ffcb6b;">ReadWriteLock</span><span> lock </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">ReentrantReadWriteLock</span><span style="color:#89ddff;">(); 
+</span><span style="font-style:italic;color:#4a4a4a;">//写场景 
+</span><span style="color:#ffcb6b;">Lock</span><span> writeLock </span><span style="color:#89ddff;">=</span><span> lock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">writeLock</span><span style="color:#89ddff;">();  
+</span><span>writeLock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">lock</span><span style="color:#89ddff;">();  
+</span><span style="font-style:italic;color:#4a4a4a;">//write job
+</span><span>writeLock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">unlock</span><span style="color:#89ddff;">();
+</span><span>
+</span><span style="font-style:italic;color:#4a4a4a;">//读场景
+</span><span style="color:#ffcb6b;">Lock</span><span> readLock </span><span style="color:#89ddff;">=</span><span> lock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">readLock</span><span style="color:#89ddff;">();
+</span><span>readLock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">lock</span><span style="color:#89ddff;">();
+</span><span style="font-style:italic;color:#4a4a4a;">//read job
+</span><span>readLock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">unlock</span><span style="color:#89ddff;">();
 </span></code></pre>
 <p>条件信号Condition：</p>
-<pre style="background-color:#212121;">
-<code class="language-java" data-lang="java"><span style="font-style:italic;color:#c792ea;">class </span><span style="color:#ffcb6b;">BoundedBuffer </span><span style="color:#89ddff;">{  </span><span style="color:#eeffff;">
-  </span><span style="color:#c792ea;">final </span><span style="color:#ffcb6b;">Lock </span><span style="color:#eeffff;">lock </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">ReentrantLock</span><span style="color:#89ddff;">();      </span><span style="font-style:italic;color:#4a4a4a;">//锁对象  </span><span style="font-style:italic;color:#4a4a4a;">
-  </span><span style="color:#c792ea;">final </span><span style="color:#ffcb6b;">Condition </span><span style="color:#eeffff;">notFull  </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> lock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">newCondition</span><span style="color:#89ddff;">(); </span><span style="font-style:italic;color:#4a4a4a;">//写线程锁  </span><span style="font-style:italic;color:#4a4a4a;">
-  </span><span style="color:#c792ea;">final </span><span style="color:#ffcb6b;">Condition </span><span style="color:#eeffff;">notEmpty </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> lock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">newCondition</span><span style="color:#89ddff;">(); </span><span style="font-style:italic;color:#4a4a4a;">//读线程锁  </span><span style="font-style:italic;color:#4a4a4a;">
-  </span><span style="color:#eeffff;">
-  </span><span style="color:#c792ea;">final </span><span style="color:#ffcb6b;">Object</span><span style="color:#c792ea;">[] </span><span style="color:#eeffff;">items </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Object</span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">100</span><span style="color:#89ddff;">];</span><span style="font-style:italic;color:#4a4a4a;">//缓存队列  </span><span style="font-style:italic;color:#4a4a4a;">
-  </span><span style="font-style:italic;color:#c792ea;">int </span><span style="color:#eeffff;">putptr</span><span style="color:#89ddff;">;  </span><span style="font-style:italic;color:#4a4a4a;">//写索引  </span><span style="font-style:italic;color:#4a4a4a;">
-  </span><span style="font-style:italic;color:#c792ea;">int </span><span style="color:#eeffff;">takeptr</span><span style="color:#89ddff;">; </span><span style="font-style:italic;color:#4a4a4a;">//读索引  </span><span style="font-style:italic;color:#4a4a4a;">
-  </span><span style="font-style:italic;color:#c792ea;">int </span><span style="color:#eeffff;">count</span><span style="color:#89ddff;">;   </span><span style="font-style:italic;color:#4a4a4a;">//队列中数据数目  </span><span style="font-style:italic;color:#4a4a4a;">
-  </span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#4a4a4a;">//写  </span><span style="font-style:italic;color:#4a4a4a;">
-  </span><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">put</span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">Object </span><span style="color:#f78c6c;">x</span><span style="color:#89ddff;">) </span><span style="color:#c792ea;">throws </span><span style="color:#ffcb6b;">InterruptedException </span><span style="color:#89ddff;">{  </span><span style="color:#eeffff;">
-  lock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">lock</span><span style="color:#89ddff;">(); </span><span style="font-style:italic;color:#4a4a4a;">//锁定  </span><span style="font-style:italic;color:#4a4a4a;">
-  </span><span style="font-style:italic;color:#c792ea;">try </span><span style="color:#89ddff;">{  </span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#4a4a4a;">// 如果队列满，则阻塞&lt;写线程&gt;  </span><span style="font-style:italic;color:#4a4a4a;">
-    </span><span style="font-style:italic;color:#c792ea;">while </span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">count </span><span style="color:#89ddff;">==</span><span style="color:#eeffff;"> items</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">length</span><span style="color:#89ddff;">) {  </span><span style="color:#eeffff;">
-    notFull</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">await</span><span style="color:#89ddff;">();   </span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">}  </span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#4a4a4a;">// 写入队列，并更新写索引  </span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#eeffff;">    items[putptr] </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> x</span><span style="color:#89ddff;">;   </span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#89ddff;">(++</span><span style="color:#eeffff;">putptr </span><span style="color:#89ddff;">==</span><span style="color:#eeffff;"> items</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">length</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;"> putptr </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;   </span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">++</span><span style="color:#eeffff;">count</span><span style="color:#89ddff;">;  </span><span style="color:#eeffff;">
-  </span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#4a4a4a;">// 唤醒&lt;读线程&gt;  </span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#eeffff;">    notEmpty</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">signal</span><span style="color:#89ddff;">();   </span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">} </span><span style="font-style:italic;color:#c792ea;">finally </span><span style="color:#89ddff;">{   </span><span style="color:#eeffff;">
-    lock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">unlock</span><span style="color:#89ddff;">();</span><span style="font-style:italic;color:#4a4a4a;">//解除锁定   </span><span style="font-style:italic;color:#4a4a4a;">
-  </span><span style="color:#89ddff;">}   </span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">}  </span><span style="color:#eeffff;">
-  </span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#4a4a4a;">//读   </span><span style="font-style:italic;color:#4a4a4a;">
-  </span><span style="color:#c792ea;">public </span><span style="color:#ffcb6b;">Object </span><span style="color:#82aaff;">take</span><span style="color:#89ddff;">() </span><span style="color:#c792ea;">throws </span><span style="color:#ffcb6b;">InterruptedException </span><span style="color:#89ddff;">{   </span><span style="color:#eeffff;">
-  lock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">lock</span><span style="color:#89ddff;">(); </span><span style="font-style:italic;color:#4a4a4a;">//锁定   </span><span style="font-style:italic;color:#4a4a4a;">
-  </span><span style="font-style:italic;color:#c792ea;">try </span><span style="color:#89ddff;">{  </span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#4a4a4a;">// 如果队列空，则阻塞&lt;读线程&gt;  </span><span style="font-style:italic;color:#4a4a4a;">
-    </span><span style="font-style:italic;color:#c792ea;">while </span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">count </span><span style="color:#89ddff;">== </span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">) {  </span><span style="color:#eeffff;">
-     notEmpty</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">await</span><span style="color:#89ddff;">();  </span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">}  </span><span style="color:#eeffff;">
-  </span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#4a4a4a;">//读取队列，并更新读索引  </span><span style="font-style:italic;color:#4a4a4a;">
-    </span><span style="color:#ffcb6b;">Object</span><span style="color:#eeffff;"> x </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> items[takeptr]</span><span style="color:#89ddff;">;   </span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#89ddff;">(++</span><span style="color:#eeffff;">takeptr </span><span style="color:#89ddff;">==</span><span style="color:#eeffff;"> items</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">length</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;"> takeptr </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;  </span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">--</span><span style="color:#eeffff;">count</span><span style="color:#89ddff;">;  </span><span style="color:#eeffff;">
-  </span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#4a4a4a;">// 唤醒&lt;写线程&gt;  </span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#eeffff;">    notFull</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">signal</span><span style="color:#89ddff;">();   </span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#c792ea;">return</span><span style="color:#eeffff;"> x</span><span style="color:#89ddff;">;   </span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">} </span><span style="font-style:italic;color:#c792ea;">finally </span><span style="color:#89ddff;">{   </span><span style="color:#eeffff;">
-    lock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">unlock</span><span style="color:#89ddff;">();</span><span style="font-style:italic;color:#4a4a4a;">//解除锁定   </span><span style="font-style:italic;color:#4a4a4a;">
-  </span><span style="color:#89ddff;">}   </span><span style="color:#eeffff;">
-</span></code></pre><p>
+<pre data-lang="java" style="background-color:#212121;color:#eeffff;" class="language-java "><code class="language-java" data-lang="java"><span style="font-style:italic;color:#c792ea;">class </span><span style="color:#ffcb6b;">BoundedBuffer </span><span style="color:#89ddff;">{  
+</span><span>  </span><span style="color:#c792ea;">final </span><span style="color:#ffcb6b;">Lock </span><span>lock </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">ReentrantLock</span><span style="color:#89ddff;">();      </span><span style="font-style:italic;color:#4a4a4a;">//锁对象  
+</span><span>  </span><span style="color:#c792ea;">final </span><span style="color:#ffcb6b;">Condition </span><span>notFull  </span><span style="color:#89ddff;">=</span><span> lock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">newCondition</span><span style="color:#89ddff;">(); </span><span style="font-style:italic;color:#4a4a4a;">//写线程锁  
+</span><span>  </span><span style="color:#c792ea;">final </span><span style="color:#ffcb6b;">Condition </span><span>notEmpty </span><span style="color:#89ddff;">=</span><span> lock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">newCondition</span><span style="color:#89ddff;">(); </span><span style="font-style:italic;color:#4a4a4a;">//读线程锁  
+</span><span>  
+</span><span>  </span><span style="color:#c792ea;">final </span><span style="color:#ffcb6b;">Object</span><span style="color:#c792ea;">[] </span><span>items </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Object</span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">100</span><span style="color:#89ddff;">];</span><span style="font-style:italic;color:#4a4a4a;">//缓存队列  
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">int </span><span>putptr</span><span style="color:#89ddff;">;  </span><span style="font-style:italic;color:#4a4a4a;">//写索引  
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">int </span><span>takeptr</span><span style="color:#89ddff;">; </span><span style="font-style:italic;color:#4a4a4a;">//读索引  
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">int </span><span>count</span><span style="color:#89ddff;">;   </span><span style="font-style:italic;color:#4a4a4a;">//队列中数据数目  
+</span><span>  
+</span><span>  </span><span style="font-style:italic;color:#4a4a4a;">//写  
+</span><span>  </span><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">put</span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">Object </span><span style="color:#f78c6c;">x</span><span style="color:#89ddff;">) </span><span style="color:#c792ea;">throws </span><span style="color:#ffcb6b;">InterruptedException </span><span style="color:#89ddff;">{  
+</span><span>  lock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">lock</span><span style="color:#89ddff;">(); </span><span style="font-style:italic;color:#4a4a4a;">//锁定  
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">try </span><span style="color:#89ddff;">{  
+</span><span>    </span><span style="font-style:italic;color:#4a4a4a;">// 如果队列满，则阻塞&lt;写线程&gt;  
+</span><span>    </span><span style="font-style:italic;color:#c792ea;">while </span><span style="color:#89ddff;">(</span><span>count </span><span style="color:#89ddff;">==</span><span> items</span><span style="color:#89ddff;">.</span><span>length</span><span style="color:#89ddff;">) {  
+</span><span>    notFull</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">await</span><span style="color:#89ddff;">();   
+</span><span>    </span><span style="color:#89ddff;">}  
+</span><span>    </span><span style="font-style:italic;color:#4a4a4a;">// 写入队列，并更新写索引  
+</span><span>    items[putptr] </span><span style="color:#89ddff;">=</span><span> x</span><span style="color:#89ddff;">;   
+</span><span>    </span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#89ddff;">(++</span><span>putptr </span><span style="color:#89ddff;">==</span><span> items</span><span style="color:#89ddff;">.</span><span>length</span><span style="color:#89ddff;">)</span><span> putptr </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;   
+</span><span>    </span><span style="color:#89ddff;">++</span><span>count</span><span style="color:#89ddff;">;  
+</span><span>  
+</span><span>    </span><span style="font-style:italic;color:#4a4a4a;">// 唤醒&lt;读线程&gt;  
+</span><span>    notEmpty</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">signal</span><span style="color:#89ddff;">();   
+</span><span>  </span><span style="color:#89ddff;">} </span><span style="font-style:italic;color:#c792ea;">finally </span><span style="color:#89ddff;">{   
+</span><span>    lock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">unlock</span><span style="color:#89ddff;">();</span><span style="font-style:italic;color:#4a4a4a;">//解除锁定   
+</span><span>  </span><span style="color:#89ddff;">}   
+</span><span>  </span><span style="color:#89ddff;">}  
+</span><span>  
+</span><span>  </span><span style="font-style:italic;color:#4a4a4a;">//读   
+</span><span>  </span><span style="color:#c792ea;">public </span><span style="color:#ffcb6b;">Object </span><span style="color:#82aaff;">take</span><span style="color:#89ddff;">() </span><span style="color:#c792ea;">throws </span><span style="color:#ffcb6b;">InterruptedException </span><span style="color:#89ddff;">{   
+</span><span>  lock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">lock</span><span style="color:#89ddff;">(); </span><span style="font-style:italic;color:#4a4a4a;">//锁定   
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">try </span><span style="color:#89ddff;">{  
+</span><span>    </span><span style="font-style:italic;color:#4a4a4a;">// 如果队列空，则阻塞&lt;读线程&gt;  
+</span><span>    </span><span style="font-style:italic;color:#c792ea;">while </span><span style="color:#89ddff;">(</span><span>count </span><span style="color:#89ddff;">== </span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">) {  
+</span><span>     notEmpty</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">await</span><span style="color:#89ddff;">();  
+</span><span>    </span><span style="color:#89ddff;">}  
+</span><span>  
+</span><span>    </span><span style="font-style:italic;color:#4a4a4a;">//读取队列，并更新读索引  
+</span><span>    </span><span style="color:#ffcb6b;">Object</span><span> x </span><span style="color:#89ddff;">=</span><span> items[takeptr]</span><span style="color:#89ddff;">;   
+</span><span>    </span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#89ddff;">(++</span><span>takeptr </span><span style="color:#89ddff;">==</span><span> items</span><span style="color:#89ddff;">.</span><span>length</span><span style="color:#89ddff;">)</span><span> takeptr </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;  
+</span><span>    </span><span style="color:#89ddff;">--</span><span>count</span><span style="color:#89ddff;">;  
+</span><span>  
+</span><span>    </span><span style="font-style:italic;color:#4a4a4a;">// 唤醒&lt;写线程&gt;  
+</span><span>    notFull</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">signal</span><span style="color:#89ddff;">();   
+</span><span>    </span><span style="font-style:italic;color:#c792ea;">return</span><span> x</span><span style="color:#89ddff;">;   
+</span><span>  </span><span style="color:#89ddff;">} </span><span style="font-style:italic;color:#c792ea;">finally </span><span style="color:#89ddff;">{   
+</span><span>    lock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">unlock</span><span style="color:#89ddff;">();</span><span style="font-style:italic;color:#4a4a4a;">//解除锁定   
+</span><span>  </span><span style="color:#89ddff;">}   
+</span></code></pre>
+<p>
   <strong>6）Atomics</strong></p>
 <p>Java中的Atomics有AtomicInteger、AtomicReference、AtomicIntegerArray等。</p>
 <p>其中AtomicInteger代表整数、AtomicReference<T>代表可能是离散的enum的状态、AtomicIntegerArray代表整数数组。</p>
 <p>AtomicXxx的几个常用的原子方法：</p>
-<pre style="background-color:#212121;">
-<code class="language-java" data-lang="java"><span style="color:#82aaff;">compareAndSet</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">test</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> newValue</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">addAndGet</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">delta</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">get</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">incrementAndGet</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">decrementAndGet</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">getAndSet</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">newValue</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
+<pre data-lang="java" style="background-color:#212121;color:#eeffff;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#82aaff;">compareAndSet</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">test</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> newValue</span><span style="color:#89ddff;">)
+</span><span style="color:#82aaff;">addAndGet</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">delta</span><span style="color:#89ddff;">)
+</span><span style="color:#82aaff;">get</span><span style="color:#89ddff;">()
+</span><span style="color:#82aaff;">incrementAndGet</span><span style="color:#89ddff;">()
+</span><span style="color:#82aaff;">decrementAndGet</span><span style="color:#89ddff;">()
+</span><span style="color:#82aaff;">getAndSet</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">newValue</span><span style="color:#89ddff;">)
 </span></code></pre>
 <p>等。</p>
 <p>
@@ -381,10 +374,9 @@ readLock</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;"
 <p>并发HashMap。需要注意的是，并发情况下优先使用putIfAbsent，谨慎使用put。</p>
 <p>问题1: 有了ConcurrentHashMap，Hashtable是否无存在意义？</p>
 <p>问题2: 非线程安全的HashMap，在哪些情况下使用？</p>
-<pre style="background-color:#212121;">
-<code class="language-java" data-lang="java"><span style="color:#ffcb6b;">ConcurrentHashMap</span><span style="color:#eeffff;"> map </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">ConcurrentHashMap</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">String</span><span style="color:#89ddff;">,</span><span style="color:#ffcb6b;">String</span><span style="color:#89ddff;">&gt;();</span><span style="color:#eeffff;">
-map</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">putIfAbsent</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">keyA</span><span style="color:#89ddff;">&quot;, &quot;</span><span style="color:#c3e88d;">valueA</span><span style="color:#89ddff;">&quot;);</span><span style="color:#eeffff;">
-map</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">put</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">keyA</span><span style="color:#89ddff;">&quot;, &quot;</span><span style="color:#c3e88d;">valueA</span><span style="color:#89ddff;">&quot;);</span><span style="color:#eeffff;">
+<pre data-lang="java" style="background-color:#212121;color:#eeffff;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#ffcb6b;">ConcurrentHashMap</span><span> map </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">ConcurrentHashMap</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">String</span><span style="color:#89ddff;">,</span><span style="color:#ffcb6b;">String</span><span style="color:#89ddff;">&gt;();
+</span><span>map</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">putIfAbsent</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">keyA</span><span style="color:#89ddff;">&quot;, &quot;</span><span style="color:#c3e88d;">valueA</span><span style="color:#89ddff;">&quot;);
+</span><span>map</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">put</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">keyA</span><span style="color:#89ddff;">&quot;, &quot;</span><span style="color:#c3e88d;">valueA</span><span style="color:#89ddff;">&quot;);
 </span></code></pre>
 <p>CopyOnWriteArrayList、CopyOnWriteArraySet</p>
 <p>CopyOnWrite集合。可以理解为内存的读写分离，主要用作自己实现内存cache的场景，并且写少读多的情况下。这时的写是先Copy一份集合副本，再在副本上做Write操作。由于Write操作需要增加一次Copy副本的动作，所以Write操作可能比非CopyOnWrite的集合性能更低。因此，CopyOnWrite集合常用于写操作次数远远小于读操作次数时的性能优化。</p>
@@ -400,28 +392,28 @@ map</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">put<
   需要注意的是，上图中Thread#2 Thread#3在调用latch.countDown()之后，并不进行等待，线程继续执行后续指令。而Thread#1在latch.await()处阻塞，直到Thread#2 Thread#3调用latch.countDown()完成Thread#2 #3 Result生成，然后Thread#1继续，例如处理Thread#1 #2 #3的Result。</p>
 <p>
   代码样例如下：</p>
-<pre style="background-color:#212121;">
-<code class="language-java" data-lang="java"><span style="color:#c792ea;">final </span><span style="color:#ffcb6b;">CountDownLatch</span><span style="color:#eeffff;"> latch </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">CountDownLatch</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-</span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#eeffff;"> tp5 </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">60</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">TimeUnit</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">SECONDS</span><span style="color:#89ddff;">, </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">LinkedBlockingQueue</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">Runnable</span><span style="color:#89ddff;">&gt;(</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">));</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">for</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">&lt;</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">++)</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
-  tp5</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">execute</span><span style="color:#89ddff;">(</span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Runnable</span><span style="color:#89ddff;">() </span><span style="color:#82aaff;">
-  </span><span style="color:#89ddff;">{</span><span style="color:#82aaff;">
-    </span><span style="color:#89ddff;">@</span><span style="color:#eeffff;">Override</span><span style="color:#82aaff;">
-    </span><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">run</span><span style="color:#89ddff;">() {</span><span style="color:#82aaff;">
-      </span><span style="font-style:italic;color:#4a4a4a;">// do thread job</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#82aaff;">      latch</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">countDown</span><span style="color:#89ddff;">();</span><span style="color:#82aaff;">
-    </span><span style="color:#89ddff;">}</span><span style="color:#82aaff;">
-  </span><span style="color:#89ddff;">});</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">try</span><span style="color:#89ddff;">{ </span><span style="color:#eeffff;">
-    latch</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">await</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#4a4a4a;">// do result handle job</span><span style="font-style:italic;color:#4a4a4a;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">catch</span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">InterruptedException </span><span style="color:#f78c6c;">ex</span><span style="color:#89ddff;">){</span><span style="color:#eeffff;">
-    ex</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span></code></pre><p>
+<pre data-lang="java" style="background-color:#212121;color:#eeffff;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#c792ea;">final </span><span style="color:#ffcb6b;">CountDownLatch</span><span> latch </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">CountDownLatch</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">);
+</span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span> tp5 </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">60</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">TimeUnit</span><span style="color:#89ddff;">.</span><span>SECONDS</span><span style="color:#89ddff;">, </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">LinkedBlockingQueue</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">Runnable</span><span style="color:#89ddff;">&gt;(</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">));
+</span><span style="font-style:italic;color:#c792ea;">for</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int</span><span> i</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;</span><span> i</span><span style="color:#89ddff;">&lt;</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">;</span><span> i</span><span style="color:#89ddff;">++)
+</span><span style="color:#89ddff;">{
+</span><span>  tp5</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">execute</span><span style="color:#89ddff;">(</span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Runnable</span><span style="color:#89ddff;">() 
+</span><span style="color:#82aaff;">  </span><span style="color:#89ddff;">{
+</span><span style="color:#82aaff;">    </span><span style="color:#89ddff;">@</span><span>Override
+</span><span style="color:#82aaff;">    </span><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">run</span><span style="color:#89ddff;">() {
+</span><span style="color:#82aaff;">      </span><span style="font-style:italic;color:#4a4a4a;">// do thread job
+</span><span style="color:#82aaff;">      latch</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">countDown</span><span style="color:#89ddff;">();
+</span><span style="color:#82aaff;">    </span><span style="color:#89ddff;">}
+</span><span style="color:#82aaff;">  </span><span style="color:#89ddff;">});
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">try</span><span style="color:#89ddff;">{ 
+</span><span>    latch</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">await</span><span style="color:#89ddff;">();
+</span><span>    </span><span style="font-style:italic;color:#4a4a4a;">// do result handle job
+</span><span>  </span><span style="color:#89ddff;">}
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">catch</span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">InterruptedException </span><span style="color:#f78c6c;">ex</span><span style="color:#89ddff;">){
+</span><span>    ex</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();
+</span><span>  </span><span style="color:#89ddff;">}
+</span><span style="color:#89ddff;">}
+</span></code></pre>
+<p>
    </p>
 <p>
   <strong>9）CyclicBarrier</strong></p>
@@ -431,37 +423,37 @@ map</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">put<
   <img src="/images/CyclicBarrier.png" /></p>
 <p>
   代码样例如下：</p>
-<pre style="background-color:#212121;">
-<code class="language-java" data-lang="java"><span style="color:#c792ea;">final </span><span style="color:#ffcb6b;">CyclicBarrier</span><span style="color:#eeffff;"> barr </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">CyclicBarrier</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">+</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-</span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#eeffff;"> tp6 </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">60</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">TimeUnit</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">SECONDS</span><span style="color:#89ddff;">, </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">LinkedBlockingQueue</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">Runnable</span><span style="color:#89ddff;">&gt;(</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">));</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">for</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">&lt;</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">++)</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
-  tp6</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">execute</span><span style="color:#89ddff;">(</span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Runnable</span><span style="color:#89ddff;">() </span><span style="color:#82aaff;">
-  </span><span style="color:#89ddff;">{</span><span style="color:#82aaff;">
-    </span><span style="color:#89ddff;">@</span><span style="color:#eeffff;">Override</span><span style="color:#82aaff;">
-    </span><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">run</span><span style="color:#89ddff;">() {</span><span style="color:#82aaff;">
-      </span><span style="font-style:italic;color:#4a4a4a;">// do thread job</span><span style="font-style:italic;color:#4a4a4a;">
-      </span><span style="font-style:italic;color:#c792ea;">try </span><span style="color:#89ddff;">{</span><span style="color:#82aaff;">
-        barr</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">await</span><span style="color:#89ddff;">();</span><span style="color:#82aaff;">
-      </span><span style="color:#89ddff;">} </span><span style="font-style:italic;color:#c792ea;">catch </span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">InterruptedException </span><span style="color:#f78c6c;">e</span><span style="color:#89ddff;">) {</span><span style="color:#82aaff;">
-        e</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();</span><span style="color:#82aaff;">
-      </span><span style="color:#89ddff;">} </span><span style="font-style:italic;color:#c792ea;">catch </span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">BrokenBarrierException </span><span style="color:#f78c6c;">e</span><span style="color:#89ddff;">) {</span><span style="color:#82aaff;">
-        e</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();</span><span style="color:#82aaff;">
-      </span><span style="color:#89ddff;">}</span><span style="color:#82aaff;">
-      </span><span style="color:#82aaff;">
-    </span><span style="color:#89ddff;">}</span><span style="color:#82aaff;">
-  </span><span style="color:#89ddff;">});</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">try</span><span style="color:#89ddff;">{ </span><span style="color:#eeffff;">
-    barr</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">await</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#4a4a4a;">// do Barrier over job</span><span style="font-style:italic;color:#4a4a4a;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">catch</span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">InterruptedException </span><span style="color:#f78c6c;">ex</span><span style="color:#89ddff;">){</span><span style="color:#eeffff;">
-    ex</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">} </span><span style="font-style:italic;color:#c792ea;">catch </span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">BrokenBarrierException </span><span style="color:#f78c6c;">e</span><span style="color:#89ddff;">) {</span><span style="color:#eeffff;">
-    e</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span></code></pre><p>
+<pre data-lang="java" style="background-color:#212121;color:#eeffff;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#c792ea;">final </span><span style="color:#ffcb6b;">CyclicBarrier</span><span> barr </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">CyclicBarrier</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">+</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">);
+</span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span> tp6 </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">60</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">TimeUnit</span><span style="color:#89ddff;">.</span><span>SECONDS</span><span style="color:#89ddff;">, </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">LinkedBlockingQueue</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">Runnable</span><span style="color:#89ddff;">&gt;(</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">));
+</span><span style="font-style:italic;color:#c792ea;">for</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int</span><span> i</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;</span><span> i</span><span style="color:#89ddff;">&lt;</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">;</span><span> i</span><span style="color:#89ddff;">++)
+</span><span style="color:#89ddff;">{
+</span><span>  tp6</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">execute</span><span style="color:#89ddff;">(</span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Runnable</span><span style="color:#89ddff;">() 
+</span><span style="color:#82aaff;">  </span><span style="color:#89ddff;">{
+</span><span style="color:#82aaff;">    </span><span style="color:#89ddff;">@</span><span>Override
+</span><span style="color:#82aaff;">    </span><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">run</span><span style="color:#89ddff;">() {
+</span><span style="color:#82aaff;">      </span><span style="font-style:italic;color:#4a4a4a;">// do thread job
+</span><span style="color:#82aaff;">      </span><span style="font-style:italic;color:#c792ea;">try </span><span style="color:#89ddff;">{
+</span><span style="color:#82aaff;">        barr</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">await</span><span style="color:#89ddff;">();
+</span><span style="color:#82aaff;">      </span><span style="color:#89ddff;">} </span><span style="font-style:italic;color:#c792ea;">catch </span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">InterruptedException </span><span style="color:#f78c6c;">e</span><span style="color:#89ddff;">) {
+</span><span style="color:#82aaff;">        e</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();
+</span><span style="color:#82aaff;">      </span><span style="color:#89ddff;">} </span><span style="font-style:italic;color:#c792ea;">catch </span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">BrokenBarrierException </span><span style="color:#f78c6c;">e</span><span style="color:#89ddff;">) {
+</span><span style="color:#82aaff;">        e</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();
+</span><span style="color:#82aaff;">      </span><span style="color:#89ddff;">}
+</span><span style="color:#82aaff;">      
+</span><span style="color:#82aaff;">    </span><span style="color:#89ddff;">}
+</span><span style="color:#82aaff;">  </span><span style="color:#89ddff;">});
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">try</span><span style="color:#89ddff;">{ 
+</span><span>    barr</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">await</span><span style="color:#89ddff;">();
+</span><span>    </span><span style="font-style:italic;color:#4a4a4a;">// do Barrier over job
+</span><span>  </span><span style="color:#89ddff;">}
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">catch</span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">InterruptedException </span><span style="color:#f78c6c;">ex</span><span style="color:#89ddff;">){
+</span><span>    ex</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();
+</span><span>  </span><span style="color:#89ddff;">} </span><span style="font-style:italic;color:#c792ea;">catch </span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">BrokenBarrierException </span><span style="color:#f78c6c;">e</span><span style="color:#89ddff;">) {
+</span><span>    e</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();
+</span><span>  </span><span style="color:#89ddff;">}
+</span><span style="color:#89ddff;">}
+</span></code></pre>
+<p>
   需要注意的是：</p>
 <p>
   1、CyclicBarrier是可以被循环使用的。new CyclicBarrier(count+1)被wait到之后，所有的线程又可以开始新的一轮CyclicBarrier的await()。</p>
@@ -481,29 +473,29 @@ map</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">put<
   信号量常用于管理有限个数的资源，如Rpc网络连接数、数据库连接池连接数等。</p>
 <p>
   代码样例如下：</p>
-<pre style="background-color:#212121;">
-<code class="language-java" data-lang="java"><span style="color:#c792ea;">final </span><span style="color:#ffcb6b;">Semaphore</span><span style="color:#eeffff;"> sema </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Semaphore</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">);</span><span style="font-style:italic;color:#4a4a4a;">// 10个资源，如当前数据库连接池中有10个连接资源</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#eeffff;"> tp7 </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">100</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">100</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">60</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">TimeUnit</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">SECONDS</span><span style="color:#89ddff;">, </span><span style="color:#eeffff;">
-      </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">LinkedBlockingQueue</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">Runnable</span><span style="color:#89ddff;">&gt;(</span><span style="color:#f78c6c;">100</span><span style="color:#89ddff;">));</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">for</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">&lt;</span><span style="color:#f78c6c;">50</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">++)</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
-  tp7</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">execute</span><span style="color:#89ddff;">(</span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Runnable</span><span style="color:#89ddff;">() </span><span style="color:#82aaff;">
-  </span><span style="color:#89ddff;">{</span><span style="color:#82aaff;">
-    </span><span style="color:#89ddff;">@</span><span style="color:#eeffff;">Override</span><span style="color:#82aaff;">
-    </span><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">run</span><span style="color:#89ddff;">() {</span><span style="color:#82aaff;">
-      </span><span style="font-style:italic;color:#c792ea;">try </span><span style="color:#89ddff;">{</span><span style="color:#82aaff;">
-        sema</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">acquire</span><span style="color:#89ddff;">();</span><span style="color:#82aaff;">
-        </span><span style="font-style:italic;color:#4a4a4a;">// do job use Shared resource, suchas DBConnectionPoolItem.</span><span style="font-style:italic;color:#4a4a4a;">
-      </span><span style="color:#89ddff;">} </span><span style="font-style:italic;color:#c792ea;">catch </span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">InterruptedException </span><span style="color:#f78c6c;">e</span><span style="color:#89ddff;">) {</span><span style="color:#82aaff;">
-        e</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();</span><span style="color:#82aaff;">
-      </span><span style="color:#89ddff;">}</span><span style="color:#82aaff;">
-      </span><span style="font-style:italic;color:#c792ea;">finally</span><span style="color:#89ddff;">{</span><span style="color:#82aaff;">
-        sema</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">release</span><span style="color:#89ddff;">();</span><span style="color:#82aaff;">
-      </span><span style="color:#89ddff;">}</span><span style="color:#82aaff;">
-    </span><span style="color:#89ddff;">}</span><span style="color:#82aaff;">
-  </span><span style="color:#89ddff;">});</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span></code></pre><p>
+<pre data-lang="java" style="background-color:#212121;color:#eeffff;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#c792ea;">final </span><span style="color:#ffcb6b;">Semaphore</span><span> sema </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Semaphore</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">);</span><span style="font-style:italic;color:#4a4a4a;">// 10个资源，如当前数据库连接池中有10个连接资源
+</span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span> tp7 </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">100</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">100</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">60</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">TimeUnit</span><span style="color:#89ddff;">.</span><span>SECONDS</span><span style="color:#89ddff;">, 
+</span><span>      </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">LinkedBlockingQueue</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">Runnable</span><span style="color:#89ddff;">&gt;(</span><span style="color:#f78c6c;">100</span><span style="color:#89ddff;">));
+</span><span style="font-style:italic;color:#c792ea;">for</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int</span><span> i</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;</span><span> i</span><span style="color:#89ddff;">&lt;</span><span style="color:#f78c6c;">50</span><span style="color:#89ddff;">;</span><span> i</span><span style="color:#89ddff;">++)
+</span><span style="color:#89ddff;">{
+</span><span>  tp7</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">execute</span><span style="color:#89ddff;">(</span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Runnable</span><span style="color:#89ddff;">() 
+</span><span style="color:#82aaff;">  </span><span style="color:#89ddff;">{
+</span><span style="color:#82aaff;">    </span><span style="color:#89ddff;">@</span><span>Override
+</span><span style="color:#82aaff;">    </span><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">run</span><span style="color:#89ddff;">() {
+</span><span style="color:#82aaff;">      </span><span style="font-style:italic;color:#c792ea;">try </span><span style="color:#89ddff;">{
+</span><span style="color:#82aaff;">        sema</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">acquire</span><span style="color:#89ddff;">();
+</span><span style="color:#82aaff;">        </span><span style="font-style:italic;color:#4a4a4a;">// do job use Shared resource, suchas DBConnectionPoolItem.
+</span><span style="color:#82aaff;">      </span><span style="color:#89ddff;">} </span><span style="font-style:italic;color:#c792ea;">catch </span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">InterruptedException </span><span style="color:#f78c6c;">e</span><span style="color:#89ddff;">) {
+</span><span style="color:#82aaff;">        e</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();
+</span><span style="color:#82aaff;">      </span><span style="color:#89ddff;">}
+</span><span style="color:#82aaff;">      </span><span style="font-style:italic;color:#c792ea;">finally</span><span style="color:#89ddff;">{
+</span><span style="color:#82aaff;">        sema</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">release</span><span style="color:#89ddff;">();
+</span><span style="color:#82aaff;">      </span><span style="color:#89ddff;">}
+</span><span style="color:#82aaff;">    </span><span style="color:#89ddff;">}
+</span><span style="color:#82aaff;">  </span><span style="color:#89ddff;">});
+</span><span style="color:#89ddff;">}
+</span></code></pre>
+<p>
   <strong>11）Exchanger</strong></p>
 <p>
   Exchanger比较特殊，它能实现恰好在两个线程对换某个指定类型的数据。exchange()调用将会使先执行到的线程阻塞，后执行到的线程执行exchange后完成数据对换，然后两个线程继续执行后续指令。</p>
@@ -515,72 +507,72 @@ map</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">put<
   代码样例如下：</p>
 <p>
   Main.java:</p>
-<pre style="background-color:#212121;">
-<code class="language-java" data-lang="java"><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">class </span><span style="color:#ffcb6b;">TestExchanger </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
-  </span><span style="color:#c792ea;">public static </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">main</span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">String</span><span style="color:#c792ea;">[] </span><span style="color:#f78c6c;">args</span><span style="color:#89ddff;">) {</span><span style="color:#eeffff;">
-    </span><span style="color:#ffcb6b;">Exchanger</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">List </span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">Integer</span><span style="color:#89ddff;">&gt;&gt;</span><span style="color:#eeffff;"> exchanger </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Exchanger</span><span style="color:#89ddff;">&lt;&gt;();</span><span style="color:#eeffff;">
-    </span><span style="color:#ffcb6b;">Consumer</span><span style="color:#eeffff;"> c </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Consumer</span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">exchanger</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-    </span><span style="color:#ffcb6b;">Producer</span><span style="color:#eeffff;"> p </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Producer</span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">exchanger</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-    c</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">start</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-    p</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">start</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span></code></pre><p>
+<pre data-lang="java" style="background-color:#212121;color:#eeffff;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">class </span><span style="color:#ffcb6b;">TestExchanger </span><span style="color:#89ddff;">{
+</span><span>  </span><span style="color:#c792ea;">public static </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">main</span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">String</span><span style="color:#c792ea;">[] </span><span style="color:#f78c6c;">args</span><span style="color:#89ddff;">) {
+</span><span>    </span><span style="color:#ffcb6b;">Exchanger</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">List </span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">Integer</span><span style="color:#89ddff;">&gt;&gt;</span><span> exchanger </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Exchanger</span><span style="color:#89ddff;">&lt;&gt;();
+</span><span>    </span><span style="color:#ffcb6b;">Consumer</span><span> c </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Consumer</span><span style="color:#89ddff;">(</span><span>exchanger</span><span style="color:#89ddff;">);
+</span><span>    </span><span style="color:#ffcb6b;">Producer</span><span> p </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Producer</span><span style="color:#89ddff;">(</span><span>exchanger</span><span style="color:#89ddff;">);
+</span><span>    c</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">start</span><span style="color:#89ddff;">();
+</span><span>    p</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">start</span><span style="color:#89ddff;">();
+</span><span>  </span><span style="color:#89ddff;">}
+</span><span style="color:#89ddff;">}
+</span></code></pre>
+<p>
   Consumer.java:</p>
-<pre style="background-color:#212121;">
-<code class="language-java" data-lang="java"><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">class </span><span style="color:#ffcb6b;">Consumer </span><span style="color:#c792ea;">extends </span><span style="color:#c3e88d;">Thread </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
-  </span><span style="color:#ffcb6b;">List</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">Integer</span><span style="color:#89ddff;">&gt; </span><span style="color:#eeffff;">list </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">ArrayList</span><span style="color:#89ddff;">&lt;&gt;();</span><span style="color:#eeffff;">
-  </span><span style="color:#ffcb6b;">Exchanger</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">List </span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">Integer</span><span style="color:#89ddff;">&gt;&gt; </span><span style="color:#eeffff;">exchanger </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">null</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-  </span><span style="color:#c792ea;">public </span><span style="color:#82aaff;">Consumer</span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">Exchanger</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">List </span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">Integer</span><span style="color:#89ddff;">&gt;&gt; </span><span style="color:#f78c6c;">exchanger</span><span style="color:#89ddff;">) {</span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#ff5370;">super</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#ff5370;">this</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">exchanger </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> exchanger</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">@</span><span style="color:#eeffff;">Override</span><span style="color:#eeffff;">
-  </span><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">run</span><span style="color:#89ddff;">() {</span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#c792ea;">for</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">&lt;</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">++) {</span><span style="color:#eeffff;">
-      </span><span style="font-style:italic;color:#c792ea;">try </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
-        list </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> exchanger</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">exchange</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">list</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-      </span><span style="color:#89ddff;">} </span><span style="font-style:italic;color:#c792ea;">catch </span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">InterruptedException </span><span style="color:#f78c6c;">e</span><span style="color:#89ddff;">) {</span><span style="color:#eeffff;">
-        e</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-      </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-      </span><span style="color:#ffcb6b;">System</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">out</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">print</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">list</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">get</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">)+&quot;</span><span style="color:#c3e88d;">, </span><span style="color:#89ddff;">&quot;);</span><span style="color:#eeffff;">
-      </span><span style="color:#ffcb6b;">System</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">out</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">print</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">list</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">get</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">)+&quot;</span><span style="color:#c3e88d;">, </span><span style="color:#89ddff;">&quot;);</span><span style="color:#eeffff;">
-      </span><span style="color:#ffcb6b;">System</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">out</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">print</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">list</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">get</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">)+&quot;</span><span style="color:#c3e88d;">, </span><span style="color:#89ddff;">&quot;);</span><span style="color:#eeffff;">
-      </span><span style="color:#ffcb6b;">System</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">out</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">print</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">list</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">get</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">)+&quot;</span><span style="color:#c3e88d;">, </span><span style="color:#89ddff;">&quot;);</span><span style="color:#eeffff;">
-      </span><span style="color:#ffcb6b;">System</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">out</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">println</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">list</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">get</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">)+&quot;</span><span style="color:#c3e88d;">, </span><span style="color:#89ddff;">&quot;);</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span></code></pre><p>
+<pre data-lang="java" style="background-color:#212121;color:#eeffff;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">class </span><span style="color:#ffcb6b;">Consumer </span><span style="color:#c792ea;">extends </span><span style="color:#c3e88d;">Thread </span><span style="color:#89ddff;">{
+</span><span>  </span><span style="color:#ffcb6b;">List</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">Integer</span><span style="color:#89ddff;">&gt; </span><span>list </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">ArrayList</span><span style="color:#89ddff;">&lt;&gt;();
+</span><span>  </span><span style="color:#ffcb6b;">Exchanger</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">List </span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">Integer</span><span style="color:#89ddff;">&gt;&gt; </span><span>exchanger </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">null</span><span style="color:#89ddff;">;
+</span><span>  </span><span style="color:#c792ea;">public </span><span style="color:#82aaff;">Consumer</span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">Exchanger</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">List </span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">Integer</span><span style="color:#89ddff;">&gt;&gt; </span><span style="color:#f78c6c;">exchanger</span><span style="color:#89ddff;">) {
+</span><span>    </span><span style="font-style:italic;color:#ff5370;">super</span><span style="color:#89ddff;">();
+</span><span>    </span><span style="font-style:italic;color:#ff5370;">this</span><span style="color:#89ddff;">.</span><span>exchanger </span><span style="color:#89ddff;">=</span><span> exchanger</span><span style="color:#89ddff;">;
+</span><span>  </span><span style="color:#89ddff;">}
+</span><span>  </span><span style="color:#89ddff;">@</span><span>Override
+</span><span>  </span><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">run</span><span style="color:#89ddff;">() {
+</span><span>    </span><span style="font-style:italic;color:#c792ea;">for</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int</span><span> i</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;</span><span> i</span><span style="color:#89ddff;">&lt;</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">;</span><span> i</span><span style="color:#89ddff;">++) {
+</span><span>      </span><span style="font-style:italic;color:#c792ea;">try </span><span style="color:#89ddff;">{
+</span><span>        list </span><span style="color:#89ddff;">=</span><span> exchanger</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">exchange</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">list</span><span style="color:#89ddff;">);
+</span><span>      </span><span style="color:#89ddff;">} </span><span style="font-style:italic;color:#c792ea;">catch </span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">InterruptedException </span><span style="color:#f78c6c;">e</span><span style="color:#89ddff;">) {
+</span><span>        e</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();
+</span><span>      </span><span style="color:#89ddff;">}
+</span><span>      </span><span style="color:#ffcb6b;">System</span><span style="color:#89ddff;">.</span><span>out</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">print</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">list</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">get</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">)+&quot;</span><span style="color:#c3e88d;">, </span><span style="color:#89ddff;">&quot;);
+</span><span>      </span><span style="color:#ffcb6b;">System</span><span style="color:#89ddff;">.</span><span>out</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">print</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">list</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">get</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">)+&quot;</span><span style="color:#c3e88d;">, </span><span style="color:#89ddff;">&quot;);
+</span><span>      </span><span style="color:#ffcb6b;">System</span><span style="color:#89ddff;">.</span><span>out</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">print</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">list</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">get</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">2</span><span style="color:#89ddff;">)+&quot;</span><span style="color:#c3e88d;">, </span><span style="color:#89ddff;">&quot;);
+</span><span>      </span><span style="color:#ffcb6b;">System</span><span style="color:#89ddff;">.</span><span>out</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">print</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">list</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">get</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">3</span><span style="color:#89ddff;">)+&quot;</span><span style="color:#c3e88d;">, </span><span style="color:#89ddff;">&quot;);
+</span><span>      </span><span style="color:#ffcb6b;">System</span><span style="color:#89ddff;">.</span><span>out</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">println</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">list</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">get</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">4</span><span style="color:#89ddff;">)+&quot;</span><span style="color:#c3e88d;">, </span><span style="color:#89ddff;">&quot;);
+</span><span>    </span><span style="color:#89ddff;">}
+</span><span>  </span><span style="color:#89ddff;">}
+</span><span style="color:#89ddff;">}
+</span></code></pre>
+<p>
   Producer.java:</p>
-<pre style="background-color:#212121;">
-<code class="language-java" data-lang="java"><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">class </span><span style="color:#ffcb6b;">Producer </span><span style="color:#c792ea;">extends </span><span style="color:#c3e88d;">Thread </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
-  </span><span style="color:#ffcb6b;">List</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">Integer</span><span style="color:#89ddff;">&gt; </span><span style="color:#eeffff;">list </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">ArrayList</span><span style="color:#89ddff;">&lt;&gt;();</span><span style="color:#eeffff;">
-  </span><span style="color:#ffcb6b;">Exchanger</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">List </span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">Integer</span><span style="color:#89ddff;">&gt;&gt; </span><span style="color:#eeffff;">exchanger </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">null</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-  </span><span style="color:#c792ea;">public </span><span style="color:#82aaff;">Producer</span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">Exchanger</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">List </span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">Integer</span><span style="color:#89ddff;">&gt;&gt; </span><span style="color:#f78c6c;">exchanger</span><span style="color:#89ddff;">) {</span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#ff5370;">super</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#ff5370;">this</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">exchanger </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> exchanger</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-  </span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">@</span><span style="color:#eeffff;">Override</span><span style="color:#eeffff;">
-  </span><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">run</span><span style="color:#89ddff;">() {</span><span style="color:#eeffff;">
-    </span><span style="color:#ffcb6b;">Random</span><span style="color:#eeffff;"> rand </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Random</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#c792ea;">for</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">&lt;</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;"> i</span><span style="color:#89ddff;">++) {</span><span style="color:#eeffff;">
-      list</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">clear</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-      list</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">add</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">rand</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">nextInt</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10000</span><span style="color:#89ddff;">));</span><span style="color:#eeffff;">
-      list</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">add</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">rand</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">nextInt</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10000</span><span style="color:#89ddff;">));</span><span style="color:#eeffff;">
-      list</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">add</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">rand</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">nextInt</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10000</span><span style="color:#89ddff;">));</span><span style="color:#eeffff;">
-      list</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">add</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">rand</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">nextInt</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10000</span><span style="color:#89ddff;">));</span><span style="color:#eeffff;">
-      list</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">add</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">rand</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">nextInt</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10000</span><span style="color:#89ddff;">));</span><span style="color:#eeffff;">
-      </span><span style="font-style:italic;color:#c792ea;">try </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
-        list </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> exchanger</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">exchange</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">list</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-      </span><span style="color:#89ddff;">} </span><span style="font-style:italic;color:#c792ea;">catch </span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">InterruptedException </span><span style="color:#f78c6c;">e</span><span style="color:#89ddff;">) {</span><span style="color:#eeffff;">
-        e</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-      </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span></code></pre><p>
+<pre data-lang="java" style="background-color:#212121;color:#eeffff;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">class </span><span style="color:#ffcb6b;">Producer </span><span style="color:#c792ea;">extends </span><span style="color:#c3e88d;">Thread </span><span style="color:#89ddff;">{
+</span><span>  </span><span style="color:#ffcb6b;">List</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">Integer</span><span style="color:#89ddff;">&gt; </span><span>list </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">ArrayList</span><span style="color:#89ddff;">&lt;&gt;();
+</span><span>  </span><span style="color:#ffcb6b;">Exchanger</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">List </span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">Integer</span><span style="color:#89ddff;">&gt;&gt; </span><span>exchanger </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">null</span><span style="color:#89ddff;">;
+</span><span>  </span><span style="color:#c792ea;">public </span><span style="color:#82aaff;">Producer</span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">Exchanger</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">List </span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">Integer</span><span style="color:#89ddff;">&gt;&gt; </span><span style="color:#f78c6c;">exchanger</span><span style="color:#89ddff;">) {
+</span><span>    </span><span style="font-style:italic;color:#ff5370;">super</span><span style="color:#89ddff;">();
+</span><span>    </span><span style="font-style:italic;color:#ff5370;">this</span><span style="color:#89ddff;">.</span><span>exchanger </span><span style="color:#89ddff;">=</span><span> exchanger</span><span style="color:#89ddff;">;
+</span><span>  </span><span style="color:#89ddff;">}
+</span><span>  
+</span><span>  </span><span style="color:#89ddff;">@</span><span>Override
+</span><span>  </span><span style="color:#c792ea;">public </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#82aaff;">run</span><span style="color:#89ddff;">() {
+</span><span>    </span><span style="color:#ffcb6b;">Random</span><span> rand </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Random</span><span style="color:#89ddff;">();
+</span><span>    </span><span style="font-style:italic;color:#c792ea;">for</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">int</span><span> i</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;</span><span> i</span><span style="color:#89ddff;">&lt;</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">;</span><span> i</span><span style="color:#89ddff;">++) {
+</span><span>      list</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">clear</span><span style="color:#89ddff;">();
+</span><span>      list</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">add</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">rand</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">nextInt</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10000</span><span style="color:#89ddff;">));
+</span><span>      list</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">add</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">rand</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">nextInt</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10000</span><span style="color:#89ddff;">));
+</span><span>      list</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">add</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">rand</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">nextInt</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10000</span><span style="color:#89ddff;">));
+</span><span>      list</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">add</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">rand</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">nextInt</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10000</span><span style="color:#89ddff;">));
+</span><span>      list</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">add</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">rand</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">nextInt</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10000</span><span style="color:#89ddff;">));
+</span><span>      </span><span style="font-style:italic;color:#c792ea;">try </span><span style="color:#89ddff;">{
+</span><span>        list </span><span style="color:#89ddff;">=</span><span> exchanger</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">exchange</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">list</span><span style="color:#89ddff;">);
+</span><span>      </span><span style="color:#89ddff;">} </span><span style="font-style:italic;color:#c792ea;">catch </span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">InterruptedException </span><span style="color:#f78c6c;">e</span><span style="color:#89ddff;">) {
+</span><span>        e</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();
+</span><span>      </span><span style="color:#89ddff;">}
+</span><span>    </span><span style="color:#89ddff;">}
+</span><span>  </span><span style="color:#89ddff;">}
+</span><span style="color:#89ddff;">}
+</span></code></pre>
+<p>
    </p>
 <p>
   <strong>12）Future & FutureTask</strong></p>
@@ -594,29 +586,29 @@ map</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">put<
   ExecutorService</p>
 <p>
   Future惯用法1，需要使用Future，ThreadPool（ExecutorService来创建），Callable实现健壮的同步转Future。代码样例：</p>
-<pre style="background-color:#212121;">
-<code class="language-java" data-lang="java"><span style="color:#c792ea;">private </span><span style="color:#ffcb6b;">Future</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">HashMap</span><span style="color:#89ddff;">&gt; </span><span style="color:#82aaff;">getFutureResultFromMethod</span><span style="color:#89ddff;">() {</span><span style="color:#eeffff;">
-  </span><span style="color:#c792ea;">synchronized</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#ff5370;">this</span><span style="color:#89ddff;">){</span><span style="color:#eeffff;">
-    </span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#ff5370;">this</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">threadPool </span><span style="color:#89ddff;">== </span><span style="color:#f78c6c;">null</span><span style="color:#89ddff;">) {</span><span style="color:#eeffff;">
-      </span><span style="font-style:italic;color:#ff5370;">this</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">threadPool </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">60</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">TimeUnit</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">SECONDS</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;">
-          </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">LinkedBlockingQueue</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">Runnable</span><span style="color:#89ddff;">&gt;(</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">));</span><span style="color:#eeffff;">
-    </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">return </span><span style="font-style:italic;color:#ff5370;">this</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">threadPool</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">submit</span><span style="color:#89ddff;">(</span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Callable</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">HashMap</span><span style="color:#89ddff;">&gt;() {</span><span style="color:#82aaff;">
-    </span><span style="color:#89ddff;">@</span><span style="color:#eeffff;">Override</span><span style="color:#82aaff;">
-    </span><span style="color:#c792ea;">public </span><span style="color:#ffcb6b;">HashMap </span><span style="color:#82aaff;">call</span><span style="color:#89ddff;">() </span><span style="color:#c792ea;">throws </span><span style="color:#ffcb6b;">Exception </span><span style="color:#89ddff;">{</span><span style="color:#82aaff;">
-      </span><span style="font-style:italic;color:#c792ea;">return </span><span style="color:#82aaff;">getResultFromSyncMethod</span><span style="color:#89ddff;">();</span><span style="font-style:italic;color:#4a4a4a;">//这里是比较耗时的同步方法。</span><span style="font-style:italic;color:#4a4a4a;">
-    </span><span style="color:#89ddff;">}</span><span style="color:#82aaff;">
-  </span><span style="color:#89ddff;">});</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">}</span><span style="color:#eeffff;">
-</span></code></pre><p>
+<pre data-lang="java" style="background-color:#212121;color:#eeffff;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#c792ea;">private </span><span style="color:#ffcb6b;">Future</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">HashMap</span><span style="color:#89ddff;">&gt; </span><span style="color:#82aaff;">getFutureResultFromMethod</span><span style="color:#89ddff;">() {
+</span><span>  </span><span style="color:#c792ea;">synchronized</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#ff5370;">this</span><span style="color:#89ddff;">){
+</span><span>    </span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#ff5370;">this</span><span style="color:#89ddff;">.</span><span>threadPool </span><span style="color:#89ddff;">== </span><span style="color:#f78c6c;">null</span><span style="color:#89ddff;">) {
+</span><span>      </span><span style="font-style:italic;color:#ff5370;">this</span><span style="color:#89ddff;">.</span><span>threadPool </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">ThreadPoolExecutor</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">60</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">TimeUnit</span><span style="color:#89ddff;">.</span><span>SECONDS</span><span style="color:#89ddff;">,
+</span><span>          </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">LinkedBlockingQueue</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">Runnable</span><span style="color:#89ddff;">&gt;(</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">));
+</span><span>    </span><span style="color:#89ddff;">}
+</span><span>  </span><span style="color:#89ddff;">}
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">return </span><span style="font-style:italic;color:#ff5370;">this</span><span style="color:#89ddff;">.</span><span>threadPool</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">submit</span><span style="color:#89ddff;">(</span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Callable</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">HashMap</span><span style="color:#89ddff;">&gt;() {
+</span><span style="color:#82aaff;">    </span><span style="color:#89ddff;">@</span><span>Override
+</span><span style="color:#82aaff;">    </span><span style="color:#c792ea;">public </span><span style="color:#ffcb6b;">HashMap </span><span style="color:#82aaff;">call</span><span style="color:#89ddff;">() </span><span style="color:#c792ea;">throws </span><span style="color:#ffcb6b;">Exception </span><span style="color:#89ddff;">{
+</span><span style="color:#82aaff;">      </span><span style="font-style:italic;color:#c792ea;">return </span><span style="color:#82aaff;">getResultFromSyncMethod</span><span style="color:#89ddff;">();</span><span style="font-style:italic;color:#4a4a4a;">//这里是比较耗时的同步方法。
+</span><span style="color:#82aaff;">    </span><span style="color:#89ddff;">}
+</span><span style="color:#82aaff;">  </span><span style="color:#89ddff;">});
+</span><span style="color:#89ddff;">}
+</span></code></pre>
+<p>
   此时，getFutureResultFromMethod可以这样使用：</p>
-<pre style="background-color:#212121;">
-<code class="language-java" data-lang="java"><span style="color:#ffcb6b;">Future</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">HashMap</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;"> futureResult </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">getFutureResultFromMethod</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#4a4a4a;">//do other job</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#ffcb6b;">HashMap</span><span style="color:#eeffff;"> result1 </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> futureResult</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">get</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-</span><span style="color:#ffcb6b;">HashMap</span><span style="color:#eeffff;"> result2 </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> futureResult</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">get</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">timeout</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">TimeUnit</span><span style="color:#89ddff;">);</span><span style="color:#eeffff;">
-</span></code></pre><p>
+<pre data-lang="java" style="background-color:#212121;color:#eeffff;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#ffcb6b;">Future</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">HashMap</span><span style="color:#89ddff;">&gt;</span><span> futureResult </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">getFutureResultFromMethod</span><span style="color:#89ddff;">();
+</span><span style="font-style:italic;color:#4a4a4a;">//do other job
+</span><span style="color:#ffcb6b;">HashMap</span><span> result1 </span><span style="color:#89ddff;">=</span><span> futureResult</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">get</span><span style="color:#89ddff;">();
+</span><span style="color:#ffcb6b;">HashMap</span><span> result2 </span><span style="color:#89ddff;">=</span><span> futureResult</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">get</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">timeout</span><span style="color:#89ddff;">, </span><span style="color:#ffcb6b;">TimeUnit</span><span style="color:#89ddff;">);
+</span></code></pre>
+<p>
    </p>
 <p>
   惯用法2，CompletionService配合上述逻辑，进行多个Future等待时的优化。</p>
@@ -626,36 +618,35 @@ map</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">put<
   其tack()方法在BlockingQueue非空时才返回，否则将阻塞住tack()调用。也就是take()调用的成功返回需要其中至少包含一个Future，即至少一个Future的状态为完成。</p>
 <p>
   一个使用样例如下：</p>
-<pre style="background-color:#212121;">
-<code class="language-java" data-lang="java"><span style="color:#ffcb6b;">ExecutorService</span><span style="color:#eeffff;"> es </span><span style="color:#89ddff;">= </span><span style="color:#ffcb6b;">Executors</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">newFixedThreadPool</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">);  </span><span style="color:#eeffff;">
-</span><span style="color:#ffcb6b;">CompletionService</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">HashMap</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;"> comp </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">ExecutorCompletionService</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">HashMap</span><span style="color:#89ddff;">&gt;(</span><span style="color:#eeffff;">es</span><span style="color:#89ddff;">); </span><span style="color:#eeffff;">
- </span><span style="color:#eeffff;">
-comp</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">submit</span><span style="color:#89ddff;">(</span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Callable</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">HashMap</span><span style="color:#89ddff;">&gt;() {</span><span style="color:#82aaff;">
-  </span><span style="color:#89ddff;">@</span><span style="color:#eeffff;">Override</span><span style="color:#82aaff;">
-  </span><span style="color:#c792ea;">public </span><span style="color:#ffcb6b;">HashMap </span><span style="color:#82aaff;">call</span><span style="color:#89ddff;">() </span><span style="color:#c792ea;">throws </span><span style="color:#ffcb6b;">Exception </span><span style="color:#89ddff;">{</span><span style="color:#82aaff;">
-    </span><span style="font-style:italic;color:#c792ea;">return </span><span style="color:#82aaff;">getResultFromSyncMethod1</span><span style="color:#89ddff;">();</span><span style="color:#82aaff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#82aaff;">
-</span><span style="color:#89ddff;">}); </span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-comp</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">submit</span><span style="color:#89ddff;">(</span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Callable</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">HashMap</span><span style="color:#89ddff;">&gt;() {</span><span style="color:#82aaff;">
-  </span><span style="color:#89ddff;">@</span><span style="color:#eeffff;">Override</span><span style="color:#82aaff;">
-  </span><span style="color:#c792ea;">public </span><span style="color:#ffcb6b;">HashMap </span><span style="color:#82aaff;">call</span><span style="color:#89ddff;">() </span><span style="color:#c792ea;">throws </span><span style="color:#ffcb6b;">Exception </span><span style="color:#89ddff;">{</span><span style="color:#82aaff;">
-    </span><span style="font-style:italic;color:#c792ea;">return </span><span style="color:#82aaff;">getResultFromSyncMethod2</span><span style="color:#89ddff;">();</span><span style="color:#82aaff;">
-  </span><span style="color:#89ddff;">}</span><span style="color:#82aaff;">
-</span><span style="color:#89ddff;">}); </span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#4a4a4a;">// 假如业务上允许 getResultFromSyncMethod1() 和 getResultFromSyncMethod2() 只要有一个返回就可以继续执行</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#ffcb6b;">Future</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">HashMap</span><span style="color:#89ddff;">&gt;</span><span style="color:#eeffff;"> future</span><span style="color:#89ddff;">;</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">try </span><span style="color:#89ddff;">{</span><span style="color:#eeffff;">
-  future </span><span style="color:#89ddff;">=</span><span style="color:#eeffff;"> comp</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">take</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-  </span><span style="color:#ffcb6b;">System</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">out</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">println</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">future</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">get</span><span style="color:#89ddff;">().</span><span style="color:#82aaff;">size</span><span style="color:#89ddff;">()); </span><span style="font-style:italic;color:#4a4a4a;">//执行业务</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#89ddff;">} </span><span style="font-style:italic;color:#c792ea;">catch </span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">InterruptedException </span><span style="color:#f78c6c;">e</span><span style="color:#89ddff;">) {</span><span style="color:#eeffff;">
-  e</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">} </span><span style="font-style:italic;color:#c792ea;">catch </span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">ExecutionException </span><span style="color:#f78c6c;">e</span><span style="color:#89ddff;">) {</span><span style="color:#eeffff;">
-  e</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
-</span><span style="color:#89ddff;">}  </span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-es</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">shutdown</span><span style="color:#89ddff;">();</span><span style="color:#eeffff;">
+<pre data-lang="java" style="background-color:#212121;color:#eeffff;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#ffcb6b;">ExecutorService</span><span> es </span><span style="color:#89ddff;">= </span><span style="color:#ffcb6b;">Executors</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">newFixedThreadPool</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">);  
+</span><span style="color:#ffcb6b;">CompletionService</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">HashMap</span><span style="color:#89ddff;">&gt;</span><span> comp </span><span style="color:#89ddff;">= </span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">ExecutorCompletionService</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">HashMap</span><span style="color:#89ddff;">&gt;(</span><span>es</span><span style="color:#89ddff;">); 
+</span><span> 
+</span><span>comp</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">submit</span><span style="color:#89ddff;">(</span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Callable</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">HashMap</span><span style="color:#89ddff;">&gt;() {
+</span><span style="color:#82aaff;">  </span><span style="color:#89ddff;">@</span><span>Override
+</span><span style="color:#82aaff;">  </span><span style="color:#c792ea;">public </span><span style="color:#ffcb6b;">HashMap </span><span style="color:#82aaff;">call</span><span style="color:#89ddff;">() </span><span style="color:#c792ea;">throws </span><span style="color:#ffcb6b;">Exception </span><span style="color:#89ddff;">{
+</span><span style="color:#82aaff;">    </span><span style="font-style:italic;color:#c792ea;">return </span><span style="color:#82aaff;">getResultFromSyncMethod1</span><span style="color:#89ddff;">();
+</span><span style="color:#82aaff;">  </span><span style="color:#89ddff;">}
+</span><span style="color:#89ddff;">}); 
+</span><span>
+</span><span>comp</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">submit</span><span style="color:#89ddff;">(</span><span style="color:#c792ea;">new </span><span style="color:#ffcb6b;">Callable</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">HashMap</span><span style="color:#89ddff;">&gt;() {
+</span><span style="color:#82aaff;">  </span><span style="color:#89ddff;">@</span><span>Override
+</span><span style="color:#82aaff;">  </span><span style="color:#c792ea;">public </span><span style="color:#ffcb6b;">HashMap </span><span style="color:#82aaff;">call</span><span style="color:#89ddff;">() </span><span style="color:#c792ea;">throws </span><span style="color:#ffcb6b;">Exception </span><span style="color:#89ddff;">{
+</span><span style="color:#82aaff;">    </span><span style="font-style:italic;color:#c792ea;">return </span><span style="color:#82aaff;">getResultFromSyncMethod2</span><span style="color:#89ddff;">();
+</span><span style="color:#82aaff;">  </span><span style="color:#89ddff;">}
+</span><span style="color:#89ddff;">}); 
+</span><span>
+</span><span style="font-style:italic;color:#4a4a4a;">// 假如业务上允许 getResultFromSyncMethod1() 和 getResultFromSyncMethod2() 只要有一个返回就可以继续执行
+</span><span style="color:#ffcb6b;">Future</span><span style="color:#89ddff;">&lt;</span><span style="color:#ffcb6b;">HashMap</span><span style="color:#89ddff;">&gt;</span><span> future</span><span style="color:#89ddff;">;
+</span><span style="font-style:italic;color:#c792ea;">try </span><span style="color:#89ddff;">{
+</span><span>  future </span><span style="color:#89ddff;">=</span><span> comp</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">take</span><span style="color:#89ddff;">();
+</span><span>  </span><span style="color:#ffcb6b;">System</span><span style="color:#89ddff;">.</span><span>out</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">println</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">future</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">get</span><span style="color:#89ddff;">().</span><span style="color:#82aaff;">size</span><span style="color:#89ddff;">()); </span><span style="font-style:italic;color:#4a4a4a;">//执行业务
+</span><span style="color:#89ddff;">} </span><span style="font-style:italic;color:#c792ea;">catch </span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">InterruptedException </span><span style="color:#f78c6c;">e</span><span style="color:#89ddff;">) {
+</span><span>  e</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();
+</span><span style="color:#89ddff;">} </span><span style="font-style:italic;color:#c792ea;">catch </span><span style="color:#89ddff;">(</span><span style="color:#ffcb6b;">ExecutionException </span><span style="color:#f78c6c;">e</span><span style="color:#89ddff;">) {
+</span><span>  e</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">printStackTrace</span><span style="color:#89ddff;">();
+</span><span style="color:#89ddff;">}  
+</span><span>
+</span><span>es</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">shutdown</span><span style="color:#89ddff;">();
 </span></code></pre>
 <p>就总结到这里，基础的Java并发应用应该就够了。</p>
 </div>
@@ -666,7 +657,7 @@ es</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">shutd
   
     <div class="post-tags">
     
-      <!-- <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all&#x2F;">#all</a> -->
+      <!-- <a href="https://xjump.me/tags/all/">#all</a> -->
     
     </div>
   

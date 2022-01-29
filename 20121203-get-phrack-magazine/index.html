@@ -105,25 +105,24 @@
 
  <div class="post-content"><p>Phrack Current issue: <a href="http://phrack.org/archives/tgz/phrack68.tar.gz" title="Get current issue tar.gz">68</a><br/>
 Release date: 14/04/2012</p>
-<pre style="background-color:#212121;">
-<code class="language-python" data-lang="python"><span style="font-style:italic;color:#4a4a4a;">#!/usr/bin/env python</span><span style="font-style:italic;color:#4a4a4a;">
-# encoding: utf-8</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="font-style:italic;color:#c792ea;">import </span><span style="color:#eeffff;">urllib</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">import </span><span style="color:#eeffff;">os</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-LATEST_ISSUER_NO </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">68</span><span style="color:#eeffff;">
-pwd </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">os</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">getcwd</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">for </span><span style="color:#eeffff;">i </span><span style="font-style:italic;color:#c792ea;">in </span><span style="color:#82aaff;">range</span><span style="color:#89ddff;">(</span><span style="color:#eeffff;">LATEST_ISSUER_NO</span><span style="color:#89ddff;">) :</span><span style="color:#eeffff;">
-  filename </span><span style="color:#89ddff;">= &quot;</span><span style="color:#c3e88d;">phrack</span><span style="color:#eeffff;">%d</span><span style="color:#c3e88d;">.tar.gz</span><span style="color:#89ddff;">&quot; % (</span><span style="color:#eeffff;">i</span><span style="color:#89ddff;">+</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">, )</span><span style="color:#eeffff;">
-  url </span><span style="color:#89ddff;">= &quot;</span><span style="color:#c3e88d;">http://www.phrack.com/archives/tgz/</span><span style="color:#eeffff;">%s</span><span style="color:#89ddff;">&quot; % (</span><span style="color:#eeffff;">filename</span><span style="color:#89ddff;">, )</span><span style="color:#eeffff;">
-  path </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">os</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">path</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">join</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">pwd</span><span style="color:#89ddff;">, </span><span style="color:#82aaff;">filename</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-  data </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">urllib</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">urlopen</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">url</span><span style="color:#89ddff;">).</span><span style="color:#82aaff;">read</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
-  f </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">file</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">path</span><span style="color:#89ddff;">, &quot;</span><span style="color:#c3e88d;">wb</span><span style="color:#89ddff;">&quot;)</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">f</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">write</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">data</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-  </span><span style="color:#82aaff;">f</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">close</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
-  </span><span style="color:#c792ea;">print </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">file </span><span style="color:#eeffff;">%s</span><span style="color:#c3e88d;"> download complete!</span><span style="color:#89ddff;">&quot; % (</span><span style="color:#eeffff;">filename</span><span style="color:#89ddff;">, )</span><span style="color:#eeffff;">
-</span></code></pre><span id="continue-reading"></span>
-</div>
+<pre data-lang="python" style="background-color:#212121;color:#eeffff;" class="language-python "><code class="language-python" data-lang="python"><span style="font-style:italic;color:#4a4a4a;">#!/usr/bin/env python
+</span><span style="font-style:italic;color:#4a4a4a;"># encoding: utf-8
+</span><span style="font-style:italic;color:#c792ea;">import </span><span>urllib
+</span><span style="font-style:italic;color:#c792ea;">import </span><span>os
+</span><span>
+</span><span>LATEST_ISSUER_NO </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">68
+</span><span>pwd </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">os</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">getcwd</span><span style="color:#89ddff;">()
+</span><span style="font-style:italic;color:#c792ea;">for </span><span>i </span><span style="font-style:italic;color:#c792ea;">in </span><span style="color:#82aaff;">range</span><span style="color:#89ddff;">(</span><span>LATEST_ISSUER_NO</span><span style="color:#89ddff;">) :
+</span><span>  filename </span><span style="color:#89ddff;">= &quot;</span><span style="color:#c3e88d;">phrack</span><span>%d</span><span style="color:#c3e88d;">.tar.gz</span><span style="color:#89ddff;">&quot; % (</span><span>i</span><span style="color:#89ddff;">+</span><span style="color:#f78c6c;">1</span><span style="color:#89ddff;">, )
+</span><span>  url </span><span style="color:#89ddff;">= &quot;</span><span style="color:#c3e88d;">http://www.phrack.com/archives/tgz/</span><span>%s</span><span style="color:#89ddff;">&quot; % (</span><span>filename</span><span style="color:#89ddff;">, )
+</span><span>  path </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">os</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">path</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">join</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">pwd</span><span style="color:#89ddff;">, </span><span style="color:#82aaff;">filename</span><span style="color:#89ddff;">)
+</span><span>  data </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">urllib</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">urlopen</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">url</span><span style="color:#89ddff;">).</span><span style="color:#82aaff;">read</span><span style="color:#89ddff;">()
+</span><span>  f </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">file</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">path</span><span style="color:#89ddff;">, &quot;</span><span style="color:#c3e88d;">wb</span><span style="color:#89ddff;">&quot;)
+</span><span>  </span><span style="color:#82aaff;">f</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">write</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">data</span><span style="color:#89ddff;">)
+</span><span>  </span><span style="color:#82aaff;">f</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">close</span><span style="color:#89ddff;">()
+</span><span>  </span><span style="color:#c792ea;">print </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">file </span><span>%s</span><span style="color:#c3e88d;"> download complete!</span><span style="color:#89ddff;">&quot; % (</span><span>filename</span><span style="color:#89ddff;">, )
+</span></code></pre>
+<span id="continue-reading"></span></div>
 
 
   <div class="post-footer">
@@ -131,7 +130,7 @@ pwd </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">os
   
     <div class="post-tags">
     
-      <!-- <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all&#x2F;">#all</a> -->
+      <!-- <a href="https://xjump.me/tags/all/">#all</a> -->
     
     </div>
   

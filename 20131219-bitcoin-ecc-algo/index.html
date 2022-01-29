@@ -105,49 +105,49 @@
 
  <div class="post-content"><p>
 测试代码如下：</p>
-<pre style="background-color:#212121;">
-<code class="language-python" data-lang="python"><span style="font-style:italic;color:#4a4a4a;">#!/usr/bin/env python</span><span style="font-style:italic;color:#4a4a4a;">
-# -*- coding: utf-8 -*-  </span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#4a4a4a;">&#39;&#39;&#39;</span><span style="font-style:italic;color:#4a4a4a;">
-author: xjump.me#gmail.com</span><span style="font-style:italic;color:#4a4a4a;">
-reference: </span><span style="font-style:italic;color:#4a4a4a;">
-    http://bitcoin.org/bitcoin.pdf&amp;lrm;</span><span style="font-style:italic;color:#4a4a4a;">
-    http://www.heikkitoivonen.net/m2crypto/api</span><span style="font-style:italic;color:#4a4a4a;">
-    http://openssl.org</span><span style="font-style:italic;color:#4a4a4a;">
-&#39;&#39;&#39;</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">from </span><span style="color:#eeffff;">M2Crypto </span><span style="font-style:italic;color:#c792ea;">import </span><span style="color:#eeffff;">EC</span><span style="color:#89ddff;">,</span><span style="color:#eeffff;">EVP</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">import </span><span style="color:#eeffff;">base64 </span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-ec_curve </span><span style="color:#89ddff;">= </span><span style="color:#eeffff;">EC</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">NID_secp256k1</span><span style="color:#eeffff;">
-priv_file </span><span style="color:#89ddff;">= &#39;</span><span style="color:#eeffff;">%s</span><span style="color:#c3e88d;">-ecc-priv-key.pem</span><span style="color:#89ddff;">&#39; % (</span><span style="color:#eeffff;">ec_curve</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-pub_file </span><span style="color:#89ddff;">= &#39;</span><span style="color:#eeffff;">%s</span><span style="color:#c3e88d;">-ecc-pub-key.pem</span><span style="color:#89ddff;">&#39; % (</span><span style="color:#eeffff;">ec_curve</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#4a4a4a;">#generate the ECC keys</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#eeffff;">ec </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">EC</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">gen_params</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">ec_curve</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">ec</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">gen_key</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">ec</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">save_key</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">priv_file</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">None </span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">ec</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">save_pub_key</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">pub_file</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#4a4a4a;">#load the keys from files</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#eeffff;">ec2</span><span style="color:#89ddff;">=</span><span style="color:#82aaff;">EC</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">load_key</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">priv_file</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-</span><span style="color:#c792ea;">print </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">the result of check key is: </span><span style="color:#89ddff;">&quot;</span><span style="color:#eeffff;">,</span><span style="color:#82aaff;">ec2</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">check_key</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-ec_pub </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">ec2</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">pub</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#4a4a4a;">#print dir(ec2)</span><span style="font-style:italic;color:#4a4a4a;">
-</span><span style="color:#eeffff;">pub_der </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">ec_pub</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">get_der</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
-pub_pem </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">base64</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">b64encode</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">pub_der</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-</span><span style="color:#c792ea;">print </span><span style="color:#89ddff;">&#39;</span><span style="color:#c3e88d;">PEM public key is: </span><span style="color:#89ddff;">\n&#39;</span><span style="color:#eeffff;">,pub_pem</span><span style="color:#eeffff;">
-</span><span style="color:#eeffff;">
-md </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">EVP</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">MessageDigest</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">ripemd160</span><span style="color:#89ddff;">&quot;)</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">md</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">update</span><span style="color:#89ddff;">(&#39;</span><span style="color:#c3e88d;">why bitcoin use ecc-secp256k1 and ripemd160?</span><span style="color:#89ddff;">&#39;)</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">hash </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">md</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">digest</span><span style="color:#89ddff;">()</span><span style="color:#eeffff;">
-r,s </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">ec2</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">sign_dsa</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">hash</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-</span><span style="color:#c792ea;">print </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">ecdsa signature is: r=</span><span style="color:#89ddff;">&quot;</span><span style="color:#eeffff;">,</span><span style="color:#82aaff;">base64</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">b64encode</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">r</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">,</span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">,s=</span><span style="color:#89ddff;">&quot;</span><span style="color:#eeffff;">,</span><span style="color:#82aaff;">base64</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">b64encode</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">s</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-</span><span style="color:#c792ea;">print </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">ecdsa signature verify result is:</span><span style="color:#89ddff;">&quot;</span><span style="color:#eeffff;">,</span><span style="color:#82aaff;">ec2</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">verify_dsa</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">hash</span><span style="color:#89ddff;">, </span><span style="color:#82aaff;">r</span><span style="color:#89ddff;">, </span><span style="color:#82aaff;">s</span><span style="color:#89ddff;">)</span><span style="color:#eeffff;">
-</span><span style="color:#c792ea;">print </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">END</span><span style="color:#89ddff;">&quot;</span><span style="color:#eeffff;">
-</span></code></pre></div>
+<pre data-lang="python" style="background-color:#212121;color:#eeffff;" class="language-python "><code class="language-python" data-lang="python"><span style="font-style:italic;color:#4a4a4a;">#!/usr/bin/env python
+</span><span style="font-style:italic;color:#4a4a4a;"># -*- coding: utf-8 -*-  
+</span><span>
+</span><span style="font-style:italic;color:#4a4a4a;">&#39;&#39;&#39;
+</span><span style="font-style:italic;color:#4a4a4a;">author: xjump.me#gmail.com
+</span><span style="font-style:italic;color:#4a4a4a;">reference: 
+</span><span style="font-style:italic;color:#4a4a4a;">    http://bitcoin.org/bitcoin.pdf&amp;lrm;
+</span><span style="font-style:italic;color:#4a4a4a;">    http://www.heikkitoivonen.net/m2crypto/api
+</span><span style="font-style:italic;color:#4a4a4a;">    http://openssl.org
+</span><span style="font-style:italic;color:#4a4a4a;">&#39;&#39;&#39;
+</span><span>
+</span><span style="font-style:italic;color:#c792ea;">from </span><span>M2Crypto </span><span style="font-style:italic;color:#c792ea;">import </span><span>EC</span><span style="color:#89ddff;">,</span><span>EVP
+</span><span style="font-style:italic;color:#c792ea;">import </span><span>base64 
+</span><span>
+</span><span>ec_curve </span><span style="color:#89ddff;">= </span><span>EC</span><span style="color:#89ddff;">.</span><span>NID_secp256k1
+</span><span>priv_file </span><span style="color:#89ddff;">= &#39;</span><span>%s</span><span style="color:#c3e88d;">-ecc-priv-key.pem</span><span style="color:#89ddff;">&#39; % (</span><span>ec_curve</span><span style="color:#89ddff;">)
+</span><span>pub_file </span><span style="color:#89ddff;">= &#39;</span><span>%s</span><span style="color:#c3e88d;">-ecc-pub-key.pem</span><span style="color:#89ddff;">&#39; % (</span><span>ec_curve</span><span style="color:#89ddff;">)
+</span><span>
+</span><span style="font-style:italic;color:#4a4a4a;">#generate the ECC keys
+</span><span>ec </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">EC</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">gen_params</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">ec_curve</span><span style="color:#89ddff;">)
+</span><span style="color:#82aaff;">ec</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">gen_key</span><span style="color:#89ddff;">()
+</span><span style="color:#82aaff;">ec</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">save_key</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">priv_file</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">None </span><span style="color:#89ddff;">)
+</span><span style="color:#82aaff;">ec</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">save_pub_key</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">pub_file</span><span style="color:#89ddff;">)
+</span><span>
+</span><span style="font-style:italic;color:#4a4a4a;">#load the keys from files
+</span><span>ec2</span><span style="color:#89ddff;">=</span><span style="color:#82aaff;">EC</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">load_key</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">priv_file</span><span style="color:#89ddff;">)
+</span><span style="color:#c792ea;">print </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">the result of check key is: </span><span style="color:#89ddff;">&quot;</span><span>,</span><span style="color:#82aaff;">ec2</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">check_key</span><span style="color:#89ddff;">()
+</span><span>
+</span><span>ec_pub </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">ec2</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">pub</span><span style="color:#89ddff;">()
+</span><span style="font-style:italic;color:#4a4a4a;">#print dir(ec2)
+</span><span>pub_der </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">ec_pub</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">get_der</span><span style="color:#89ddff;">()
+</span><span>pub_pem </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">base64</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">b64encode</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">pub_der</span><span style="color:#89ddff;">)
+</span><span style="color:#c792ea;">print </span><span style="color:#89ddff;">&#39;</span><span style="color:#c3e88d;">PEM public key is: </span><span style="color:#89ddff;">\n&#39;</span><span>,pub_pem
+</span><span>
+</span><span>md </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">EVP</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">MessageDigest</span><span style="color:#89ddff;">(&quot;</span><span style="color:#c3e88d;">ripemd160</span><span style="color:#89ddff;">&quot;)
+</span><span style="color:#82aaff;">md</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">update</span><span style="color:#89ddff;">(&#39;</span><span style="color:#c3e88d;">why bitcoin use ecc-secp256k1 and ripemd160?</span><span style="color:#89ddff;">&#39;)
+</span><span style="color:#82aaff;">hash </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">md</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">digest</span><span style="color:#89ddff;">()
+</span><span>r,s </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">ec2</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">sign_dsa</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">hash</span><span style="color:#89ddff;">)
+</span><span style="color:#c792ea;">print </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">ecdsa signature is: r=</span><span style="color:#89ddff;">&quot;</span><span>,</span><span style="color:#82aaff;">base64</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">b64encode</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">r</span><span style="color:#89ddff;">)</span><span>,</span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">,s=</span><span style="color:#89ddff;">&quot;</span><span>,</span><span style="color:#82aaff;">base64</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">b64encode</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">s</span><span style="color:#89ddff;">)
+</span><span style="color:#c792ea;">print </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">ecdsa signature verify result is:</span><span style="color:#89ddff;">&quot;</span><span>,</span><span style="color:#82aaff;">ec2</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">verify_dsa</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">hash</span><span style="color:#89ddff;">, </span><span style="color:#82aaff;">r</span><span style="color:#89ddff;">, </span><span style="color:#82aaff;">s</span><span style="color:#89ddff;">)
+</span><span style="color:#c792ea;">print </span><span style="color:#89ddff;">&quot;</span><span style="color:#c3e88d;">END</span><span style="color:#89ddff;">&quot;
+</span></code></pre>
+</div>
 
 
   <div class="post-footer">
@@ -155,7 +155,7 @@ r,s </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">ec
   
     <div class="post-tags">
     
-      <!-- <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all&#x2F;">#all</a> -->
+      <!-- <a href="https://xjump.me/tags/all/">#all</a> -->
     
     </div>
   

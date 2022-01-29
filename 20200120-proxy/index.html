@@ -152,97 +152,88 @@
 
  <div class="post-content"><h2 id="1-git">1 git</h2>
 <p>github的repo拖不下来可以参考:</p>
-<pre style="background-color:#212121;">
-<code class="language-ini" data-lang="ini"><span style="font-style:italic;color:#c792ea;">[http]</span><span style="color:#eeffff;">
-  </span><span style="color:#f78c6c;">proxy </span><span style="color:#89ddff;">= </span><span style="color:#c3e88d;">&quot;socks5://127.0.0.1:1091&quot;</span><span style="color:#eeffff;">
-  </span><span style="color:#f78c6c;">sslVerify </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">false</span><span style="color:#eeffff;">
-  </span><span style="color:#f78c6c;">postBuffer </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">524288000</span><span style="color:#eeffff;">
-  </span><span style="color:#f78c6c;">lowSpeedLimit </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">0</span><span style="color:#eeffff;">
-  </span><span style="color:#f78c6c;">lowSpeedTime </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">999999</span><span style="color:#eeffff;">
-  </span><span style="font-style:italic;color:#c792ea;">
-[https]</span><span style="color:#eeffff;">
-  </span><span style="color:#f78c6c;">proxy </span><span style="color:#89ddff;">= </span><span style="color:#c3e88d;">&quot;socks5://127.0.0.1:1091&quot;</span><span style="color:#eeffff;">
-  </span><span style="color:#f78c6c;">sslVerify </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">false</span><span style="color:#eeffff;">
-  </span><span style="color:#f78c6c;">postBuffer </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">524288000</span><span style="color:#eeffff;">
-  </span><span style="color:#f78c6c;">lowSpeedLimit </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">0</span><span style="color:#eeffff;">
-  </span><span style="color:#f78c6c;">lowSpeedTime </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">999999</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">
-[core]</span><span style="color:#eeffff;">
-  </span><span style="color:#f78c6c;">symlinks </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">true</span><span style="color:#eeffff;">
-  </span><span style="color:#f78c6c;">gitProxy </span><span style="color:#89ddff;">= </span><span style="color:#c3e88d;">&#39;socks5://127.0.0.1:1091&#39;</span><span style="color:#eeffff;">
+<pre data-lang="ini" style="background-color:#212121;color:#eeffff;" class="language-ini "><code class="language-ini" data-lang="ini"><span style="font-style:italic;color:#c792ea;">[http]
+</span><span>  </span><span style="color:#f78c6c;">proxy </span><span style="color:#89ddff;">= </span><span style="color:#c3e88d;">&quot;socks5://127.0.0.1:1091&quot;
+</span><span>  </span><span style="color:#f78c6c;">sslVerify </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">false
+</span><span>  </span><span style="color:#f78c6c;">postBuffer </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">524288000
+</span><span>  </span><span style="color:#f78c6c;">lowSpeedLimit </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">0
+</span><span>  </span><span style="color:#f78c6c;">lowSpeedTime </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">999999
+</span><span>  
+</span><span style="font-style:italic;color:#c792ea;">[https]
+</span><span>  </span><span style="color:#f78c6c;">proxy </span><span style="color:#89ddff;">= </span><span style="color:#c3e88d;">&quot;socks5://127.0.0.1:1091&quot;
+</span><span>  </span><span style="color:#f78c6c;">sslVerify </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">false
+</span><span>  </span><span style="color:#f78c6c;">postBuffer </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">524288000
+</span><span>  </span><span style="color:#f78c6c;">lowSpeedLimit </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">0
+</span><span>  </span><span style="color:#f78c6c;">lowSpeedTime </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">999999
+</span><span>
+</span><span style="font-style:italic;color:#c792ea;">[core]
+</span><span>  </span><span style="color:#f78c6c;">symlinks </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">true
+</span><span>  </span><span style="color:#f78c6c;">gitProxy </span><span style="color:#89ddff;">= </span><span style="color:#c3e88d;">&#39;socks5://127.0.0.1:1091&#39;
 </span></code></pre>
 <p>修改到~/.gitconfig文件中作为全局配置。</p>
-<span id="continue-reading"></span>
-<h2 id="2-python">2 Python</h2>
+<span id="continue-reading"></span><h2 id="2-python">2 Python</h2>
 <p>Python的urllib可以自动使用环境变量指定的proxy，设置如下:</p>
-<pre style="background-color:#212121;">
-<code class="language-py" data-lang="py"><span style="font-style:italic;color:#c792ea;">import </span><span style="color:#eeffff;">os</span><span style="color:#eeffff;">
-os</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">environ</span><span style="color:#89ddff;">[&#39;</span><span style="color:#c3e88d;">HTTP_PROXY</span><span style="color:#89ddff;">&#39;] = &#39;</span><span style="color:#c3e88d;">127.0.0.1:1093</span><span style="color:#89ddff;">&#39;</span><span style="color:#eeffff;">
-os</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">environ</span><span style="color:#89ddff;">[&#39;</span><span style="color:#c3e88d;">HTTPS_PROXY</span><span style="color:#89ddff;">&#39;] = &#39;</span><span style="color:#c3e88d;">127.0.0.1:1093</span><span style="color:#89ddff;">&#39;</span><span style="color:#eeffff;">
+<pre data-lang="py" style="background-color:#212121;color:#eeffff;" class="language-py "><code class="language-py" data-lang="py"><span style="font-style:italic;color:#c792ea;">import </span><span>os
+</span><span>os</span><span style="color:#89ddff;">.</span><span>environ</span><span style="color:#89ddff;">[&#39;</span><span style="color:#c3e88d;">HTTP_PROXY</span><span style="color:#89ddff;">&#39;] = &#39;</span><span style="color:#c3e88d;">127.0.0.1:1093</span><span style="color:#89ddff;">&#39;
+</span><span>os</span><span style="color:#89ddff;">.</span><span>environ</span><span style="color:#89ddff;">[&#39;</span><span style="color:#c3e88d;">HTTPS_PROXY</span><span style="color:#89ddff;">&#39;] = &#39;</span><span style="color:#c3e88d;">127.0.0.1:1093</span><span style="color:#89ddff;">&#39;
 </span></code></pre>
 <p>注意需要增加到urllib的import之前。</p>
 <p>另外，对于pip安装工具的代理设置，如果使用socks5，需要安装pysock</p>
-<pre style="background-color:#212121;">
-<code class="language-bash" data-lang="bash"><span style="color:#82aaff;">pip install pysocks</span><span style="color:#eeffff;">
+<pre data-lang="bash" style="background-color:#212121;color:#eeffff;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#82aaff;">pip install pysocks
 </span></code></pre>
 <p>然后在使用pip时添加参数:</p>
-<pre style="background-color:#212121;">
-<code class="language-bash" data-lang="bash"><span style="color:#82aaff;">pip install</span><span style="color:#89ddff;"> --</span><span style="color:#f78c6c;">proxy</span><span style="color:#89ddff;">=&#39;</span><span style="color:#c3e88d;">socks5://127.0.0.1:1091</span><span style="color:#89ddff;">&#39;</span><span style="color:#82aaff;"> numpy</span><span style="color:#eeffff;">
-</span></code></pre><h2 id="3-cargo">3 Cargo</h2>
+<pre data-lang="bash" style="background-color:#212121;color:#eeffff;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#82aaff;">pip install</span><span style="color:#89ddff;"> --</span><span style="color:#f78c6c;">proxy</span><span style="color:#89ddff;">=&#39;</span><span style="color:#c3e88d;">socks5://127.0.0.1:1091</span><span style="color:#89ddff;">&#39;</span><span style="color:#82aaff;"> numpy
+</span></code></pre>
+<h2 id="3-cargo">3 Cargo</h2>
 <p>Cargo是Rust的包管理工具，需要修改cargo的配置文件：</p>
-<pre style="background-color:#212121;">
-<code class="language-ini" data-lang="ini"><span style="font-style:italic;color:#c792ea;">[http]</span><span style="color:#eeffff;">
-  </span><span style="color:#f78c6c;">proxy </span><span style="color:#89ddff;">= </span><span style="color:#c3e88d;">&quot;socks5://127.0.0.1:1091&quot;</span><span style="color:#eeffff;">
-</span><span style="font-style:italic;color:#c792ea;">
-[https]</span><span style="color:#eeffff;">
-  </span><span style="color:#f78c6c;">proxy </span><span style="color:#89ddff;">= </span><span style="color:#c3e88d;">&quot;socks5://127.0.0.1:1091&quot;</span><span style="color:#eeffff;">
+<pre data-lang="ini" style="background-color:#212121;color:#eeffff;" class="language-ini "><code class="language-ini" data-lang="ini"><span style="font-style:italic;color:#c792ea;">[http]
+</span><span>  </span><span style="color:#f78c6c;">proxy </span><span style="color:#89ddff;">= </span><span style="color:#c3e88d;">&quot;socks5://127.0.0.1:1091&quot;
+</span><span>
+</span><span style="font-style:italic;color:#c792ea;">[https]
+</span><span>  </span><span style="color:#f78c6c;">proxy </span><span style="color:#89ddff;">= </span><span style="color:#c3e88d;">&quot;socks5://127.0.0.1:1091&quot;
 </span></code></pre>
 <p>改全局的话改~/.cargo/config文件。改当前项目可以改$ProjRoot/.cargo/config文件，不存在可以新创建。</p>
 <h2 id="4-flutter">4 Flutter</h2>
 <p>Flutter可以修改$FlutterRoot/bin/flutter.bat|flutter，增加到第一行：</p>
 <p>for windows</p>
-<pre style="background-color:#212121;">
-<code class="language-bat" data-lang="bat"><span style="color:#c792ea;">set </span><span style="color:#eeffff;">http_proxy</span><span style="color:#89ddff;">=</span><span style="color:#c3e88d;">socks5://127.0.0.1:1091</span><span style="color:#eeffff;">
-</span><span style="color:#c792ea;">set </span><span style="color:#eeffff;">https_proxy</span><span style="color:#89ddff;">=</span><span style="color:#c3e88d;">socks5://127.0.0.1:1091</span><span style="color:#eeffff;">
+<pre data-lang="bat" style="background-color:#212121;color:#eeffff;" class="language-bat "><code class="language-bat" data-lang="bat"><span style="color:#c792ea;">set </span><span>http_proxy</span><span style="color:#89ddff;">=</span><span style="color:#c3e88d;">socks5://127.0.0.1:1091
+</span><span style="color:#c792ea;">set </span><span>https_proxy</span><span style="color:#89ddff;">=</span><span style="color:#c3e88d;">socks5://127.0.0.1:1091
 </span></code></pre>
 <p>for *nix</p>
-<pre style="background-color:#212121;">
-<code class="language-bash" data-lang="bash"><span style="color:#c792ea;">export </span><span style="color:#eeffff;">http_proxy</span><span style="color:#89ddff;">=&quot;</span><span style="color:#c3e88d;">socks5://127.0.0.1:1091</span><span style="color:#89ddff;">&quot;</span><span style="color:#82aaff;">
-</span><span style="color:#c792ea;">export </span><span style="color:#eeffff;">https_proxy</span><span style="color:#89ddff;">=&quot;</span><span style="color:#c3e88d;">socks5://127.0.0.1:1091</span><span style="color:#89ddff;">&quot;</span><span style="color:#eeffff;">
+<pre data-lang="bash" style="background-color:#212121;color:#eeffff;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#c792ea;">export </span><span>http_proxy</span><span style="color:#89ddff;">=&quot;</span><span style="color:#c3e88d;">socks5://127.0.0.1:1091</span><span style="color:#89ddff;">&quot;
+</span><span style="color:#c792ea;">export </span><span>https_proxy</span><span style="color:#89ddff;">=&quot;</span><span style="color:#c3e88d;">socks5://127.0.0.1:1091</span><span style="color:#89ddff;">&quot;
 </span></code></pre>
 <p>由于flutter用的是dart的基础设施，所以也可以改$FlutterRoot/bin/cache/dart-sdk/pub.bat|pub，也是增加到第一行：</p>
 <p>for windows</p>
-<pre style="background-color:#212121;">
-<code class="language-bat" data-lang="bat"><span style="color:#c792ea;">set </span><span style="color:#eeffff;">http_proxy</span><span style="color:#89ddff;">=</span><span style="color:#c3e88d;">socks5://127.0.0.1:1091</span><span style="color:#eeffff;">
-</span><span style="color:#c792ea;">set </span><span style="color:#eeffff;">https_proxy</span><span style="color:#89ddff;">=</span><span style="color:#c3e88d;">socks5://127.0.0.1:1091</span><span style="color:#eeffff;">
+<pre data-lang="bat" style="background-color:#212121;color:#eeffff;" class="language-bat "><code class="language-bat" data-lang="bat"><span style="color:#c792ea;">set </span><span>http_proxy</span><span style="color:#89ddff;">=</span><span style="color:#c3e88d;">socks5://127.0.0.1:1091
+</span><span style="color:#c792ea;">set </span><span>https_proxy</span><span style="color:#89ddff;">=</span><span style="color:#c3e88d;">socks5://127.0.0.1:1091
 </span></code></pre>
 <p>for *nix</p>
-<pre style="background-color:#212121;">
-<code class="language-bash" data-lang="bash"><span style="color:#c792ea;">export </span><span style="color:#eeffff;">http_proxy</span><span style="color:#89ddff;">=&quot;</span><span style="color:#c3e88d;">socks5://127.0.0.1:1091</span><span style="color:#89ddff;">&quot;</span><span style="color:#82aaff;">
-</span><span style="color:#c792ea;">export </span><span style="color:#eeffff;">https_proxy</span><span style="color:#89ddff;">=&quot;</span><span style="color:#c3e88d;">socks5://127.0.0.1:1091</span><span style="color:#89ddff;">&quot;</span><span style="color:#eeffff;">
-</span></code></pre><h2 id="5-android-studio-gradle">5 Android Studio Gradle</h2>
+<pre data-lang="bash" style="background-color:#212121;color:#eeffff;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#c792ea;">export </span><span>http_proxy</span><span style="color:#89ddff;">=&quot;</span><span style="color:#c3e88d;">socks5://127.0.0.1:1091</span><span style="color:#89ddff;">&quot;
+</span><span style="color:#c792ea;">export </span><span>https_proxy</span><span style="color:#89ddff;">=&quot;</span><span style="color:#c3e88d;">socks5://127.0.0.1:1091</span><span style="color:#89ddff;">&quot;
+</span></code></pre>
+<h2 id="5-android-studio-gradle">5 Android Studio Gradle</h2>
 <p>找到$PROJ/gradle.properties文件，<br />
 增加如下配置：</p>
-<pre style="background-color:#212121;">
-<code class="language-ini" data-lang="ini"><span style="color:#f78c6c;">systemProp</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">https</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">proxyHost</span><span style="color:#89ddff;">=</span><span style="color:#eeffff;">127.0.0.1</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">systemProp</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">https</span><span style="color:#89ddff;">.</span><span style="color:#eeffff;">proxyPort</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">1093</span><span style="color:#eeffff;">
-</span></code></pre><h2 id="6-hg">6 hg</h2>
-<pre style="background-color:#212121;">
-<code class="language-ini" data-lang="ini"><span style="font-style:italic;color:#c792ea;">[http_proxy]</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">host</span><span style="color:#89ddff;">=</span><span style="color:#eeffff;">127.0.0.1:1093</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">user</span><span style="color:#89ddff;">=</span><span style="color:#eeffff;">username</span><span style="color:#eeffff;">
-</span><span style="color:#f78c6c;">passwd</span><span style="color:#89ddff;">=</span><span style="color:#eeffff;">password</span><span style="color:#eeffff;">
+<pre data-lang="ini" style="background-color:#212121;color:#eeffff;" class="language-ini "><code class="language-ini" data-lang="ini"><span style="color:#f78c6c;">systemProp</span><span style="color:#89ddff;">.</span><span>https</span><span style="color:#89ddff;">.</span><span>proxyHost</span><span style="color:#89ddff;">=</span><span>127.0.0.1
+</span><span style="color:#f78c6c;">systemProp</span><span style="color:#89ddff;">.</span><span>https</span><span style="color:#89ddff;">.</span><span>proxyPort</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">1093
+</span></code></pre>
+<h2 id="6-hg">6 hg</h2>
+<pre data-lang="ini" style="background-color:#212121;color:#eeffff;" class="language-ini "><code class="language-ini" data-lang="ini"><span style="font-style:italic;color:#c792ea;">[http_proxy]
+</span><span style="color:#f78c6c;">host</span><span style="color:#89ddff;">=</span><span>127.0.0.1:1093
+</span><span style="color:#f78c6c;">user</span><span style="color:#89ddff;">=</span><span>username
+</span><span style="color:#f78c6c;">passwd</span><span style="color:#89ddff;">=</span><span>password
 </span></code></pre>
 <p>~/.hgrc for *nix, ~/mercurial.ini for windows</p>
 <h2 id="7-npm">7 npm</h2>
-<pre style="background-color:#212121;">
-<code class="language-bash" data-lang="bash"><span style="color:#82aaff;">npm config set proxy http://127.0.0.1:1093</span><span style="color:#eeffff;">
-</span><span style="color:#82aaff;">npm config set https-proxy http://127.0.0.1:1093</span><span style="color:#eeffff;">
-</span></code></pre><h2 id="8-chocolatey">8 Chocolatey</h2>
-<pre style="background-color:#212121;">
-<code class="language-bat" data-lang="bat"><span style="color:#eeffff;"># notice: choco </span><span style="color:#89ddff;">not</span><span style="color:#eeffff;"> support socks5 yet.</span><span style="color:#eeffff;">
-choco config </span><span style="color:#c792ea;">set </span><span style="color:#eeffff;">proxy http://127.0.0.1:1093</span><span style="color:#eeffff;">
-</span></code></pre><h2 id="9-qi-ta">9 其他</h2>
+<pre data-lang="bash" style="background-color:#212121;color:#eeffff;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#82aaff;">npm config set proxy http://127.0.0.1:1093
+</span><span style="color:#82aaff;">npm config set https-proxy http://127.0.0.1:1093
+</span></code></pre>
+<h2 id="8-chocolatey">8 Chocolatey</h2>
+<pre data-lang="bat" style="background-color:#212121;color:#eeffff;" class="language-bat "><code class="language-bat" data-lang="bat"><span># notice: choco </span><span style="color:#89ddff;">not</span><span> support socks5 yet.
+</span><span>choco config </span><span style="color:#c792ea;">set </span><span>proxy http://127.0.0.1:1093
+</span></code></pre>
+<h2 id="9-qi-ta">9 其他</h2>
 <p>使用系统httpclient的和flutter相同。</p>
 </div>
 
@@ -252,7 +243,7 @@ choco config </span><span style="color:#c792ea;">set </span><span style="color:#
   
     <div class="post-tags">
     
-      <!-- <a href="https:&#x2F;&#x2F;xjump.me&#x2F;tags&#x2F;all&#x2F;">#all</a> -->
+      <!-- <a href="https://xjump.me/tags/all/">#all</a> -->
     
     </div>
   
