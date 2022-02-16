@@ -95,6 +95,35 @@
   <article class="post">
   
 <header class="post__header">
+  <h1 class="post__title"><a href="https:&#x2F;&#x2F;xjump.me&#x2F;20181006-java11-update-notes&#x2F;">Java 11升级</a></h1>
+  <div class="post__meta">
+    <span class="post__time">2018-10-06</span>
+
+  </div>
+</header>
+
+  <div class="post__summary">
+  <p>Java 11已于2018-09-25发布，作为一个LTS版本，值得重点关注。但从Java 8升级上来还是会碰到不少问题。</p>
+<p>1、 project需要增加jaxb依赖，否则编译报错。</p>
+<pre data-lang="txt" style="background-color:#212121;color:#eeffff;" class="language-txt "><code class="language-txt" data-lang="txt"><span>Caused by: java.lang.NoClassDefFoundError: javax/xml/bind/JAXBException
+</span></code></pre>
+<p>增加下面的依赖：</p>
+<pre data-lang="xml" style="background-color:#212121;color:#eeffff;" class="language-xml "><code class="language-xml" data-lang="xml"><span style="color:#89ddff;">&lt;</span><span style="color:#f07178;">dependency</span><span style="color:#89ddff;">&gt;
+</span><span>  </span><span style="color:#89ddff;">&lt;</span><span style="color:#f07178;">groupId</span><span style="color:#89ddff;">&gt;</span><span>javax.xml.bind</span><span style="color:#89ddff;">&lt;/</span><span style="color:#f07178;">groupId</span><span style="color:#89ddff;">&gt;
+</span><span>  </span><span style="color:#89ddff;">&lt;</span><span style="color:#f07178;">artifactId</span><span style="color:#89ddff;">&gt;</span><span>jaxb-api</span><span style="color:#89ddff;">&lt;/</span><span style="color:#f07178;">artifactId</span><span style="color:#89ddff;">&gt;
+</span><span>  </span><span style="color:#89ddff;">&lt;</span><span style="color:#f07178;">version</span><span style="color:#89ddff;">&gt;</span><span>2.3.0</span><span style="color:#89ddff;">&lt;/</span><span style="color:#f07178;">version</span><span style="color:#89ddff;">&gt;
+</span><span style="color:#89ddff;">&lt;/</span><span style="color:#f07178;">dependency</span><span style="color:#89ddff;">&gt;
+</span></code></pre>
+
+  </div>
+  <div class="read-more">
+  <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20181006-java11-update-notes&#x2F;">Read more...</a>
+  </div>
+  </article>
+
+  <article class="post">
+  
+<header class="post__header">
   <h1 class="post__title"><a href="https:&#x2F;&#x2F;xjump.me&#x2F;20180815-rust-error-handling&#x2F;">Rust错误处理（转）</a></h1>
   <div class="post__meta">
     <span class="post__time">2018-08-15</span>
@@ -215,32 +244,6 @@
   </div>
   <div class="read-more">
   <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20141030-jvm-attack&#x2F;">Read more...</a>
-  </div>
-  </article>
-
-  <article class="post">
-  
-<header class="post__header">
-  <h1 class="post__title"><a href="https:&#x2F;&#x2F;xjump.me&#x2F;20141010-object-c-synchronize&#x2F;">ObjC synchronize，GCD</a></h1>
-  <div class="post__meta">
-    <span class="post__time">2014-10-10</span>
-
-  </div>
-</header>
-
-  <div class="post__summary">
-  <pre data-lang="mm" style="background-color:#212121;color:#eeffff;" class="language-mm "><code class="language-mm" data-lang="mm"><span style="color:#89ddff;">- (</span><span style="color:#ffcb6b;">NSString </span><span style="color:#89ddff;">*)</span><span style="color:#82aaff;">myString </span><span style="color:#89ddff;">{
-</span><span style="color:#82aaff;">  </span><span style="font-style:italic;color:#89ddff;">@</span><span style="font-style:italic;color:#c792ea;">synchronized</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#ff5370;">self</span><span style="color:#89ddff;">) {
-</span><span style="color:#82aaff;">    </span><span style="font-style:italic;color:#c792ea;">return </span><span style="color:#89ddff;">[[</span><span style="color:#82aaff;">myString retain</span><span style="color:#89ddff;">]</span><span style="color:#82aaff;"> autorelease</span><span style="color:#89ddff;">];
-</span><span style="color:#82aaff;">  </span><span style="color:#89ddff;">}
-</span><span style="color:#89ddff;">}
-</span></code></pre>
-<p>
-    转换1：</p>
-
-  </div>
-  <div class="read-more">
-  <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20141010-object-c-synchronize&#x2F;">Read more...</a>
   </div>
   </article>
 

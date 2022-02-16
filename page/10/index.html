@@ -95,6 +95,48 @@
   <article class="post">
   
 <header class="post__header">
+  <h1 class="post__title"><a href="https:&#x2F;&#x2F;xjump.me&#x2F;20130223-backtrace-nix-win&#x2F;">backtrace on *nix and Windows</a></h1>
+  <div class="post__meta">
+    <span class="post__time">2013-02-23</span>
+
+  </div>
+</header>
+
+  <div class="post__summary">
+  <p>
+  最近读OceanBase的<a href="http://github.com/alibaba/oceanbase">源码</a>，摘录一段错误诊断比较有用的代码：</p>
+<pre data-lang="cpp" style="background-color:#212121;color:#eeffff;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="font-style:italic;color:#4a4a4a;">//#define OCEAN_BTREE_CHECK
+</span><span style="font-style:italic;color:#c792ea;">#ifdef</span><span> OCEAN_BTREE_CHECK
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">#include </span><span style="color:#89ddff;">&lt;</span><span style="color:#c3e88d;">execinfo.h</span><span style="color:#89ddff;">&gt;
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">#define </span><span style="color:#82aaff;">OCEAN_BTREE_CHECK_FALSE</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">cond</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">format</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">args</span><span style="color:#89ddff;">...) </span><span style="font-style:italic;color:#c792ea;">if </span><span style="color:#89ddff;">((</span><span>cond</span><span style="color:#89ddff;">)) \
+</span><span>  </span><span style="color:#89ddff;">{                                  \
+</span><span>    </span><span style="font-style:italic;color:#c792ea;">char</span><span> _buffer_stack_</span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">256</span><span style="color:#89ddff;">];                    \
+</span><span>    </span><span style="color:#89ddff;">{                                \
+</span><span>      </span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#89ddff;">*</span><span>array</span><span style="color:#89ddff;">[</span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">];                       \
+</span><span>      </span><span style="font-style:italic;color:#c792ea;">int</span><span> i</span><span style="color:#89ddff;">,</span><span> idx</span><span style="color:#89ddff;">=</span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">,</span><span> n </span><span style="color:#89ddff;">= </span><span style="color:#82aaff;">backtrace</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">array</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">10</span><span style="color:#89ddff;">);          \
+</span><span>      </span><span style="font-style:italic;color:#c792ea;">for </span><span style="color:#89ddff;">(</span><span>i </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">0</span><span style="color:#89ddff;">;</span><span> i </span><span style="color:#89ddff;">&lt;</span><span> n</span><span style="color:#89ddff;">;</span><span> i</span><span style="color:#89ddff;">++) {                  \
+</span><span>      idx </span><span style="color:#89ddff;">+= </span><span style="color:#82aaff;">snprintf</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">idx</span><span style="color:#89ddff;">+</span><span style="color:#82aaff;">_buffer_stack_</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">25</span><span style="color:#89ddff;">, &quot;</span><span>%p</span><span style="color:#c3e88d;">,</span><span style="color:#89ddff;">&quot;,</span><span style="color:#82aaff;"> array</span><span style="color:#89ddff;">[</span><span style="color:#82aaff;">i</span><span style="color:#89ddff;">]);  \
+</span><span>      </span><span style="color:#89ddff;">}                              \
+</span><span>    </span><span style="color:#89ddff;">}                                \
+</span><span>    </span><span style="color:#82aaff;">TBSYS_LOG</span><span style="color:#89ddff;">(</span><span style="color:#82aaff;">ERROR</span><span style="color:#89ddff;">, &quot;</span><span>%s</span><span style="color:#89ddff;">&quot;</span><span style="color:#82aaff;"> format</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> _buffer_stack_</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> ## args</span><span style="color:#89ddff;">);    \
+</span><span>  </span><span style="color:#89ddff;">}
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">#define </span><span style="color:#82aaff;">OCEAN_BTREE_CHECK_TRUE</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">cond</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">format</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">args</span><span style="color:#89ddff;">...) \
+</span><span>    </span><span style="color:#82aaff;">OCEAN_BTREE_CHECK_FALSE</span><span style="color:#89ddff;">(!(</span><span style="color:#82aaff;">cond</span><span style="color:#89ddff;">),</span><span style="color:#82aaff;"> format</span><span style="color:#89ddff;">,</span><span style="color:#82aaff;"> ## args</span><span style="color:#89ddff;">)
+</span><span style="font-style:italic;color:#c792ea;">#else
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">#define </span><span style="color:#82aaff;">OCEAN_BTREE_CHECK_TRUE</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">cond</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">format</span><span style="color:#89ddff;">, ...)
+</span><span>  </span><span style="font-style:italic;color:#c792ea;">#define </span><span style="color:#82aaff;">OCEAN_BTREE_CHECK_FALSE</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">cond</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">format</span><span style="color:#89ddff;">, ...)
+</span><span style="font-style:italic;color:#c792ea;">#endif
+</span></code></pre>
+
+  </div>
+  <div class="read-more">
+  <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20130223-backtrace-nix-win&#x2F;">Read more...</a>
+  </div>
+  </article>
+
+  <article class="post">
+  
+<header class="post__header">
   <h1 class="post__title"><a href="https:&#x2F;&#x2F;xjump.me&#x2F;20130129-graphlab-links&#x2F;">GraphLab Links</a></h1>
   <div class="post__meta">
     <span class="post__time">2013-01-29</span>
@@ -161,24 +203,6 @@
   </div>
   <div class="read-more">
   <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20130122-rsa-padding-pkcs1-5&#x2F;">Read more...</a>
-  </div>
-  </article>
-
-  <article class="post">
-  
-<header class="post__header">
-  <h1 class="post__title"><a href="https:&#x2F;&#x2F;xjump.me&#x2F;20130122-symmetric-crypto-padding&#x2F;">PKCS7Padding &amp; PKCS5Padding</a></h1>
-  <div class="post__meta">
-    <span class="post__time">2013-01-22</span>
-
-  </div>
-</header>
-
-  <div class="post__summary">
-  
-  </div>
-  <div class="read-more">
-  <a href="https:&#x2F;&#x2F;xjump.me&#x2F;20130122-symmetric-crypto-padding&#x2F;">Read more...</a>
   </div>
   </article>
 
